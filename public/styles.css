@@ -119,6 +119,37 @@ ul {
   font-size: 0.95rem;
 }
 
+.footer-archive {
+  margin-bottom: 1.2rem;
+  max-width: 72ch;
+}
+
+.archive-heading {
+  margin: 0 0 0.55rem;
+  color: var(--soft);
+  font-size: 0.9rem;
+}
+
+.archive-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.archive-list li {
+  margin-top: 0.4rem;
+  color: var(--soft);
+}
+
+.archive-list a {
+  margin-right: 0.35rem;
+}
+
+.archive-ref {
+  margin-right: 0.35rem;
+  color: var(--text);
+}
+
 .intro {
   margin-bottom: 5.6rem;
   max-width: 77ch;
