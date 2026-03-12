@@ -108,6 +108,19 @@ ul {
   padding-left: 1.2rem;
 }
 
+.works-list {
+  margin-top: 0.75rem;
+}
+
+.works-list li {
+  margin-top: 0.45rem;
+}
+
+.small-note {
+  color: var(--soft);
+  font-size: 0.93rem;
+}
+
 .intro {
   margin-bottom: 5.6rem;
   max-width: 77ch;
