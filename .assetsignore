@@ -1,6 +1,0 @@
-_worker.js
-wrangler.toml
-wrangler.worker.toml
-README.md
-.deploy-trigger
-.gitignore
