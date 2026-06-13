@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node blog/build.mjs"
+    "build": "node notes/build.mjs"
   },
   "dependencies": {
     "marked": "^14.1.3"

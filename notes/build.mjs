@@ -1,6 +1,6 @@
-// Static blog generator.
-// Reads Markdown posts from blog/posts/*.md (with `---` frontmatter) and writes
-// one HTML page per post plus blog/index.html. Run with `npm run build`.
+// Static notes generator.
+// Reads Markdown notes from notes/posts/*.md (with `---` frontmatter) and writes
+// one HTML page per note plus notes/index.html. Run with `npm run build`.
 
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -45,8 +45,7 @@ const NAV = `
       <nav aria-label="Primary">
         <a href="/#about">About</a>
         <a href="/#work">Work</a>
-        <a href="/#notes">Notes</a>
-        <a href="/blog/">Blog</a>
+        <a href="/notes/">Notes</a>
         <a href="/#contact">Contact</a>
       </nav>`;
 
@@ -105,7 +104,7 @@ posts.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
 for (const post of posts) {
   const article = `      <article class="post">
-        <p class="post-back"><a href="/blog/">← All posts</a></p>
+        <p class="post-back"><a href="/notes/">← All notes</a></p>
         <h1>${escapeHtml(post.title)}</h1>
         <p class="post-meta">${formatDate(post.date)}</p>
         <div class="post-body">
@@ -125,7 +124,7 @@ ${post.html}
 const items = posts
   .map(
     (p) => `          <li>
-            <a class="post-title" href="/blog/${p.slug}.html">${escapeHtml(p.title)}</a>
+            <a class="post-title" href="/notes/${p.slug}.html">${escapeHtml(p.title)}</a>
             <span class="post-date">${formatDate(p.date)}</span>${
               p.summary
                 ? `\n            <p class="post-summary">${escapeHtml(p.summary)}</p>`
@@ -135,22 +134,22 @@ const items = posts
   )
   .join("\n");
 
-const indexBody = `      <section class="blog-index">
-        <p class="blog-back"><a href="/">← Home</a></p>
-        <h1>Blog</h1>
-        <p class="blog-intro">Short notes on software, mathematics, and things I keep thinking about.</p>
+const indexBody = `      <section class="notes-index">
+        <p class="notes-back"><a href="/">← Home</a></p>
+        <h1>Notes</h1>
+        <p class="notes-intro">Short, often unfinished notes on software, mathematics, and things I keep thinking about.</p>
         <ul class="post-list">
-${items || "          <li>No posts yet.</li>"}
+${items || "          <li>Nothing here yet.</li>"}
         </ul>
       </section>`;
 
 writeFileSync(
   join(here, "index.html"),
   page({
-    title: "Blog — Christos Chatzifountas",
-    description: "Notes on software, mathematics, and things I keep thinking about.",
+    title: "Notes — Christos Chatzifountas",
+    description: "Short notes on software, mathematics, and things I keep thinking about.",
     body: indexBody,
   }),
 );
 
-console.log(`Built ${posts.length} post(s) + index.`);
+console.log(`Built ${posts.length} note(s) + index.`);

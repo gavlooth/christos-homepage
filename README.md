@@ -7,32 +7,32 @@ Personal project page for **Dr. Christos Chatzifountas**, designed as a static s
 - `index.html` - Page content and semantic structure
 - `styles.css` - Visual design, responsive layout, and animation
 - `wrangler.toml` - Cloudflare Pages configuration
-- `blog/` - Markdown blog (sources + generated HTML)
+- `notes/` - Markdown notes (sources + generated HTML)
 
-## Blog
+## Notes
 
-Posts are written in Markdown and rendered to static HTML at build time.
+Notes are written in Markdown and rendered to static HTML at build time.
 
-- Write a post in `blog/posts/` named `YYYY-MM-DD-slug.md` with frontmatter:
+- Write a note in `notes/posts/` named `YYYY-MM-DD-slug.md` with frontmatter:
 
   ```markdown
   ---
   title: Post title
   date: 2026-07-01
-  summary: One-line teaser shown on the blog index.
+  summary: One-line teaser shown on the notes index.
   ---
 
   Markdown body...
   ```
 
-- Run the build to (re)generate `blog/index.html` and `blog/<slug>.html`:
+- Run the build to (re)generate `notes/index.html` and `notes/<slug>.html`:
 
   ```bash
   npm install   # first time only
   npm run build
   ```
 
-The URL drops the date prefix (`2026-07-01-my-post.md` -> `/blog/my-post.html`).
+The URL drops the date prefix (`2026-07-01-my-note.md` -> `/notes/my-note.html`).
 The generated HTML is committed, so the site works even without a build on deploy.
 Source `.md` files are not served (the worker 404s `.md`).
 
@@ -46,7 +46,7 @@ Source `.md` files are not served (the worker 404s `.md`).
 - Build output directory: `.`
 5. Deploy.
 
-Cloudflare runs `npm run build` on every push, regenerating the blog automatically.
+Cloudflare runs `npm run build` on every push, regenerating the notes automatically.
 `node_modules` is never uploaded (Cloudflare excludes it), and `.node-version`
 pins the Node version used for the build.
 
