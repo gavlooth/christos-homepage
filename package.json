@@ -1,0 +1,11 @@
+{
+  "name": "christos-homepage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node blog/build.mjs"
+  },
+  "dependencies": {
+    "marked": "^14.1.3"
+  }
+}
