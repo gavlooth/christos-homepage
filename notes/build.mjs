@@ -1,14 +1,27 @@
-// Static notes generator.
-// Reads Markdown notes from notes/posts/*.md (with `---` frontmatter) and writes
-// one HTML page per note plus notes/index.html. Run with `npm run build`.
+// Static site builder.
+// Reads Markdown notes from notes/posts/*.md (with `---` frontmatter) and
+// assembles the deployed web root in public/: one HTML page per note plus
+// public/notes/index.html, and copies the hand-authored index.html + styles.css
+// into public/. The Worker (wrangler.worker.toml) serves public/. Run with
+// `npm run build`.
 
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import {
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+  mkdirSync,
+  copyFileSync,
+} from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { marked } from "marked";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const postsDir = join(here, "posts");
+const repoRoot = join(here, "..");
+const webDir = join(repoRoot, "public");
+const notesOutDir = join(webDir, "notes");
+mkdirSync(notesOutDir, { recursive: true });
 
 function parsePost(raw) {
   const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(raw);
@@ -112,7 +125,7 @@ ${post.html}
         </div>
       </article>`;
   writeFileSync(
-    join(here, `${post.slug}.html`),
+    join(notesOutDir, `${post.slug}.html`),
     page({
       title: `${post.title} — Christos Chatzifountas`,
       description: post.summary || post.title,
@@ -144,7 +157,7 @@ ${items || "          <li>Nothing here yet.</li>"}
       </section>`;
 
 writeFileSync(
-  join(here, "index.html"),
+  join(notesOutDir, "index.html"),
   page({
     title: "Notes — Christos Chatzifountas",
     description: "Short notes on software, mathematics, and things I keep thinking about.",
@@ -152,4 +165,8 @@ writeFileSync(
   }),
 );
 
-console.log(`Built ${posts.length} note(s) + index.`);
+// Copy the hand-authored top-level pages into the served web root.
+copyFileSync(join(repoRoot, "index.html"), join(webDir, "index.html"));
+copyFileSync(join(repoRoot, "styles.css"), join(webDir, "styles.css"));
+
+console.log(`Built ${posts.length} note(s) + index into public/.`);
