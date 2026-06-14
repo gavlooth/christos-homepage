@@ -290,13 +290,12 @@ original tangled go-loop become almost free:
   failure three steps later can undo the earlier write. That is the saga idea, with
   no extra machinery.
 
-## A caveat: only synchronous errors
+## One thing the loop can't catch
 
-One honest caveat, learned slowly: **the loop's `try`/`catch` only sees
-*synchronous* exceptions.** A step that fans out onto its own threads has to catch
-and re-dispatch its own errors, because an exception thrown on another thread sails
-right past the loop. The trampoline coordinates the transitions, not the threads
-underneath them.
+**The `try`/`catch` only wraps synchronous throws.** If a step spawns its own
+threads, an exception on one of them sails straight past the loop, so that step has
+to catch and re-dispatch its own errors. The trampoline sequences the transitions;
+it doesn't supervise the threads underneath them.
 
 ## None of it is mine
 

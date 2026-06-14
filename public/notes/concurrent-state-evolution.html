@@ -287,12 +287,11 @@ anything already written to the database derives a <code>::rollback-persistence<
 failure three steps later can undo the earlier write. That is the saga idea, with
 no extra machinery.</li>
 </ul>
-<h2>A caveat: only synchronous errors</h2>
-<p>One honest caveat, learned slowly: <strong>the loop&#39;s <code>try</code>/<code>catch</code> only sees
-<em>synchronous</em> exceptions.</strong> A step that fans out onto its own threads has to catch
-and re-dispatch its own errors, because an exception thrown on another thread sails
-right past the loop. The trampoline coordinates the transitions, not the threads
-underneath them.</p>
+<h2>One thing the loop can&#39;t catch</h2>
+<p><strong>The <code>try</code>/<code>catch</code> only wraps synchronous throws.</strong> If a step spawns its own
+threads, an exception on one of them sails straight past the loop, so that step has
+to catch and re-dispatch its own errors. The trampoline sequences the transitions;
+it doesn&#39;t supervise the threads underneath them.</p>
 <h2>None of it is mine</h2>
 <p>What I like about this is that none of the three pieces is mine. The loop/recursion
 equivalence is decades old, state machines are older, and the Redux loop I borrowed
