@@ -30,10 +30,23 @@ and the two things clicked together: a vehicle replaying a route *is* a state
 machine. `:stopped`, `:running`, `:paused`, `:resumed`, and so on. Mutual recursion
 is the elegant way to write those transitions — **each state decides the next.**
 
+<figure class="diagram">
+<svg viewBox="0 0 720 300" role="img" aria-label="State diagram of the replay engine" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b73"/></marker></defs>
+<g fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"><rect x="20" y="52" width="150" height="46" rx="8"/><rect x="300" y="52" width="150" height="46" rx="8"/><rect x="560" y="52" width="140" height="46" rx="8"/><rect x="240" y="206" width="270" height="46" rx="8"/><rect x="560" y="206" width="140" height="46" rx="8"/></g>
+<g fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="14" text-anchor="middle"><text x="95" y="80">:stopped</text><text x="375" y="80">:running</text><text x="630" y="80">:paused</text><text x="375" y="234">[:running :frames]</text><text x="630" y="234">:resumed</text></g>
+<g stroke="#5a6b73" stroke-width="1.5" fill="none" marker-end="url(#ar)"><line x1="170" y1="75" x2="296" y2="75"/><line x1="360" y1="98" x2="360" y2="204"/><line x1="392" y1="204" x2="392" y2="98"/><line x1="450" y1="75" x2="558" y2="75"/><line x1="630" y1="98" x2="630" y2="204"/><path d="M558,214 C 500,206 458,150 454,100"/></g>
+<g fill="#5a6b73" font-size="12"><text x="233" y="68" text-anchor="middle">play</text><text x="352" y="158" text-anchor="end">advance</text><text x="402" y="140" text-anchor="start">segment done</text><text x="504" y="68" text-anchor="middle">reach :end</text><text x="638" y="158" text-anchor="start">resume</text><text x="516" y="200" text-anchor="start">continue</text></g>
+</svg>
+<figcaption>The replay engine as a state machine. Every box is a <code>:status</code>; the nested <code>[:running :frames]</code> is a sub-state living inside <code>:running</code>.</figcaption>
+</figure>
+
 So I decided to hold the state in an atom. It wasn't a considered design at first —
 an atom just seemed like the obvious place for something the outside world might
 need to poke at, like a user hitting "pause" halfway down the route. The atom held
 the state, and a multimethod advanced it. The `:status` *is* the dispatch value.
+
+<p class="code-label">Clojure — the decider</p>
 
 ```clojure
 (defmulti resolve-state (fn [state-atom] (:status @state-atom)))
@@ -100,6 +113,8 @@ side effects; it records that decision — a `:command` — in the atom. A secon
 multimethod, `execute-action`, then dispatches on that command, performs the actual
 effect, and hands control back to `resolve-state`:
 
+<p class="code-label">Clojure — the effects</p>
+
 ```clojure
 (defmulti execute-action (fn [state-atom & _] (:command @state-atom)))
 
@@ -128,6 +143,23 @@ effect, and hands control back to `resolve-state`:
 (defmethod execute-action :pause [state-atom]
   (swap! state-atom assoc :status :paused))
 ```
+
+<p class="code-label">The two roles, in plain pseudocode</p>
+<div class="pseudo">
+
+```text
+# Two roles bouncing off each other — no language required.
+
+decide(state):                 # pure: choose the next command, touch nothing
+    state.command = transition_for(state.status)
+    trampoline(do, state)      # hop — schedule the effect, don't call it directly
+
+do(state):                     # effectful: perform the command, then loop back
+    perform(state.command)     # move the marker, persist, call an API…
+    trampoline(decide, state)  # name the next, let the trampoline bounce
+```
+
+</div>
 
 So the two multimethods
 [trampoline](<https://en.wikipedia.org/wiki/Trampoline_(computing)>) off each
@@ -176,6 +208,8 @@ is happening and what it is happening to. In the latest version of this pattern 
 an AI pipeline that extracts structured data from emails — the states are no longer
 vehicle modes but steps in an effectful process, yet the skeleton is identical:
 
+<p class="code-label">Clojure — the email pipeline</p>
+
 ```clojure
 (defmulti evolve-flow (fn [action _data _config _ch] action))
 
@@ -199,6 +233,43 @@ vehicle modes but steps in an effectful process, yet the skeleton is identical:
         (dispatch-error! ch action t data)))
     (recur)))
 ```
+
+<figure class="diagram">
+<svg viewBox="0 0 720 270" role="img" aria-label="The channel trampoline loop" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
+<defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b73"/></marker></defs>
+<text x="110" y="28" fill="#5a6b73" font-size="12">the channel</text>
+<rect x="110" y="36" width="500" height="58" rx="10" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<g fill="#efe9df" stroke="#5a6b73" stroke-width="1"><rect x="135" y="50" width="140" height="30" rx="6"/><rect x="290" y="50" width="140" height="30" rx="6"/><rect x="445" y="50" width="140" height="30" rx="6"/></g>
+<g fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle"><text x="205" y="69">[:persist · {…}]</text><text x="360" y="69">[:extract · {…}]</text><text x="515" y="69">[:error · {…}]</text></g>
+<g fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"><rect x="120" y="176" width="180" height="64" rx="8"/><rect x="420" y="176" width="200" height="64" rx="8"/></g>
+<g fill="#1f2a2f" text-anchor="middle"><text x="210" y="204" font-size="15">go-loop</text><text x="520" y="204" font-size="15">evolve-flow</text></g>
+<g fill="#5a6b73" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle"><text x="210" y="224">(&lt;! ch)</text><text x="520" y="224">dispatch on :action</text></g>
+<g stroke="#5a6b73" stroke-width="1.5" fill="none" marker-end="url(#ar2)"><line x1="200" y1="94" x2="200" y2="174"/><line x1="300" y1="208" x2="418" y2="208"/><line x1="520" y1="176" x2="520" y2="96"/></g>
+<g fill="#5a6b73" font-size="12"><text x="192" y="142" text-anchor="end">take next</text><text x="360" y="200" text-anchor="middle">run handler</text><text x="528" y="142" text-anchor="start">push (next · payload)</text></g>
+</svg>
+<figcaption>One loop is the trampoline: the <code>go-loop</code> takes an <code>[action · payload]</code> pair off the channel, runs the matching handler, and the handler pushes the next pair back on. Every transition passes through one place.</figcaption>
+</figure>
+
+<p class="code-label">The same loop, beyond Clojure</p>
+<div class="pseudo">
+
+```text
+# Any language with a queue/channel can run this loop.
+
+loop forever:
+    action, payload = take(channel)          # blocks until a message arrives
+    try:
+        handlers[action](payload, channel)   # may push the next (action, payload)
+    except err:
+        push(channel, (ERROR, { action, payload, err }))
+
+# A handler names its successor and ships the data that successor needs:
+handler EXTRACT_ORDER (payload, channel):
+    order = ai.extract(payload.email)
+    push(channel, (PERSIST_ORDER, { order }))   # next state + payload
+```
+
+</div>
 
 ## What this buys you
 
