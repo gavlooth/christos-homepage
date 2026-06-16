@@ -58,7 +58,7 @@ const NAV = `
       <nav aria-label="Primary">
         <a href="/#about">About</a>
         <a href="/#work">Work</a>
-        <a href="/notes/">Notes</a>
+        <a href="/notes/">Notebook</a>
         <a href="/#contact">Contact</a>
       </nav>`;
 
@@ -117,7 +117,7 @@ posts.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
 for (const post of posts) {
   const article = `      <article class="post">
-        <p class="post-back"><a href="/notes/">← All notes</a></p>
+        <p class="post-back"><a href="/notes/">← The notebook</a></p>
         <h1>${escapeHtml(post.title)}</h1>
         <p class="post-meta">${formatDate(post.date)}</p>
         <div class="post-body">
@@ -149,7 +149,7 @@ const items = posts
 
 const indexBody = `      <section class="notes-index">
         <p class="notes-back"><a href="/">← Home</a></p>
-        <h1>Notes</h1>
+        <h1>Notebook</h1>
         <p class="notes-intro">Short, often unfinished notes on software, mathematics, and things I keep thinking about.</p>
         <ul class="post-list">
 ${items || "          <li>Nothing here yet.</li>"}
@@ -159,7 +159,7 @@ ${items || "          <li>Nothing here yet.</li>"}
 writeFileSync(
   join(notesOutDir, "index.html"),
   page({
-    title: "Notes — Christos Chatzifountas",
+    title: "Notebook — Christos Chatzifountas",
     description: "Short notes on software, mathematics, and things I keep thinking about.",
     body: indexBody,
   }),
