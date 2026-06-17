@@ -255,7 +255,7 @@ dissent comes back with a number.
 <text x="629" y="210" text-anchor="middle" fill="#0a556e" font-size="11">that can say no</text>
 <line x1="558" y1="198" x2="513" y2="198" stroke="#0a556e" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ad)"/>
 </svg>
-<figcaption>Two attractors. Left: with nothing outside the argument, the rounds spiral into a fixed point of <em>consensus</em>. Right: a referent the argument cannot ventriloquize keeps pulling the synthesis toward <em>truth</em>.</figcaption>
+<figcaption>Two attractors — and I owe you the status honestly: I can't prove this is the shape, I only suspect it, which as a skeptic is the strongest thing I'm entitled to say about anything I haven't proved. Left: with nothing outside the argument, the rounds spiral into a fixed point of <em>consensus</em>. Right: a referent the argument cannot ventriloquize keeps pulling the synthesis toward <em>truth</em>.</figcaption>
 </figure>
 
 And that, finally, is the move that lets a positivist accept Hegel works on machines
