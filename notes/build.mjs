@@ -18,10 +18,25 @@ import { marked } from "marked";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const postsDir = join(here, "posts");
+const pagesDir = join(here, "pages");
 const repoRoot = join(here, "..");
 const webDir = join(repoRoot, "public");
 const notesOutDir = join(webDir, "notes");
 mkdirSync(notesOutDir, { recursive: true });
+
+// Hand-authored notes whose layouts are too specialized for the Markdown
+// template. They are copied verbatim and still participate in the notebook
+// index alongside generated posts.
+const standaloneNotes = [
+  {
+    slug: "delta-nets",
+    title: "Δ-Nets, decoded",
+    date: "2026-08-01",
+    summary:
+      "A diagram-led guide to encoding lambda terms as Δ-Nets, following their interactions, and calculating replicator levels and port deltas.",
+    source: join(pagesDir, "delta-nets.html"),
+  },
+];
 
 function parsePost(raw) {
   const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(raw);
@@ -134,7 +149,15 @@ ${post.html}
   );
 }
 
-const items = posts
+for (const note of standaloneNotes) {
+  copyFileSync(note.source, join(notesOutDir, `${note.slug}.html`));
+}
+
+const indexEntries = [...posts, ...standaloneNotes].sort((a, b) =>
+  a.date < b.date ? 1 : a.date > b.date ? -1 : 0,
+);
+
+const items = indexEntries
   .map(
     (p) => `          <li>
             <a class="post-title" href="/notes/${p.slug}.html">${escapeHtml(p.title)}</a>
@@ -169,4 +192,6 @@ writeFileSync(
 copyFileSync(join(repoRoot, "index.html"), join(webDir, "index.html"));
 copyFileSync(join(repoRoot, "styles.css"), join(webDir, "styles.css"));
 
-console.log(`Built ${posts.length} note(s) + index into public/.`);
+console.log(
+  `Built ${posts.length} Markdown note(s), ${standaloneNotes.length} standalone note(s), and the index into public/.`,
+);

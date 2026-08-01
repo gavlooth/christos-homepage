@@ -1,0 +1,2142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A reader-first guide to Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction.">
+    <meta name="theme-color" content="#f7f4ee">
+    <title>Δ-Nets, decoded — a guided reading of arXiv:2505.20314v4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ink: #1f2a2f;
+        --ink-soft: #5a6b73;
+        --strong: #1f2a2f;
+        --paper: #f7f4ee;
+        --paper-deep: #eee9df;
+        --panel: #fcfaf6;
+        --line: rgba(31, 42, 47, .22);
+        --navy: #1f2a2f;
+        --navy-2: #0a556e;
+        --teal: #0a556e;
+        --teal-pale: #e2edf0;
+        --orange: #9a5f3d;
+        --orange-pale: #f2e4d9;
+        --violet: #5e6276;
+        --violet-pale: #e8e7ed;
+        --shadow: 0 16px 38px rgba(31, 42, 47, .07);
+        --page-background: var(--paper);
+        --masthead-background: var(--paper);
+        --orientation-card: #f2f0ea;
+        --table-head: #efebe3;
+        --references-bg: #efebe3;
+        --diagram-wire: #41535b;
+        --diagram-muted: #b7b8b3;
+        --diagram-teal-fill: #e5eef0;
+        --diagram-orange-fill: #f3e7dd;
+        --diagram-violet-fill: #eceaf0;
+        --sans: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --serif: "Literata", Georgia, serif;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        --content-size: 1rem;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--page-background);
+        font-family: var(--sans);
+        font-size: var(--content-size);
+        line-height: 1.62;
+        transition: color .2s ease, background .2s ease;
+      }
+
+      body[data-size="large"] { --content-size: 1.1rem; }
+      body[data-size="larger"] { --content-size: 1.2rem; }
+      body[data-theme="dark"] {
+        color-scheme: dark;
+        --ink: #edf0ee;
+        --ink-soft: #b8c1c4;
+        --strong: #ffffff;
+        --paper: #172025;
+        --paper-deep: #11191d;
+        --panel: #1f2a2f;
+        --line: rgba(237, 240, 238, .2);
+        --navy: #10171a;
+        --navy-2: #164f62;
+        --teal: #82b7c8;
+        --teal-pale: #263c44;
+        --orange: #d39a74;
+        --orange-pale: #49372d;
+        --violet: #aaa6bb;
+        --violet-pale: #393844;
+        --shadow: 0 18px 44px rgba(0, 0, 0, .23);
+        --page-background: var(--paper);
+        --masthead-background: var(--paper);
+        --orientation-card: #263238;
+        --table-head: #263238;
+        --references-bg: #222d32;
+        --diagram-wire: #c4cdd0;
+        --diagram-muted: #637278;
+        --diagram-teal-fill: #263c44;
+        --diagram-orange-fill: #49372d;
+        --diagram-violet-fill: #393844;
+      }
+
+      a { color: var(--teal); text-underline-offset: 3px; }
+      a:hover { color: var(--navy-2); }
+      button { font: inherit; }
+
+      :focus-visible {
+        outline: 3px solid var(--orange);
+        outline-offset: 3px;
+      }
+
+      .skip-link {
+        position: absolute;
+        z-index: 100;
+        top: -4rem;
+        left: 1rem;
+        padding: .6rem .9rem;
+        color: #fff;
+        background: var(--navy);
+        border-radius: 0 0 .5rem .5rem;
+      }
+      .skip-link:focus { top: 0; }
+
+      .progress {
+        position: fixed;
+        z-index: 50;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(17, 38, 61, .12);
+      }
+      .progress > span {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--teal), #4a7a89, var(--orange));
+        transition: width .12s linear;
+      }
+
+      .masthead {
+        color: var(--ink);
+        background: var(--masthead-background);
+        border-bottom: 1px solid var(--line);
+      }
+      .masthead-inner, .page-grid, .footer-inner {
+        width: min(1220px, calc(100% - 2.5rem));
+        margin: 0 auto;
+      }
+      .masthead-inner { padding: 1.2rem 0 4.4rem; }
+
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 3.2rem;
+        padding-bottom: .9rem;
+        font-size: .92rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .wordmark { color: var(--ink-soft); font-weight: 500; letter-spacing: .03em; text-decoration: none; }
+      .wordmark:hover, .wordmark:focus-visible { color: var(--ink); text-decoration: underline; }
+      .site-nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+      .site-nav a { color: var(--ink); text-decoration: none; }
+      .site-nav a:hover, .site-nav a:focus-visible { text-decoration: underline; }
+
+      .hero { max-width: 870px; }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: .45rem;
+        margin: 0 0 1rem;
+        color: var(--link, var(--teal));
+        font-size: .77rem;
+        font-weight: 800;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: .6rem;
+        height: .6rem;
+        content: "";
+        background: var(--orange);
+        border-radius: 50%;
+        box-shadow: 0 0 0 5px color-mix(in srgb, var(--orange) 20%, transparent);
+      }
+      h1, h2, h3, h4 { line-height: 1.16; }
+      h1 {
+        max-width: 800px;
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(3.05rem, 8vw, 6.45rem);
+        font-weight: 500;
+        letter-spacing: -.065em;
+      }
+      .hero .lede {
+        max-width: 720px;
+        margin: 1.2rem 0 1.7rem;
+        color: var(--ink-soft);
+        font-family: var(--serif);
+        font-size: clamp(1.2rem, 2.4vw, 1.58rem);
+        line-height: 1.45;
+      }
+      .hero-meta { display: flex; flex-wrap: wrap; gap: .6rem .9rem; color: var(--ink-soft); font-size: .9rem; }
+      .hero-meta span { display: inline-flex; align-items: center; gap: .45rem; }
+      .hero-meta span + span::before { width: 4px; height: 4px; content: ""; background: var(--teal); border-radius: 100%; }
+      .hero-meta a { color: var(--teal); }
+
+      .page-grid {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 790px);
+        align-items: start;
+        gap: clamp(2rem, 6vw, 6.3rem);
+        padding: 2.35rem 0 5.5rem;
+      }
+
+      .sidebar { position: sticky; top: 1.6rem; }
+      .reading-tools { display: flex; gap: .35rem; margin-bottom: 1.45rem; }
+      .reader-settings + .reader-settings { margin-top: .9rem; }
+      .tool-label { display: block; margin: 0 0 .5rem; color: var(--ink-soft); font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+      .size-button {
+        min-width: 2.1rem;
+        padding: .35rem .5rem;
+        color: var(--ink-soft);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: .45rem;
+        cursor: pointer;
+      }
+      .size-button[aria-pressed="true"] { color: #fff; background: var(--navy); border-color: var(--navy); }
+      .theme-button {
+        display: inline-flex;
+        align-items: center;
+        gap: .45rem;
+        padding: .4rem .58rem;
+        color: var(--ink-soft);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: .45rem;
+        cursor: pointer;
+      }
+      .theme-button:hover { color: var(--ink); border-color: var(--teal); }
+      .theme-button[aria-pressed="true"] { color: #e9f8f6; background: var(--navy-2); border-color: #628692; }
+      .theme-button .theme-icon { font-size: 1.05rem; line-height: 1; }
+
+      .toc { padding: 1.05rem 0 0; border-top: 1px solid var(--line); }
+      .toc-title { margin: 0 0 .7rem; color: var(--ink-soft); font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+      .toc ol { display: grid; gap: .15rem; margin: 0; padding: 0; list-style: none; }
+      .toc a { display: block; padding: .38rem .55rem; color: var(--ink-soft); font-size: .86rem; line-height: 1.3; text-decoration: none; border-left: 2px solid transparent; }
+      .toc a:hover, .toc a[aria-current="true"] { color: var(--strong); background: rgba(10, 85, 110, .07); border-left-color: var(--teal); }
+      .toc .n { display: inline-block; width: 2.05rem; color: var(--teal); font-family: var(--mono); font-size: .72rem; }
+      .source-note { margin: 1.35rem 0 0; padding: .9rem 0 0; color: var(--ink-soft); font-size: .79rem; line-height: 1.45; border-top: 1px solid var(--line); }
+      .source-note strong { color: var(--ink); }
+
+      main { min-width: 0; }
+      .orientation {
+        position: relative;
+        margin-bottom: 3.9rem;
+        padding: 1.45rem 1.5rem 1.5rem;
+        overflow: hidden;
+        background: var(--panel);
+        border: 1px solid rgba(10, 85, 110, .25);
+        border-radius: .8rem;
+        box-shadow: var(--shadow);
+      }
+      .orientation::after { position: absolute; inset: auto -3rem -4rem auto; width: 10rem; height: 10rem; content: "Δ"; color: rgba(10, 85, 110, .08); font-family: var(--serif); font-size: 13rem; line-height: .65; }
+      .orientation > * { position: relative; z-index: 1; }
+      .orientation h2 { margin: 0 0 .55rem; font-size: 1.35rem; }
+      .orientation p { max-width: 650px; margin: .4rem 0; }
+      .orientation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-top: 1.15rem; }
+      .orientation-grid > div { padding: .85rem .95rem; border-left: 3px solid var(--teal); background: var(--orientation-card); }
+      .orientation-grid h3 { margin: 0 0 .25rem; font-size: .9rem; }
+      .orientation-grid p { margin: 0; color: var(--ink-soft); font-size: .88rem; line-height: 1.45; }
+      .primer-title { margin: 1.35rem 0 .65rem; font-size: .83rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+      .primer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+      .primer-card { padding: .8rem .85rem; background: var(--orientation-card); border: 1px solid color-mix(in srgb, var(--teal) 28%, transparent); border-radius: .45rem; }
+      .primer-card h4 { margin: 0 0 .25rem; font-size: .88rem; }
+      .primer-card p { margin: 0; color: var(--ink-soft); font-size: .79rem; line-height: 1.43; }
+      .term-link { color: inherit; font-weight: 750; text-decoration-color: var(--teal); text-decoration-style: dashed; text-underline-offset: 3px; }
+      .term-link:hover { color: var(--teal); }
+
+      .chapter { margin: 0 0 5.4rem; scroll-margin-top: 1.5rem; }
+      .chapter-kicker { display: flex; align-items: center; gap: .7rem; margin: 0 0 .75rem; color: var(--teal); font-size: .74rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+      .chapter-kicker .number { display: grid; width: 2.1rem; height: 2.1rem; place-items: center; color: #fff; font-family: var(--mono); font-size: .8rem; background: var(--teal); border-radius: 50%; }
+      .chapter h2 { max-width: 760px; margin: 0 0 1rem; font-family: var(--serif); font-size: clamp(2.1rem, 4.3vw, 3.35rem); font-weight: 500; letter-spacing: -.04em; }
+      .chapter > .intro { max-width: 720px; margin: 0 0 2.2rem; color: var(--ink-soft); font-family: var(--serif); font-size: 1.18rem; line-height: 1.55; }
+      .chapter h3 { margin: 2.35rem 0 .65rem; font-size: 1.25rem; letter-spacing: -.015em; }
+      .chapter h4 { margin: 1.15rem 0 .45rem; font-size: 1rem; }
+      p { max-width: 760px; margin: .7rem 0; }
+      .chapter ul, .chapter ol { max-width: 730px; padding-left: 1.3rem; }
+      li + li { margin-top: .45rem; }
+      .math { font-family: var(--serif); font-style: italic; white-space: nowrap; }
+      code { padding: .08em .3em; font-family: var(--mono); font-size: .88em; color: #24465c; background: #e9f0f0; border-radius: .24rem; }
+
+      .callout {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: .8rem;
+        max-width: 760px;
+        margin: 1.45rem 0;
+        padding: 1rem 1.1rem;
+        border-radius: .55rem;
+      }
+      .callout .symbol { display: grid; width: 1.8rem; height: 1.8rem; place-items: center; font-family: var(--serif); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+      .callout h3 { margin: .05rem 0 .22rem; font-family: var(--sans); font-size: .92rem; letter-spacing: 0; }
+      .callout p { margin: 0; font-size: .93rem; line-height: 1.52; }
+      .callout.key { background: var(--teal-pale); border: 1px solid #b7dfd7; }
+      .callout.key .symbol { color: #fff; background: var(--teal); }
+      .callout.caution { background: var(--orange-pale); border: 1px solid #f1c9b2; }
+      .callout.caution .symbol { color: #fff; background: var(--orange); }
+      .callout.formal { background: var(--violet-pale); border: 1px solid #d5cdf5; }
+      .callout.formal .symbol { color: #fff; background: var(--violet); }
+
+      .term-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; margin: 1.4rem 0; }
+      .term-card { padding: 1.1rem 1.15rem; background: var(--panel); border: 1px solid var(--line); border-radius: .65rem; box-shadow: 0 9px 24px rgba(36, 41, 47, .045); }
+      .term-card h3 { margin: 0 0 .4rem; font-size: 1rem; }
+      .term-card p { margin: 0; color: var(--ink-soft); font-size: .91rem; line-height: 1.5; }
+      .term-card .tag { display: inline-block; margin-bottom: .5rem; color: var(--teal); font-family: var(--mono); font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+
+      figure { max-width: 760px; margin: 1.65rem 0 1.1rem; }
+      .diagram { width: 100%; height: auto; display: block; overflow: visible; }
+      .diagram-panel { padding: .8rem; background: var(--panel); border: 1px solid var(--line); border-radius: .7rem; box-shadow: 0 10px 28px rgba(36, 41, 47, .05); }
+      figcaption { margin-top: .65rem; color: var(--ink-soft); font-size: .83rem; line-height: 1.45; }
+      figcaption strong { color: var(--ink); }
+      .diagram text { font-family: var(--sans); fill: var(--ink); }
+      .diagram .small { font-size: 12px; fill: var(--ink-soft); }
+      .diagram .label { font-size: 13px; font-weight: 750; }
+      .diagram .muted { stroke: var(--diagram-muted); stroke-width: 2; fill: none; }
+      .diagram .wire { stroke: var(--diagram-wire); stroke-width: 3; fill: none; stroke-linecap: round; }
+      .diagram .teal { stroke: var(--teal); fill: var(--diagram-teal-fill); }
+      .diagram .orange { stroke: var(--orange); fill: var(--diagram-orange-fill); }
+      .diagram .violet { stroke: var(--violet); fill: var(--diagram-violet-fill); }
+      .diagram .node { stroke-width: 2.5; }
+      .worked-trace { margin: 2.5rem 0 0; scroll-margin-top: 1.5rem; }
+      .worked-trace > h3 { margin-top: 0; }
+      .trace-derivation { max-width: 760px; margin: 1.25rem 0; padding: 1rem 1.15rem; color: #dbe7eb; background: var(--navy); border-radius: .65rem; }
+      .trace-derivation .trace-label { color: #88d4ca; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+      .trace-derivation p { margin: .38rem 0 0; color: #f6f4ee; font-family: var(--serif); font-size: 1.18rem; }
+      .trace-derivation sub { position: relative; top: .5em; left: -.5em; line-height: 1; vertical-align: baseline; }
+      .lambda-trace { --trace-stage-fill: color-mix(in srgb, var(--panel) 78%, var(--teal-pale)); margin-top: .2rem; }
+      .lambda-trace .stage { fill: var(--trace-stage-fill); stroke: var(--line); stroke-width: 1.5; }
+      .lambda-trace .stage-result { fill: var(--trace-stage-fill); stroke: var(--teal); stroke-width: 1.8; }
+      .lambda-trace .root { fill: var(--navy); }
+      .lambda-trace .port { fill: var(--panel); stroke: var(--orange); stroke-width: 2; }
+      .lambda-trace .fan { fill: var(--diagram-orange-fill); stroke: var(--orange); stroke-width: 2.5; stroke-linejoin: round; }
+      .lambda-trace .replicator { fill: var(--diagram-violet-fill); stroke: var(--violet); stroke-width: 2.5; stroke-linejoin: round; }
+      .lambda-trace .rep-port { fill: var(--panel); stroke: var(--violet); stroke-width: 2; }
+      .lambda-trace .eraser { fill: var(--diagram-teal-fill); stroke: var(--teal); stroke-width: 2.5; }
+      .lambda-trace .wire { stroke: var(--diagram-wire); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .lambda-trace .reachable-wire { stroke: var(--teal); stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .lambda-trace .cut-wire { stroke: var(--orange); stroke-width: 3.5; fill: none; stroke-linecap: round; stroke-dasharray: 5 4; }
+      .lambda-trace .active { stroke: var(--orange); stroke-width: 4.5; fill: none; stroke-linecap: round; }
+      .lambda-trace .result-wire { stroke: var(--teal); stroke-width: 3.5; fill: none; stroke-linecap: round; }
+      .lambda-trace .trace-arrow { stroke: var(--orange); stroke-width: 2.5; fill: none; marker-end: url(#lambda-trace-arrow); }
+      .lambda-trace .active-label { fill: var(--orange); font-size: 11px; font-weight: 800; }
+      .lambda-trace .stage-title { font-size: 13px; font-weight: 800; }
+      .lambda-trace .term { font-family: var(--serif); font-size: 23px; font-style: italic; }
+      .lambda-trace .operator { font-family: var(--serif); font-size: 19px; font-weight: 700; }
+      .lambda-trace .tiny { font-size: 10px; fill: var(--ink-soft); }
+      .lambda-trace .wire-label { fill: var(--ink-soft); stroke: var(--trace-stage-fill); stroke-width: 5px; stroke-linejoin: round; paint-order: stroke fill; }
+      .lambda-trace .level-card { fill: var(--panel); stroke: var(--line); stroke-width: 1.5; }
+      .lambda-trace .fragment-boundary { fill: none; stroke: var(--diagram-muted); stroke-width: 1.5; stroke-dasharray: 6 5; }
+      .lambda-trace .unreachable-group { opacity: .3; }
+      .lambda-trace .phase-box { fill: var(--panel); stroke: var(--teal); stroke-width: 2; }
+      .lambda-trace .level-title { font-size: 12px; font-weight: 800; }
+      .lambda-trace .depth-arrow { stroke: var(--teal); stroke-width: 2.25; fill: none; marker-end: url(#deep-delta-arrow); }
+      .lambda-trace .delta-value { font-family: var(--mono); font-size: 11px; font-weight: 800; fill: var(--violet); }
+      .trace-key { display: flex; flex-wrap: wrap; gap: .55rem 1.1rem; max-width: 760px; margin: .9rem 0 1.35rem; color: var(--ink-soft); font-size: .83rem; }
+      .trace-key span { display: inline-flex; align-items: center; gap: .42rem; }
+      .trace-key .line-swatch { display: inline-block; width: 1.35rem; height: .28rem; overflow: hidden; color: transparent; background: var(--diagram-wire); border-radius: 2px; }
+      .trace-key .line-swatch.active { background: var(--orange); }
+      .trace-key .line-swatch.result { background: var(--teal); }
+      .interaction-diagram { margin-top: 1.35rem; }
+      .interaction-diagram .frame { fill: color-mix(in srgb, var(--panel) 72%, transparent); stroke: var(--diagram-muted); stroke-width: 1.5; stroke-dasharray: 5 5; }
+      .interaction-diagram .agent-fan { fill: var(--diagram-orange-fill); stroke: var(--orange); stroke-width: 2.5; stroke-linejoin: round; }
+      .interaction-diagram .agent-replicator { fill: var(--diagram-violet-fill); stroke: var(--violet); stroke-width: 2.5; stroke-linejoin: round; }
+      .interaction-diagram .port { fill: var(--panel); stroke-width: 2.25; }
+      .interaction-diagram .fan-port { stroke: var(--orange); }
+      .interaction-diagram .rep-port { stroke: var(--violet); }
+      .interaction-diagram .outside { stroke: var(--diagram-muted); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .interaction-diagram .wire { stroke: var(--diagram-wire); stroke-width: 2.75; fill: none; stroke-linecap: round; }
+      .interaction-diagram .active-wire { stroke: var(--orange); stroke-width: 3.2; fill: none; stroke-linecap: round; }
+      .interaction-diagram .arrow { stroke: var(--orange); stroke-width: 2.5; fill: none; marker-end: url(#interaction-arrow); }
+      .interaction-diagram .label { font-size: 13px; font-weight: 800; }
+      .interaction-diagram .small { font-size: 11px; }
+      .interaction-diagram .tiny { font-size: 9px; fill: var(--ink-soft); }
+
+      .spectrum { display: grid; grid-template-columns: 1fr 58px 1fr; gap: .55rem .65rem; align-items: center; max-width: 720px; margin: 1.55rem 0; }
+      .spectrum .cell { min-height: 77px; padding: .8rem .9rem; background: var(--panel); border: 1px solid var(--line); border-radius: .55rem; }
+      .spectrum .cell h4 { margin: 0 0 .15rem; font-size: .96rem; }
+      .spectrum .cell p { margin: 0; color: var(--ink-soft); font-size: .78rem; line-height: 1.35; }
+      .spectrum .arrow { color: var(--orange); font-size: 1.6rem; text-align: center; }
+      .spectrum .caption { grid-column: 1 / -1; margin: .15rem 0 0; color: var(--ink-soft); font-size: .8rem; }
+      .spectrum .right { grid-column: 3; }
+
+      .steps { display: grid; gap: 0; max-width: 760px; margin: 1.5rem 0; overflow: hidden; background: var(--panel); border: 1px solid var(--line); border-radius: .7rem; }
+      .step { display: grid; grid-template-columns: 2.7rem 1fr; gap: .9rem; padding: 1rem 1.15rem; border-bottom: 1px solid var(--line); }
+      .step:last-child { border-bottom: 0; }
+      .step-no { display: grid; width: 1.9rem; height: 1.9rem; place-items: center; color: var(--teal); font-family: var(--mono); font-size: .75rem; font-weight: 800; background: var(--teal-pale); border-radius: 50%; }
+      .step h3 { margin: .15rem 0 .15rem; font-size: 1rem; }
+      .step p { margin: 0; color: var(--ink-soft); font-size: .91rem; line-height: 1.48; }
+
+      .interaction-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.4rem 0; }
+      .interaction { padding: 1rem; background: var(--panel); border-top: 4px solid var(--teal); border-radius: .45rem; box-shadow: 0 8px 22px rgba(36, 41, 47, .05); }
+      .interaction:nth-child(2) { border-color: var(--orange); }
+      .interaction:nth-child(3) { border-color: var(--violet); }
+      .interaction h3 { margin: 0 0 .3rem; font-size: 1rem; }
+      .interaction p { margin: 0; color: var(--ink-soft); font-size: .86rem; line-height: 1.48; }
+
+      .delta-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; max-width: 760px; margin: 1.35rem 0; }
+      .delta-step { padding: 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: .6rem; }
+      .delta-step .delta-no { display: inline-grid; width: 1.65rem; height: 1.65rem; place-items: center; margin-bottom: .55rem; color: var(--teal); font-family: var(--mono); font-size: .72rem; font-weight: 850; background: var(--teal-pale); border-radius: 50%; }
+      .delta-step h4 { margin: 0 0 .32rem; font-size: .96rem; }
+      .delta-step p { margin: 0; color: var(--ink-soft); font-size: .87rem; line-height: 1.48; }
+      .delta-step .formula { display: block; margin-top: .5rem; color: var(--ink); font-family: var(--mono); font-size: .8rem; font-weight: 700; }
+      .delta-diagram { margin-top: 1.25rem; }
+      .delta-diagram .box { fill: var(--panel); stroke: var(--teal); stroke-width: 2.5; }
+      .delta-diagram .port { fill: var(--teal-pale); stroke: var(--teal); stroke-width: 2; }
+      .delta-diagram .outcome { fill: var(--orange-pale); stroke: var(--orange); stroke-width: 2.5; }
+      .delta-diagram .arrow { stroke: var(--orange); stroke-width: 2.5; fill: none; marker-end: url(#delta-arrow); }
+      .delta-diagram .label { font-size: 14px; font-weight: 800; }
+      .delta-diagram .small { font-size: 12px; }
+
+      .diamond-copy { max-width: 760px; margin: .65rem 0 1.15rem; color: var(--ink-soft); font-size: .92rem; }
+      .diamond-diagram { max-width: 610px; margin: 1.25rem auto .7rem; }
+      .diamond-diagram .state { fill: var(--panel); stroke: var(--teal); stroke-width: 2.5; }
+      .diamond-diagram .result { fill: var(--teal-pale); stroke: var(--teal); stroke-width: 2.5; }
+      .diamond-diagram .arrow { stroke: var(--orange); stroke-width: 2.5; fill: none; marker-end: url(#diamond-arrow); }
+      .diamond-diagram .label { font-size: 14px; font-weight: 800; }
+      .diamond-diagram .small { font-size: 12px; }
+
+      details { max-width: 760px; margin: .85rem 0; background: var(--panel); border: 1px solid var(--line); border-radius: .55rem; }
+      summary { padding: .85rem 1rem; font-weight: 750; cursor: pointer; }
+      details > div { padding: 0 1rem 1rem; color: var(--ink-soft); font-size: .93rem; }
+      details p:last-child { margin-bottom: 0; }
+
+      .rule { max-width: 760px; margin: 1.4rem 0; padding: 1.1rem 1.2rem; color: #dbe7eb; background: var(--navy); border-radius: .65rem; box-shadow: var(--shadow); }
+      .rule .rule-label { color: #88d4ca; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+      .rule p { margin: .45rem 0 0; color: #f6f4ee; font-family: var(--serif); font-size: 1.15rem; line-height: 1.45; }
+      .rule p span { color: #d4e0e3; }
+
+      .comparison { width: 100%; max-width: 760px; margin: 1.35rem 0; overflow: hidden; border: 1px solid var(--line); border-radius: .6rem; border-collapse: separate; border-spacing: 0; background: var(--panel); }
+      .comparison th, .comparison td { padding: .78rem .85rem; vertical-align: top; text-align: left; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .comparison th:last-child, .comparison td:last-child { border-right: 0; }
+      .comparison tr:last-child td { border-bottom: 0; }
+      .comparison th { color: var(--ink-soft); font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; background: var(--table-head); }
+      .comparison td { font-size: .86rem; line-height: 1.45; }
+      .comparison td:first-child { color: var(--strong); font-family: var(--serif); font-size: 1rem; font-weight: 700; }
+
+      .takeaways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; max-width: 760px; margin: 1.5rem 0; overflow: hidden; color: #eaf0f3; background: rgba(255,255,255,.23); border: 1px solid rgba(255,255,255,.25); border-radius: .7rem; }
+      .takeaway { min-height: 177px; padding: 1.1rem; background: var(--navy); }
+      .takeaway:nth-child(2) { background: var(--navy-2); }
+      .takeaway:nth-child(3) { background: #3b4e56; }
+      .takeaway .count { color: #c5d5da; font-family: var(--mono); font-size: .75rem; font-weight: 800; }
+      .takeaway h3 { margin: .45rem 0; color: #fff; font-size: 1rem; }
+      .takeaway p { margin: 0; color: #d0e0e4; font-size: .86rem; line-height: 1.48; }
+
+      .glossary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; max-width: 760px; margin: 1.45rem 0; overflow: hidden; border: 1px solid var(--line); border-radius: .65rem; }
+      .glossary article { min-height: 125px; padding: 1rem 1.1rem; background: var(--panel); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .glossary article:nth-child(2n) { border-right: 0; }
+      .glossary article:nth-last-child(-n + 2) { border-bottom: 0; }
+      .glossary h3 { margin: 0 0 .35rem; color: var(--teal); font-size: 1rem; }
+      .glossary p { margin: 0; color: var(--ink-soft); font-size: .88rem; line-height: 1.48; }
+
+      .references { max-width: 760px; padding: 1.35rem 1.45rem; background: var(--references-bg); border-left: 4px solid var(--navy-2); }
+      .references h3 { margin: 0 0 .5rem; }
+      .references p, .references li { color: var(--ink-soft); font-size: .88rem; }
+      .references ol { margin-bottom: 0; }
+
+      .footer { color: var(--ink-soft); background: var(--paper); border-top: 1px solid var(--line); }
+      .footer-inner { display: flex; justify-content: space-between; gap: 1.5rem; padding: 2rem 0; font-size: .83rem; }
+      .footer p { max-width: 550px; margin: 0; }
+      .footer a { color: var(--teal); }
+
+      body[data-theme="dark"] .callout.key { border-color: #456976; }
+      body[data-theme="dark"] .callout.caution { border-color: #7b5945; }
+      body[data-theme="dark"] .callout.formal { border-color: #625f71; }
+      body[data-theme="dark"] .diagram [fill="#1f2a2f"] { fill: #e8f0f2; }
+      body[data-theme="dark"] .diagram [fill="#f2f0ea"] { fill: #15343a; }
+
+      @media (max-width: 850px) {
+        .page-grid { grid-template-columns: minmax(0, 1fr); padding-top: 1.4rem; }
+        .sidebar { position: static; display: grid; grid-template-columns: auto 1fr; gap: 1rem 1.4rem; align-items: start; }
+        .reading-tools { margin: .3rem 0 0; }
+        .primer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .toc { margin: 0; padding-top: .6rem; }
+        .source-note { display: none; }
+        .toc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 610px) {
+        .masthead-inner, .page-grid, .footer-inner { width: min(100% - 1.5rem, 1220px); }
+        .masthead-inner { padding-bottom: 3rem; }
+        .topline { align-items: flex-start; margin-bottom: 2.2rem; }
+        .site-nav { justify-content: flex-end; gap: .55rem .8rem; }
+        h1 { font-size: clamp(3rem, 17vw, 4.4rem); }
+        .sidebar { display: block; }
+        .reading-tools { margin-bottom: 1rem; }
+        .toc ol { grid-template-columns: 1fr; }
+        .orientation-grid, .primer-grid, .term-grid, .glossary { grid-template-columns: 1fr; }
+        .interaction-grid, .delta-steps, .takeaways { grid-template-columns: 1fr; }
+        .glossary article, .glossary article:nth-child(2n) { border-right: 0; border-bottom: 1px solid var(--line); }
+        .glossary article:last-child { border-bottom: 0; }
+        .spectrum { grid-template-columns: 1fr 35px 1fr; gap: .35rem; }
+        .comparison { font-size: .82rem; }
+        .comparison th, .comparison td { padding: .65rem .55rem; }
+        .footer-inner { display: block; }
+        .footer p + p { margin-top: .75rem; }
+      }
+      @media print {
+        body { background: #fff; font-size: 10.5pt; }
+        .progress, .sidebar, .skip-link { display: none; }
+        .masthead { color: #111; background: #fff; border-bottom: 2px solid #111; }
+        .masthead-inner { width: 100%; padding: 0 0 1rem; }
+        .topline { padding-bottom: 1.1rem; color: #333; }
+        .edition, .hero .lede, .hero-meta { color: #333; }
+        .hero-meta a { color: #111; }
+        .page-grid { display: block; width: 100%; padding-top: 1.4rem; }
+        .chapter { break-inside: avoid; margin-bottom: 2.8rem; }
+        .diagram-panel, .orientation, .term-card, .interaction, .rule { box-shadow: none; }
+        .footer { color: #111; background: #fff; border-top: 1px solid #111; }
+        .footer-inner { width: 100%; }
+        a { color: #111; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#guide">Skip to the guide</a>
+    <div class="progress" aria-hidden="true"><span id="reading-progress"></span></div>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <div class="topline">
+          <a class="wordmark" href="/">Christos Chatzifountas</a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="/#about">About</a>
+            <a href="/#work">Work</a>
+            <a href="/notes/">Notebook</a>
+            <a href="/#contact">Contact</a>
+          </nav>
+        </div>
+        <div class="hero">
+          <p class="eyebrow">Reader-first technical explainer</p>
+          <h1>Δ-Nets,<br>decoded.</h1>
+          <p class="lede">A slower, clearer path through an interaction-based proposal for optimal parallel <span class="math">λ</span>-reduction.</p>
+          <div class="hero-meta">
+            <span>Based on Daniel Augusto Rizzi Salvadori’s paper</span>
+            <span>arXiv:2505.20314v4</span>
+            <span><a href="https://arxiv.org/html/2505.20314v4">Read the formal source ↗</a></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-grid">
+      <aside class="sidebar" aria-label="Guide navigation">
+        <div class="reader-settings">
+          <span class="tool-label">Reading size</span>
+          <div class="reading-tools" role="group" aria-label="Text size">
+            <button class="size-button" type="button" data-size="normal" aria-pressed="true" aria-label="Normal text size">A</button>
+            <button class="size-button" type="button" data-size="large" aria-pressed="false" aria-label="Large text size">A+</button>
+            <button class="size-button" type="button" data-size="larger" aria-pressed="false" aria-label="Largest text size">A++</button>
+          </div>
+        </div>
+        <div class="reader-settings">
+          <span class="tool-label">Appearance</span>
+          <button class="theme-button" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+            <span id="theme-label">Dark mode</span>
+          </button>
+        </div>
+        <nav class="toc" aria-label="Contents">
+          <p class="toc-title">In this guide</p>
+          <ol>
+            <li><a href="#orientation"><span class="n">00</span> How to read this</a></li>
+            <li><a href="#problem"><span class="n">01</span> The problem to solve</a></li>
+            <li><a href="#shift"><span class="n">02</span> From terms to interactions</a></li>
+            <li><a href="#agents"><span class="n">03</span> The three-agent core</a></li>
+            <li><a href="#meetings"><span class="n">04</span> When agents meet</a></li>
+            <li><a href="#compile"><span class="n">05</span> Encoding a <span class="math">λ</span>-term</a></li>
+            <li><a href="#lambda-trace"><span class="n">05a</span> Trace a <span class="math">λ</span>-term</a></li>
+            <li><a href="#discipline"><span class="n">06</span> Reduction discipline</a></li>
+            <li><a href="#guarantees"><span class="n">07</span> What the proposal claims</a></li>
+            <li><a href="#glossary"><span class="n">08</span> Glossary & source</a></li>
+          </ol>
+        </nav>
+        <p class="source-note"><strong>Scope.</strong> This guide rearranges and paraphrases the paper’s argument for learning. It uses original explanatory diagrams; the paper remains the authority for formal definitions and proofs.</p>
+      </aside>
+
+      <main id="guide">
+        <section class="orientation" id="orientation" aria-labelledby="orientation-title">
+          <h2 id="orientation-title">Read this before the notation</h2>
+          <p>Δ-Nets is a proposed <strong>graph-rewriting model</strong>: it represents a program as connected nodes, then repeatedly replaces small matching pieces of that graph. Its aim is <em>optimal parallel reduction</em>: avoid work that will later be thrown away, and perform each necessary reduction once even when an expression has several uses.</p>
+          <div class="orientation-grid">
+            <div>
+              <h3>The core idea</h3>
+              <p>Represent a program as a net of very small agents. Let local pairs interact independently, with sharing described directly in the graph.</p>
+            </div>
+            <div>
+              <h3>The important caveat</h3>
+              <p>“Optimal” and the confluence guarantees here are the author’s claims, argued in the linked paper. This guide presents the design; the formal arguments and proofs are in the source paper.</p>
+            </div>
+          </div>
+          <h3 class="primer-title">Six ideas you need before Chapter 1</h3>
+          <div class="primer-grid">
+            <article class="primer-card">
+              <h4>λ-term</h4>
+              <p>A tiny functional program. <span class="math">λx.t</span> means “a function taking <span class="math">x</span> with body <span class="math">t</span>”; <span class="math">t&nbsp;u</span> means “apply <span class="math">t</span> to <span class="math">u</span>.”</p>
+            </article>
+            <article class="primer-card">
+              <h4>Bound vs. free</h4>
+              <p>An occurrence of <span class="math">x</span> is <em>bound</em> when a surrounding <span class="math">λx</span> introduced it. It is <em>free</em> when no surrounding abstraction does.</p>
+            </article>
+            <article class="primer-card">
+              <h4>Redex and reduction</h4>
+              <p>A <em>redex</em> is a reducible expression—here, a function already next to its argument. A <em>reduction</em> is one simplification step.</p>
+            </article>
+            <article class="primer-card">
+              <h4>Normal form</h4>
+              <p>A term or net is in normal form when no reduction remains. <em>Normalizing</em> means a sequence of steps eventually reaches that state.</p>
+            </article>
+            <article class="primer-card">
+              <h4>Sharing and erasure</h4>
+              <p>Sharing means one argument has several uses; erasure means a function ignores an argument. They create the two kinds of avoidable work this paper studies.</p>
+            </article>
+            <article class="primer-card">
+              <h4>Net and local rewrite</h4>
+              <p>A net is a graph of small nodes and wires. A local rule uses the tiny connected pattern it changes as its complete input.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="chapter" id="problem" aria-labelledby="problem-title">
+          <p class="chapter-kicker"><span class="number">01</span> Motivation</p>
+          <h2 id="problem-title">The problem is wasted work.</h2>
+          <p class="intro">Ordinary <span class="math">λ</span>-calculus is wonderfully compact, but its familiar “replace a variable with an argument” story hides a cost question: what should happen when the variable is unused—or appears many times?</p>
+
+          <h3>1.1 A tiny reminder: what reduction does</h3>
+          <p>Read <span class="math">λx.t</span> as a function: <span class="math">x</span> is the name it gives its incoming argument and <span class="math">t</span> is its body. Placing it beside <span class="math">u</span>, as in <span class="math">(λx.t)u</span>, applies the function to that argument. This whole pattern is a <strong>β-redex</strong> (pronounced “bee-redex”): one place where a β-reduction can occur.</p>
+          <p>A <span class="math">β</span>-reduction performs that application. In the compact notation below, the argument <code>u</code> is substituted for every occurrence of <code>x</code> in the body <code>t</code>. If there are no β-redexes left, the term is in <strong>normal form</strong>.</p>
+          <div class="rule" aria-label="Beta reduction rule">
+            <div class="rule-label">The substitution view</div>
+            <p><span>(λx. t) u</span> &nbsp;→&nbsp; t[x := u]</p>
+          </div>
+          <p>That sentence has two very different edge cases. They are the paper’s starting point.</p>
+
+          <div class="term-grid">
+            <article class="term-card">
+              <span class="tag">Erasure</span>
+              <h3>Work that gets discarded</h3>
+              <p>If <code>t</code> contains zero occurrences of <code>x</code>, the argument <code>u</code> disappears. Any reduction already performed inside <code>u</code> was unnecessary.</p>
+            </article>
+            <article class="term-card">
+              <span class="tag">Sharing</span>
+              <h3>Work that gets duplicated</h3>
+              <p>If <code>x</code> occurs more than once, naive substitution duplicates <code>u</code>. If <code>u</code> contains redexes, the same necessary work can be repeated in every copy.</p>
+            </article>
+          </div>
+
+          <h3>1.2 The four familiar fragments of the <span class="math">λ</span>-calculus</h3>
+          <p>The paper frames the issue using a simple grid of variable-use restrictions. A <strong>bound variable</strong> is a variable occurrence owned by a surrounding <span class="math">λ</span>-abstraction; for example, the <span class="math">x</span> in <span class="math">λx.x</span> is bound. Start at the linear calculus, where every bound variable appears exactly once. Add the ability to omit a variable, repeat it, or both.</p>
+          <div class="spectrum" role="img" aria-label="A grid relating linear, affine, relevant, and full lambda calculi">
+            <div class="cell"><h4>λL — linear</h4><p>Each bound variable appears exactly once.</p></div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div class="cell"><h4>λA — affine</h4><p>It appears once, or not at all. <strong>Erasure</strong> is allowed.</p></div>
+            <div class="cell right"><h4>λI — relevant</h4><p>It appears at least once. <strong>Sharing</strong> is allowed.</p></div>
+            <div class="arrow" aria-hidden="true">↘</div>
+            <div class="cell right"><h4>λK — full</h4><p>Any number of appearances. Both erasure and sharing are allowed.</p></div>
+            <p class="caption">The paper names ΔL, ΔA, ΔI, and ΔK as corresponding Δ-Net subsystems.</p>
+          </div>
+
+          <h3>1.3 Why choosing a clever order is not enough</h3>
+          <p>A <strong>reduction order</strong> says which redex to simplify next. For erasure, <strong>normal order</strong>—try the outermost application before simplifying its argument—can avoid reducing an argument before discovering that a function will discard it. Sharing is the harder case: the paper follows Lévy’s observation that some terms with sharing have no ordinary sequential reduction order that avoids every duplicated reduction.</p>
+          <div class="callout key">
+            <div class="symbol">↯</div>
+            <div>
+              <h3>The design target</h3>
+              <p>Represent sharing directly as graph structure. A shared subgraph can then be reduced once and its result can serve every use.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="shift" aria-labelledby="shift-title">
+          <p class="chapter-kicker"><span class="number">02</span> Model shift</p>
+          <h2 id="shift-title">Stop treating a program as a tree.</h2>
+          <p class="intro">The paper moves from a sequential substitution machine to an <strong>interaction system</strong>: a graph whose tiny local rewrites can happen independently. First, it helps to know exactly what “local” and “independent” mean here.</p>
+
+          <h3>2.1 Graphs make sharing visible</h3>
+          <p>A syntax tree represents every occurrence independently. A graph can let several uses point to one shared <strong>subgraph</strong>—a connected piece of the larger graph. That is the essential move: compute the shared subgraph once, then reuse its result.</p>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 740 230" role="img" aria-label="Tree copying compared with graph sharing">
+                <title>Tree copying compared with graph sharing</title>
+                <desc>The left diagram shows two copies of a reducible argument. The right diagram shows two users connected to one shared argument.</desc>
+                <text x="30" y="29" class="label">Textual substitution</text>
+                <text x="428" y="29" class="label">Graph representation</text>
+                <path class="muted" d="M20 47 H348" />
+                <path class="muted" d="M410 47 H720" />
+                <path class="wire" d="M120 85 L72 142 M120 85 L166 142 M256 85 L212 142 M256 85 L302 142" />
+                <circle class="node orange" cx="120" cy="78" r="18" /><circle class="node orange" cx="256" cy="78" r="18" />
+                <rect class="node teal" x="35" y="142" width="74" height="43" rx="7" /><rect class="node teal" x="129" y="142" width="74" height="43" rx="7" />
+                <rect class="node teal" x="175" y="142" width="74" height="43" rx="7" /><rect class="node teal" x="267" y="142" width="74" height="43" rx="7" />
+                <text x="113" y="83" text-anchor="middle" class="label">use</text><text x="249" y="83" text-anchor="middle" class="label">use</text>
+                <text x="72" y="169" text-anchor="middle" class="small">argument</text><text x="166" y="169" text-anchor="middle" class="small">work</text>
+                <text x="212" y="169" text-anchor="middle" class="small">argument</text><text x="304" y="169" text-anchor="middle" class="small">work</text>
+                <text x="185" y="212" text-anchor="middle" class="small">The same reducible work appears twice.</text>
+                <circle class="node orange" cx="491" cy="78" r="18" /><circle class="node orange" cx="650" cy="78" r="18" />
+                <path class="wire" d="M491 96 L570 138 M650 96 L570 138 M570 156 L570 184" />
+                <circle class="node violet" cx="570" cy="147" r="21" /><rect class="node teal" x="533" y="184" width="74" height="29" rx="7" />
+                <text x="491" y="83" text-anchor="middle" class="label">use</text><text x="650" y="83" text-anchor="middle" class="label">use</text>
+                <text x="570" y="152" text-anchor="middle" class="label">share</text><text x="570" y="204" text-anchor="middle" class="small">one argument</text>
+              </svg>
+            </div>
+            <figcaption><strong>Why a net at all?</strong> A graph can preserve identity across multiple uses. Δ-Nets is a particular, local way to manage that identity during reduction.</figcaption>
+          </figure>
+
+          <h3>2.2 Interaction systems, in one minute</h3>
+          <p>An interaction system has <strong>agents</strong> and <strong>interaction rules</strong>. An agent is a small graph node with connection points called <strong>ports</strong>. It has one special <strong>principal port</strong>, used to trigger an interaction, and zero or more <strong>auxiliary ports</strong>, used to connect the rest of the graph.</p>
+          <p>When two agents connect specifically at their principal ports, they form an <strong>active pair</strong>. Interaction rules rewrite this pattern by reconnecting its immediately attached wires. The pair and those attached wires provide all the information the rule uses.</p>
+          <div class="steps">
+            <div class="step"><div class="step-no">01</div><div><h3>Find an active pair</h3><p>Only a principal-to-principal connection is eligible. This makes each local decision sharply bounded.</p></div></div>
+            <div class="step"><div class="step-no">02</div><div><h3>Apply its local rule</h3><p>The pair either disappears or travels through one another, reconnecting only their nearby wires. This single application is one <strong>interaction step</strong>.</p></div></div>
+            <div class="step"><div class="step-no">03</div><div><h3>Do independent work together</h3><p>Each agent has one principal port, so two distinct active pairs share no agent. They can interact simultaneously and choose their local rules independently.</p></div></div>
+          </div>
+
+          <h3>2.3 “Perfect confluence” is the parallelism enabler</h3>
+          <p><strong>Confluence</strong> asks whether different valid choices of reduction can lead to incompatible answers. The <strong>one-step diamond property</strong> is a very strong answer: if a net <span class="math">N</span> has two possible single interaction steps, then performing either choice produces a net that can reach the same next state after exactly one more interaction.</p>
+          <figure class="diamond-diagram">
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 590 265" role="img" aria-label="The one-step diamond property">
+                <title>The one-step diamond property</title>
+                <desc>A net N has two possible one-step reductions. Each resulting net reaches the same net M after exactly one more interaction step, forming a diamond.</desc>
+                <defs>
+                  <marker id="diamond-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+                <circle class="state" cx="295" cy="47" r="31" /><text x="295" y="52" text-anchor="middle" class="label">N</text>
+                <circle class="state" cx="130" cy="140" r="31" /><text x="130" y="145" text-anchor="middle" class="label">N₁</text>
+                <circle class="state" cx="460" cy="140" r="31" /><text x="460" y="145" text-anchor="middle" class="label">N₂</text>
+                <circle class="result" cx="295" cy="230" r="31" /><text x="295" y="235" text-anchor="middle" class="label">M</text>
+                <path class="arrow" d="M270 72 L151 121" /><path class="arrow" d="M320 72 L439 121" /><path class="arrow" d="M151 160 L270 210" /><path class="arrow" d="M439 160 L320 210" />
+                <text x="196" y="85" text-anchor="middle" class="small">one interaction</text><text x="394" y="85" text-anchor="middle" class="small">one interaction</text>
+                <text x="196" y="198" text-anchor="middle" class="small">one interaction</text><text x="394" y="198" text-anchor="middle" class="small">one interaction</text>
+              </svg>
+            </div>
+            <figcaption><strong>How to read the diamond.</strong> Starting at <span class="math">N</span>, choose either available step. The paths meet at <span class="math">M</span>. Every arrow shows exactly one local interaction.</figcaption>
+          </figure>
+          <p class="diamond-copy">The paper names this property <strong>perfect confluence</strong>. Each active pair uses the sole principal port of each of its two agents, so distinct active pairs use distinct agents. Their independent rewrites commute: doing the left pair first or the right pair first gives the same nearby wiring.</p>
+          <div class="callout formal">
+            <div class="symbol">◇</div>
+            <div>
+              <h3>Agreement and termination are separate questions</h3>
+              <p>The diamond property guarantees agreement between competing local steps. Termination is a separate property: some nets can reduce forever. The paper’s claim is that, <em>when</em> a core interaction order normalizes, every normalizing order reaches the same result in the same number of interactions.</p>
+            </div>
+          </div>
+
+          <h3>2.4 What earlier optimal-reduction nets struggled with</h3>
+          <p>Previous interaction-net approaches tracked <strong>sharing scopes</strong>: the regions of a net governed by a particular duplication context, analogous to how a λ-abstraction governs its bound-variable occurrences. They used indexed fans plus <strong>delimiter</strong> agents such as brackets and croissants to mark those regions. The paper’s critique is practical as much as theoretical: delimiters can accumulate and their interactions can dominate the useful fan interactions. Some approaches also allow indices to grow without bound.</p>
+          <div class="callout caution">
+            <div class="symbol">!</div>
+            <div>
+              <h3>The proposed simplification</h3>
+              <p>Δ-Nets uses one variable-arity agent—the replicator—to store a level and per-port level deltas. This concentrates the bookkeeping for a sharing context in one structure.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="agents" aria-labelledby="agents-title">
+          <p class="chapter-kicker"><span class="number">03</span> Core vocabulary</p>
+          <h2 id="agents-title">Three agents carry the whole core.</h2>
+          <p class="intro">A Δ-Net is built from a fan, an eraser, and a replicator. Think of an agent as a tiny component: its <strong>principal port</strong> is the socket that can start a rewrite, while its <strong>auxiliary ports</strong> carry the surrounding context through that rewrite.</p>
+
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 740 255" role="img" aria-label="The three agent types in Delta-Nets">
+                <title>The three agent types in Δ-Nets</title>
+                <desc>A fan has a principal port and two auxiliary ports; an eraser has only a principal port; a replicator has a principal port and an arbitrary number of auxiliary ports whose levels can differ.</desc>
+                <text x="104" y="30" text-anchor="middle" class="label">Fan</text><text x="370" y="30" text-anchor="middle" class="label">Eraser</text><text x="625" y="30" text-anchor="middle" class="label">Replicator</text>
+                <path class="wire" d="M104 66 L104 95 M62 156 L60 204 M146 156 L148 204" />
+                <path class="node orange" d="M104 95 L62 156 H146 Z" />
+                <circle class="node orange" cx="104" cy="95" r="4.5" /><circle class="node orange" cx="62" cy="156" r="4.5" /><circle class="node orange" cx="146" cy="156" r="4.5" />
+                <text x="104" y="139" text-anchor="middle" class="label">F</text><text x="104" y="230" text-anchor="middle" class="small">2 auxiliary ports</text>
+                <path class="wire" d="M370 66 L370 102" /><rect class="node teal" x="335" y="102" width="70" height="55" rx="15" />
+                <circle cx="370" cy="58" r="6" fill="#0a556e" /><text x="370" y="136" text-anchor="middle" class="label">E</text><text x="370" y="188" text-anchor="middle" class="small">no auxiliary ports</text>
+                <path class="wire" d="M625 66 L625 98 M580 166 L552 207 M604 166 L593 207 M628 166 L628 207 M652 166 L663 207 M676 166 L704 207" />
+                <path class="node violet" d="M574 98 H676 V166 H574 Z" /><circle cx="625" cy="58" r="6" fill="#5e6276" />
+                <circle cx="549" cy="210" r="6" fill="#5e6276" /><circle cx="590" cy="210" r="6" fill="#5e6276" /><circle cx="628" cy="210" r="6" fill="#5e6276" /><circle cx="666" cy="210" r="6" fill="#5e6276" /><circle cx="707" cy="210" r="6" fill="#5e6276" />
+                <text x="625" y="137" text-anchor="middle" class="label">R</text><text x="625" y="231" text-anchor="middle" class="small">any number of auxiliary ports</text>
+                <text x="104" y="247" text-anchor="middle" class="small">principal port above</text><text x="370" y="205" text-anchor="middle" class="small">principal port above</text><text x="625" y="247" text-anchor="middle" class="small">principal port above</text>
+              </svg>
+            </div>
+            <figcaption><strong>Diagram key.</strong> The shapes here are explanatory, not reproductions of the paper’s figure notation. Dots mark ports; the upper port is the principal port in this view.</figcaption>
+          </figure>
+
+          <div class="term-grid">
+            <article class="term-card">
+              <span class="tag">Structure</span>
+              <h3>Fan</h3>
+              <p>Has exactly two auxiliary ports. Fans represent the application and abstraction structure of a <span class="math">λ</span>-term; fan annihilation expresses <span class="math">β</span>-reduction.</p>
+            </article>
+            <article class="term-card">
+              <span class="tag">Discard</span>
+              <h3>Eraser</h3>
+              <p>Has no auxiliary ports. It carries the fact that a bound variable is unused, and erases an agent it encounters in a distinct-agent interaction.</p>
+            </article>
+            <article class="term-card">
+              <span class="tag">Share</span>
+              <h3>Replicator</h3>
+              <p>Has any natural-number <strong>arity</strong>, meaning any count of auxiliary ports: 1, 2, 3, and so on. It connects the uses of one shared variable, and records the sharing context with a level plus a delta for each auxiliary port.</p>
+            </article>
+            <article class="term-card">
+              <span class="tag">Context</span>
+              <h3>Level delta</h3>
+              <p>Each replicator carries an integer <strong>level</strong> that identifies its sharing context. Each auxiliary port carries an integer <strong>delta</strong>. A replica leaving through a port adds that port’s delta to its current level.</p>
+            </article>
+          </div>
+
+          <h3>3.1 Four systems fall out of the same pieces</h3>
+          <table class="comparison">
+            <thead><tr><th>System</th><th>Agents permitted</th><th>Corresponding term fragment</th></tr></thead>
+            <tbody>
+              <tr><td>ΔL</td><td>Fan</td><td>Linear: exactly one use.</td></tr>
+              <tr><td>ΔA</td><td>Fan + eraser</td><td>Affine: a use may be absent.</td></tr>
+              <tr><td>ΔI</td><td>Fan + replicator</td><td>Relevant: a use may repeat.</td></tr>
+              <tr><td>ΔK</td><td>Fan + eraser + replicator</td><td>Full: absence and repetition are both allowed.</td></tr>
+            </tbody>
+          </table>
+          <p>Here <strong>linear</strong> means exactly one bound use, <strong>affine</strong> means at most one, <strong>relevant</strong> means at least one, and <strong>full</strong> allows any count. This decomposition mirrors the paper’s opening taxonomy. It reveals which machinery pays for which feature: fans for structure, erasers for omission, replicators for sharing.</p>
+
+          <h3>3.2 Equality is deliberately local in practice</h3>
+          <p>Formally, equal replicators must match in level, arity, and all level deltas. The paper states that for well-formed nets produced by its <span class="math">λ</span>-term translation, active replicators with the same level are guaranteed to be equal; an implementation can therefore compare only their levels in that setting.</p>
+          <details>
+            <summary>What does “fan-in” versus “fan-out” mean here?</summary>
+            <div><p>First, <strong>parent</strong> and <strong>child</strong> are just direction labels on a wire: in a rooted net, a parent points toward the root and a child points away from it. Canonical nets begin with replicators whose auxiliary ports are parents and whose principal port is a child: the paper calls these unpaired <strong>fan-ins</strong>. Reduction can also create <strong>fan-outs</strong>, with the orientation reversed. A fan-out is paired upstream with at least one fan-in, while a fan-in need not have a partner. The level-delta system is used to reason about that pairing locally.</p></div>
+          </details>
+        </section>
+
+        <section class="chapter" id="meetings" aria-labelledby="meetings-title">
+          <p class="chapter-kicker"><span class="number">04</span> Local dynamics</p>
+          <h2 id="meetings-title">When two principal ports touch, one of three things happens.</h2>
+          <p class="intro">The interaction rules are the engine of the model. This chapter groups their wire reconnections into three families: cancellation, deletion, and passage-with-copying. Each name describes the local change to an <em>active pair</em>.</p>
+
+          <div class="interaction-grid">
+            <article class="interaction">
+              <h3>1. Annihilation</h3>
+              <p>Equal agents cancel. For fans, this is the interaction that corresponds to applying a <span class="math">λ</span>-abstraction to an argument.</p>
+            </article>
+            <article class="interaction">
+              <h3>2. Erasure</h3>
+              <p>An eraser is distinct from its neighbour and has zero auxiliary ports, so the agent it meets has no route to continue through: it is erased.</p>
+            </article>
+            <article class="interaction">
+              <h3>3. Commutation</h3>
+              <p>Distinct non-eraser agents pass through each other. The number of outgoing copies depends on the other agent’s auxiliary ports.</p>
+            </article>
+          </div>
+
+          <figure class="interaction-diagram">
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 330" role="img" aria-label="An eraser meeting a fan at their principal ports and replacing that fan with one eraser on each of its two auxiliary branches">
+                <title>Core erasure: an eraser propagates through every auxiliary port</title>
+                <desc>An eraser has no auxiliary ports. When it forms an active pair with a two-port fan, no fan copies survive and two eraser copies emerge, one on each former auxiliary branch.</desc>
+                <defs>
+                  <marker id="erasure-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+
+                <rect class="stage" x="14" y="14" width="292" height="302" rx="10" />
+                <rect class="stage-result" x="434" y="14" width="292" height="302" rx="10" />
+                <text x="34" y="43" class="stage-title">Before: E meets a two-port fan</text>
+                <text x="454" y="43" class="stage-title">After: E reaches both branches</text>
+
+                <rect class="eraser" x="130" y="68" width="60" height="42" rx="13" />
+                <text x="160" y="95" text-anchor="middle" class="operator">E</text>
+                <circle cx="160" cy="110" r="4.5" fill="var(--panel)" stroke="var(--teal)" stroke-width="2" />
+                <path class="active" d="M160 115 V137" />
+                <circle class="port" cx="160" cy="142" r="4.5" />
+                <path class="fan" d="M160 147 L105 211 H215 Z" />
+                <circle class="port" cx="124" cy="211" r="4.5" /><circle class="port" cx="196" cy="211" r="4.5" />
+                <text x="160" y="187" text-anchor="middle" class="operator">F</text>
+                <text x="218" y="130" class="active-label">principal ↔ principal</text>
+                <path class="wire" d="M124 216 C124 232 112 235 112 245 M196 216 C196 232 212 235 212 245" />
+                <rect class="level-card" x="64" y="245" width="96" height="42" rx="8" />
+                <rect class="level-card" x="164" y="245" width="96" height="42" rx="8" />
+                <text x="112" y="271" text-anchor="middle" class="level-title">subnet M</text>
+                <text x="212" y="271" text-anchor="middle" class="level-title">subnet N</text>
+
+                <path d="M330 164 H407" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#erasure-arrow)" />
+                <text x="368" y="145" text-anchor="middle" class="tiny">one core</text>
+                <text x="368" y="159" text-anchor="middle" class="tiny">interaction</text>
+
+                <rect class="eraser" x="476" y="100" width="58" height="42" rx="13" />
+                <rect class="eraser" x="626" y="100" width="58" height="42" rx="13" />
+                <text x="505" y="127" text-anchor="middle" class="operator">E</text>
+                <text x="655" y="127" text-anchor="middle" class="operator">E</text>
+                <path class="result-wire" d="M505 142 V221 M655 142 V221" />
+                <rect class="level-card" x="457" y="221" width="96" height="48" rx="8" />
+                <rect class="level-card" x="607" y="221" width="96" height="48" rx="8" />
+                <text x="505" y="250" text-anchor="middle" class="level-title">subnet M</text>
+                <text x="655" y="250" text-anchor="middle" class="level-title">subnet N</text>
+                <text x="580" y="296" text-anchor="middle" class="delta-value">2 fan ports ⇒ 2 erasers</text>
+              </svg>
+            </div>
+            <figcaption><strong>Why erasure propagates.</strong> Distinct agents pass through one another once per auxiliary port. Because <span class="math">E</span> has zero auxiliary ports, the fan produces zero surviving copies; because the fan has two auxiliary ports, two copies of <span class="math">E</span> continue into <span class="math">M</span> and <span class="math">N</span>. An <span class="math">n</span>-port replicator would analogously leave <span class="math">n</span> erasers. This is the erasure family from <a href="https://arxiv.org/html/2505.20314v4#S2.F4">the paper’s core interaction rules</a>.</figcaption>
+          </figure>
+
+          <h3>4.1 Fan meets fan: the familiar redex disappears</h3>
+          <p>Applications and abstractions are both represented by fans, distinguishable from the direction of their connections when viewed from the <strong>root</strong> (the distinguished top-level entry point of the whole net). When the appropriate fans form an active pair, they annihilate: both fan nodes are removed and their remaining wires are reconnected. This is the net-level form of <span class="math">β</span>-reduction.</p>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 740 225" role="img" aria-label="Application and abstraction fan annihilation">
+                <title>Fan annihilation</title><desc>A downward application fan and an upward abstraction fan meet at their principal ports. The pair is replaced by directly connected auxiliary wires.</desc>
+                <text x="158" y="32" text-anchor="middle" class="label">Before: application meets abstraction</text><text x="525" y="32" class="label">After: wires reconnect</text>
+                <path class="wire" d="M145 62 V80 M195 62 V80 M145 205 V190 M195 205 V190" />
+                <path class="node orange" d="M125 80 H215 L170 135 Z" /><path class="node orange" d="M170 150 L125 205 H215 Z" />
+                <circle class="node orange" cx="145" cy="80" r="4.5" /><circle class="node orange" cx="195" cy="80" r="4.5" /><circle class="node orange" cx="170" cy="135" r="4.5" />
+                <circle class="node orange" cx="170" cy="150" r="4.5" /><circle class="node orange" cx="145" cy="205" r="4.5" /><circle class="node orange" cx="195" cy="205" r="4.5" />
+                <path class="wire" d="M170 140 V145" />
+                <text x="170" y="111" text-anchor="middle" class="label">@</text><text x="170" y="190" text-anchor="middle" class="label">λ</text>
+                <text x="232" y="145" class="small">principal ↔ principal</text>
+                <path class="wire" d="M486 69 C485 119 560 124 560 189 M648 69 C647 119 573 124 573 189" />
+                <circle cx="486" cy="62" r="6" fill="#41535b" /><circle cx="648" cy="62" r="6" fill="#41535b" /><circle cx="560" cy="194" r="6" fill="#41535b" /><circle cx="573" cy="194" r="6" fill="#41535b" />
+                <text x="567" y="218" text-anchor="middle" class="small">the interface remains; the pair is gone</text>
+                <path d="M332 140 H420" stroke="#9a5f3d" stroke-width="3" fill="none" /><path d="M415 132 L426 140 L415 148" stroke="#9a5f3d" stroke-width="3" fill="none" />
+              </svg>
+            </div>
+            <figcaption><strong>This is a conceptual pattern.</strong> The paper’s Figure 4 specifies the exact reconnections for all core interactions.</figcaption>
+          </figure>
+
+          <h3>4.2 Replicator meets fan: structure splits around sharing</h3>
+          <p>When a replicator meets a fan, it travels out through the fan’s two auxiliary ports, producing two exact replicator copies. At the same time, the fan travels through every auxiliary port of the replicator, producing one fan per port. Both structures preserve their roles, but now occupy the other’s surrounding context.</p>
+          <figure class="interaction-diagram">
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 760 445" role="img" aria-label="A three-port replicator interacting with a fan">
+                <title>Replicator and fan commutation</title>
+                <desc>A three-port replicator meets a fan at their principal ports. Afterwards, one fan appears for each replicator port and one replicator appears for each of the fan's two auxiliary ports.</desc>
+                <defs>
+                  <marker id="interaction-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+                <rect class="frame" x="18" y="44" width="250" height="353" rx="10" />
+                <rect class="frame" x="472" y="44" width="270" height="353" rx="10" />
+                <text x="143" y="72" text-anchor="middle" class="label">Before: active pair</text>
+                <text x="607" y="72" text-anchor="middle" class="label">After: the structures cross</text>
+
+                <path class="outside" d="M90 88 V114 M145 88 V114 M200 88 V114" />
+                <path class="agent-replicator" d="M65 114 H225 L193 166 H97 Z" />
+                <circle class="port rep-port" cx="90" cy="114" r="5.5" /><circle class="port rep-port" cx="145" cy="114" r="5.5" /><circle class="port rep-port" cx="200" cy="114" r="5.5" />
+                <circle class="port rep-port" cx="145" cy="166" r="5.5" />
+                <text x="145" y="143" text-anchor="middle" class="label">R</text>
+                <text x="90" y="104" text-anchor="middle" class="tiny">d₀</text><text x="145" y="104" text-anchor="middle" class="tiny">d₁</text><text x="200" y="104" text-anchor="middle" class="tiny">d₂</text>
+                <path class="active-wire" d="M145 172 V211" />
+                <circle class="port fan-port" cx="145" cy="217" r="5.5" />
+                <path class="agent-fan" d="M145 223 L99 280 H191 Z" />
+                <circle class="port fan-port" cx="108" cy="280" r="5.5" /><circle class="port fan-port" cx="182" cy="280" r="5.5" />
+                <path class="outside" d="M108 286 V354 M182 286 V354" />
+                <text x="145" y="263" text-anchor="middle" class="label">F</text>
+                <text x="145" y="192" text-anchor="middle" class="small">principal ↔ principal</text>
+                <text x="145" y="379" text-anchor="middle" class="small">R has 3 ports; F has 2 auxiliary ports</text>
+
+                <path class="arrow" d="M301 218 H438" />
+                <text x="369" y="197" text-anchor="middle" class="small">commute</text>
+
+                <path class="outside" d="M510 87 V113 M605 87 V113 M700 87 V113" />
+                <circle class="port fan-port" cx="510" cy="119" r="5.5" /><circle class="port fan-port" cx="605" cy="119" r="5.5" /><circle class="port fan-port" cx="700" cy="119" r="5.5" />
+                <path class="agent-fan" d="M510 125 L477 180 H543 Z" /><path class="agent-fan" d="M605 125 L572 180 H638 Z" /><path class="agent-fan" d="M700 125 L667 180 H733 Z" />
+                <circle class="port fan-port" cx="484" cy="180" r="5.5" /><circle class="port fan-port" cx="536" cy="180" r="5.5" />
+                <circle class="port fan-port" cx="579" cy="180" r="5.5" /><circle class="port fan-port" cx="631" cy="180" r="5.5" />
+                <circle class="port fan-port" cx="674" cy="180" r="5.5" /><circle class="port fan-port" cx="726" cy="180" r="5.5" />
+                <text x="510" y="161" text-anchor="middle" class="tiny">F₀</text><text x="605" y="161" text-anchor="middle" class="tiny">F₁</text><text x="700" y="161" text-anchor="middle" class="tiny">F₂</text>
+
+                <path class="agent-replicator" d="M500 260 H610 L590 306 H520 Z" /><path class="agent-replicator" d="M625 260 H735 L715 306 H645 Z" />
+                <circle class="port rep-port" cx="520" cy="260" r="5.5" /><circle class="port rep-port" cx="555" cy="260" r="5.5" /><circle class="port rep-port" cx="590" cy="260" r="5.5" />
+                <circle class="port rep-port" cx="645" cy="260" r="5.5" /><circle class="port rep-port" cx="680" cy="260" r="5.5" /><circle class="port rep-port" cx="715" cy="260" r="5.5" />
+                <circle class="port rep-port" cx="555" cy="306" r="5.5" /><circle class="port rep-port" cx="680" cy="306" r="5.5" />
+                <path class="outside" d="M555 312 V362 M680 312 V362" />
+                <text x="555" y="288" text-anchor="middle" class="label">Rₗ</text><text x="680" y="288" text-anchor="middle" class="label">Rᵣ</text>
+                <text x="555" y="382" text-anchor="middle" class="small">one R copy per F exit</text><text x="680" y="382" text-anchor="middle" class="small">same port deltas</text>
+
+                <path class="wire" d="M484 186 C484 220 510 224 520 254 M536 186 C536 222 628 220 645 254 M579 186 C579 218 552 225 555 254 M631 186 C631 218 675 220 680 254 M674 186 C674 215 596 220 590 254 M726 186 C726 215 715 224 715 254" />
+                <text x="607" y="418" text-anchor="middle" class="small">3 R ports create 3 fans · 2 F exits create 2 replicators</text>
+              </svg>
+            </div>
+            <figcaption><strong>Finite version of the paper’s fan–replicator rule.</strong> This guide-specific diagram uses a three-port replicator so every copy has a visible port and wire. It adapts the structure of <a href="https://arxiv.org/html/2505.20314v4#S2.F4">Figure 4 in the source paper</a> (CC BY 4.0).</figcaption>
+          </figure>
+          <p>Read the result in two counts. R has three auxiliary ports, so three fans <span class="math">F₀, F₁, F₂</span> appear. F has two auxiliary ports, so two replicators <span class="math">Rₗ, Rᵣ</span> appear. The six wires in the right-hand panel connect the two kinds of copies through their individual ports; none begins or ends in the middle of an edge.</p>
+
+          <h3>4.3 Replicator meets replicator: levels decide the replicas</h3>
+          <p>When two distinct replicators meet, name the lower-level one <strong>R</strong> and the higher-level one <strong>H</strong>. R makes one replica of H for each of R’s auxiliary ports; H makes exact duplicates of R for each of H’s ports. Each H replica takes the delta from its exit port on R and adds it to H’s current level.</p>
+          <figure class="interaction-diagram">
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 760 465" role="img" aria-label="A three-port lower replicator and two-port higher replicator interacting">
+                <title>Replicator and replicator commutation</title>
+                <desc>A lower replicator R with three port deltas meets a higher replicator H with two ports. The result has three H replicas with levels adjusted by the three deltas and two exact R copies.</desc>
+                <defs>
+                  <marker id="interaction-arrow-rr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+                <rect class="frame" x="18" y="44" width="250" height="374" rx="10" />
+                <rect class="frame" x="472" y="44" width="270" height="374" rx="10" />
+                <text x="143" y="72" text-anchor="middle" class="label">Before: R meets H</text>
+                <text x="607" y="72" text-anchor="middle" class="label">After: a 3 × 2 copy grid</text>
+
+                <path class="outside" d="M90 88 V114 M145 88 V114 M200 88 V114" />
+                <path class="agent-replicator" d="M65 114 H225 L193 166 H97 Z" />
+                <circle class="port rep-port" cx="90" cy="114" r="5.5" /><circle class="port rep-port" cx="145" cy="114" r="5.5" /><circle class="port rep-port" cx="200" cy="114" r="5.5" />
+                <circle class="port rep-port" cx="145" cy="166" r="5.5" />
+                <text x="145" y="141" text-anchor="middle" class="label">R</text><text x="145" y="155" text-anchor="middle" class="tiny">lower level = 2</text>
+                <text x="90" y="104" text-anchor="middle" class="tiny">d₀ = 0</text><text x="145" y="104" text-anchor="middle" class="tiny">d₁ = +3</text><text x="200" y="104" text-anchor="middle" class="tiny">d₂ = −1</text>
+                <path class="active-wire" d="M145 172 V213" />
+                <circle class="port rep-port" cx="145" cy="219" r="5.5" />
+                <path class="agent-replicator" d="M145 225 L76 282 H214 Z" />
+                <circle class="port rep-port" cx="105" cy="282" r="5.5" /><circle class="port rep-port" cx="185" cy="282" r="5.5" />
+                <path class="outside" d="M105 288 V350 M185 288 V350" />
+                <text x="145" y="260" text-anchor="middle" class="label">H</text><text x="145" y="274" text-anchor="middle" class="tiny">higher level = 7</text>
+                <text x="105" y="367" text-anchor="middle" class="tiny">e₀</text><text x="185" y="367" text-anchor="middle" class="tiny">e₁</text>
+                <text x="145" y="194" text-anchor="middle" class="small">principal ↔ principal</text>
+                <path d="M301 228 H438" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#interaction-arrow-rr)" />
+                <text x="369" y="207" text-anchor="middle" class="small">commute</text>
+
+                <path class="outside" d="M510 87 V113 M605 87 V113 M700 87 V113" />
+                <circle class="port rep-port" cx="510" cy="119" r="5.5" /><circle class="port rep-port" cx="605" cy="119" r="5.5" /><circle class="port rep-port" cx="700" cy="119" r="5.5" />
+                <path class="agent-replicator" d="M510 125 L477 180 H543 Z" /><path class="agent-replicator" d="M605 125 L572 180 H638 Z" /><path class="agent-replicator" d="M700 125 L667 180 H733 Z" />
+                <circle class="port rep-port" cx="484" cy="180" r="5.5" /><circle class="port rep-port" cx="536" cy="180" r="5.5" />
+                <circle class="port rep-port" cx="579" cy="180" r="5.5" /><circle class="port rep-port" cx="631" cy="180" r="5.5" />
+                <circle class="port rep-port" cx="674" cy="180" r="5.5" /><circle class="port rep-port" cx="726" cy="180" r="5.5" />
+                <text x="510" y="159" text-anchor="middle" class="tiny">H₀: 7 + 0 = 7</text><text x="605" y="159" text-anchor="middle" class="tiny">H₁: 7 + 3 = 10</text><text x="700" y="159" text-anchor="middle" class="tiny">H₂: 7 − 1 = 6</text>
+
+                <path class="agent-replicator" d="M500 275 H610 L590 322 H520 Z" /><path class="agent-replicator" d="M625 275 H735 L715 322 H645 Z" />
+                <circle class="port rep-port" cx="520" cy="275" r="5.5" /><circle class="port rep-port" cx="555" cy="275" r="5.5" /><circle class="port rep-port" cx="590" cy="275" r="5.5" />
+                <circle class="port rep-port" cx="645" cy="275" r="5.5" /><circle class="port rep-port" cx="680" cy="275" r="5.5" /><circle class="port rep-port" cx="715" cy="275" r="5.5" />
+                <circle class="port rep-port" cx="555" cy="322" r="5.5" /><circle class="port rep-port" cx="680" cy="322" r="5.5" />
+                <path class="outside" d="M555 328 V379 M680 328 V379" />
+                <text x="555" y="304" text-anchor="middle" class="label">R₀</text><text x="680" y="304" text-anchor="middle" class="label">R₁</text>
+                <text x="555" y="402" text-anchor="middle" class="small">exact R copies: level 2</text><text x="680" y="418" text-anchor="middle" class="small">and deltas 0, +3, −1</text>
+
+                <path class="wire" d="M484 186 C484 225 508 236 520 269 M536 186 C536 225 627 236 645 269 M579 186 C579 225 552 236 555 269 M631 186 C631 225 675 236 680 269 M674 186 C674 225 596 236 590 269 M726 186 C726 225 715 236 715 269" />
+                <text x="607" y="448" text-anchor="middle" class="small">R’s 3 ports create H₀, H₁, H₂ · H’s 2 ports create R₀, R₁</text>
+              </svg>
+            </div>
+            <figcaption><strong>Finite version of the paper’s replicator–replicator rule.</strong> The upper copies of H inherit the three port deltas from R, so their levels become 7, 10, and 6. The lower copies of R retain R’s level and port deltas. This diagram adapts the structure of <a href="https://arxiv.org/html/2505.20314v4#S2.F4">Figure 4 in the source paper</a> (CC BY 4.0).</figcaption>
+          </figure>
+          <p>The right-hand panel is a small version of the paper’s general rule. Three R ports create the three H replicas across the top; two H ports create the two R replicas below. The wires form a complete 3-by-2 connection pattern: each H replica reaches both R copies, and each R copy receives one port from every H replica.</p>
+          <div class="callout key">
+            <div class="symbol">+</div>
+            <div>
+              <h3>The operational rule</h3>
+              <p>Every port supplies one integer. When an H replica leaves through that port, add the integer to H’s current level. The port’s delta therefore records the level change associated with taking that particular exit.</p>
+            </div>
+          </div>
+          <h4>A worked example</h4>
+          <p>Suppose R has level <span class="math">2</span> and two auxiliary ports. The first connects to a wire endpoint at level <span class="math">2</span>, so its delta is <span class="math">2 − 2 = 0</span>. The second connects to an endpoint at level <span class="math">5</span>, so its delta is <span class="math">5 − 2 = +3</span>. Now let a higher-level replicator H, with level <span class="math">7</span>, meet R.</p>
+          <div class="delta-steps" aria-label="Level delta example in three steps">
+            <article class="delta-step">
+              <span class="delta-no">01</span>
+              <h4>Write the local differences</h4>
+              <p>R’s own level is 2. Each port stores how its endpoint differs from that 2.</p>
+              <span class="formula">port A: 2 − 2 = 0<br>port B: 5 − 2 = +3</span>
+            </article>
+            <article class="delta-step">
+              <span class="delta-no">02</span>
+              <h4>Copy H once per R port</h4>
+              <p>H is the higher-level replicator, so R replicates it. Both replicas start from H’s old level: 7.</p>
+              <span class="formula">old level of H = 7</span>
+            </article>
+            <article class="delta-step">
+              <span class="delta-no">03</span>
+              <h4>Add the exit’s delta</h4>
+              <p>The copy leaving port A stays at 7. The copy leaving port B is shifted upward by 3.</p>
+              <span class="formula">A: 7 + 0 = 7<br>B: 7 + 3 = 10</span>
+            </article>
+          </div>
+          <figure class="delta-diagram">
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 740 310" role="img" aria-label="Worked level delta example with levels 2, 7, 7, and 10">
+                <title>Worked level delta example</title>
+                <desc>A lower replicator R at level 2 has ports with deltas 0 and plus 3. A higher replicator H at level 7 meets R. H replicas leave with levels 7 and 10.</desc>
+                <defs>
+                  <marker id="delta-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+                <text x="34" y="30" class="label">Before the interaction</text><text x="494" y="30" class="label">H replicas after leaving R</text>
+                <rect class="box" x="83" y="72" width="154" height="67" rx="11" /><text x="160" y="100" text-anchor="middle" class="label">R — lower replicator</text><text x="160" y="121" text-anchor="middle" class="small">level = 2</text>
+                <rect class="box" x="83" y="176" width="154" height="67" rx="11" /><text x="160" y="204" text-anchor="middle" class="label">H — higher replicator</text><text x="160" y="225" text-anchor="middle" class="small">level = 7</text>
+                <path class="wire" d="M237 92 H307 M237 119 H307" />
+                <rect class="port" x="307" y="77" width="93" height="30" rx="15" /><rect class="port" x="307" y="108" width="93" height="30" rx="15" />
+                <text x="353" y="97" text-anchor="middle" class="small">port A: d = 0</text><text x="353" y="128" text-anchor="middle" class="small">port B: d = +3</text>
+                <path class="arrow" d="M237 206 C332 206 408 75 488 75" /><path class="arrow" d="M237 215 C342 215 410 225 488 225" />
+                <rect class="outcome" x="495" y="49" width="180" height="54" rx="11" /><text x="585" y="73" text-anchor="middle" class="label">through A</text><text x="585" y="91" text-anchor="middle" class="small">new H level: 7 + 0 = 7</text>
+                <rect class="outcome" x="495" y="198" width="180" height="54" rx="11" /><text x="585" y="222" text-anchor="middle" class="label">through B</text><text x="585" y="240" text-anchor="middle" class="small">new H level: 7 + 3 = 10</text>
+                <text x="370" y="285" text-anchor="middle" class="small">R’s level 2 establishes its port deltas; each H replica starts from H’s level 7.</text>
+              </svg>
+            </div>
+            <figcaption><strong>Read the calculation from left to right.</strong> Port B stores <span class="math">+3</span>. The H replica begins at level <span class="math">7</span>, then follows that port’s instruction: <span class="math">7 + 3 = 10</span>.</figcaption>
+          </figure>
+          <div class="rule">
+            <div class="rule-label">The general rule, after the example</div>
+            <p><span>new level of an H replica</span> = old H level + delta on the R port it leaves through</p>
+          </div>
+          <p>“Duplicate” means exact copies. “Replicate” is the paper’s more precise word for copies that can differ by level. This distinction is doing real work: it replaces the separate indexed delimiters of older systems. A delta may be negative, zero, or positive; this example uses zero and a positive delta only because they make the arithmetic easy to see.</p>
+          <details>
+            <summary>How a delta carries context through an interaction</summary>
+            <div><p>Several higher-level replicators can reach the same R port with different current levels. The port contributes the same local adjustment to each one. For a port with delta <span class="math">+3</span>, an arriving level 7 becomes 10, while an arriving level 12 becomes 15.</p><p>You can read the pair as an instruction: the replicator level gives the current context, and the chosen port adds the context change for that exit. Chapter 5 shows how the translation writes these port deltas into the initial net.</p></div>
+          </details>
+        </section>
+
+        <section class="chapter" id="compile" aria-labelledby="compile-title">
+          <p class="chapter-kicker"><span class="number">05</span> Translation</p>
+          <h2 id="compile-title">Compile a <span class="math">λ</span>-term into one rooted net.</h2>
+          <p class="intro">The paper defines, for each of λL, λA, λI, and λK, a <strong>bijection</strong> <span class="math">φ</span> from terms to canonical Δ-Nets. A bijection is a one-to-one, reversible correspondence: every term has one canonical net, and that canonical net reads back as one term. The translation is <strong>inductive</strong>: translate the smaller subterms first, then connect their fragments to translate the larger term.</p>
+
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 395" role="img" aria-label="A lambda-calculus reminder distinguishing abstractions, applications, parameters, actual arguments, and separately labelled occurrences x zero and x one">
+                <title>A short lambda-calculus reminder before translation</title>
+                <desc>Lambda x dot M is an abstraction with parameter x and body M. M N is an application with function M and argument N. In the example lambda x dot x applied to g x, the two occurrences of x are temporarily labelled x zero and x one. Applying that abstraction to A replaces both occurrences with A.</desc>
+                <defs>
+                  <marker id="reminder-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+
+                <rect class="stage" x="14" y="14" width="258" height="367" rx="10" />
+                <rect class="stage-result" x="292" y="14" width="434" height="367" rx="10" />
+                <text x="34" y="43" class="stage-title">Three names used in this chapter</text>
+
+                <rect class="level-card" x="35" y="65" width="216" height="78" rx="8" />
+                <text x="55" y="88" class="level-title">Abstraction</text>
+                <text x="143" y="114" text-anchor="middle" class="term">λx.M</text>
+                <text x="143" y="134" text-anchor="middle" class="tiny">parameter x · body M</text>
+
+                <rect class="level-card" x="35" y="158" width="216" height="78" rx="8" />
+                <text x="55" y="181" class="level-title">Application</text>
+                <text x="143" y="207" text-anchor="middle" class="term">M N</text>
+                <text x="143" y="227" text-anchor="middle" class="tiny">function M · argument N</text>
+
+                <rect class="level-card" x="35" y="251" width="216" height="91" rx="8" />
+                <text x="55" y="274" class="level-title">Occurrences</text>
+                <text x="143" y="301" text-anchor="middle" class="term">x₀ · x₁</text>
+                <text x="143" y="321" text-anchor="middle" class="tiny">two separate uses of parameter x</text>
+                <text x="143" y="363" text-anchor="middle" class="delta-value">subscripts are reader labels</text>
+
+                <text x="312" y="43" class="stage-title">Read one complete example</text>
+                <text x="509" y="75" text-anchor="middle" class="term">written: (λx. x (g x)) A</text>
+                <text x="509" y="105" text-anchor="middle" class="term">label uses: (λx. x₀ (g x₁)) A</text>
+                <path class="wire" d="M509 114 V128 M509 128 C509 141 437 138 437 151 M509 128 C509 141 645 138 645 151" />
+
+                <rect class="level-card" x="312" y="151" width="250" height="62" rx="8" />
+                <rect class="level-card" x="585" y="151" width="120" height="62" rx="8" />
+                <text x="437" y="176" text-anchor="middle" class="level-title">function: λx. x₀ (g x₁)</text>
+                <text x="437" y="198" text-anchor="middle" class="tiny">this function is an abstraction</text>
+                <text x="645" y="176" text-anchor="middle" class="level-title">argument: A</text>
+                <text x="645" y="198" text-anchor="middle" class="tiny">actual input</text>
+
+                <path class="wire" d="M437 213 V232" />
+                <rect class="level-card" x="312" y="232" width="250" height="76" rx="8" />
+                <text x="437" y="255" text-anchor="middle" class="level-title">λx introduces parameter x</text>
+                <text x="437" y="278" text-anchor="middle" class="tiny">body = x₀ (g x₁)</text>
+                <text x="437" y="297" text-anchor="middle" class="tiny">x₀ and x₁ are the two places that use x</text>
+
+                <path d="M645 213 C645 250 630 275 620 314" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#reminder-arrow)" />
+                <path d="M562 270 C580 273 584 291 584 314" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#reminder-arrow)" />
+                <rect class="level-card" x="500" y="320" width="202" height="48" rx="8" />
+                <text x="601" y="342" text-anchor="middle" class="level-title">after β: A (g A)</text>
+                <text x="601" y="359" text-anchor="middle" class="tiny">A replaces both x occurrences</text>
+                <text x="395" y="355" text-anchor="middle" class="delta-value">one input · two uses</text>
+                <text x="395" y="374" text-anchor="middle" class="tiny">Rₓ will represent this sharing</text>
+              </svg>
+            </div>
+            <figcaption><strong>The vocabulary used by the translation.</strong> <span class="math">λx.M</span> defines a function; <span class="math">x</span> is its parameter and <span class="math">M</span> is its body. <span class="math">M&nbsp;N</span> applies function <span class="math">M</span> to argument <span class="math">N</span>. In the example, <span class="math">A</span> is the actual argument supplied to the abstraction, while <span class="math">x₀</span> and <span class="math">x₁</span> merely name its two written uses so that the guide can follow them separately. The original term contains two ordinary <span class="math">x</span> symbols, not subscripts.</figcaption>
+          </figure>
+
+          <h3>5.1 Start with a uniform interface</h3>
+          <p>Every fragment has an <strong>interface</strong>: one incoming wire at the top and zero or more outgoing wires at the bottom. The outermost fragment is connected to a single root node; <strong>free variables</strong>—variable occurrences not owned by any surrounding <span class="math">λ</span>—are represented by named interface nodes. This stable shape makes it possible to plug a fragment inside the fragment for its parent term.</p>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 740 260" role="img" aria-label="A conceptual lambda-term to Delta-Net compilation pipeline">
+                <title>A conceptual lambda term to Delta-Net compilation pipeline</title><desc>A lambda term is decomposed into variable, abstraction, and application cases, which form a rooted net with shared uses joining a replicator.</desc>
+                <rect x="27" y="71" width="180" height="118" rx="12" class="node orange" />
+                <text x="117" y="105" text-anchor="middle" class="label">λ-term</text><text x="117" y="130" text-anchor="middle" class="small">variables · abstractions</text><text x="117" y="149" text-anchor="middle" class="small">applications</text>
+                <path d="M229 130 H313" stroke="#9a5f3d" stroke-width="3" fill="none" /><path d="M306 122 L318 130 L306 138" stroke="#9a5f3d" stroke-width="3" fill="none" />
+                <rect x="332" y="28" width="365" height="203" rx="12" fill="#f2f0ea" stroke="#b7dfd7" stroke-width="2" />
+                <text x="351" y="55" class="label">canonical Δ-Net</text>
+                <circle cx="515" cy="78" r="8" fill="#1f2a2f" /><text x="529" y="83" class="small">root</text>
+                <path class="wire" d="M515 86 L515 105 M515 151 L427 195 M515 151 L608 195" />
+                <path class="node orange" d="M474 105 H556 L515 151 Z" /><text x="515" y="135" text-anchor="middle" class="label">λ</text>
+                <path class="wire" d="M427 195 L427 213 M608 195 L608 213" />
+                <path class="node orange" d="M386 213 H468 L427 256 Z" /><path class="node orange" d="M567 213 H649 L608 256 Z" />
+                <path class="wire" d="M415 230 L383 245 M439 230 L473 245 M596 230 L564 245 M620 230 L654 245" />
+                <path class="wire" d="M383 245 L383 252 M473 245 L473 252 M564 245 L564 252 M654 245 L654 252" />
+                <text x="375" y="194" class="small">function</text><text x="614" y="194" class="small">argument</text>
+                <circle cx="515" cy="165" r="5" fill="#0a556e" /><text x="527" y="169" class="small">bound-use route</text>
+              </svg>
+            </div>
+            <figcaption><strong>Translation at a glance.</strong> The real encoding has precise port orientations and level annotations. This diagram only shows the nested, rooted character of the construction.</figcaption>
+          </figure>
+
+          <h3>5.2 The variable cases</h3>
+          <div class="term-grid">
+            <article class="term-card">
+              <span class="tag">Free variable</span>
+              <h3>A named boundary node</h3>
+              <p>A variable free in the outermost term becomes a single-port, non-agent node labelled with that variable’s name. It is part of the net’s interface.</p>
+            </article>
+            <article class="term-card">
+              <span class="tag">Bound occurrence</span>
+              <h3>Just a wire—until it meets sharing</h3>
+              <p>A bound variable occurrence is a vertical wire. Its lower endpoint connects to the appropriate auxiliary port of the replicator that shares the variable, when one is required.</p>
+            </article>
+          </div>
+
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 300" role="img" aria-label="The two variable translation fragments: a free variable ends at a named boundary node, while a bound variable is a wire whose endpoint later connects to its binder or sharing replicator">
+                <title>Free and bound variable fragments</title>
+                <desc>A free variable y is represented by a one-port named interface node. A bound occurrence x i is represented inside its fragment by a vertical wire. In the completed abstraction, its endpoint closes to the matching lambda binder, directly for one use or through an auxiliary port of R x for sharing.</desc>
+
+                <rect class="stage" x="14" y="14" width="330" height="272" rx="10" />
+                <rect class="stage-result" x="370" y="14" width="356" height="272" rx="10" />
+                <text x="34" y="43" class="stage-title">Free in the whole term</text>
+                <text x="179" y="73" text-anchor="middle" class="term">[y]ℓ · y ∈ FV(*)</text>
+                <rect class="fragment-boundary" x="92" y="91" width="174" height="142" rx="9" />
+                <text x="179" y="109" text-anchor="middle" class="tiny">variable fragment</text>
+                <circle class="root" cx="179" cy="126" r="5.5" />
+                <text x="197" y="130" class="tiny wire-label">fragment input</text>
+                <path class="wire" d="M179 132 V181" />
+                <circle cx="179" cy="200" r="22" fill="var(--panel)" stroke="var(--teal)" stroke-width="2.5" />
+                <text x="179" y="206" text-anchor="middle" class="operator">y</text>
+                <text x="179" y="255" text-anchor="middle" class="delta-value">named one-port boundary node</text>
+
+                <text x="390" y="43" class="stage-title">Bound by a surrounding λx</text>
+                <text x="548" y="73" text-anchor="middle" class="term">[xᵢ]ℓᵢ · x ∉ FV(*)</text>
+                <rect class="fragment-boundary" x="402" y="91" width="144" height="142" rx="9" />
+                <text x="474" y="109" text-anchor="middle" class="tiny">bound-variable fragment</text>
+                <circle class="root" cx="474" cy="126" r="5.5" />
+                <path class="wire" d="M474 132 V204" />
+                <circle cx="474" cy="204" r="5" fill="var(--panel)" stroke="var(--teal)" stroke-width="2.25" />
+                <text x="458" y="194" text-anchor="end" class="tiny wire-label">just a wire</text>
+                <text x="474" y="224" text-anchor="middle" class="tiny">endpoint level ℓᵢ</text>
+
+                <path class="wire" d="M479 204 C520 204 558 194 602 194" />
+                <circle class="rep-port" cx="630" cy="140" r="4.5" />
+                <path class="replicator" d="M570 146 H690 L674 194 H586 Z" />
+                <text x="630" y="176" text-anchor="middle" class="operator">Rₓ</text>
+                <circle class="rep-port" cx="602" cy="194" r="4.5" /><circle class="rep-port" cx="658" cy="194" r="4.5" />
+                <text x="630" y="238" text-anchor="middle" class="tiny">this xᵢ uses one</text>
+                <text x="630" y="251" text-anchor="middle" class="tiny">Rₓ auxiliary port</text>
+                <text x="548" y="276" text-anchor="middle" class="delta-value">the binder closes this endpoint</text>
+              </svg>
+            </div>
+            <figcaption><strong>The distinction is at the fragment boundary.</strong> A free variable survives as a named node in the canonical net’s interface. A bound occurrence introduces no variable agent at all: it is a wire whose endpoint is later connected to its owning <span class="math">λx</span>, directly when there is one use or through <span class="math">R<sub>x</sub></span> when that value is shared. This follows the two variable clauses in <a href="https://arxiv.org/html/2505.20314v4#S3.F5">the paper’s inductive translation</a>.</figcaption>
+          </figure>
+
+          <h3 id="abstraction-cases">5.3 The abstraction cases</h3>
+          <p>An abstraction is an upward-pointing fan (the <span class="math">λ</span> label in the paper is visual only). One auxiliary port connects to the body; the other corresponds to the bound variable. If that variable is unused, the second port goes to an eraser—only in the erasure-capable ΔA and ΔK systems.</p>
+          <p>When a used variable has multiple occurrences, a replicator connects the abstraction’s variable port to those occurrences. A one-port replicator with zero delta is equivalent to a wire, so canonical construction omits it.</p>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 330" role="img" aria-label="Three lambda abstraction encodings: lambda x dot x uses a direct wire, lambda x dot y connects the unused x port to an eraser, and lambda x dot x x connects the x port to a two-port replicator">
+                <title>The three abstraction cases</title>
+                <desc>Each abstraction is an upward fan. With one occurrence, the body and variable use are connected directly. With no occurrence, the variable port reaches an eraser. With two occurrences, the variable port reaches a two-port replicator whose outputs connect to the two uses in the application body.</desc>
+
+                <rect class="stage" x="14" y="14" width="220" height="302" rx="10" />
+                <rect class="stage" x="260" y="14" width="220" height="302" rx="10" />
+                <rect class="stage-result" x="506" y="14" width="220" height="302" rx="10" />
+
+                <text x="124" y="43" text-anchor="middle" class="stage-title">One bound occurrence</text>
+                <text x="124" y="69" text-anchor="middle" class="term">λx.x</text>
+                <circle class="root" cx="124" cy="88" r="5.5" /><path class="wire" d="M124 94 V108" />
+                <path class="fan" d="M124 108 L84 164 H164 Z" />
+                <circle class="port" cx="124" cy="108" r="4.5" /><circle class="port" cx="101" cy="164" r="4.5" /><circle class="port" cx="147" cy="164" r="4.5" />
+                <text x="124" y="145" text-anchor="middle" class="operator">λ</text>
+                <path class="wire" d="M101 164 C101 210 147 210 147 164" />
+                <text x="124" y="225" text-anchor="middle" class="small">body wire = the one x use</text>
+                <text x="124" y="267" text-anchor="middle" class="delta-value">no sharing node needed</text>
+                <text x="124" y="290" text-anchor="middle" class="tiny">the binding closes as one wire</text>
+
+                <text x="370" y="43" text-anchor="middle" class="stage-title">No bound occurrence</text>
+                <text x="370" y="69" text-anchor="middle" class="term">λx.y</text>
+                <circle class="root" cx="370" cy="88" r="5.5" /><path class="wire" d="M370 94 V108" />
+                <path class="fan" d="M370 108 L330 164 H410 Z" />
+                <circle class="port" cx="370" cy="108" r="4.5" /><circle class="port" cx="347" cy="164" r="4.5" /><circle class="port" cx="393" cy="164" r="4.5" />
+                <text x="370" y="145" text-anchor="middle" class="operator">λ</text>
+                <path class="wire" d="M347 164 V211 M393 164 V190" />
+                <circle cx="347" cy="216" r="5" fill="var(--teal)" /><text x="337" y="241" text-anchor="end" class="level-title">body: y</text>
+                <rect class="node teal" x="373" y="190" width="40" height="34" rx="10" /><text x="393" y="213" text-anchor="middle" class="level-title">E</text>
+                <text x="393" y="241" text-anchor="middle" class="tiny">unused x</text>
+                <text x="370" y="275" text-anchor="middle" class="delta-value">variable port → eraser</text>
+                <text x="370" y="297" text-anchor="middle" class="tiny">available in ΔA and ΔK</text>
+
+                <text x="616" y="43" text-anchor="middle" class="stage-title">Several bound occurrences</text>
+                <text x="616" y="69" text-anchor="middle" class="term">λx.x x</text>
+                <circle class="root" cx="616" cy="88" r="5.5" /><path class="wire" d="M616 94 V108" />
+                <path class="fan" d="M616 108 L576 164 H656 Z" />
+                <circle class="port" cx="616" cy="108" r="4.5" /><circle class="port" cx="593" cy="164" r="4.5" /><circle class="port" cx="639" cy="164" r="4.5" />
+                <text x="616" y="145" text-anchor="middle" class="operator">λ</text>
+
+                <path class="wire" d="M593 164 C580 176 568 181 567 190 M639 164 C652 171 657 178 658 188" />
+                <rect class="level-card" x="528" y="190" width="78" height="62" rx="8" />
+                <text x="567" y="214" text-anchor="middle" class="operator">@</text>
+                <circle class="rep-port" cx="548" cy="244" r="4" /><circle class="rep-port" cx="586" cy="244" r="4" />
+                <text x="548" y="238" text-anchor="middle" class="tiny">x₀</text><text x="586" y="238" text-anchor="middle" class="tiny">x₁</text>
+
+                <circle class="rep-port" cx="658" cy="188" r="4.5" />
+                <path class="replicator" d="M620 194 H696 L684 232 H632 Z" />
+                <text x="658" y="220" text-anchor="middle" class="operator">R</text>
+                <circle class="rep-port" cx="640" cy="232" r="4" /><circle class="rep-port" cx="676" cy="232" r="4" />
+                <path class="wire" d="M640 236 C628 257 576 267 548 248 M676 236 C664 272 605 267 586 248" />
+                <text x="616" y="286" text-anchor="middle" class="delta-value">one R port per x occurrence</text>
+                <text x="616" y="306" text-anchor="middle" class="tiny">the body still contains the @ structure</text>
+              </svg>
+            </div>
+            <figcaption><strong>Read each picture from its λ binder.</strong> The left auxiliary port carries the abstraction body. The right auxiliary port represents the bound parameter <span class="math">x</span>: it closes directly to one occurrence, terminates at <span class="math">E</span> when unused, or reaches <span class="math">R</span> when several occurrences must share one incoming value. The third panel is a binding-focused schematic; §5.7 draws the complete <span class="math">λx.x&nbsp;x</span> topology and its deltas.</figcaption>
+          </figure>
+
+          <h3 id="application-case">5.4 The application case</h3>
+          <p>An application is a downward-pointing fan (again, the <code>@</code> label is only visual). Its principal port joins the function fragment and one auxiliary port joins the argument fragment. During reduction, the application fan eventually meets an abstraction fan; their annihilation expresses application.</p>
+
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 310" role="img" aria-label="Translation of an application M N at level l into a downward application fan whose parent port carries the result, principal port reaches M, and second auxiliary port reaches N at level l plus one">
+                <title>The application translation, from syntax positions to ports</title>
+                <desc>The source application M N at level l has a function child M at the same level and an argument child N at level l plus one. In the net, the parent wire and argument attach to the two auxiliary ports of a downward fan, while its principal port attaches to the function fragment.</desc>
+
+                <rect class="stage" x="14" y="14" width="330" height="282" rx="10" />
+                <rect class="stage-result" x="370" y="14" width="356" height="282" rx="10" />
+
+                <text x="34" y="43" class="stage-title">Read the source syntax first</text>
+                <rect class="level-card" x="80" y="65" width="198" height="48" rx="8" />
+                <text x="179" y="86" text-anchor="middle" class="level-title">application</text>
+                <text x="179" y="104" text-anchor="middle" class="tiny">[M N] at level ℓ</text>
+                <path class="wire" d="M179 113 V135 M179 135 C179 154 100 157 100 180 M179 135 C179 154 258 157 258 180" />
+                <text x="112" y="149" text-anchor="middle" class="tiny wire-label">function: +0</text>
+                <text x="253" y="149" text-anchor="middle" class="tiny wire-label">argument: +1</text>
+                <rect class="level-card" x="42" y="180" width="116" height="62" rx="8" />
+                <rect class="level-card" x="200" y="180" width="116" height="62" rx="8" />
+                <text x="100" y="207" text-anchor="middle" class="term">[M]ℓ</text>
+                <text x="100" y="229" text-anchor="middle" class="tiny">same level</text>
+                <text x="258" y="207" text-anchor="middle" class="term">[N]ℓ+1</text>
+                <text x="258" y="229" text-anchor="middle" class="tiny">one level deeper</text>
+                <text x="179" y="272" text-anchor="middle" class="delta-value">only the argument edge changes ℓ</text>
+
+                <text x="390" y="43" class="stage-title">Then attach the three fan ports</text>
+                <circle class="root" cx="468" cy="76" r="6" />
+                <text x="468" y="63" text-anchor="middle" class="tiny wire-label">result / parent</text>
+                <path class="wire" d="M468 82 C468 98 473 103 480 116" />
+
+                <path class="fan" d="M450 120 H570 L510 181 Z" />
+                <circle class="port" cx="480" cy="120" r="4.5" />
+                <circle class="port" cx="540" cy="120" r="4.5" />
+                <circle class="port" cx="510" cy="181" r="4.5" />
+                <text x="510" y="156" text-anchor="middle" class="operator">@</text>
+                <text x="447" y="115" text-anchor="end" class="tiny wire-label">first auxiliary</text>
+                <text x="573" y="115" class="tiny wire-label">second auxiliary</text>
+                <text x="510" y="200" text-anchor="middle" class="tiny wire-label">principal</text>
+
+                <path class="wire" d="M510 186 V218" />
+                <path class="wire" d="M540 120 C577 91 625 102 641 128 C650 143 648 171 641 188" />
+                <rect class="level-card" x="448" y="218" width="124" height="54" rx="8" />
+                <rect class="level-card" x="590" y="188" width="102" height="54" rx="8" />
+                <text x="510" y="241" text-anchor="middle" class="level-title">function M</text>
+                <text x="510" y="259" text-anchor="middle" class="tiny">level ℓ</text>
+                <text x="641" y="211" text-anchor="middle" class="level-title">argument N</text>
+                <text x="641" y="229" text-anchor="middle" class="tiny">level ℓ + 1</text>
+                <text x="620" y="272" text-anchor="middle" class="delta-value">the curved branch is N</text>
+              </svg>
+            </div>
+            <figcaption><strong>One syntax constructor, three connections.</strong> For <span class="math">[M&nbsp;N]<sub>ℓ</sub></span>, the result or parent wire uses the first auxiliary port, <span class="math">[N]<sub>ℓ+1</sub></span> uses the second auxiliary port, and <span class="math">[M]<sub>ℓ</sub></span> meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction.</figcaption>
+          </figure>
+
+          <h3 id="level-origin">5.5 Where levels come from</h3>
+          <p>Tie every word here to the source syntax. An <strong>abstraction</strong> is the literal λ-term <span class="math">λx.M</span>: <span class="math">x</span> is its bound parameter and <span class="math">M</span> is its body. An <strong>application</strong> is the literal λ-term <span class="math">M&nbsp;N</span>: <span class="math">M</span> is the function position and <span class="math">N</span> is the argument position. A bound occurrence of <span class="math">x</span> is one of the <span class="math">x</span> leaves in <span class="math">M</span> owned by that particular <span class="math">λx</span>.</p>
+          <div class="callout key">
+            <div class="symbol">@</div>
+            <div>
+              <h3>“Context” here is not a runtime closure</h3>
+              <p>Calculate levels by walking through the written λ-term. Start the whole term at level <span class="math">0</span>. For an abstraction <span class="math">λx.M</span> at level <span class="math">ℓ</span>, continue into <span class="math">M</span> at level <span class="math">ℓ</span>. For every application <span class="math">M&nbsp;N</span> at level <span class="math">ℓ</span>, write level <span class="math">ℓ</span> on its function <span class="math">M</span> and level <span class="math">ℓ + 1</span> on its argument <span class="math">N</span>. Repeat the same rule inside each subtree. During graph reduction, these coordinates track the corresponding <strong>sharing contexts</strong>; they do not count captured values or surrounding λ symbols.</p>
+            </div>
+          </div>
+          <table class="comparison" aria-label="Mechanical level rules for translating lambda calculus syntax">
+            <thead><tr><th>λ-calculus syntax</th><th>Given</th><th>Assign</th></tr></thead>
+            <tbody>
+              <tr><td>Whole term T</td><td>T is the root program.</td><td>level(T) = 0</td></tr>
+              <tr><td>Abstraction λx.M</td><td>level(λx.M) = l</td><td>level(M) = l; the replicator R<sub>x</sub> belongs to level l + 1.</td></tr>
+              <tr><td>Application M N</td><td>level(M N) = l</td><td>level(M) = l; level(N) = l + 1.</td></tr>
+              <tr><td>Occurrence x</td><td>x is reached at level l<sub>i</sub>.</td><td>Its wire endpoint has level l<sub>i</sub>.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Apply exactly the same instructions at every step.</strong> For <span class="math">λx.λy.x</span>, start at level <span class="math">0</span> and carry <span class="math">0</span> through both abstraction bodies, so <span class="math">x</span> receives level <span class="math">0</span>. For <span class="math">λx.f&nbsp;(g&nbsp;x)</span>, carry <span class="math">0</span> into the body, assign <span class="math">0</span> to the outer function <span class="math">f</span>, and assign <span class="math">1</span> to its argument <span class="math">g&nbsp;x</span>. Repeating the application rule there assigns <span class="math">1</span> to <span class="math">g</span> and <span class="math">2</span> to <span class="math">x</span>.</p>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 420" role="img" aria-label="A complete level walk for lambda x dot x applied to g x, showing x occurrences at levels zero and two and a level-one replicator with deltas minus one and plus one">
+                <title>Calculate levels and deltas for λx.x (g x)</title>
+                <desc>The syntax tree begins at level zero. Abstraction bodies and function branches preserve the level, while each argument branch adds one. The first x is at level zero and the second x is at level two. The binder's replicator is at level one, so its two deltas are minus one and plus one.</desc>
+
+                <rect class="stage" x="14" y="14" width="400" height="392" rx="10" />
+                <rect class="stage-result" x="432" y="14" width="294" height="392" rx="10" />
+
+                <text x="34" y="43" class="stage-title">Walk the concrete syntax tree</text>
+                <text x="214" y="72" text-anchor="middle" class="term">[λx. x (g x)]₀</text>
+
+                <rect class="level-card" x="98" y="92" width="232" height="42" rx="8" />
+                <text x="214" y="110" text-anchor="middle" class="level-title">λx binder · level 0</text>
+                <text x="214" y="127" text-anchor="middle" class="tiny">enter body: keep level 0</text>
+                <path class="wire" d="M214 134 V151" />
+
+                <rect class="level-card" x="98" y="151" width="232" height="42" rx="8" />
+                <text x="214" y="169" text-anchor="middle" class="level-title">outer application x (g x) · level 0</text>
+                <text x="214" y="186" text-anchor="middle" class="tiny">split into function and argument</text>
+                <path class="wire" d="M214 193 C214 215 92 214 92 237 M214 193 C214 213 294 210 294 221" />
+                <text x="115" y="211" text-anchor="middle" class="tiny wire-label">function gets 0</text>
+                <text x="286" y="208" text-anchor="middle" class="tiny wire-label">argument gets 1</text>
+
+                <rect class="level-card" x="38" y="237" width="108" height="60" rx="8" />
+                <text x="92" y="260" text-anchor="middle" class="level-title">x₀</text>
+                <text x="92" y="281" text-anchor="middle" class="delta-value">endpoint level 0</text>
+
+                <rect class="level-card" x="202" y="221" width="184" height="60" rx="8" />
+                <text x="294" y="244" text-anchor="middle" class="level-title">argument subtree g x</text>
+                <text x="294" y="265" text-anchor="middle" class="tiny">arrive here at level 1</text>
+                <path class="wire" d="M294 281 C294 301 230 301 230 322 M294 281 C294 301 348 301 348 322" />
+                <text x="236" y="300" text-anchor="middle" class="tiny wire-label">function gets 1</text>
+                <text x="352" y="300" text-anchor="middle" class="tiny wire-label">argument gets 2</text>
+
+                <rect class="level-card" x="174" y="322" width="112" height="58" rx="8" />
+                <rect class="level-card" x="292" y="322" width="112" height="58" rx="8" />
+                <text x="230" y="345" text-anchor="middle" class="level-title">function g</text>
+                <text x="230" y="366" text-anchor="middle" class="delta-value">level 1</text>
+                <text x="348" y="345" text-anchor="middle" class="level-title">argument x₁</text>
+                <text x="348" y="366" text-anchor="middle" class="delta-value">endpoint level 2</text>
+
+                <text x="452" y="43" class="stage-title">Turn the two x levels into deltas</text>
+                <rect class="level-card" x="482" y="65" width="194" height="48" rx="8" />
+                <text x="579" y="86" text-anchor="middle" class="level-title">binder λx is at level 0</text>
+                <text x="579" y="104" text-anchor="middle" class="tiny">its Rₓ belongs to 0 + 1</text>
+                <path class="wire" d="M579 113 V143" />
+                <text x="594" y="133" class="tiny wire-label">+1</text>
+
+                <circle class="rep-port" cx="579" cy="147" r="4.5" />
+                <path class="replicator" d="M500 153 H658 L642 207 H516 Z" />
+                <text x="579" y="179" text-anchor="middle" class="operator">Rₓ</text>
+                <text x="579" y="197" text-anchor="middle" class="tiny">replicator level = 1</text>
+                <circle class="rep-port" cx="530" cy="207" r="4.5" />
+                <circle class="rep-port" cx="628" cy="207" r="4.5" />
+                <path class="wire" d="M530 212 C516 222 505 231 505 246 M628 212 C642 222 653 231 653 246" />
+
+                <rect class="level-card" x="448" y="246" width="126" height="82" rx="8" />
+                <rect class="level-card" x="584" y="246" width="126" height="82" rx="8" />
+                <text x="511" y="269" text-anchor="middle" class="level-title">port to x₀</text>
+                <text x="511" y="290" text-anchor="middle" class="tiny">endpoint level 0</text>
+                <text x="511" y="314" text-anchor="middle" class="delta-value">d₀ = 0 − 1 = −1</text>
+                <text x="647" y="269" text-anchor="middle" class="level-title">port to x₁</text>
+                <text x="647" y="290" text-anchor="middle" class="tiny">endpoint level 2</text>
+                <text x="647" y="314" text-anchor="middle" class="delta-value">d₁ = 2 − 1 = +1</text>
+
+                <text x="579" y="361" text-anchor="middle" class="delta-value">d(Rₓ) = ⟨−1, +1⟩</text>
+                <text x="579" y="385" text-anchor="middle" class="tiny">endpoint level − replicator level</text>
+              </svg>
+            </div>
+            <figcaption><strong>Walk <span class="math">λx.x&nbsp;(g&nbsp;x)</span> mechanically.</strong> Begin at level <span class="math">0</span> and keep that level through <span class="math">λx</span> into its body <span class="math">x&nbsp;(g&nbsp;x)</span>. At the outer application, give the function <span class="math">x₀</span> level <span class="math">0</span> and the argument <span class="math">g&nbsp;x</span> level <span class="math">1</span>. Now apply the same rule to <span class="math">g&nbsp;x</span>: give its function <span class="math">g</span> level <span class="math">1</span> and its argument <span class="math">x₁</span> level <span class="math">2</span>. The binder’s <span class="math">R<sub>x</sub></span> is at level <span class="math">1</span>; subtracting that base from endpoint levels <span class="math">0</span> and <span class="math">2</span> gives <span class="math">⟨−1,+1⟩</span>.</figcaption>
+          </figure>
+          <p>To calculate an encoding by hand:</p>
+          <ol>
+            <li>Fully parenthesize the applications so every function and argument position is unambiguous.</li>
+            <li>Write level <span class="math">0</span> on the whole term, then walk inward. Keep the current level through every <span class="math">λx.M</span> body and every function position; add one only when entering an application’s argument.</li>
+            <li>For each binder <span class="math">λx</span> at level <span class="math">l</span>, put its sharing replicator <span class="math">R<sub>x</sub></span> at level <span class="math">l + 1</span>, when a replicator is required.</li>
+            <li>Connect each bound occurrence <span class="math">x<sub>i</sub></span> to one auxiliary port of <span class="math">R<sub>x</sub></span>. If that occurrence was reached at level <span class="math">l<sub>i</sub></span>, label its port with <span class="math">d<sub>i</sub> = l<sub>i</sub> − (l + 1)</span>.</li>
+          </ol>
+          <p>A <strong>wire endpoint level</strong> is therefore just the level calculated for that concrete variable occurrence. Its port delta is the difference between where the occurrence sits and where its binder’s replicator sits:</p>
+          <div class="rule">
+            <div class="rule-label">Construction rule</div>
+            <p><span>port delta</span> = level of its connected wire endpoint − level of the replicator</p>
+          </div>
+          <p>This is where the numbers in the Chapter 4 example came from: a replicator at level <span class="math">2</span> connected to an occurrence endpoint at level <span class="math">5</span> receives delta <span class="math">+3</span>. During reduction, the stored <span class="math">+3</span> supplies the local level adjustment whenever another replicator exits through that port. Section <a href="#deep-deltas">5.8</a> carries out the complete calculation for four occurrences of one bound variable.</p>
+
+          <section class="worked-trace" id="lambda-trace" aria-labelledby="lambda-trace-title">
+            <h3 id="lambda-trace-title">5.6 Follow a β-redex from term, to net, to term</h3>
+            <p>The translation rules become much less abstract when the <strong>same small program</strong> remains visible throughout. Start with the closed linear term <span class="math">(λx.x)(λy.y)</span>. Each bound variable occurs exactly once, so this is a ΔL example: its net contains fans only—no eraser and no replicator.</p>
+            <div class="trace-derivation" aria-label="Beta reduction of the identity function applied to itself">
+              <div class="trace-label">λ-calculus view</div>
+              <p>(λx.x)(λy.y) &nbsp;→<sub>β</sub>&nbsp; λy.y</p>
+            </div>
+            <figure>
+              <div class="diagram-panel">
+                <svg class="diagram lambda-trace" viewBox="0 0 740 680" role="img" aria-label="The lambda term open parenthesis lambda x dot x close parenthesis applied to lambda y dot y, encoded as a Delta-L net and reduced by fan annihilation to lambda y dot y">
+                  <title>A complete ΔL trace for an identity redex</title>
+                  <desc>The root attaches to the parent port of an application fan. The application's principal port forms an active pair with the abstraction fan for lambda x dot x, while its argument port attaches to lambda y dot y. Fan annihilation reconnects the wires and leaves the identity net for lambda y dot y.</desc>
+                  <defs>
+                    <marker id="lambda-trace-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                  </defs>
+
+                  <rect class="stage" x="14" y="14" width="712" height="88" rx="10" />
+                  <text x="38" y="43" class="stage-title">Source term</text>
+                  <text x="370" y="72" text-anchor="middle" class="term">(λx.x)(λy.y)</text>
+                  <text x="685" y="72" text-anchor="end" class="tiny">linear: each binder has one use</text>
+                  <path class="trace-arrow" d="M370 112 V144" />
+                  <text x="392" y="133" class="tiny">encode</text>
+
+                  <rect class="stage" x="14" y="156" width="712" height="316" rx="10" />
+                  <text x="38" y="185" class="stage-title">Canonical ΔL net — the orange link is the active pair</text>
+
+                  <circle class="root" cx="178" cy="220" r="7" /><text x="193" y="224" class="tiny">root</text>
+                  <path class="wire" d="M178 229 C178 248 178 258 200 271" />
+                  <path class="fan" d="M160 271 H280 L220 332 Z" />
+                  <circle class="port" cx="200" cy="271" r="4.5" /><circle class="port" cx="240" cy="271" r="4.5" /><circle class="port" cx="220" cy="332" r="4.5" />
+                  <text x="220" y="304" text-anchor="middle" class="operator">@</text>
+
+                  <path class="active" d="M220 338 V351" />
+                  <path class="fan" d="M220 357 L160 419 H280 Z" />
+                  <circle class="port" cx="220" cy="357" r="4.5" /><circle class="port" cx="200" cy="419" r="4.5" /><circle class="port" cx="240" cy="419" r="4.5" />
+                  <text x="220" y="397" text-anchor="middle" class="operator">λ</text>
+                  <text x="289" y="364" class="active-label">principal ↔ principal</text>
+                  <text x="294" y="379" class="tiny">the function: λx.x</text>
+                  <path class="wire" d="M200 419 C200 454 240 454 240 419" />
+                  <text x="220" y="459" text-anchor="middle" class="tiny">body and bound-use wire meet</text>
+
+                  <path class="wire" d="M240 271 C290 260 322 225 382 225 C442 225 478 252 505 271" />
+                  <text x="164" y="258" class="tiny wire-label">result / parent</text>
+                  <text x="242" y="258" class="tiny wire-label">argument</text>
+                  <path class="fan" d="M505 271 L450 332 H560 Z" />
+                  <circle class="port" cx="505" cy="271" r="4.5" /><circle class="port" cx="468" cy="332" r="4.5" /><circle class="port" cx="542" cy="332" r="4.5" />
+                  <text x="505" y="310" text-anchor="middle" class="operator">λ</text>
+                  <text x="570" y="279" class="tiny">argument: λy.y</text>
+                  <path class="wire" d="M468 332 C468 365 542 365 542 332" />
+                  <text x="505" y="380" text-anchor="middle" class="tiny">its body / y-use loop</text>
+
+                  <path class="trace-arrow" d="M370 486 V519" />
+                  <text x="392" y="506" class="tiny">one ΔL fan annihilation</text>
+
+                  <rect class="stage-result" x="14" y="531" width="712" height="132" rx="10" />
+                  <text x="38" y="560" class="stage-title">Reconnected net — and its read-back</text>
+                  <circle class="root" cx="170" cy="595" r="7" />
+                  <path class="result-wire" d="M177 595 C245 588 292 570 352 570 C412 570 445 584 470 595" />
+                  <text x="170" y="582" text-anchor="middle" class="tiny wire-label">root</text>
+                  <path class="fan" d="M470 595 L415 646 H525 Z" />
+                  <circle class="port" cx="470" cy="595" r="4.5" /><circle class="port" cx="433" cy="646" r="4.5" /><circle class="port" cx="507" cy="646" r="4.5" />
+                  <text x="470" y="627" text-anchor="middle" class="operator">λ</text>
+                  <path class="result-wire" d="M433 646 C433 662 507 662 507 646" />
+                  <text x="616" y="613" text-anchor="middle" class="term">λy.y</text>
+                  <text x="616" y="637" text-anchor="middle" class="tiny">normal form</text>
+                </svg>
+              </div>
+              <figcaption><strong>How to read the wiring.</strong> The downward <span class="math">@</span>-fan’s first auxiliary port is the application result (the root reaches it); its principal port leads to the function; its second auxiliary port leads to the argument. The upward <span class="math">λ</span>-fan’s auxiliary ports lead to its body and its bound variable. Since the body and variable ports of <span class="math">λx.x</span> are already joined, annihilating the two principal ports connects the root directly to <span class="math">λy.y</span>.</figcaption>
+            </figure>
+            <div class="trace-key" aria-label="Diagram legend">
+              <span><span class="line-swatch" aria-hidden="true">&nbsp;</span> ordinary wire</span>
+              <span><span class="line-swatch active" aria-hidden="true">&nbsp;</span> active principal-port connection</span>
+              <span><span class="line-swatch result" aria-hidden="true">&nbsp;</span> wire exposed after annihilation</span>
+            </div>
+
+            <h3>5.7 The δ in <span class="math">λx.x&nbsp;x</span> is where Δ-Net levels enter</h3>
+            <p>The <a href="https://zicklag.katharos.group/_astro/lam-x-xx.excalidraw.394327a5_ZJMpfg.webp">Katharos diagram for <span class="math">λx.x&nbsp;x</span></a> is especially useful because it makes the extra structure visible: the <span class="math">γ</span> nodes carry λ/application shape and the <span class="math">δ</span> node splits the one bound input <span class="math">x</span> into two occurrences. That image uses <strong>symmetric interaction combinators</strong>, not Δ-Net notation verbatim. The correspondence below is conceptual: each <span class="math">γ</span> role becomes a Δ-Net fan; the binary <span class="math">δ</span> role becomes a two-port Δ-Net replicator <span class="math">R</span>.</p>
+            <div class="trace-derivation" aria-label="Beta reduction of the self-application function applied to identity">
+              <div class="trace-label">The same sharing is exercised by a redex</div>
+              <p>(λx.x&nbsp;x)(λy.y) &nbsp;→<sub>β</sub>&nbsp; (λy.y)(λy.y) &nbsp;→<sub>β</sub>&nbsp; λy.y</p>
+            </div>
+            <figure>
+              <div class="diagram-panel">
+                <svg class="diagram lambda-trace" viewBox="0 0 740 505" role="img" aria-label="A comparison of the gamma delta interaction-combinator reading of lambda x dot x x with the canonical Delta-Net encoding whose replicator has level one and port deltas minus one and zero">
+                  <title>Decoding λx.x x into a levelled Δ-Net replicator</title>
+                  <desc>On the left, gamma labels the lambda and application structure and delta duplicates x for the two variable occurrences. On the right, the same bound variable is shared by a Delta-Net replicator. The outer term and application have level zero. The function occurrence of x has level zero, the argument occurrence has level one, and the replicator has level one, giving deltas minus one and zero.</desc>
+                  <defs>
+                    <marker id="gamma-delta-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                  </defs>
+                  <rect class="stage" x="14" y="14" width="304" height="468" rx="10" />
+                  <rect class="stage-result" x="422" y="14" width="304" height="468" rx="10" />
+                  <text x="34" y="43" class="stage-title">Interaction-combinator reading</text>
+                  <text x="166" y="75" text-anchor="middle" class="term">λx.x x</text>
+                  <text x="166" y="98" text-anchor="middle" class="tiny">γ = structure · δ = two uses of x</text>
+
+                  <circle class="root" cx="166" cy="125" r="6" /><path class="wire" d="M166 132 V155" />
+                  <path class="fan" d="M166 155 L126 212 H206 Z" /><text x="166" y="191" text-anchor="middle" class="operator">γ</text>
+                  <text x="215" y="167" class="tiny">λ</text>
+                  <path class="wire" d="M143 204 C124 236 122 255 130 274 M189 204 C213 231 214 264 204 307" />
+                  <path class="replicator" d="M94 274 H166 L151 314 H109 Z" /><text x="130" y="301" text-anchor="middle" class="operator">δ</text>
+                  <path class="fan" d="M204 307 L164 365 H244 Z" /><text x="204" y="346" text-anchor="middle" class="operator">γ</text>
+                  <text x="253" y="319" class="tiny">@</text>
+                  <path class="wire" d="M109 314 C100 351 154 374 181 365 M151 314 C180 348 206 353 227 365" />
+                  <text x="132" y="395" text-anchor="middle" class="tiny">one input x fans out</text>
+                  <text x="204" y="413" text-anchor="middle" class="tiny">to function and argument</text>
+                  <text x="166" y="450" text-anchor="middle" class="tiny">the labels distinguish roles for readers</text>
+
+                  <path d="M336 248 H401" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#gamma-delta-arrow)" />
+                  <text x="369" y="229" text-anchor="middle" class="tiny">make sharing</text>
+                  <text x="369" y="244" text-anchor="middle" class="tiny">explicit</text>
+
+                  <text x="442" y="43" class="stage-title">Canonical ΔK / ΔI shape</text>
+                  <text x="574" y="75" text-anchor="middle" class="term">[λx.x x]₀</text>
+                  <text x="574" y="98" text-anchor="middle" class="tiny">term, body, and application begin at level 0</text>
+
+                  <circle class="root" cx="520" cy="125" r="6" /><path class="wire" d="M520 132 V155" />
+                  <path class="fan" d="M520 155 L480 212 H560 Z" /><circle class="port" cx="520" cy="155" r="4.5" /><circle class="port" cx="480" cy="212" r="4.5" /><circle class="port" cx="560" cy="212" r="4.5" /><text x="520" y="191" text-anchor="middle" class="operator">λ</text>
+                  <text x="461" y="205" text-anchor="end" class="tiny">body</text><text x="580" y="205" class="tiny">variable port</text>
+
+                  <path class="wire" d="M480 212 C465 232 456 249 464 270" />
+                  <path class="fan" d="M444 270 H524 L484 327 Z" /><circle class="port" cx="464" cy="270" r="4.5" /><circle class="port" cx="504" cy="270" r="4.5" /><circle class="port" cx="484" cy="327" r="4.5" /><text x="484" y="303" text-anchor="middle" class="operator">@</text>
+                  <text x="432" y="342" text-anchor="end" class="tiny">[x]₀ function</text>
+                  <text x="534" y="266" class="tiny">[x]₁ argument</text>
+
+                  <path class="wire" d="M560 212 H638 V229" />
+                  <circle class="rep-port" cx="638" cy="229" r="4.5" />
+                  <path class="replicator" d="M593 235 H683 L665 280 H611 Z" /><text x="638" y="264" text-anchor="middle" class="operator">R</text>
+                  <text x="691" y="249" class="tiny">level ℓ = 1</text>
+                  <circle class="rep-port" cx="612" cy="280" r="4.5" /><circle class="rep-port" cx="664" cy="280" r="4.5" />
+                  <path class="wire" d="M612 285 C571 336 516 348 484 327 M664 285 C620 272 575 271 504 270" />
+                  <text x="556" y="348" text-anchor="middle" class="tiny">d₀ = 0 − 1 = −1</text>
+                  <text x="622" y="315" class="tiny">d₁ = 1 − 1 = 0</text>
+                  <text x="574" y="389" text-anchor="middle" class="tiny">R’s auxiliary ports attach to the two bound-x fragments.</text>
+                  <text x="574" y="409" text-anchor="middle" class="tiny">Their endpoint levels determine the stored deltas.</text>
+                  <text x="484" y="448" text-anchor="middle" class="tiny">A one-port, zero-delta R would be just a wire;</text>
+                  <text x="484" y="464" text-anchor="middle" class="tiny">two uses require this two-port sharing node.</text>
+                </svg>
+              </div>
+              <figcaption><strong>What the numbers mean in this exact term.</strong> The outer term has level <span class="math">0</span>. Its body application is also level <span class="math">0</span>; the application rule puts the argument occurrence at level <span class="math">1</span>, while the function occurrence stays at level <span class="math">0</span>. The replicator belongs to the surrounding abstraction, so it has level <span class="math">0 + 1 = 1</span>. Therefore its function-use port stores <span class="math">d<sub>0</sub> = 0 − 1 = −1</span>, and its argument-use port stores <span class="math">d<sub>1</sub> = 1 − 1 = 0</span>.</figcaption>
+            </figure>
+            <p>Crucially, a level delta is <strong>not another copy count</strong> and it is not a source-level variable value. The two-port replicator already says “one bound value has two consumers.” Its level and per-port deltas record the relative sharing context at each consumer. When replicators later commute through structure, those deltas adjust the levels of the replicas that leave through their ports. That is the bookkeeping which lets Δ-Nets represent the sharing introduced by <span class="math">δ</span> without separate scope-delimiter agents.</p>
+
+            <h3 id="deep-deltas">5.8 Let right nesting expose a deeper delta vector</h3>
+            <p>The previous term has only one application, so its two use sites differ by one level. A more revealing closed term is <span class="math">λx. x&nbsp;(x&nbsp;(x&nbsp;x))</span>. The parentheses matter: each successive occurrence on the right sits inside the <em>argument</em> of another application, and every argument edge adds one to the term level.</p>
+            <div class="trace-derivation" aria-label="Beta reduction of a four-use lambda abstraction applied to N">
+              <div class="trace-label">Source-level effect</div>
+              <p>(λx. x&nbsp;(x&nbsp;(x&nbsp;x))) N &nbsp;→<sub>β</sub>&nbsp; N&nbsp;(N&nbsp;(N&nbsp;N))</p>
+            </div>
+            <figure>
+              <div class="diagram-panel">
+                <svg class="diagram lambda-trace" viewBox="0 0 740 510" role="img" aria-label="The term lambda x dot x applied to x applied to x x, with four x occurrences at levels zero through three and a level-one replicator whose deltas are minus one, zero, plus one, and plus two">
+                  <title>A deeper level-delta derivation</title>
+                  <desc>The left panel follows three right-nested applications. Their function occurrences of x have levels zero, one, and two, while the deepest argument occurrence has level three. The right panel shows a level-one four-port replicator connected to those endpoints, giving deltas minus one, zero, plus one, and plus two.</desc>
+                  <defs>
+                    <marker id="deep-delta-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0a556e" /></marker>
+                  </defs>
+
+                  <rect class="stage" x="14" y="14" width="340" height="478" rx="10" />
+                  <text x="34" y="43" class="stage-title">Follow the right-hand argument spine</text>
+                  <text x="184" y="76" text-anchor="middle" class="term">[x (x (x x))]₀</text>
+
+                  <rect class="level-card" x="38" y="105" width="292" height="76" rx="8" />
+                  <text x="58" y="130" class="level-title">@₀ · outer application</text>
+                  <text x="58" y="151" class="tiny">function occurrence x₀ stays at level 0</text>
+                  <text x="58" y="169" class="tiny">argument subtree enters level 1</text>
+                  <path class="depth-arrow" d="M184 187 V202" />
+
+                  <rect class="level-card" x="58" y="210" width="272" height="76" rx="8" />
+                  <text x="78" y="235" class="level-title">@₁ · first nested argument</text>
+                  <text x="78" y="256" class="tiny">function occurrence x₁ stays at level 1</text>
+                  <text x="78" y="274" class="tiny">argument subtree enters level 2</text>
+                  <path class="depth-arrow" d="M204 292 V307" />
+
+                  <rect class="level-card" x="78" y="315" width="252" height="76" rx="8" />
+                  <text x="98" y="340" class="level-title">@₂ · second nested argument</text>
+                  <text x="98" y="361" class="tiny">function occurrence x₂ stays at level 2</text>
+                  <text x="98" y="379" class="tiny">argument occurrence x₃ enters level 3</text>
+
+                  <text x="184" y="428" text-anchor="middle" class="small">function keeps ℓ · argument enters ℓ + 1</text>
+                  <text x="184" y="457" text-anchor="middle" class="delta-value">endpoint levels = ⟨0, 1, 2, 3⟩</text>
+                  <text x="184" y="478" text-anchor="middle" class="tiny">the syntax fixes these numbers before reduction begins</text>
+
+                  <rect class="stage-result" x="386" y="14" width="340" height="478" rx="10" />
+                  <text x="406" y="43" class="stage-title">The corresponding sharing slice</text>
+                  <text x="556" y="72" text-anchor="middle" class="term">[λx. x (x (x x))]₀</text>
+
+                  <circle class="root" cx="556" cy="96" r="6" /><path class="wire" d="M556 102 V120" />
+                  <path class="fan" d="M556 120 L520 170 H592 Z" />
+                  <circle class="port" cx="556" cy="120" r="4.5" /><circle class="port" cx="520" cy="170" r="4.5" /><circle class="port" cx="592" cy="170" r="4.5" />
+                  <text x="556" y="153" text-anchor="middle" class="operator">λ</text>
+
+                  <path class="wire" d="M520 170 C500 176 480 181 465 188" />
+                  <rect class="level-card" x="400" y="188" width="132" height="36" rx="8" />
+                  <text x="466" y="211" text-anchor="middle" class="tiny">body: @₀ → @₁ → @₂</text>
+
+                  <path class="wire" d="M592 170 C614 188 582 211 556 224" />
+                  <circle class="rep-port" cx="556" cy="224" r="4.5" />
+                  <path class="replicator" d="M420 230 H692 L670 280 H442 Z" />
+                  <text x="556" y="262" text-anchor="middle" class="operator">R · level 1</text>
+                  <circle class="rep-port" cx="455" cy="280" r="4.5" /><circle class="rep-port" cx="520" cy="280" r="4.5" /><circle class="rep-port" cx="590" cy="280" r="4.5" /><circle class="rep-port" cx="657" cy="280" r="4.5" />
+
+                  <path class="wire" d="M455 285 L436 329 M520 285 L516 329 M590 285 L596 329 M657 285 L676 329" />
+                  <rect class="level-card" x="400" y="329" width="72" height="84" rx="8" />
+                  <rect class="level-card" x="480" y="329" width="72" height="84" rx="8" />
+                  <rect class="level-card" x="560" y="329" width="72" height="84" rx="8" />
+                  <rect class="level-card" x="640" y="329" width="72" height="84" rx="8" />
+
+                  <text x="436" y="353" text-anchor="middle" class="level-title">x₀</text><text x="436" y="376" text-anchor="middle" class="tiny">level 0</text><text x="436" y="399" text-anchor="middle" class="delta-value">d₀ = −1</text>
+                  <text x="516" y="353" text-anchor="middle" class="level-title">x₁</text><text x="516" y="376" text-anchor="middle" class="tiny">level 1</text><text x="516" y="399" text-anchor="middle" class="delta-value">d₁ = 0</text>
+                  <text x="596" y="353" text-anchor="middle" class="level-title">x₂</text><text x="596" y="376" text-anchor="middle" class="tiny">level 2</text><text x="596" y="399" text-anchor="middle" class="delta-value">d₂ = +1</text>
+                  <text x="676" y="353" text-anchor="middle" class="level-title">x₃</text><text x="676" y="376" text-anchor="middle" class="tiny">level 3</text><text x="676" y="399" text-anchor="middle" class="delta-value">d₃ = +2</text>
+
+                  <text x="556" y="451" text-anchor="middle" class="delta-value">d(R) = ⟨−1, 0, +1, +2⟩</text>
+                  <text x="556" y="476" text-anchor="middle" class="tiny">each port stores: endpoint level − replicator level 1</text>
+                </svg>
+              </div>
+              <figcaption><strong>Why the vector grows.</strong> The abstraction is at level <span class="math">0</span>, so its replicator is at level <span class="math">1</span>. The four bound-variable endpoints are at levels <span class="math">0, 1, 2, 3</span>. Applying <span class="math">d<sub>i</sub> = l<sub>i</sub> − l<sub>R</sub></span> component by component yields <span class="math">⟨−1, 0, +1, +2⟩</span>. The positive deltas appear because two consumers lie deeper than the replicator’s own context.</figcaption>
+            </figure>
+
+            <table class="comparison" aria-label="Level-delta derivation for the four occurrences of x">
+              <thead><tr><th>Occurrence</th><th>Position in the term</th><th>Endpoint level</th><th>Stored delta</th></tr></thead>
+              <tbody>
+                <tr><td>x₀</td><td>Function of the outer application.</td><td>0</td><td>0 − 1 = −1</td></tr>
+                <tr><td>x₁</td><td>Function inside the first argument.</td><td>1</td><td>1 − 1 = 0</td></tr>
+                <tr><td>x₂</td><td>Function inside the second argument.</td><td>2</td><td>2 − 1 = +1</td></tr>
+                <tr><td>x₃</td><td>Argument of the deepest application.</td><td>3</td><td>3 − 1 = +2</td></tr>
+              </tbody>
+            </table>
+            <p>If this abstraction is applied to a term <span class="math">N</span>, the replicator represents the four consumers of that one argument. When later interactions move sharing through the nested application structure, an exit through the four ports adjusts an arriving replica’s level by <span class="math">−1</span>, <span class="math">0</span>, <span class="math">+1</span>, or <span class="math">+2</span>, respectively. The numbers preserve where each use belongs; they still do not say how many copies to make.</p>
+          </section>
+        </section>
+
+        <section class="chapter" id="discipline" aria-labelledby="discipline-title">
+          <p class="chapter-kicker"><span class="number">06</span> Beyond core interaction</p>
+          <h2 id="discipline-title">Reduction needs housekeeping and a schedule.</h2>
+          <p class="intro">The full algorithm combines the interaction-net core with <strong>canonicalization</strong> rules—cleanup rewrites that restore the special term-like net shape—and a global <strong>leftmost-outermost</strong> discipline for nonlinear systems.</p>
+
+          <h3>6.1 Canonical and proper are different states</h3>
+          <p>The translation produces a <strong>canonical</strong> net: one in the standard shape that the reverse translation knows how to read. After zero or more core interactions, the result is a <strong>proper</strong> net: a reachable intermediate net in the broader shape used during reduction. Canonicalization rewrites return that intermediate structure to the standard canonical form.</p>
+          <table class="comparison">
+            <thead><tr><th>State</th><th>Meaning in the paper</th><th>Why a reader should care</th></tr></thead>
+            <tbody>
+              <tr><td>Canonical</td><td>Directly produced by the <span class="math">φ</span> translation and in the special normal shape the back-translation expects.</td><td>It is the stable, term-like representation.</td></tr>
+              <tr><td>Proper</td><td>Reachable from a canonical net by zero or more Δ interactions.</td><td>It is the broader space where reduction does its work.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>6.2 Erasure needs a root-reachability sweep</h3>
+          <p>In ΔA and ΔK, an eraser can leave disconnected <strong>subnets</strong> (smaller graph regions) behind. The paper’s canonicalization erasure step collects this unreachable graph material in one reachability sweep:</p>
+          <div class="steps">
+            <div class="step"><div class="step-no">A</div><div><h3>Mark from the root</h3><p>Traverse parent–child wires that are reachable from the root and mark the nodes encountered.</p></div></div>
+            <div class="step"><div class="step-no">B</div><div><h3>Discard what was not marked</h3><p>Erase all unreachable nodes. Wires formerly connected to them connect to erasers instead.</p></div></div>
+            <div class="step"><div class="step-no">C</div><div><h3>Choose the space/time trade-off</h3><p>This sweep can run at the end or earlier to save space. The paper recommends after every application of an abstraction that ignores its argument when minimizing memory is the priority.</p></div></div>
+          </div>
+
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 365" role="img" aria-label="Three stages of erasure canonicalization: a proper net with a detached subnet, a root traversal that marks only the reachable component, and a cleaned net with the unmarked subnet removed and exposed connections capped by erasers">
+                <title>Root-reachability erasure canonicalization</title>
+                <desc>A proper net may contain graph material disconnected from the root. A traversal marks the root-connected component, leaves the detached island unmarked, then deletes the island. Any surviving connection exposed by deletion is attached to an eraser.</desc>
+                <defs>
+                  <marker id="sweep-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+
+                <rect class="stage" x="14" y="14" width="214" height="337" rx="10" />
+                <rect class="stage" x="263" y="14" width="214" height="337" rx="10" />
+                <rect class="stage-result" x="512" y="14" width="214" height="337" rx="10" />
+                <text x="34" y="43" class="stage-title">1 · Proper intermediate net</text>
+                <text x="283" y="43" class="stage-title">2 · Mark from the root</text>
+                <text x="532" y="43" class="stage-title">3 · Remove the unmarked</text>
+
+                <circle class="root" cx="87" cy="72" r="6" /><text x="103" y="76" class="tiny wire-label">root</text>
+                <path class="wire" d="M87 79 V101 M87 101 C87 122 59 126 59 146 M87 101 C87 122 115 126 115 146" />
+                <circle class="node orange" cx="59" cy="157" r="13" /><circle class="node violet" cx="115" cy="157" r="13" />
+                <path class="wire" d="M59 170 V198 M115 170 V198" />
+                <rect class="level-card" x="34" y="198" width="50" height="35" rx="7" /><rect class="level-card" x="90" y="198" width="50" height="35" rx="7" />
+                <text x="59" y="220" text-anchor="middle" class="tiny">live</text><text x="115" y="220" text-anchor="middle" class="tiny">live</text>
+
+                <g>
+                  <rect class="fragment-boundary" x="148" y="122" width="60" height="128" rx="9" />
+                  <circle class="node orange" cx="178" cy="153" r="12" />
+                  <path class="wire" d="M178 165 V184 M178 184 L160 208 M178 184 L196 208" />
+                  <rect class="level-card" x="149" y="208" width="24" height="26" rx="5" /><rect class="level-card" x="184" y="208" width="24" height="26" rx="5" />
+                  <text x="178" y="268" text-anchor="middle" class="tiny">detached island</text>
+                </g>
+                <text x="121" y="307" text-anchor="middle" class="delta-value">root cannot reach every node</text>
+
+                <circle cx="336" cy="72" r="6" fill="var(--teal)" /><text x="352" y="76" class="tiny wire-label">start here</text>
+                <path class="reachable-wire" d="M336 79 V101 M336 101 C336 122 308 126 308 146 M336 101 C336 122 364 126 364 146" />
+                <circle cx="308" cy="157" r="13" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="2.5" />
+                <circle cx="364" cy="157" r="13" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="2.5" />
+                <path class="reachable-wire" d="M308 170 V198 M364 170 V198" />
+                <rect x="283" y="198" width="50" height="35" rx="7" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="1.8" />
+                <rect x="339" y="198" width="50" height="35" rx="7" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="1.8" />
+                <text x="308" y="220" text-anchor="middle" class="tiny">marked</text><text x="364" y="220" text-anchor="middle" class="tiny">marked</text>
+
+                <g class="unreachable-group">
+                  <rect class="fragment-boundary" x="397" y="122" width="60" height="128" rx="9" />
+                  <circle class="node orange" cx="427" cy="153" r="12" />
+                  <path class="wire" d="M427 165 V184 M427 184 L409 208 M427 184 L445 208" />
+                  <rect class="level-card" x="398" y="208" width="24" height="26" rx="5" /><rect class="level-card" x="433" y="208" width="24" height="26" rx="5" />
+                </g>
+                <text x="427" y="268" text-anchor="middle" class="tiny">unmarked</text>
+                <text x="370" y="307" text-anchor="middle" class="delta-value">teal = reachable from root</text>
+
+                <circle class="root" cx="585" cy="72" r="6" /><text x="601" y="76" class="tiny wire-label">root</text>
+                <path class="reachable-wire" d="M585 79 V101 M585 101 C585 122 557 126 557 146 M585 101 C585 122 613 126 613 146" />
+                <circle cx="557" cy="157" r="13" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="2.5" />
+                <circle cx="613" cy="157" r="13" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="2.5" />
+                <path class="reachable-wire" d="M557 170 V198 M613 170 V198" />
+                <rect x="532" y="198" width="50" height="35" rx="7" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="1.8" />
+                <rect x="588" y="198" width="50" height="35" rx="7" fill="var(--teal-pale)" stroke="var(--teal)" stroke-width="1.8" />
+                <text x="557" y="220" text-anchor="middle" class="tiny">kept</text><text x="613" y="220" text-anchor="middle" class="tiny">kept</text>
+
+                <path class="cut-wire" d="M674 139 V168" />
+                <rect class="eraser" x="650" y="168" width="48" height="36" rx="11" />
+                <text x="674" y="192" text-anchor="middle" class="operator">E</text>
+                <text x="674" y="220" text-anchor="middle" class="tiny">exposed wire</text>
+                <text x="619" y="268" text-anchor="middle" class="tiny">the detached island is gone</text>
+                <text x="619" y="307" text-anchor="middle" class="delta-value">surviving exposed sockets get E</text>
+
+                <path d="M233 178 H251" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#sweep-arrow)" />
+                <path d="M482 178 H500" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#sweep-arrow)" />
+              </svg>
+            </div>
+            <figcaption><strong>This is a global cleanup pass, not a principal-port interaction.</strong> The sweep begins at the distinguished root, marks the graph material reachable through the parent–child wiring, and deletes everything else. Where deleting an unmarked node exposes a connection that remains in the net, that connection is terminated by <span class="math">E</span>. The schematic follows the erasure canonicalization described in <a href="https://arxiv.org/html/2505.20314v4#S4">Section 4 of the paper</a>.</figcaption>
+          </figure>
+
+          <h3>6.3 Sharing needs replicator cleanup</h3>
+          <p>In ΔI and ΔK, interactions can form trees made only of replicators. The merge rule applies to consecutive replicators whose unpaired status can be established from a local level condition. This preserves pairing information while compressing the tree.</p>
+          <div class="callout formal">
+            <div class="symbol">Δ</div>
+            <div>
+              <h3>The local merge test</h3>
+              <p>For consecutive replicators A and B connected through a port whose delta is <span class="math">d</span>, B can be known unpaired when <span class="math">0 ≤ l<sub>B</sub> − l<sub>A</sub> ≤ d</span>. The paper argues this means B cannot interact before A is annihilated; as A is unpaired, it never will be.</p>
+            </div>
+          </div>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 430" role="img" aria-label="Two consecutive replicators A and B with levels two and four satisfy the local unpairedness test and merge into one level-two replicator whose port deltas are recomputed from endpoint levels two, three, and six">
+                <title>A concrete unpaired-replicator merge</title>
+                <desc>Replicator A is unpaired at level two. Its second port has delta three and reaches consecutive replicator B at level four. Since zero is less than or equal to two and two is less than or equal to three, B is also known unpaired. Merging keeps A's level two and the external endpoints at levels two, three, and six, producing deltas zero, plus one, and plus four.</desc>
+                <defs>
+                  <marker id="merge-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+
+                <rect class="stage" x="14" y="14" width="332" height="402" rx="10" />
+                <rect class="stage-result" x="394" y="14" width="332" height="402" rx="10" />
+                <text x="34" y="43" class="stage-title">Before: a two-agent replicator tree</text>
+                <text x="414" y="43" class="stage-title">After: one equivalent replicator</text>
+
+                <circle class="root" cx="166" cy="70" r="6" />
+                <text x="181" y="74" class="tiny wire-label">tree root</text>
+                <path class="wire" d="M166 77 V101" />
+                <circle class="rep-port" cx="166" cy="101" r="4.5" />
+                <path class="replicator" d="M80 107 H252 L232 165 H100 Z" />
+                <text x="166" y="137" text-anchor="middle" class="operator">A</text>
+                <text x="166" y="155" text-anchor="middle" class="tiny">unpaired · lₐ = 2</text>
+                <circle class="rep-port" cx="120" cy="165" r="4.5" /><circle class="rep-port" cx="212" cy="165" r="4.5" />
+                <text x="103" y="181" text-anchor="middle" class="delta-value">d₀ = 0</text>
+                <text x="230" y="181" text-anchor="middle" class="delta-value">d = 3</text>
+
+                <path class="wire" d="M120 170 C112 195 93 207 86 225" />
+                <rect class="level-card" x="34" y="225" width="104" height="53" rx="8" />
+                <text x="86" y="247" text-anchor="middle" class="level-title">endpoint</text>
+                <text x="86" y="266" text-anchor="middle" class="tiny">level 2</text>
+
+                <path class="wire" d="M212 170 C212 191 240 193 240 213" />
+                <circle class="rep-port" cx="240" cy="213" r="4.5" />
+                <path class="replicator" d="M181 219 H299 L284 270 H196 Z" />
+                <text x="240" y="248" text-anchor="middle" class="operator">B</text>
+                <text x="240" y="264" text-anchor="middle" class="tiny">unknown · lᵦ = 4</text>
+                <circle class="rep-port" cx="210" cy="270" r="4.5" /><circle class="rep-port" cx="270" cy="270" r="4.5" />
+                <text x="198" y="286" text-anchor="middle" class="delta-value">e₀ = −1</text>
+                <text x="284" y="286" text-anchor="middle" class="delta-value">e₁ = +2</text>
+                <path class="wire" d="M210 275 C210 292 194 301 194 316 M270 275 C270 292 290 301 290 316" />
+                <rect class="level-card" x="146" y="316" width="96" height="50" rx="8" />
+                <rect class="level-card" x="246" y="316" width="88" height="50" rx="8" />
+                <text x="194" y="338" text-anchor="middle" class="level-title">endpoint</text><text x="194" y="356" text-anchor="middle" class="tiny">level 3</text>
+                <text x="290" y="338" text-anchor="middle" class="level-title">endpoint</text><text x="290" y="356" text-anchor="middle" class="tiny">level 6</text>
+                <text x="180" y="397" text-anchor="middle" class="delta-value">0 ≤ 4 − 2 = 2 ≤ 3</text>
+
+                <path d="M353 208 H383" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#merge-arrow)" />
+                <text x="368" y="190" text-anchor="middle" class="tiny">merge</text>
+
+                <circle class="root" cx="560" cy="70" r="6" />
+                <path class="wire" d="M560 77 V101" />
+                <circle class="rep-port" cx="560" cy="101" r="4.5" />
+                <path class="replicator" d="M422 107 H698 L676 176 H444 Z" />
+                <text x="560" y="140" text-anchor="middle" class="operator">A merged</text>
+                <text x="560" y="160" text-anchor="middle" class="tiny">surviving level = 2</text>
+                <circle class="rep-port" cx="466" cy="176" r="4.5" /><circle class="rep-port" cx="560" cy="176" r="4.5" /><circle class="rep-port" cx="654" cy="176" r="4.5" />
+                <path class="wire" d="M466 181 C466 206 458 214 458 238 M560 181 V238 M654 181 C654 206 662 214 662 238" />
+
+                <rect class="level-card" x="410" y="238" width="96" height="92" rx="8" />
+                <rect class="level-card" x="512" y="238" width="96" height="92" rx="8" />
+                <rect class="level-card" x="614" y="238" width="96" height="92" rx="8" />
+                <text x="458" y="263" text-anchor="middle" class="level-title">endpoint 0</text><text x="458" y="285" text-anchor="middle" class="tiny">level 2</text><text x="458" y="312" text-anchor="middle" class="delta-value">2 − 2 = 0</text>
+                <text x="560" y="263" text-anchor="middle" class="level-title">endpoint 1</text><text x="560" y="285" text-anchor="middle" class="tiny">level 3</text><text x="560" y="312" text-anchor="middle" class="delta-value">3 − 2 = +1</text>
+                <text x="662" y="263" text-anchor="middle" class="level-title">endpoint 2</text><text x="662" y="285" text-anchor="middle" class="tiny">level 6</text><text x="662" y="312" text-anchor="middle" class="delta-value">6 − 2 = +4</text>
+                <text x="560" y="365" text-anchor="middle" class="delta-value">d(A merged) = ⟨0, +1, +4⟩</text>
+                <text x="560" y="390" text-anchor="middle" class="tiny">same endpoints · one fewer agent</text>
+              </svg>
+            </div>
+            <figcaption><strong>The inequality establishes safety; endpoint levels determine the new numbers.</strong> Here <span class="math">A</span> is known unpaired, and its connecting port has <span class="math">d = 3</span>. Since <span class="math">0 ≤ l<sub>B</sub> − l<sub>A</sub> = 2 ≤ 3</span>, <span class="math">B</span> is also known unpaired and the consecutive agents may merge. The surviving replicator keeps level <span class="math">2</span>; the external endpoint levels remain <span class="math">2, 3, 6</span>, so the defining subtraction yields <span class="math">⟨0,+1,+4⟩</span>. This is canonicalization, not a principal-to-principal core interaction.</figcaption>
+          </figure>
+          <p>ΔK has one more cleanup: <strong>unpaired replicator decay</strong>. Auxiliary ports of unpaired replicators that lead to erasers can be removed. If that leaves one zero-delta port, the replicator becomes the wire it is equivalent to.</p>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 315" role="img" aria-label="Unpaired replicator decay removes two auxiliary ports connected to erasers, leaving a one-port zero-delta replicator which is then replaced by an ordinary wire">
+                <title>Unpaired replicator decay</title>
+                <desc>An unpaired three-port replicator has one live port with delta zero and two ports connected to erasers. Decay removes the eraser-bound ports. The remaining one-port replicator has delta zero, so it is equivalent to and replaced by a wire.</desc>
+                <defs>
+                  <marker id="decay-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+
+                <rect class="stage" x="14" y="14" width="214" height="287" rx="10" />
+                <rect class="stage" x="263" y="14" width="214" height="287" rx="10" />
+                <rect class="stage-result" x="512" y="14" width="214" height="287" rx="10" />
+                <text x="34" y="43" class="stage-title">1 · Eraser-bound ports</text>
+                <text x="283" y="43" class="stage-title">2 · Ports decay away</text>
+                <text x="532" y="43" class="stage-title">3 · Zero-delta identity</text>
+
+                <circle class="root" cx="121" cy="68" r="6" />
+                <path class="wire" d="M121 75 V91" />
+                <circle class="rep-port" cx="121" cy="91" r="4.5" />
+                <path class="replicator" d="M35 97 H207 L191 151 H51 Z" />
+                <text x="121" y="128" text-anchor="middle" class="operator">R · unpaired</text>
+                <circle class="rep-port" cx="67" cy="151" r="4.5" /><circle class="rep-port" cx="121" cy="151" r="4.5" /><circle class="rep-port" cx="175" cy="151" r="4.5" />
+                <path class="wire" d="M67 156 V203 M121 156 V185 M175 156 V185" />
+                <rect class="level-card" x="29" y="203" width="76" height="42" rx="8" />
+                <text x="67" y="229" text-anchor="middle" class="tiny">live endpoint</text>
+                <rect class="eraser" x="99" y="185" width="44" height="36" rx="11" /><rect class="eraser" x="153" y="185" width="44" height="36" rx="11" />
+                <text x="121" y="209" text-anchor="middle" class="operator">E</text><text x="175" y="209" text-anchor="middle" class="operator">E</text>
+                <text x="67" y="181" text-anchor="middle" class="delta-value wire-label">d₀ = 0</text>
+                <text x="121" y="272" text-anchor="middle" class="tiny">two ports lead only to erasers</text>
+
+                <path d="M233 158 H251" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#decay-arrow)" />
+
+                <circle class="root" cx="370" cy="68" r="6" />
+                <path class="wire" d="M370 75 V103" />
+                <circle class="rep-port" cx="370" cy="103" r="4.5" />
+                <path class="replicator" d="M320 109 H420 L405 165 H335 Z" />
+                <text x="370" y="140" text-anchor="middle" class="operator">R</text>
+                <circle class="rep-port" cx="370" cy="165" r="4.5" />
+                <text x="401" y="183" class="delta-value">d₀ = 0</text>
+                <path class="wire" d="M370 170 V215" />
+                <rect class="level-card" x="328" y="215" width="84" height="42" rx="8" />
+                <text x="370" y="241" text-anchor="middle" class="tiny">same endpoint</text>
+                <text x="370" y="282" text-anchor="middle" class="tiny">one auxiliary port remains</text>
+
+                <path d="M482 158 H500" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#decay-arrow)" />
+
+                <circle class="root" cx="619" cy="68" r="6" />
+                <path class="result-wire" d="M619 75 V215" />
+                <rect class="level-card" x="577" y="215" width="84" height="42" rx="8" />
+                <text x="619" y="241" text-anchor="middle" class="tiny">same endpoint</text>
+                <text x="619" y="146" text-anchor="middle" class="operator wire-label">ordinary wire</text>
+                <text x="619" y="282" text-anchor="middle" class="delta-value">one-port R with d = 0 ≡ wire</text>
+              </svg>
+            </div>
+            <figcaption><strong>Decay removes only eraser-bound auxiliary ports.</strong> In this ΔK example, the two <span class="math">E</span>-bound exits contribute no surviving consumers, so they are deleted. The remaining one-port replicator has delta <span class="math">0</span>; by the canonical representation rule it carries no information beyond the connection itself and collapses to a wire. The paper applies this cleanup during erasure canonicalization or lazily just before relevant replication rules.</figcaption>
+          </figure>
+
+          <h3>6.4 Why the algorithm specifies leftmost-outermost</h3>
+          <p>Core interaction rules enjoy the local confluence property. Canonicalization rules can involve ports beyond a principal-to-principal pair, so they operate under an additional scheduling discipline. <strong>Leftmost-outermost</strong> first selects an outermost reducible pattern—one with no enclosing reducible pattern—then chooses the leftmost candidate in the term-like reading of the net. Here “sequential” means this priority rule chooses one next interaction. The paper uses that order for ΔA, ΔI, and ΔK so that cleanup happens early and merge opportunities are handled before later interactions.</p>
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 740 165" role="img" aria-label="A conceptual leftmost-outermost reduction schedule">
+                <title>A conceptual leftmost-outermost reduction schedule</title><desc>A topmost outer interaction is selected before nested or rightward interactions, allowing cleanup to be applied before work that it makes unnecessary.</desc>
+                <text x="28" y="28" class="label">Choose work from the outside, then leftward</text>
+                <path class="wire" d="M159 67 L159 105 M159 105 L93 137 M159 105 L254 137 M254 137 L335 137 M442 67 L442 105 M442 105 L390 137 M442 105 L504 137 M504 137 L635 137" />
+                <circle class="node orange" cx="159" cy="59" r="17" /><circle class="node violet" cx="442" cy="59" r="17" />
+                <circle class="node teal" cx="254" cy="137" r="15" /><circle class="node teal" cx="504" cy="137" r="15" />
+                <circle cx="159" cy="59" r="25" fill="none" stroke="#9a5f3d" stroke-width="3" stroke-dasharray="5 4" />
+                <text x="159" y="64" text-anchor="middle" class="label">1</text><text x="442" y="64" text-anchor="middle" class="label">2</text><text x="254" y="142" text-anchor="middle" class="label">3</text><text x="504" y="142" text-anchor="middle" class="label">4</text>
+                <text x="70" y="158" class="small">selected first</text><text x="305" y="158" class="small">nested / later candidates wait</text>
+              </svg>
+            </div>
+            <figcaption><strong>Important nuance.</strong> The paper also permits a reducible pair to run early if it will eventually reach the leftmost-outermost position unchanged. This preserves some safe parallelism while retaining the schedule’s optimality rationale.</figcaption>
+          </figure>
+        </section>
+
+        <section class="chapter" id="guarantees" aria-labelledby="guarantees-title">
+          <p class="chapter-kicker"><span class="number">07</span> Synthesis</p>
+          <h2 id="guarantees-title">What does this proposal actually promise?</h2>
+          <p class="intro">The paper’s final claim is an algorithm for optimal parallel <span class="math">λ</span>-reduction: translate a term to a canonical net, reduce with the core rules plus required canonicalizations and scheduling, then read a canonical net back as a term.</p>
+
+          <figure>
+            <div class="diagram-panel">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 285" role="img" aria-label="The complete Delta-Nets lifecycle from a lambda term through canonical encoding and proper intermediate nets to a normal canonical net and lambda-term read-back">
+                <title>The complete term-to-net-to-term lifecycle</title>
+                <desc>A lambda term is encoded by phi as a canonical Delta-Net. Core interactions and canonicalization move through proper intermediate nets. Omega produces a normal canonical net, and inverse phi reads it back as a lambda-term normal form.</desc>
+                <defs>
+                  <marker id="lifecycle-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+
+                <text x="24" y="31" class="stage-title">The whole algorithm in one line</text>
+                <rect class="phase-box" x="18" y="77" width="118" height="82" rx="10" />
+                <rect class="phase-box" x="168" y="77" width="118" height="82" rx="10" />
+                <rect class="level-card" x="318" y="77" width="118" height="82" rx="10" />
+                <rect class="phase-box" x="468" y="77" width="118" height="82" rx="10" />
+                <rect class="stage-result" x="618" y="77" width="108" height="82" rx="10" />
+
+                <text x="77" y="106" text-anchor="middle" class="level-title">source λ-term</text>
+                <text x="77" y="130" text-anchor="middle" class="term">t</text>
+                <text x="77" y="148" text-anchor="middle" class="tiny">syntax</text>
+                <text x="227" y="104" text-anchor="middle" class="level-title">canonical net</text>
+                <text x="227" y="128" text-anchor="middle" class="operator">φ(t)</text>
+                <text x="227" y="145" text-anchor="middle" class="tiny">term-like starting</text>
+                <text x="227" y="156" text-anchor="middle" class="tiny">shape</text>
+                <text x="377" y="104" text-anchor="middle" class="level-title">proper states</text>
+                <text x="377" y="128" text-anchor="middle" class="operator">Δ*</text>
+                <text x="377" y="145" text-anchor="middle" class="tiny">reachable</text>
+                <text x="377" y="156" text-anchor="middle" class="tiny">intermediates</text>
+                <text x="527" y="100" text-anchor="middle" class="level-title">normal</text>
+                <text x="527" y="113" text-anchor="middle" class="level-title">canonical</text>
+                <text x="527" y="128" text-anchor="middle" class="operator">Ω(φ(t))</text>
+                <text x="527" y="148" text-anchor="middle" class="tiny">cleanup complete</text>
+                <text x="672" y="104" text-anchor="middle" class="level-title">read-back</text>
+                <text x="672" y="128" text-anchor="middle" class="term">t′</text>
+                <text x="672" y="148" text-anchor="middle" class="tiny">λ normal form</text>
+
+                <path d="M139 118 H158" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#lifecycle-arrow)" />
+                <path d="M289 118 H308" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#lifecycle-arrow)" />
+                <path d="M439 118 H458" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#lifecycle-arrow)" />
+                <path d="M589 118 H608" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#lifecycle-arrow)" />
+
+                <text x="149" y="193" text-anchor="middle" class="delta-value">φ · encode</text>
+                <text x="299" y="193" text-anchor="middle" class="delta-value">Δ · interact</text>
+                <text x="449" y="188" text-anchor="middle" class="delta-value">Ω · normalize</text>
+                <text x="449" y="202" text-anchor="middle" class="tiny">and canonicalize</text>
+                <text x="599" y="193" text-anchor="middle" class="delta-value">φ⁻¹ · read back</text>
+
+                <path class="cut-wire" d="M318 235 H436" />
+                <text x="377" y="229" text-anchor="middle" class="tiny wire-label">leftmost-outermost where required</text>
+                <text x="370" y="269" text-anchor="middle" class="delta-value">core interactions do the computation · canonicalization restores readable shape</text>
+              </svg>
+            </div>
+            <figcaption><strong>Keep the state changes separate.</strong> The bijection <span class="math">φ</span> creates the initial canonical net. Core interactions enter the broader space of proper nets; the subsystem’s prescribed interaction order and canonicalizations are collected by <span class="math">Ω</span> until the net is both normal and canonical. Only then does <span class="math">φ<sup>−1</sup></span> read it back as a λ-term. This is the construction formalized near the end of <a href="https://arxiv.org/html/2505.20314v4#S4">Section 4 of the paper</a>.</figcaption>
+          </figure>
+
+          <div class="takeaways">
+            <article class="takeaway"><span class="count">01 / NO DISCARDED WORK</span><h3>Erasure is controlled</h3><p>Leftmost-outermost reduction avoids evaluating a subnet that will later be erased; the reachability sweep removes the leftover garbage.</p></article>
+            <article class="takeaway"><span class="count">02 / NO REPEATED WORK</span><h3>Sharing stays interior</h3><p>Replicators represent shared use directly, aiming to avoid duplicating necessary reductions merely because an expression has several consumers.</p></article>
+            <article class="takeaway"><span class="count">03 / LOCAL PARALLELISM</span><h3>Independent pairs can run</h3><p>The interaction core’s perfect confluence lets disjoint active pairs choose and apply their local rules independently.</p></article>
+          </div>
+
+          <h3>7.1 The guarantee differs by subsystem</h3>
+          <p>In ΔL, fan annihilation is the only interaction. The paper states that all proper nets are canonical, and that if <span class="math">n</span> β-reductions normalize a λL term, <span class="math">n</span> interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization rules for erasure and sharing structures.</p>
+          <table class="comparison">
+            <thead><tr><th>System</th><th>Extra concern</th><th>Paper’s prescribed response</th></tr></thead>
+            <tbody>
+              <tr><td>ΔL</td><td>None beyond fan annihilation.</td><td>Any interaction order; perfect confluence.</td></tr>
+              <tr><td>ΔA</td><td>Discarded subnet garbage.</td><td>Leftmost-outermost annihilations + erasure canonicalization.</td></tr>
+              <tr><td>ΔI</td><td>Replicator trees and early copies.</td><td>Leftmost-outermost + unpaired merging / canonicalization.</td></tr>
+              <tr><td>ΔK</td><td>Both garbage and sharing context.</td><td>Leftmost-outermost + erasure, merge, and decay canonicalizations.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>7.2 A useful way to separate the claims</h3>
+          <ol>
+            <li><strong>Expressiveness:</strong> every term in the four λ fragments has a canonical net representation, with a stated bijection.</li>
+            <li><strong>Local behavior:</strong> the three-agent interaction core is an interaction system with the one-step diamond property.</li>
+            <li><strong>Whole-algorithm behavior:</strong> adding canonicalization and the global reduction discipline is claimed to give <strong>Church–Rosser confluence</strong> and optimality for the nonlinear systems. Church–Rosser confluence is the standard name for the broader agreement property: reduction paths that start from the same object can be continued to a common result.</li>
+          </ol>
+          <p>This distinction matters. The third layer relies on erasure sweeps, replicator merging, decay, and leftmost-outermost scheduling in addition to the core interaction rules.</p>
+
+          <h3>7.3 The broader proposition</h3>
+          <p>The paper asks readers to see λ-calculus as a <em>projection</em> of Δ-Nets: λ-terms enforce a particular, restrictive form of sharing, while nets can express sharing relationships that syntax alone obscures. If the proposed reduction machinery holds up, that added freedom could matter for parallel language runtimes and machine architectures.</p>
+          <div class="callout key">
+            <div class="symbol">✓</div>
+            <div>
+              <h3>One-sentence takeaway</h3>
+              <p>Δ-Nets tries to make optimal parallel evaluation practical by packing each sharing boundary’s information into a variable-arity replicator, then combining local interactions with only the global discipline needed to avoid preventable work.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="glossary" aria-labelledby="glossary-title">
+          <p class="chapter-kicker"><span class="number">08</span> Keep nearby</p>
+          <h2 id="glossary-title">A compact glossary, then the source.</h2>
+          <p class="intro">Use these short definitions while reading the formal article. They are intentionally intuitive, and defer to the paper for exact notation and proofs.</p>
+          <div class="glossary" aria-label="Glossary">
+            <article><h3>λ-term</h3><p>A program made from variables, abstractions, and applications. In <span class="math">λx.t</span>, the abstraction binds parameter <span class="math">x</span> in body <span class="math">t</span>. In <span class="math">t&nbsp;u</span>, <span class="math">t</span> is the function and <span class="math">u</span> is its argument.</p></article>
+            <article><h3>β-redex / β-reduction</h3><p>A β-redex is a function already applied to an argument, <span class="math">(λx.t)u</span>. Its β-reduction substitutes <span class="math">u</span> for the bound occurrences of <span class="math">x</span> in <span class="math">t</span>.</p></article>
+            <article><h3>Normal form / normalizing</h3><p>Normal form means no reducible pattern remains. A term or net is normalizing if some reduction sequence eventually reaches normal form; it need not do so in every system or every sequence.</p></article>
+            <article><h3>Interaction system</h3><p>A graph-rewriting system made of agent types and rules that apply only when two agents meet at their principal ports.</p></article>
+            <article><h3>Agent / port</h3><p>An agent is one small node in a net. Ports are its connection sockets. Each agent has one principal port and zero or more auxiliary ports.</p></article>
+            <article><h3>Active pair</h3><p>Two agents connected through their principal ports; exactly the local configuration that an interaction rule rewrites.</p></article>
+            <article><h3>One-step diamond</h3><p>If two different single interactions can begin at the same net, the results can meet after one more interaction each. Every edge of the “diamond” is exactly one step.</p></article>
+            <article><h3>Perfect confluence</h3><p>The paper’s name for the one-step diamond property of its interaction-system core. It means competing local steps agree immediately.</p></article>
+            <article><h3>Church–Rosser confluence</h3><p>The broader common-result property for reduction paths. It says divergent valid reductions can be joined again, not necessarily in one step.</p></article>
+            <article><h3>Canonical Δ-Net</h3><p>A net produced by the term-to-net translation, in the special representation expected by the translation back to a λ-term.</p></article>
+            <article><h3>Canonicalization</h3><p>A cleanup rewrite used to return a proper intermediate net to canonical, term-like form. It is not itself a core principal-port interaction.</p></article>
+            <article><h3>Commutation</h3><p>An interaction of distinct, non-eraser agents. Each travels through the other and may be copied according to the other’s arity.</p></article>
+            <article><h3>Fan</h3><p>The two-auxiliary-port structural agent. In a rooted net it can encode either application or abstraction, and fan annihilation expresses β-reduction.</p></article>
+            <article><h3>Level / delta</h3><p>In a canonical λ encoding, entering the argument of an application adds one level; entering its function or an abstraction body does not. A replicator port’s delta is its bound-variable occurrence level minus the replicator level.</p></article>
+            <article><h3>Proper Δ-Net</h3><p>Any net reachable from a canonical net through zero or more core Δ interactions; it can contain noncanonical intermediate shapes.</p></article>
+            <article><h3>Replicator</h3><p>The variable-arity agent used for sharing. It has a level and an integer delta associated with each auxiliary port.</p></article>
+            <article><h3>Sharing scope</h3><p>The region controlled by one duplication context. Older interaction-net approaches often marked scope boundaries with separate delimiter agents.</p></article>
+            <article><h3>Leftmost-outermost</h3><p>A priority order: choose a reducible pattern not nested inside another, then choose the leftmost such pattern in the term-like reading of the net.</p></article>
+          </div>
+
+          <div class="references">
+            <h3>Primary source</h3>
+            <p>Daniel Augusto Rizzi Salvadori, “Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction,” <em>arXiv:2505.20314v4</em>, 22 July 2026.</p>
+            <ol>
+              <li><a href="https://arxiv.org/html/2505.20314v4">Read the HTML version on arXiv</a></li>
+              <li><a href="https://arxiv.org/abs/2505.20314">Read the arXiv abstract and download formats</a></li>
+            </ol>
+            <p><strong>About this edition.</strong> It is an independently structured teaching summary based on the paper’s abstract and Sections 1–5. All diagrams and wording here are original explanatory material, not reproductions of the author’s figures.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>Δ-Nets, decoded · A single-file companion for slower technical reading.</p>
+        <p>Source paper: <a href="https://arxiv.org/html/2505.20314v4">arXiv:2505.20314v4 ↗</a></p>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const root = document.body;
+        const progress = document.getElementById('reading-progress');
+        const sizeButtons = [...document.querySelectorAll('[data-size]')];
+        const themeButton = document.getElementById('theme-toggle');
+        const themeLabel = document.getElementById('theme-label');
+        const themeIcon = themeButton.querySelector('.theme-icon');
+        const links = [...document.querySelectorAll('.toc a')];
+        const sections = links
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        const setSize = (size) => {
+          root.dataset.size = size;
+          sizeButtons.forEach((button) => {
+            button.setAttribute('aria-pressed', String(button.dataset.size === size));
+          });
+          try { localStorage.setItem('delta-nets-reader-size', size); } catch (_) { /* Reading still works without storage. */ }
+        };
+
+        try {
+          const savedSize = localStorage.getItem('delta-nets-reader-size');
+          if (savedSize && sizeButtons.some((button) => button.dataset.size === savedSize)) setSize(savedSize);
+        } catch (_) { /* Storage access is optional. */ }
+
+        sizeButtons.forEach((button) => button.addEventListener('click', () => setSize(button.dataset.size)));
+
+        const setTheme = (theme, save = true) => {
+          const isDark = theme === 'dark';
+          root.dataset.theme = isDark ? 'dark' : 'light';
+          themeButton.setAttribute('aria-pressed', String(isDark));
+          themeButton.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+          themeLabel.textContent = isDark ? 'Light mode' : 'Dark mode';
+          themeIcon.textContent = isDark ? '☀' : '☾';
+          if (save) {
+            try { localStorage.setItem('delta-nets-reader-theme', theme); } catch (_) { /* Theme still works without storage. */ }
+          }
+        };
+
+        let savedTheme;
+        try { savedTheme = localStorage.getItem('delta-nets-reader-theme'); } catch (_) { /* Storage access is optional. */ }
+        const requestedTheme = new URLSearchParams(window.location.search).get('theme');
+        const preferredTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        setTheme(requestedTheme === 'dark' || requestedTheme === 'light' ? requestedTheme : (savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : preferredTheme), false);
+        themeButton.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+        const updateProgress = () => {
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+          let current = sections[0];
+          sections.forEach((section) => { if (section.getBoundingClientRect().top <= 145) current = section; });
+          links.forEach((link) => link.setAttribute('aria-current', String(link.getAttribute('href') === `#${current.id}`)));
+        };
+
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
+        updateProgress();
+      })();
+    </script>
+  </body>
+</html>
