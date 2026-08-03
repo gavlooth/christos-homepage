@@ -49,7 +49,7 @@ metadata to `standaloneNotes` in `notes/build.mjs`; the build copies each page t
 3. Select this project repository.
 4. Build settings:
 - Build command: `npm run build`
-- Build output directory: `.`
+- Build output directory: `public`
 5. Deploy.
 
 Cloudflare runs `npm run build` on every push, regenerating the notes automatically.
@@ -61,7 +61,7 @@ pins the Node version used for the build.
 ```bash
 npm i -g wrangler
 cd ~/code/christos-cloudflare-page
-wrangler pages dev .
+wrangler pages dev public
 ```
 
 ## Content sources used

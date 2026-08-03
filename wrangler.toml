@@ -1,6 +1,9 @@
 name = 'christos'
 compatibility_date = "2026-03-12"
-pages_build_output_dir = "."
+# The site builder writes every deployable asset to public/.  Publishing the
+# repository root makes these files live under /public/ in a Pages deployment,
+# so notebook URLs such as /notes/fibonacci-quasicrystals.html cannot resolve.
+pages_build_output_dir = "public"
 
  
 [observability]
