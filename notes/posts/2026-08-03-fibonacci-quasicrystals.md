@@ -62,6 +62,29 @@ Only the fractional part matters in a rotation modulo 1. Therefore the same circ
 
 Both are irrational. The two expressions differ by the integer 1, so they describe the same rotation after taking the result modulo 1.
 
+## The rule that turns the rotation into tiles
+
+Here is the missing concrete step. Set `β = 1 / φ² ≈ 0.382` and begin at `0` on a circle whose circumference is 1. Repeatedly advance by `β`, reducing modulo 1. Mark one point on the circle. On a step that crosses the mark, write `S`; on every other step, write `L`.
+
+The same rule, without a picture, is
+
+```text
+aₙ = floor((n + 1)β) − floor(nβ),    n = 1, 2, 3, …
+
+aₙ = 0  →  L
+aₙ = 1  →  S
+```
+
+The subtraction records whether the `n`th irrational step passes an integer—equivalently, whether the circle walk crosses the marked point. Its output begins
+
+```text
+L S L L S L S L L S …
+```
+
+which is the Fibonacci word above. An irrational step never returns to its starting phase, so this rule cannot settle into a repeating tile block. But it is not random: every tile is decided by the same rigid rotation rule.
+
+This is already a one-dimensional quasicrystal model. Treat the `L` and `S` symbols as intervals of two lengths, or place a point at every tile boundary. The resulting arrangement of tiles or points is the physical-space pattern. A quasiperiodic function can instead represent its density, scattering strength, or an occupancy rule for the points; the quasicrystal is the arrangement that such a rule specifies, not merely the graph of the function.
+
 ## Why the torus is the better picture
 
 For a continuous real variable `x`, the expression

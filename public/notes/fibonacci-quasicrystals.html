@@ -65,6 +65,19 @@ LSLLSLSL
 <pre><code class="language-text">α = φ − 1 = 1 / φ ≈ 0.618.
 </code></pre>
 <p>Both are irrational. The two expressions differ by the integer 1, so they describe the same rotation after taking the result modulo 1.</p>
+<h2>The rule that turns the rotation into tiles</h2>
+<p>Here is the missing concrete step. Set <code>β = 1 / φ² ≈ 0.382</code> and begin at <code>0</code> on a circle whose circumference is 1. Repeatedly advance by <code>β</code>, reducing modulo 1. Mark one point on the circle. On a step that crosses the mark, write <code>S</code>; on every other step, write <code>L</code>.</p>
+<p>The same rule, without a picture, is</p>
+<pre><code class="language-text">aₙ = floor((n + 1)β) − floor(nβ),    n = 1, 2, 3, …
+
+aₙ = 0  →  L
+aₙ = 1  →  S
+</code></pre>
+<p>The subtraction records whether the <code>n</code>th irrational step passes an integer—equivalently, whether the circle walk crosses the marked point. Its output begins</p>
+<pre><code class="language-text">L S L L S L S L L S …
+</code></pre>
+<p>which is the Fibonacci word above. An irrational step never returns to its starting phase, so this rule cannot settle into a repeating tile block. But it is not random: every tile is decided by the same rigid rotation rule.</p>
+<p>This is already a one-dimensional quasicrystal model. Treat the <code>L</code> and <code>S</code> symbols as intervals of two lengths, or place a point at every tile boundary. The resulting arrangement of tiles or points is the physical-space pattern. A quasiperiodic function can instead represent its density, scattering strength, or an occupancy rule for the points; the quasicrystal is the arrangement that such a rule specifies, not merely the graph of the function.</p>
 <h2>Why the torus is the better picture</h2>
 <p>For a continuous real variable <code>x</code>, the expression</p>
 <pre><code class="language-text">e^(2πiαx)
