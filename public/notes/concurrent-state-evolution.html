@@ -33,41 +33,45 @@
         <h1>Concurrent state evolution</h1>
         <p class="post-meta">13 June 2026</p>
         <div class="post-body">
-<p>You can call this my origin story as a developer, so let me tell it in order. And
-no — even though I am a Doctor (a PhD), the origin story did not turn me into a
-villain.</p>
+<p>This began with a vehicle-animation bug and ended as a general way to structure
+effectful state transitions.</p>
 <h2>The bug that started it</h2>
-<p>My first assignment at a new job was a concurrency problem. There was a replay
-engine — it consumed a stream of recorded coordinates and walked a vehicle marker
-along a route on a map, pausing, resuming, interpolating between points — and it
-misbehaved in a way that was hard to pin down. It was driven by a <code>go-loop</code> parked
-on a channel of coordinates: for each one it had to calculate, then move the
-marker, then resolve to the next. <strong>Those three steps were never cleanly
-sequenced, so they raced.</strong></p>
+<p>My first assignment at a new job was a replay engine. It consumed recorded
+coordinates and moved a vehicle marker along a route: pause, resume, interpolate,
+repeat. A <code>go-loop</code> read coordinates from a channel; each iteration calculated,
+moved the marker, and chose what came next. Those steps were not explicitly
+sequenced, so they raced.</p>
 <h2>A vehicle is a state machine</h2>
-<p>By coincidence I was reading, at the same time, one of those classic papers — Guy
-Steele&#39;s <a href="https://dspace.mit.edu/handle/1721.1/5753"><em>Lambda: The Ultimate GOTO</em></a> —
-on how a loop is really just tail recursion wearing a costume, and how a bundle of
-mutually tail-recursive functions is just a state machine.</p>
-<p>That reframing was already sitting in my head when I went back to the broken loop,
-and the two things clicked together: a vehicle replaying a route <em>is</em> a state
-machine. <code>:stopped</code>, <code>:running</code>, <code>:paused</code>, <code>:resumed</code>, and so on. Mutual recursion
-is the elegant way to write those transitions — <strong>each state decides the next.</strong></p>
+<p>At the same time I was reading Guy Steele’s <a href="https://dspace.mit.edu/handle/1721.1/5753"><em>Lambda: The Ultimate
+GOTO</em></a>: loops are tail recursion in
+costume, and mutually tail-recursive functions form a state machine.</p>
+<p>The replay engine was plainly such a machine: <code>:stopped</code>, <code>:running</code>, <code>:paused</code>,
+<code>:resumed</code>. Each state decides its successor.</p>
 <figure class="diagram">
-<svg viewBox="0 0 720 300" role="img" aria-label="State diagram of the replay engine" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
+<svg viewBox="0 0 720 300" role="img" aria-labelledby="replay-title replay-desc" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
+<title id="replay-title">Replay state machine with a nested frame phase</title>
+<desc id="replay-desc">Stopped enters the running state. Running contains a nested frames phase for interpolation. Running can pause at the route end, then resume and continue.</desc>
 <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b73"/></marker></defs>
-<g fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"><rect x="20" y="52" width="150" height="46" rx="8"/><rect x="300" y="52" width="150" height="46" rx="8"/><rect x="560" y="52" width="140" height="46" rx="8"/><rect x="240" y="206" width="270" height="46" rx="8"/><rect x="560" y="206" width="140" height="46" rx="8"/></g>
-<g fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="14" text-anchor="middle"><text x="95" y="80">:stopped</text><text x="375" y="80">:running</text><text x="630" y="80">:paused</text><text x="375" y="234">[:running :frames]</text><text x="630" y="234">:resumed</text></g>
-<g stroke="#5a6b73" stroke-width="1.5" fill="none" marker-end="url(#ar)"><line x1="170" y1="75" x2="296" y2="75"/><line x1="360" y1="98" x2="360" y2="204"/><line x1="392" y1="204" x2="392" y2="98"/><line x1="450" y1="75" x2="558" y2="75"/><line x1="630" y1="98" x2="630" y2="204"/><path d="M558,214 C 500,206 458,150 454,100"/></g>
-<g fill="#5a6b73" font-size="12"><text x="233" y="68" text-anchor="middle">play</text><text x="352" y="158" text-anchor="end">advance</text><text x="402" y="140" text-anchor="start">segment done</text><text x="504" y="68" text-anchor="middle">reach :end</text><text x="638" y="158" text-anchor="start">resume</text><text x="516" y="200" text-anchor="start">continue</text></g>
+<rect x="26" y="122" width="130" height="52" rx="9" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<text x="91" y="154" fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="14" text-anchor="middle">:stopped</text>
+<rect x="232" y="38" width="252" height="224" rx="12" fill="#f7f4ef" stroke="#1f2a2f" stroke-width="1.5"/>
+<text x="254" y="68" fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="14" font-weight="600">:running</text>
+<text x="254" y="89" fill="#5a6b73" font-size="12">top-level mode</text>
+<rect x="266" y="112" width="184" height="54" rx="9" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<text x="358" y="145" fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="13" text-anchor="middle">[:running :frames]</text>
+<text x="358" y="194" fill="#5a6b73" font-size="12" text-anchor="middle">interpolate one segment</text>
+<rect x="560" y="66" width="130" height="52" rx="9" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<rect x="560" y="190" width="130" height="52" rx="9" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<g fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="14" text-anchor="middle"><text x="625" y="98">:paused</text><text x="625" y="222">:resumed</text></g>
+<g stroke="#5a6b73" stroke-width="1.5" fill="none" marker-end="url(#ar)"><line x1="158" y1="148" x2="228" y2="148"/><line x1="358" y1="95" x2="358" y2="108"/><path d="M450,139 C468,139 468,95 450,95"/><line x1="484" y1="82" x2="556" y2="88"/><line x1="625" y1="120" x2="625" y2="186"/><line x1="558" y1="216" x2="488" y2="216"/></g>
+<g fill="#5a6b73" font-size="12"><text x="193" y="136" text-anchor="middle">play</text><text x="350" y="106" text-anchor="end">advance</text><text x="460" y="123">segment done</text><text x="520" y="71" text-anchor="middle">reach :end</text><text x="635" y="156">resume</text><text x="520" y="204" text-anchor="middle">continue</text></g>
 </svg>
-<figcaption>The replay engine as a state machine. Every box is a <code>:status</code>; the nested <code>[:running :frames]</code> is a sub-state living inside <code>:running</code>.</figcaption>
+<figcaption>The broad mode is <code>:running</code>; frame interpolation is the nested state <code>[:running :frames]</code>. That keeps a temporary phase from becoming a system-wide top-level concern.</figcaption>
 </figure>
 
-<p>So I decided to hold the state in an atom. It wasn&#39;t a considered design at first —
-an atom just seemed like the obvious place for something the outside world might
-need to poke at, like a user hitting &quot;pause&quot; halfway down the route. The atom held
-the state, and a multimethod advanced it. The <code>:status</code> <em>is</em> the dispatch value.</p>
+<p>I put the state in an atom, because the outside world needed to interrupt it — for
+example, when a user pressed pause. A multimethod advanced the machine; <code>:status</code>
+was its dispatch value.</p>
 <p class="code-label">Clojure — the decider</p>
 
 <pre><code class="language-clojure">(defmulti resolve-state (fn [state-atom] (:status @state-atom)))
@@ -105,28 +109,19 @@ the state, and a multimethod advanced it. The <code>:status</code> <em>is</em> t
   (execute-async #(execute-action state-atom)))
 </code></pre>
 <h2>A list lets the state be more granular</h2>
-<p><strong>TL;DR — a keyword is one flat label; a list nests a sub-state inside it.</strong></p>
-<p>The status doesn&#39;t have to be a single keyword — it can be a short list, and that
-is more useful than it sounds. Most of the time the vehicle is simply <code>:running</code>.
-But &quot;running&quot; quietly hides a finer activity: between any two recorded GPS points
-the marker doesn&#39;t jump, it slides across the gap one animation frame at a time.
-That sliding is a phase <em>inside</em> running — not a separate mode the way <code>:paused</code>
-is. I could have minted a new top-level status, <code>:running-between-frames</code>, but then
-every part of the code that only wants to know &quot;are we playing or not?&quot; would
-suddenly have to learn about it too.</p>
-<p>So the status becomes a list instead: <code>[:running :frames]</code>. The first element is
-the big-picture mode — we&#39;re running — and the second narrows it to the exact
-phase, the frame-by-frame slide. Think of it like an address: <code>:running</code> is the
-city, <code>:frames</code> is the street. Because the multimethod dispatches on the <em>whole</em>
-value, I can write one handler aimed precisely at <code>[:running :frames]</code>, while any
-code that only cares about the city keeps reading just the first element and never
-notices the street exists. That is how you get one state nested inside another
-without the rest of the system having to account for it.</p>
+<p><strong>A keyword is a flat state; a vector adds a nested phase.</strong></p>
+<p>Most of the time the vehicle is simply <code>:running</code>. Between two GPS points, though,
+it advances one animation frame at a time. That is a phase <em>within</em> running, not a
+peer of <code>:paused</code>.</p>
+<p>So the state is <code>[:running :frames]</code>, rather than a new top-level label such as
+<code>:running-between-frames</code>. The first value answers the broad question — “are we
+running?” — and the second identifies the phase. The multimethod dispatches on the
+whole vector, while code that only needs the broad mode can ignore the detail. Nested
+state stays local instead of leaking through the system.</p>
 <h2>Decide, then do</h2>
-<p><strong><code>resolve-state</code> never touches the map or the data — it only decides.</strong> It has no
-side effects; it records that decision — a <code>:command</code> — in the atom. A second
-multimethod, <code>execute-action</code>, then dispatches on that command, performs the actual
-effect, and hands control back to <code>resolve-state</code>:</p>
+<p><strong><code>resolve-state</code> decides; <code>execute-action</code> performs.</strong> The first writes a
+<code>:command</code> into state without touching the map. The second dispatches on that command,
+performs the effect, and returns control to the decider:</p>
 <p class="code-label">Clojure — the effects</p>
 
 <pre><code class="language-clojure">(defmulti execute-action (fn [state-atom &amp; _] (:command @state-atom)))
@@ -171,45 +166,31 @@ do(state):                     # effectful: perform the command, then loop back
 </code></pre>
 </div>
 
-<p>So the two multimethods
-<a href="https://en.wikipedia.org/wiki/Trampoline_(computing)">trampoline</a> off each
-other: decide, effect, decide, effect. <strong>A state never passes its successor (the
-next state) as an argument — it <em>names</em> it</strong> by writing <code>:status</code> / <code>:command</code> into
-the atom, and the bounce runs the next one. The atom is doing less than it looks
-here: it is just a convenient place to leave that name. With a little design the
-state could ride along as an argument instead — which is exactly what the channel
-version is about to do. In this first version the bounce was a <code>setTimeout</code> (an
-<code>execute-async</code> that also yields to pending map zooms), not a channel. That
-<code>setTimeout</code> is the trampoline. Hold that thought — it is the one piece Redux is
-about to replace.</p>
+<p>The multimethods <a href="https://en.wikipedia.org/wiki/Trampoline_(computing)">trampoline</a>
+off each other: decide, perform, decide. <strong>A state names its successor rather than
+calling it.</strong> Here it writes <code>:status</code> or <code>:command</code> to the atom, and
+<code>execute-async</code> schedules the next bounce. The atom is only a place to leave that
+name. The channel version moves the name and the data into the transition itself.</p>
 <h2>The channel replaces the setTimeout</h2>
-<p>Then I remembered where I had seen this skeleton before:
-<a href="https://slonoed.net/redux-in-closurescript-with-rum/">Redux in ClojureScript with Rum</a>.
-Its whole argument is one sentence — <em>one place for state, one place to change it</em> —
-and it gets there with the exact machinery I was already reaching for: a <code>go-loop</code>
-draining a channel, and a multimethod standing in for the reducer.</p>
+<p>Then I recognized the same shape in <a href="https://slonoed.net/redux-in-closurescript-with-rum/">Redux in ClojureScript with
+Rum</a>: one place for state and
+one place to change it. Its machinery was exactly what I needed — a <code>go-loop</code>
+draining a channel and a multimethod acting as reducer.</p>
 <pre><code class="language-clojure">(go-loop []
   (when-let [[type data] (&lt;! actions)]
     (swap! state transform data type)
     (recur)))
 </code></pre>
-<p>That was the click. My replay engine already <em>named</em> its successor instead of
-calling it — that was the whole point of writing <code>:command</code> into the atom and
-bouncing. What it lacked was a good trampoline; the <code>setTimeout</code> worked but left
-the transitions scattered across two multimethods and the event loop. Redux showed
-the better bounce: a channel and one <code>go-loop</code> draining it. Swap the <code>setTimeout</code>
-for the channel and you get what I have been calling, privately, <strong>concurrent state
-evolution</strong> — and unlike the loop I was hired to fix, it just works.</p>
+<p>That was the missing piece. The replay engine already named successors rather than
+calling them. Replace <code>setTimeout</code> with a channel, and one <code>go-loop</code> becomes the
+trampoline. I call the resulting pattern <strong>concurrent state evolution</strong>.</p>
 <h2>The payload rides with the name</h2>
-<p>The channel is the trampoline. <strong>A state still never calls its successor; it puts a
-pair on the channel — the <em>name</em> of the next state and a <em>payload</em></strong> — and a single
-loop bounces. The payload is the part the first version smuggled through the shared
-atom: now it travels in the open, as the data the next step needs to do its work.
-Every transition becomes a self-contained <code>[action data]</code> value, which is what
-makes the whole walk inspectable — you can read off, from the channel alone, what
-is happening and what it is happening to. In the latest version of this pattern —
-an AI pipeline that extracts structured data from emails — the states are no longer
-vehicle modes but steps in an effectful process, yet the skeleton is identical:</p>
+<p>The channel is the trampoline. <strong>A state never calls its successor; it puts the
+successor’s name and payload on the channel.</strong> The data that once hid in an atom now
+travels explicitly with the transition. Each <code>[action data]</code> value is self-contained:
+it says what happens next and what it happens to.</p>
+<p>In a later email-extraction pipeline, the states became steps in an effectful process
+rather than vehicle modes. The loop stayed the same:</p>
 <p class="code-label">Clojure — the email pipeline</p>
 
 <pre><code class="language-clojure">(defmulti evolve-flow (fn [action _data _config _ch] action))
@@ -235,19 +216,25 @@ vehicle modes but steps in an effectful process, yet the skeleton is identical:<
     (recur)))
 </code></pre>
 <figure class="diagram">
-<svg viewBox="0 0 720 270" role="img" aria-label="The channel trampoline loop" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
-<defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b73"/></marker></defs>
-<text x="110" y="28" fill="#5a6b73" font-size="12">the channel</text>
-<rect x="110" y="36" width="500" height="58" rx="10" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
-<g fill="#efe9df" stroke="#5a6b73" stroke-width="1"><rect x="135" y="50" width="140" height="30" rx="6"/><rect x="290" y="50" width="140" height="30" rx="6"/><rect x="445" y="50" width="140" height="30" rx="6"/></g>
-<g fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle"><text x="205" y="69">[:persist · {…}]</text><text x="360" y="69">[:extract · {…}]</text><text x="515" y="69">[:error · {…}]</text></g>
-<g fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"><rect x="120" y="176" width="180" height="64" rx="8"/><rect x="420" y="176" width="200" height="64" rx="8"/></g>
-<g fill="#1f2a2f" text-anchor="middle"><text x="210" y="204" font-size="15">go-loop</text><text x="520" y="204" font-size="15">evolve-flow</text></g>
-<g fill="#5a6b73" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle"><text x="210" y="224">(&lt;! ch)</text><text x="520" y="224">dispatch on :action</text></g>
-<g stroke="#5a6b73" stroke-width="1.5" fill="none" marker-end="url(#ar2)"><line x1="200" y1="94" x2="200" y2="174"/><line x1="300" y1="208" x2="418" y2="208"/><line x1="520" y1="176" x2="520" y2="96"/></g>
-<g fill="#5a6b73" font-size="12"><text x="192" y="142" text-anchor="end">take next</text><text x="360" y="200" text-anchor="middle">run handler</text><text x="528" y="142" text-anchor="start">push (next · payload)</text></g>
+<svg viewBox="0 0 720 270" role="img" aria-labelledby="channel-title channel-desc" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
+<title id="channel-title">A channel as the trampoline for state transitions</title>
+<desc id="channel-desc">A single go-loop takes one action and payload from the channel, routes it to a handler, and the handler places the next action and payload back onto the channel.</desc>
+<defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b73"/></marker><marker id="ar2e" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#0a556e"/></marker></defs>
+<text x="76" y="38" fill="#5a6b73" font-size="12">transition queue</text>
+<rect x="76" y="48" width="568" height="58" rx="10" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<g fill="#efe9df" stroke="#5a6b73" stroke-width="1"><rect x="100" y="62" width="160" height="30" rx="6"/><rect x="280" y="62" width="160" height="30" rx="6"/><rect x="460" y="62" width="160" height="30" rx="6"/></g>
+<g fill="#1f2a2f" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle"><text x="180" y="81">[persist · payload]</text><text x="360" y="81">[extract · payload]</text><text x="540" y="81">[error · payload]</text></g>
+<text x="76" y="128" fill="#5a6b73" font-size="12">one consumer serializes transitions</text>
+<rect x="105" y="164" width="185" height="64" rx="9" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<rect x="430" y="164" width="185" height="64" rx="9" fill="#ffffff" stroke="#1f2a2f" stroke-width="1.5"/>
+<g fill="#1f2a2f" text-anchor="middle"><text x="197" y="193" font-size="15">go-loop</text><text x="522" y="193" font-size="15">handler</text></g>
+<g fill="#5a6b73" font-family="ui-monospace, monospace" font-size="11" text-anchor="middle"><text x="197" y="213">take [action payload]</text><text x="522" y="213">evolve-flow(action, payload)</text></g>
+<g stroke="#5a6b73" stroke-width="1.5" fill="none" marker-end="url(#ar2)"><line x1="197" y1="108" x2="197" y2="160"/><line x1="292" y1="196" x2="426" y2="196"/></g>
+<path d="M522,162 C522,130 670,130 670,76 C670,35 642,31 630,49" stroke="#0a556e" stroke-width="1.6" fill="none" marker-end="url(#ar2e)"/>
+<g fill="#5a6b73" font-size="12"><text x="187" y="142" text-anchor="end">take next</text><text x="360" y="187" text-anchor="middle">route</text></g>
+<text x="636" y="126" fill="#0a556e" font-size="12" text-anchor="middle">emit next transition</text>
 </svg>
-<figcaption>One loop is the trampoline: the <code>go-loop</code> takes an <code>[action · payload]</code> pair off the channel, runs the matching handler, and the handler pushes the next pair back on. Every transition passes through one place.</figcaption>
+<figcaption>The channel carries complete transition values. One <code>go-loop</code> takes the next pair, routes it to a handler, and the handler emits the successor pair. The loop is the trampoline and the serialization point.</figcaption>
 </figure>
 
 <p class="code-label">The same loop, beyond Clojure</p>
@@ -270,35 +257,28 @@ handler EXTRACT_ORDER (payload, channel):
 </div>
 
 <h2>What this buys you</h2>
-<p>Because every transition is a value on one loop, the things that were hard in the
-original tangled go-loop become almost free:</p>
+<p>Putting every transition through one loop gives you a few useful properties:</p>
 <ul>
-<li><strong>One vantage point.</strong> Every transition passes through one place, so one log line
-describes the whole walk, and nothing races because the loop serializes. <strong>This
-is the most powerful concurrency pattern I know, and it works just about
-everywhere.</strong></li>
-<li><strong>Failure is just another action.</strong> The loop&#39;s <code>try</code>/<code>catch</code> turns any
-synchronous throw into an error action carrying the step that failed and the
-payload that broke it. The call sites stay clean and side-effect free, and error
-handling lives in one place instead of being scattered through every transition.</li>
-<li><strong>Compensation, almost by accident.</strong> Errors are ordinary actions, so you can
-route them. A <code>derive</code> hierarchy lets a class of steps share a rollback —
-anything already written to the database derives a <code>::rollback-persistence</code>, so a
-failure three steps later can undo the earlier write. That is the saga idea, with
-no extra machinery.</li>
+<li><strong>One vantage point.</strong> Every transition passes through the same place. One log
+line describes the walk, and the loop serializes its transitions.</li>
+<li><strong>Failure is an action.</strong> The loop’s <code>try</code>/<code>catch</code> converts a synchronous throw
+into an error action with the failing step and payload. Error policy lives in one
+place instead of every handler.</li>
+<li><strong>Compensation follows naturally.</strong> Errors can be routed. A <code>derive</code> hierarchy
+can give persistence steps a shared rollback, so a later failure undoes an earlier
+write. That is the saga idea without a separate framework.</li>
 </ul>
 <h2>One thing the loop can&#39;t catch</h2>
-<p><strong>The <code>try</code>/<code>catch</code> only wraps synchronous throws.</strong> If a step spawns its own
-threads, an exception on one of them sails straight past the loop, so that step has
-to catch and re-dispatch its own errors. The trampoline sequences the transitions;
-it doesn&#39;t supervise the threads underneath them.</p>
+<p><strong>The <code>try</code>/<code>catch</code> only sees synchronous throws.</strong> If a handler starts its own
+thread, that thread must catch and re-dispatch its errors. The trampoline sequences
+transitions; it does not supervise work underneath them.</p>
 <h2>None of it is mine</h2>
-<p>What I like about this is that none of the three pieces is mine. The loop/recursion
-equivalence is decades old, state machines are older, and the Redux loop I borrowed
-wholesale. The only contribution was noticing that they were the same shape, and
-that lining them up turns a fragile concurrent loop into a state evolution you can
-actually reason about. <strong>Name the next state instead of calling it, and let a
-channel do the recursion.</strong></p>
+<p>None of its parts are new: loops as recursion, state machines, and the Redux loop
+all predate this implementation. The useful observation is that they are the same
+shape. Align them and a fragile concurrent loop becomes a state evolution you can
+reason about.</p>
+<p><strong>Name the next state instead of calling it, carry its payload with it, and let a
+channel perform the recursion.</strong></p>
 
         </div>
       </article>
