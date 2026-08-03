@@ -4,25 +4,29 @@ date: 2026-06-13
 summary: How a vehicle-animation bug, a paper on loops and recursion, and the Redux pattern collided into one way of evolving state across a channel.
 ---
 
-This began with a vehicle-animation bug and ended as a general way to structure
-effectful state transitions.
+You can call this my origin story as a developer, so let me tell it in order. And
+no — even though I am a Doctor (a PhD), the origin story did not turn me into a
+villain.
 
 ## The bug that started it
 
-My first assignment at a new job was a replay engine. It consumed recorded
-coordinates and moved a vehicle marker along a route: pause, resume, interpolate,
-repeat. A `go-loop` read coordinates from a channel; each iteration calculated,
-moved the marker, and chose what came next. Those steps were not explicitly
-sequenced, so they raced.
+My first assignment at a new job was a replay engine: it read recorded coordinates
+and moved a vehicle marker along a route, with pause, resume, and smooth movement
+between points. A Clojure `go-loop` — an asynchronous loop — read coordinates from
+a channel, a queue shared between concurrent tasks. Each turn calculated, moved the
+marker, and chose what came next. Those jobs could overlap because their order was
+not explicit.
 
 ## A vehicle is a state machine
 
 At the same time I was reading Guy Steele’s [*Lambda: The Ultimate
-GOTO*](https://dspace.mit.edu/handle/1721.1/5753): loops are tail recursion in
-costume, and mutually tail-recursive functions form a state machine.
+GOTO*](https://dspace.mit.edu/handle/1721.1/5753): a loop can be written as a
+function that calls itself at the end, and a group of such functions forms a state
+machine.
 
-The replay engine was plainly such a machine: `:stopped`, `:running`, `:paused`,
-`:resumed`. Each state decides its successor.
+The replay engine was plainly such a machine. Its state — its current mode — was
+`:stopped`, `:running`, `:paused`, or `:resumed`. Each state transition chose the
+next state.
 
 <figure class="diagram">
 <svg viewBox="0 0 720 300" role="img" aria-labelledby="replay-title replay-desc" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
@@ -46,9 +50,10 @@ The replay engine was plainly such a machine: `:stopped`, `:running`, `:paused`,
 <figcaption>The broad mode is <code>:running</code>; frame interpolation is the nested state <code>[:running :frames]</code>. That keeps a temporary phase from becoming a system-wide top-level concern.</figcaption>
 </figure>
 
-I put the state in an atom, because the outside world needed to interrupt it — for
-example, when a user pressed pause. A multimethod advanced the machine; `:status`
-was its dispatch value.
+I put the state in an atom: Clojure’s small, shared mutable box. The outside world
+could then interrupt it — for example, when a user pressed pause. A multimethod, a
+function that chooses a handler from a value, advanced the machine. Here, the
+current `:status` chose the handler.
 
 <p class="code-label">Clojure — the decider</p>
 
@@ -88,25 +93,25 @@ was its dispatch value.
   (execute-async #(execute-action state-atom)))
 ```
 
-## A list lets the state be more granular
+## Running has a smaller phase inside it
 
-**A keyword is a flat state; a vector adds a nested phase.**
-
-Most of the time the vehicle is simply `:running`. Between two GPS points, though,
-it advances one animation frame at a time. That is a phase *within* running, not a
-peer of `:paused`.
+Most of the time the vehicle is simply `:running`. But, between two GPS points, it
+also has a more specific job: move one animation frame at a time. That job belongs
+*inside* running; it is not a separate mode like `:paused`.
 
 So the state is `[:running :frames]`, rather than a new top-level label such as
-`:running-between-frames`. The first value answers the broad question — “are we
-running?” — and the second identifies the phase. The multimethod dispatches on the
-whole vector, while code that only needs the broad mode can ignore the detail. Nested
-state stays local instead of leaking through the system.
+`:running-between-frames`. Read it as: “running, specifically in the frame-moving
+phase.” The first value answers the broad question — “are we running?” — and the
+second adds the detail. The multimethod dispatches on the whole vector, while code
+that only needs the broad mode can ignore the detail. This keeps the phase local
+instead of leaking through the system.
 
 ## Decide, then do
 
-**`resolve-state` decides; `execute-action` performs.** The first writes a
-`:command` into state without touching the map. The second dispatches on that command,
-performs the effect, and returns control to the decider:
+**`resolve-state` decides; `execute-action` performs.** The first records the next
+command without touching the map. The second chooses the matching command handler,
+does the real work — move the marker, for example — and then returns control to the
+decider:
 
 <p class="code-label">Clojure — the effects</p>
 
@@ -156,18 +161,21 @@ do(state):                     # effectful: perform the command, then loop back
 
 </div>
 
-The multimethods [trampoline](<https://en.wikipedia.org/wiki/Trampoline_(computing)>)
-off each other: decide, perform, decide. **A state names its successor rather than
-calling it.** Here it writes `:status` or `:command` to the atom, and
-`execute-async` schedules the next bounce. The atom is only a place to leave that
-name. The channel version moves the name and the data into the transition itself.
+The two multimethods [trampoline](<https://en.wikipedia.org/wiki/Trampoline_(computing)>)
+off each other: decide, perform, decide. A trampoline schedules the next call instead
+of making it directly, so the program repeatedly returns to the event loop.
+**A state names its successor rather than calling it.** Here it writes `:status` or
+`:command` to the atom, and `execute-async` schedules the next bounce. The atom is
+only a place to leave that name. The channel version moves both the name and its data
+into an explicit transition value.
 
 ## The channel replaces the setTimeout
 
 Then I recognized the same shape in [Redux in ClojureScript with
 Rum](https://slonoed.net/redux-in-closurescript-with-rum/): one place for state and
 one place to change it. Its machinery was exactly what I needed — a `go-loop`
-draining a channel and a multimethod acting as reducer.
+taking events from a channel, and a multimethod serving as the reducer: the function
+that receives the current state and an event, then decides the next state.
 
 ```clojure
 (go-loop []
@@ -183,11 +191,12 @@ trampoline. I call the resulting pattern **concurrent state evolution**.
 ## The payload rides with the name
 
 The channel is the trampoline. **A state never calls its successor; it puts the
-successor’s name and payload on the channel.** The data that once hid in an atom now
-travels explicitly with the transition. Each `[action data]` value is self-contained:
-it says what happens next and what it happens to.
+successor’s name and payload on the channel.** A payload is simply the data required
+by the next step. The data that once hid in an atom now travels explicitly with the
+transition. Each `[action data]` value is self-contained: it says what happens next
+and what it happens to.
 
-In a later email-extraction pipeline, the states became steps in an effectful process
+In a later email-extraction pipeline, the states became steps that perform real work
 rather than vehicle modes. The loop stayed the same:
 
 <p class="code-label">Clojure — the email pipeline</p>
@@ -235,7 +244,7 @@ rather than vehicle modes. The loop stayed the same:
 <g fill="#5a6b73" font-size="12"><text x="187" y="142" text-anchor="end">take next</text><text x="360" y="187" text-anchor="middle">route</text></g>
 <text x="636" y="126" fill="#0a556e" font-size="12" text-anchor="middle">emit next transition</text>
 </svg>
-<figcaption>The channel carries complete transition values. One <code>go-loop</code> takes the next pair, routes it to a handler, and the handler emits the successor pair. The loop is the trampoline and the serialization point.</figcaption>
+<figcaption>The channel carries complete transition values. One <code>go-loop</code> takes the next pair, routes it to a handler, and the handler emits the successor pair. It is the trampoline and the one-at-a-time processing point.</figcaption>
 </figure>
 
 <p class="code-label">The same loop, beyond Clojure</p>
@@ -264,26 +273,27 @@ handler EXTRACT_ORDER (payload, channel):
 Putting every transition through one loop gives you a few useful properties:
 
 - **One vantage point.** Every transition passes through the same place. One log
-  line describes the walk, and the loop serializes its transitions.
-- **Failure is an action.** The loop’s `try`/`catch` converts a synchronous throw
-  into an error action with the failing step and payload. Error policy lives in one
-  place instead of every handler.
-- **Compensation follows naturally.** Errors can be routed. A `derive` hierarchy
-  can give persistence steps a shared rollback, so a later failure undoes an earlier
-  write. That is the saga idea without a separate framework.
+  line describes the walk, and the loop processes one transition at a time.
+- **Failure is an action.** If a handler fails before it returns, the loop converts
+  that error into an error action containing the failing step and its payload. Error
+  policy lives in one place instead of every handler.
+- **Earlier work can be undone.** Errors can be routed to a rollback. For example,
+  a later failure can undo a database write from an earlier step. This is the basic
+  saga pattern: compensate for completed work when the full process cannot finish.
 
 ## One thing the loop can't catch
 
-**The `try`/`catch` only sees synchronous throws.** If a handler starts its own
-thread, that thread must catch and re-dispatch its errors. The trampoline sequences
-transitions; it does not supervise work underneath them.
+**The `try`/`catch` only sees errors thrown before the handler returns.** If a
+handler starts separate work — another thread, for example — that work must catch
+and re-dispatch its own errors. The trampoline sequences transitions; it does not
+supervise work underneath them.
 
 ## None of it is mine
 
 None of its parts are new: loops as recursion, state machines, and the Redux loop
 all predate this implementation. The useful observation is that they are the same
-shape. Align them and a fragile concurrent loop becomes a state evolution you can
-reason about.
+shape. Align them and a fragile concurrent loop becomes an explicit series of state
+transitions you can reason about.
 
 **Name the next state instead of calling it, carry its payload with it, and let a
 channel perform the recursion.**
