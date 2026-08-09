@@ -891,11 +891,11 @@
           </figure>
 
           <h3>4.1 Fan meets fan: the familiar redex disappears</h3>
-          <p>Applications and abstractions are both represented by fans, distinguishable from the direction of their connections when viewed from the <strong>root</strong> (the distinguished top-level entry point of the whole net). When the appropriate fans form an active pair, they annihilate: both fan nodes are removed and their remaining wires are reconnected. This is the net-level form of <span class="math">β</span>-reduction.</p>
+          <p>Applications and abstractions are both represented by fans, distinguishable from the direction of their connections when viewed from the <strong>root</strong> (the distinguished top-level entry point of the whole net). When the appropriate fans form an active pair, they annihilate: both fan nodes are removed and equally indexed auxiliary ports are reconnected. Auxiliary ports are ordered clockwise, so turning one fan upside down reverses their visible left/right order; the two wires therefore cross in this drawing. This is the net-level form of <span class="math">β</span>-reduction.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 740 225" role="img" aria-label="Application and abstraction fan annihilation">
-                <title>Fan annihilation</title><desc>A downward application fan and an upward abstraction fan meet at their principal ports. The pair is replaced by directly connected auxiliary wires.</desc>
+                <title>Fan annihilation</title><desc>A downward application fan and an upward abstraction fan meet at their principal ports. The pair disappears, and the first auxiliary port reconnects to the first while the second reconnects to the second. Because one fan is rotated, these two wires cross.</desc>
                 <text x="158" y="32" text-anchor="middle" class="label">Before: application meets abstraction</text><text x="525" y="32" class="label">After: wires reconnect</text>
                 <path class="wire" d="M145 62 V80 M195 62 V80 M145 205 V190 M195 205 V190" />
                 <path class="node orange" d="M125 80 H215 L170 135 Z" /><path class="node orange" d="M170 150 L125 205 H215 Z" />
@@ -904,13 +904,13 @@
                 <path class="wire" d="M170 140 V145" />
                 <text x="170" y="111" text-anchor="middle" class="label">@</text><text x="170" y="190" text-anchor="middle" class="label">λ</text>
                 <text x="232" y="145" class="small">principal ↔ principal</text>
-                <path class="wire" d="M486 69 C485 119 560 124 560 189 M648 69 C647 119 573 124 573 189" />
-                <circle cx="486" cy="62" r="6" fill="#41535b" /><circle cx="648" cy="62" r="6" fill="#41535b" /><circle cx="560" cy="194" r="6" fill="#41535b" /><circle cx="573" cy="194" r="6" fill="#41535b" />
+                <path class="wire" d="M486 69 C486 111 648 147 648 189 M648 69 C648 111 486 147 486 189" />
+                <circle cx="486" cy="62" r="6" fill="#41535b" /><circle cx="648" cy="62" r="6" fill="#41535b" /><circle cx="486" cy="194" r="6" fill="#41535b" /><circle cx="648" cy="194" r="6" fill="#41535b" />
                 <text x="567" y="218" text-anchor="middle" class="small">the interface remains; the pair is gone</text>
                 <path d="M332 140 H420" stroke="#9a5f3d" stroke-width="3" fill="none" /><path d="M415 132 L426 140 L415 148" stroke="#9a5f3d" stroke-width="3" fill="none" />
               </svg>
             </div>
-            <figcaption><strong>This is a conceptual pattern.</strong> The paper’s Figure 4 specifies the exact reconnections for all core interactions.</figcaption>
+            <figcaption><strong>The crossing is structural.</strong> Matching auxiliary-port indices reconnect, not the geometric left side to the geometric left side. Rotating the lower fan puts its first port on the opposite side.</figcaption>
           </figure>
 
           <h3>4.2 Replicator meets fan: structure splits around sharing</h3>
