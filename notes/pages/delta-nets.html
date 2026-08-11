@@ -979,7 +979,48 @@
 
           <h3>4.3 Replicator meets replicator: equal levels cancel; different levels commute</h3>
           <p>First compare the two levels. If they are equal, then—within a well-formed net translated from a <span class="math">λ</span>-term—the replicators are equal: they <strong>annihilate</strong>, both nodes disappear, and equally indexed auxiliary ports reconnect. No replicas are created. In an arbitrary hand-built net, matching levels alone are not enough; arity and every port delta must also match.</p>
-          <p>If the levels differ, the replicators are distinct and <strong>commute</strong>. Name the lower-level one <strong>R</strong> and the higher-level one <strong>H</strong>. R makes one replica of H for each of R’s auxiliary ports; H makes exact duplicates of R for each of H’s ports. Each H replica takes the delta from its exit port on R and adds it to H’s current level. The diagram below shows this different-level case.</p>
+          <p>If the levels differ, the replicators are distinct and <strong>commute</strong>. Name the lower-level one <strong>R</strong> and the higher-level one <strong>H</strong>. R makes one replica of H for each of R’s auxiliary ports; H makes exact duplicates of R for each of H’s ports. Each H replica takes the delta from its exit port on R and adds it to H’s current level. The second diagram below shows this different-level case.</p>
+          <figure class="interaction-diagram">
+            <div class="diagram-panel">
+              <svg class="diagram" viewBox="0 0 760 345" role="img" aria-label="Two equal three-port replicators annihilating and reconnecting equally indexed auxiliary ports">
+                <title>Equal-level replicator annihilation</title>
+                <desc>Two equal three-port replicators meet at their principal ports. Both disappear, and each upper auxiliary port reconnects to the equally indexed lower auxiliary port. Because the lower replicator is rotated, the outer wires cross.</desc>
+                <defs>
+                  <marker id="annihilation-arrow-rr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
+                </defs>
+                <rect class="frame" x="18" y="38" width="250" height="274" rx="10" />
+                <rect class="frame" x="472" y="38" width="270" height="274" rx="10" />
+                <text x="143" y="66" text-anchor="middle" class="label">Before: equal level = 2</text>
+                <text x="607" y="66" text-anchor="middle" class="label">After: matching ports reconnect</text>
+
+                <path class="outside" d="M90 82 V108 M145 82 V108 M200 82 V108" />
+                <path class="agent-replicator" d="M65 108 H225 L193 158 H97 Z" />
+                <circle class="port rep-port" cx="90" cy="108" r="5.5" /><circle class="port rep-port" cx="145" cy="108" r="5.5" /><circle class="port rep-port" cx="200" cy="108" r="5.5" />
+                <circle class="port rep-port" cx="145" cy="158" r="5.5" />
+                <text x="145" y="138" text-anchor="middle" class="label">R</text>
+                <text x="90" y="98" text-anchor="middle" class="tiny">d₀</text><text x="145" y="98" text-anchor="middle" class="tiny">d₁</text><text x="200" y="98" text-anchor="middle" class="tiny">d₂</text>
+                <path class="active-wire" d="M145 164 V186" />
+                <circle class="port rep-port" cx="145" cy="192" r="5.5" />
+                <path class="agent-replicator" d="M145 198 L65 248 H225 Z" />
+                <circle class="port rep-port" cx="90" cy="248" r="5.5" /><circle class="port rep-port" cx="145" cy="248" r="5.5" /><circle class="port rep-port" cx="200" cy="248" r="5.5" />
+                <path class="outside" d="M90 254 V280 M145 254 V280 M200 254 V280" />
+                <text x="145" y="230" text-anchor="middle" class="label">R</text>
+                <text x="90" y="270" text-anchor="middle" class="tiny">d₂</text><text x="145" y="270" text-anchor="middle" class="tiny">d₁</text><text x="200" y="270" text-anchor="middle" class="tiny">d₀</text>
+                <text x="145" y="179" text-anchor="middle" class="small">principal ↔ principal</text>
+
+                <path d="M301 176 H438" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#annihilation-arrow-rr)" />
+                <text x="369" y="156" text-anchor="middle" class="small">annihilate</text>
+
+                <path class="wire" d="M505 104 C505 158 709 210 709 270 M607 104 V270 M709 104 C709 158 505 210 505 270" />
+                <circle cx="505" cy="98" r="6" fill="var(--diagram-wire)" /><circle cx="607" cy="98" r="6" fill="var(--diagram-wire)" /><circle cx="709" cy="98" r="6" fill="var(--diagram-wire)" />
+                <circle cx="505" cy="276" r="6" fill="var(--diagram-wire)" /><circle cx="607" cy="276" r="6" fill="var(--diagram-wire)" /><circle cx="709" cy="276" r="6" fill="var(--diagram-wire)" />
+                <text x="505" y="88" text-anchor="middle" class="tiny">d₀</text><text x="607" y="88" text-anchor="middle" class="tiny">d₁</text><text x="709" y="88" text-anchor="middle" class="tiny">d₂</text>
+                <text x="505" y="296" text-anchor="middle" class="tiny">d₂</text><text x="607" y="296" text-anchor="middle" class="tiny">d₁</text><text x="709" y="296" text-anchor="middle" class="tiny">d₀</text>
+                <text x="607" y="326" text-anchor="middle" class="small">port 0 ↔ port 0 · port 1 ↔ port 1 · port 2 ↔ port 2</text>
+              </svg>
+            </div>
+            <figcaption><strong>Same-level annihilation.</strong> The lower replicator is rotated, so its clockwise auxiliary-port indices appear right-to-left. Matching indices reconnect—top <span class="math">d₀</span> to lower <span class="math">d₀</span>, and so on—making the two outer wires cross. Both replicators are gone.</figcaption>
+          </figure>
           <figure class="interaction-diagram">
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 760 465" role="img" aria-label="A three-port lower replicator and two-port higher replicator interacting">
