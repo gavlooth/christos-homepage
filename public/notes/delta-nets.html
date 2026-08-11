@@ -1032,7 +1032,7 @@
                 <rect class="frame" x="18" y="44" width="250" height="374" rx="10" />
                 <rect class="frame" x="472" y="44" width="270" height="374" rx="10" />
                 <text x="143" y="72" text-anchor="middle" class="label">Before: R meets H</text>
-                <text x="607" y="72" text-anchor="middle" class="label">After: a 3 × 2 copy grid</text>
+                <text x="607" y="72" text-anchor="middle" class="label">After: H shifts · R copies exactly</text>
 
                 <path class="outside" d="M90 88 V114 M145 88 V114 M200 88 V114" />
                 <path class="agent-replicator" d="M65 114 H225 L193 166 H97 Z" />
@@ -1046,7 +1046,7 @@
                 <circle class="port rep-port" cx="105" cy="282" r="5.5" /><circle class="port rep-port" cx="185" cy="282" r="5.5" />
                 <path class="outside" d="M105 288 V350 M185 288 V350" />
                 <text x="145" y="260" text-anchor="middle" class="label">H</text><text x="145" y="274" text-anchor="middle" class="tiny">higher level = 7</text>
-                <text x="105" y="367" text-anchor="middle" class="tiny">e₀</text><text x="185" y="367" text-anchor="middle" class="tiny">e₁</text>
+                <text x="105" y="367" text-anchor="middle" class="tiny">e₁</text><text x="185" y="367" text-anchor="middle" class="tiny">e₀</text>
                 <text x="145" y="194" text-anchor="middle" class="small">principal ↔ principal</text>
                 <path d="M301 228 H438" stroke="#9a5f3d" stroke-width="2.5" fill="none" marker-end="url(#interaction-arrow-rr)" />
                 <text x="369" y="207" text-anchor="middle" class="small">commute</text>
@@ -1064,16 +1064,17 @@
                 <circle class="port rep-port" cx="645" cy="275" r="5.5" /><circle class="port rep-port" cx="680" cy="275" r="5.5" /><circle class="port rep-port" cx="715" cy="275" r="5.5" />
                 <circle class="port rep-port" cx="555" cy="322" r="5.5" /><circle class="port rep-port" cx="680" cy="322" r="5.5" />
                 <path class="outside" d="M555 328 V379 M680 328 V379" />
-                <text x="555" y="304" text-anchor="middle" class="label">R₀</text><text x="680" y="304" text-anchor="middle" class="label">R₁</text>
-                <text x="555" y="402" text-anchor="middle" class="small">exact R copies: level 2</text><text x="680" y="418" text-anchor="middle" class="small">and deltas 0, +3, −1</text>
+                <text x="555" y="301" text-anchor="middle" class="label">R¹ · level 2</text><text x="680" y="301" text-anchor="middle" class="label">R⁰ · level 2</text>
+                <text x="555" y="315" text-anchor="middle" class="tiny">d = 0, +3, −1</text><text x="680" y="315" text-anchor="middle" class="tiny">d = 0, +3, −1</text>
+                <text x="555" y="398" text-anchor="middle" class="small">from H port e₁</text><text x="680" y="398" text-anchor="middle" class="small">from H port e₀</text>
 
                 <path class="wire" d="M484 186 C484 225 508 236 520 269 M536 186 C536 225 627 236 645 269 M579 186 C579 225 552 236 555 269 M631 186 C631 225 675 236 680 269 M674 186 C674 225 596 236 590 269 M726 186 C726 225 715 236 715 269" />
-                <text x="607" y="448" text-anchor="middle" class="small">R’s 3 ports create H₀, H₁, H₂ · H’s 2 ports create R₀, R₁</text>
+                <text x="607" y="448" text-anchor="middle" class="small">H is replicated with shifted levels · R is duplicated without changes</text>
               </svg>
             </div>
-            <figcaption><strong>Finite version of the paper’s replicator–replicator rule.</strong> The upper copies of H inherit the three port deltas from R, so their levels become 7, 10, and 6. The lower copies of R retain R’s level and port deltas. This diagram adapts the structure of <a href="https://arxiv.org/html/2505.20314v4#S2.F4">Figure 4 in the source paper</a> (CC BY 4.0).</figcaption>
+            <figcaption><strong>Two simultaneous outcomes.</strong> The upper copies of H inherit R’s three port deltas, so their levels become 7, 10, and 6. The lower copies R¹ and R⁰ leave through H’s ports <span class="math">e₁</span> and <span class="math">e₀</span>; both are exact copies that keep R’s level 2 and deltas 0, +3, −1. This diagram adapts the structure of <a href="https://arxiv.org/html/2505.20314v4#S2.F4">Figure 4 in the source paper</a> (CC BY 4.0).</figcaption>
           </figure>
-          <p>The right-hand panel is a small version of the paper’s general rule. Three R ports create the three H replicas across the top; two H ports create the two R replicas below. The wires form a complete 3-by-2 connection pattern: each H replica reaches both R copies, and each R copy receives one port from every H replica.</p>
+          <p>Read both halves of the result. Across the top, R’s three auxiliary ports create three H replicas, and each port delta shifts that replica’s level. Across the bottom, H’s two auxiliary ports create two exact R copies: neither R’s level nor its deltas change. The old <span class="math">eⱼ</span> wire stays attached to the principal port of <span class="math">Rʲ</span>. Between them, the wires form a complete 3-by-2 pattern: auxiliary port <span class="math">j</span> of every H replica connects to the corresponding port of <span class="math">Rʲ</span>.</p>
           <div class="callout key">
             <div class="symbol">+</div>
             <div>
