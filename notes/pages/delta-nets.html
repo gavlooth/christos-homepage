@@ -831,7 +831,7 @@
           <div class="interaction-grid">
             <article class="interaction">
               <h3>1. Annihilation</h3>
-              <p>Equal agents cancel. For fans, this is the interaction that corresponds to applying a <span class="math">λ</span>-abstraction to an argument.</p>
+              <p>Equal agents cancel. In a well-formed net translated from a <span class="math">λ</span>-term, active replicators at the same level are guaranteed to be equal: both nodes disappear and equally indexed auxiliary ports reconnect. For fans, the same cancellation corresponds to applying a <span class="math">λ</span>-abstraction to an argument.</p>
             </article>
             <article class="interaction">
               <h3>2. Erasure</h3>
@@ -977,8 +977,9 @@
           </figure>
           <p>Read the result in two counts. R has three auxiliary ports, so three fans <span class="math">F₀, F₁, F₂</span> appear. F has two auxiliary ports, so two replicators <span class="math">R⁰, R¹</span> appear. Because F points upward, its clockwise port order is visually reversed: <span class="math">a₀</span> is on the right and <span class="math">a₁</span> is on the left. Thus the old visible-left <span class="math">a₁</span> wire remains attached to <span class="math">R¹</span>, while the old visible-right <span class="math">a₀</span> wire remains attached to <span class="math">R⁰</span>; those two outer wires do not cross. Internally, auxiliary port <span class="math">j</span> of each new <span class="math">Fᵢ</span> connects to port <span class="math">dᵢ</span> of <span class="math">Rʲ</span>.</p>
 
-          <h3>4.3 Replicator meets replicator: levels decide the replicas</h3>
-          <p>When two distinct replicators meet, name the lower-level one <strong>R</strong> and the higher-level one <strong>H</strong>. R makes one replica of H for each of R’s auxiliary ports; H makes exact duplicates of R for each of H’s ports. Each H replica takes the delta from its exit port on R and adds it to H’s current level.</p>
+          <h3>4.3 Replicator meets replicator: equal levels cancel; different levels commute</h3>
+          <p>First compare the two levels. If they are equal, then—within a well-formed net translated from a <span class="math">λ</span>-term—the replicators are equal: they <strong>annihilate</strong>, both nodes disappear, and equally indexed auxiliary ports reconnect. No replicas are created. In an arbitrary hand-built net, matching levels alone are not enough; arity and every port delta must also match.</p>
+          <p>If the levels differ, the replicators are distinct and <strong>commute</strong>. Name the lower-level one <strong>R</strong> and the higher-level one <strong>H</strong>. R makes one replica of H for each of R’s auxiliary ports; H makes exact duplicates of R for each of H’s ports. Each H replica takes the delta from its exit port on R and adds it to H’s current level. The diagram below shows this different-level case.</p>
           <figure class="interaction-diagram">
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 760 465" role="img" aria-label="A three-port lower replicator and two-port higher replicator interacting">
