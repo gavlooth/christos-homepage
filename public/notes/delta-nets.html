@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A reader-first guide to Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction.">
+    <meta name="description" content="A reader-first walk through Δ-Nets: encoding lambda terms as interaction nets, local rewrites, levels, and deltas.">
     <meta name="theme-color" content="#f7f4ee">
     <title>Δ-Nets, decoded — a guided reading of arXiv:2505.20314v4</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -531,7 +531,7 @@
         <div class="hero">
           <p class="eyebrow">Reader-first technical explainer</p>
           <h1>Δ-Nets,<br>decoded.</h1>
-          <p class="lede">A slower, clearer path through an interaction-based proposal for optimal parallel <span class="math">λ</span>-reduction.</p>
+          <p class="lede">A slower walk through an interaction-based proposal for optimal parallel <span class="math">λ</span>-reduction—diagrams first, notation second.</p>
           <div class="hero-meta">
             <span>Based on Daniel Augusto Rizzi Salvadori’s paper</span>
             <span>arXiv:2505.20314v4</span>
@@ -573,48 +573,48 @@
             <li><a href="#glossary"><span class="n">08</span> Glossary & source</a></li>
           </ol>
         </nav>
-        <p class="source-note"><strong>Scope.</strong> This guide rearranges and paraphrases the paper’s argument for learning. It uses original explanatory diagrams; the paper remains the authority for formal definitions and proofs.</p>
+        <p class="source-note"><strong>Scope.</strong> This guide rearranges the paper’s argument for learning and uses original diagrams. The paper remains the authority for definitions and proofs.</p>
       </aside>
 
       <main id="guide">
         <section class="orientation" id="orientation" aria-labelledby="orientation-title">
           <h2 id="orientation-title">Read this before the notation</h2>
-          <p>Δ-Nets is a proposed <strong>graph-rewriting model</strong>: it represents a program as connected nodes, then repeatedly replaces small matching pieces of that graph. Its aim is <em>optimal parallel reduction</em>: avoid work that will later be thrown away, and perform each necessary reduction once even when an expression has several uses.</p>
+          <p>Δ-Nets is a proposed <strong>graph-rewriting model</strong>. Instead of walking a syntax tree, you turn a program into a graph of tiny nodes and wires, then repeatedly replace small matching pieces of that graph. The aim is <em>optimal parallel reduction</em>: do not spend effort on work that will later be thrown away, and do each necessary reduction once even when an expression is used in several places.</p>
           <div class="orientation-grid">
             <div>
               <h3>The core idea</h3>
-              <p>Represent a program as a net of very small agents. Let local pairs interact independently, with sharing described directly in the graph.</p>
+              <p>Build the program as a net of very small agents. Let local pairs interact on their own. Put sharing in the graph itself, not in a side table of copies.</p>
             </div>
             <div>
               <h3>The important caveat</h3>
-              <p>“Optimal” and the confluence guarantees here are the author’s claims, argued in the linked paper. This guide presents the design; the formal arguments and proofs are in the source paper.</p>
+              <p>“Optimal” and the confluence guarantees here are the paper’s claims, argued in the linked source. This guide teaches the design. The definitions and proofs stay with the paper.</p>
             </div>
           </div>
           <h3 class="primer-title">Six ideas you need before Chapter 1</h3>
           <div class="primer-grid">
             <article class="primer-card">
               <h4>λ-term</h4>
-              <p>A tiny functional program. <span class="math">λx.t</span> means “a function taking <span class="math">x</span> with body <span class="math">t</span>”; <span class="math">t&nbsp;u</span> means “apply <span class="math">t</span> to <span class="math">u</span>.”</p>
+              <p>A tiny functional program. <span class="math">λx.t</span> is a function with parameter <span class="math">x</span> and body <span class="math">t</span>. <span class="math">t&nbsp;u</span> means “apply <span class="math">t</span> to <span class="math">u</span>.”</p>
             </article>
             <article class="primer-card">
               <h4>Bound vs. free</h4>
-              <p>An occurrence of <span class="math">x</span> is <em>bound</em> when a surrounding <span class="math">λx</span> introduced it. It is <em>free</em> when no surrounding abstraction does.</p>
+              <p>An occurrence of <span class="math">x</span> is <em>bound</em> when a surrounding <span class="math">λx</span> owns it. It is <em>free</em> when no surrounding abstraction does—like a name that still comes from outside the term.</p>
             </article>
             <article class="primer-card">
               <h4>Redex and reduction</h4>
-              <p>A <em>redex</em> is a reducible expression—here, a function already next to its argument. A <em>reduction</em> is one simplification step.</p>
+              <p>A <em>redex</em> is a place you can simplify right now—here, a function already sitting next to its argument. A <em>reduction</em> is one such step.</p>
             </article>
             <article class="primer-card">
               <h4>Normal form</h4>
-              <p>A term or net is in normal form when no reduction remains. <em>Normalizing</em> means a sequence of steps eventually reaches that state.</p>
+              <p>A term or net is in <em>normal form</em> when nothing left can fire. <em>Normalizing</em> means some sequence of steps gets you there.</p>
             </article>
             <article class="primer-card">
               <h4>Sharing and erasure</h4>
-              <p>Sharing means one argument has several uses; erasure means a function ignores an argument. They create the two kinds of avoidable work this paper studies.</p>
+              <p><em>Sharing</em> means one argument has several uses. <em>Erasure</em> means a function ignores an argument. Those two cases create the avoidable work this paper studies.</p>
             </article>
             <article class="primer-card">
               <h4>Net and local rewrite</h4>
-              <p>A net is a graph of small nodes and wires. A local rule uses the tiny connected pattern it changes as its complete input.</p>
+              <p>A <em>net</em> is a graph of small nodes and wires. A local rule looks only at the tiny connected pattern it rewrites—nothing else in the graph.</p>
             </article>
           </div>
         </section>
@@ -622,32 +622,32 @@
         <section class="chapter" id="problem" aria-labelledby="problem-title">
           <p class="chapter-kicker"><span class="number">01</span> Motivation</p>
           <h2 id="problem-title">The problem is wasted work.</h2>
-          <p class="intro">Ordinary <span class="math">λ</span>-calculus is wonderfully compact, but its familiar “replace a variable with an argument” story hides a cost question: what should happen when the variable is unused—or appears many times?</p>
+          <p class="intro">Ordinary <span class="math">λ</span>-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?</p>
 
           <h3>1.1 A tiny reminder: what reduction does</h3>
-          <p>Read <span class="math">λx.t</span> as a function: <span class="math">x</span> is the name it gives its incoming argument and <span class="math">t</span> is its body. Placing it beside <span class="math">u</span>, as in <span class="math">(λx.t)u</span>, applies the function to that argument. This whole pattern is a <strong>β-redex</strong> (pronounced “bee-redex”): one place where a β-reduction can occur.</p>
-          <p>A <span class="math">β</span>-reduction performs that application. In the compact notation below, the argument <code>u</code> is substituted for every occurrence of <code>x</code> in the body <code>t</code>. If there are no β-redexes left, the term is in <strong>normal form</strong>.</p>
+          <p>Read <span class="math">λx.t</span> as a function: <span class="math">x</span> names the incoming argument and <span class="math">t</span> is the body. Place it beside <span class="math">u</span>, as in <span class="math">(λx.t)u</span>, and you apply the function to that argument. The whole pattern is a <strong>β-redex</strong> (say “bee-redex”): one place a β-reduction can fire.</p>
+          <p>A <span class="math">β</span>-reduction performs that application. In the compact notation below, the argument <code>u</code> is substituted for every occurrence of <code>x</code> in the body <code>t</code>. When no β-redexes remain, the term is in <strong>normal form</strong>.</p>
           <div class="rule" aria-label="Beta reduction rule">
             <div class="rule-label">The substitution view</div>
             <p><span>(λx. t) u</span> &nbsp;→&nbsp; t[x := u]</p>
           </div>
-          <p>That sentence has two very different edge cases. They are the paper’s starting point.</p>
+          <p>That one sentence hides two very different edge cases. They are where the paper begins.</p>
 
           <div class="term-grid">
             <article class="term-card">
               <span class="tag">Erasure</span>
               <h3>Work that gets discarded</h3>
-              <p>If <code>t</code> contains zero occurrences of <code>x</code>, the argument <code>u</code> disappears. Any reduction already performed inside <code>u</code> was unnecessary.</p>
+              <p>If <code>t</code> never mentions <code>x</code>, the argument <code>u</code> vanishes. Any work you already did inside <code>u</code> was wasted.</p>
             </article>
             <article class="term-card">
               <span class="tag">Sharing</span>
               <h3>Work that gets duplicated</h3>
-              <p>If <code>x</code> occurs more than once, naive substitution duplicates <code>u</code>. If <code>u</code> contains redexes, the same necessary work can be repeated in every copy.</p>
+              <p>If <code>x</code> occurs more than once, naive substitution copies <code>u</code>. If <code>u</code> still contains redexes, you may redo the same necessary work in every copy.</p>
             </article>
           </div>
 
           <h3>1.2 The four familiar fragments of the <span class="math">λ</span>-calculus</h3>
-          <p>The paper frames the issue using a simple grid of variable-use restrictions. A <strong>bound variable</strong> is a variable occurrence owned by a surrounding <span class="math">λ</span>-abstraction; for example, the <span class="math">x</span> in <span class="math">λx.x</span> is bound. Start at the linear calculus, where every bound variable appears exactly once. Add the ability to omit a variable, repeat it, or both.</p>
+          <p>The paper frames the issue with a simple grid of variable-use rules. A <strong>bound variable</strong> is an occurrence owned by a surrounding <span class="math">λ</span>—the <span class="math">x</span> in <span class="math">λx.x</span>, for example. Start from the linear calculus, where every bound variable appears exactly once. Then allow omission, repetition, or both.</p>
           <div class="spectrum" role="img" aria-label="A grid relating linear, affine, relevant, and full lambda calculi">
             <div class="cell"><h4>λL — linear</h4><p>Each bound variable appears exactly once.</p></div>
             <div class="arrow" aria-hidden="true">→</div>
@@ -659,12 +659,12 @@
           </div>
 
           <h3>1.3 Why choosing a clever order is not enough</h3>
-          <p>A <strong>reduction order</strong> says which redex to simplify next. For erasure, <strong>normal order</strong>—try the outermost application before simplifying its argument—can avoid reducing an argument before discovering that a function will discard it. Sharing is the harder case: the paper follows Lévy’s observation that some terms with sharing have no ordinary sequential reduction order that avoids every duplicated reduction.</p>
+          <p>A <strong>reduction order</strong> says which redex to simplify next. For erasure, <strong>normal order</strong>—outermost application before its argument—can avoid reducing something a function is about to throw away. Sharing is harder. The paper follows Lévy: some shared terms have no ordinary sequential order that avoids every duplicated reduction.</p>
           <div class="callout key">
             <div class="symbol">↯</div>
             <div>
               <h3>The design target</h3>
-              <p>Represent sharing directly as graph structure. A shared subgraph can then be reduced once and its result can serve every use.</p>
+              <p>Put sharing in the graph. Reduce a shared subgraph once, then let every use see the result.</p>
             </div>
           </div>
         </section>
@@ -672,10 +672,10 @@
         <section class="chapter" id="shift" aria-labelledby="shift-title">
           <p class="chapter-kicker"><span class="number">02</span> Model shift</p>
           <h2 id="shift-title">Stop treating a program as a tree.</h2>
-          <p class="intro">The paper moves from a sequential substitution machine to an <strong>interaction system</strong>: a graph whose tiny local rewrites can happen independently. First, it helps to know exactly what “local” and “independent” mean here.</p>
+          <p class="intro">The paper leaves the sequential substitution machine behind and moves to an <strong>interaction system</strong>: a graph whose tiny local rewrites can happen independently. First, pin down what “local” and “independent” mean here.</p>
 
           <h3>2.1 Graphs make sharing visible</h3>
-          <p>A syntax tree represents every occurrence independently. A graph can let several uses point to one shared <strong>subgraph</strong>—a connected piece of the larger graph. That is the essential move: compute the shared subgraph once, then reuse its result.</p>
+          <p>A syntax tree treats every occurrence as its own copy. A graph can let several uses point at one shared <strong>subgraph</strong>—a connected piece of the larger graph. That is the essential move: compute the shared piece once, then reuse it.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 740 230" role="img" aria-label="Tree copying compared with graph sharing">
@@ -700,20 +700,20 @@
                 <text x="570" y="152" text-anchor="middle" class="label">share</text><text x="570" y="204" text-anchor="middle" class="small">one argument</text>
               </svg>
             </div>
-            <figcaption><strong>Why a net at all?</strong> A graph can preserve identity across multiple uses. Δ-Nets is a particular, local way to manage that identity during reduction.</figcaption>
+            <figcaption><strong>Why a net at all?</strong> A graph can keep one identity for many uses. Δ-Nets is one local way to manage that identity while the graph rewrites.</figcaption>
           </figure>
 
           <h3>2.2 Interaction systems, in one minute</h3>
-          <p>An interaction system has <strong>agents</strong> and <strong>interaction rules</strong>. An agent is a small graph node with connection points called <strong>ports</strong>. It has one special <strong>principal port</strong>, used to trigger an interaction, and zero or more <strong>auxiliary ports</strong>, used to connect the rest of the graph.</p>
-          <p>When two agents connect specifically at their principal ports, they form an <strong>active pair</strong>. Interaction rules rewrite this pattern by reconnecting its immediately attached wires. The pair and those attached wires provide all the information the rule uses.</p>
+          <p>An interaction system has <strong>agents</strong> and <strong>interaction rules</strong>. An agent is a small node with sockets called <strong>ports</strong>. One socket is special—the <strong>principal port</strong>—and that is what can start a rewrite. The rest are <strong>auxiliary ports</strong>; they carry the surrounding wiring through the rewrite.</p>
+          <p>When two agents meet principal-to-principal, they form an <strong>active pair</strong>. A rule rewrites that pattern by reconnecting only the wires attached right there. The pair and those nearby wires are the rule’s entire input.</p>
           <div class="steps">
-            <div class="step"><div class="step-no">01</div><div><h3>Find an active pair</h3><p>Only a principal-to-principal connection is eligible. This makes each local decision sharply bounded.</p></div></div>
-            <div class="step"><div class="step-no">02</div><div><h3>Apply its local rule</h3><p>The pair either disappears or travels through one another, reconnecting only their nearby wires. This single application is one <strong>interaction step</strong>.</p></div></div>
-            <div class="step"><div class="step-no">03</div><div><h3>Do independent work together</h3><p>Each agent has one principal port, so two distinct active pairs share no agent. They can interact simultaneously and choose their local rules independently.</p></div></div>
+            <div class="step"><div class="step-no">01</div><div><h3>Find an active pair</h3><p>Only a principal-to-principal wire counts. Each local decision stays sharply bounded.</p></div></div>
+            <div class="step"><div class="step-no">02</div><div><h3>Apply its local rule</h3><p>The pair either disappears or passes through the other, reconnecting only nearby wires. That single application is one <strong>interaction step</strong>.</p></div></div>
+            <div class="step"><div class="step-no">03</div><div><h3>Do independent work together</h3><p>Each agent has one principal port, so two distinct active pairs never share an agent. They can fire at the same time and pick their local rules independently.</p></div></div>
           </div>
 
           <h3>2.3 “Perfect confluence” is the parallelism enabler</h3>
-          <p><strong>Confluence</strong> asks whether different valid choices of reduction can lead to incompatible answers. The <strong>one-step diamond property</strong> is a very strong answer: if a net <span class="math">N</span> has two possible single interaction steps, then performing either choice produces a net that can reach the same next state after exactly one more interaction.</p>
+          <p><strong>Confluence</strong> asks whether different valid reduction choices can disagree. The <strong>one-step diamond property</strong> is a strong “no”: if a net <span class="math">N</span> has two possible single steps, either choice leads to a net that meets the other after exactly one more interaction.</p>
           <figure class="diamond-diagram">
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 590 265" role="img" aria-label="The one-step diamond property">
@@ -733,22 +733,22 @@
             </div>
             <figcaption><strong>How to read the diamond.</strong> Starting at <span class="math">N</span>, choose either available step. The paths meet at <span class="math">M</span>. Every arrow shows exactly one local interaction.</figcaption>
           </figure>
-          <p class="diamond-copy">The paper names this property <strong>perfect confluence</strong>. Each active pair uses the sole principal port of each of its two agents, so distinct active pairs use distinct agents. Their independent rewrites commute: doing the left pair first or the right pair first gives the same nearby wiring.</p>
+          <p class="diamond-copy">The paper calls this <strong>perfect confluence</strong>. Each active pair owns the only principal port of each of its two agents, so distinct active pairs use distinct agents. Their rewrites commute: left-then-right and right-then-left leave the same nearby wiring.</p>
           <div class="callout formal">
             <div class="symbol">◇</div>
             <div>
               <h3>Agreement and termination are separate questions</h3>
-              <p>The diamond property guarantees agreement between competing local steps. Termination is a separate property: some nets can reduce forever. The paper’s claim is that, <em>when</em> a core interaction order normalizes, every normalizing order reaches the same result in the same number of interactions.</p>
+              <p>The diamond says competing local steps agree. Termination is separate: some nets can reduce forever. The paper’s claim is narrower: <em>when</em> a core interaction order normalizes, every normalizing order reaches the same result in the same number of interactions.</p>
             </div>
           </div>
 
           <h3>2.4 What earlier optimal-reduction nets struggled with</h3>
-          <p>Previous interaction-net approaches tracked <strong>sharing scopes</strong>: the regions of a net governed by a particular duplication context, analogous to how a λ-abstraction governs its bound-variable occurrences. They used indexed fans plus <strong>delimiter</strong> agents such as brackets and croissants to mark those regions. The paper’s critique is practical as much as theoretical: delimiters can accumulate and their interactions can dominate the useful fan interactions. Some approaches also allow indices to grow without bound.</p>
+          <p>Earlier interaction-net approaches tracked <strong>sharing scopes</strong>—regions governed by one duplication context, the way a <span class="math">λ</span> governs its bound uses. They marked those regions with indexed fans plus extra <strong>delimiter</strong> agents (brackets, croissants, and kin). The critique is practical as much as theoretical: delimiters pile up, and their interactions can outnumber the useful fan work. Some systems also let indices grow without bound.</p>
           <div class="callout caution">
             <div class="symbol">!</div>
             <div>
               <h3>The proposed simplification</h3>
-              <p>Δ-Nets uses one variable-arity agent—the replicator—to store a level and per-port level deltas. This concentrates the bookkeeping for a sharing context in one structure.</p>
+              <p>Δ-Nets folds that bookkeeping into one variable-arity agent—the <strong>replicator</strong>—with a level and a per-port delta. One structure holds the sharing context.</p>
             </div>
           </div>
         </section>
@@ -756,7 +756,7 @@
         <section class="chapter" id="agents" aria-labelledby="agents-title">
           <p class="chapter-kicker"><span class="number">03</span> Core vocabulary</p>
           <h2 id="agents-title">Three agents carry the whole core.</h2>
-          <p class="intro">A Δ-Net is built from a fan, an eraser, and a replicator. Think of an agent as a tiny component: its <strong>principal port</strong> is the socket that can start a rewrite, while its <strong>auxiliary ports</strong> carry the surrounding context through that rewrite.</p>
+          <p class="intro">A Δ-Net is built from three agents: fan, eraser, and replicator. Think of each as a tiny component. The <strong>principal port</strong> is the socket that can start a rewrite. The <strong>auxiliary ports</strong> carry the surrounding wiring through that rewrite.</p>
 
           <figure>
             <div class="diagram-panel">
@@ -784,22 +784,22 @@
             <article class="term-card">
               <span class="tag">Structure</span>
               <h3>Fan</h3>
-              <p>Has exactly two auxiliary ports. Fans represent the application and abstraction structure of a <span class="math">λ</span>-term; fan annihilation expresses <span class="math">β</span>-reduction.</p>
+              <p>Exactly two auxiliary ports. Fans build the application and abstraction skeleton of a <span class="math">λ</span>-term. When two fans annihilate, that is <span class="math">β</span>-reduction in graph form.</p>
             </article>
             <article class="term-card">
               <span class="tag">Discard</span>
               <h3>Eraser</h3>
-              <p>Has no auxiliary ports. It carries the fact that a bound variable is unused, and erases an agent it encounters in a distinct-agent interaction.</p>
+              <p>No auxiliary ports. It marks “this bound variable is unused,” and deletes an agent it meets in a distinct-agent interaction.</p>
             </article>
             <article class="term-card">
               <span class="tag">Share</span>
               <h3>Replicator</h3>
-              <p>Has any natural-number <strong>arity</strong>, meaning any count of auxiliary ports: 1, 2, 3, and so on. It connects the uses of one shared variable, and records the sharing context with a level plus a delta for each auxiliary port.</p>
+              <p>Any natural-number <strong>arity</strong>—one, two, three auxiliary ports, and so on. It joins the uses of one shared value and records the sharing context: a level on the agent, plus a delta on each auxiliary port.</p>
             </article>
             <article class="term-card">
               <span class="tag">Context</span>
               <h3>Level delta</h3>
-              <p>Each replicator carries an integer <strong>level</strong> that identifies its sharing context. Each auxiliary port carries an integer <strong>delta</strong>. A replica leaving through a port adds that port’s delta to its current level.</p>
+              <p>The integer <strong>level</strong> names the replicator’s sharing context. Each auxiliary port carries an integer <strong>delta</strong>. A replica that leaves through a port adds that delta to its current level—like a signed offset stamped on the exit door.</p>
             </article>
           </div>
 
@@ -813,33 +813,33 @@
               <tr><td>ΔK</td><td>Fan + eraser + replicator</td><td>Full: absence and repetition are both allowed.</td></tr>
             </tbody>
           </table>
-          <p>Here <strong>linear</strong> means exactly one bound use, <strong>affine</strong> means at most one, <strong>relevant</strong> means at least one, and <strong>full</strong> allows any count. This decomposition mirrors the paper’s opening taxonomy. It reveals which machinery pays for which feature: fans for structure, erasers for omission, replicators for sharing.</p>
+          <p>In plain language: <strong>linear</strong> means exactly one bound use, <strong>affine</strong> at most one, <strong>relevant</strong> at least one, and <strong>full</strong> any count. The split mirrors the paper’s opening taxonomy and shows which agent pays for which feature: fans for structure, erasers for omission, replicators for sharing.</p>
 
           <h3>3.2 Equality is deliberately local in practice</h3>
-          <p>Formally, equal replicators must match in level, arity, and all level deltas. The paper states that for well-formed nets produced by its <span class="math">λ</span>-term translation, active replicators with the same level are guaranteed to be equal; an implementation can therefore compare only their levels in that setting.</p>
+          <p>Formally, equal replicators must match in level, arity, and every port delta. For well-formed nets from the paper’s <span class="math">λ</span>-term translation, active replicators at the same level are already equal—so an implementation may compare levels alone in that setting. Hand-built nets do not get that shortcut.</p>
           <details>
             <summary>What does “fan-in” versus “fan-out” mean here?</summary>
-            <div><p>First, <strong>parent</strong> and <strong>child</strong> are just direction labels on a wire: in a rooted net, a parent points toward the root and a child points away from it. Canonical nets begin with replicators whose auxiliary ports are parents and whose principal port is a child: the paper calls these unpaired <strong>fan-ins</strong>. Reduction can also create <strong>fan-outs</strong>, with the orientation reversed. A fan-out is paired upstream with at least one fan-in, while a fan-in need not have a partner. The level-delta system is used to reason about that pairing locally.</p></div>
+            <div><p><strong>Parent</strong> and <strong>child</strong> are direction labels on a wire. In a rooted net, a parent points toward the root and a child points away from it—think “who faces whom,” not family trees. Canonical nets start with unpaired <strong>fan-in</strong> replicators: auxiliaries are parents, principal is a child. Reduction can also create <strong>fan-outs</strong>, with that orientation flipped. A fan-out is paired upstream with at least one fan-in; a fan-in need not have a partner. Levels and deltas let you reason about that pairing locally.</p></div>
           </details>
         </section>
 
         <section class="chapter" id="meetings" aria-labelledby="meetings-title">
           <p class="chapter-kicker"><span class="number">04</span> Local dynamics</p>
           <h2 id="meetings-title">When two principal ports touch, one of three things happens.</h2>
-          <p class="intro">The interaction rules are the engine of the model. This chapter groups their wire reconnections into three families: cancellation, deletion, and passage-with-copying. Each name describes the local change to an <em>active pair</em>.</p>
+          <p class="intro">The interaction rules are the engine. This chapter groups their wire reconnections into three families: cancellation, deletion, and passage-with-copying. Each name describes what happens to one <em>active pair</em>.</p>
 
           <div class="interaction-grid">
             <article class="interaction">
               <h3>1. Annihilation</h3>
-              <p>Equal agents cancel. In a well-formed net translated from a <span class="math">λ</span>-term, active replicators at the same level are guaranteed to be equal: both nodes disappear and equally indexed auxiliary ports reconnect. For fans, the same cancellation corresponds to applying a <span class="math">λ</span>-abstraction to an argument.</p>
+              <p>Equal agents cancel. In a well-formed net from a <span class="math">λ</span>-term, active replicators at the same level are equal: both nodes disappear and matching auxiliary ports reconnect. For fans, that same cancellation is applying a <span class="math">λ</span> to its argument.</p>
             </article>
             <article class="interaction">
               <h3>2. Erasure</h3>
-              <p>An eraser is distinct from its neighbour and has zero auxiliary ports, so the agent it meets has no route to continue through: it is erased.</p>
+              <p>An eraser is distinct from its neighbour and has zero auxiliary ports, so the agent it meets has nowhere to continue through. It is deleted.</p>
             </article>
             <article class="interaction">
               <h3>3. Commutation</h3>
-              <p>Distinct non-eraser agents pass through each other. The number of outgoing copies depends on the other agent’s auxiliary ports.</p>
+              <p>Distinct non-eraser agents pass through each other. How many outgoing copies you get depends on the other agent’s auxiliary ports.</p>
             </article>
           </div>
 
@@ -892,7 +892,7 @@
           </figure>
 
           <h3>4.1 Fan meets fan: the familiar redex disappears</h3>
-          <p>Applications and abstractions are both represented by fans, distinguishable from the direction of their connections when viewed from the <strong>root</strong> (the distinguished top-level entry point of the whole net). When the appropriate fans form an active pair, they annihilate: both fan nodes are removed and equally indexed auxiliary ports are reconnected. Auxiliary ports are ordered clockwise, so turning one fan upside down reverses their visible left/right order; the two wires therefore cross in this drawing. This is the net-level form of <span class="math">β</span>-reduction.</p>
+          <p>Applications and abstractions are both fans. You tell them apart by how their wires point when you look from the <strong>root</strong>—the unique top entry of the whole net. When the right pair of fans meets principal-to-principal, they annihilate: both nodes go away and matching auxiliary ports reconnect. Auxiliary ports are ordered clockwise, so flipping one fan upside down swaps its visible left and right; the wires cross in the drawing. That is <span class="math">β</span>-reduction at the net level.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 740 225" role="img" aria-label="Application and abstraction fan annihilation">
@@ -915,7 +915,7 @@
           </figure>
 
           <h3>4.2 Replicator meets fan: structure splits around sharing</h3>
-          <p>When a replicator meets a fan, it travels out through the fan’s two auxiliary ports, producing two exact replicator copies. At the same time, the fan travels through every auxiliary port of the replicator, producing one fan per port. Both structures preserve their roles, but now occupy the other’s surrounding context.</p>
+          <p>When a replicator meets a fan, the replicator leaves through the fan’s two auxiliary ports as two exact copies. At the same time, the fan leaves through every auxiliary port of the replicator—one fan per port. Each keeps its role, but now sits in the other’s surrounding context.</p>
           <figure class="interaction-diagram">
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 760 445" role="img" aria-label="A three-port replicator interacting with a fan">
@@ -975,11 +975,11 @@
             </div>
             <figcaption><strong>Finite version of the paper’s fan–replicator rule.</strong> Port identities, not geometric sides, determine the reconnection: <span class="math">(Fᵢ)ⱼ ↔ (Rʲ)ᵢ</span>. This guide-specific diagram uses a three-port replicator so every copy has a visible port and wire. It adapts the structure of <a href="https://arxiv.org/html/2505.20314v4#S2.F4">Figure 4 in the source paper</a> (CC BY 4.0).</figcaption>
           </figure>
-          <p>Read the result in two counts. R has three auxiliary ports, so three fans <span class="math">F₀, F₁, F₂</span> appear. F has two auxiliary ports, so two replicators <span class="math">R⁰, R¹</span> appear. Because F points upward, its clockwise port order is visually reversed: <span class="math">a₀</span> is on the right and <span class="math">a₁</span> is on the left. Thus the old visible-left <span class="math">a₁</span> wire remains attached to <span class="math">R¹</span>, while the old visible-right <span class="math">a₀</span> wire remains attached to <span class="math">R⁰</span>; those two outer wires do not cross. Internally, auxiliary port <span class="math">j</span> of each new <span class="math">Fᵢ</span> connects to port <span class="math">dᵢ</span> of <span class="math">Rʲ</span>.</p>
+          <p>Count both sides. R has three auxiliary ports, so three fans <span class="math">F₀, F₁, F₂</span> appear. F has two auxiliary ports, so two replicators <span class="math">R⁰, R¹</span> appear. Because F points upward, its clockwise port order is visually reversed: <span class="math">a₀</span> is on the right and <span class="math">a₁</span> is on the left. Thus the old visible-left <span class="math">a₁</span> wire remains attached to <span class="math">R¹</span>, while the old visible-right <span class="math">a₀</span> wire remains attached to <span class="math">R⁰</span>; those two outer wires do not cross. Internally, auxiliary port <span class="math">j</span> of each new <span class="math">Fᵢ</span> connects to port <span class="math">dᵢ</span> of <span class="math">Rʲ</span>.</p>
 
           <h3>4.3 Replicator meets replicator: equal levels cancel; different levels commute</h3>
-          <p>First compare the two levels. If they are equal, then—within a well-formed net translated from a <span class="math">λ</span>-term—the replicators are equal: they <strong>annihilate</strong>, both nodes disappear, and equally indexed auxiliary ports reconnect. No replicas are created. In an arbitrary hand-built net, matching levels alone are not enough; arity and every port delta must also match.</p>
-          <p>If the levels differ, the replicators are distinct and <strong>commute</strong>. Name the lower-level one <strong>R</strong> and the higher-level one <strong>H</strong>. R makes one replica of H for each of R’s auxiliary ports; H makes exact duplicates of R for each of H’s ports. Each H replica takes the delta from its exit port on R and adds it to H’s current level. The second diagram below shows this different-level case.</p>
+          <p>First compare the two levels. If they match—and the net came from a well-formed <span class="math">λ</span> translation—the replicators are equal: they <strong>annihilate</strong>, both nodes disappear, and matching auxiliary ports reconnect. No replicas are created. In a hand-built net, matching levels alone are not enough; arity and every port delta must match too.</p>
+          <p>If the levels differ, the replicators are distinct and <strong>commute</strong>. Call the lower-level one <strong>R</strong> and the higher-level one <strong>H</strong>. R makes one replica of H for each of R’s auxiliary ports; H makes exact copies of R for each of H’s ports. Each H replica takes the delta on its exit port through R and adds it to H’s current level. The second diagram shows that different-level case.</p>
           <figure class="interaction-diagram">
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 760 345" role="img" aria-label="Two equal three-port replicators annihilating and reconnecting equally indexed auxiliary ports">
@@ -1074,33 +1074,33 @@
             </div>
             <figcaption><strong>Two simultaneous outcomes.</strong> The upper copies of H inherit R’s three port deltas, so their levels become 7, 10, and 6. The lower copies R¹ and R⁰ leave through H’s ports <span class="math">e₁</span> and <span class="math">e₀</span>; both are exact copies that keep R’s level 2 and deltas 0, +3, −1. This diagram adapts the structure of <a href="https://arxiv.org/html/2505.20314v4#S2.F4">Figure 4 in the source paper</a> (CC BY 4.0).</figcaption>
           </figure>
-          <p>Read both halves of the result. Across the top, R’s three auxiliary ports create three H replicas, and each port delta shifts that replica’s level. Across the bottom, H’s two auxiliary ports create two exact R copies: neither R’s level nor its deltas change. The old <span class="math">eⱼ</span> wire stays attached to the principal port of <span class="math">Rʲ</span>. Between them, the wires form a complete 3-by-2 pattern: auxiliary port <span class="math">j</span> of every H replica connects to the corresponding port of <span class="math">Rʲ</span>.</p>
+          <p>Read both halves of the result. Across the top, R’s three auxiliary ports create three H replicas, and each port’s delta shifts that replica’s level. Across the bottom, H’s two auxiliary ports create two exact R copies: R’s level and deltas stay put. The old <span class="math">eⱼ</span> wire stays on the principal port of <span class="math">Rʲ</span>. Between the families, the wires form a complete 3-by-2 grid: auxiliary port <span class="math">j</span> of every H replica meets the matching port of <span class="math">Rʲ</span>.</p>
           <div class="callout key">
             <div class="symbol">+</div>
             <div>
               <h3>The operational rule</h3>
-              <p>Every port supplies one integer. When an H replica leaves through that port, add the integer to H’s current level. The port’s delta therefore records the level change associated with taking that particular exit.</p>
+              <p>Every port carries one integer. When an H replica leaves through that port, add the integer to H’s current level. The delta is the level change stamped on that particular exit.</p>
             </div>
           </div>
           <h4>A worked example</h4>
-          <p>Suppose R has level <span class="math">2</span> and two auxiliary ports. The first connects to a wire endpoint at level <span class="math">2</span>, so its delta is <span class="math">2 − 2 = 0</span>. The second connects to an endpoint at level <span class="math">5</span>, so its delta is <span class="math">5 − 2 = +3</span>. Now let a higher-level replicator H, with level <span class="math">7</span>, meet R.</p>
+          <p>Suppose R sits at level <span class="math">2</span> with two auxiliary ports. The first meets a wire endpoint at level <span class="math">2</span>, so its delta is <span class="math">2 − 2 = 0</span>. The second meets an endpoint at level <span class="math">5</span>, so its delta is <span class="math">5 − 2 = +3</span>. Now let a higher-level replicator H, at level <span class="math">7</span>, meet R.</p>
           <div class="delta-steps" aria-label="Level delta example in three steps">
             <article class="delta-step">
               <span class="delta-no">01</span>
               <h4>Write the local differences</h4>
-              <p>R’s own level is 2. Each port stores how its endpoint differs from that 2.</p>
+              <p>R’s own level is 2. Each port stores how far its endpoint sits from that 2.</p>
               <span class="formula">port A: 2 − 2 = 0<br>port B: 5 − 2 = +3</span>
             </article>
             <article class="delta-step">
               <span class="delta-no">02</span>
               <h4>Copy H once per R port</h4>
-              <p>H is the higher-level replicator, so R replicates it. Both replicas start from H’s old level: 7.</p>
+              <p>H is higher, so R replicates it. Both replicas start from H’s old level: 7.</p>
               <span class="formula">old level of H = 7</span>
             </article>
             <article class="delta-step">
               <span class="delta-no">03</span>
               <h4>Add the exit’s delta</h4>
-              <p>The copy leaving port A stays at 7. The copy leaving port B is shifted upward by 3.</p>
+              <p>The copy leaving port A stays at 7. The copy leaving port B shifts up by 3.</p>
               <span class="formula">A: 7 + 0 = 7<br>B: 7 + 3 = 10</span>
             </article>
           </div>
@@ -1130,17 +1130,17 @@
             <div class="rule-label">The general rule, after the example</div>
             <p><span>new level of an H replica</span> = old H level + delta on the R port it leaves through</p>
           </div>
-          <p>“Duplicate” means exact copies. “Replicate” is the paper’s more precise word for copies that can differ by level. This distinction is doing real work: it replaces the separate indexed delimiters of older systems. A delta may be negative, zero, or positive; this example uses zero and a positive delta only because they make the arithmetic easy to see.</p>
+          <p>“Duplicate” means exact copies. “Replicate” is the paper’s word for copies that may differ by level. That distinction does real work: it replaces the separate indexed delimiters of older systems. A delta may be negative, zero, or positive; this example sticks to zero and a positive value only to keep the arithmetic easy to see.</p>
           <details>
             <summary>How a delta carries context through an interaction</summary>
-            <div><p>Several higher-level replicators can reach the same R port with different current levels. The port contributes the same local adjustment to each one. For a port with delta <span class="math">+3</span>, an arriving level 7 becomes 10, while an arriving level 12 becomes 15.</p><p>You can read the pair as an instruction: the replicator level gives the current context, and the chosen port adds the context change for that exit. Chapter 5 shows how the translation writes these port deltas into the initial net.</p></div>
+            <div><p>Several higher-level replicators can arrive at the same R port with different current levels. The port applies the same local adjustment to each. With delta <span class="math">+3</span>, level 7 becomes 10 and level 12 becomes 15.</p><p>Read the pair as an instruction: the replicator level is the current context; the chosen port adds the change for that exit. Chapter 5 shows how translation writes those deltas into the initial net.</p></div>
           </details>
         </section>
 
         <section class="chapter" id="compile" aria-labelledby="compile-title">
           <p class="chapter-kicker"><span class="number">05</span> Translation</p>
           <h2 id="compile-title">Compile a <span class="math">λ</span>-term into one rooted net.</h2>
-          <p class="intro">The paper defines, for each of λL, λA, λI, and λK, a <strong>bijection</strong> <span class="math">φ</span> from terms to canonical Δ-Nets. A bijection is a one-to-one, reversible correspondence: every term has one canonical net, and that canonical net reads back as one term. The translation is <strong>inductive</strong>: translate the smaller subterms first, then connect their fragments to translate the larger term.</p>
+          <p class="intro">For each of λL, λA, λI, and λK, the paper defines a <strong>bijection</strong> <span class="math">φ</span> from terms to canonical Δ-Nets. A bijection is a one-to-one, reversible map: every term has one canonical net, and that net reads back as one term. The translation is <strong>inductive</strong>: translate the smaller pieces first, then wire those fragments into the larger term.</p>
 
           <figure>
             <div class="diagram-panel">
@@ -1202,7 +1202,7 @@
           </figure>
 
           <h3>5.1 Start with a uniform interface</h3>
-          <p>Every fragment has an <strong>interface</strong>: one incoming wire at the top and zero or more outgoing wires at the bottom. The outermost fragment is connected to a single root node; <strong>free variables</strong>—variable occurrences not owned by any surrounding <span class="math">λ</span>—are represented by named interface nodes. This stable shape makes it possible to plug a fragment inside the fragment for its parent term.</p>
+          <p>Every fragment has an <strong>interface</strong>: one incoming wire at the top and zero or more outgoing wires at the bottom. The outermost fragment hangs from a single <strong>root</strong>. <strong>Free variables</strong>—names no surrounding <span class="math">λ</span> owns—become named interface nodes. That stable shape lets you plug a fragment into its parent the way a function plugs into a call.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 740 260" role="img" aria-label="A conceptual lambda-term to Delta-Net compilation pipeline">
@@ -1231,12 +1231,12 @@
             <article class="term-card">
               <span class="tag">Free variable</span>
               <h3>A named boundary node</h3>
-              <p>A variable free in the outermost term becomes a single-port, non-agent node labelled with that variable’s name. It is part of the net’s interface.</p>
+              <p>A variable free in the outermost term becomes a single-port, non-agent node labelled with its name. It sits on the net’s interface, not among the rewriting agents.</p>
             </article>
             <article class="term-card">
               <span class="tag">Bound occurrence</span>
               <h3>Just a wire—until it meets sharing</h3>
-              <p>A bound variable occurrence is a vertical wire. Its lower endpoint connects to the appropriate auxiliary port of the replicator that shares the variable, when one is required.</p>
+              <p>A bound occurrence is just a vertical wire. Its lower end later joins the right auxiliary port of the sharing replicator—when sharing is required at all.</p>
             </article>
           </div>
 
@@ -1283,8 +1283,8 @@
           </figure>
 
           <h3 id="abstraction-cases">5.3 The abstraction cases</h3>
-          <p>An abstraction is an upward-pointing fan (the <span class="math">λ</span> label in the paper is visual only). One auxiliary port connects to the body; the other corresponds to the bound variable. If that variable is unused, the second port goes to an eraser—only in the erasure-capable ΔA and ΔK systems.</p>
-          <p>When a used variable has multiple occurrences, a replicator connects the abstraction’s variable port to those occurrences. A one-port replicator with zero delta is equivalent to a wire, so canonical construction omits it.</p>
+          <p>An abstraction is an upward-pointing fan (the <span class="math">λ</span> label is only visual). One auxiliary port goes to the body; the other is the bound variable. If that variable is unused, the second port meets an eraser—only in the erasure-capable systems ΔA and ΔK.</p>
+          <p>When a used variable has several occurrences, a replicator joins the abstraction’s variable port to those uses. A one-port replicator with zero delta is just a wire, so canonical construction leaves it out.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram lambda-trace" viewBox="0 0 740 330" role="img" aria-label="Three lambda abstraction encodings: lambda x dot x uses a direct wire, lambda x dot y connects the unused x port to an eraser, and lambda x dot x x connects the x port to a two-port replicator">
@@ -1345,7 +1345,7 @@
           </figure>
 
           <h3 id="application-case">5.4 The application case</h3>
-          <p>An application is a downward-pointing fan (again, the <code>@</code> label is only visual). Its principal port joins the function fragment and one auxiliary port joins the argument fragment. During reduction, the application fan eventually meets an abstraction fan; their annihilation expresses application.</p>
+          <p>An application is a downward-pointing fan (the <code>@</code> label is only visual). Its principal port meets the function fragment; one auxiliary port meets the argument. During reduction the application fan eventually meets an abstraction fan; their annihilation is the application.</p>
 
           <figure>
             <div class="diagram-panel">
@@ -1400,12 +1400,12 @@
           </figure>
 
           <h3 id="level-origin">5.5 Where levels come from</h3>
-          <p>Tie every word here to the source syntax. An <strong>abstraction</strong> is the literal λ-term <span class="math">λx.M</span>: <span class="math">x</span> is its bound parameter and <span class="math">M</span> is its body. An <strong>application</strong> is the literal λ-term <span class="math">M&nbsp;N</span>: <span class="math">M</span> is the function position and <span class="math">N</span> is the argument position. A bound occurrence of <span class="math">x</span> is one of the <span class="math">x</span> leaves in <span class="math">M</span> owned by that particular <span class="math">λx</span>.</p>
+          <p>Keep every word tied to the source syntax. An <strong>abstraction</strong> is the literal term <span class="math">λx.M</span>: parameter <span class="math">x</span>, body <span class="math">M</span>. An <strong>application</strong> is the literal term <span class="math">M&nbsp;N</span>: function <span class="math">M</span>, argument <span class="math">N</span>. A bound occurrence of <span class="math">x</span> is one of the <span class="math">x</span> leaves in <span class="math">M</span> owned by that particular <span class="math">λx</span>.</p>
           <div class="callout key">
             <div class="symbol">@</div>
             <div>
               <h3>“Context” here is not a runtime closure</h3>
-              <p>Calculate levels by walking through the written λ-term. Start the whole term at level <span class="math">0</span>. For an abstraction <span class="math">λx.M</span> at level <span class="math">ℓ</span>, continue into <span class="math">M</span> at level <span class="math">ℓ</span>. For every application <span class="math">M&nbsp;N</span> at level <span class="math">ℓ</span>, write level <span class="math">ℓ</span> on its function <span class="math">M</span> and level <span class="math">ℓ + 1</span> on its argument <span class="math">N</span>. Repeat the same rule inside each subtree. During graph reduction, these coordinates track the corresponding <strong>sharing contexts</strong>; they do not count captured values or surrounding λ symbols.</p>
+              <p>Calculate levels by walking the written λ-term. Start the whole term at level <span class="math">0</span>. For an abstraction <span class="math">λx.M</span> at level <span class="math">ℓ</span>, continue into <span class="math">M</span> at the same level <span class="math">ℓ</span>. For an application <span class="math">M&nbsp;N</span> at level <span class="math">ℓ</span>, keep level <span class="math">ℓ</span> on the function <span class="math">M</span> and write level <span class="math">ℓ + 1</span> on the argument <span class="math">N</span>. Repeat inside each subtree. During graph reduction those coordinates track <strong>sharing contexts</strong>; they do not count captured values or surrounding λ symbols the way a runtime closure would.</p>
             </div>
           </div>
           <table class="comparison" aria-label="Mechanical level rules for translating lambda calculus syntax">
@@ -1417,7 +1417,7 @@
               <tr><td>Occurrence x</td><td>x is reached at level l<sub>i</sub>.</td><td>Its wire endpoint has level l<sub>i</sub>.</td></tr>
             </tbody>
           </table>
-          <p><strong>Apply exactly the same instructions at every step.</strong> For <span class="math">λx.λy.x</span>, start at level <span class="math">0</span> and carry <span class="math">0</span> through both abstraction bodies, so <span class="math">x</span> receives level <span class="math">0</span>. For <span class="math">λx.f&nbsp;(g&nbsp;x)</span>, carry <span class="math">0</span> into the body, assign <span class="math">0</span> to the outer function <span class="math">f</span>, and assign <span class="math">1</span> to its argument <span class="math">g&nbsp;x</span>. Repeating the application rule there assigns <span class="math">1</span> to <span class="math">g</span> and <span class="math">2</span> to <span class="math">x</span>.</p>
+          <p><strong>Use the same instructions at every step.</strong> For <span class="math">λx.λy.x</span>, start at level <span class="math">0</span> and carry <span class="math">0</span> through both bodies, so <span class="math">x</span> sits at level <span class="math">0</span>. For <span class="math">λx.f&nbsp;(g&nbsp;x)</span>, carry <span class="math">0</span> into the body, give the outer function <span class="math">f</span> level <span class="math">0</span>, and give its argument <span class="math">g&nbsp;x</span> level <span class="math">1</span>. Apply the rule again inside that argument: <span class="math">g</span> stays at <span class="math">1</span>, and <span class="math">x</span> lands at <span class="math">2</span>.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram lambda-trace" viewBox="0 0 740 420" role="img" aria-label="A complete level walk for lambda x dot x applied to g x, showing x occurrences at levels zero and two and a level-one replicator with deltas minus one and plus one">
@@ -1490,23 +1490,23 @@
             </div>
             <figcaption><strong>Walk <span class="math">λx.x&nbsp;(g&nbsp;x)</span> mechanically.</strong> Begin at level <span class="math">0</span> and keep that level through <span class="math">λx</span> into its body <span class="math">x&nbsp;(g&nbsp;x)</span>. At the outer application, give the function <span class="math">x₀</span> level <span class="math">0</span> and the argument <span class="math">g&nbsp;x</span> level <span class="math">1</span>. Now apply the same rule to <span class="math">g&nbsp;x</span>: give its function <span class="math">g</span> level <span class="math">1</span> and its argument <span class="math">x₁</span> level <span class="math">2</span>. The binder’s <span class="math">R<sub>x</sub></span> is at level <span class="math">1</span>; subtracting that base from endpoint levels <span class="math">0</span> and <span class="math">2</span> gives <span class="math">⟨−1,+1⟩</span>.</figcaption>
           </figure>
-          <p>To calculate an encoding by hand:</p>
+          <p>To encode a term by hand:</p>
           <ol>
-            <li>Fully parenthesize the applications so every function and argument position is unambiguous.</li>
-            <li>Write level <span class="math">0</span> on the whole term, then walk inward. Keep the current level through every <span class="math">λx.M</span> body and every function position; add one only when entering an application’s argument.</li>
-            <li>For each binder <span class="math">λx</span> at level <span class="math">l</span>, put its sharing replicator <span class="math">R<sub>x</sub></span> at level <span class="math">l + 1</span>, when a replicator is required.</li>
-            <li>Connect each bound occurrence <span class="math">x<sub>i</sub></span> to one auxiliary port of <span class="math">R<sub>x</sub></span>. If that occurrence was reached at level <span class="math">l<sub>i</sub></span>, label its port with <span class="math">d<sub>i</sub> = l<sub>i</sub> − (l + 1)</span>.</li>
+            <li>Fully parenthesize applications so every function and argument position is unambiguous.</li>
+            <li>Write level <span class="math">0</span> on the whole term, then walk inward. Keep the current level through every <span class="math">λx.M</span> body and every function position; add one only when you enter an application’s argument.</li>
+            <li>For each binder <span class="math">λx</span> at level <span class="math">l</span>, put its sharing replicator <span class="math">R<sub>x</sub></span> at level <span class="math">l + 1</span> when a replicator is needed.</li>
+            <li>Connect each bound occurrence <span class="math">x<sub>i</sub></span> to one auxiliary port of <span class="math">R<sub>x</sub></span>. If that occurrence was reached at level <span class="math">l<sub>i</sub></span>, label its port <span class="math">d<sub>i</sub> = l<sub>i</sub> − (l + 1)</span>.</li>
           </ol>
-          <p>A <strong>wire endpoint level</strong> is therefore just the level calculated for that concrete variable occurrence. Its port delta is the difference between where the occurrence sits and where its binder’s replicator sits:</p>
+          <p>A <strong>wire endpoint level</strong> is simply the level of that concrete variable occurrence. Its port delta is the gap between where the occurrence sits and where its binder’s replicator sits:</p>
           <div class="rule">
             <div class="rule-label">Construction rule</div>
             <p><span>port delta</span> = level of its connected wire endpoint − level of the replicator</p>
           </div>
-          <p>This is where the numbers in the Chapter 4 example came from: a replicator at level <span class="math">2</span> connected to an occurrence endpoint at level <span class="math">5</span> receives delta <span class="math">+3</span>. During reduction, the stored <span class="math">+3</span> supplies the local level adjustment whenever another replicator exits through that port. Section <a href="#deep-deltas">5.8</a> carries out the complete calculation for four occurrences of one bound variable.</p>
+          <p>That is where Chapter 4’s numbers came from: a replicator at level <span class="math">2</span> wired to an occurrence at level <span class="math">5</span> stores delta <span class="math">+3</span>. During reduction, that <span class="math">+3</span> is the local adjustment whenever another replicator exits through the port. Section <a href="#deep-deltas">5.8</a> works the full calculation for four occurrences of one bound variable.</p>
 
           <section class="worked-trace" id="lambda-trace" aria-labelledby="lambda-trace-title">
             <h3 id="lambda-trace-title">5.6 Follow a β-redex from term, to net, to term</h3>
-            <p>The translation rules become much less abstract when the <strong>same small program</strong> remains visible throughout. Start with the closed linear term <span class="math">(λx.x)(λy.y)</span>. Each bound variable occurs exactly once, so this is a ΔL example: its net contains fans only—no eraser and no replicator.</p>
+            <p>The rules feel less abstract when one small program stays on screen the whole way. Start with the closed linear term <span class="math">(λx.x)(λy.y)</span>. Each bound variable occurs once, so this is a ΔL example: fans only—no eraser, no replicator.</p>
             <div class="trace-derivation" aria-label="Beta reduction of the identity function applied to itself">
               <div class="trace-label">λ-calculus view</div>
               <p>(λx.x)(λy.y) &nbsp;→<sub>β</sub>&nbsp; λy.y</p>
@@ -1580,7 +1580,7 @@
             </div>
 
             <h3>5.7 The δ in <span class="math">λx.x&nbsp;x</span> is where Δ-Net levels enter</h3>
-            <p>The <a href="https://zicklag.katharos.group/_astro/lam-x-xx.excalidraw.394327a5_ZJMpfg.webp">Katharos diagram for <span class="math">λx.x&nbsp;x</span></a> is especially useful because it makes the extra structure visible: the <span class="math">γ</span> nodes carry λ/application shape and the <span class="math">δ</span> node splits the one bound input <span class="math">x</span> into two occurrences. That image uses <strong>symmetric interaction combinators</strong>, not Δ-Net notation verbatim. The correspondence below is conceptual: each <span class="math">γ</span> role becomes a Δ-Net fan; the binary <span class="math">δ</span> role becomes a two-port Δ-Net replicator <span class="math">R</span>.</p>
+            <p>The <a href="https://zicklag.katharos.group/_astro/lam-x-xx.excalidraw.394327a5_ZJMpfg.webp">Katharos diagram for <span class="math">λx.x&nbsp;x</span></a> is useful because the extra structure is visible: <span class="math">γ</span> nodes carry λ/application shape, and the <span class="math">δ</span> node splits one bound input <span class="math">x</span> into two uses. That image uses <strong>symmetric interaction combinators</strong>, not Δ-Net notation itself. The map below is conceptual: each <span class="math">γ</span> role becomes a Δ-Net fan; the binary <span class="math">δ</span> becomes a two-port replicator <span class="math">R</span>.</p>
             <div class="trace-derivation" aria-label="Beta reduction of the self-application function applied to identity">
               <div class="trace-label">The same sharing is exercised by a redex</div>
               <p>(λx.x&nbsp;x)(λy.y) &nbsp;→<sub>β</sub>&nbsp; (λy.y)(λy.y) &nbsp;→<sub>β</sub>&nbsp; λy.y</p>
@@ -1644,10 +1644,10 @@
               </div>
               <figcaption><strong>What the numbers mean in this exact term.</strong> The outer term has level <span class="math">0</span>. Its body application is also level <span class="math">0</span>; the application rule puts the argument occurrence at level <span class="math">1</span>, while the function occurrence stays at level <span class="math">0</span>. The replicator belongs to the surrounding abstraction, so it has level <span class="math">0 + 1 = 1</span>. Therefore its function-use port stores <span class="math">d<sub>0</sub> = 0 − 1 = −1</span>, and its argument-use port stores <span class="math">d<sub>1</sub> = 1 − 1 = 0</span>.</figcaption>
             </figure>
-            <p>Crucially, a level delta is <strong>not another copy count</strong> and it is not a source-level variable value. The two-port replicator already says “one bound value has two consumers.” Its level and per-port deltas record the relative sharing context at each consumer. When replicators later commute through structure, those deltas adjust the levels of the replicas that leave through their ports. That is the bookkeeping which lets Δ-Nets represent the sharing introduced by <span class="math">δ</span> without separate scope-delimiter agents.</p>
+            <p>A level delta is <strong>not a copy count</strong>, and it is not a source-level variable value. The two-port replicator already says “one bound value, two consumers.” Level and per-port deltas only record the relative sharing context at each consumer. When replicators later commute through structure, those deltas adjust the levels of replicas leaving through their ports. That bookkeeping is how Δ-Nets express the sharing a <span class="math">δ</span> would introduce—without separate scope-delimiter agents.</p>
 
             <h3 id="deep-deltas">5.8 Let right nesting expose a deeper delta vector</h3>
-            <p>The previous term has only one application, so its two use sites differ by one level. A more revealing closed term is <span class="math">λx. x&nbsp;(x&nbsp;(x&nbsp;x))</span>. The parentheses matter: each successive occurrence on the right sits inside the <em>argument</em> of another application, and every argument edge adds one to the term level.</p>
+            <p>The previous term has only one application, so its two use sites differ by a single level. A clearer closed term is <span class="math">λx. x&nbsp;(x&nbsp;(x&nbsp;x))</span>. The parentheses matter: each successive occurrence on the right sits inside another application’s <em>argument</em>, and every argument edge adds one to the term level.</p>
             <div class="trace-derivation" aria-label="Beta reduction of a four-use lambda abstraction applied to N">
               <div class="trace-label">Source-level effect</div>
               <p>(λx. x&nbsp;(x&nbsp;(x&nbsp;x))) N &nbsp;→<sub>β</sub>&nbsp; N&nbsp;(N&nbsp;(N&nbsp;N))</p>
@@ -1732,17 +1732,17 @@
                 <tr><td>x₃</td><td>Argument of the deepest application.</td><td>3</td><td>3 − 1 = +2</td></tr>
               </tbody>
             </table>
-            <p>If this abstraction is applied to a term <span class="math">N</span>, the replicator represents the four consumers of that one argument. When later interactions move sharing through the nested application structure, an exit through the four ports adjusts an arriving replica’s level by <span class="math">−1</span>, <span class="math">0</span>, <span class="math">+1</span>, or <span class="math">+2</span>, respectively. The numbers preserve where each use belongs; they still do not say how many copies to make.</p>
+            <p>Apply this abstraction to a term <span class="math">N</span> and the replicator stands for four consumers of that one argument. When later interactions move sharing through the nested applications, exits through the four ports adjust an arriving replica’s level by <span class="math">−1</span>, <span class="math">0</span>, <span class="math">+1</span>, or <span class="math">+2</span>. The numbers keep track of where each use belongs. They still do not say how many copies to make.</p>
           </section>
         </section>
 
         <section class="chapter" id="discipline" aria-labelledby="discipline-title">
           <p class="chapter-kicker"><span class="number">06</span> Beyond core interaction</p>
           <h2 id="discipline-title">Reduction needs housekeeping and a schedule.</h2>
-          <p class="intro">The full algorithm combines the interaction-net core with <strong>canonicalization</strong> rules—cleanup rewrites that restore the special term-like net shape—and a global <strong>leftmost-outermost</strong> discipline for nonlinear systems.</p>
+          <p class="intro">The full algorithm is more than the interaction core. It adds <strong>canonicalization</strong>—cleanup rewrites that restore the special term-like net shape—and, for the nonlinear systems, a global <strong>leftmost-outermost</strong> schedule.</p>
 
           <h3>6.1 Canonical and proper are different states</h3>
-          <p>The translation produces a <strong>canonical</strong> net: one in the standard shape that the reverse translation knows how to read. After zero or more core interactions, the result is a <strong>proper</strong> net: a reachable intermediate net in the broader shape used during reduction. Canonicalization rewrites return that intermediate structure to the standard canonical form.</p>
+          <p>Translation produces a <strong>canonical</strong> net: the standard shape the reverse translation knows how to read. After zero or more core interactions you have a <strong>proper</strong> net—any intermediate shape reachable during reduction. Canonicalization is the cleanup that walks a proper net back to canonical form.</p>
           <table class="comparison">
             <thead><tr><th>State</th><th>Meaning in the paper</th><th>Why a reader should care</th></tr></thead>
             <tbody>
@@ -1752,11 +1752,11 @@
           </table>
 
           <h3>6.2 Erasure needs a root-reachability sweep</h3>
-          <p>In ΔA and ΔK, an eraser can leave disconnected <strong>subnets</strong> (smaller graph regions) behind. The paper’s canonicalization erasure step collects this unreachable graph material in one reachability sweep:</p>
+          <p>In ΔA and ΔK, an eraser can leave disconnected <strong>subnets</strong>—smaller graph regions—behind. Erasure canonicalization gathers that unreachable material in one reachability sweep:</p>
           <div class="steps">
-            <div class="step"><div class="step-no">A</div><div><h3>Mark from the root</h3><p>Traverse parent–child wires that are reachable from the root and mark the nodes encountered.</p></div></div>
-            <div class="step"><div class="step-no">B</div><div><h3>Discard what was not marked</h3><p>Erase all unreachable nodes. Wires formerly connected to them connect to erasers instead.</p></div></div>
-            <div class="step"><div class="step-no">C</div><div><h3>Choose the space/time trade-off</h3><p>This sweep can run at the end or earlier to save space. The paper recommends after every application of an abstraction that ignores its argument when minimizing memory is the priority.</p></div></div>
+            <div class="step"><div class="step-no">A</div><div><h3>Mark from the root</h3><p>Walk parent–child wires from the root and mark every node you reach.</p></div></div>
+            <div class="step"><div class="step-no">B</div><div><h3>Discard what was not marked</h3><p>Delete the unmarked nodes. Wires that still touch them end in erasers instead.</p></div></div>
+            <div class="step"><div class="step-no">C</div><div><h3>Choose the space/time trade-off</h3><p>Run the sweep at the end, or earlier to save space. When memory matters most, the paper recommends it after every application of an abstraction that ignores its argument.</p></div></div>
           </div>
 
           <figure>
@@ -1833,12 +1833,12 @@
           </figure>
 
           <h3>6.3 Sharing needs replicator cleanup</h3>
-          <p>In ΔI and ΔK, interactions can form trees made only of replicators. The merge rule applies to consecutive replicators whose unpaired status can be established from a local level condition. This preserves pairing information while compressing the tree.</p>
+          <p>In ΔI and ΔK, interactions can build trees made only of replicators. A merge rule collapses consecutive replicators once a local level test shows they are unpaired. Pairing information stays intact; the tree gets shorter.</p>
           <div class="callout formal">
             <div class="symbol">Δ</div>
             <div>
               <h3>The local merge test</h3>
-              <p>For consecutive replicators A and B connected through a port whose delta is <span class="math">d</span>, B can be known unpaired when <span class="math">0 ≤ l<sub>B</sub> − l<sub>A</sub> ≤ d</span>. The paper argues this means B cannot interact before A is annihilated; as A is unpaired, it never will be.</p>
+              <p>For consecutive replicators A and B joined through a port with delta <span class="math">d</span>, B is known unpaired when <span class="math">0 ≤ l<sub>B</sub> − l<sub>A</sub> ≤ d</span>. In the paper’s reading, B cannot interact before A is annihilated—and since A is unpaired, that never happens. The inequality is a safety proof, not a performance hint.</p>
             </div>
           </div>
           <figure>
@@ -1910,7 +1910,7 @@
             </div>
             <figcaption><strong>The inequality establishes safety; endpoint levels determine the new numbers.</strong> Here <span class="math">A</span> is known unpaired, and its connecting port has <span class="math">d = 3</span>. Since <span class="math">0 ≤ l<sub>B</sub> − l<sub>A</sub> = 2 ≤ 3</span>, <span class="math">B</span> is also known unpaired and the consecutive agents may merge. The surviving replicator keeps level <span class="math">2</span>; the external endpoint levels remain <span class="math">2, 3, 6</span>, so the defining subtraction yields <span class="math">⟨0,+1,+4⟩</span>. This is canonicalization, not a principal-to-principal core interaction.</figcaption>
           </figure>
-          <p>ΔK has one more cleanup: <strong>unpaired replicator decay</strong>. Auxiliary ports of unpaired replicators that lead to erasers can be removed. If that leaves one zero-delta port, the replicator becomes the wire it is equivalent to.</p>
+          <p>ΔK has one more cleanup: <strong>unpaired replicator decay</strong>. Drop auxiliary ports of unpaired replicators that lead straight into erasers. If one zero-delta port remains, the replicator collapses to the wire it already was.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram lambda-trace" viewBox="0 0 740 315" role="img" aria-label="Unpaired replicator decay removes two auxiliary ports connected to erasers, leaving a one-port zero-delta replicator which is then replaced by an ordinary wire">
@@ -1969,7 +1969,7 @@
           </figure>
 
           <h3>6.4 Why the algorithm specifies leftmost-outermost</h3>
-          <p>Core interaction rules enjoy the local confluence property. Canonicalization rules can involve ports beyond a principal-to-principal pair, so they operate under an additional scheduling discipline. <strong>Leftmost-outermost</strong> first selects an outermost reducible pattern—one with no enclosing reducible pattern—then chooses the leftmost candidate in the term-like reading of the net. Here “sequential” means this priority rule chooses one next interaction. The paper uses that order for ΔA, ΔI, and ΔK so that cleanup happens early and merge opportunities are handled before later interactions.</p>
+          <p>Core interaction rules enjoy local confluence. Canonicalization can touch ports that are not a principal-to-principal pair, so it needs a schedule. <strong>Leftmost-outermost</strong> first picks an outermost reducible pattern—one with no reducible pattern wrapped around it—then takes the leftmost candidate in the term-like reading of the net. “Sequential” here just means that priority rule chooses the next interaction. The paper uses that order for ΔA, ΔI, and ΔK so cleanup runs early and merges beat later commutations.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 740 165" role="img" aria-label="A conceptual leftmost-outermost reduction schedule">
@@ -1990,7 +1990,7 @@
         <section class="chapter" id="guarantees" aria-labelledby="guarantees-title">
           <p class="chapter-kicker"><span class="number">07</span> Synthesis</p>
           <h2 id="guarantees-title">What does this proposal actually promise?</h2>
-          <p class="intro">The paper’s final claim is an algorithm for optimal parallel <span class="math">λ</span>-reduction: translate a term to a canonical net, reduce with the core rules plus required canonicalizations and scheduling, then read a canonical net back as a term.</p>
+          <p class="intro">The paper’s final claim is an algorithm for optimal parallel <span class="math">λ</span>-reduction: translate a term to a canonical net, reduce with the core rules plus the required cleanups and schedule, then read the canonical net back as a term.</p>
 
           <figure>
             <div class="diagram-panel">
@@ -2047,13 +2047,13 @@
           </figure>
 
           <div class="takeaways">
-            <article class="takeaway"><span class="count">01 / NO DISCARDED WORK</span><h3>Erasure is controlled</h3><p>Leftmost-outermost reduction avoids evaluating a subnet that will later be erased; the reachability sweep removes the leftover garbage.</p></article>
-            <article class="takeaway"><span class="count">02 / NO REPEATED WORK</span><h3>Sharing stays interior</h3><p>Replicators represent shared use directly, aiming to avoid duplicating necessary reductions merely because an expression has several consumers.</p></article>
-            <article class="takeaway"><span class="count">03 / LOCAL PARALLELISM</span><h3>Independent pairs can run</h3><p>The interaction core’s perfect confluence lets disjoint active pairs choose and apply their local rules independently.</p></article>
+            <article class="takeaway"><span class="count">01 / NO DISCARDED WORK</span><h3>Erasure is controlled</h3><p>Leftmost-outermost reduction avoids evaluating a subnet that will later be erased; the reachability sweep clears the leftover garbage.</p></article>
+            <article class="takeaway"><span class="count">02 / NO REPEATED WORK</span><h3>Sharing stays interior</h3><p>Replicators put shared use in the graph, so necessary work need not be redone merely because an expression has several consumers.</p></article>
+            <article class="takeaway"><span class="count">03 / LOCAL PARALLELISM</span><h3>Independent pairs can run</h3><p>Perfect confluence in the interaction core lets disjoint active pairs choose and apply their local rules independently.</p></article>
           </div>
 
           <h3>7.1 The guarantee differs by subsystem</h3>
-          <p>In ΔL, fan annihilation is the only interaction. The paper states that all proper nets are canonical, and that if <span class="math">n</span> β-reductions normalize a λL term, <span class="math">n</span> interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization rules for erasure and sharing structures.</p>
+          <p>In ΔL, fan annihilation is the only interaction. The paper states that every proper net is already canonical, and that if <span class="math">n</span> β-reductions normalize a λL term, <span class="math">n</span> interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure.</p>
           <table class="comparison">
             <thead><tr><th>System</th><th>Extra concern</th><th>Paper’s prescribed response</th></tr></thead>
             <tbody>
@@ -2066,19 +2066,19 @@
 
           <h3>7.2 A useful way to separate the claims</h3>
           <ol>
-            <li><strong>Expressiveness:</strong> every term in the four λ fragments has a canonical net representation, with a stated bijection.</li>
-            <li><strong>Local behavior:</strong> the three-agent interaction core is an interaction system with the one-step diamond property.</li>
-            <li><strong>Whole-algorithm behavior:</strong> adding canonicalization and the global reduction discipline is claimed to give <strong>Church–Rosser confluence</strong> and optimality for the nonlinear systems. Church–Rosser confluence is the standard name for the broader agreement property: reduction paths that start from the same object can be continued to a common result.</li>
+            <li><strong>Expressiveness:</strong> every term in the four λ fragments has a canonical net, via a stated bijection.</li>
+            <li><strong>Local behavior:</strong> the three-agent core is an interaction system with the one-step diamond property.</li>
+            <li><strong>Whole-algorithm behavior:</strong> add canonicalization and the global schedule, and the paper claims <strong>Church–Rosser confluence</strong> and optimality for the nonlinear systems. Church–Rosser is the broader agreement property: paths that start together can be continued to a common result—not necessarily in one step.</li>
           </ol>
-          <p>This distinction matters. The third layer relies on erasure sweeps, replicator merging, decay, and leftmost-outermost scheduling in addition to the core interaction rules.</p>
+          <p>The split matters. The third layer needs erasure sweeps, replicator merging, decay, and leftmost-outermost scheduling on top of the core rules.</p>
 
           <h3>7.3 The broader proposition</h3>
-          <p>The paper asks readers to see λ-calculus as a <em>projection</em> of Δ-Nets: λ-terms enforce a particular, restrictive form of sharing, while nets can express sharing relationships that syntax alone obscures. If the proposed reduction machinery holds up, that added freedom could matter for parallel language runtimes and machine architectures.</p>
+          <p>The paper invites you to see λ-calculus as a <em>projection</em> of Δ-Nets. λ-terms force a narrow form of sharing; nets can say sharing relationships that plain syntax hides. If the reduction machinery holds up, that freedom could matter for parallel runtimes and machine architectures.</p>
           <div class="callout key">
             <div class="symbol">✓</div>
             <div>
               <h3>One-sentence takeaway</h3>
-              <p>Δ-Nets tries to make optimal parallel evaluation practical by packing each sharing boundary’s information into a variable-arity replicator, then combining local interactions with only the global discipline needed to avoid preventable work.</p>
+              <p>Δ-Nets tries to make optimal parallel evaluation practical by packing each sharing context into a variable-arity replicator, then combining local interactions with only as much global discipline as you need to avoid preventable work.</p>
             </div>
           </div>
         </section>
@@ -2086,7 +2086,7 @@
         <section class="chapter" id="glossary" aria-labelledby="glossary-title">
           <p class="chapter-kicker"><span class="number">08</span> Keep nearby</p>
           <h2 id="glossary-title">A compact glossary, then the source.</h2>
-          <p class="intro">Use these short definitions while reading the formal article. They are intentionally intuitive, and defer to the paper for exact notation and proofs.</p>
+          <p class="intro">Keep these short definitions nearby while reading the formal article. They aim at intuition. Exact notation and proofs stay with the paper.</p>
           <div class="glossary" aria-label="Glossary">
             <article><h3>λ-term</h3><p>A program made from variables, abstractions, and applications. In <span class="math">λx.t</span>, the abstraction binds parameter <span class="math">x</span> in body <span class="math">t</span>. In <span class="math">t&nbsp;u</span>, <span class="math">t</span> is the function and <span class="math">u</span> is its argument.</p></article>
             <article><h3>β-redex / β-reduction</h3><p>A β-redex is a function already applied to an argument, <span class="math">(λx.t)u</span>. Its β-reduction substitutes <span class="math">u</span> for the bound occurrences of <span class="math">x</span> in <span class="math">t</span>.</p></article>
@@ -2115,7 +2115,7 @@
               <li><a href="https://arxiv.org/html/2505.20314v4">Read the HTML version on arXiv</a></li>
               <li><a href="https://arxiv.org/abs/2505.20314">Read the arXiv abstract and download formats</a></li>
             </ol>
-            <p><strong>About this edition.</strong> It is an independently structured teaching summary based on the paper’s abstract and Sections 1–5. All diagrams and wording here are original explanatory material, not reproductions of the author’s figures.</p>
+            <p><strong>About this edition.</strong> An independently structured teaching summary of the paper’s abstract and Sections 1–5. Diagrams and wording here are original explanatory material, not reproductions of the author’s figures.</p>
           </div>
         </section>
       </main>
