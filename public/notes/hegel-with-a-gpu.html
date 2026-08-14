@@ -68,18 +68,18 @@ approach with growing confidence — a few rounds often dislodged it. Not always
 far too often to dismiss as noise.</p>
 <p><strong>Language models generate forward, and that is the trap.</strong> Each token conditions
 the next, so the likely continuation of a bad line is more of the same. “Wait, no”
-is a low-probability continuation once the model has committed itself. Its earlier
-words create a basin of plausibility; being stuck means following its slope.</p>
+is a low-probability move once the model has committed itself. Its earlier words
+dig a basin of plausibility; being stuck means sliding down that slope.</p>
 <p>The antithesis is <strong>licensed self-negation</strong>. It changes the context and requires the
 otherwise unlikely move: “this is false because…”. It adds no rule of inference. It
 adds the reversal that forward generation suppresses. That is enough to explain the
-effect; Hegel need not be right about anything else.</p>
+effect. Hegel need not be right about anything else.</p>
 <h2>Why &quot;rubbish&quot; and &quot;works&quot; are the same sentence</h2>
 <p>Here is the reconciliation that let a positivist sleep.</p>
 <p>My objection was always that dialectic is not truth-preserving. Propositional logic
-preserves truth; dialectic stages a tension and resolves it. But an LLM is not
-deducing from propositions. It predicts what language will accept as the next move:
-not what is true, but what sounds warranted.</p>
+keeps truth if the premises are true; dialectic stages a tension and resolves it. But
+an LLM is not deducing from propositions. It predicts what language will accept as
+the next move: not what is true, but what sounds warranted.</p>
 <p>Dialectic is a grammar for those moves. A claim invites an objection; an objection
 invites a reconciliation. It tells us what conventionally follows, not what validly
 follows. That is poor logic for most of what I care about. It is well matched to a
@@ -92,7 +92,7 @@ helps a particular system, and test that claim. The metaphysics stays in the bin
 the procedure earns its place at the bench.</p>
 <h2>But it only sometimes works — and the failures are the interesting part</h2>
 <p>The tool fails at least as often as it helps. Those failures matter more than the
-successes. They come in three distinct forms.</p>
+successes. They come in three forms.</p>
 <p><strong>Collapse.</strong> A synthesis needs two strong positions in real tension. If either is
 weak, the “synthesis” simply passes through the stronger one. A weak antithesis
 relaunders the thesis; a weak thesis crowns the antithesis. Strong is not the same as
@@ -119,11 +119,11 @@ When a weak pole is absorbed, the survivor does not merely persist; it appears t
 have survived adversarial review. A confident error paired with a dutiful, limp
 antithesis exits credentialed by a process that never tested it. I built an
 adversary to strip unearned confidence. Its failure mode prints it.</p>
-<p>Hegel gives this bug a useful name. Negation should be <em>immanent</em>: contradiction
-should arise from the thesis’s own tensions. My tool imposed negation externally by
-assigning a model the role of antithesis. If the content contains no contradiction,
-the critic must invent one. The red herring is not stupidity; it is a model with
-nothing to say being required to say something.</p>
+<p>Hegel gives this bug a useful name. Negation should be <em>immanent</em>: the contradiction
+should come out of the thesis’s own tensions, not be assigned from outside as a job
+title. My tool imposed negation externally by giving a model the role of antithesis.
+If the content contains no contradiction, the critic must invent one. The red herring
+is not stupidity; it is a model with nothing to say being required to say something.</p>
 <h2>The dialectic that actually worked had a GPU in it</h2>
 <p>I found the correction in a different project: a relation-extraction model trained
 over weeks, with a running log of each session. The log was a working dialectic, for

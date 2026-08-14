@@ -33,7 +33,10 @@
         <h1>Fibonacci quasicrystals: order without a loop</h1>
         <p class="post-meta">3 August 2026</p>
         <div class="post-body">
-<p>A Fibonacci quasicrystal is a one-dimensional pattern with long-range order but no repeating unit cell. It is not random: every local choice belongs to a precise global rule. It is not periodic either: no finite block can be translated along the line to reproduce the whole pattern.</p>
+<p>A Fibonacci quasicrystal is a one-dimensional pattern with long-range order but no
+repeating unit cell. It is not random: every local choice follows a precise global
+rule. It is not periodic either: no finite block, slid along the line, reproduces
+the whole pattern.</p>
 <p>The familiar construction is almost absurdly small:</p>
 <pre><code class="language-text">L → LS
 S → L
@@ -46,58 +49,105 @@ LSLLS
 LSLLSLSL
 …
 </code></pre>
-<p>Read <code>L</code> and <code>S</code> as long and short tiles. In the geometric version, choose the short length to be 1 and the long length to be the golden ratio, <code>φ = (1 + √5) / 2 ≈ 1.618</code>. The ratio of long to short tiles approaches the same number as the sequence grows.</p>
+<p>Read <code>L</code> and <code>S</code> as long and short tiles. In the geometric version, give the short
+tile length 1 and the long tile length the golden ratio, <code>φ = (1 + √5) / 2 ≈ 1.618</code>.
+As the sequence grows, the ratio of long tiles to short tiles settles on that same
+number.</p>
 <h2>The small rule and the large order</h2>
-<p>The substitution has no hidden dice roll. Its order appears at every scale: recognisable patches recur, the long/short frequencies settle to fixed values, and the pattern has sharp diffraction peaks. Yet it has no translation period. That is the useful middle ground between a conventional crystal, which repeats, and a random sequence, which has no exact organizing rule.</p>
-<p>The Fibonacci chain is a particularly compact model of this distinction. Its local rule creates a pattern that remains coherent as it grows, while denying us the one thing a periodic crystal supplies for free: a unit cell.</p>
+<p>There is no dice roll hiding in the substitution. Order shows up at every scale:
+recognisable patches recur, the long/short frequencies settle, and the pattern has
+sharp diffraction peaks. Yet it has no translation period.</p>
+<p>That middle ground is the point. A conventional crystal repeats. A random sequence
+has no exact organizing rule. The Fibonacci chain keeps coherence as it grows while
+denying us the one free gift of a periodic crystal: a unit cell you can stamp
+forever.</p>
 <h2>An irrational step around a circle</h2>
-<p>There is a simple mathematical picture behind that refusal to repeat. Consider the integer orbit</p>
-<pre><code class="language-text">e^(2πinα),    n ∈ ℤ.
+<p>There is a simple picture behind that refusal to repeat. Walk the integer orbit</p>
+<pre><code class="language-text">e^(2πinα),    n ∈ ℤ
 </code></pre>
-<p>If <code>α ∈ ℚ</code>, the orbit visits only finitely many points on the circle and repeats. If <code>α ∉ ℚ</code>, it is dense: it comes arbitrarily close to every point on the circle, but it never lands exactly on a previous point. Equivalently, the sequence</p>
+<p>on the unit circle.</p>
+<p>If <code>α</code> is rational, you hit only finitely many points and then loop. If <code>α</code> is
+irrational, the orbit is <strong>dense</strong>: it comes arbitrarily close to every point on the
+circle, but it never lands exactly on a previous point. Equivalently, the sequence</p>
 <pre><code class="language-text">0, α, 2α, 3α, …  (mod 1)
 </code></pre>
 <p>eventually closes for rational <code>α</code>, and never closes for irrational <code>α</code>.</p>
-<p>For the Fibonacci choice, take</p>
+<p>For Fibonacci, take</p>
 <pre><code class="language-text">α = φ = (1 + √5) / 2 ≈ 1.618.
 </code></pre>
-<p>Only the fractional part matters in a rotation modulo 1. Therefore the same circle rotation can also be written as</p>
+<p>Only the fractional part matters in a rotation modulo 1, so the same walk is</p>
 <pre><code class="language-text">α = φ − 1 = 1 / φ ≈ 0.618.
 </code></pre>
-<p>Both are irrational. The two expressions differ by the integer 1, so they describe the same rotation after taking the result modulo 1.</p>
+<p>Both are irrational. They differ by the integer 1, so after “mod 1” they describe
+the same rotation.</p>
 <h2>The rule that turns the rotation into tiles</h2>
-<p>Here is the missing concrete step. Set <code>β = 1 / φ² ≈ 0.382</code> and begin at <code>0</code> on a circle whose circumference is 1. Repeatedly advance by <code>β</code>, reducing modulo 1. Mark one point on the circle. On a step that crosses the mark, write <code>S</code>; on every other step, write <code>L</code>.</p>
-<p>The same rule, without a picture, is</p>
+<p>Here is the missing concrete step. Set <code>β = 1 / φ² ≈ 0.382</code> and start at <code>0</code> on a
+circle of circumference 1. Repeatedly advance by <code>β</code>, reducing modulo 1. Mark one
+point on the circle. On a step that crosses the mark, write <code>S</code>; otherwise write
+<code>L</code>.</p>
+<p>Without a picture, the same rule is</p>
 <pre><code class="language-text">aₙ = floor((n + 1)β) − floor(nβ),    n = 1, 2, 3, …
 
 aₙ = 0  →  L
 aₙ = 1  →  S
 </code></pre>
-<p>The subtraction records whether the <code>n</code>th irrational step passes an integer—equivalently, whether the circle walk crosses the marked point. Its output begins</p>
+<p>The subtraction asks a yes/no question: did the <code>n</code>th irrational step pass an
+integer? Equivalently, did the walk cross the mark? The output begins</p>
 <pre><code class="language-text">L S L L S L S L L S …
 </code></pre>
-<p>which is the Fibonacci word above. An irrational step never returns to its starting phase, so this rule cannot settle into a repeating tile block. But it is not random: every tile is decided by the same rigid rotation rule.</p>
-<p>This is already a one-dimensional quasicrystal model. Treat the <code>L</code> and <code>S</code> symbols as intervals of two lengths, or place a point at every tile boundary. The resulting arrangement of tiles or points is the physical-space pattern. A quasiperiodic function can instead represent its density, scattering strength, or an occupancy rule for the points; the quasicrystal is the arrangement that such a rule specifies, not merely the graph of the function.</p>
+<p>which is the Fibonacci word above. An irrational step never returns to its starting
+phase, so the rule cannot settle into a repeating tile block. But it is not random:
+every tile is decided by the same rigid rotation.</p>
+<p>Treat the symbols as intervals of two lengths, or put a point at every tile boundary,
+and you already have a one-dimensional quasicrystal model. A quasiperiodic function
+can represent density, scattering strength, or occupancy on those points; the
+quasicrystal is the arrangement the rule specifies, not merely the graph of the
+function.</p>
 <h2>Why the torus is the better picture</h2>
-<p>For a continuous real variable <code>x</code>, the expression</p>
+<p>For a continuous real variable <code>x</code>, the single phase</p>
 <pre><code class="language-text">e^(2πiαx)
 </code></pre>
-<p>covers the whole circle for every non-zero <code>α</code>. To see quasiperiodicity, keep two circular phases at once:</p>
+<p>just covers the circle for any non-zero <code>α</code>. To see quasiperiodicity, keep two
+circular phases at once:</p>
 <pre><code class="language-text">x ↦ (e^(2πix), e^(2πiαx)).
 </code></pre>
-<p>This path lives on a two-dimensional torus. If <code>α</code> is rational, it eventually closes into a periodic loop. If <code>α</code> is irrational, it is dense in the torus and never closes. Restrict any periodic function on the torus to that non-closing path and the result is a <strong>quasiperiodic function</strong>: periodic ingredients, but no period in the one-dimensional signal we observe.</p>
-<p>That is the clean conceptual bridge to quasicrystals. The order is real—it comes from a periodic object in a higher-dimensional space—but the one-dimensional slice does not repeat because its irrational orbit cannot return to its starting phase.</p>
+<p>That path lives on a two-dimensional torus — think of a doughnut surface, two
+independent angles. If <code>α</code> is rational, the path eventually closes into a loop. If
+<code>α</code> is irrational, it is dense on the torus and never closes.</p>
+<p>Now take any function that is periodic on that torus and restrict it to the path.
+What you observe in one dimension is a <strong>quasiperiodic function</strong>: built from
+periodic ingredients, yet with no period in the signal itself.</p>
+<p>That is the clean bridge to quasicrystals. The order is real — it comes from a
+periodic object in a higher-dimensional space — but the one-dimensional slice does
+not repeat, because its irrational orbit cannot return to its starting phase.</p>
 <h2>From Fibonacci counting to quantum information</h2>
-<p>The word <em>Fibonacci</em> also appears in the theory of non-Abelian anyons. In the Fibonacci model, the nontrivial charge <code>τ</code> obeys the fusion rule</p>
+<p>The word <em>Fibonacci</em> also shows up in the theory of non-Abelian anyons. In the
+Fibonacci model, the nontrivial charge <code>τ</code> obeys the fusion rule</p>
 <pre><code class="language-text">τ × τ = 1 + τ.
 </code></pre>
-<p>The plus sign does not mean ordinary addition. It lists the two allowed fusion outcomes. As more anyons are added, the number of compatible fusion histories grows as Fibonacci numbers: <code>1, 2, 3, 5, 8, …</code>. A constrained long/short tiling history has the same kind of counting structure, which motivates a mathematical comparison between the two spaces.</p>
-<p>With three <code>τ</code> anyons whose total charge is <code>τ</code>, the first pair may fuse through one of two intermediate channels. Those two paths form a two-dimensional space and can serve as a logical qubit. Braiding non-Abelian anyons acts on such fusion-path states; the order of braids matters.</p>
-<p>This is a mathematical correspondence and a research proposal, not evidence that a Fibonacci tiling by itself supplies a fault-tolerant quantum computer.</p>
+<p>The plus sign is not ordinary addition. It lists the two allowed fusion outcomes.
+As you add more anyons, the number of compatible fusion histories grows as Fibonacci
+numbers: <code>1, 2, 3, 5, 8, …</code>. A constrained long/short tiling history has the same
+kind of counting structure, which is why people compare the two spaces.</p>
+<p>With three <code>τ</code> anyons whose total charge is <code>τ</code>, the first pair may fuse through one
+of two intermediate channels. Those two paths form a two-dimensional space and can
+serve as a logical qubit. Braiding non-Abelian anyons acts on such fusion-path
+states; the order of the braids matters.</p>
+<p>This is a mathematical correspondence and a research proposal. It is not evidence
+that a Fibonacci tiling by itself is a fault-tolerant quantum computer.</p>
 <h2>A hypothetical diamond architecture</h2>
-<p>One possible hardware story uses diamond colour centres as addressable spin qubits in a two-dimensional network. In a <strong>hypothetical</strong> Fibonacci string-net architecture, selected spins would label the edges of a trivalent graph by <code>1</code> or <code>τ</code>. Local measurements would test fusion constraints at vertices and loop constraints around faces; logical information would be distributed across global patterns in the network.</p>
-<p>Diamond platforms have demonstrated important ingredients, including logical encoding and stabilizer measurements. A full Fibonacci Turaev–Viro code in diamond, however, has not been demonstrated. It remains a proposed architecture combining diamond spin control with non-Abelian topological-code operations—not a present implementation.</p>
-<p>The separation is worth keeping sharp. The irrational-orbit explanation and the Fibonacci tiling are clean mathematics. The diamond device is an interesting, explicitly hypothetical route for turning related quantum ideas into hardware.</p>
+<p>One possible hardware story uses diamond colour centres as addressable spin qubits
+in a two-dimensional network. In a <strong>hypothetical</strong> Fibonacci string-net architecture,
+selected spins would label the edges of a trivalent graph by <code>1</code> or <code>τ</code>. Local
+measurements would test fusion constraints at vertices and loop constraints around
+faces; logical information would live in global patterns across the network.</p>
+<p>Diamond platforms have demonstrated useful ingredients, including logical encoding
+and stabilizer measurements. A full Fibonacci Turaev–Viro code in diamond has not.
+It remains a proposed architecture that would combine diamond spin control with
+non-Abelian topological-code operations — not a present device.</p>
+<p>Keep the separation sharp. The irrational-orbit story and the Fibonacci tiling are
+clean mathematics. The diamond device is an interesting, explicitly hypothetical
+route for turning related quantum ideas into hardware.</p>
 <h2>Further reading</h2>
 <ul>
 <li>Marcelo Amaral, David Chester, Fang Fang, and Klee Irwin, <a href="https://www.mdpi.com/2073-8994/14/9/1780">“Exploiting Anyonic Behavior of Quasicrystals for Topological Quantum Computing”</a> (2022).</li>

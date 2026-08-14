@@ -49,22 +49,22 @@ far too often to dismiss as noise.
 
 **Language models generate forward, and that is the trap.** Each token conditions
 the next, so the likely continuation of a bad line is more of the same. “Wait, no”
-is a low-probability continuation once the model has committed itself. Its earlier
-words create a basin of plausibility; being stuck means following its slope.
+is a low-probability move once the model has committed itself. Its earlier words
+dig a basin of plausibility; being stuck means sliding down that slope.
 
 The antithesis is **licensed self-negation**. It changes the context and requires the
 otherwise unlikely move: “this is false because…”. It adds no rule of inference. It
 adds the reversal that forward generation suppresses. That is enough to explain the
-effect; Hegel need not be right about anything else.
+effect. Hegel need not be right about anything else.
 
 ## Why "rubbish" and "works" are the same sentence
 
 Here is the reconciliation that let a positivist sleep.
 
 My objection was always that dialectic is not truth-preserving. Propositional logic
-preserves truth; dialectic stages a tension and resolves it. But an LLM is not
-deducing from propositions. It predicts what language will accept as the next move:
-not what is true, but what sounds warranted.
+keeps truth if the premises are true; dialectic stages a tension and resolves it. But
+an LLM is not deducing from propositions. It predicts what language will accept as
+the next move: not what is true, but what sounds warranted.
 
 Dialectic is a grammar for those moves. A claim invites an objection; an objection
 invites a reconciliation. It tells us what conventionally follows, not what validly
@@ -82,7 +82,7 @@ the procedure earns its place at the bench.
 ## But it only sometimes works — and the failures are the interesting part
 
 The tool fails at least as often as it helps. Those failures matter more than the
-successes. They come in three distinct forms.
+successes. They come in three forms.
 
 **Collapse.** A synthesis needs two strong positions in real tension. If either is
 weak, the “synthesis” simply passes through the stronger one. A weak antithesis
@@ -117,11 +117,11 @@ have survived adversarial review. A confident error paired with a dutiful, limp
 antithesis exits credentialed by a process that never tested it. I built an
 adversary to strip unearned confidence. Its failure mode prints it.
 
-Hegel gives this bug a useful name. Negation should be *immanent*: contradiction
-should arise from the thesis’s own tensions. My tool imposed negation externally by
-assigning a model the role of antithesis. If the content contains no contradiction,
-the critic must invent one. The red herring is not stupidity; it is a model with
-nothing to say being required to say something.
+Hegel gives this bug a useful name. Negation should be *immanent*: the contradiction
+should come out of the thesis’s own tensions, not be assigned from outside as a job
+title. My tool imposed negation externally by giving a model the role of antithesis.
+If the content contains no contradiction, the critic must invent one. The red herring
+is not stupidity; it is a model with nothing to say being required to say something.
 
 ## The dialectic that actually worked had a GPU in it
 
