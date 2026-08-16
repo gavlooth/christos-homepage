@@ -601,6 +601,38 @@
               <p>An occurrence of <span class="math">x</span> is <em>bound</em> when a surrounding <span class="math">λx</span> owns it. It is <em>free</em> when no surrounding abstraction does—like a name that still comes from outside the term.</p>
             </article>
             <article class="primer-card">
+              <h4>Levels & Δ</h4>
+              <p>Levels track nested abstractions. Each level shift adds a cost (a "delta") when a variable travels through a lambda. This is how we keep track of scopes without global lookups.</p>
+            </article>
+          </article>
+        </div>
+      </section>
+
+
+      <section class="chapter" id="problem" aria-labelledby="problem-title">
+          <p class="chapter-kicker"><span class="number">01</span> Motivation</p>
+          <h2 id="problem-title">The problem is wasted work.</h2>
+          <p class="intro">Ordinary <span class="math">λ</span>-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?</p>
+      </section>
+
+      <section class="chapter" id="mechanics" aria-labelledby="mechanics-title">
+        <div class="chapter-kicker"><span class="number">03</span> Mechanics</div>
+        <h2 id="mechanics-title">The anatomy of a connection</h2>
+        <p>In interaction nets, we model <span class="math">λ</span>-terms as wiring. The <span class="math">λ</span>-node has a binding port (for the parameter) and a body port (for the expression). The logic depends on how variables are distributed.</p>
+        
+        <div class="callout formal">
+          <div class="symbol">Δ</div>
+          <h3>The "Why" of Deltas</h3>
+          <p>Deltas are not just numbers; they are the <em>cost of crossing a scope</em>. When a variable moves out of one lambda and into another, it gains depth. Deltas ensure that the interaction net "knows" where its variables live without ever scanning the code.</p>
+        </div>
+
+        <h3>How connections resolve</h3>
+        <p>When an application node (the <span class="math">@</span>) meets a <span class="math">λ</span>-abstraction, they interact. The <span class="math">λ</span>-node's binding port determines if it needs to replicate the variable (using a Replicator node) or erase it (if it doesn't appear in the body).</p>
+      </section>
+
+      <section class="chapter" id="primer-continuation">
+        <div class="primer-grid">
+          <article class="primer-card">
               <h4>Redex and reduction</h4>
               <p>A <em>redex</em> is a place you can simplify right now—here, a function already sitting next to its argument. A <em>reduction</em> is one such step.</p>
             </article>
@@ -608,26 +640,6 @@
               <h4>Normal form</h4>
               <p>A term or net is in <em>normal form</em> when nothing left can fire. <em>Normalizing</em> means some sequence of steps gets you there.</p>
             </article>
-            <article class="primer-card">
-              <h4>Sharing and erasure</h4>
-              <p><em>Sharing</em> means one argument has several uses. <em>Erasure</em> means a function ignores an argument. Those two cases create the avoidable work this paper studies.</p>
-            </article>
-            <article class="primer-card">
-              <h4>Net and local rewrite</h4>
-              <p>A <em>net</em> is a graph of small nodes and wires. A local rule looks only at the tiny connected pattern it rewrites—nothing else in the graph.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="chapter" id="problem" aria-labelledby="problem-title">
-          <p class="chapter-kicker"><span class="number">01</span> Motivation</p>
-          <h2 id="problem-title">The problem is wasted work.</h2>
-          <p class="intro">Ordinary <span class="math">λ</span>-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?</p>
-
-          <h3>1.1 A tiny reminder: what reduction does</h3>
-          <p>Read <span class="math">λx.t</span> as a function: <span class="math">x</span> names the incoming argument and <span class="math">t</span> is the body. Place it beside <span class="math">u</span>, as in <span class="math">(λx.t)u</span>, and you apply the function to that argument. The whole pattern is a <strong>β-redex</strong> (say “bee-redex”): one place a β-reduction can fire.</p>
-          <p>A <span class="math">β</span>-reduction performs that application. In the compact notation below, the argument <code>u</code> is substituted for every occurrence of <code>x</code> in the body <code>t</code>. When no β-redexes remain, the term is in <strong>normal form</strong>.</p>
-          <div class="rule" aria-label="Beta reduction rule">
             <div class="rule-label">The substitution view</div>
             <p><span>(λx. t) u</span> &nbsp;→&nbsp; t[x := u]</p>
           </div>
@@ -892,7 +904,7 @@
           </figure>
 
           <h3>4.1 Fan meets fan: the familiar redex disappears</h3>
-          <p>Applications and abstractions are both fans. You tell them apart by how their wires point when you look from the <strong>root</strong>—the unique top entry of the whole net. When the right pair of fans meets principal-to-principal, they annihilate: both nodes go away and matching auxiliary ports reconnect. Auxiliary ports are ordered clockwise, so flipping one fan upside down swaps its visible left and right; the wires cross in the drawing. That is <span class="math">β</span>-reduction at the net level.</p>
+          <p>Applications and abstractions are both fans. You tell them apart by how their wires point when you look from the <strong>root</strong>—the unique top entry of the whole net. When the right pair of fans meets principal-to-principal, they annihilate: both nodes go away and matching auxiliary ports reconnect. Auxiliary ports are ordered counterclockwise, so flipping one fan upside down swaps its visible left and right; the wires cross in the drawing. That is <span class="math">β</span>-reduction at the net level.</p>
           <figure>
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 740 225" role="img" aria-label="Application and abstraction fan annihilation">
@@ -920,7 +932,7 @@
             <div class="diagram-panel">
               <svg class="diagram" viewBox="0 0 760 445" role="img" aria-label="A three-port replicator interacting with a fan">
                 <title>Replicator and fan commutation</title>
-                <desc>A three-port replicator meets a fan at their principal ports. The upward-pointing fan's clockwise auxiliary-port order appears as a one on the visible left and a zero on the visible right. Afterwards, fan F i connects its auxiliary port j to port d i of replicator copy R j.</desc>
+                <desc>A three-port replicator meets a fan at their principal ports. The upward-pointing fan's counterclockwise auxiliary-port order appears as a zero on the visible left and a one on the visible right. Afterwards, fan F i connects its auxiliary port j to port d i of replicator copy R j.</desc>
                 <defs>
                   <marker id="interaction-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9a5f3d" /></marker>
                 </defs>
@@ -941,7 +953,7 @@
                 <circle class="port fan-port" cx="108" cy="280" r="5.5" /><circle class="port fan-port" cx="182" cy="280" r="5.5" />
                 <path class="outside" d="M108 286 V354 M182 286 V354" />
                 <text x="145" y="263" text-anchor="middle" class="label">F</text>
-                <text x="98" y="303" text-anchor="middle" class="port-label">a₁</text><text x="192" y="303" text-anchor="middle" class="port-label">a₀</text>
+                <text x="98" y="303" text-anchor="middle" class="port-label">a₀</text><text x="192" y="303" text-anchor="middle" class="port-label">a₁</text>
                 <text x="145" y="192" text-anchor="middle" class="small">principal ↔ principal</text>
                 <text x="145" y="379" text-anchor="middle" class="small">R has 3 ports; F has 2 auxiliary ports</text>
 
@@ -955,9 +967,9 @@
                 <circle class="port fan-port" cx="579" cy="180" r="5.5" /><circle class="port fan-port" cx="631" cy="180" r="5.5" />
                 <circle class="port fan-port" cx="674" cy="180" r="5.5" /><circle class="port fan-port" cx="726" cy="180" r="5.5" />
                 <text x="510" y="161" text-anchor="middle" class="tiny">F₀</text><text x="605" y="161" text-anchor="middle" class="tiny">F₁</text><text x="700" y="161" text-anchor="middle" class="tiny">F₂</text>
-                <text x="477" y="201" text-anchor="middle" class="port-label">a₁</text><text x="543" y="201" text-anchor="middle" class="port-label">a₀</text>
-                <text x="572" y="201" text-anchor="middle" class="port-label">a₁</text><text x="638" y="201" text-anchor="middle" class="port-label">a₀</text>
-                <text x="667" y="201" text-anchor="middle" class="port-label">a₁</text><text x="733" y="201" text-anchor="middle" class="port-label">a₀</text>
+                <text x="477" y="201" text-anchor="middle" class="port-label">a₀</text><text x="543" y="201" text-anchor="middle" class="port-label">a₁</text>
+                <text x="572" y="201" text-anchor="middle" class="port-label">a₀</text><text x="638" y="201" text-anchor="middle" class="port-label">a₁</text>
+                <text x="667" y="201" text-anchor="middle" class="port-label">a₀</text><text x="733" y="201" text-anchor="middle" class="port-label">a₁</text>
 
                 <path class="agent-replicator" d="M500 260 H610 L590 306 H520 Z" /><path class="agent-replicator" d="M625 260 H735 L715 306 H645 Z" />
                 <circle class="port rep-port" cx="520" cy="260" r="5.5" /><circle class="port rep-port" cx="555" cy="260" r="5.5" /><circle class="port rep-port" cx="590" cy="260" r="5.5" />
@@ -966,8 +978,8 @@
                 <text x="645" y="252" text-anchor="middle" class="port-label">d₀</text><text x="680" y="252" text-anchor="middle" class="port-label">d₁</text><text x="715" y="252" text-anchor="middle" class="port-label">d₂</text>
                 <circle class="port rep-port" cx="555" cy="306" r="5.5" /><circle class="port rep-port" cx="680" cy="306" r="5.5" />
                 <path class="outside" d="M555 312 V362 M680 312 V362" />
-                <text x="555" y="288" text-anchor="middle" class="label">R¹</text><text x="680" y="288" text-anchor="middle" class="label">R⁰</text>
-                <text x="555" y="382" text-anchor="middle" class="small">old a₁ · visible left</text><text x="680" y="382" text-anchor="middle" class="small">old a₀ · visible right</text>
+                <text x="555" y="288" text-anchor="middle" class="label">R⁰</text><text x="680" y="288" text-anchor="middle" class="label">R¹</text>
+                <text x="555" y="382" text-anchor="middle" class="small">old a₀ · visible left</text><text x="680" y="382" text-anchor="middle" class="small">old a₁ · visible right</text>
 
                 <path class="wire" d="M484 186 C484 220 510 224 520 254 M536 186 C536 222 628 220 645 254 M579 186 C579 218 552 225 555 254 M631 186 C631 218 675 220 680 254 M674 186 C674 215 596 220 590 254 M726 186 C726 215 715 224 715 254" />
                 <text x="607" y="418" text-anchor="middle" class="small">3 R ports create 3 fans · 2 F exits create 2 replicators</text>
@@ -975,7 +987,7 @@
             </div>
             <figcaption><strong>Finite version of the paper’s fan–replicator rule.</strong> Port identities, not geometric sides, determine the reconnection: <span class="math">(Fᵢ)ⱼ ↔ (Rʲ)ᵢ</span>. This guide-specific diagram uses a three-port replicator so every copy has a visible port and wire. It adapts the structure of <a href="https://arxiv.org/html/2505.20314v4#S2.F4">Figure 4 in the source paper</a> (CC BY 4.0).</figcaption>
           </figure>
-          <p>Count both sides. R has three auxiliary ports, so three fans <span class="math">F₀, F₁, F₂</span> appear. F has two auxiliary ports, so two replicators <span class="math">R⁰, R¹</span> appear. Because F points upward, its clockwise port order is visually reversed: <span class="math">a₀</span> is on the right and <span class="math">a₁</span> is on the left. Thus the old visible-left <span class="math">a₁</span> wire remains attached to <span class="math">R¹</span>, while the old visible-right <span class="math">a₀</span> wire remains attached to <span class="math">R⁰</span>; those two outer wires do not cross. Internally, auxiliary port <span class="math">j</span> of each new <span class="math">Fᵢ</span> connects to port <span class="math">dᵢ</span> of <span class="math">Rʲ</span>.</p>
+          <p>Count both sides. R has three auxiliary ports, so three fans <span class="math">F₀, F₁, F₂</span> appear. F has two auxiliary ports, so two replicators <span class="math">R⁰, R¹</span> appear. Because F points upward, its counterclockwise port order is visible left-to-right: <span class="math">a₀</span> is on the left and <span class="math">a₁</span> is on the right. Thus the old visible-left <span class="math">a₀</span> wire remains attached to <span class="math">R⁰</span>, while the old visible-right <span class="math">a₁</span> wire remains attached to <span class="math">R¹</span>; those two outer wires do not cross. Internally, auxiliary port <span class="math">j</span> of each new <span class="math">Fᵢ</span> connects to port <span class="math">dᵢ</span> of <span class="math">Rʲ</span>.</p>
 
           <h3>4.3 Replicator meets replicator: equal levels cancel; different levels commute</h3>
           <p>First compare the two levels. If they match—and the net came from a well-formed <span class="math">λ</span> translation—the replicators are equal: they <strong>annihilate</strong>, both nodes disappear, and matching auxiliary ports reconnect. No replicas are created. In a hand-built net, matching levels alone are not enough; arity and every port delta must match too.</p>
@@ -1236,7 +1248,7 @@
             <article class="term-card">
               <span class="tag">Bound occurrence</span>
               <h3>Just a wire—until it meets sharing</h3>
-              <p>A bound occurrence is just a vertical wire. Its lower end later joins the right auxiliary port of the sharing replicator—when sharing is required at all.</p>
+              <p>A bound occurrence is just a vertical wire. Its lower end later joins an auxiliary port of the sharing replicator—when sharing is required at all.</p>
             </article>
           </div>
 
@@ -1283,7 +1295,7 @@
           </figure>
 
           <h3 id="abstraction-cases">5.3 The abstraction cases</h3>
-          <p>An abstraction is an upward-pointing fan (the <span class="math">λ</span> label is only visual). One auxiliary port goes to the body; the other is the bound variable. If that variable is unused, the second port meets an eraser—only in the erasure-capable systems ΔA and ΔK.</p>
+          <p>An abstraction is an upward-pointing fan (the <span class="math">λ</span> label is only visual). One auxiliary port goes to the body; the other is the bound variable. If that variable is unused, the first auxiliary port meets an eraser—only in the erasure-capable systems ΔA and ΔK.</p>
           <p>When a used variable has several occurrences, a replicator joins the abstraction’s variable port to those uses. A one-port replicator with zero delta is just a wire, so canonical construction leaves it out.</p>
           <figure>
             <div class="diagram-panel">
@@ -1302,7 +1314,7 @@
                 <circle class="port" cx="124" cy="108" r="4.5" /><circle class="port" cx="101" cy="164" r="4.5" /><circle class="port" cx="147" cy="164" r="4.5" />
                 <text x="124" y="145" text-anchor="middle" class="operator">λ</text>
                 <path class="wire" d="M101 164 C101 210 147 210 147 164" />
-                <text x="124" y="225" text-anchor="middle" class="small">body wire = the one x use</text>
+                <text x="124" y="225" text-anchor="middle" class="small">the two λ ports join at the one x use</text>
                 <text x="124" y="267" text-anchor="middle" class="delta-value">no sharing node needed</text>
                 <text x="124" y="290" text-anchor="middle" class="tiny">the binding closes as one wire</text>
 
@@ -1312,10 +1324,10 @@
                 <path class="fan" d="M370 108 L330 164 H410 Z" />
                 <circle class="port" cx="370" cy="108" r="4.5" /><circle class="port" cx="347" cy="164" r="4.5" /><circle class="port" cx="393" cy="164" r="4.5" />
                 <text x="370" y="145" text-anchor="middle" class="operator">λ</text>
-                <path class="wire" d="M347 164 V211 M393 164 V190" />
-                <circle cx="347" cy="216" r="5" fill="var(--teal)" /><text x="337" y="241" text-anchor="end" class="level-title">body: y</text>
-                <rect class="node teal" x="373" y="190" width="40" height="34" rx="10" /><text x="393" y="213" text-anchor="middle" class="level-title">E</text>
-                <text x="393" y="241" text-anchor="middle" class="tiny">unused x</text>
+                <path class="wire" d="M347 164 V190 M393 164 V211" />
+                <circle cx="393" cy="216" r="5" fill="var(--teal)" /><text x="403" y="241" class="level-title">body: y</text>
+                <rect class="node teal" x="327" y="190" width="40" height="34" rx="10" /><text x="347" y="213" text-anchor="middle" class="level-title">E</text>
+                <text x="347" y="241" text-anchor="middle" class="tiny">unused x</text>
                 <text x="370" y="275" text-anchor="middle" class="delta-value">variable port → eraser</text>
                 <text x="370" y="297" text-anchor="middle" class="tiny">available in ΔA and ΔK</text>
 
@@ -1326,7 +1338,7 @@
                 <circle class="port" cx="616" cy="108" r="4.5" /><circle class="port" cx="593" cy="164" r="4.5" /><circle class="port" cx="639" cy="164" r="4.5" />
                 <text x="616" y="145" text-anchor="middle" class="operator">λ</text>
 
-                <path class="wire" d="M593 164 C580 176 568 181 567 190 M639 164 C652 171 657 178 658 188" />
+                <path class="wire" d="M593 164 C606 173 643 178 658 188 M639 164 C626 177 580 181 567 190" />
                 <rect class="level-card" x="528" y="190" width="78" height="62" rx="8" />
                 <text x="567" y="214" text-anchor="middle" class="operator">@</text>
                 <circle class="rep-port" cx="548" cy="244" r="4" /><circle class="rep-port" cx="586" cy="244" r="4" />
@@ -1341,7 +1353,7 @@
                 <text x="616" y="306" text-anchor="middle" class="tiny">the body still contains the @ structure</text>
               </svg>
             </div>
-            <figcaption><strong>Read each picture from its λ binder.</strong> The left auxiliary port carries the abstraction body. The right auxiliary port represents the bound parameter <span class="math">x</span>: it closes directly to one occurrence, terminates at <span class="math">E</span> when unused, or reaches <span class="math">R</span> when several occurrences must share one incoming value. The third panel is a binding-focused schematic; §5.7 draws the complete <span class="math">λx.x&nbsp;x</span> topology and its deltas.</figcaption>
+            <figcaption><strong>Read each picture from its λ binder.</strong> The left auxiliary port represents the bound parameter <span class="math">x</span>: it closes directly to one occurrence, terminates at <span class="math">E</span> when unused, or reaches <span class="math">R</span> when several occurrences must share one incoming value. The right auxiliary port carries the abstraction body. The third panel is a binding-focused schematic; §5.7 draws the complete <span class="math">λx.x&nbsp;x</span> topology and its deltas.</figcaption>
           </figure>
 
           <h3 id="application-case">5.4 The application case</h3>
@@ -1349,7 +1361,7 @@
 
           <figure>
             <div class="diagram-panel">
-              <svg class="diagram lambda-trace" viewBox="0 0 740 310" role="img" aria-label="Translation of an application M N at level l into a downward application fan whose parent port carries the result, principal port reaches M, and second auxiliary port reaches N at level l plus one">
+              <svg class="diagram lambda-trace" viewBox="0 0 740 310" role="img" aria-label="Translation of an application M N at level l into a downward application fan whose second auxiliary port carries the result, principal port reaches M, and first auxiliary port reaches N at level l plus one">
                 <title>The application translation, from syntax positions to ports</title>
                 <desc>The source application M N at level l has a function child M at the same level and an argument child N at level l plus one. In the net, the parent wire and argument attach to the two auxiliary ports of a downward fan, while its principal port attaches to the function fragment.</desc>
 
@@ -1381,8 +1393,8 @@
                 <circle class="port" cx="540" cy="120" r="4.5" />
                 <circle class="port" cx="510" cy="181" r="4.5" />
                 <text x="510" y="156" text-anchor="middle" class="operator">@</text>
-                <text x="447" y="115" text-anchor="end" class="tiny wire-label">first auxiliary</text>
-                <text x="573" y="115" class="tiny wire-label">second auxiliary</text>
+                <text x="447" y="115" text-anchor="end" class="tiny wire-label">second auxiliary</text>
+                <text x="573" y="115" class="tiny wire-label">first auxiliary</text>
                 <text x="510" y="200" text-anchor="middle" class="tiny wire-label">principal</text>
 
                 <path class="wire" d="M510 186 V218" />
@@ -1396,7 +1408,7 @@
                 <text x="620" y="272" text-anchor="middle" class="delta-value">the curved branch is N</text>
               </svg>
             </div>
-            <figcaption><strong>One syntax constructor, three connections.</strong> For <span class="math">[M&nbsp;N]<sub>ℓ</sub></span>, the result or parent wire uses the first auxiliary port, <span class="math">[N]<sub>ℓ+1</sub></span> uses the second auxiliary port, and <span class="math">[M]<sub>ℓ</sub></span> meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction.</figcaption>
+            <figcaption><strong>One syntax constructor, three connections.</strong> For <span class="math">[M&nbsp;N]<sub>ℓ</sub></span>, the result or parent wire uses the second auxiliary port, <span class="math">[N]<sub>ℓ+1</sub></span> uses the first auxiliary port, and <span class="math">[M]<sub>ℓ</sub></span> meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction.</figcaption>
           </figure>
 
           <h3 id="level-origin">5.5 Where levels come from</h3>
@@ -1571,7 +1583,7 @@
                   <text x="616" y="637" text-anchor="middle" class="tiny">normal form</text>
                 </svg>
               </div>
-              <figcaption><strong>How to read the wiring.</strong> The downward <span class="math">@</span>-fan’s first auxiliary port is the application result (the root reaches it); its principal port leads to the function; its second auxiliary port leads to the argument. The upward <span class="math">λ</span>-fan’s auxiliary ports lead to its body and its bound variable. Since the body and variable ports of <span class="math">λx.x</span> are already joined, annihilating the two principal ports connects the root directly to <span class="math">λy.y</span>.</figcaption>
+              <figcaption><strong>How to read the wiring.</strong> The downward <span class="math">@</span>-fan’s second auxiliary port is the application result (the root reaches it); its principal port leads to the function; its first auxiliary port leads to the argument. The upward <span class="math">λ</span>-fan’s first auxiliary port is its bound variable and its second auxiliary port is its body. Since the body and variable ports of <span class="math">λx.x</span> are already joined, annihilating the two principal ports connects the root directly to <span class="math">λy.y</span>.</figcaption>
             </figure>
             <div class="trace-key" aria-label="Diagram legend">
               <span><span class="line-swatch" aria-hidden="true">&nbsp;</span> ordinary wire</span>
@@ -1621,14 +1633,14 @@
 
                   <circle class="root" cx="520" cy="125" r="6" /><path class="wire" d="M520 132 V155" />
                   <path class="fan" d="M520 155 L480 212 H560 Z" /><circle class="port" cx="520" cy="155" r="4.5" /><circle class="port" cx="480" cy="212" r="4.5" /><circle class="port" cx="560" cy="212" r="4.5" /><text x="520" y="191" text-anchor="middle" class="operator">λ</text>
-                  <text x="461" y="205" text-anchor="end" class="tiny">body</text><text x="580" y="205" class="tiny">variable port</text>
+                  <text x="461" y="205" text-anchor="end" class="tiny">variable port</text><text x="580" y="205" class="tiny">body</text>
 
-                  <path class="wire" d="M480 212 C465 232 456 249 464 270" />
+                  <path class="wire" d="M560 212 C543 233 508 249 464 270" />
                   <path class="fan" d="M444 270 H524 L484 327 Z" /><circle class="port" cx="464" cy="270" r="4.5" /><circle class="port" cx="504" cy="270" r="4.5" /><circle class="port" cx="484" cy="327" r="4.5" /><text x="484" y="303" text-anchor="middle" class="operator">@</text>
                   <text x="432" y="342" text-anchor="end" class="tiny">[x]₀ function</text>
                   <text x="534" y="266" class="tiny">[x]₁ argument</text>
 
-                  <path class="wire" d="M560 212 H638 V229" />
+                  <path class="wire" d="M480 212 C518 214 599 218 638 229" />
                   <circle class="rep-port" cx="638" cy="229" r="4.5" />
                   <path class="replicator" d="M593 235 H683 L665 280 H611 Z" /><text x="638" y="264" text-anchor="middle" class="operator">R</text>
                   <text x="691" y="249" class="tiny">level ℓ = 1</text>
@@ -1694,12 +1706,11 @@
                   <path class="fan" d="M556 120 L520 170 H592 Z" />
                   <circle class="port" cx="556" cy="120" r="4.5" /><circle class="port" cx="520" cy="170" r="4.5" /><circle class="port" cx="592" cy="170" r="4.5" />
                   <text x="556" y="153" text-anchor="middle" class="operator">λ</text>
-
-                  <path class="wire" d="M520 170 C500 176 480 181 465 188" />
+                  <path class="wire" d="M592 170 C572 176 500 181 465 188" />
                   <rect class="level-card" x="400" y="188" width="132" height="36" rx="8" />
                   <text x="466" y="211" text-anchor="middle" class="tiny">body: @₀ → @₁ → @₂</text>
 
-                  <path class="wire" d="M592 170 C614 188 582 211 556 224" />
+                  <path class="wire" d="M520 170 C536 188 552 211 556 224" />
                   <circle class="rep-port" cx="556" cy="224" r="4.5" />
                   <path class="replicator" d="M420 230 H692 L670 280 H442 Z" />
                   <text x="556" y="262" text-anchor="middle" class="operator">R · level 1</text>
