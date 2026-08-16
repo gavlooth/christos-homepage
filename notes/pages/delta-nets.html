@@ -601,6 +601,38 @@
               <p>An occurrence of <span class="math">x</span> is <em>bound</em> when a surrounding <span class="math">λx</span> owns it. It is <em>free</em> when no surrounding abstraction does—like a name that still comes from outside the term.</p>
             </article>
             <article class="primer-card">
+              <h4>Levels & Δ</h4>
+              <p>Levels track nested abstractions. Each level shift adds a cost (a "delta") when a variable travels through a lambda. This is how we keep track of scopes without global lookups.</p>
+            </article>
+          </article>
+        </div>
+      </section>
+
+
+      <section class="chapter" id="problem" aria-labelledby="problem-title">
+          <p class="chapter-kicker"><span class="number">01</span> Motivation</p>
+          <h2 id="problem-title">The problem is wasted work.</h2>
+          <p class="intro">Ordinary <span class="math">λ</span>-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?</p>
+      </section>
+
+      <section class="chapter" id="mechanics" aria-labelledby="mechanics-title">
+        <div class="chapter-kicker"><span class="number">03</span> Mechanics</div>
+        <h2 id="mechanics-title">The anatomy of a connection</h2>
+        <p>In interaction nets, we model <span class="math">λ</span>-terms as wiring. The <span class="math">λ</span>-node has a binding port (for the parameter) and a body port (for the expression). The logic depends on how variables are distributed.</p>
+        
+        <div class="callout formal">
+          <div class="symbol">Δ</div>
+          <h3>The "Why" of Deltas</h3>
+          <p>Deltas are not just numbers; they are the <em>cost of crossing a scope</em>. When a variable moves out of one lambda and into another, it gains depth. Deltas ensure that the interaction net "knows" where its variables live without ever scanning the code.</p>
+        </div>
+
+        <h3>How connections resolve</h3>
+        <p>When an application node (the <span class="math">@</span>) meets a <span class="math">λ</span>-abstraction, they interact. The <span class="math">λ</span>-node's binding port determines if it needs to replicate the variable (using a Replicator node) or erase it (if it doesn't appear in the body).</p>
+      </section>
+
+      <section class="chapter" id="primer-continuation">
+        <div class="primer-grid">
+          <article class="primer-card">
               <h4>Redex and reduction</h4>
               <p>A <em>redex</em> is a place you can simplify right now—here, a function already sitting next to its argument. A <em>reduction</em> is one such step.</p>
             </article>
@@ -608,26 +640,6 @@
               <h4>Normal form</h4>
               <p>A term or net is in <em>normal form</em> when nothing left can fire. <em>Normalizing</em> means some sequence of steps gets you there.</p>
             </article>
-            <article class="primer-card">
-              <h4>Sharing and erasure</h4>
-              <p><em>Sharing</em> means one argument has several uses. <em>Erasure</em> means a function ignores an argument. Those two cases create the avoidable work this paper studies.</p>
-            </article>
-            <article class="primer-card">
-              <h4>Net and local rewrite</h4>
-              <p>A <em>net</em> is a graph of small nodes and wires. A local rule looks only at the tiny connected pattern it rewrites—nothing else in the graph.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="chapter" id="problem" aria-labelledby="problem-title">
-          <p class="chapter-kicker"><span class="number">01</span> Motivation</p>
-          <h2 id="problem-title">The problem is wasted work.</h2>
-          <p class="intro">Ordinary <span class="math">λ</span>-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?</p>
-
-          <h3>1.1 A tiny reminder: what reduction does</h3>
-          <p>Read <span class="math">λx.t</span> as a function: <span class="math">x</span> names the incoming argument and <span class="math">t</span> is the body. Place it beside <span class="math">u</span>, as in <span class="math">(λx.t)u</span>, and you apply the function to that argument. The whole pattern is a <strong>β-redex</strong> (say “bee-redex”): one place a β-reduction can fire.</p>
-          <p>A <span class="math">β</span>-reduction performs that application. In the compact notation below, the argument <code>u</code> is substituted for every occurrence of <code>x</code> in the body <code>t</code>. When no β-redexes remain, the term is in <strong>normal form</strong>.</p>
-          <div class="rule" aria-label="Beta reduction rule">
             <div class="rule-label">The substitution view</div>
             <p><span>(λx. t) u</span> &nbsp;→&nbsp; t[x := u]</p>
           </div>
