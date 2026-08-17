@@ -1217,25 +1217,37 @@
           <p>Every fragment has an <strong>interface</strong>: one incoming wire at the top and zero or more outgoing wires at the bottom. The outermost fragment hangs from a single <strong>root</strong>. <strong>Free variables</strong>—names no surrounding <span class="math">λ</span> owns—become named interface nodes. That stable shape lets you plug a fragment into its parent the way a function plugs into a call.</p>
           <figure>
             <div class="diagram-panel">
-              <svg class="diagram" viewBox="0 0 740 260" role="img" aria-label="A conceptual lambda-term to Delta-Net compilation pipeline">
-                <title>A conceptual lambda term to Delta-Net compilation pipeline</title><desc>A lambda term is decomposed into variable, abstraction, and application cases, which form a rooted net with shared uses joining a replicator.</desc>
+              <svg class="diagram lambda-trace" viewBox="0 0 820 290" role="img" aria-label="A port-faithful conceptual lambda-term to Delta-Net compilation pipeline">
+                <title>A port-faithful conceptual lambda term to Delta-Net compilation pipeline</title><desc>A lambda term is decomposed into variable, abstraction, and application cases. The canonical sketch shows a root connected to the principal port of an upward abstraction fan; its second auxiliary port reaches a sharing replicator, while its first auxiliary port reaches the first auxiliary port of a downward application fan.</desc>
                 <rect x="27" y="71" width="180" height="118" rx="12" class="node orange" />
                 <text x="117" y="105" text-anchor="middle" class="label">λ-term</text><text x="117" y="130" text-anchor="middle" class="small">variables · abstractions</text><text x="117" y="149" text-anchor="middle" class="small">applications</text>
                 <path d="M229 130 H313" stroke="#9a5f3d" stroke-width="3" fill="none" /><path d="M306 122 L318 130 L306 138" stroke="#9a5f3d" stroke-width="3" fill="none" />
-                <rect x="332" y="28" width="365" height="203" rx="12" fill="#f2f0ea" stroke="#b7dfd7" stroke-width="2" />
-                <text x="351" y="55" class="label">canonical Δ-Net</text>
-                <circle cx="515" cy="78" r="8" fill="#1f2a2f" /><text x="529" y="83" class="small">root</text>
-                <path class="wire" d="M515 86 L515 105 M515 151 L427 195 M515 151 L608 195" />
-                <path class="node orange" d="M474 105 H556 L515 151 Z" /><text x="515" y="135" text-anchor="middle" class="label">λ</text>
-                <path class="wire" d="M427 195 L427 213 M608 195 L608 213" />
-                <path class="node orange" d="M386 213 H468 L427 256 Z" /><path class="node orange" d="M567 213 H649 L608 256 Z" />
-                <path class="wire" d="M415 230 L383 245 M439 230 L473 245 M596 230 L564 245 M620 230 L654 245" />
-                <path class="wire" d="M383 245 L383 252 M473 245 L473 252 M564 245 L564 252 M654 245 L654 252" />
-                <text x="375" y="194" class="small">function</text><text x="614" y="194" class="small">argument</text>
-                <circle cx="515" cy="165" r="5" fill="#0a556e" /><text x="527" y="169" class="small">bound-use route</text>
+                <rect x="332" y="22" width="455" height="246" rx="12" fill="#f2f0ea" stroke="#b7dfd7" stroke-width="2" />
+                <text x="351" y="48" class="label">canonical Δ-Net sketch</text>
+                <circle cx="515" cy="63" r="8" fill="#1f2a2f" /><text x="529" y="67" class="small">root</text>
+                <path class="wire" d="M515 71 V88" />
+                <path class="fan" d="M515 88 L472 145 H558 Z" />
+                <circle class="port" cx="515" cy="88" r="4.5" /><circle class="port" cx="482" cy="145" r="4.5" /><circle class="port" cx="548" cy="145" r="4.5" />
+                <text x="515" y="128" text-anchor="middle" class="operator">λ</text>
+                <text x="515" y="82" text-anchor="middle" class="tiny">principal</text>
+                <text x="472" y="164" text-anchor="end" class="tiny">a2 · variable</text><text x="558" y="164" class="tiny">a1 · body</text>
+                <path class="wire" d="M482 149 C462 161 443 171 425 184" />
+                <circle class="rep-port" cx="425" cy="187" r="4.5" />
+                <path class="replicator" d="M385 190 H465 L453 228 H397 Z" />
+                <text x="425" y="215" text-anchor="middle" class="operator">Rₓ</text>
+                <text x="438" y="183" class="tiny">P</text>
+                <circle class="rep-port" cx="408" cy="228" r="4.5" /><circle class="rep-port" cx="450" cy="228" r="4.5" />
+                <path class="wire" d="M408 232 V244 M450 232 V244" />
+                <text x="425" y="261" text-anchor="middle" class="tiny">auxiliary ports → shared uses</text>
+                <path class="wire" d="M548 149 C570 159 590 170 625 185" />
+                <path class="fan" d="M610 185 H690 L650 225 Z" />
+                <circle class="port" cx="625" cy="185" r="4.5" /><circle class="port" cx="675" cy="185" r="4.5" /><circle class="port" cx="650" cy="225" r="4.5" />
+                <text x="650" y="210" text-anchor="middle" class="operator">@</text>
+                <text x="615" y="258" text-anchor="end" class="tiny">a1 · result</text><text x="683" y="258" class="tiny">a2 · argument</text>
+                <text x="650" y="242" text-anchor="middle" class="tiny">P · function</text>
               </svg>
             </div>
-            <figcaption><strong>Translation at a glance.</strong> The real encoding has precise port orientations and level annotations. This diagram only shows the nested, rooted character of the construction.</figcaption>
+            <figcaption><strong>Translation at a glance.</strong> The sketch makes the principal and auxiliary port roles explicit: the root enters the abstraction’s principal port, its variable route reaches a replicator, and its body route reaches the application’s first auxiliary port. Level annotations and fragment internals are omitted.</figcaption>
           </figure>
 
           <h3>5.2 The variable cases</h3>
