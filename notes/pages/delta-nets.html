@@ -778,9 +778,11 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Fan · 2 auxiliary ports</p>
                 <pre class="mermaid">flowchart TB
+                  Fp["principal"]
                   F@{ shape: triangle, label: "F" }
-                  Fa0@{ shape: trapezoid, label: "1st aux" }
-                  Fa1@{ shape: trapezoid, label: "2nd aux" }
+                  Fa0@{ shape: rect, label: "1st aux" }
+                  Fa1@{ shape: rect, label: "2nd aux" }
+                  Fp -->|principal| F
                   F --- Fa0
                   F --- Fa1
                 </pre>
@@ -794,11 +796,13 @@
               <div class="diagram-panel span-all">
                 <p class="mermaid-caption">Replicator · any number of auxiliary ports</p>
                 <pre class="mermaid">flowchart TB
-                  R@{ shape: rect, label: "R" }
-                  Rd0@{ shape: trapezoid, label: "aux d₀" }
-                  Rd1@{ shape: trapezoid, label: "aux d₁" }
-                  Rd2@{ shape: trapezoid, label: "aux d₂" }
-                  Rdn@{ shape: trapezoid, label: "aux …" }
+                  Rp["principal"]
+                  R@{ shape: trapezoid, label: "R" }
+                  Rd0@{ shape: rect, label: "aux d₀" }
+                  Rd1@{ shape: rect, label: "aux d₁" }
+                  Rd2@{ shape: rect, label: "aux d₂" }
+                  Rdn@{ shape: rect, label: "aux …" }
+                  Rp -->|principal| R
                   R --- Rd0
                   R --- Rd1
                   R --- Rd2
@@ -806,7 +810,7 @@
                 </pre>
               </div>
             </div>
-            <figcaption><strong>Diagram key.</strong> Application and function fans are <strong>triangles</strong>: the principal port sits on the top apex, and both auxiliary ports are <strong>trapezoids</strong> on the opposite side. Replicators stay rectangular; their auxiliary ports are the same trapezoids. An eraser has only a principal port.</figcaption>
+            <figcaption><strong>Diagram key.</strong> Application and function fans are <strong>triangles</strong>: the principal port is fixed at the top apex and the two auxiliary wires leave fixed, symmetric positions along the bottom edge. Only replicators are <strong>trapezoids</strong>: the principal port is centered on the short top side and the auxiliary wires are evenly spaced along the wide bottom side. Rectangles label fragments or wire endpoints; they are not agents. An eraser has only a principal port.</figcaption>
           </figure>
 
           <div class="term-grid">
@@ -878,8 +882,8 @@
                 <pre class="mermaid">flowchart TB
                   E@{ shape: stadium, label: "E" }
                   F@{ shape: triangle, label: "F" }
-                  M@{ shape: trapezoid, label: "subnet M" }
-                  N@{ shape: trapezoid, label: "subnet N" }
+                  M@{ shape: rect, label: "subnet M" }
+                  N@{ shape: rect, label: "subnet N" }
                   E -->|"principal ↔ principal"| F
                   F --- M
                   F --- N
@@ -906,26 +910,27 @@
             <div class="mermaid-grid two">
               <div class="diagram-panel">
                 <pre class="mermaid">flowchart TB
-                  res@{ shape: trapezoid, label: "result · 1st aux" }
-                  arg@{ shape: trapezoid, label: "argument · 2nd aux" }
+                  res@{ shape: rect, label: "result · 1st aux" }
+                  arg@{ shape: rect, label: "argument · 2nd aux" }
                   app@{ shape: triangle, label: "app" }
                   lam@{ shape: triangle, label: "λ" }
-                  body@{ shape: trapezoid, label: "body · 1st aux" }
-                  var@{ shape: trapezoid, label: "variable · 2nd aux" }
+                  body@{ shape: rect, label: "body · 1st aux" }
+                  var@{ shape: rect, label: "variable · 2nd aux" }
                   res --- app
                   arg --- app
                   app -->|"principal ↔ principal"| lam
-                  lam --- body
                   lam --- var
+                  lam --- body
+                  body ~~~ var
                 </pre>
               </div>
               <div class="diagram-panel">
                 <p class="mermaid-caption">After: matching indices reconnect</p>
                 <pre class="mermaid">flowchart TB
-                  res2@{ shape: trapezoid, label: "result · 1st" }
-                  arg2@{ shape: trapezoid, label: "argument · 2nd" }
-                  body2@{ shape: trapezoid, label: "body · 1st" }
-                  var2@{ shape: trapezoid, label: "variable · 2nd" }
+                  res2@{ shape: rect, label: "result · 1st" }
+                  arg2@{ shape: rect, label: "argument · 2nd" }
+                  body2@{ shape: rect, label: "body · 1st" }
+                  var2@{ shape: rect, label: "variable · 2nd" }
                   res2 -->|1st ↔ 1st| body2
                   arg2 -->|2nd ↔ 2nd| var2
                 </pre>
@@ -941,13 +946,13 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Before: R meets F</p>
                 <pre class="mermaid">flowchart TB
-                  d0@{ shape: trapezoid, label: "d₀" }
-                  d1@{ shape: trapezoid, label: "d₁" }
-                  d2@{ shape: trapezoid, label: "d₂" }
-                  R@{ shape: rect, label: "R" }
+                  d0@{ shape: rect, label: "d₀" }
+                  d1@{ shape: rect, label: "d₁" }
+                  d2@{ shape: rect, label: "d₂" }
+                  R@{ shape: trapezoid, label: "R" }
                   F@{ shape: triangle, label: "F" }
-                  a1@{ shape: trapezoid, label: "a₁" }
-                  a0@{ shape: trapezoid, label: "a₀" }
+                  a1@{ shape: rect, label: "a₁" }
+                  a0@{ shape: rect, label: "a₀" }
                   d0 --- R
                   d1 --- R
                   d2 --- R
@@ -962,8 +967,8 @@
                   F0@{ shape: triangle, label: "F₀" }
                   F1@{ shape: triangle, label: "F₁" }
                   F2@{ shape: triangle, label: "F₂" }
-                  R1@{ shape: rect, label: "R¹" }
-                  R0@{ shape: rect, label: "R⁰" }
+                  R1@{ shape: trapezoid, label: "R¹" }
+                  R0@{ shape: trapezoid, label: "R⁰" }
                   F0 --- R1
                   F0 --- R0
                   F1 --- R1
@@ -988,8 +993,8 @@
                   u0["d₀"]
                   u1["d₁"]
                   u2["d₂"]
-                  Ru["R"]
-                  Rl["R"]
+                  Ru@{ shape: trapezoid, label: "R" }
+                  Rl@{ shape: trapezoid, label: "R" }
                   l0["d₀"]
                   l1["d₁"]
                   l2["d₂"]
@@ -1027,7 +1032,7 @@
                   rd0["d = 0"]
                   rd1["d = +3"]
                   rd2["d = −1"]
-                  Rlow["R · ℓ = 2"]
+                  Rlow@{ shape: trapezoid, label: "R · ℓ = 2" }
                   Hhi["H · ℓ = 7"]
                   e1["e₁"]
                   e0["e₀"]
@@ -1045,8 +1050,8 @@
                   H0["H · ℓ = 7"]
                   H1["H · ℓ = 10"]
                   H2["H · ℓ = 6"]
-                  Rc1["R¹ · ℓ = 2"]
-                  Rc0["R⁰ · ℓ = 2"]
+                  Rc1@{ shape: trapezoid, label: "R¹ · ℓ = 2" }
+                  Rc0@{ shape: trapezoid, label: "R⁰ · ℓ = 2" }
                   H0 --> Rc1
                   H0 --> Rc0
                   H1 --> Rc1
@@ -1093,7 +1098,7 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Before the interaction</p>
                 <pre class="mermaid">flowchart LR
-                  Rbox["R · ℓ = 2"]
+                  Rbox@{ shape: trapezoid, label: "R · ℓ = 2" }
                   Hbox["H · ℓ = 7"]
                   A["port A · d = 0"]
                   B["port B · d = +3"]
@@ -1157,16 +1162,18 @@
           <figure>
             <div class="mermaid-grid two">
               <div class="diagram-panel">
+                <p class="mermaid-caption">abstraction fragment [λx.M]ℓ</p>
                 <pre class="mermaid">flowchart TB
                   rootA((root))
                   lam@{ shape: triangle, label: "λ" }
-                  M@{ shape: trapezoid, label: "[M]ℓ body" }
-                  Rx@{ shape: rect, label: "Rₓ" }
-                  uses@{ shape: trapezoid, label: "bound uses" }
+                  Rx@{ shape: trapezoid, label: "Rₓ" }
+                  M@{ shape: rect, label: "[M]ℓ body" }
+                  uses@{ shape: rect, label: "bound uses" }
                   rootA -->|principal · parent| lam
-                  lam --- M
-                  lam --- Rx
-                  Rx --- uses
+                  lam ---|2nd aux · variable → principal| Rx
+                  lam ---|1st aux · body| M
+                  Rx ---|auxiliary ports| uses
+                  M ~~~ Rx
                 </pre>
               </div>
               <div class="diagram-panel">
@@ -1174,17 +1181,17 @@
                 <pre class="mermaid">flowchart TB
                   rootB((root))
                   app@{ shape: triangle, label: "app" }
-                  resB@{ shape: trapezoid, label: "1st aux · result" }
-                  Mf@{ shape: trapezoid, label: "[M]ℓ function" }
-                  Narg@{ shape: trapezoid, label: "[N]ℓ₊₁ argument" }
+                  Mf@{ shape: rect, label: "[M]ℓ function" }
+                  resB@{ shape: rect, label: "parent / result" }
+                  Narg@{ shape: rect, label: "[N]ℓ₊₁ argument" }
                   rootB --- resB
-                  resB --- app
-                  app -->|principal · function| Mf
-                  app --- Narg
+                  Mf -->|principal · function| app
+                  app ---|1st aux · result| resB
+                  app ---|2nd aux · argument| Narg
                 </pre>
               </div>
             </div>
-            <figcaption><strong>Canonical fragment interface.</strong> Each fragment has one incoming wire at the top and child wires leaving at the bottom. The abstraction’s principal port is the parent input; its first auxiliary port is the body child and its second auxiliary port is the variable parent. The application’s first auxiliary port is the parent/result input; its principal port reaches the function and its second auxiliary port reaches the argument.</figcaption>
+            <figcaption><strong>Canonical fragment interface.</strong> In the abstraction, the parent enters λ’s principal port; λ’s right auxiliary reaches body <span class="math">M</span>, while its left auxiliary reaches the replicator’s principal port when <span class="math">x</span> is shared. In the application, function <span class="math">M</span> reaches the application’s principal port; the parent/result wire and argument <span class="math">N</span> use its two auxiliary ports.</figcaption>
           </figure>
 
           <h3>5.2 The variable cases</h3>
@@ -1216,7 +1223,7 @@
                 <pre class="mermaid">flowchart TB
                   inX((fragment input))
                   endp["wire endpoint · ℓᵢ"]
-                  Rx2["Rₓ"]
+                  Rx2@{ shape: trapezoid, label: "Rₓ" }
                   inX --> endp
                   endp -->|one aux port| Rx2
                 </pre>
@@ -1235,12 +1242,13 @@
                 <pre class="mermaid">flowchart TB
                   root0((root))
                   lam0@{ shape: triangle, label: "λ" }
-                  body0@{ shape: trapezoid, label: "1st aux · body" }
-                  var0@{ shape: trapezoid, label: "2nd aux · variable" }
-                  use0@{ shape: trapezoid, label: "x" }
+                  var0@{ shape: rect, label: "2nd aux · variable" }
+                  body0@{ shape: rect, label: "1st aux · body" }
+                  use0@{ shape: rect, label: "x" }
                   root0 -->|principal · parent| lam0
-                  lam0 --- body0
                   lam0 --- var0
+                  lam0 --- body0
+                  body0 ~~~ var0
                   body0 --- use0
                   var0 --- use0
                 </pre>
@@ -1250,13 +1258,14 @@
                 <pre class="mermaid">flowchart TB
                   root1((root))
                   lam1@{ shape: triangle, label: "λ" }
-                  var1@{ shape: trapezoid, label: "2nd aux · variable" }
-                  body1@{ shape: trapezoid, label: "1st aux · body" }
+                  var1@{ shape: rect, label: "2nd aux · variable" }
+                  body1@{ shape: rect, label: "1st aux · body" }
                   erase@{ shape: stadium, label: "E" }
-                  freeY@{ shape: trapezoid, label: "y" }
+                  freeY@{ shape: rect, label: "y" }
                   root1 -->|principal · parent| lam1
                   lam1 --- var1
                   lam1 --- body1
+                  body1 ~~~ var1
                   var1 --- erase
                   body1 --- freeY
                 </pre>
@@ -1266,16 +1275,17 @@
                 <pre class="mermaid">flowchart TB
                   root2((root))
                   lam2@{ shape: triangle, label: "λ" }
-                  body2@{ shape: trapezoid, label: "1st aux · body" }
-                  var2@{ shape: trapezoid, label: "2nd aux · variable" }
-                  R@{ shape: rect, label: "R" }
+                  var2@{ shape: rect, label: "2nd aux · variable" }
+                  body2@{ shape: rect, label: "1st aux · body" }
+                  R@{ shape: trapezoid, label: "R" }
                   app2@{ shape: triangle, label: "app" }
-                  res2@{ shape: trapezoid, label: "result" }
-                  fun2@{ shape: trapezoid, label: "function x₀" }
-                  arg2@{ shape: trapezoid, label: "argument x₁" }
+                  res2@{ shape: rect, label: "result" }
+                  fun2@{ shape: rect, label: "function x₀" }
+                  arg2@{ shape: rect, label: "argument x₁" }
                   root2 -->|principal · parent| lam2
-                  lam2 --- body2
                   lam2 --- var2
+                  lam2 --- body2
+                  body2 ~~~ var2
                   body2 --- res2
                   app2 --- res2
                   var2 --- R
@@ -1307,10 +1317,10 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Three fan ports</p>
                 <pre class="mermaid">flowchart TB
-                  resN@{ shape: trapezoid, label: "1st aux · result" }
+                  resN@{ shape: rect, label: "1st aux · result" }
                   appN@{ shape: triangle, label: "app" }
-                  Mf2@{ shape: trapezoid, label: "function M · ℓ" }
-                  Nf2@{ shape: trapezoid, label: "argument N · ℓ+1" }
+                  Mf2@{ shape: rect, label: "function M · ℓ" }
+                  Nf2@{ shape: rect, label: "argument N · ℓ+1" }
                   Mf2 -->|principal| appN
                   appN --- resN
                   appN --- Nf2
@@ -1362,7 +1372,7 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Turn the two x levels into deltas</p>
                 <pre class="mermaid">flowchart TB
-                  Rx["Rₓ · ℓ = 1"]
+                  Rx@{ shape: trapezoid, label: "Rₓ · ℓ = 1" }
                   p0["x₀ · d = 0 − 1 = −1"]
                   p1["x₁ · d = 2 − 1 = +1"]
                   Rx --> p0
@@ -1399,9 +1409,9 @@
                   <p class="mermaid-caption">Canonical ΔL net — orange link is the active pair</p>
                   <pre class="mermaid">flowchart TB
                     rootI((root))
-                    resI@{ shape: trapezoid, label: "result" }
+                    resI@{ shape: rect, label: "result" }
                     appI@{ shape: triangle, label: "app" }
-                    argI@{ shape: trapezoid, label: "argument" }
+                    argI@{ shape: rect, label: "argument" }
                     lamx@{ shape: triangle, label: "λx" }
                     lamy@{ shape: triangle, label: "λy" }
                     rootI --- resI
@@ -1440,16 +1450,17 @@
                   <pre class="mermaid">flowchart TB
                     root7((root))
                     lam7@{ shape: triangle, label: "λ" }
-                    body7@{ shape: trapezoid, label: "1st aux · body" }
-                    var7@{ shape: trapezoid, label: "2nd aux · variable" }
-                    R7@{ shape: rect, label: "R · ℓ = 1" }
+                    var7@{ shape: rect, label: "2nd aux · variable" }
+                    body7@{ shape: rect, label: "1st aux · body" }
+                    R7@{ shape: trapezoid, label: "R · ℓ = 1" }
                     app7@{ shape: triangle, label: "app" }
-                    res7@{ shape: trapezoid, label: "result" }
-                    fun7@{ shape: trapezoid, label: "function x₀" }
-                    arg7@{ shape: trapezoid, label: "argument x₁" }
+                    res7@{ shape: rect, label: "result" }
+                    fun7@{ shape: rect, label: "function x₀" }
+                    arg7@{ shape: rect, label: "argument x₁" }
                     root7 -->|parent| lam7
-                    lam7 --- body7
                     lam7 --- var7
+                    lam7 --- body7
+                    body7 ~~~ var7
                     body7 --- res7
                     res7 --- app7
                     var7 --- R7
@@ -1475,21 +1486,22 @@
                   <pre class="mermaid">flowchart TB
                     root8((root))
                     lam8@{ shape: triangle, label: "λ" }
-                    body8@{ shape: trapezoid, label: "1st aux · body" }
-                    var8@{ shape: trapezoid, label: "2nd aux · variable" }
-                    R8@{ shape: rect, label: "R · ℓ = 1" }
+                    var8@{ shape: rect, label: "2nd aux · variable" }
+                    body8@{ shape: rect, label: "1st aux · body" }
+                    R8@{ shape: trapezoid, label: "R · ℓ = 1" }
                     a0@{ shape: triangle, label: "app0" }
-                    r0@{ shape: trapezoid, label: "result" }
-                    g0@{ shape: trapezoid, label: "argument" }
+                    r0@{ shape: rect, label: "result" }
+                    g0@{ shape: rect, label: "argument" }
                     a1@{ shape: triangle, label: "app1" }
-                    r1@{ shape: trapezoid, label: "result" }
-                    g1@{ shape: trapezoid, label: "argument" }
+                    r1@{ shape: rect, label: "result" }
+                    g1@{ shape: rect, label: "argument" }
                     a2@{ shape: triangle, label: "app2" }
-                    r2@{ shape: trapezoid, label: "result" }
-                    g2@{ shape: trapezoid, label: "argument x₃" }
+                    r2@{ shape: rect, label: "result" }
+                    g2@{ shape: rect, label: "argument x₃" }
                     root8 -->|parent| lam8
-                    lam8 --- body8
                     lam8 --- var8
+                    lam8 --- body8
+                    body8 ~~~ var8
                     body8 --- r0
                     r0 --- a0
                     var8 --- R8
@@ -1620,7 +1632,7 @@
                 <p class="mermaid-caption">Before: unpaired R with two erasers</p>
                 <pre class="mermaid">flowchart TB
                   inD((input))
-                  Rd["R · unpaired"]
+                  Rd@{ shape: trapezoid, label: "R · unpaired" }
                   live0["live · d = 0"]
                   Ee1["E"]
                   Ee2["E"]
@@ -1843,6 +1855,7 @@
               const source = keys.find((key) => body.startsWith(`${key}_`) && byKey.has(body.slice(key.length + 1)));
               if (!source) return [];
               const target = body.slice(source.length + 1);
+              if (path.classList.contains('edge-thickness-invisible')) return [];
               return [{
                 path,
                 source,
@@ -1876,7 +1889,7 @@
             svg.querySelector('.nodes')?.before(layer);
 
             byKey.forEach((node, key) => {
-              if (!isTriangle(node)) return;
+              if (!isTriangle(node) && !isReplicator(node)) return;
               const box = node.getBBox();
               const top = point(node, box.x + box.width / 2, box.y);
               const bottom = (index, count) => point(
@@ -1884,18 +1897,31 @@
                 box.x + box.width * ((index + 1) / (count + 1)),
                 box.y + box.height,
               );
-              const fanLabel = nodeLabel(node).toLowerCase();
+              const agentLabel = nodeLabel(node).toLowerCase();
               const connections = incident(key);
-              const principal = connections.find(({ label, neighbor }) => {
-                const neighborLabel = nodeLabel(neighbor).toLowerCase();
-                return label.includes('principal')
-                  || neighborLabel === 'principal'
-                  || (fanLabel.startsWith('λ') && /^(root|parent)/.test(neighborLabel))
-                  || (fanLabel.startsWith('app') && neighborLabel.includes('function'));
+              const connectionText = ({ label, neighbor }) => `${label} ${nodeLabel(neighbor).toLowerCase()}`;
+              const principal = connections.find((connection) => {
+                const text = connectionText(connection);
+                return text.includes('principal')
+                  || (agentLabel.startsWith('λ') && /\b(root|parent)\b/.test(text))
+                  || (agentLabel.startsWith('app') && text.includes('function'))
+                  || (isReplicator(node) && /\b(variable|bound)\b/.test(text));
               });
+              const auxiliaryRank = (connection) => {
+                const text = connectionText(connection);
+                if (agentLabel.startsWith('λ')) {
+                  if (text.includes('variable')) return 0;
+                  if (text.includes('body')) return 1;
+                }
+                if (agentLabel.startsWith('app')) {
+                  if (text.includes('result')) return 0;
+                  if (text.includes('argument')) return 1;
+                }
+                return center(connection.neighbor).x;
+              };
               const auxiliaries = connections
                 .filter((connection) => connection !== principal)
-                .sort((a, b) => center(a.neighbor).x - center(b.neighbor).x);
+                .sort((a, b) => auxiliaryRank(a) - auxiliaryRank(b));
 
               if (principal) {
                 setEndpoint(principal.path, principal.atStart, top);
@@ -1906,33 +1932,6 @@
                 setEndpoint(connection.path, connection.atStart, anchor);
                 addPort(layer, anchor);
               });
-            });
-
-            byKey.forEach((node, key) => {
-              if (node.firstElementChild?.tagName.toLowerCase() !== 'polygon') return;
-              const text = nodeLabel(node).toLowerCase();
-              if (!/(aux|body|variable|function|argument|result|delta|\bd[₀₁₂\d])/.test(text)) return;
-              const connections = incident(key);
-              const owner = connections.find(({ neighbor }) => isTriangle(neighbor) || isReplicator(neighbor));
-              if (!owner) return;
-              const box = node.getBBox();
-              const ownerIsBelow = center(owner.neighbor).y > center(node).y;
-              const polygon = node.firstElementChild;
-              if (ownerIsBelow) {
-                const ys = [...polygon.points].map(({ y }) => y);
-                const minY = Math.min(...ys);
-                const maxY = Math.max(...ys);
-                [...polygon.points].forEach((svgPoint, index) => {
-                  svgPoint.y = minY + maxY - ys[index];
-                });
-              }
-              const narrow = point(
-                node,
-                box.x + box.width / 2,
-                ownerIsBelow ? box.y + box.height : box.y,
-              );
-              setEndpoint(owner.path, owner.atStart, narrow);
-              addPort(layer, narrow);
             });
           });
         };
