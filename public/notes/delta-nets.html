@@ -318,6 +318,7 @@
       .diagram-panel pre.mermaid { margin: 0; overflow-x: auto; }
       .diagram-panel .mermaid svg { max-width: 100%; height: auto; }
       .diagram-panel .mermaid .nodeLabel, .diagram-panel .mermaid .edgeLabel { font-family: var(--sans); }
+        .diagram-panel .mermaid .fixed-port { fill: var(--panel); stroke: var(--orange); stroke-width: 2; }
       figcaption { margin-top: .65rem; color: var(--ink-soft); font-size: .83rem; line-height: 1.45; }
       figcaption strong { color: var(--ink); }
       .diagram text { font-family: var(--sans); fill: var(--ink); }
@@ -1276,12 +1277,12 @@
                   lam2 --- body2
                   lam2 --- var2
                   body2 --- res2
-                  res2 --- app2
+                  app2 --- res2
                   var2 --- R
                   R --- fun2
                   R --- arg2
-                  fun2 --- app2
-                  arg2 --- app2
+                  fun2 -->|principal| app2
+                  app2 --- arg2
                 </pre>
               </div>
             </div>
@@ -1289,7 +1290,7 @@
           </figure>
 
           <h3 id="application-case">5.4 The application case</h3>
-          <p>An application is a downward-pointing fan (the <code>@</code> label is only visual). Its principal port meets the function fragment; one auxiliary port meets the argument. During reduction the application fan eventually meets an abstraction fan; their annihilation is the application.</p>
+          <p>An application is a triangular fan (the <code>app</code> label is only visual). Its principal port is fixed at the top apex and meets the function fragment. Its result and argument auxiliary ports are fixed symmetrically along the bottom edge. During reduction the application fan eventually meets an abstraction fan; their principal-port annihilation is the application.</p>
 
           <figure>
             <div class="mermaid-grid two">
@@ -1310,8 +1311,8 @@
                   appN@{ shape: triangle, label: "app" }
                   Mf2@{ shape: trapezoid, label: "function M · ℓ" }
                   Nf2@{ shape: trapezoid, label: "argument N · ℓ+1" }
-                  resN --- appN
-                  appN -->|principal| Mf2
+                  Mf2 -->|principal| appN
+                  appN --- resN
                   appN --- Nf2
                 </pre>
               </div>
@@ -1806,20 +1807,151 @@
           clusterBorder: '#8b776b',
         };
 
-        const renderMermaid = () => {
+        const normalizeMermaidPorts = () => {
+          const point = (node, x, y) => {
+            const matrix = node.transform.baseVal.consolidate()?.matrix;
+            return {
+              x: (matrix?.a ?? 1) * x + (matrix?.c ?? 0) * y + (matrix?.e ?? 0),
+              y: (matrix?.b ?? 0) * x + (matrix?.d ?? 1) * y + (matrix?.f ?? 0),
+            };
+          };
+
+          const setEndpoint = (path, atStart, { x, y }) => {
+            const value = `${x.toFixed(3)},${y.toFixed(3)}`;
+            const d = path.getAttribute('d');
+            path.setAttribute(
+              'd',
+              atStart
+                ? d.replace(/^M-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?/, `M${value}`)
+                : d.replace(/-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?$/, value),
+            );
+          };
+
+          mermaidBlocks.forEach(({ el }) => {
+            const svg = el.querySelector('svg');
+            if (!svg || svg.getAttribute('aria-roledescription') === 'error') return;
+
+            const nodes = [...svg.querySelectorAll('g.node')];
+            const byKey = new Map(nodes.map((node) => [
+              node.id.replace(/^flowchart-/, '').replace(/-\d+$/, ''),
+              node,
+            ]));
+            const keys = [...byKey.keys()].sort((a, b) => b.length - a.length);
+            const labels = [...svg.querySelectorAll('.edgeLabel')];
+            const edges = [...svg.querySelectorAll('.edgePaths > path')].flatMap((path, index) => {
+              const body = path.id.replace(/^L_/, '').replace(/_\d+$/, '');
+              const source = keys.find((key) => body.startsWith(`${key}_`) && byKey.has(body.slice(key.length + 1)));
+              if (!source) return [];
+              const target = body.slice(source.length + 1);
+              return [{
+                path,
+                source,
+                target,
+                label: labels[index]?.textContent.trim().toLowerCase() ?? '',
+              }];
+            });
+            const nodeLabel = (node) => node.querySelector('.nodeLabel')?.textContent.trim() ?? '';
+            const isTriangle = (node) => node.firstElementChild?.tagName.toLowerCase() === 'g';
+            const isReplicator = (node) => /^R(?:$|[\s·⁰¹²³\d])/.test(nodeLabel(node));
+            const center = (node) => {
+              const box = node.getBBox();
+              return point(node, box.x + box.width / 2, box.y + box.height / 2);
+            };
+            const incident = (key) => edges.flatMap((edge) => {
+              if (edge.source === key) return [{ ...edge, atStart: true, neighbor: byKey.get(edge.target) }];
+              if (edge.target === key) return [{ ...edge, atStart: false, neighbor: byKey.get(edge.source) }];
+              return [];
+            });
+            const addPort = (layer, position) => {
+              const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+              circle.setAttribute('class', 'fixed-port');
+              circle.setAttribute('cx', position.x);
+              circle.setAttribute('cy', position.y);
+              circle.setAttribute('r', '3');
+              layer.append(circle);
+            };
+
+            const layer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            layer.setAttribute('class', 'fixed-ports');
+            svg.querySelector('.nodes')?.before(layer);
+
+            byKey.forEach((node, key) => {
+              if (!isTriangle(node)) return;
+              const box = node.getBBox();
+              const top = point(node, box.x + box.width / 2, box.y);
+              const bottom = (index, count) => point(
+                node,
+                box.x + box.width * ((index + 1) / (count + 1)),
+                box.y + box.height,
+              );
+              const fanLabel = nodeLabel(node).toLowerCase();
+              const connections = incident(key);
+              const principal = connections.find(({ label, neighbor }) => {
+                const neighborLabel = nodeLabel(neighbor).toLowerCase();
+                return label.includes('principal')
+                  || neighborLabel === 'principal'
+                  || (fanLabel.startsWith('λ') && /^(root|parent)/.test(neighborLabel))
+                  || (fanLabel.startsWith('app') && neighborLabel.includes('function'));
+              });
+              const auxiliaries = connections
+                .filter((connection) => connection !== principal)
+                .sort((a, b) => center(a.neighbor).x - center(b.neighbor).x);
+
+              if (principal) {
+                setEndpoint(principal.path, principal.atStart, top);
+                addPort(layer, top);
+              }
+              auxiliaries.forEach((connection, index) => {
+                const anchor = bottom(index, auxiliaries.length);
+                setEndpoint(connection.path, connection.atStart, anchor);
+                addPort(layer, anchor);
+              });
+            });
+
+            byKey.forEach((node, key) => {
+              if (node.firstElementChild?.tagName.toLowerCase() !== 'polygon') return;
+              const text = nodeLabel(node).toLowerCase();
+              if (!/(aux|body|variable|function|argument|result|delta|\bd[₀₁₂\d])/.test(text)) return;
+              const connections = incident(key);
+              const owner = connections.find(({ neighbor }) => isTriangle(neighbor) || isReplicator(neighbor));
+              if (!owner) return;
+              const box = node.getBBox();
+              const ownerIsBelow = center(owner.neighbor).y > center(node).y;
+              const polygon = node.firstElementChild;
+              if (ownerIsBelow) {
+                const ys = [...polygon.points].map(({ y }) => y);
+                const minY = Math.min(...ys);
+                const maxY = Math.max(...ys);
+                [...polygon.points].forEach((svgPoint, index) => {
+                  svgPoint.y = minY + maxY - ys[index];
+                });
+              }
+              const narrow = point(
+                node,
+                box.x + box.width / 2,
+                ownerIsBelow ? box.y + box.height : box.y,
+              );
+              setEndpoint(owner.path, owner.atStart, narrow);
+              addPort(layer, narrow);
+            });
+          });
+        };
+
+        const renderMermaid = async () => {
           if (!window.mermaid) return;
           mermaid.initialize({
             startOnLoad: false,
             securityLevel: 'strict',
             theme: 'base',
             themeVariables: mermaidThemeVars(root.dataset.theme === 'dark'),
-            flowchart: { htmlLabels: false, curve: 'basis', padding: 16 },
+            flowchart: { htmlLabels: false, curve: 'linear', padding: 16 },
           });
           mermaidBlocks.forEach(({ el, src }) => {
             el.removeAttribute('data-processed');
             el.textContent = src;
           });
-          mermaid.run({ nodes: mermaidBlocks.map(({ el }) => el) });
+          await mermaid.run({ nodes: mermaidBlocks.map(({ el }) => el) });
+          normalizeMermaidPorts();
         };
 
         const setSize = (size) => {
