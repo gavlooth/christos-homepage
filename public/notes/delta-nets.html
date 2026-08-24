@@ -1033,31 +1033,41 @@
                   rd1["d = +3"]
                   rd2["d = −1"]
                   Rlow@{ shape: trapezoid, label: "R · ℓ = 2" }
-                  Hhi["H · ℓ = 7"]
+                  Hhi@{ shape: trapezoid, label: "H · ℓ = 7" }
                   e1["e₁"]
                   e0["e₀"]
-                  rd0 --> Rlow
-                  rd1 --> Rlow
-                  rd2 --> Rlow
-                  Rlow -->|"principal ↔ principal"| Hhi
-                  Hhi --> e1
-                  Hhi --> e0
+                  rd0 --- Rlow
+                  rd1 --- Rlow
+                  rd2 --- Rlow
+                  Rlow ---|"principal ↔ principal"| Hhi
+                  Hhi --- e1
+                  Hhi --- e0
                 </pre>
               </div>
               <div class="diagram-panel">
                 <p class="mermaid-caption">After: 3 H replicas · 2 R copies</p>
                 <pre class="mermaid">flowchart TB
-                  H0["H · ℓ = 7"]
-                  H1["H · ℓ = 10"]
-                  H2["H · ℓ = 6"]
+                  d0["d₀"]
+                  d1["d₁"]
+                  d2["d₂"]
+                  H0@{ shape: trapezoid, label: "H · ℓ = 7" }
+                  H1@{ shape: trapezoid, label: "H · ℓ = 10" }
+                  H2@{ shape: trapezoid, label: "H · ℓ = 6" }
                   Rc1@{ shape: trapezoid, label: "R¹ · ℓ = 2" }
                   Rc0@{ shape: trapezoid, label: "R⁰ · ℓ = 2" }
-                  H0 --> Rc1
-                  H0 --> Rc0
-                  H1 --> Rc1
-                  H1 --> Rc0
-                  H2 --> Rc1
-                  H2 --> Rc0
+                  e1["e₁"]
+                  e0["e₀"]
+                  d0 ---|principal| H0
+                  d1 ---|principal| H1
+                  d2 ---|principal| H2
+                  H0 --- Rc1
+                  H0 --- Rc0
+                  H1 --- Rc1
+                  H1 --- Rc0
+                  H2 --- Rc1
+                  H2 --- Rc0
+                  Rc1 ---|principal| e1
+                  Rc0 ---|principal| e0
                 </pre>
               </div>
             </div>
@@ -1097,14 +1107,18 @@
             <div class="mermaid-grid two">
               <div class="diagram-panel">
                 <p class="mermaid-caption">Before the interaction</p>
-                <pre class="mermaid">flowchart LR
-                  Rbox@{ shape: trapezoid, label: "R · ℓ = 2" }
-                  Hbox["H · ℓ = 7"]
+                <pre class="mermaid">flowchart TB
                   A["port A · d = 0"]
                   B["port B · d = +3"]
-                  Rbox --> A
-                  Rbox --> B
-                  Hbox -->|"meets R"| Rbox
+                  Rbox@{ shape: trapezoid, label: "R · ℓ = 2" }
+                  Hbox@{ shape: trapezoid, label: "H · ℓ = 7" }
+                  e1b["e₁"]
+                  e0b["e₀"]
+                  A --- Rbox
+                  B --- Rbox
+                  Rbox ---|"principal ↔ principal"| Hbox
+                  Hbox --- e1b
+                  Hbox --- e0b
                 </pre>
               </div>
               <div class="diagram-panel">
@@ -1466,8 +1480,9 @@
                     var7 --- R7
                     R7 --- fun7
                     R7 --- arg7
-                    fun7 --- app7
+                    fun7 ---|function| app7
                     arg7 --- app7
+                    class app7 orient-left
                   </pre>
               </div>
               <figcaption><strong>What the numbers mean in this exact term.</strong> The application hangs from the λ body port: its first auxiliary is the result. One replicator auxiliary meets the application’s argument port; the other meets its function (principal) port. The outer term has level <span class="math">0</span>. The body application is also level <span class="math">0</span>; the application rule puts the argument occurrence at level <span class="math">1</span>, while the function occurrence stays at level <span class="math">0</span>. The replicator belongs to the surrounding abstraction, so it has level <span class="math">0 + 1 = 1</span>. Therefore its function-use port stores <span class="math">d<sub>0</sub> = 0 − 1 = −1</span>, and its argument-use port stores <span class="math">d<sub>1</sub> = 1 − 1 = 0</span>.</figcaption>
@@ -1505,16 +1520,17 @@
                     body8 --- r0
                     r0 --- a0
                     var8 --- R8
-                    R8 --- a0
+                    R8 ---|function| a0
                     a0 --- g0
                     g0 --- r1
                     r1 --- a1
-                    R8 --- a1
+                    R8 ---|function| a1
                     a1 --- g1
                     g1 --- r2
                     r2 --- a2
-                    R8 --- a2
+                    R8 ---|function| a2
                     a2 --- g2
+                    class a0,a1,a2 orient-right
                   </pre>
                 </div>
               <figcaption><strong>Why the vector grows.</strong> The outer application hangs from the λ body port. Each inner application hangs from the argument port of the application above it. The four replicator auxiliaries meet the three function ports and the deepest argument port. The abstraction is at level <span class="math">0</span>, so its replicator is at level <span class="math">1</span>. The four bound-variable endpoints are at levels <span class="math">0, 1, 2, 3</span>. Applying <span class="math">d<sub>i</sub> = l<sub>i</sub> − l<sub>R</sub></span> yields <span class="math">⟨−1, 0, +1, +2⟩</span>.</figcaption>
@@ -1634,12 +1650,12 @@
                   inD((input))
                   Rd@{ shape: trapezoid, label: "R · unpaired" }
                   live0["live · d = 0"]
-                  Ee1["E"]
-                  Ee2["E"]
-                  inD --> Rd
-                  Rd --> live0
-                  Rd --> Ee1
-                  Rd --> Ee2
+                  Ee1@{ shape: stadium, label: "E" }
+                  Ee2@{ shape: stadium, label: "E" }
+                  inD ---|principal| Rd
+                  Rd --- live0
+                  Rd --- Ee1
+                  Rd --- Ee2
                 </pre>
               </div>
               <div class="diagram-panel">
@@ -1865,7 +1881,7 @@
             });
             const nodeLabel = (node) => node.querySelector('.nodeLabel')?.textContent.trim() ?? '';
             const isTriangle = (node) => node.firstElementChild?.tagName.toLowerCase() === 'g';
-            const isReplicator = (node) => /^R(?:$|[\s·⁰¹²³\d])/.test(nodeLabel(node));
+            const isReplicator = (node) => /^[RH](?:$|[\s·⁰¹²³\d])/.test(nodeLabel(node));
             const center = (node) => {
               const box = node.getBBox();
               return point(node, box.x + box.width / 2, box.y + box.height / 2);
@@ -1901,8 +1917,18 @@
                   || (agentLabel.startsWith('app') && text.includes('function'))
                   || (isReplicator(node) && /\b(variable|bound)\b/.test(text));
               });
-              const principalIsBelow = principal && center(principal.neighbor).y > center(node).y;
-              if (principalIsBelow && isTriangle(node)) {
+              const sideOrientation = node.classList.contains('orient-left')
+                ? 'left'
+                : node.classList.contains('orient-right') ? 'right' : null;
+              const principalIsBelow = !sideOrientation
+                && principal
+                && center(principal.neighbor).y > center(node).y;
+              if (sideOrientation && isTriangle(node)) {
+                node.firstElementChild.setAttribute(
+                  'transform',
+                  `rotate(${sideOrientation === 'left' ? -90 : 90}) translate(${box.x}, ${-box.y})`,
+                );
+              } else if (principalIsBelow && isTriangle(node)) {
                 node.firstElementChild.setAttribute(
                   'transform',
                   `translate(${box.x}, ${box.y}) scale(1, -1)`,
@@ -1916,16 +1942,28 @@
                   svgPoint.y = minY + maxY - ys[index];
                 });
               }
-              const principalAnchor = point(
-                node,
-                box.x + box.width / 2,
-                principalIsBelow ? box.y + box.height : box.y,
-              );
-              const auxiliaryAnchor = (index, count) => point(
-                node,
-                box.x + box.width * ((index + 1) / (count + 1)),
-                principalIsBelow ? box.y : box.y + box.height,
-              );
+              const principalAnchor = sideOrientation
+                ? point(
+                    node,
+                    sideOrientation === 'left' ? box.x : box.x + box.width,
+                    box.y + box.height / 2,
+                  )
+                : point(
+                    node,
+                    box.x + box.width / 2,
+                    principalIsBelow ? box.y + box.height : box.y,
+                  );
+              const auxiliaryAnchor = sideOrientation
+                ? (index, count) => point(
+                    node,
+                    sideOrientation === 'left' ? box.x + box.width : box.x,
+                    box.y + box.height * ((index + 1) / (count + 1)),
+                  )
+                : (index, count) => point(
+                    node,
+                    box.x + box.width * ((index + 1) / (count + 1)),
+                    principalIsBelow ? box.y : box.y + box.height,
+                  );
               const auxiliaryRank = (connection) => {
                 const text = connectionText(connection);
                 if (agentLabel.startsWith('λ')) {
