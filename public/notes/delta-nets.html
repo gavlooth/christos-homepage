@@ -777,41 +777,35 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Fan · 2 auxiliary ports</p>
                 <pre class="mermaid">flowchart TB
-                  Fp["principal"]
-                  F["F"]
-                  Fa0["1st aux"]
-                  Fa1["2nd aux"]
-                  Fp --> F
-                  F --> Fa0
-                  F --> Fa1
+                  F@{ shape: triangle, label: "F" }
+                  Fa0@{ shape: trapezoid, label: "1st aux" }
+                  Fa1@{ shape: trapezoid, label: "2nd aux" }
+                  F --- Fa0
+                  F --- Fa1
                 </pre>
               </div>
               <div class="diagram-panel">
                 <p class="mermaid-caption">Eraser · no auxiliary ports</p>
                 <pre class="mermaid">flowchart TB
-                  Ep["principal"]
-                  E["E"]
-                  Ep --> E
+                  E@{ shape: stadium, label: "E" }
                 </pre>
               </div>
               <div class="diagram-panel span-all">
                 <p class="mermaid-caption">Replicator · any number of auxiliary ports</p>
                 <pre class="mermaid">flowchart TB
-                  Rp["principal"]
-                  R["R"]
-                  Rd0["aux d₀"]
-                  Rd1["aux d₁"]
-                  Rd2["aux d₂"]
-                  Rdn["aux …"]
-                  Rp --> R
-                  R --> Rd0
-                  R --> Rd1
-                  R --> Rd2
-                  R --> Rdn
+                  R@{ shape: rect, label: "R" }
+                  Rd0@{ shape: trapezoid, label: "aux d₀" }
+                  Rd1@{ shape: trapezoid, label: "aux d₁" }
+                  Rd2@{ shape: trapezoid, label: "aux d₂" }
+                  Rdn@{ shape: trapezoid, label: "aux …" }
+                  R --- Rd0
+                  R --- Rd1
+                  R --- Rd2
+                  R --- Rdn
                 </pre>
               </div>
             </div>
-            <figcaption><strong>Diagram key.</strong> Ports are named, not placed geometrically. The principal port is the one that can start a rewrite; the rest are auxiliary.</figcaption>
+            <figcaption><strong>Diagram key.</strong> Application and function fans are <strong>triangles</strong>: the principal port sits on the top apex, and both auxiliary ports are <strong>trapezoids</strong> on the opposite side. Replicators stay rectangular; their auxiliary ports are the same trapezoids. An eraser has only a principal port.</figcaption>
           </figure>
 
           <div class="term-grid">
@@ -880,15 +874,14 @@
           <figure class="interaction-diagram">
             <div class="mermaid-grid two">
               <div class="diagram-panel">
-                <p class="mermaid-caption">Before: E meets a two-port fan</p>
                 <pre class="mermaid">flowchart TB
-                  E["E"]
-                  F["F"]
-                  M["subnet M"]
-                  N["subnet N"]
+                  E@{ shape: stadium, label: "E" }
+                  F@{ shape: triangle, label: "F" }
+                  M@{ shape: trapezoid, label: "subnet M" }
+                  N@{ shape: trapezoid, label: "subnet N" }
                   E -->|"principal ↔ principal"| F
-                  F -->|1st aux| M
-                  F -->|2nd aux| N
+                  F --- M
+                  F --- N
                 </pre>
               </div>
               <div class="diagram-panel">
@@ -911,28 +904,27 @@
           <figure>
             <div class="mermaid-grid two">
               <div class="diagram-panel">
-                <p class="mermaid-caption">Before: application meets abstraction</p>
                 <pre class="mermaid">flowchart TB
-                  res["result · 1st aux"]
-                  arg["argument · 2nd aux"]
-                  app["@"]
-                  lam["λ"]
-                  body["body · 1st aux"]
-                  var["variable · 2nd aux"]
-                  res --> app
-                  arg --> app
+                  res@{ shape: trapezoid, label: "result · 1st aux" }
+                  arg@{ shape: trapezoid, label: "argument · 2nd aux" }
+                  app@{ shape: triangle, label: "app" }
+                  lam@{ shape: triangle, label: "λ" }
+                  body@{ shape: trapezoid, label: "body · 1st aux" }
+                  var@{ shape: trapezoid, label: "variable · 2nd aux" }
+                  res --- app
+                  arg --- app
                   app -->|"principal ↔ principal"| lam
-                  lam --> body
-                  lam --> var
+                  lam --- body
+                  lam --- var
                 </pre>
               </div>
               <div class="diagram-panel">
                 <p class="mermaid-caption">After: matching indices reconnect</p>
                 <pre class="mermaid">flowchart TB
-                  res2["result · 1st"]
-                  arg2["argument · 2nd"]
-                  body2["body · 1st"]
-                  var2["variable · 2nd"]
+                  res2@{ shape: trapezoid, label: "result · 1st" }
+                  arg2@{ shape: trapezoid, label: "argument · 2nd" }
+                  body2@{ shape: trapezoid, label: "body · 1st" }
+                  var2@{ shape: trapezoid, label: "variable · 2nd" }
                   res2 -->|1st ↔ 1st| body2
                   arg2 -->|2nd ↔ 2nd| var2
                 </pre>
@@ -948,35 +940,35 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Before: R meets F</p>
                 <pre class="mermaid">flowchart TB
-                  d0["d₀"]
-                  d1["d₁"]
-                  d2["d₂"]
-                  R["R"]
-                  F["F"]
-                  a1["a₁"]
-                  a0["a₀"]
-                  d0 --> R
-                  d1 --> R
-                  d2 --> R
+                  d0@{ shape: trapezoid, label: "d₀" }
+                  d1@{ shape: trapezoid, label: "d₁" }
+                  d2@{ shape: trapezoid, label: "d₂" }
+                  R@{ shape: rect, label: "R" }
+                  F@{ shape: triangle, label: "F" }
+                  a1@{ shape: trapezoid, label: "a₁" }
+                  a0@{ shape: trapezoid, label: "a₀" }
+                  d0 --- R
+                  d1 --- R
+                  d2 --- R
                   R -->|"principal ↔ principal"| F
-                  F --> a1
-                  F --> a0
+                  F --- a1
+                  F --- a0
                 </pre>
               </div>
               <div class="diagram-panel">
                 <p class="mermaid-caption">After: (Fᵢ)ⱼ ↔ (Rʲ)ᵢ</p>
                 <pre class="mermaid">flowchart TB
-                  F0["F₀"]
-                  F1["F₁"]
-                  F2["F₂"]
-                  R1["R¹"]
-                  R0["R⁰"]
-                  F0 -->|a₁| R1
-                  F0 -->|a₀| R0
-                  F1 -->|a₁| R1
-                  F1 -->|a₀| R0
-                  F2 -->|a₁| R1
-                  F2 -->|a₀| R0
+                  F0@{ shape: triangle, label: "F₀" }
+                  F1@{ shape: triangle, label: "F₁" }
+                  F2@{ shape: triangle, label: "F₂" }
+                  R1@{ shape: rect, label: "R¹" }
+                  R0@{ shape: rect, label: "R⁰" }
+                  F0 --- R1
+                  F0 --- R0
+                  F1 --- R1
+                  F1 --- R0
+                  F2 --- R1
+                  F2 --- R0
                 </pre>
               </div>
             </div>
@@ -1164,29 +1156,30 @@
           <figure>
             <div class="mermaid-grid two">
               <div class="diagram-panel">
-                <p class="mermaid-caption">abstraction fragment [λx.M]ℓ</p>
                 <pre class="mermaid">flowchart TB
                   rootA((root))
-                  lam["λ"]
-                  M["[M]ℓ"]
-                  Rx["Rₓ"]
-                  uses["bound uses"]
+                  lam@{ shape: triangle, label: "λ" }
+                  M@{ shape: trapezoid, label: "[M]ℓ body" }
+                  Rx@{ shape: rect, label: "Rₓ" }
+                  uses@{ shape: trapezoid, label: "bound uses" }
                   rootA -->|principal · parent| lam
-                  lam -->|"1st aux · body"| M
-                  lam -->|"2nd aux · variable"| Rx
-                  Rx -->|aux| uses
+                  lam --- M
+                  lam --- Rx
+                  Rx --- uses
                 </pre>
               </div>
               <div class="diagram-panel">
                 <p class="mermaid-caption">application fragment [M N]ℓ</p>
                 <pre class="mermaid">flowchart TB
                   rootB((root))
-                  app["@"]
-                  Mf["[M]ℓ"]
-                  Narg["[N]ℓ₊₁"]
-                  rootB -->|"1st aux · result"| app
+                  app@{ shape: triangle, label: "app" }
+                  resB@{ shape: trapezoid, label: "1st aux · result" }
+                  Mf@{ shape: trapezoid, label: "[M]ℓ function" }
+                  Narg@{ shape: trapezoid, label: "[N]ℓ₊₁ argument" }
+                  rootB --- resB
+                  resB --- app
                   app -->|principal · function| Mf
-                  app -->|"2nd aux · argument"| Narg
+                  app --- Narg
                 </pre>
               </div>
             </div>
@@ -1240,42 +1233,55 @@
                 <p class="mermaid-caption">One bound occurrence · λx.x</p>
                 <pre class="mermaid">flowchart TB
                   root0((root))
-                  lam0["λ"]
-                  use0["x"]
-                  root0 -->|"principal · parent"| lam0
-                  lam0 -->|"1st aux · body"| use0
-                  lam0 -->|"2nd aux · variable"| use0
+                  lam0@{ shape: triangle, label: "λ" }
+                  body0@{ shape: trapezoid, label: "1st aux · body" }
+                  var0@{ shape: trapezoid, label: "2nd aux · variable" }
+                  use0@{ shape: trapezoid, label: "x" }
+                  root0 -->|principal · parent| lam0
+                  lam0 --- body0
+                  lam0 --- var0
+                  body0 --- use0
+                  var0 --- use0
                 </pre>
               </div>
               <div class="diagram-panel">
                 <p class="mermaid-caption">No bound occurrence · λx.y</p>
                 <pre class="mermaid">flowchart TB
                   root1((root))
-                  lam1["λ"]
-                  erase["E"]
-                  freeY["y"]
-                  root1 -->|"principal · parent"| lam1
-                  lam1 -->|"2nd aux · variable"| erase
-                  lam1 -->|"1st aux · body"| freeY
+                  lam1@{ shape: triangle, label: "λ" }
+                  var1@{ shape: trapezoid, label: "2nd aux · variable" }
+                  body1@{ shape: trapezoid, label: "1st aux · body" }
+                  erase@{ shape: stadium, label: "E" }
+                  freeY@{ shape: trapezoid, label: "y" }
+                  root1 -->|principal · parent| lam1
+                  lam1 --- var1
+                  lam1 --- body1
+                  var1 --- erase
+                  body1 --- freeY
                 </pre>
               </div>
               <div class="diagram-panel span-all">
                 <p class="mermaid-caption">Several bound occurrences · λx.x x</p>
                 <pre class="mermaid">flowchart TB
                   root2((root))
-                  lam2["λ"]
-                  R["R"]
-                  subgraph app2["@"]
-                    direction TB
-                    res2["1st aux · result"]
-                    fun2["principal · function"]
-                    arg2["2nd aux · argument"]
-                  end
-                  root2 -->|"principal · parent"| lam2
-                  lam2 -->|"1st aux · body"| res2
-                  lam2 -->|"2nd aux · variable"| R
-                  R -->|"aux · x₀"| fun2
-                  R -->|"aux · x₁"| arg2
+                  lam2@{ shape: triangle, label: "λ" }
+                  body2@{ shape: trapezoid, label: "1st aux · body" }
+                  var2@{ shape: trapezoid, label: "2nd aux · variable" }
+                  R@{ shape: rect, label: "R" }
+                  app2@{ shape: triangle, label: "app" }
+                  res2@{ shape: trapezoid, label: "result" }
+                  fun2@{ shape: trapezoid, label: "function x₀" }
+                  arg2@{ shape: trapezoid, label: "argument x₁" }
+                  root2 -->|principal · parent| lam2
+                  lam2 --- body2
+                  lam2 --- var2
+                  body2 --- res2
+                  res2 --- app2
+                  var2 --- R
+                  R --- fun2
+                  R --- arg2
+                  fun2 --- app2
+                  arg2 --- app2
                 </pre>
               </div>
             </div>
@@ -1300,13 +1306,13 @@
               <div class="diagram-panel">
                 <p class="mermaid-caption">Three fan ports</p>
                 <pre class="mermaid">flowchart TB
-                  parent((result / parent))
-                  appN["@"]
-                  Mf2["function M · ℓ"]
-                  Nf2["argument N · ℓ+1"]
-                  parent -->|"1st aux · result"| appN
+                  resN@{ shape: trapezoid, label: "1st aux · result" }
+                  appN@{ shape: triangle, label: "app" }
+                  Mf2@{ shape: trapezoid, label: "function M · ℓ" }
+                  Nf2@{ shape: trapezoid, label: "argument N · ℓ+1" }
+                  resN --- appN
                   appN -->|principal| Mf2
-                  appN -->|"2nd aux · argument"| Nf2
+                  appN --- Nf2
                 </pre>
               </div>
             </div>
@@ -1392,23 +1398,24 @@
                   <p class="mermaid-caption">Canonical ΔL net — orange link is the active pair</p>
                   <pre class="mermaid">flowchart TB
                     rootI((root))
-                    appI["@"]
-                    lamx["λx"]
-                    lamy["λy"]
-                    rootI -->|"1st aux · result"| appI
+                    resI@{ shape: trapezoid, label: "result" }
+                    appI@{ shape: triangle, label: "app" }
+                    argI@{ shape: trapezoid, label: "argument" }
+                    lamx@{ shape: triangle, label: "λx" }
+                    lamy@{ shape: triangle, label: "λy" }
+                    rootI --- resI
+                    resI --- appI
                     appI -->|"principal ↔ principal"| lamx
-                    appI -->|"2nd aux · argument"| lamy
-                    lamx -->|"body ↔ variable"| lamx
-                    lamy -->|"body ↔ variable"| lamy
+                    appI --- argI
+                    argI --- lamy
                   </pre>
                 </div>
                 <div class="diagram-panel">
                   <p class="mermaid-caption">After one fan annihilation</p>
                   <pre class="mermaid">flowchart TB
                     rootR((root))
-                    lamy2["λy"]
+                    lamy2@{ shape: triangle, label: "λy" }
                     rootR --> lamy2
-                    lamy2 -->|"body ↔ variable"| lamy2
                   </pre>
                 </div>
               </div>
@@ -1431,19 +1438,24 @@
                   <p class="mermaid-caption">Canonical [λx.x x]₀ — ports, not sides</p>
                   <pre class="mermaid">flowchart TB
                     root7((root))
-                    lam7["λ"]
-                    R7["R · ℓ = 1"]
-                    subgraph app7["@ · body application"]
-                      direction TB
-                      res7["1st aux · result"]
-                      fun7["principal · function x₀"]
-                      arg7["2nd aux · argument x₁"]
-                    end
+                    lam7@{ shape: triangle, label: "λ" }
+                    body7@{ shape: trapezoid, label: "1st aux · body" }
+                    var7@{ shape: trapezoid, label: "2nd aux · variable" }
+                    R7@{ shape: rect, label: "R · ℓ = 1" }
+                    app7@{ shape: triangle, label: "app" }
+                    res7@{ shape: trapezoid, label: "result" }
+                    fun7@{ shape: trapezoid, label: "function x₀" }
+                    arg7@{ shape: trapezoid, label: "argument x₁" }
                     root7 -->|parent| lam7
-                    lam7 -->|"1st aux · body"| res7
-                    lam7 -->|"2nd aux · variable"| R7
-                    R7 -->|"aux d₀ = −1"| fun7
-                    R7 -->|"aux d₁ = 0"| arg7
+                    lam7 --- body7
+                    lam7 --- var7
+                    body7 --- res7
+                    res7 --- app7
+                    var7 --- R7
+                    R7 --- fun7
+                    R7 --- arg7
+                    fun7 --- app7
+                    arg7 --- app7
                   </pre>
               </div>
               <figcaption><strong>What the numbers mean in this exact term.</strong> The application hangs from the λ body port: its first auxiliary is the result. One replicator auxiliary meets the application’s argument port; the other meets its function (principal) port. The outer term has level <span class="math">0</span>. The body application is also level <span class="math">0</span>; the application rule puts the argument occurrence at level <span class="math">1</span>, while the function occurrence stays at level <span class="math">0</span>. The replicator belongs to the surrounding abstraction, so it has level <span class="math">0 + 1 = 1</span>. Therefore its function-use port stores <span class="math">d<sub>0</sub> = 0 − 1 = −1</span>, and its argument-use port stores <span class="math">d<sub>1</sub> = 1 − 1 = 0</span>.</figcaption>
@@ -1461,35 +1473,35 @@
                   <p class="mermaid-caption">[λx. x (x (x x))]₀ — each @ result is a body/parent; each R auxiliary is a use</p>
                   <pre class="mermaid">flowchart TB
                     root8((root))
-                    lam8["λ"]
-                    R8["R · ℓ = 1"]
-                    subgraph a0["@₀"]
-                      direction TB
-                      r0["1st aux · result"]
-                      f0["principal · function x₀"]
-                      g0["2nd aux · argument"]
-                    end
-                    subgraph a1["@₁"]
-                      direction TB
-                      r1["1st aux · result"]
-                      f1["principal · function x₁"]
-                      g1["2nd aux · argument"]
-                    end
-                    subgraph a2["@₂"]
-                      direction TB
-                      r2["1st aux · result"]
-                      f2["principal · function x₂"]
-                      g2["2nd aux · argument x₃"]
-                    end
+                    lam8@{ shape: triangle, label: "λ" }
+                    body8@{ shape: trapezoid, label: "1st aux · body" }
+                    var8@{ shape: trapezoid, label: "2nd aux · variable" }
+                    R8@{ shape: rect, label: "R · ℓ = 1" }
+                    a0@{ shape: triangle, label: "app0" }
+                    r0@{ shape: trapezoid, label: "result" }
+                    g0@{ shape: trapezoid, label: "argument" }
+                    a1@{ shape: triangle, label: "app1" }
+                    r1@{ shape: trapezoid, label: "result" }
+                    g1@{ shape: trapezoid, label: "argument" }
+                    a2@{ shape: triangle, label: "app2" }
+                    r2@{ shape: trapezoid, label: "result" }
+                    g2@{ shape: trapezoid, label: "argument x₃" }
                     root8 -->|parent| lam8
-                    lam8 -->|"1st aux · body"| r0
-                    lam8 -->|"2nd aux · variable"| R8
-                    R8 -->|"aux d₀ = −1"| f0
-                    g0 -->|"nested body / result"| r1
-                    R8 -->|"aux d₁ = 0"| f1
-                    g1 -->|"nested body / result"| r2
-                    R8 -->|"aux d₂ = +1"| f2
-                    R8 -->|"aux d₃ = +2"| g2
+                    lam8 --- body8
+                    lam8 --- var8
+                    body8 --- r0
+                    r0 --- a0
+                    var8 --- R8
+                    R8 --- a0
+                    a0 --- g0
+                    g0 --- r1
+                    r1 --- a1
+                    R8 --- a1
+                    a1 --- g1
+                    g1 --- r2
+                    r2 --- a2
+                    R8 --- a2
+                    a2 --- g2
                   </pre>
                 </div>
               <figcaption><strong>Why the vector grows.</strong> The outer application hangs from the λ body port. Each inner application hangs from the argument port of the application above it. The four replicator auxiliaries meet the three function ports and the deepest argument port. The abstraction is at level <span class="math">0</span>, so its replicator is at level <span class="math">1</span>. The four bound-variable endpoints are at levels <span class="math">0, 1, 2, 3</span>. Applying <span class="math">d<sub>i</sub> = l<sub>i</sub> − l<sub>R</sub></span> yields <span class="math">⟨−1, 0, +1, +2⟩</span>.</figcaption>
@@ -1740,7 +1752,6 @@
               <li><a href="https://arxiv.org/abs/2505.20314">Read the arXiv abstract and download formats</a></li>
             </ol>
             <p><strong>About this edition.</strong> An independently structured teaching summary of the paper’s abstract and Sections 1–5. Diagrams and wording here are original explanatory material, not reproductions of the author’s figures.</p>
-          </div>
         </section>
       </main>
     </div>
@@ -1752,7 +1763,7 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js"></script>
     <script>
       (() => {
         const root = document.body;
