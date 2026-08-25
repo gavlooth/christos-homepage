@@ -9,6 +9,7 @@ Personal project page for **Dr. Christos Chatzifountas**, designed as a static s
 - `wrangler.toml` - Cloudflare Pages configuration
 - `notes/posts/` - Markdown note sources
 - `notes/pages/` - hand-authored standalone note pages copied verbatim by the build
+- `notes/assets/` - PDFs and other files linked from notes
 - `public/notes/` - generated and copied note pages served by Cloudflare
 
 ## Notes
@@ -41,6 +42,8 @@ Source `.md` files are not served (the worker 404s `.md`).
 Standalone pages with custom layouts live in `notes/pages/`. Add their listing
 metadata to `standaloneNotes` in `notes/build.mjs`; the build copies each page to
 `public/notes/` and includes it in the notebook index.
+
+PDFs linked from notes live in `notes/assets/` and are copied to `public/notes/assets/`.
 
 ## Deploy on Cloudflare Pages
 

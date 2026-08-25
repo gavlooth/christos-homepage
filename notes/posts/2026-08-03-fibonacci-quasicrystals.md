@@ -1,5 +1,5 @@
 ---
-title: Fibonacci quasicrystals: order without a loop
+title: Fibonacci quasicrystals
 date: 2026-08-03
 summary: A mathematical route into Fibonacci tilings: irrational rotations, a dense orbit on a torus, and a clearly hypothetical diamond-based quantum architecture.
 ---

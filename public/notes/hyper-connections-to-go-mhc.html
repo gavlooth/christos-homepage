@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hyper-connections and residual mixing — Christos Chatzifountas</title>
+    <meta name="description" content="Lecture notes on several leftover copies of a hidden state, why unconstrained remixing explodes, and the constraints the recent papers actually prove." />
+    <meta name="theme-color" content="#f7f4ee" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Manrope:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="site-name"><a href="/">Christos Chatzifountas</a></p>
+      <nav aria-label="Primary">
+        <a href="/#about">About</a>
+        <a href="/#work">Work</a>
+        <a href="/notes/">Notebook</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <article class="post">
+        <p class="post-back"><a href="/notes/">← The notebook</a></p>
+        <h1>Hyper-connections and residual mixing</h1>
+        <p class="post-meta">25 August 2026</p>
+        <div class="post-body">
+<p>A deep network that keeps one leftover copy of its hidden state is already a residual net. Several leftover copies, mixed by a learned router, is the family of ideas behind Hyper-Connections, mHC, mHC-lite, KromHC, and go-mHC.</p>
+<p>I wrote that family out as lecture notes, from a three-word spreadsheet to the Cayley construction:</p>
+<p><a href="/notes/assets/hyper-connections-to-go-mhc.pdf">Hyper-Connections to go-mHC (PDF)</a></p>
+<p>The notes are for someone who can multiply a small matrix and read a little Julia. They do not assume residual networks, stochastic matrices, or manifolds. A paper-reported accuracy bump stays a paper-reported accuracy bump.</p>
+<p>The useful question, once the mixer exists, is not “does it look legal.” It is which constraint you actually imposed, what that constraint proves, and what it does not.</p>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>Christos Chatzifountas</p>
+    </footer>
+  </body>
+</html>

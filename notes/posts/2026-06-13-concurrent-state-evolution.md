@@ -290,9 +290,12 @@ handler starts separate work — another thread, a fire-and-forget request — t
 must catch and re-dispatch its own errors. The trampoline sequences transitions; it
 does not supervise work underneath them.
 
+That is the whole pattern I still use. I should say, before stopping, that I did not
+invent it.
+
 ## None of it is mine
 
-None of the parts are new: loops as recursion, state machines, and the Redux loop
+None of the parts are new. Loops as recursion, state machines, and the Redux loop
 all predate this implementation. The useful observation is that they are the same
 shape. Align them and a fragile concurrent loop becomes an explicit series of state
 transitions you can reason about.

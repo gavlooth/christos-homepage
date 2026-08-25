@@ -1,7 +1,7 @@
 ---
-title: Hegel with a GPU
+title: Adversarial reasoning
 date: 2026-06-17
-summary: I built an adversarial reasoner, the model named it "dialectic," and it kept rescuing stuck LLMs — which is awkward, because I am a positivist who thinks Hegel is rubbish. This is how I made my peace with it.
+summary: I built an adversarial reasoner. The model named it dialectic. It kept rescuing stuck LLMs, which is awkward, because I am a positivist who thinks Hegel is rubbish.
 ---
 
 I am a logical positivist by temperament and a skeptic by habit. I want rules I

@@ -11,6 +11,8 @@ import {
   readdirSync,
   mkdirSync,
   copyFileSync,
+  cpSync,
+  existsSync,
 } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
@@ -30,7 +32,7 @@ mkdirSync(notesOutDir, { recursive: true });
 const standaloneNotes = [
   {
     slug: "delta-nets",
-    title: "Δ-Nets, decoded",
+    title: "Δ-Nets",
     date: "2026-08-01",
     summary:
       "A diagram-led guide to encoding lambda terms as Δ-Nets, following their interactions, and calculating replicator levels and port deltas.",
@@ -188,7 +190,11 @@ writeFileSync(
   }),
 );
 
-// Copy the hand-authored top-level pages into the served web root.
+const assetsDir = join(here, "assets");
+if (existsSync(assetsDir)) {
+  cpSync(assetsDir, join(notesOutDir, "assets"), { recursive: true });
+}
+
 copyFileSync(join(repoRoot, "index.html"), join(webDir, "index.html"));
 copyFileSync(join(repoRoot, "styles.css"), join(webDir, "styles.css"));
 
