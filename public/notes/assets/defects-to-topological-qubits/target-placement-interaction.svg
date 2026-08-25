@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
+  <title id="title">Target, placement, and interaction graphs for a defect-cluster lattice</title>
+  <desc id="desc">Three panels show a honeycomb target graph, clusters placed at edge midpoints so their nearest-neighbor graph is kagome, and the realized interaction graph with vertex and plaquette mediators plus unwanted long-range couplings.</desc>
+  <defs>
+    <style>
+      .panel { fill:#f8fafc; stroke:#cbd5e1; stroke-width:2; }
+      .heading { font:700 25px sans-serif; fill:#0f172a; }
+      .sub { font:17px sans-serif; fill:#475569; }
+      .label { font:19px sans-serif; fill:#334155; }
+      .small { font:17px sans-serif; fill:#475569; }
+      .target { fill:none; stroke:#315a88; stroke-width:7; stroke-linecap:round; stroke-linejoin:round; }
+      .target-faint { fill:none; stroke:#b8c9da; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+      .vertex { fill:#fff; stroke:#315a88; stroke-width:4; }
+      .cluster-edge { fill:none; stroke:#15807c; stroke-width:4; stroke-linejoin:round; }
+      .cluster { fill:#fff; stroke:#15807c; stroke-width:5; }
+      .cluster-fill { fill:#d6f1ee; stroke:#15807c; stroke-width:5; }
+      .extra { fill:none; stroke:#c2413b; stroke-width:4; stroke-dasharray:11 9; }
+      .vertex-helper { fill:#f59e0b; stroke:#92400e; stroke-width:3; }
+      .face-helper { fill:#8b5cf6; stroke:#5b21b6; stroke-width:3; }
+      .helper-link { fill:none; stroke:#8b5cf6; stroke-width:2.5; opacity:.75; }
+      .legend-line { stroke-width:5; stroke-linecap:round; }
+    </style>
+  </defs>
+  <rect width="1400" height="720" fill="#ffffff"/>
+  <text x="700" y="38" text-anchor="middle" class="heading">One proposal, three different graphs</text>
+  <text x="700" y="65" text-anchor="middle" class="sub">The Hamiltonian sees couplings—not the name of the tiling.</text>
+
+  <g transform="translate(20 88)">
+    <rect class="panel" width="440" height="560" rx="14"/>
+    <text x="220" y="42" text-anchor="middle" class="heading">1. Target graph</text>
+    <text x="220" y="68" text-anchor="middle" class="sub">Logical labels live on honeycomb edges</text>
+    <g transform="translate(20 70)">
+      <path class="target" d="M140 110 L280 110 L350 230 L280 350 L140 350 L70 230 Z"/>
+      <path class="target" d="M140 110 L110 58 M280 110 L310 58 M350 230 L410 230 M280 350 L310 402 M140 350 L110 402 M70 230 L10 230"/>
+      <circle class="vertex" cx="140" cy="110" r="10"/><circle class="vertex" cx="280" cy="110" r="10"/>
+      <circle class="vertex" cx="350" cy="230" r="10"/><circle class="vertex" cx="280" cy="350" r="10"/>
+      <circle class="vertex" cx="140" cy="350" r="10"/><circle class="vertex" cx="70" cy="230" r="10"/>
+      <text x="128" y="96" class="label">v</text>
+      <text x="210" y="101" text-anchor="middle" class="label">e</text>
+      <text x="210" y="220" text-anchor="middle" class="small">one plaquette</text>
+      <text x="210" y="242" text-anchor="middle" class="small">six boundary labels</text>
+    </g>
+    <text x="220" y="525" text-anchor="middle" class="label">Vertex rule: three edge labels meet</text>
+  </g>
+
+  <g transform="translate(480 88)">
+    <rect class="panel" width="440" height="560" rx="14"/>
+    <text x="220" y="42" text-anchor="middle" class="heading">2. Placement graph</text>
+    <text x="220" y="68" text-anchor="middle" class="sub">One encoded cluster at each edge midpoint</text>
+    <g transform="translate(20 70)">
+      <path class="target-faint" d="M140 110 L280 110 L350 230 L280 350 L140 350 L70 230 Z"/>
+      <path class="target-faint" d="M140 110 L110 58 M280 110 L310 58 M350 230 L410 230 M280 350 L310 402 M140 350 L110 402 M70 230 L10 230"/>
+      <path class="cluster-edge" d="M210 110 L105 170 L125 84 Z M210 110 L315 170 L295 84 Z M315 170 L315 290 L380 230 Z M315 290 L210 350 L295 376 Z M210 350 L105 290 L125 376 Z M105 290 L105 170 L40 230 Z"/>
+      <g>
+        <circle class="cluster-fill" cx="210" cy="110" r="13"/><circle class="cluster-fill" cx="315" cy="170" r="13"/>
+        <circle class="cluster-fill" cx="315" cy="290" r="13"/><circle class="cluster-fill" cx="210" cy="350" r="13"/>
+        <circle class="cluster-fill" cx="105" cy="290" r="13"/><circle class="cluster-fill" cx="105" cy="170" r="13"/>
+        <circle class="cluster" cx="125" cy="84" r="11"/><circle class="cluster" cx="295" cy="84" r="11"/>
+        <circle class="cluster" cx="380" cy="230" r="11"/><circle class="cluster" cx="295" cy="376" r="11"/>
+        <circle class="cluster" cx="125" cy="376" r="11"/><circle class="cluster" cx="40" cy="230" r="11"/>
+      </g>
+      <text x="225" y="99" class="label">C<tspan baseline-shift="sub" font-size="12">e</tspan></text>
+      <text x="210" y="219" text-anchor="middle" class="small">edge midpoints form</text>
+      <text x="210" y="241" text-anchor="middle" class="small" font-weight="700">kagome triangles + hexagons</text>
+    </g>
+    <text x="220" y="525" text-anchor="middle" class="label">Each cluster has four nearest graph neighbors</text>
+  </g>
+
+  <g transform="translate(940 88)">
+    <rect class="panel" width="440" height="560" rx="14"/>
+    <text x="220" y="42" text-anchor="middle" class="heading">3. Interaction graph</text>
+    <text x="220" y="68" text-anchor="middle" class="sub">Measured couplings J<tspan baseline-shift="sub" font-size="13">ij</tspan> decide who talks</text>
+    <g transform="translate(20 70)">
+      <path class="cluster-edge" d="M210 110 L105 170 L125 84 Z M210 110 L315 170 L295 84 Z M315 170 L315 290 L380 230 Z M315 290 L210 350 L295 376 Z M210 350 L105 290 L125 376 Z M105 290 L105 170 L40 230 Z"/>
+      <path class="helper-link" d="M210 230 L210 110 M210 230 L315 170 M210 230 L315 290 M210 230 L210 350 M210 230 L105 290 M210 230 L105 170"/>
+      <path class="extra" d="M210 110 L210 350 M105 170 L315 290 M315 170 L105 290"/>
+      <circle class="vertex-helper" cx="140" cy="110" r="14"/>
+      <path d="M140 110 L210 110 M140 110 L105 170 M140 110 L125 84" fill="none" stroke="#f59e0b" stroke-width="3"/>
+      <circle class="face-helper" cx="210" cy="230" r="17"/>
+      <g>
+        <circle class="cluster-fill" cx="210" cy="110" r="13"/><circle class="cluster-fill" cx="315" cy="170" r="13"/>
+        <circle class="cluster-fill" cx="315" cy="290" r="13"/><circle class="cluster-fill" cx="210" cy="350" r="13"/>
+        <circle class="cluster-fill" cx="105" cy="290" r="13"/><circle class="cluster-fill" cx="105" cy="170" r="13"/>
+        <circle class="cluster" cx="125" cy="84" r="11"/><circle class="cluster" cx="295" cy="84" r="11"/>
+        <circle class="cluster" cx="380" cy="230" r="11"/><circle class="cluster" cx="295" cy="376" r="11"/>
+        <circle class="cluster" cx="125" cy="376" r="11"/><circle class="cluster" cx="40" cy="230" r="11"/>
+      </g>
+    </g>
+    <g transform="translate(47 489)">
+      <line x1="0" y1="0" x2="38" y2="0" class="legend-line" stroke="#15807c"/><text x="48" y="6" class="small">intended</text>
+      <line x1="137" y1="0" x2="175" y2="0" class="legend-line" stroke="#c2413b" stroke-dasharray="9 7"/><text x="185" y="6" class="small">unwanted tail</text>
+      <circle cx="312" cy="0" r="10" class="face-helper"/><text x="329" y="6" class="small">helper</text>
+    </g>
+    <text x="220" y="535" text-anchor="middle" class="label">Extra couplings remain part of the Hamiltonian</text>
+  </g>
+</svg>

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
+  <title id="title">From commanded coordinates to realized active defects</title>
+  <desc id="desc">Three schematic panels show a nine-site coordinate file, uncertain ion stopping and vacancy diffusion during implantation and annealing, and the final audit with displaced, missing, wrong-charge, and extra defects.</desc>
+  <defs>
+    <style>
+      .panel { fill:#f8fafc; stroke:#cbd5e1; stroke-width:2; }
+      .heading { font:700 25px sans-serif; fill:#0f172a; }
+      .sub { font:17px sans-serif; fill:#475569; }
+      .label { font:19px sans-serif; fill:#334155; }
+      .small { font:17px sans-serif; fill:#475569; }
+      .target-bond { fill:none; stroke:#94a3b8; stroke-width:3; stroke-dasharray:8 6; }
+      .target { fill:#fff; stroke:#64748b; stroke-width:3; stroke-dasharray:5 4; }
+      .crosshair { stroke:#315a88; stroke-width:2.5; }
+      .beam { stroke:#315a88; stroke-width:6; }
+      .spread { fill:#bfdbfe; opacity:.62; stroke:#60a5fa; stroke-width:2; }
+      .track { fill:none; stroke:#c2413b; stroke-width:3; stroke-dasharray:8 6; }
+      .active { fill:#cceee8; stroke:#15807c; stroke-width:4; }
+      .wrong { fill:#fde6bd; stroke:#c56a00; stroke-width:4; }
+      .dark { fill:#cbd5e1; stroke:#475569; stroke-width:4; }
+      .miss { stroke:#c2413b; stroke-width:5; stroke-linecap:round; }
+      .offset { stroke:#c2413b; stroke-width:2.5; marker-end:url(#arrow-red); }
+      .actual-bond { stroke:#15807c; stroke-width:4; opacity:.78; }
+    </style>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#315a88"/></marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#c2413b"/></marker>
+  </defs>
+  <rect width="1400" height="720" fill="#fff"/>
+  <text x="700" y="38" text-anchor="middle" class="heading">A commanded coordinate is not yet a usable spin</text>
+  <text x="700" y="65" text-anchor="middle" class="sub">Schematic only—not to scale. Every endpoint and acceptance state must be measured.</text>
+
+  <g transform="translate(20 88)">
+    <rect class="panel" width="440" height="560" rx="14"/>
+    <text x="220" y="42" text-anchor="middle" class="heading">1. Coordinate file</text>
+    <text x="220" y="68" text-anchor="middle" class="sub">Three intended three-defect clusters</text>
+    <g transform="translate(0 30)">
+      <path class="target-bond" d="M85 190 L145 295 L25 295 Z M220 190 L280 295 L160 295 Z M355 190 L415 295 L295 295 Z"/>
+      <g>
+        <circle class="target" cx="85" cy="190" r="14"/><circle class="target" cx="145" cy="295" r="14"/><circle class="target" cx="25" cy="295" r="14"/>
+        <circle class="target" cx="220" cy="190" r="14"/><circle class="target" cx="280" cy="295" r="14"/><circle class="target" cx="160" cy="295" r="14"/>
+        <circle class="target" cx="355" cy="190" r="14"/><circle class="target" cx="415" cy="295" r="14"/><circle class="target" cx="295" cy="295" r="14"/>
+      </g>
+      <g class="crosshair">
+        <path d="M65 190 H105 M85 170 V210 M125 295 H165 M145 275 V315 M5 295 H45 M25 275 V315"/>
+        <path d="M200 190 H240 M220 170 V210 M260 295 H300 M280 275 V315 M140 295 H180 M160 275 V315"/>
+        <path d="M335 190 H375 M355 170 V210 M395 295 H435 M415 275 V315 M275 295 H315 M295 275 V315"/>
+      </g>
+      <text x="85" y="345" text-anchor="middle" class="label">cluster A</text>
+      <text x="220" y="345" text-anchor="middle" class="label">cluster B</text>
+      <text x="355" y="345" text-anchor="middle" class="label">cluster C</text>
+      <text x="220" y="405" text-anchor="middle" class="small">The file fixes aim points and nominal pitch.</text>
+      <text x="220" y="427" text-anchor="middle" class="small">It does not certify atoms or couplings.</text>
+    </g>
+  </g>
+
+  <g transform="translate(480 88)">
+    <rect class="panel" width="440" height="560" rx="14"/>
+    <text x="220" y="42" text-anchor="middle" class="heading">2. Delivery + anneal</text>
+    <text x="220" y="68" text-anchor="middle" class="sub">Entry, stopping, and chemistry are distributions</text>
+    <g transform="translate(0 78)">
+      <rect x="24" y="108" width="392" height="245" rx="5" fill="#eef2f6"/>
+      <line x1="24" y1="108" x2="416" y2="108" stroke="#475569" stroke-width="5"/>
+      <text x="36" y="136" class="small">crystal surface</text>
+      <g class="beam" marker-end="url(#arrow-blue)">
+        <line x1="105" y1="5" x2="105" y2="100"/><line x1="220" y1="5" x2="220" y2="100"/><line x1="335" y1="5" x2="335" y2="100"/>
+      </g>
+      <ellipse class="spread" cx="105" cy="230" rx="55" ry="105"/><ellipse class="spread" cx="220" cy="230" rx="55" ry="105"/><ellipse class="spread" cx="335" cy="230" rx="55" ry="105"/>
+      <circle class="dark" cx="83" cy="259" r="11"/><circle class="dark" cx="238" cy="194" r="11"/><circle class="dark" cx="361" cy="284" r="11"/>
+      <path class="track" d="M105 108 C82 145 135 164 91 199 S137 243 83 259"/>
+      <path class="track" d="M220 108 C246 143 195 158 235 185 L238 194"/>
+      <path class="track" d="M335 108 C315 150 363 168 327 214 S374 250 361 284"/>
+      <path d="M256 309 C225 287 226 257 255 246 C286 235 286 204 267 186" fill="none" stroke="#8b5cf6" stroke-width="4" stroke-dasharray="7 6" marker-end="url(#arrow-red)"/>
+      <text x="258" y="330" class="small">vacancy diffusion</text>
+      <text x="220" y="393" text-anchor="middle" class="small">Beam width, straggle, channeling, diffusion,</text>
+      <text x="220" y="415" text-anchor="middle" class="small">and conversion affect different steps.</text>
+    </g>
+  </g>
+
+  <g transform="translate(940 88)">
+    <rect class="panel" width="440" height="560" rx="14"/>
+    <text x="220" y="42" text-anchor="middle" class="heading">3. Endpoint audit</text>
+    <text x="220" y="68" text-anchor="middle" class="sub">Use the defects that actually formed and passed</text>
+    <g transform="translate(0 30)">
+      <path class="target-bond" d="M85 190 L145 295 L25 295 Z M220 190 L280 295 L160 295 Z M355 190 L415 295 L295 295 Z"/>
+      <g>
+        <circle class="target" cx="85" cy="190" r="10"/><circle class="target" cx="145" cy="295" r="10"/><circle class="target" cx="25" cy="295" r="10"/>
+        <circle class="target" cx="220" cy="190" r="10"/><circle class="target" cx="280" cy="295" r="10"/><circle class="target" cx="160" cy="295" r="10"/>
+        <circle class="target" cx="355" cy="190" r="10"/><circle class="target" cx="415" cy="295" r="10"/><circle class="target" cx="295" cy="295" r="10"/>
+      </g>
+      <g class="actual-bond">
+        <line x1="75" y1="175" x2="134" y2="309"/><line x1="134" y1="309" x2="35" y2="283"/><line x1="35" y1="283" x2="75" y2="175"/>
+        <line x1="230" y1="206" x2="295" y2="283"/><line x1="295" y1="283" x2="151" y2="311"/><line x1="151" y1="311" x2="230" y2="206"/>
+      </g>
+      <g class="offset">
+        <line x1="85" y1="190" x2="76" y2="176"/><line x1="145" y1="295" x2="135" y2="307"/><line x1="25" y1="295" x2="34" y2="284"/>
+        <line x1="220" y1="190" x2="229" y2="204"/><line x1="280" y1="295" x2="293" y2="284"/><line x1="160" y1="295" x2="152" y2="309"/>
+        <line x1="355" y1="190" x2="371" y2="178"/><line x1="295" y1="295" x2="284" y2="313"/>
+      </g>
+      <g>
+        <circle class="active" cx="75" cy="175" r="13"/><circle class="active" cx="134" cy="309" r="13"/><circle class="active" cx="35" cy="283" r="13"/>
+        <circle class="active" cx="230" cy="206" r="13"/><circle class="active" cx="295" cy="283" r="13"/><circle class="active" cx="151" cy="311" r="13"/>
+        <circle class="wrong" cx="372" cy="177" r="13"/><circle class="active" cx="284" cy="314" r="13"/>
+        <circle class="dark" cx="390" cy="356" r="13"/>
+      </g>
+      <path class="miss" d="M403 283 L427 307 M427 283 L403 307"/>
+      <text x="375" y="149" text-anchor="middle" class="small">wrong charge</text>
+      <text x="405" y="387" text-anchor="middle" class="small">extra / dark</text>
+      <text x="408" y="329" text-anchor="middle" class="small">missing</text>
+      <g transform="translate(35 410)">
+        <circle class="active" cx="0" cy="0" r="10"/><text x="17" y="6" class="small">accepted spin</text>
+        <circle class="target" cx="145" cy="0" r="9"/><text x="161" y="6" class="small">aim</text>
+        <line class="offset" x1="223" y1="0" x2="257" y2="0"/><text x="268" y="6" class="small">offset</text>
+      </g>
+      <text x="220" y="458" text-anchor="middle" class="small">Final 3D positions and states set the J<tspan baseline-shift="sub" font-size="10">ij</tspan> distribution.</text>
+    </g>
+  </g>
+</svg>

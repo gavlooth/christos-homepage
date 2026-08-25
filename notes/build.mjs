@@ -38,6 +38,22 @@ const standaloneNotes = [
       "A diagram-led guide to encoding lambda terms as Δ-Nets, following their interactions, and calculating replicator levels and port deltas.",
     source: join(pagesDir, "delta-nets.html"),
   },
+  {
+    slug: "defects-to-topological-qubits",
+    title: "Defect-engineered topological qubits",
+    date: "2026-08-25",
+    summary:
+      "A complete reader on crystal defects, quantum control, anyons, topological models, and the limits of a proposed architecture.",
+    source: join(pagesDir, "defects-to-topological-qubits.html"),
+  },
+  {
+    slug: "hyper-connections-and-residual-mixing",
+    title: "Hyper-connections and residual mixing",
+    date: "2026-08-25",
+    summary:
+      "A complete reader on residual streams, learned mixing, stochastic constraints, spectra, and implementation.",
+    source: join(pagesDir, "hyper-connections-and-residual-mixing.html"),
+  },
 ];
 
 function parsePost(raw) {
