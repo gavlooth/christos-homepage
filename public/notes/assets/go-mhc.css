@@ -1,0 +1,214 @@
+:root {
+  color-scheme: light;
+  --ink: #15263a;
+  --muted: #5d6c7d;
+  --paper: #fbfaf7;
+  --line: #d9e0e6;
+  --accent: #0d7180;
+  --accent-soft: #def1ee;
+  --navy: #102a43;
+  --surface: #ffffff;
+  --code: #edf4f6;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, transparent 0, transparent 4.9rem, rgba(13, 113, 128, .07) 4.9rem, rgba(13, 113, 128, .07) 5rem, transparent 5rem),
+    var(--paper);
+  font: 400 1.05rem/1.72 Georgia, "Times New Roman", serif;
+  text-rendering: optimizeLegibility;
+}
+
+.reader-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.75rem;
+  margin: 0 -2rem;
+  padding: .75rem 2rem;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(10px);
+  font: 650 .78rem/1.2 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.reader-nav a {
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.reader-nav a:hover,
+.reader-nav a:focus-visible { color: var(--accent); }
+
+.reader-links { display: flex; gap: 1.25rem; }
+
+#title-block-header {
+  max-width: 60rem;
+  margin: 5.5rem auto 1.75rem;
+  padding: 0 0 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+#title-block-header::before {
+  content: "Notebook / Machine learning";
+  display: block;
+  margin-bottom: 1.15rem;
+  color: var(--accent);
+  font: 700 .75rem/1.2 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, h4 {
+  color: var(--navy);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.14;
+  text-wrap: balance;
+}
+
+#title-block-header .title {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2.75rem, 7vw, 5.75rem);
+  font-weight: 720;
+  letter-spacing: -.065em;
+}
+
+#TOC {
+  max-width: 60rem;
+  margin: 0 auto 5rem;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border-left: .25rem solid var(--accent);
+  background: var(--accent-soft);
+  font: 500 .9rem/1.45 ui-sans-serif, system-ui, sans-serif;
+}
+
+#TOC::before {
+  content: "Inside this note";
+  display: block;
+  margin-bottom: .85rem;
+  color: var(--navy);
+  font-size: .72rem;
+  font-weight: 750;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+#TOC ul { margin: 0; padding-left: 1.25rem; }
+#TOC ul ul { margin-top: .35rem; }
+#TOC li + li { margin-top: .4rem; }
+#TOC a { color: var(--ink); text-decoration-color: rgba(13, 113, 128, .45); text-underline-offset: .15em; }
+#TOC a:hover, #TOC a:focus-visible { color: var(--accent); }
+
+body > h1 {
+  display: none;
+}
+
+body > :not(.reader-nav):not(#title-block-header):not(#TOC):not(h1) {
+  max-width: 48rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h2 {
+  margin-top: 5rem;
+  margin-bottom: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: clamp(1.8rem, 3vw, 2.65rem);
+  letter-spacing: -.04em;
+}
+
+h3 {
+  margin-top: 2.8rem;
+  margin-bottom: .8rem;
+  color: var(--accent);
+  font-size: 1.3rem;
+  letter-spacing: -.025em;
+}
+
+h4 {
+  margin-top: 1.8rem;
+  margin-bottom: .55rem;
+  font-size: 1rem;
+  letter-spacing: -.01em;
+}
+
+p, ul, ol, blockquote, pre, table { margin-top: 0; margin-bottom: 1.3rem; }
+
+p + ul, p + ol { margin-top: -.55rem; }
+
+li + li { margin-top: .45rem; }
+
+strong { color: var(--navy); }
+
+a { color: #0c6572; text-decoration-thickness: 1px; text-underline-offset: .16em; }
+a:hover, a:focus-visible { color: #084e59; }
+
+hr {
+  width: 4.5rem;
+  height: .25rem;
+  margin: 3.5rem auto;
+  border: 0;
+  background: var(--accent);
+}
+
+blockquote {
+  padding: 1.1rem 1.3rem;
+  border-left: .25rem solid var(--accent);
+  background: var(--surface);
+  color: #34465a;
+  font-size: 1.1rem;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid #d6e2e6;
+  border-radius: .2rem;
+  background: var(--code);
+  font-size: .88rem;
+  line-height: 1.55;
+}
+
+code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: .9em; }
+
+.MathJax, mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+
+.math.display { display: block; margin: 1.8rem 0; padding: 1.15rem 1.25rem; border: 1px solid #d6e2e6; border-radius: .2rem; background: var(--surface); }
+
+figure { margin: 2rem auto; }
+img { max-width: 100%; height: auto; }
+
+table { width: 100%; border-collapse: collapse; font-size: .92rem; line-height: 1.45; }
+th, td { padding: .7rem .8rem; border: 1px solid var(--line); vertical-align: top; }
+th { background: #eaf3f3; color: var(--navy); font-family: ui-sans-serif, system-ui, sans-serif; text-align: left; }
+
+@media (max-width: 42rem) {
+  body { padding: 0 1.15rem 3rem; font-size: 1rem; background: var(--paper); }
+  .reader-nav { margin: 0 -1.15rem; padding-right: 1.15rem; padding-left: 1.15rem; }
+  #title-block-header { margin-top: 3.75rem; }
+  #TOC { margin-bottom: 3rem; padding: 1.1rem; }
+  h2 { margin-top: 3.5rem; }
+  .math.display { padding: .85rem; }
+}
+
+@media print {
+  body { max-width: none; padding: 0; background: #fff; font-size: 10.5pt; }
+  .reader-nav, #TOC { display: none; }
+  h2 { break-after: avoid; }
+  pre, table, .math.display { break-inside: avoid; }
+}

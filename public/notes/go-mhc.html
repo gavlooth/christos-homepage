@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Exact Residual-Stream Mixing</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="/notes/assets/go-mhc.css" />
+  <script async=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header class="reader-nav"><a href="/">Christos Chatzifountas</a><span class="reader-links"><a href="/notes/">All notes</a></span></header>
+<header id="title-block-header">
+<h1 class="title">Exact Residual-Stream Mixing</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#exact-residual-stream-mixing-through-generalized-orthostochastic-matrices"
+id="toc-exact-residual-stream-mixing-through-generalized-orthostochastic-matrices">Exact
+Residual-Stream Mixing Through Generalized Orthostochastic
+Matrices</a>
+<ul>
+<li><a href="#the-problem-how-should-residual-streams-mix"
+id="toc-the-problem-how-should-residual-streams-mix">1. The problem: how
+should residual streams mix?</a></li>
+<li><a href="#mathematical-prerequisites"
+id="toc-mathematical-prerequisites">2. Mathematical prerequisites</a>
+<ul>
+<li><a href="#doubly-stochastic-matrices"
+id="toc-doubly-stochastic-matrices">2.1 Doubly stochastic
+matrices</a></li>
+<li><a href="#permutation-matrices-and-the-birkhoffvon-neumann-theorem"
+id="toc-permutation-matrices-and-the-birkhoffvon-neumann-theorem">2.2
+Permutation matrices and the Birkhoff–von Neumann theorem</a></li>
+<li><a href="#orthogonal-and-skew-symmetric-matrices"
+id="toc-orthogonal-and-skew-symmetric-matrices">2.3 Orthogonal and
+skew-symmetric matrices</a></li>
+</ul></li>
+<li><a href="#from-residual-connections-to-hyper-connections"
+id="toc-from-residual-connections-to-hyper-connections">3. From residual
+connections to Hyper-Connections</a></li>
+<li><a href="#why-constrain-the-residual-mixer"
+id="toc-why-constrain-the-residual-mixer">4. Why constrain the residual
+mixer?</a></li>
+<li><a href="#existing-exact-alternatives"
+id="toc-existing-exact-alternatives">5. Existing exact alternatives</a>
+<ul>
+<li><a href="#mhc-lite-complete-coverage-at-factorial-cost"
+id="toc-mhc-lite-complete-coverage-at-factorial-cost">5.1 mHC-lite:
+complete coverage at factorial cost</a></li>
+<li><a href="#kromhc-efficient-factorization-with-restricted-routing"
+id="toc-kromhc-efficient-factorization-with-restricted-routing">5.2
+KromHC: efficient factorization with restricted routing</a></li>
+</ul></li>
+<li><a href="#orthostochastic-matrices"
+id="toc-orthostochastic-matrices">6. Orthostochastic matrices</a></li>
+<li><a href="#generalized-orthostochastic-matrices"
+id="toc-generalized-orthostochastic-matrices">7. Generalized
+orthostochastic matrices</a>
+<ul>
+<li><a href="#proposition-phi_dsq-is-doubly-stochastic"
+id="toc-proposition-phi_dsq-is-doubly-stochastic">Proposition: <span
+class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly
+stochastic</a></li>
+</ul></li>
+<li><a href="#the-go-mhc-construction"
+id="toc-the-go-mhc-construction">8. The go-mHC construction</a></li>
+<li><a href="#a-worked-stream-mixing-example"
+id="toc-a-worked-stream-mixing-example">9. A worked stream-mixing
+example</a></li>
+<li><a href="#the-role-of-the-block-size-s"
+id="toc-the-role-of-the-block-size-s">10. The role of the block size
+<span class="math inline">\(s\)</span></a>
+<ul>
+<li><a href="#smaller-s" id="toc-smaller-s">Smaller <span
+class="math inline">\(s\)</span></a></li>
+<li><a href="#larger-s" id="toc-larger-s">Larger <span
+class="math inline">\(s\)</span></a></li>
+</ul></li>
+<li><a href="#stability-and-cumulative-mixing"
+id="toc-stability-and-cumulative-mixing">11. Stability and cumulative
+mixing</a></li>
+<li><a href="#spectral-reach-as-an-expressivity-surrogate"
+id="toc-spectral-reach-as-an-expressivity-surrogate">12. Spectral reach
+as an expressivity surrogate</a>
+<ul>
+<li><a href="#reported-qualitative-findings"
+id="toc-reported-qualitative-findings">Reported qualitative
+findings</a></li>
+</ul></li>
+<li><a href="#why-kronecker-products-have-a-spectral-limitation"
+id="toc-why-kronecker-products-have-a-spectral-limitation">13. Why
+Kronecker products have a spectral limitation</a></li>
+<li><a href="#complexity-trade-offs" id="toc-complexity-trade-offs">14.
+Complexity trade-offs</a>
+<ul>
+<li><a href="#parameter-counts" id="toc-parameter-counts">14.1 Parameter
+counts</a></li>
+<li><a href="#flop-complexity" id="toc-flop-complexity">14.2 FLOP
+complexity</a></li>
+</ul></li>
+<li><a href="#combining-go-mhc-and-kromhc"
+id="toc-combining-go-mhc-and-kromhc">15. Combining go-mHC and
+KromHC</a></li>
+<li><a href="#synthetic-reconstruction-experiment"
+id="toc-synthetic-reconstruction-experiment">16. Synthetic
+reconstruction experiment</a></li>
+<li><a
+href="#what-is-theoretically-established-empirically-observed-and-still-uncertain"
+id="toc-what-is-theoretically-established-empirically-observed-and-still-uncertain">17.
+What is theoretically established, empirically observed, and still
+uncertain?</a>
+<ul>
+<li><a href="#theoretical-or-algebraic-facts"
+id="toc-theoretical-or-algebraic-facts">Theoretical or algebraic
+facts</a></li>
+<li><a href="#experimental-observations-reported-by-the-source"
+id="toc-experimental-observations-reported-by-the-source">Experimental
+observations reported by the source</a></li>
+<li><a href="#four-important-open-or-incomplete-points"
+id="toc-four-important-open-or-incomplete-points">Four important open or
+incomplete points</a></li>
+</ul></li>
+<li><a href="#exercises" id="toc-exercises">18. Exercises</a>
+<ul>
+<li><a href="#exercise-1-verify-double-stochasticity"
+id="toc-exercise-1-verify-double-stochasticity">Exercise 1: Verify
+double stochasticity</a></li>
+<li><a href="#exercise-2-recover-ordinary-orthostochasticity"
+id="toc-exercise-2-recover-ordinary-orthostochasticity">Exercise 2:
+Recover ordinary orthostochasticity</a></li>
+<li><a href="#exercise-3-a-three-cycle-obstruction"
+id="toc-exercise-3-a-three-cycle-obstruction">Exercise 3: A three-cycle
+obstruction</a></li>
+<li><a href="#exercise-4-compare-growth-rates"
+id="toc-exercise-4-compare-growth-rates">Exercise 4: Compare growth
+rates</a></li>
+</ul></li>
+<li><a href="#conclusion" id="toc-conclusion">19. Conclusion</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="exact-residual-stream-mixing-through-generalized-orthostochastic-matrices">Exact
+Residual-Stream Mixing Through Generalized Orthostochastic Matrices</h1>
+<h2 id="the-problem-how-should-residual-streams-mix">1. The problem: how
+should residual streams mix?</h2>
+<p>Residual connections make deep networks trainable by providing a path
+through which information and gradients can move without passing
+exclusively through a sequence of nonlinear transformations. In its
+simplest form, a residual update is</p>
+<p><span class="math display">\[
+x_{l+1}=x_l+\mathcal{F}(x_l,W_l),
+\]</span></p>
+<p>where <span class="math inline">\(x_l\)</span> is the state at layer
+<span class="math inline">\(l\)</span>, <span
+class="math inline">\(\mathcal{F}\)</span> is a learned layer
+transformation, and <span class="math inline">\(W_l\)</span> denotes its
+parameters.</p>
+<p>Hyper-Connections generalize this construction by maintaining several
+parallel residual streams rather than one. Let <span
+class="math inline">\(d\)</span> be the number of streams. A layer can
+then learn how to route information among those streams instead of using
+a fixed identity connection. This makes <span
+class="math inline">\(d\)</span> a possible capacity dimension,
+analogous in spirit to depth or width: increasing <span
+class="math inline">\(d\)</span> gives the model more pathways through
+which information may travel.</p>
+<p>The central difficulty is that repeated unrestricted stream mixing
+can destabilize a network. If each layer applies an arbitrary mixing
+matrix, repeated products can amplify or attenuate components of the
+state and its gradients. Manifold-Constrained Hyper-Connections (mHC)
+address this by constraining the residual mixing matrix to be doubly
+stochastic [Xie et al., 2026].</p>
+<p>The paper studied here proposes <strong>go-mHC</strong>, a direct
+parameterization of a family of exactly doubly stochastic matrices. Its
+purpose is to occupy a middle ground:</p>
+<ul>
+<li>more expressive than highly structured Kronecker-factorized
+mixers;</li>
+<li>less expensive than parameterizing arbitrary doubly stochastic
+matrices through all permutation matrices;</li>
+<li>exact by construction, rather than only approximately satisfying the
+constraint after iterative normalization.</li>
+</ul>
+<p>The construction rests on generalized orthostochastic matrices
+[Gutkin, 2013; Nechita et al., 2023].</p>
+<hr />
+<h2 id="mathematical-prerequisites">2. Mathematical prerequisites</h2>
+<h3 id="doubly-stochastic-matrices">2.1 Doubly stochastic matrices</h3>
+<p>A square matrix <span class="math inline">\(B\in\mathbb{R}^{d\times
+d}\)</span> is <strong>doubly stochastic</strong> if:</p>
+<ol type="1">
+<li><span class="math inline">\(B_{ij}\geq 0\)</span> for every <span
+class="math inline">\(i,j\)</span>;</li>
+<li>every row sums to one;</li>
+<li>every column sums to one.</li>
+</ol>
+<p>Equivalently, if <span
+class="math inline">\(\mathbf{1}\in\mathbb{R}^d\)</span> is the all-ones
+vector, then</p>
+<p><span class="math display">\[
+B\mathbf{1}=\mathbf{1},
+\qquad
+B^\top\mathbf{1}=\mathbf{1}.
+\]</span></p>
+<p>The set of all <span class="math inline">\(d\times d\)</span> doubly
+stochastic matrices is the <strong>Birkhoff polytope</strong>,
+denoted</p>
+<p><span class="math display">\[
+\mathsf{B}_d.
+\]</span></p>
+<p>A doubly stochastic matrix may be interpreted as a conservative
+routing rule. Each output stream receives a nonnegative weighted
+combination of input streams, and each input stream distributes one unit
+of total mass across the outputs.</p>
+<p>This does not mean every individual feature is preserved. Rather, it
+means the routing matrix cannot arbitrarily create or destroy total
+stream mass in the <span class="math inline">\(\ell_1\)</span>-style row
+and column senses.</p>
+<h3 id="permutation-matrices-and-the-birkhoffvon-neumann-theorem">2.2
+Permutation matrices and the Birkhoff–von Neumann theorem</h3>
+<p>A <strong>permutation matrix</strong> has exactly one entry equal to
+<span class="math inline">\(1\)</span> in every row and every column,
+with all other entries equal to <span class="math inline">\(0\)</span>.
+It represents deterministic routing: each input stream is sent to
+exactly one output stream.</p>
+<p>The Birkhoff–von Neumann theorem states:</p>
+<blockquote>
+<p>Every doubly stochastic matrix is a convex combination of permutation
+matrices.</p>
+</blockquote>
+<p>Thus any <span class="math inline">\(B\in\mathsf{B}_d\)</span> can be
+written as</p>
+<p><span class="math display">\[
+B=\sum_{\pi\in S_d}w_\pi P_\pi,
+\qquad
+w_\pi\geq 0,
+\qquad
+\sum_{\pi\in S_d}w_\pi=1,
+\]</span></p>
+<p>where <span class="math inline">\(S_d\)</span> is the set of all
+<span class="math inline">\(d!\)</span> permutations and <span
+class="math inline">\(P_\pi\)</span> is the associated permutation
+matrix.</p>
+<p>This theorem gives an exact parameterization of <span
+class="math inline">\(\mathsf{B}_d\)</span>, but it creates a severe
+scaling problem: there are <span class="math inline">\(d!\)</span>
+permutation matrices. At <span class="math inline">\(d=8\)</span>,</p>
+<p><span class="math display">\[
+8!=40{,}320.
+\]</span></p>
+<p>A representation that assigns a learned component to every
+permutation therefore becomes impractical quickly.</p>
+<h3 id="orthogonal-and-skew-symmetric-matrices">2.3 Orthogonal and
+skew-symmetric matrices</h3>
+<p>A matrix <span class="math inline">\(Q\in\mathbb{R}^{n\times
+n}\)</span> is <strong>orthogonal</strong> when</p>
+<p><span class="math display">\[
+Q^\top Q=I.
+\]</span></p>
+<p>Orthogonal matrices preserve Euclidean length:</p>
+<p><span class="math display">\[
+\lVert Qv\rVert_2=\lVert v\rVert_2.
+\]</span></p>
+<p>A matrix <span class="math inline">\(A\)</span> is
+<strong>skew-symmetric</strong> when</p>
+<p><span class="math display">\[
+A^\top=-A.
+\]</span></p>
+<p>Its diagonal entries must be zero, and only the entries above one
+diagonal are independent. Thus an <span class="math inline">\(n\times
+n\)</span> skew-symmetric matrix has</p>
+<p><span class="math display">\[
+\frac{n(n-1)}{2}
+\]</span></p>
+<p>independent parameters.</p>
+<p>The Cayley transform maps an appropriate skew-symmetric matrix into
+an orthogonal matrix:</p>
+<p><span class="math display">\[
+Q=(I-A)(I+A)^{-1}.
+\]</span></p>
+<p>For skew-symmetric <span class="math inline">\(A\)</span>, <span
+class="math inline">\(I+A\)</span> is invertible over the reals, and
+<span class="math inline">\(Q\)</span> is orthogonal. The transform
+parameterizes the special orthogonal component reachable without
+reflections, which is useful because that component is path
+connected.</p>
+<hr />
+<h2 id="from-residual-connections-to-hyper-connections">3. From residual
+connections to Hyper-Connections</h2>
+<p>A Hyper-Connection layer operates on a multi-stream state</p>
+<p><span class="math display">\[
+\mathbf{x}_l\in\mathbb{R}^{d\times B\times L\times D},
+\]</span></p>
+<p>where, conventionally:</p>
+<ul>
+<li><span class="math inline">\(d\)</span>: number of residual
+streams;</li>
+<li><span class="math inline">\(B\)</span>: batch size;</li>
+<li><span class="math inline">\(L\)</span>: sequence length;</li>
+<li><span class="math inline">\(D\)</span>: hidden-feature
+dimension.</li>
+</ul>
+<p>The layer update is</p>
+<p><span class="math display">\[
+\mathbf{x}_{l+1}
+=
+\mathcal{H}_{l}^{\mathrm{res}}\mathbf{x}_{l}
++
+\left(\mathcal{H}_{l}^{\mathrm{post}}\right)^\top
+\mathcal{F}\!\left(
+\mathcal{H}_{l}^{\mathrm{pre}}\mathbf{x}_{l},
+\mathbf{W}_l
+\right).
+\tag{1}
+\]</span></p>
+<p>The three routing terms have distinct roles:</p>
+<p><span class="math display">\[
+\mathcal{H}_{l}^{\mathrm{res}}\in\mathbb{R}^{d\times d}
+\]</span></p>
+<p>mixes the residual streams directly,</p>
+<p><span class="math display">\[
+\mathcal{H}_{l}^{\mathrm{pre}}\in\mathbb{R}^{1\times d}
+\]</span></p>
+<p>aggregates streams before the layer transformation, and</p>
+<p><span class="math display">\[
+\mathcal{H}_{l}^{\mathrm{post}}\in\mathbb{R}^{1\times d}
+\]</span></p>
+<p>distributes the transformed branch output back across streams.</p>
+<p>The ordinary single-stream residual architecture is recovered when
+<span class="math inline">\(d=1\)</span> and all three operators equal
+<span class="math inline">\([1]\)</span>.</p>
+<p>The pre- and post-routing operators may be computed dynamically from
+normalized activations. The supplied formulation uses</p>
+<p><span class="math display">\[
+\mathbf{x}&#39;_l=\operatorname{RMSNorm}(\mathbf{x}_l),
+\tag{2}
+\]</span></p>
+<p><span class="math display">\[
+\mathcal{H}_{l}^{\mathrm{pre}}
+=
+\sigma\!\left(
+\alpha_l^{\mathrm{pre}}
+\mathbf{x}&#39;_l
+\mathbf{W}_l^{\mathrm{pre}}
++
+\mathbf{b}_l^{\mathrm{pre}}
+\right),
+\tag{3}
+\]</span></p>
+<p><span class="math display">\[
+\mathcal{H}_{l}^{\mathrm{post}}
+=
+2\sigma\!\left(
+\alpha_l^{\mathrm{post}}
+\mathbf{x}&#39;_l
+\mathbf{W}_l^{\mathrm{post}}
++
+\mathbf{b}_l^{\mathrm{post}}
+\right).
+\tag{4}
+\]</span></p>
+<p>The central question is how to define the residual-stream matrix
+<span class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\)</span>.</p>
+<hr />
+<h2 id="why-constrain-the-residual-mixer">4. Why constrain the residual
+mixer?</h2>
+<p>With unconstrained Hyper-Connections, <span
+class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\)</span> can in
+principle be any learned matrix. This permits flexible routing but
+removes an explicit identity-like guarantee.</p>
+<p>Repeated application yields a cumulative routing operator</p>
+<p><span class="math display">\[
+\mathcal{H}_{l\to L}^{\mathrm{res}}
+=
+\prod_{i=1}^{L-l}
+\mathcal{H}_{L-i}^{\mathrm{res}}.
+\tag{5}
+\]</span></p>
+<p>If the factors are unrestricted, this product can have directions
+that grow or shrink rapidly. Such amplification or contraction can
+contribute to exploding or vanishing gradients.</p>
+<p>mHC constrains residual mixing toward the Birkhoff polytope using
+finite Sinkhorn–Knopp normalization. Sinkhorn normalization alternates
+row and column rescaling of a nonnegative matrix. The supplied
+formulation uses twenty iterations.</p>
+<p>This gives two practical concerns:</p>
+<ol type="1">
+<li>the iterative projection may require specialized implementation for
+efficiency;</li>
+<li>a finite number of iterations need not produce an exactly doubly
+stochastic matrix.</li>
+</ol>
+<p>A small violation at each layer may compound across depth. Exact
+parameterizations seek to eliminate this particular source of
+accumulated constraint error.</p>
+<hr />
+<h2 id="existing-exact-alternatives">5. Existing exact alternatives</h2>
+<h3 id="mhc-lite-complete-coverage-at-factorial-cost">5.1 mHC-lite:
+complete coverage at factorial cost</h3>
+<p>mHC-lite uses the Birkhoff–von Neumann representation. Because every
+doubly stochastic matrix is a convex combination of permutation
+matrices, mHC-lite can in principle cover the full Birkhoff
+polytope.</p>
+<p>Its cost is the number of permutations:</p>
+<p><span class="math display">\[
+d!.
+\]</span></p>
+<p>The source reports a parameter cost on the order of</p>
+<p><span class="math display">\[
+\mathcal{O}(dC\cdot d!),
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is a model-dependent
+feature or projection cost. This is exact and expressive, but factorial
+growth makes it unsuitable for large <span
+class="math inline">\(d\)</span>.</p>
+<h3 id="kromhc-efficient-factorization-with-restricted-routing">5.2
+KromHC: efficient factorization with restricted routing</h3>
+<p>KromHC constructs a large mixer using Kronecker products of smaller
+doubly stochastic matrices. For matrices</p>
+<p><span class="math display">\[
+A\in\mathbb{R}^{m\times n},
+\qquad
+B\in\mathbb{R}^{p\times q},
+\]</span></p>
+<p>the Kronecker product <span class="math inline">\(A\otimes B\)</span>
+is an <span class="math inline">\(mp\times nq\)</span> block matrix
+whose <span class="math inline">\((i,j)\)</span>-th block is <span
+class="math inline">\(A_{ij}B\)</span>.</p>
+<p>If the factors are doubly stochastic, their Kronecker product is also
+doubly stochastic. This gives exact constraint satisfaction with a
+highly structured parameterization.</p>
+<p>The cost is lower, but the structure strongly limits which large
+mixing matrices can be represented. The paper’s key criticism is
+spectral: products of small factors need not acquire the rich complex
+spectral behavior available to general matrices in <span
+class="math inline">\(\mathsf{B}_d\)</span>.</p>
+<p>go-mHC is intended to improve this trade-off: it is more expressive
+than a small-factor Kronecker construction while avoiding factorial
+enumeration.</p>
+<hr />
+<h2 id="orthostochastic-matrices">6. Orthostochastic matrices</h2>
+<p>A matrix <span class="math inline">\(B\in\mathsf{B}_d\)</span> is
+<strong>orthostochastic</strong> if there exists an orthogonal matrix
+<span class="math inline">\(Q\in\mathbb{R}^{d\times d}\)</span> such
+that</p>
+<p><span class="math display">\[
+B_{ij}=Q_{ij}^{\,2}.
+\tag{6}
+\]</span></p>
+<p>Because squares are nonnegative, <span
+class="math inline">\(B_{ij}\geq 0\)</span>. Orthogonality gives</p>
+<p><span class="math display">\[
+\sum_j Q_{ij}^2=1
+\quad\text{and}\quad
+\sum_i Q_{ij}^2=1,
+\]</span></p>
+<p>so the squared-entry matrix is doubly stochastic.</p>
+<p>For <span class="math inline">\(d&gt;2\)</span>, the orthostochastic
+matrices form a proper, nonconvex subset of <span
+class="math inline">\(\mathsf{B}_d\)</span>. They include permutation
+matrices but do not generally fill the polytope interior.</p>
+<p>This produces the central idea behind go-mHC:</p>
+<ul>
+<li>ordinary orthostochastic matrices correspond to <span
+class="math inline">\(s=1\)</span>;</li>
+<li>a block generalization indexed by <span
+class="math inline">\(s\)</span> expands the representable family;</li>
+<li>as <span class="math inline">\(s\to\infty\)</span>, that family
+approaches the full Birkhoff polytope.</li>
+</ul>
+<hr />
+<h2 id="generalized-orthostochastic-matrices">7. Generalized
+orthostochastic matrices</h2>
+<p>Let</p>
+<p><span class="math display">\[
+Q\in\mathcal{Q}(ds)
+\]</span></p>
+<p>be an orthogonal <span class="math inline">\(ds\times ds\)</span>
+matrix. Partition it into a <span class="math inline">\(d\times
+d\)</span> block matrix, with each block</p>
+<p><span class="math display">\[
+Q_{ij}\in\mathbb{R}^{s\times s}.
+\]</span></p>
+<p>Define the block-energy map</p>
+<p><span class="math display">\[
+\Phi_{d,s}(Q)_{ij}
+=
+\frac{1}{s}\lVert Q_{ij}\rVert_F^2
+=
+\frac{1}{s}
+\sum_{k=1}^{s}
+\sum_{r=1}^{s}
+(Q_{ij})_{kr}^2.
+\tag{7}
+\]</span></p>
+<p>Here <span class="math inline">\(\lVert\cdot\rVert_F\)</span> denotes
+the Frobenius norm:</p>
+<p><span class="math display">\[
+\lVert M\rVert_F^2=\sum_{a,b}M_{ab}^2.
+\]</span></p>
+<p>Thus <span class="math inline">\(\Phi_{d,s}(Q)_{ij}\)</span> is the
+normalized squared energy carried by block <span
+class="math inline">\(Q_{ij}\)</span>.</p>
+<h3 id="proposition-phi_dsq-is-doubly-stochastic">Proposition: <span
+class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly stochastic</h3>
+<p>For every orthogonal <span
+class="math inline">\(Q\in\mathcal{Q}(ds)\)</span>,</p>
+<p><span class="math display">\[
+\Phi_{d,s}(Q)\in\mathsf{B}_d.
+\]</span></p>
+<h4 id="proof-sketch">Proof sketch</h4>
+<p>Fix a block row <span class="math inline">\(i\)</span>. Since <span
+class="math inline">\(Q\)</span> is orthogonal,</p>
+<p><span class="math display">\[
+\sum_{j=1}^{d}Q_{ij}Q_{ij}^{\top}=I_s.
+\]</span></p>
+<p>Taking traces gives</p>
+<p><span class="math display">\[
+\sum_{j=1}^{d}\lVert Q_{ij}\rVert_F^2
+=
+\operatorname{tr}(I_s)
+=
+s.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\sum_{j=1}^{d}\Phi_{d,s}(Q)_{ij}
+=
+\frac{1}{s}
+\sum_{j=1}^{d}
+\lVert Q_{ij}\rVert_F^2
+=
+1.
+\]</span></p>
+<p>The same argument applied to block columns gives</p>
+<p><span class="math display">\[
+\sum_{i=1}^{d}\Phi_{d,s}(Q)_{ij}=1.
+\]</span></p>
+<p>Finally, every entry is nonnegative because it is a squared norm.
+Hence <span class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly
+stochastic. <span class="math inline">\(\square\)</span></p>
+<p>When <span class="math inline">\(s=1\)</span>, every block is a
+scalar and equation (7) becomes equation (6). Thus ordinary
+orthostochastic matrices are the <span
+class="math inline">\(s=1\)</span> case.</p>
+<p>A result attributed to Nechita et al. [2023] states that the
+family</p>
+<p><span class="math display">\[
+\left\{
+\Phi_{d,s}(Q):Q\in\mathcal{Q}(ds)
+\right\}
+\]</span></p>
+<p>lies inside <span class="math inline">\(\mathsf{B}_d\)</span> for
+every <span class="math inline">\(s\)</span>, and approaches the full
+Birkhoff polytope as <span
+class="math inline">\(s\to\infty\)</span>.</p>
+<p>This is an asymptotic coverage statement. It does
+<strong>not</strong> imply that every finite <span
+class="math inline">\(s\)</span> represents every doubly stochastic
+matrix.</p>
+<hr />
+<h2 id="the-go-mhc-construction">8. The go-mHC construction</h2>
+<p>go-mHC replaces iterative Sinkhorn projection with a direct sequence
+of maps.</p>
+<p>First, learned parameters form a vector that is reshaped into a
+skew-symmetric matrix:</p>
+<p><span class="math display">\[
+A_l
+=
+\operatorname{skew}
+\left(
+\alpha_l^{\mathrm{res}}
+\mathbf{x}&#39;_l
+\mathbf{W}_l^{\mathrm{res}}
++
+\mathbf{b}_l^{\mathrm{res}}
+\right),
+\tag{8}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+A_l^\top=-A_l,
+\qquad
+A_l\in\mathbb{R}^{ds\times ds}.
+\]</span></p>
+<p>The number of independent entries is</p>
+<p><span class="math display">\[
+\frac{ds(ds-1)}{2}.
+\]</span></p>
+<p>Second, go-mHC applies the Cayley transform:</p>
+<p><span class="math display">\[
+Q_l
+=
+(I-A_l)(I+A_l)^{-1}.
+\tag{9}
+\]</span></p>
+<p>The output <span class="math inline">\(Q_l\)</span> is
+orthogonal.</p>
+<p>Third, it maps block energies into stream-routing weights:</p>
+<p><span class="math display">\[
+\mathcal{H}_l^{\mathrm{res}}
+=
+\Phi_{d,s}(Q_l).
+\tag{10}
+\]</span></p>
+<p>Because <span
+class="math inline">\(\Phi_{d,s}(Q_l)\in\mathsf{B}_d\)</span>, the
+resulting residual mixer is doubly stochastic exactly, for every valid
+parameter value.</p>
+<p>The full path is therefore</p>
+<p><span class="math display">\[
+\text{unconstrained learned parameters}
+\longrightarrow
+A_l^\top=-A_l
+\longrightarrow
+Q_l^\top Q_l=I
+\longrightarrow
+\mathcal{H}_l^{\mathrm{res}}\in\mathsf{B}_d.
+\]</span></p>
+<p>This differs fundamentally from iterative normalization:</p>
+<ul>
+<li>Sinkhorn begins with a matrix and repeatedly corrects it toward the
+constraint;</li>
+<li>go-mHC parameterizes a matrix family that satisfies the constraint
+by construction.</li>
+</ul>
+<hr />
+<h2 id="a-worked-stream-mixing-example">9. A worked stream-mixing
+example</h2>
+<p>Consider <span class="math inline">\(d=3\)</span> residual streams. A
+general doubly stochastic mixing matrix might be</p>
+<p><span class="math display">\[
+B=
+\begin{pmatrix}
+0.6 &amp; 0.3 &amp; 0.1\\
+0.2 &amp; 0.5 &amp; 0.3\\
+0.2 &amp; 0.2 &amp; 0.6
+\end{pmatrix}.
+\]</span></p>
+<p>Every row and column sums to <span class="math inline">\(1\)</span>.
+If the current streams are <span
+class="math inline">\(x^{(1)},x^{(2)},x^{(3)}\)</span>, then the new
+first stream is</p>
+<p><span class="math display">\[
+\widetilde{x}^{(1)}
+=
+0.6x^{(1)}
++
+0.3x^{(2)}
++
+0.1x^{(3)}.
+\]</span></p>
+<p>Likewise,</p>
+<p><span class="math display">\[
+\widetilde{x}^{(2)}
+=
+0.2x^{(1)}
++
+0.5x^{(2)}
++
+0.3x^{(3)}.
+\]</span></p>
+<p>The matrix is neither the identity nor a deterministic permutation.
+It performs a soft redistribution of information while conserving total
+routing mass.</p>
+<p>A permutation matrix instead gives hard routing. For example,</p>
+<p><span class="math display">\[
+P=
+\begin{pmatrix}
+0&amp;1&amp;0\\
+0&amp;0&amp;1\\
+1&amp;0&amp;0
+\end{pmatrix}
+\]</span></p>
+<p>implements the cycle</p>
+<p><span class="math display">\[
+1\to 3,\qquad 2\to 1,\qquad 3\to 2.
+\]</span></p>
+<p>This example exposes a limitation of restrictive factorized
+constructions: a parameterization built only from <span
+class="math inline">\(2\times 2\)</span> real-spectrum factors may fail
+to express such a three-cycle. The cycle has nonreal cube roots of unity
+among its eigenvalues, whereas <span class="math inline">\(2\times
+2\)</span> doubly stochastic factors have only real nontrivial
+eigenvalues.</p>
+<hr />
+<h2 id="the-role-of-the-block-size-s">10. The role of the block size
+<span class="math inline">\(s\)</span></h2>
+<p>The parameter <span class="math inline">\(s\)</span> controls the
+block size in the orthogonal matrix <span
+class="math inline">\(Q\)</span>.</p>
+<ul>
+<li><strong><span class="math inline">\(s=1\)</span>:</strong> ordinary
+orthostochastic matrices;</li>
+<li><strong>larger <span class="math inline">\(s\)</span>:</strong> more
+orthogonal degrees of freedom before block energies are aggregated;</li>
+<li><strong><span class="math inline">\(s\to\infty\)</span>:</strong>
+asymptotic approach to the full Birkhoff polytope.</li>
+</ul>
+<p>The paper uses <span class="math inline">\(s=2\)</span> as its
+principal default and compares it with <span
+class="math inline">\(s=1\)</span> and <span
+class="math inline">\(s=3\)</span>.</p>
+<p>This produces a direct efficiency–expressivity dial.</p>
+<h3 id="smaller-s">Smaller <span class="math inline">\(s\)</span></h3>
+<p>Smaller <span class="math inline">\(s\)</span> gives fewer parameters
+and lower computation. At <span class="math inline">\(s=1\)</span>, a
+<span class="math inline">\(d\times d\)</span> skew-symmetric generator
+has only</p>
+<p><span class="math display">\[
+\frac{d(d-1)}{2}
+\]</span></p>
+<p>independent parameters.</p>
+<p>But <span class="math inline">\(s=1\)</span> is restricted to the
+orthostochastic subset. For <span class="math inline">\(d&gt;2\)</span>,
+this subset does not fill the interior of <span
+class="math inline">\(\mathsf{B}_d\)</span>.</p>
+<h3 id="larger-s">Larger <span class="math inline">\(s\)</span></h3>
+<p>Larger <span class="math inline">\(s\)</span> gives a broader family
+of generalized orthostochastic matrices. The source reports that
+increasing <span class="math inline">\(s\)</span> yields denser spectral
+coverage, with <span class="math inline">\(s=2\)</span> covering a
+larger region than <span class="math inline">\(s=1\)</span>.</p>
+<p>The trade-off is that the orthogonal matrix has size <span
+class="math inline">\(ds\times ds\)</span>, so linear algebra on it
+becomes more expensive.</p>
+<hr />
+<h2 id="stability-and-cumulative-mixing">11. Stability and cumulative
+mixing</h2>
+<p>For any nonnegative doubly stochastic matrix <span
+class="math inline">\(B\)</span>,</p>
+<p><span class="math display">\[
+\max_i\sum_j|B_{ij}|=1,
+\qquad
+\max_j\sum_i|B_{ij}|=1.
+\]</span></p>
+<p>These are the induced <span
+class="math inline">\(\ell_\infty\)</span> and <span
+class="math inline">\(\ell_1\)</span> operator norms. The paper
+describes forward and backward Amax Gain Magnitude quantities as</p>
+<p><span class="math display">\[
+\operatorname{AGM}^{\mathrm{fwd}}
+\left(
+\mathcal{H}_{l\to L}^{\mathrm{res}}
+\right)
+=
+\max_i
+\sum_j
+\left|
+\left(
+\mathcal{H}_{l\to L}^{\mathrm{res}}
+\right)_{ij}
+\right|,
+\tag{11}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\operatorname{AGM}^{\mathrm{bwd}}
+\left(
+\mathcal{H}_{l\to L}^{\mathrm{res}}
+\right)
+=
+\max_j
+\sum_i
+\left|
+\left(
+\mathcal{H}_{l\to L}^{\mathrm{res}}
+\right)_{ij}
+\right|.
+\tag{12}
+\]</span></p>
+<p>If each residual mixer belongs to <span
+class="math inline">\(\mathsf{B}_d\)</span>, then their product remains
+in <span class="math inline">\(\mathsf{B}_d\)</span>. Indeed, for doubly
+stochastic <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>,</p>
+<p><span class="math display">\[
+(AB)\mathbf{1}
+=
+A(B\mathbf{1})
+=
+A\mathbf{1}
+=
+\mathbf{1},
+\]</span></p>
+<p>and similarly,</p>
+<p><span class="math display">\[
+(AB)^\top\mathbf{1}
+=
+B^\top A^\top \mathbf{1}
+=
+B^\top\mathbf{1}
+=
+\mathbf{1}.
+\]</span></p>
+<p>Nonnegativity is also preserved under matrix multiplication.</p>
+<p>Therefore exact doubly stochastic mixing guarantees that the
+cumulative routing operator remains doubly stochastic at arbitrary
+depth. This explains why AGM does not distinguish exact methods such as
+go-mHC, mHC-lite, and KromHC: all satisfy the same relevant row- and
+column-sum property.</p>
+<p>It does <strong>not</strong> prove that the methods have equal
+optimization behavior, equal representational capacity, or equal
+real-world training performance. For those comparisons, the paper turns
+to expressivity and convergence.</p>
+<hr />
+<h2 id="spectral-reach-as-an-expressivity-surrogate">12. Spectral reach
+as an expressivity surrogate</h2>
+<p>The full volume of the Birkhoff polytope is difficult to use directly
+as an expressivity measure. The paper therefore evaluates
+<strong>spectral reach</strong>: the set of eigenvalues obtainable from
+matrices produced by a given parameterization.</p>
+<p>For a method <span class="math inline">\(\mathsf{M}\)</span> with map
+<span class="math inline">\(\mathcal{P}_{\mathsf{M}}\)</span>, the
+spectral reach concerns eigenvalues <span
+class="math inline">\(\lambda\in\mathbb{C}\)</span> such that</p>
+<p><span class="math display">\[
+H^{\mathrm{res}}v=\lambda v,
+\qquad
+v\neq 0,
+\qquad
+H^{\mathrm{res}}=\mathcal{P}_{\mathsf{M}}(\cdots).
+\tag{13}
+\]</span></p>
+<p>The relevant ambient region is the <strong>Karpelevič
+region</strong>: the set of complex eigenvalues attainable by stochastic
+matrices of a given dimension.</p>
+<p>Because doubly stochastic matrices are stochastic, their eigenvalues
+must lie in this region. A method with broader spectral reach can
+realize a broader range of decay, persistence, oscillation, and cyclic
+behavior under repeated application.</p>
+<p>This is a useful surrogate, but it has an important limitation:</p>
+<blockquote>
+<p>Broad spectral coverage does not prove that every doubly stochastic
+matrix is representable.</p>
+</blockquote>
+<p>Different matrices can share eigenvalues. Thus spectral reach is
+evidence about dynamic diversity, not a complete volume or coverage
+proof.</p>
+<h3 id="reported-qualitative-findings">Reported qualitative
+findings</h3>
+<p>For <span class="math inline">\(d=3\)</span>, the source reports
+that:</p>
+<ul>
+<li><span class="math inline">\(s=1\)</span> covers a substantial
+spectral region, including the real interval <span
+class="math inline">\([-1,1]\)</span>, but leaves an error gap <span
+class="math inline">\(\epsilon(s=1)\)</span>;</li>
+<li><span class="math inline">\(s=2\)</span> covers a larger region with
+smaller reported gap,</li>
+</ul>
+<p><span class="math display">\[
+\epsilon(s=2)&lt;\epsilon(s=1).
+\]</span></p>
+<p>For <span class="math inline">\(d=4\)</span>, the reported comparison
+is:</p>
+<ul>
+<li>finite-iteration mHC can contain points outside the desired doubly
+stochastic region;</li>
+<li>mHC-lite nearly fills the boundary-compatible region;</li>
+<li>KromHC occupies only a highly restricted slice;</li>
+<li>go-mHC with <span class="math inline">\(s=1\)</span> covers a
+sizable but incomplete region;</li>
+<li>go-mHC with <span class="math inline">\(s=2\)</span> fills a larger
+and denser region.</li>
+</ul>
+<p>These are empirical spectral observations, not proofs of exact
+finite-<span class="math inline">\(s\)</span> polytope coverage.</p>
+<hr />
+<h2 id="why-kronecker-products-have-a-spectral-limitation">13. Why
+Kronecker products have a spectral limitation</h2>
+<p>Let <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> have eigenvalues <span
+class="math inline">\(\lambda_A\)</span> and <span
+class="math inline">\(\lambda_B\)</span>, respectively. The eigenvalues
+of the Kronecker product <span class="math inline">\(A\otimes B\)</span>
+are pairwise products:</p>
+<p><span class="math display">\[
+\lambda(A\otimes B)
+=
+\left\{
+\lambda_i(A)\lambda_j(B)
+\right\}_{i,j}.
+\]</span></p>
+<p>For a <span class="math inline">\(2\times 2\)</span> doubly
+stochastic matrix, the spectrum has the form</p>
+<p><span class="math display">\[
+\{1,\lambda\},
+\qquad
+\lambda\in[-1,1].
+\]</span></p>
+<p>Thus if</p>
+<p><span class="math display">\[
+\operatorname{spec}(A)=\{1,\lambda_A\},
+\qquad
+\operatorname{spec}(B)=\{1,\lambda_B\},
+\]</span></p>
+<p>then</p>
+<p><span class="math display">\[
+\operatorname{spec}(A\otimes B)
+=
+\{
+1,\lambda_A,\lambda_B,\lambda_A\lambda_B
+\}.
+\tag{14}
+\]</span></p>
+<p>All four values remain real and lie in <span
+class="math inline">\([-1,1]\)</span>.</p>
+<p>This has a direct consequence: repeated Kronecker composition from
+<span class="math inline">\(2\times 2\)</span> doubly stochastic factors
+cannot generate genuinely complex eigenvalues. It therefore cannot
+represent dynamics that require nonreal eigenvalues, including directed
+cyclic behavior such as a three-cycle.</p>
+<p>A three-cycle has eigenvalues</p>
+<p><span class="math display">\[
+1,
+\qquad
+e^{2\pi i/3},
+\qquad
+e^{4\pi i/3}.
+\]</span></p>
+<p>The latter two are nonreal. Hence a real-spectrum <span
+class="math inline">\(2\times 2\)</span>-factor construction cannot
+represent that cycle exactly.</p>
+<p>The limitation is not merely aesthetic. In a recurrently applied
+mixing operator:</p>
+<ul>
+<li>real eigenvalues correspond to non-oscillatory expansion,
+contraction, or sign reversal;</li>
+<li>complex eigenvalues permit rotational or cyclic components.</li>
+</ul>
+<p>The paper interprets this as a distinction between diffusion-like
+mixing and directed, advective, or periodic routing behavior.</p>
+<hr />
+<h2 id="complexity-trade-offs">14. Complexity trade-offs</h2>
+<p>Let:</p>
+<ul>
+<li><span class="math inline">\(d\)</span>: number of residual
+streams;</li>
+<li><span class="math inline">\(C\)</span>: a model-dependent channel or
+projection-cost factor;</li>
+<li><span class="math inline">\(s\)</span>: generalized-orthostochastic
+block size;</li>
+<li><span class="math inline">\(S\)</span>: number of Sinkhorn
+iterations;</li>
+<li><span class="math inline">\(i_k\)</span>: Kronecker factor
+size.</li>
+</ul>
+<h3 id="parameter-counts">14.1 Parameter counts</h3>
+<p>The source gives the following total parameter-count forms:</p>
+<p><span class="math display">\[
+\text{mHC}
+=
+(dC+1)d^2+2d^2C+2d+3,
+\]</span></p>
+<p><span class="math display">\[
+\text{go-mHC}(s)
+=
+(dC+1)\frac{ds(ds-1)}{2}
++
+2d^2C+2d+3,
+\]</span></p>
+<p><span class="math display">\[
+\text{mHC-lite}
+=
+(dC+1)d!
++
+2d^2C+2d+3,
+\]</span></p>
+<p><span class="math display">\[
+\text{KromHC}
+=
+(dC+1)\sum_{k=1}^{K}(i_k!)
++
+2d^2C+2d+3.
+\]</span></p>
+<p>For fixed <span class="math inline">\(s\)</span> and <span
+class="math inline">\(C\)</span>, the dominant go-mHC term is cubic in
+<span class="math inline">\(d\)</span>:</p>
+<p><span class="math display">\[
+\mathcal{O}(d^3).
+\]</span></p>
+<p>mHC-lite instead has factorial dependence on <span
+class="math inline">\(d\)</span>.</p>
+<h3 id="flop-complexity">14.2 FLOP complexity</h3>
+<p>The source gives per-layer asymptotic FLOP costs:</p>
+<p><span class="math display">\[
+\text{mHC}
+=
+\mathcal{O}(CSd^2),
+\]</span></p>
+<p><span class="math display">\[
+\text{go-mHC}(s)
+=
+\mathcal{O}(Cs^3d^3),
+\]</span></p>
+<p><span class="math display">\[
+\text{mHC-lite}
+=
+\mathcal{O}(Cd^2d!),
+\]</span></p>
+<p><span class="math display">\[
+\text{KromHC}
+=
+\mathcal{O}
+\left(
+C\log_{i_k}(d)i_k^2(i_k!)
++
+Cd^2
+\right).
+\]</span></p>
+<p>The principal comparison is therefore not “fast versus slow” in
+isolation.</p>
+<ul>
+<li>mHC-lite gives broad exact coverage but grows factorially.</li>
+<li>KromHC is highly efficient but structurally restricted.</li>
+<li>mHC may have lower nominal polynomial order but requires iterative
+projection.</li>
+<li>go-mHC pays cubic dependence on <span
+class="math inline">\(d\)</span> to obtain an exact, direct, and more
+expressive constrained family.</li>
+</ul>
+<p>For the source’s nominal illustrative setting,</p>
+<p><span class="math display">\[
+S=20,
+\qquad
+i_k=2,
+\qquad
+s\in\{1,2\}.
+\]</span></p>
+<p>These are configuration choices, not universal constants. Measured
+runtime also depends on memory traffic, batch size, tensor layout,
+linear-solve implementation, and hardware parallelism.</p>
+<hr />
+<h2 id="combining-go-mhc-and-kromhc">15. Combining go-mHC and
+KromHC</h2>
+<p>The paper presents go-mHC and KromHC as complementary rather than
+mutually exclusive.</p>
+<p>A possible combined strategy is:</p>
+<ol type="1">
+<li>use Kronecker factorization to represent a large stream-mixing
+structure efficiently;</li>
+<li>use generalized orthostochastic factors rather than only small
+conventional doubly stochastic factors;</li>
+<li>increase factor size <span class="math inline">\(i_k\)</span>
+without immediately paying a factorial <span
+class="math inline">\(i_k!\)</span> cost.</li>
+</ol>
+<p>The reported intuition is that factorized structure controls
+large-scale computation, while go-mHC enlarges the local family of exact
+doubly stochastic transformations available inside each factor.</p>
+<p>This does not eliminate the fundamental restrictions of
+factorization. It changes the trade-off by making each factor more
+expressive.</p>
+<hr />
+<h2 id="synthetic-reconstruction-experiment">16. Synthetic
+reconstruction experiment</h2>
+<p>The controlled experiment constructs:</p>
+<ul>
+<li>ground-truth doubly stochastic matrices <span
+class="math inline">\(T_i\)</span>;</li>
+<li>dense residual-stream activations <span
+class="math inline">\(X_j\)</span>;</li>
+<li>noisy targets</li>
+</ul>
+<p><span class="math display">\[
+Y_{i,j}=T_iX_j+\xi,
+\tag{15}
+\]</span></p>
+<p>where <span class="math inline">\(\xi\)</span> is noise.</p>
+<p>A learned parameterization is evaluated by how well it reconstructs
+the transformation that generated <span
+class="math inline">\(Y_{i,j}\)</span>.</p>
+<p>This is a useful design because the target transformation is known.
+Reconstruction error can therefore isolate whether the parameterization
+can reach and optimize toward the intended stream-mixing map.</p>
+<p>The abstract reports that go-mHC reaches the minimum theoretical loss
+on synthetic stream-mixing tasks and converges up to <span
+class="math inline">\(10\times\)</span> faster than the compared
+parameterizations. This should be read as an experimental result under
+the source paper’s task construction and optimization configuration, not
+as a universal convergence theorem for all architectures and
+datasets.</p>
+<p>The paper also reports validation in a GPT-style language model with
+approximately <span class="math inline">\(30\)</span> million
+parameters. A GPT-style model is an autoregressive Transformer that
+predicts each token from preceding context using causally masked
+self-attention.</p>
+<hr />
+<h2
+id="what-is-theoretically-established-empirically-observed-and-still-uncertain">17.
+What is theoretically established, empirically observed, and still
+uncertain?</h2>
+<h3 id="theoretical-or-algebraic-facts">Theoretical or algebraic
+facts</h3>
+<p>The following statements follow from the construction or stated
+mathematical results:</p>
+<ol type="1">
+<li>If <span class="math inline">\(Q\)</span> is orthogonal, then <span
+class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly stochastic.</li>
+<li>At <span class="math inline">\(s=1\)</span>, generalized
+orthostochastic matrices reduce to ordinary orthostochastic
+matrices.</li>
+<li>Products of doubly stochastic matrices remain doubly
+stochastic.</li>
+<li>The generalized orthostochastic family is contained in <span
+class="math inline">\(\mathsf{B}_d\)</span>.</li>
+<li>The cited result of Nechita et al. states asymptotic approach to
+<span class="math inline">\(\mathsf{B}_d\)</span> as <span
+class="math inline">\(s\to\infty\)</span>.</li>
+<li>Kronecker-product eigenvalues are products of factor
+eigenvalues.</li>
+</ol>
+<h3 id="experimental-observations-reported-by-the-source">Experimental
+observations reported by the source</h3>
+<p>The following are reported results rather than consequences of the
+definitions:</p>
+<ol type="1">
+<li>increasing <span class="math inline">\(s\)</span> improves observed
+spectral coverage;</li>
+<li><span class="math inline">\(s=2\)</span> has a smaller reported
+spectral gap than <span class="math inline">\(s=1\)</span> in the
+illustrated setting;</li>
+<li>go-mHC reaches the reported theoretical minimum on the synthetic
+task;</li>
+<li>go-mHC converges up to <span class="math inline">\(10\times\)</span>
+faster in the reported synthetic comparisons;</li>
+<li>the method was tested in a <span
+class="math inline">\(30\)</span>M-parameter GPT-style language
+model.</li>
+</ol>
+<h3 id="four-important-open-or-incomplete-points">Four important open or
+incomplete points</h3>
+<ol type="1">
+<li><p><strong>Finite-<span class="math inline">\(s\)</span> coverage
+bounds.</strong><br />
+The source states that the generalized family approaches the full
+Birkhoff polytope as <span class="math inline">\(s\to\infty\)</span>,
+but the supplied material does not provide a practical bound on the
+approximation error <span class="math inline">\(\epsilon(s)\)</span> for
+finite <span class="math inline">\(d\)</span> and finite <span
+class="math inline">\(s\)</span>.</p></li>
+<li><p><strong>Convergence guarantees versus
+representability.</strong><br />
+The paper refers to proofs concerning coverage, path connectedness, and
+gradient stability in an appendix. Those proofs are not included here.
+In particular, a claim that every admissible target can be reached must
+be interpreted carefully for fixed finite <span
+class="math inline">\(s\)</span>, because finite-<span
+class="math inline">\(s\)</span> generalized orthostochastic families
+can remain strict subsets of <span
+class="math inline">\(\mathsf{B}_d\)</span>.</p></li>
+<li><p><strong>Spectral reach is incomplete as an expressivity
+metric.</strong><br />
+Spectral coverage can reveal important restrictions, especially the
+inability to represent cyclic modes, but it cannot establish full
+matrix-space coverage. Nonidentical matrices can have identical
+spectra.</p></li>
+<li><p><strong>Implementation-level and language-model evidence is
+incomplete in the supplied material.</strong><br />
+The source states that no custom CUDA kernels are required and reports a
+<span class="math inline">\(30\)</span>M GPT-style validation, but the
+complete hyperparameters, measured language-model outcomes, hardware
+conditions, and reproducibility details are not available in the
+material presented here.</p></li>
+</ol>
+<hr />
+<h2 id="exercises">18. Exercises</h2>
+<h3 id="exercise-1-verify-double-stochasticity">Exercise 1: Verify
+double stochasticity</h3>
+<p>Let <span class="math inline">\(Q\in\mathbb{R}^{ds\times ds}\)</span>
+be orthogonal and partitioned into <span class="math inline">\(s\times
+s\)</span> blocks <span class="math inline">\(Q_{ij}\)</span>. Prove
+directly that</p>
+<p><span class="math display">\[
+\Phi_{d,s}(Q)_{ij}
+=
+\frac{1}{s}\lVert Q_{ij}\rVert_F^2
+\]</span></p>
+<p>has row sums equal to one.</p>
+<p><strong>Hint.</strong> Use the block identity</p>
+<p><span class="math display">\[
+\sum_jQ_{ij}Q_{ij}^{\top}=I_s.
+\]</span></p>
+<h3 id="exercise-2-recover-ordinary-orthostochasticity">Exercise 2:
+Recover ordinary orthostochasticity</h3>
+<p>Show that <span class="math inline">\(s=1\)</span> reduces equation
+(7) to</p>
+<p><span class="math display">\[
+\Phi_{d,1}(Q)_{ij}=Q_{ij}^2.
+\]</span></p>
+<p>Why is the resulting matrix doubly stochastic?</p>
+<h3 id="exercise-3-a-three-cycle-obstruction">Exercise 3: A three-cycle
+obstruction</h3>
+<p>Write the permutation matrix for the routing cycle</p>
+<p><span class="math display">\[
+1\to 2\to 3\to 1.
+\]</span></p>
+<p>Find its eigenvalues. Explain why a construction whose spectrum is
+restricted to real values cannot represent this cycle exactly.</p>
+<h3 id="exercise-4-compare-growth-rates">Exercise 4: Compare growth
+rates</h3>
+<p>Compute</p>
+<p><span class="math display">\[
+d^3
+\quad\text{and}\quad
+d!
+\]</span></p>
+<p>for <span class="math inline">\(d=4,6,8,10\)</span>. At what point
+does the practical difference become obvious?</p>
+<hr />
+<h2 id="conclusion">19. Conclusion</h2>
+<p>go-mHC reframes constrained residual-stream mixing as a composition
+of geometric maps:</p>
+<p><span class="math display">\[
+\text{learned parameters}
+\longrightarrow
+\text{skew-symmetric generator}
+\longrightarrow
+\text{orthogonal block matrix}
+\longrightarrow
+\text{doubly stochastic stream mixer}.
+\]</span></p>
+<p>Its central advantage is exactness by construction. The block-energy
+map <span class="math inline">\(\Phi_{d,s}\)</span> converts an
+orthogonal matrix into a valid doubly stochastic routing matrix without
+iterative Sinkhorn normalization.</p>
+<p>The parameter <span class="math inline">\(s\)</span> is the essential
+design variable. It interpolates between the restricted orthostochastic
+regime at <span class="math inline">\(s=1\)</span> and increasingly
+expressive generalized orthostochastic families as <span
+class="math inline">\(s\)</span> grows. This permits a controlled
+compromise between computational cost and reachable stream-routing
+behavior.</p>
+<p>Relative to mHC-lite, go-mHC avoids factorial enumeration of
+permutation matrices. Relative to KromHC, it can represent a broader
+family of spectral and routing behaviors. Relative to finite-step
+Sinkhorn-based mHC, it provides an exact direct map, though its cubic
+dependence on stream count creates a separate computational cost.</p>
+<p>The strongest conceptual lesson is that residual-stream capacity is
+not determined only by the number of streams. It is also determined by
+the geometry of the matrix family allowed to mix them.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Dandachi, T., &amp; Diggs-Galligan, S. (2026). <em>go-mHC: Direct
+Parameterization of Manifold-Constrained Hyper-Connections via
+Generalized Orthostochastic Matrices</em>. <a
+href="https://arxiv.org/abs/2604.02309">arXiv:2604.02309</a>.</li>
+<li>Gutkin, E. (2013). Work introducing generalized orthostochastic
+matrices.</li>
+<li>Nechita, I., et al. (2023). Results on generalized <span
+class="math inline">\(s\)</span>-orthostochastic matrices and their
+limiting coverage.</li>
+<li>Xie, et al. (2026). <em>Manifold-Constrained
+Hyper-Connections</em>.</li>
+<li>Yang, &amp; Gao. (2026). <em>mHC-lite</em>.</li>
+<li>Zhou, et al. (2026). <em>KromHC</em>.</li>
+<li>Zhu, et al. (2025a). <em>Hyper-Connections</em>.</li>
+</ul>
+</body>
+</html>

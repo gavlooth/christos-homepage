@@ -47,12 +47,12 @@ const standaloneNotes = [
     source: join(pagesDir, "defects-to-topological-qubits.html"),
   },
   {
-    slug: "hyper-connections-and-residual-mixing",
-    title: "Hyper-connections and residual mixing",
-    date: "2026-08-25",
+    slug: "go-mhc",
+    title: "Exact Residual-Stream Mixing",
+    date: "2026-08-27",
     summary:
-      "A complete reader on residual streams, learned mixing, stochastic constraints, spectra, and implementation.",
-    source: join(pagesDir, "hyper-connections-and-residual-mixing.html"),
+      "A mathematical guide to exact doubly stochastic residual-stream mixing through generalized orthostochastic matrices.",
+    source: join(pagesDir, "go-mhc.html"),
   },
 ];
 
