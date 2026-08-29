@@ -33,18 +33,20 @@
         <h1>Adversarial reasoning</h1>
         <p class="post-meta">17 June 2026</p>
         <div class="post-body">
-<p>I am a logical positivist by temperament and a skeptic by habit. I want rules I
-can check, premises I can identify, and conclusions that either follow or do not.
-By that standard, Hegelian dialectic has always looked like rhetoric: a way to turn
-vague disagreement into vaguer agreement.</p>
-<p>Which made it awkward to watch a version of it work on language models for a year.</p>
+<p>I am a logical positivist by temperament and a skeptic by habit. A logical positivist wants claims tied to checks and identifiable premises. A premise is a statement that an argument starts from.</p>
+<p>I want rules I can check and premises I can identify. I also want conclusions that either follow or do not. A conclusion follows when the rules carry the premises to it.</p>
+<p>By that standard, Hegelian dialectic has always looked like rhetoric. Dialectic stages a disagreement, then tries to resolve its tension. To me, that turns vague disagreement into vaguer agreement.</p>
+<p>That made it awkward to watch a version of dialectic help language models for a year. A large language model, or LLM, predicts likely continuations of text.</p>
 <p>Here is how I got cornered.</p>
 <h2>I set out to build an adversary, not a Hegelian</h2>
-<p>I wanted an adversarial reasoning tool. Multi-agent debate has a simple premise: one
-model tends to defend the line it has begun; another model can expose what it misses.
-That is the intuition behind <a href="https://arxiv.org/abs/2305.14325">Du et al.&#39;s multi-agent debate
-paper</a>. I built a Go MCP server with several
-reasoning strategies. The important one ran three roles in a loop:</p>
+<p>This section shows how my adversarial tool acquired Hegelian names.</p>
+<p>I wanted an adversarial reasoning tool. Adversarial reasoning tests a proposed answer by asking another reasoner to attack it.</p>
+<p>Multi-agent debate is a method in which several models examine the same problem. Its premise is simple. One model tends to defend the line it has begun. Another model can expose what the first one misses.</p>
+<p>That intuition drives <a href="https://arxiv.org/abs/2305.14325">Du et al.&#39;s multi-agent debate
+paper</a>.</p>
+<p>I built an MCP server in the Go programming language. An MCP server exposes tools that a model can call. It used several reasoning strategies.</p>
+<p>The important strategy ran three roles in a loop. A <strong>thesis</strong> was the proposed answer. An <strong>antithesis</strong> was a different model&#39;s challenge to that answer. A <strong>synthesis</strong> reconciled the useful parts of both positions.</p>
+<p>The loop also tracked <strong>confidence</strong>. Confidence was a numerical estimate of how strongly the synthesis supported its answer. The loop stopped when that score reached 0.85.</p>
 <p class="code-label">Go — the dialectic loop, roughly</p>
 
 <pre><code class="language-go">for round := 1; round &lt;= cfg.MaxRounds; round++ {
@@ -58,82 +60,74 @@ reasoning strategies. The important one ran three roles in a loop:</p>
     lastSynthesis = synthesis
 }
 </code></pre>
-<p>This was meant to be multi-agent debate, not Hegel. The model helping me build it
-suggested the name <strong>dialectic reasoning</strong> and supplied <code>thesis</code>, <code>antithesis</code>, and
-<code>synthesis</code>. I kept the names because they described the structure exactly. That was
-my first annoyance: I built an adversary and accidentally inherited a philosopher.</p>
+<p>I meant this to be multi-agent debate, not Hegel. The model helping me build it suggested the name <strong>dialectic reasoning</strong>. It also supplied <code>thesis</code>, <code>antithesis</code>, and <code>synthesis</code>.</p>
+<p>I kept those names because they described the structure exactly. That was my first annoyance. I built an adversary and accidentally inherited a philosopher.</p>
 <h2>The part I couldn&#39;t argue with</h2>
-<p>The tool did something I did not expect. When a model was stuck — repeating a wrong
-approach with growing confidence — a few rounds often dislodged it. Not always, but
-far too often to dismiss as noise.</p>
-<p><strong>Language models generate forward, and that is the trap.</strong> Each token conditions
-the next, so the likely continuation of a bad line is more of the same. “Wait, no”
-is a low-probability move once the model has committed itself. Its earlier words
-dig a basin of plausibility; being stuck means sliding down that slope.</p>
-<p>The antithesis is <strong>licensed self-negation</strong>. It changes the context and requires the
-otherwise unlikely move: “this is false because…”. It adds no rule of inference. It
-adds the reversal that forward generation suppresses. That is enough to explain the
-effect. Hegel need not be right about anything else.</p>
+<p>This section explains why the loop could free a model from a bad approach.</p>
+<p>The tool did something I did not expect. Sometimes, a model repeated a wrong approach with growing confidence. A few rounds often dislodged it.</p>
+<p>This did not always happen. However, it happened far too often for me to dismiss it as noise.</p>
+<p><strong>Language models generate forward, and that is the trap.</strong> A token is a small unit of generated text. Each token changes which token is likely to come next.</p>
+<p>A bad line therefore makes more of the same line likely. Once the model has committed itself, “Wait, no” becomes unlikely.</p>
+<p>Its earlier words dig a basin of plausibility. Being stuck then resembles sliding down that basin&#39;s slope.</p>
+<p>The basin is only a physical picture. Nothing literally pulls the model downhill. More precisely, earlier text changes the probabilities of later text.</p>
+<p>The antithesis provides <strong>licensed self-negation</strong>. This means the prompt permits the model to reject the line already in context. It also requires the model to explain why that line is false.</p>
+<p>This move changes the context. It does not add an inference rule. An inference rule is a formal step for deriving a conclusion.</p>
+<p>Instead, the move adds the reversal that forward generation suppresses. That reversal is enough to explain the effect. Hegel need not be right about anything else.</p>
 <h2>Why &quot;rubbish&quot; and &quot;works&quot; are the same sentence</h2>
+<p>This section explains how I can reject Hegel&#39;s logic while keeping this procedure.</p>
 <p>Here is the reconciliation that let a positivist sleep.</p>
-<p>My objection was always that dialectic is not truth-preserving. Propositional logic
-keeps truth if the premises are true; dialectic stages a tension and resolves it. But
-an LLM is not deducing from propositions. It predicts what language will accept as
-the next move: not what is true, but what sounds warranted.</p>
-<p>Dialectic is a grammar for those moves. A claim invites an objection; an objection
-invites a reconciliation. It tells us what conventionally follows, not what validly
-follows. That is poor logic for most of what I care about. It is well matched to a
-machine whose competence is choosing the next widely warranted phrase.</p>
-<p>Dialectic works on LLMs <strong>because</strong> it is loose, not despite that looseness. The
-defect I disliked matches the medium.</p>
-<p>This concedes no metaphysics. I need not believe that contradiction drives history
-or that Hegel discovered reality’s structure. I need only observe that a procedure
-helps a particular system, and test that claim. The metaphysics stays in the bin;
-the procedure earns its place at the bench.</p>
+<p>My objection was always that dialectic is not truth-preserving. A method is truth-preserving when true starting statements guarantee a true conclusion.</p>
+<p>Propositional logic reasons with statements that are either true or false. If its premises are true, its valid rules preserve truth.</p>
+<p>An LLM is not deducing a conclusion from those statements. It predicts which language people will accept as the next move. It predicts what sounds warranted, not what is true.</p>
+<p>Dialectic supplies a grammar for those moves. Here, a grammar is a pattern for what usually comes next.</p>
+<p>A claim invites an objection. That objection then invites a reconciliation.</p>
+<p>This pattern tells us what conventionally follows. It does not tell us what validly follows.</p>
+<p>That makes dialectic poor logic for most things I care about. Yet it suits a machine that chooses the next widely warranted phrase.</p>
+<p>Dialectic works on LLMs <strong>because</strong> it is loose, not despite that looseness. The defect I disliked matches the medium.</p>
+<p>This conclusion concedes no metaphysics. Metaphysics makes claims about the fundamental structure of reality.</p>
+<p>I need not believe that contradiction drives history. I also need not believe that Hegel discovered reality&#39;s structure.</p>
+<p>I need only observe that a procedure helps a particular system. Then I can test that claim.</p>
+<p>The metaphysics stays in the bin. The procedure earns its place at the bench.</p>
 <h2>But it only sometimes works — and the failures are the interesting part</h2>
-<p>The tool fails at least as often as it helps. Those failures matter more than the
-successes. They come in three forms.</p>
-<p><strong>Collapse.</strong> A synthesis needs two strong positions in real tension. If either is
-weak, the “synthesis” simply passes through the stronger one. A weak antithesis
-relaunders the thesis; a weak thesis crowns the antithesis. Strong is not the same as
-right: an articulate, confident error is a strong pole and usually wins.</p>
-<p><strong>Convergence.</strong> After enough rounds — about five in my use — even honest positions
-settle into agreement. Without an external check, mutual coherence is the only force
-in the system. The result is a fixed point of <strong>consensus, not truth</strong>. Debate can
-raise agreement and confidence faster than accuracy; copies of a model can talk
-themselves into certainty.</p>
-<p>My stop condition amplified this. I stopped at <code>Confidence &gt;= 0.85</code>, borrowing a
-reasonable rule from a method where confidence measures the solidity of one thought.
-Here it tracked consensus. I had made the loop stop just as the models agreed, then
-mistook that social fixed point for a solution. The mechanism was sound; its meaning
-changed with the system around it.</p>
-<p><strong>Forced negation.</strong> The weakest antitheses often sound like red herrings. The model
-has been ordered to disagree while its priors favor the thesis, so it manufactures an
-objection it does not endorse. It reaches for the peripheral and deniable: a serious
-objection would name a real flaw, if one existed, and would be easy to test.</p>
+<p>This section explains why the loop fails, even when its debate sounds convincing.</p>
+<p>The tool fails at least as often as it helps. Those failures matter more than the successes. They come in three forms.</p>
+<p><strong>Collapse.</strong> A synthesis needs two strong positions that genuinely conflict.</p>
+<p>If either position is weak, the synthesis simply passes through the stronger one. A weak antithesis relaunders the thesis. In other words, it makes the thesis look newly tested without really testing it.</p>
+<p>A weak thesis instead crowns the antithesis. However, strong does not mean right. An articulate, confident error is a strong position and usually wins.</p>
+<p><strong>Convergence.</strong> Convergence occurs when the positions gradually settle into agreement.</p>
+<p>After enough rounds, even honest positions converge. In my use, this happened after about five rounds.</p>
+<p>Without an external check, mutual coherence is the system&#39;s only force. The result becomes a fixed point of <strong>consensus, not truth</strong>. A fixed point is a stable state that the loop no longer changes.</p>
+<p>Debate can raise agreement and confidence faster than accuracy. Copies of one model can therefore talk themselves into certainty.</p>
+<p>My stop condition amplified this problem. Here, confidence still means the score estimating support for the synthesis.</p>
+<p>I stopped at <code>Confidence &gt;= 0.85</code>. I borrowed that reasonable rule from another method. There, confidence measured the solidity of one thought.</p>
+<p>In this loop, the same score tracked consensus. I stopped just as the models agreed. Then I mistook that social fixed point for a solution.</p>
+<p>The mechanism was sound. Its meaning changed with the surrounding system.</p>
+<p><strong>Forced negation.</strong> Forced negation makes a model disagree because its assigned role requires disagreement.</p>
+<p>The weakest antitheses often sound like red herrings. A red herring is a distracting point that avoids the real issue.</p>
+<p>The model has been ordered to disagree. Yet its prior expectations favor the thesis. It therefore manufactures an objection it does not endorse.</p>
+<p>The model reaches for peripheral and deniable points. A serious objection would identify a real flaw, if one existed. That flaw would also be easy to test.</p>
 <p><strong>Genuine disagreement goes for the throat; manufactured disagreement clears its
 throat.</strong> Once I learned that sound, I heard it everywhere.</p>
 <h2>Relaundering is worse than wasted work</h2>
-<p>Wasted tokens would be tolerable. The worse failure is <strong>manufactured authority</strong>.
-When a weak pole is absorbed, the survivor does not merely persist; it appears to
-have survived adversarial review. A confident error paired with a dutiful, limp
-antithesis exits credentialed by a process that never tested it. I built an
-adversary to strip unearned confidence. Its failure mode prints it.</p>
-<p>Hegel gives this bug a useful name. Negation should be <em>immanent</em>: the contradiction
-should come out of the thesis’s own tensions, not be assigned from outside as a job
-title. My tool imposed negation externally by giving a model the role of antithesis.
-If the content contains no contradiction, the critic must invent one. The red herring
-is not stupidity; it is a model with nothing to say being required to say something.</p>
+<p>This section shows how a failed debate can make an error look more authoritative.</p>
+<p>Wasted tokens would be tolerable. The worse failure is <strong>manufactured authority</strong>. This means the process gives credibility to a claim it never truly tested.</p>
+<p>When the loop absorbs a weak position, the surviving position does not merely persist. It now appears to have survived adversarial review.</p>
+<p>A confident error can face a dutiful, limp antithesis. It then leaves with credentials from a process that never tested it.</p>
+<p>I built an adversary to strip unearned confidence. Its failure mode prints that confidence instead.</p>
+<p>Hegel gives this bug a useful name. Negation should be <em>immanent</em>. Immanent negation comes from tensions inside the thesis itself.</p>
+<p>Negation should not arrive from outside as an assigned job title. My tool imposed it externally by assigning a model the antithesis role.</p>
+<p>Sometimes the thesis contains no contradiction. The critic must then invent one. That invention produces the red herring.</p>
+<p>The red herring does not show stupidity. It shows a model with nothing to say. Its role still requires it to say something.</p>
 <h2>The dialectic that actually worked had a GPU in it</h2>
-<p>I found the correction in a different project: a relation-extraction model trained
-over weeks, with a running log of each session. The log was a working dialectic, for
-the reason my tool was not.</p>
-<p>The apparent diagnosis was straightforward: held-out F1 was ~1% while training loss
-was ~0.5, so the model must be <strong>overfitting</strong>. The apparent fix was more data. It
-was a crisp, confident, wrong thesis — precisely the kind an ungrounded loop would
-likely ratify.</p>
-<p>It fell to a missing control: decode the <em>training</em> split, the data the model had
-actually seen.</p>
+<p>This section shows why evidence corrected a diagnosis that debate alone might have preserved.</p>
+<p>I found the correction in a different project. I trained a relation-extraction model over several weeks. Such a model identifies stated relationships in text.</p>
+<p>I also kept a running log of each session. That log became a working dialectic for a reason my tool did not.</p>
+<p>The apparent diagnosis was straightforward. Held-out F1 was about 1%, while training loss was about 0.5.</p>
+<p>F1 is the score I used here to measure extraction quality. Held-out data is data excluded from training. Training loss measures how poorly the model fits during training.</p>
+<p>Those results made <strong>overfitting</strong> look like the cause. Overfitting occurs when a model learns its training data but fails on unseen data.</p>
+<p>The apparent fix was more data. This was a crisp, confident, wrong thesis. An ungrounded loop would likely have ratified exactly this kind of thesis.</p>
+<p>The thesis fell because one control was missing. A control is a comparison that checks the diagnosis against another condition.</p>
+<p>The missing control was to decode the <em>training</em> split. Decoding turns the model&#39;s outputs into predicted relations. The training split contained data the model had actually seen.</p>
 <p class="code-label">The contradiction, stated as evidence</p>
 <div class="pseudo">
 
@@ -144,27 +138,24 @@ TRAIN     F1         ≈ 4.4%      # ...and is just as bad on data it trained on
 </code></pre>
 </div>
 
-<p>The model was equally bad on its training data. You cannot call that overfitting.
-The thesis fell not to a better argument but to a measurement indifferent to anyone’s
-confidence. The fault was in decoding, not the data. The resulting rule is simple:
-<strong>always decode the train split as a control.</strong></p>
-<p>That is immanent negation. Nobody was assigned to disagree; the number did. A loss
-of 0.5 and a train F1 of 4.4% cannot describe the same successful fit. No amount of
-conversation can relaunder a measurement.</p>
-<p>Each log entry followed an <em>action on the world</em>: run an evaluation, decode a split,
-hit an out-of-memory error. Every action supplied fresh, non-negotiable tension, so
-the process could not relax into consensus. My MCP loop ran argument between actions
-and therefore relaxed. <strong>Same dialectic; only one touched something that could say
+<p>The model was equally bad on its training data. You cannot call that overfitting.</p>
+<p>A better argument did not defeat the thesis. A measurement defeated it, and that measurement was indifferent to anyone&#39;s confidence.</p>
+<p>The fault was in decoding, not the data. The resulting rule is simple: <strong>always decode the train split as a control.</strong></p>
+<p>That is immanent negation. Nobody received an assignment to disagree. The number did the disagreeing.</p>
+<p>A loss of 0.5 and a train F1 of 4.4% cannot describe the same successful fit. No amount of conversation can relaunder that measurement.</p>
+<p>Each log entry followed an <em>action on the world</em>. I might run an evaluation or decode a split. I might hit an out-of-memory error.</p>
+<p>Every action supplied fresh tension that the argument could not negotiate away. The process therefore could not relax into consensus.</p>
+<p>My MCP loop placed arguments between actions. It therefore relaxed toward agreement. <strong>Same dialectic; only one touched something that could say
 no.</strong></p>
 <h2>What a skeptic gets to keep</h2>
+<p>This section states the limited conclusion that I, as a skeptic, can accept.</p>
 <p>This is where I land.</p>
-<p>Ungrounded dialectic is mostly what I thought: it tends toward the loudest coherent
-consensus and stamps it as truth. I was wrong only to call it useless. Add a referent
-— a measurement, an execution, a genuinely independent model, anything the argument
-cannot ventriloquize — and the same loose machinery can move a stuck system toward
-something real. Grounding does more than strengthen a weak pole: it <strong>exposes the
-fake one</strong>. Manufactured dissent returns empty; genuine dissent returns with
-evidence.</p>
+<p>Ungrounded dialectic is mostly what I thought. It tends toward the loudest coherent consensus. Then it stamps that consensus as truth.</p>
+<p>I was wrong only to call dialectic useless.</p>
+<p>Add a referent, and the same loose machinery can move a stuck system toward something real. A referent is an external thing that the argument cannot control.</p>
+<p>The referent might be a measurement or an execution. It might instead be a genuinely independent model. In every case, the argument cannot make it speak whatever answer the argument wants.</p>
+<p>This connection to an external check is <strong>grounding</strong>. Grounding does more than strengthen a weak position. It <strong>exposes the fake one</strong>.</p>
+<p>Manufactured dissent returns empty. Genuine dissent returns with evidence.</p>
 <figure class="diagram">
 <svg viewBox="0 0 720 300" role="img" aria-labelledby="dialectic-title dialectic-desc" xmlns="http://www.w3.org/2000/svg" font-family="Manrope, sans-serif">
 <title id="dialectic-title">Argument alone versus argument tested against evidence</title>
@@ -197,13 +188,11 @@ evidence.</p>
 <figcaption>Argument alone can settle into agreement. Add a test, measurement, or execution the models cannot ventriloquize, and every candidate remains answerable to evidence.</figcaption>
 </figure>
 
-<p>That lets a positivist accept that Hegelian machinery can help without converting.
-<strong>Negation has teeth only when it answers to something outside the conversation.</strong>
-Dialectic among minds converges on agreement. Dialectic among minds and a world can
-converge on truth. The difference is whether every round must touch something able to
-say no.</p>
-<p>Hegel without a referent is rhetoric at its fixed point. Hegel with a GPU is science
-with extra steps. I can live with that.</p>
+<p>The diagram is a structural picture, not proof. More precisely, external evidence can reject a candidate that the debating models accept.</p>
+<p>That lets a positivist accept Hegelian machinery without converting. <strong>Negation has teeth only when it answers to something outside the conversation.</strong></p>
+<p>Dialectic among minds converges on agreement. Dialectic among minds and a world can converge on truth. The difference lies in what every round must do.</p>
+<p>Each round must touch something able to say no.</p>
+<p>Hegel without a referent is rhetoric at its fixed point. Hegel with a GPU is science with extra steps. I can live with that.</p>
 
         </div>
       </article>
