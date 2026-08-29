@@ -88,6 +88,25 @@
 
 .section-drawer a:hover { color: var(--drawer-accent); }
 
+.section-drawer a.is-active {
+  color: var(--drawer-accent);
+  font-weight: 750;
+  text-decoration-thickness: 2px;
+}
+
+.section-drawer a.is-active::before {
+  content: "●";
+  display: inline-block;
+  width: 1rem;
+  color: var(--drawer-accent);
+  font-size: .55em;
+  vertical-align: .12em;
+}
+
+.section-group.is-active-group > summary {
+  color: var(--drawer-accent);
+}
+
 .section-drawer-book {
   display: block;
 }

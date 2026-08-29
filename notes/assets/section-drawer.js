@@ -97,6 +97,70 @@
     update();
   };
 
+  const mountActiveSection = (drawer) => {
+    const links = [...drawer.querySelectorAll('a[href^="#"]')];
+    const targets = new Map(
+      links
+        .map((link) => {
+          const id = decodeURIComponent(link.hash.slice(1));
+          return [document.getElementById(id), link];
+        })
+        .filter(([heading]) => heading),
+    );
+    let activeLink = null;
+    let activeGroup = null;
+
+    const setActive = (heading) => {
+      const link = targets.get(heading);
+      if (!link || link === activeLink) return;
+
+      activeLink?.classList.remove('is-active');
+      activeLink?.removeAttribute('aria-current');
+      activeGroup?.classList.remove('is-active-group');
+
+      link.classList.add('is-active');
+      link.setAttribute('aria-current', 'location');
+      activeLink = link;
+      activeGroup = link.closest('.section-group');
+
+      if (activeGroup) {
+        activeGroup.classList.add('is-active-group');
+        if (drawer.open) activeGroup.open = true;
+      }
+    };
+
+    const headings = [...targets.keys()];
+    let scheduled = false;
+    const updateActiveSection = () => {
+      const threshold = window.innerHeight * 0.22;
+      let current = headings[0];
+
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top > threshold) break;
+        current = heading;
+      }
+
+      setActive(current);
+      scheduled = false;
+    };
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(updateActiveSection);
+      },
+      { passive: true },
+    );
+
+    const requested = document.getElementById(
+      decodeURIComponent(location.hash.slice(1)),
+    );
+    setActive(requested || headings[0]);
+    updateActiveSection();
+  };
+
   const mount = () => {
     const drawer = document.querySelector(".section-drawer");
     if (!drawer) return;
@@ -105,9 +169,7 @@
     if (isBook) appendBookSections(drawer);
     else appendSimpleSections(drawer);
 
-    drawer.addEventListener("click", (event) => {
-      if (event.target.closest("a")) drawer.open = false;
-    });
+    mountActiveSection(drawer);
 
     const sidebarQuery = window.matchMedia("(min-width: 84rem)");
     const syncNavigationLayout = () => {
