@@ -87,37 +87,12 @@ h1, h2, h3, h4 {
   letter-spacing: -.065em;
 }
 
-#TOC {
-  max-width: 60rem;
-  margin: 0 auto 5rem;
-  padding: 1.35rem 1.5rem 1.5rem;
-  border-left: .25rem solid var(--accent);
-  background: var(--accent-soft);
-  font: 500 .9rem/1.45 ui-sans-serif, system-ui, sans-serif;
-}
 
-#TOC::before {
-  content: "Inside this note";
-  display: block;
-  margin-bottom: .85rem;
-  color: var(--navy);
-  font-size: .72rem;
-  font-weight: 750;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-#TOC ul { margin: 0; padding-left: 1.25rem; }
-#TOC ul ul { margin-top: .35rem; }
-#TOC li + li { margin-top: .4rem; }
-#TOC a { color: var(--ink); text-decoration-color: rgba(13, 113, 128, .45); text-underline-offset: .15em; }
-#TOC a:hover, #TOC a:focus-visible { color: var(--accent); }
-
-body > h1 {
+body > h1:first-of-type {
   display: none;
 }
 
-body > :not(.reader-nav):not(#title-block-header):not(#TOC):not(h1) {
+body > :not(.reader-nav):not(#title-block-header):not(h1) {
   max-width: 48rem;
   margin-right: auto;
   margin-left: auto;
@@ -188,7 +163,7 @@ code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; fo
 
 .MathJax, mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 
-.math.display { display: block; margin: 1.8rem 0; padding: 1.15rem 1.25rem; border: 1px solid #d6e2e6; border-radius: .2rem; background: var(--surface); }
+.math.display { display: block; max-width: 100%; margin: 1.8rem 0; padding: 1.15rem 1.25rem; overflow-x: auto; overflow-y: hidden; border: 1px solid #d6e2e6; border-radius: .2rem; background: var(--surface); }
 
 figure { margin: 2rem auto; }
 img { max-width: 100%; height: auto; }
@@ -201,14 +176,13 @@ th { background: #eaf3f3; color: var(--navy); font-family: ui-sans-serif, system
   body { padding: 0 1.15rem 3rem; font-size: 1rem; background: var(--paper); }
   .reader-nav { margin: 0 -1.15rem; padding-right: 1.15rem; padding-left: 1.15rem; }
   #title-block-header { margin-top: 3.75rem; }
-  #TOC { margin-bottom: 3rem; padding: 1.1rem; }
   h2 { margin-top: 3.5rem; }
   .math.display { padding: .85rem; }
 }
 
 @media print {
   body { max-width: none; padding: 0; background: #fff; font-size: 10.5pt; }
-  .reader-nav, #TOC { display: none; }
+  .reader-nav { display: none; }
   h2 { break-after: avoid; }
   pre, table, .math.display { break-inside: avoid; }
 }

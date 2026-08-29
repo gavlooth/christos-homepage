@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="nv-title nv-desc">
+  <title id="nv-title">Nitrogen-vacancy center geometry in diamond</title>
+  <desc id="nv-desc">A labeled two-dimensional projection shows substitutional nitrogen beside an empty carbon site, three equivalent carbon neighbors, the nitrogen-vacancy axis along a 111 direction, and a 120-degree rotation around that axis.</desc>
+  <defs>
+    <style>
+      .panel { fill:#f8fafc; stroke:#cbd5e1; stroke-width:2; }
+      .bond { stroke:#64748b; stroke-width:5; stroke-linecap:round; }
+      .axis { stroke:#15807c; stroke-width:5; stroke-dasharray:14 9; }
+      .carbon { fill:#315a88; stroke:#173a61; stroke-width:3; }
+      .nitrogen { fill:#f59e0b; stroke:#92400e; stroke-width:3; }
+      .vacancy { fill:#fff; stroke:#c2413b; stroke-width:5; stroke-dasharray:10 7; }
+      .heading { font:700 28px sans-serif; fill:#0f172a; }
+      .label { font:600 21px sans-serif; fill:#0f172a; }
+      .small { font:18px sans-serif; fill:#475569; }
+      .rotation { fill:none; stroke:#8b5cf6; stroke-width:5; marker-end:url(#nv-arrow); }
+    </style>
+    <marker id="nv-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="720" fill="#fff"/>
+  <rect class="panel" x="40" y="75" width="1320" height="555" rx="16"/>
+  <text class="heading" x="700" y="45" text-anchor="middle">NV center: one substitution beside one empty carbon site</text>
+
+  <line class="axis" x1="700" y1="105" x2="700" y2="585"/>
+  <text class="label" x="735" y="120">[111] N–V axis</text>
+
+  <line class="bond" x1="700" y1="190" x2="700" y2="320"/>
+  <line class="bond" x1="680" y1="350" x2="485" y2="470"/>
+  <line class="bond" x1="720" y1="350" x2="915" y2="470"/>
+  <line class="bond" x1="700" y1="370" x2="700" y2="540"/>
+
+  <circle class="nitrogen" cx="700" cy="165" r="42"/>
+  <text class="heading" x="700" y="175" text-anchor="middle">N</text>
+  <text class="label" x="755" y="172">substitutional nitrogen</text>
+
+  <circle class="vacancy" cx="700" cy="345" r="44"/>
+  <path d="M675 320 L725 370 M725 320 L675 370" stroke="#c2413b" stroke-width="4"/>
+  <text class="label" x="760" y="340">empty carbon site</text>
+  <text class="small" x="760" y="365">vacancy: no atom occupies this site</text>
+
+  <circle class="carbon" cx="450" cy="490" r="36"/>
+  <circle class="carbon" cx="950" cy="490" r="36"/>
+  <circle class="carbon" cx="700" cy="570" r="36"/>
+  <text class="heading" x="450" y="500" text-anchor="middle">C₁</text>
+  <text class="heading" x="950" y="500" text-anchor="middle">C₂</text>
+  <text class="heading" x="700" y="580" text-anchor="middle">C₃</text>
+
+  <path class="rotation" d="M805 430 A135 135 0 0 1 580 430"/>
+  <text class="label" x="700" y="455" text-anchor="middle" fill="#5b21b6">120° rotation</text>
+
+  <g transform="translate(85 655)">
+    <circle class="carbon" cx="0" cy="0" r="12"/>
+    <text class="small" x="22" y="6">carbon neighbor</text>
+    <circle class="nitrogen" cx="220" cy="0" r="12"/>
+    <text class="small" x="242" y="6">nitrogen on a carbon site</text>
+    <circle class="vacancy" cx="520" cy="0" r="12"/>
+    <text class="small" x="542" y="6">empty carbon site</text>
+    <text class="small" x="815" y="6">C₃ᵥ in the ideal unsqueezed structure</text>
+  </g>
+  <text class="small" x="700" y="705" text-anchor="middle" font-style="italic">Schematic projection—not bond angles or bond lengths</text>
+</svg>

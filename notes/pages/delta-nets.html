@@ -28,6 +28,8 @@
     }
   </style>
   <link rel="stylesheet" href="/notes/assets/delta-nets.css" />
+  <link rel="stylesheet" href="/notes/assets/section-drawer.css" />
+  <script src="/notes/assets/section-drawer.js" defer></script>
   <script async=""
   src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
   type="text/javascript"></script>
@@ -37,131 +39,8 @@
 <header id="title-block-header">
 <h1 class="title">Δ-Nets</h1>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#δ-nets" id="toc-δ-nets">Δ-Nets</a>
-<ul>
-<li><a href="#how-to-read-this" id="toc-how-to-read-this">How to read
-this</a></li>
-<li><a href="#terms" id="toc-terms">Terms</a></li>
-<li><a href="#when-the-argument-is-unused"
-id="toc-when-the-argument-is-unused">When the argument is
-unused</a></li>
-<li><a href="#when-the-argument-is-used-more-than-once"
-id="toc-when-the-argument-is-used-more-than-once">When the argument is
-used more than once</a></li>
-<li><a href="#four-ways-a-bound-variable-may-appear"
-id="toc-four-ways-a-bound-variable-may-appear">Four ways a bound
-variable may appear</a></li>
-<li><a href="#why-choosing-the-next-redex-is-not-enough"
-id="toc-why-choosing-the-next-redex-is-not-enough">Why choosing the next
-redex is not enough</a></li>
-<li><a href="#syntax-trees-hide-sharing"
-id="toc-syntax-trees-hide-sharing">Syntax trees hide sharing</a>
-<ul>
-<li><a href="#perfect-confluence" id="toc-perfect-confluence">Perfect
-confluence</a></li>
-</ul></li>
-<li><a href="#three-agents" id="toc-three-agents">Three agents</a>
-<ul>
-<li><a href="#fan" id="toc-fan">Fan</a></li>
-<li><a href="#eraser" id="toc-eraser">Eraser</a></li>
-<li><a href="#replicator" id="toc-replicator">Replicator</a></li>
-<li><a href="#the-four-lambda-fragments"
-id="toc-the-four-lambda-fragments">The four <span
-class="math inline">\(\lambda\)</span>-fragments</a></li>
-<li><a href="#equality-of-replicators"
-id="toc-equality-of-replicators">Equality of replicators</a></li>
-</ul></li>
-<li><a href="#three-families-of-interaction"
-id="toc-three-families-of-interaction">Three families of interaction</a>
-<ul>
-<li><a href="#annihilation" id="toc-annihilation">Annihilation</a></li>
-<li><a href="#erasure" id="toc-erasure">Erasure</a></li>
-<li><a href="#commutation" id="toc-commutation">Commutation</a></li>
-</ul></li>
-<li><a href="#compiling-a-term-into-a-net"
-id="toc-compiling-a-term-into-a-net">Compiling a term into a net</a>
-<ul>
-<li><a href="#interface" id="toc-interface">Interface</a></li>
-<li><a href="#abstraction-fragment"
-id="toc-abstraction-fragment">Abstraction fragment</a></li>
-<li><a href="#application-fragment"
-id="toc-application-fragment">Application fragment</a></li>
-<li><a href="#free-variable" id="toc-free-variable">Free
-variable</a></li>
-<li><a href="#bound-occurrence" id="toc-bound-occurrence">Bound
-occurrence</a></li>
-<li><a href="#one-occurrence" id="toc-one-occurrence">One
-occurrence</a></li>
-<li><a href="#unused-bound-variable"
-id="toc-unused-bound-variable">Unused bound variable</a></li>
-<li><a href="#several-occurrences" id="toc-several-occurrences">Several
-occurrences</a></li>
-<li><a href="#application-wiring"
-id="toc-application-wiring">Application wiring</a></li>
-<li><a href="#abstraction-wiring"
-id="toc-abstraction-wiring">Abstraction wiring</a></li>
-</ul></li>
-<li><a href="#levels-and-deltas" id="toc-levels-and-deltas">Levels and
-deltas</a>
-<ul>
-<li><a href="#assigning-levels" id="toc-assigning-levels">Assigning
-levels</a></li>
-<li><a href="#delta-of-a-use" id="toc-delta-of-a-use">Delta of a
-use</a></li>
-<li><a href="#full-computation-of-lambda-x.xgx"
-id="toc-full-computation-of-lambda-x.xgx">Full computation of <span
-class="math inline">\(\lambda x.\,x\,(g\,x)\)</span></a></li>
-<li><a href="#deeper-nesting-lambda-x.xxxx"
-id="toc-deeper-nesting-lambda-x.xxxx">Deeper nesting <span
-class="math inline">\(\lambda x.\,x\,(x\,(x\,x))\)</span></a></li>
-</ul></li>
-<li><a href="#two-reductions-you-can-follow-by-hand"
-id="toc-two-reductions-you-can-follow-by-hand">Two reductions you can
-follow by hand</a>
-<ul>
-<li><a href="#identity-applied-to-identity"
-id="toc-identity-applied-to-identity">Identity applied to
-identity</a></li>
-<li><a href="#the-net-for-lambda-x.xx"
-id="toc-the-net-for-lambda-x.xx">The net for <span
-class="math inline">\(\lambda x.x\,x\)</span></a></li>
-<li><a href="#the-net-for-lambda-x.xxxx"
-id="toc-the-net-for-lambda-x.xxxx">The net for <span
-class="math inline">\(\lambda x.\,x\,(x\,(x\,x))\)</span></a></li>
-</ul></li>
-<li><a href="#canonical-nets-and-cleanup"
-id="toc-canonical-nets-and-cleanup">Canonical nets and cleanup</a>
-<ul>
-<li><a href="#erasure-sweep" id="toc-erasure-sweep">Erasure
-sweep</a></li>
-<li><a href="#replicator-merge" id="toc-replicator-merge">Replicator
-merge</a></li>
-<li><a href="#decay-of-unpaired-replicator-ports"
-id="toc-decay-of-unpaired-replicator-ports">Decay of unpaired replicator
-ports</a></li>
-</ul></li>
-<li><a href="#a-global-schedule" id="toc-a-global-schedule">A global
-schedule</a></li>
-<li><a href="#the-intended-algorithm"
-id="toc-the-intended-algorithm">The intended algorithm</a></li>
-<li><a href="#what-must-still-be-checked"
-id="toc-what-must-still-be-checked">What must still be checked</a></li>
-<li><a href="#exercises" id="toc-exercises">Exercises</a>
-<ul>
-<li><a href="#exercise-1" id="toc-exercise-1">Exercise 1</a></li>
-<li><a href="#exercise-2" id="toc-exercise-2">Exercise 2</a></li>
-<li><a href="#exercise-3" id="toc-exercise-3">Exercise 3</a></li>
-<li><a href="#exercise-4" id="toc-exercise-4">Exercise 4</a></li>
-<li><a href="#exercise-5" id="toc-exercise-5">Exercise 5</a></li>
-</ul></li>
-<li><a href="#a-short-glossary" id="toc-a-short-glossary">A short
-glossary</a></li>
-<li><a href="#source" id="toc-source">Source</a></li>
-</ul></li>
-</ul>
-</nav>
+<details class="section-drawer"><summary>Browse sections</summary></details>
+<noscript><p class="section-drawer-fallback">Section links need JavaScript. The complete article remains available below.</p></noscript>
 <h1 id="δ-nets">Δ-Nets</h1>
 <p>A λ-term is rewritten by substituting an argument for a parameter.
 That replacement may discard the argument. It may also copy the

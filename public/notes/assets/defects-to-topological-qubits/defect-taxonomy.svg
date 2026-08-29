@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
+  <title id="title">Defect Taxonomy in a Lattice</title>
+  <desc id="desc">Five panels illustrating point defects (substitution, vacancy, interstitial), line defect (dislocation), and planar defect (stacking fault), with legend and faint grid.</desc>
+  <defs>
+    <style>
+      .panel { fill:#f8fafc; stroke:#cbd5e1; stroke-width:2; }
+      .grid { stroke:#e2e8f0; stroke-width:1; }
+      .host { fill:#315a88; }
+      .impurity { fill:#f59e0b; }
+      .defect { fill:#c2413b; }
+      .interstitial { fill:#15807c; }
+      .label { font:bold 18px sans-serif; fill:#0f172a; }
+      .dim { font:14px sans-serif; fill:#475569; }
+    </style>
+  </defs>
+  <rect width="1400" height="720" fill="#ffffff"/>
+  
+  <!-- Legend -->
+  <g transform="translate(40, 660)">
+    <circle cx="10" cy="-5" r="8" class="host"/><text x="25" y="0" class="dim">Host</text>
+    <circle cx="100" cy="-5" r="8" class="impurity"/><text x="115" y="0" class="dim">Impurity</text>
+    <rect x="200" y="-13" width="16" height="16" fill="none" stroke="#c2413b" stroke-width="2"/><text x="225" y="0" class="dim">Vacancy</text>
+  </g>
+
+  <!-- Helper for grid -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Panels -->
+  <g transform="translate(40, 60)">
+    <rect class="panel" width="240" height="500" rx="14"/><rect x="20" y="100" width="200" height="400" fill="url(#grid)"/>
+    <text x="120" y="40" text-anchor="middle" class="label">Substitution</text>
+    <circle cx="80" cy="150" r="15" class="host"/><circle cx="160" cy="150" r="15" class="host"/>
+    <circle cx="80" cy="250" r="15" class="host"/><circle cx="160" cy="250" r="15" class="impurity"/><text x="160" y="256" text-anchor="middle" fill="white" font-weight="bold">I</text>
+    <circle cx="80" cy="350" r="15" class="host"/><circle cx="160" cy="350" r="15" class="host"/>
+  </g>
+  <g transform="translate(300, 60)">
+    <rect class="panel" width="240" height="500" rx="14"/><rect x="20" y="100" width="200" height="400" fill="url(#grid)"/>
+    <text x="120" y="40" text-anchor="middle" class="label">Vacancy</text>
+    <circle cx="80" cy="150" r="15" class="host"/><circle cx="160" cy="150" r="15" class="host"/>
+    <circle cx="80" cy="250" r="15" class="host"/><rect x="145" y="235" width="30" height="30" fill="none" stroke="#c2413b" stroke-width="2" stroke-dasharray="4 2"/><line x1="145" y1="235" x2="175" y2="265" stroke="#c2413b" stroke-width="2"/><line x1="175" y1="235" x2="145" y2="265" stroke="#c2413b" stroke-width="2"/>
+    <circle cx="80" cy="350" r="15" class="host"/><circle cx="160" cy="350" r="15" class="host"/>
+  </g>
+  <g transform="translate(560, 60)">
+    <rect class="panel" width="240" height="500" rx="14"/><rect x="20" y="100" width="200" height="400" fill="url(#grid)"/>
+    <text x="120" y="40" text-anchor="middle" class="label">Interstitial</text>
+    <circle cx="80" cy="150" r="15" class="host"/><circle cx="160" cy="150" r="15" class="host"/>
+    <circle cx="120" cy="200" r="12" class="interstitial"/>
+    <circle cx="80" cy="250" r="15" class="host"/><circle cx="160" cy="250" r="15" class="host"/>
+    <circle cx="80" cy="350" r="15" class="host"/><circle cx="160" cy="350" r="15" class="host"/>
+  </g>
+  <g transform="translate(820, 60)">
+    <rect class="panel" width="240" height="500" rx="14"/><rect x="20" y="100" width="200" height="400" fill="url(#grid)"/>
+    <text x="120" y="40" text-anchor="middle" class="label">Dislocation</text>
+    <path d="M40 100 L200 100 M40 200 L200 200 M40 300 L120 300 M40 400 L200 400" stroke="#315a88" stroke-width="4"/>
+    <path d="M120 300 L120 200" stroke="#c2413b" stroke-width="4"/><circle cx="120" cy="200" r="5" class="defect"/>
+  </g>
+  <g transform="translate(1080, 60)">
+    <rect class="panel" width="240" height="500" rx="14"/><rect x="20" y="100" width="200" height="400" fill="url(#grid)"/>
+    <text x="120" y="40" text-anchor="middle" class="label">Stacking Fault</text>
+    <rect x="40" y="150" width="160" height="30" class="host"/>
+    <rect x="40" y="250" width="160" height="30" class="defect"/><rect x="40" y="280" width="160" height="30" class="host"/>
+    <rect x="40" y="350" width="160" height="30" class="host"/>
+  </g>
+</svg>

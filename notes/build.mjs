@@ -47,12 +47,12 @@ const standaloneNotes = [
     source: join(pagesDir, "defects-to-topological-qubits.html"),
   },
   {
-    slug: "go-mhc",
+    slug: "exact-residual-stream-mixing",
     title: "Exact Residual-Stream Mixing",
     date: "2026-08-27",
     summary:
       "A mathematical guide to exact doubly stochastic residual-stream mixing through generalized orthostochastic matrices.",
-    source: join(pagesDir, "go-mhc.html"),
+    source: join(pagesDir, "exact-residual-stream-mixing.html"),
   },
 ];
 

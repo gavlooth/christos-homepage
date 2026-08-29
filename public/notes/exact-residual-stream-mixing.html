@@ -27,7 +27,9 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="/notes/assets/go-mhc.css" />
+  <link rel="stylesheet" href="/notes/assets/exact-residual-stream-mixing.css" />
+  <link rel="stylesheet" href="/notes/assets/section-drawer.css" />
+  <script src="/notes/assets/section-drawer.js" defer></script>
   <script async=""
   src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"
   type="text/javascript"></script>
@@ -37,135 +39,8 @@
 <header id="title-block-header">
 <h1 class="title">Exact Residual-Stream Mixing</h1>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a
-href="#exact-residual-stream-mixing-through-generalized-orthostochastic-matrices"
-id="toc-exact-residual-stream-mixing-through-generalized-orthostochastic-matrices">Exact
-Residual-Stream Mixing Through Generalized Orthostochastic
-Matrices</a>
-<ul>
-<li><a href="#the-problem-how-should-residual-streams-mix"
-id="toc-the-problem-how-should-residual-streams-mix">1. The problem: how
-should residual streams mix?</a></li>
-<li><a href="#mathematical-prerequisites"
-id="toc-mathematical-prerequisites">2. Mathematical prerequisites</a>
-<ul>
-<li><a href="#doubly-stochastic-matrices"
-id="toc-doubly-stochastic-matrices">2.1 Doubly stochastic
-matrices</a></li>
-<li><a href="#permutation-matrices-and-the-birkhoffvon-neumann-theorem"
-id="toc-permutation-matrices-and-the-birkhoffvon-neumann-theorem">2.2
-Permutation matrices and the Birkhoff–von Neumann theorem</a></li>
-<li><a href="#orthogonal-and-skew-symmetric-matrices"
-id="toc-orthogonal-and-skew-symmetric-matrices">2.3 Orthogonal and
-skew-symmetric matrices</a></li>
-</ul></li>
-<li><a href="#from-residual-connections-to-hyper-connections"
-id="toc-from-residual-connections-to-hyper-connections">3. From residual
-connections to Hyper-Connections</a></li>
-<li><a href="#why-constrain-the-residual-mixer"
-id="toc-why-constrain-the-residual-mixer">4. Why constrain the residual
-mixer?</a></li>
-<li><a href="#existing-exact-alternatives"
-id="toc-existing-exact-alternatives">5. Existing exact alternatives</a>
-<ul>
-<li><a href="#mhc-lite-complete-coverage-at-factorial-cost"
-id="toc-mhc-lite-complete-coverage-at-factorial-cost">5.1 mHC-lite:
-complete coverage at factorial cost</a></li>
-<li><a href="#kromhc-efficient-factorization-with-restricted-routing"
-id="toc-kromhc-efficient-factorization-with-restricted-routing">5.2
-KromHC: efficient factorization with restricted routing</a></li>
-</ul></li>
-<li><a href="#orthostochastic-matrices"
-id="toc-orthostochastic-matrices">6. Orthostochastic matrices</a></li>
-<li><a href="#generalized-orthostochastic-matrices"
-id="toc-generalized-orthostochastic-matrices">7. Generalized
-orthostochastic matrices</a>
-<ul>
-<li><a href="#proposition-phi_dsq-is-doubly-stochastic"
-id="toc-proposition-phi_dsq-is-doubly-stochastic">Proposition: <span
-class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly
-stochastic</a></li>
-</ul></li>
-<li><a href="#the-go-mhc-construction"
-id="toc-the-go-mhc-construction">8. The go-mHC construction</a></li>
-<li><a href="#a-worked-stream-mixing-example"
-id="toc-a-worked-stream-mixing-example">9. A worked stream-mixing
-example</a></li>
-<li><a href="#the-role-of-the-block-size-s"
-id="toc-the-role-of-the-block-size-s">10. The role of the block size
-<span class="math inline">\(s\)</span></a>
-<ul>
-<li><a href="#smaller-s" id="toc-smaller-s">Smaller <span
-class="math inline">\(s\)</span></a></li>
-<li><a href="#larger-s" id="toc-larger-s">Larger <span
-class="math inline">\(s\)</span></a></li>
-</ul></li>
-<li><a href="#stability-and-cumulative-mixing"
-id="toc-stability-and-cumulative-mixing">11. Stability and cumulative
-mixing</a></li>
-<li><a href="#spectral-reach-as-an-expressivity-surrogate"
-id="toc-spectral-reach-as-an-expressivity-surrogate">12. Spectral reach
-as an expressivity surrogate</a>
-<ul>
-<li><a href="#reported-qualitative-findings"
-id="toc-reported-qualitative-findings">Reported qualitative
-findings</a></li>
-</ul></li>
-<li><a href="#why-kronecker-products-have-a-spectral-limitation"
-id="toc-why-kronecker-products-have-a-spectral-limitation">13. Why
-Kronecker products have a spectral limitation</a></li>
-<li><a href="#complexity-trade-offs" id="toc-complexity-trade-offs">14.
-Complexity trade-offs</a>
-<ul>
-<li><a href="#parameter-counts" id="toc-parameter-counts">14.1 Parameter
-counts</a></li>
-<li><a href="#flop-complexity" id="toc-flop-complexity">14.2 FLOP
-complexity</a></li>
-</ul></li>
-<li><a href="#combining-go-mhc-and-kromhc"
-id="toc-combining-go-mhc-and-kromhc">15. Combining go-mHC and
-KromHC</a></li>
-<li><a href="#synthetic-reconstruction-experiment"
-id="toc-synthetic-reconstruction-experiment">16. Synthetic
-reconstruction experiment</a></li>
-<li><a
-href="#what-is-theoretically-established-empirically-observed-and-still-uncertain"
-id="toc-what-is-theoretically-established-empirically-observed-and-still-uncertain">17.
-What is theoretically established, empirically observed, and still
-uncertain?</a>
-<ul>
-<li><a href="#theoretical-or-algebraic-facts"
-id="toc-theoretical-or-algebraic-facts">Theoretical or algebraic
-facts</a></li>
-<li><a href="#experimental-observations-reported-by-the-source"
-id="toc-experimental-observations-reported-by-the-source">Experimental
-observations reported by the source</a></li>
-<li><a href="#four-important-open-or-incomplete-points"
-id="toc-four-important-open-or-incomplete-points">Four important open or
-incomplete points</a></li>
-</ul></li>
-<li><a href="#exercises" id="toc-exercises">18. Exercises</a>
-<ul>
-<li><a href="#exercise-1-verify-double-stochasticity"
-id="toc-exercise-1-verify-double-stochasticity">Exercise 1: Verify
-double stochasticity</a></li>
-<li><a href="#exercise-2-recover-ordinary-orthostochasticity"
-id="toc-exercise-2-recover-ordinary-orthostochasticity">Exercise 2:
-Recover ordinary orthostochasticity</a></li>
-<li><a href="#exercise-3-a-three-cycle-obstruction"
-id="toc-exercise-3-a-three-cycle-obstruction">Exercise 3: A three-cycle
-obstruction</a></li>
-<li><a href="#exercise-4-compare-growth-rates"
-id="toc-exercise-4-compare-growth-rates">Exercise 4: Compare growth
-rates</a></li>
-</ul></li>
-<li><a href="#conclusion" id="toc-conclusion">19. Conclusion</a></li>
-<li><a href="#references" id="toc-references">References</a></li>
-</ul></li>
-</ul>
-</nav>
+<details class="section-drawer"><summary>Browse sections</summary></details>
+<noscript><p class="section-drawer-fallback">Section links need JavaScript. The complete article remains available below.</p></noscript>
 <h1
 id="exact-residual-stream-mixing-through-generalized-orthostochastic-matrices">Exact
 Residual-Stream Mixing Through Generalized Orthostochastic Matrices</h1>

@@ -372,7 +372,7 @@ Here, supervise means watching that work through completion. The loop stops watc
 
 That is the whole pattern I still use. Before stopping, I should say that I did not invent it.
 
-## None of it is mine
+## This is not exacly new
 
 This section explains which parts predated my implementation and what I actually observed.
 
