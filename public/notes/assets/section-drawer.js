@@ -86,6 +86,7 @@
     window.addEventListener(
       "scroll",
       () => {
+
         if (scheduled) return;
         scheduled = true;
         requestAnimationFrame(update);
@@ -107,6 +108,15 @@
     drawer.addEventListener("click", (event) => {
       if (event.target.closest("a")) drawer.open = false;
     });
+
+    const sidebarQuery = window.matchMedia("(min-width: 84rem)");
+    const syncNavigationLayout = () => {
+      drawer.classList.toggle("section-drawer--sidebar", sidebarQuery.matches);
+      if (sidebarQuery.matches) drawer.open = true;
+    };
+
+    sidebarQuery.addEventListener("change", syncNavigationLayout);
+    syncNavigationLayout();
 
     mountProgress();
   };
