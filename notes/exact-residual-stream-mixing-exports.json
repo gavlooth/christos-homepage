@@ -1,0 +1,16 @@
+{
+  "source": "notes/pages/exact-residual-stream-mixing.html",
+  "sha256": "6d7687fa1f2e8f007ca25acf85577cbdb9cbf9eabda43406fd960afd67a24c41",
+  "figures": 4,
+  "equations": 310,
+  "inputs": {
+    "assets/exact-residual-stream-mixing/mhc-block-energy-map.svg": "759ccb8692cc3cea784a9a719a1176a696a9414af73ee2edd0208f1b7fca8cc4",
+    "assets/exact-residual-stream-mixing/mhc-geometric-construction.svg": "f79190f84de75a37d054fc476f959023654e87c6d381faeec61a80321f23206f",
+    "assets/exact-residual-stream-mixing/mhc-routing-paths.svg": "ce97ab8c649270fdd120532c77a06590284b0a1511359c4e0709bc1a59d2a8a4",
+    "assets/exact-residual-stream-mixing/mhc-row-column-budgets.svg": "83fe21a1c3b1438f9d003aee6c006b9829a94782584815a93e8a9655b08bf770"
+  },
+  "outputs": {
+    "assets/exact-residual-stream-mixing.md": "c5f1a3efae33650d8729101a2908096a5421638b9023f13eb64a133b56868d15",
+    "assets/exact-residual-stream-mixing.pdf": "1ae18343837fdc15d8ea57294f7cd33599d20d0d5a69387dfb88b9a68c60806f"
+  }
+}

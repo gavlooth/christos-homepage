@@ -26,22 +26,26 @@ const repoRoot = join(here, "..");
 const webDir = join(repoRoot, "public");
 const notesOutDir = join(webDir, "notes");
 
-// The qubit PDF and Markdown are exports of the hand-edited HTML, not
-// independent manuscripts. Refuse to publish an older downloadable edition.
-const qubitManifestPath = join(here, "qubits-exports.json");
-if (!existsSync(qubitManifestPath)) {
-  throw new Error("Missing qubit exports. Run npm run notes:export:qubits first.");
-}
-const qubitManifest = JSON.parse(readFileSync(qubitManifestPath, "utf8"));
+// Illustrated-reader downloads are exports, not independent manuscripts.
+// Refuse to publish a changed reader with an older downloadable edition.
 const digest = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
-const qubitFiles = {
-  [join(repoRoot, qubitManifest.source)]: qubitManifest.sha256,
-  ...Object.fromEntries(Object.entries(qubitManifest.inputs).map(([path, hash]) => [join(here, path), hash])),
-  ...Object.fromEntries(Object.entries(qubitManifest.outputs).map(([path, hash]) => [join(here, path), hash])),
-};
-for (const [path, expected] of Object.entries(qubitFiles)) {
-  if (!existsSync(path) || digest(path) !== expected) {
-    throw new Error(`Outdated or missing qubit export: ${path}. Run npm run notes:export:qubits.`);
+for (const [manifestName, command] of [
+  ["qubits-exports.json", "npm run notes:export:qubits"],
+  ["exact-residual-stream-mixing-exports.json", "npm run notes:export:readers"],
+  ["delta-nets-exports.json", "npm run notes:export:readers"],
+]) {
+  const manifestPath = join(here, manifestName);
+  if (!existsSync(manifestPath)) throw new Error(`Missing reader exports. Run ${command} first.`);
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+  const files = {
+    [join(repoRoot, manifest.source)]: manifest.sha256,
+    ...Object.fromEntries(Object.entries(manifest.inputs).map(([path, hash]) => [join(here, path), hash])),
+    ...Object.fromEntries(Object.entries(manifest.outputs).map(([path, hash]) => [join(here, path), hash])),
+  };
+  for (const [path, expected] of Object.entries(files)) {
+    if (!existsSync(path) || digest(path) !== expected) {
+      throw new Error(`Outdated or missing reader export: ${path}. Run ${command}.`);
+    }
   }
 }
 mkdirSync(notesOutDir, { recursive: true });

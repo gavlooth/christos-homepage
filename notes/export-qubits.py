@@ -11,6 +11,7 @@ import hashlib
 import json
 import subprocess
 import tempfile
+from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent
 SLUG = 'defects-to-topological-qubits'
@@ -21,7 +22,10 @@ VISUALS = ASSETS / SLUG
 def log(message):
     print(message, flush=True)
 
-def main():
+def main(slug=SLUG, required_phrases=('Assessment I','Assessment II','Assessment III','Annotated bibliography'), manifest_name='qubits-exports.json', command='npm run notes:export:qubits'):
+    SLUG = slug
+    SOURCE = ROOT / 'pages' / (SLUG + '.html')
+    VISUALS = ASSETS / SLUG
     original = SOURCE.read_text()
     source = BeautifulSoup(original, 'html.parser')
     dependencies = {ASSETS / image['src'].removeprefix('/notes/assets/')
@@ -74,7 +78,7 @@ def main():
             img['alt'] = svg.title.get_text(' ',strip=True) if svg.title else f'Assessment diagram {index}'
             svg.replace_with(img)
         for img in markdown_book.select('img[src^="file:"]'):
-            img['src'] = f'{SLUG}/'+img['src'].split('/')[-1]
+            img['src'] = Path(unquote(urlparse(img['src']).path)).relative_to(ASSETS).as_posix()
         equations = {}
         for index, math in enumerate(markdown_book.select('.math')):
             token = f'QBITEXPORTMATH{index:06d}'
@@ -111,7 +115,7 @@ def main():
         assert count_nodes(roundtrip,'Math') == math_count, 'Markdown lost an equation.'
         assert count_nodes(roundtrip,'Image') == figure_count, 'Markdown lost a figure.'
         assert count_nodes(roundtrip,'CodeBlock') == len(book.select('pre')), 'Markdown lost a code block.'
-        md = '<!-- Generated from notes/pages/'+SLUG+'.html by npm run notes:export:qubits. Edit the HTML source, not this export. -->\n\n'+md
+        md = '<!-- Generated from notes/pages/'+SLUG+'.html by '+command+'. Edit the HTML source, not this export. -->\n\n'+md
         (temporary / 'book.md').write_text(md)
 
         # Use browser math rendering for print, preserving the web edition's
@@ -137,8 +141,9 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt}mjx-container{over
         subprocess.run(['node',str(ROOT/'print-qubits.mjs'),str(temporary/'book.html'),str(temporary/'book.pdf')],check=True)
         subprocess.run(['pdfinfo',str(temporary/'book.pdf')],check=True)
         text = subprocess.check_output(['pdftotext',str(temporary/'book.pdf'),'-']).decode()
-        for phrase in ['Assessment I','Assessment II','Assessment III','Annotated bibliography']:
-            assert phrase.lower() in text.lower(), f'PDF missing {phrase}'
+        normalized_text = ' '.join(text.split()).lower()
+        for phrase in required_phrases:
+            assert phrase.lower() in normalized_text, f'PDF missing {phrase}'
         assert SOURCE.read_text() == original, 'Manuscript changed during export; rerun the export.'
         for name,digest in input_hashes.items():
             assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest() == digest, 'Illustration changed during export; rerun the export.'
@@ -149,7 +154,15 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt}mjx-container{over
         outputs = [ASSETS/(SLUG+'.md'),ASSETS/(SLUG+'.pdf'),*[VISUALS/name for name in svg_outputs]]
         manifest = {'source':str(SOURCE.relative_to(ROOT.parent)),'sha256':hashlib.sha256(original.encode()).hexdigest(),'figures':figure_count,'equations':math_count,
                     'inputs':input_hashes,'outputs':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in outputs}}
-        (ROOT/'qubits-exports.json').write_text(json.dumps(manifest,indent=2)+'\n')
+        (ROOT/manifest_name).write_text(json.dumps(manifest,indent=2)+'\n')
         log('Installed matching Markdown, PDF, diagram exports, and freshness manifest. Run npm run build to publish locally.')
 
-if __name__ == '__main__': main()
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('reader',nargs='?',choices=['defects-to-topological-qubits','exact-residual-stream-mixing','delta-nets'],default='defects-to-topological-qubits')
+    args = parser.parse_args()
+    if args.reader == 'defects-to-topological-qubits': main()
+    else:
+        phrases = ('Build the mixer from orthogonal blocks','Interpret spectra and experimental evidence','References') if args.reader == 'exact-residual-stream-mixing' else ('Compile a term and calculate its metadata','Add cleanup, scheduling, and read-back','A short glossary')
+        main(args.reader,phrases,args.reader+'-exports.json','npm run notes:export:readers')
