@@ -1,0 +1,24 @@
+<svg aria-labelledby="calculation-stages-title calculation-stages-desc" role="img" viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg"><title id="calculation-stages-title">Four calculations, four different questions</title><desc id="calculation-stages-desc">A sequence connects two-defect screening, one complete cluster, an encoded plaquette, and a finite patch. Each stage tests a distinct assumption before the next larger model is attempted. Pair spectra do not establish an encoding, and an encoded four-body coefficient does not establish a topological phase.</desc><defs><style>
+text{font-family:system-ui,-apple-system,sans-serif;fill:#193447}
+.title{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.label{font-size:20px;font-weight:650}
+.small{font-size:17px;fill:#536976}
+.tiny{font-size:15px;fill:#536976}
+.teal{fill:#087d79}.rust{fill:#b55235}.muted{fill:#536976}
+.box{fill:#f3f7f6;stroke:#cddcd9;stroke-width:1.5}
+.line{stroke:#087d79;stroke-width:4;fill:none;stroke-linecap:round}
+.fine{stroke:#718995;stroke-width:2;fill:none}
+.level{stroke:#193447;stroke-width:4;stroke-linecap:round}
+</style><marker id="calculation-stages-arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M0 0L10 5L0 10Z" fill="#718995"></path></marker></defs><rect fill="#fff" height="440" rx="12" width="900"></rect>
+<text class="title" x="36" y="43">Each calculation earns the next step</text>
+<text class="small" x="36" y="72">Increase system size only after the earlier model passes its own checks.</text>
+<g class="box"><rect height="251" rx="10" width="192" x="30" y="105"></rect><rect height="251" rx="10" width="192" x="246" y="105"></rect><rect height="251" rx="10" width="192" x="462" y="105"></rect><rect height="251" rx="10" width="192" x="678" y="105"></rect></g>
+<g class="fine" marker-end="url(#calculation-stages-arrow)"><path d="M225 229H240"></path><path d="M441 229H456"></path><path d="M657 229H672"></path></g>
+<g class="small teal"><text x="49" y="138">01 / PAIR</text><text x="265" y="138">02 / CLUSTER</text><text x="481" y="138">03 / PLAQUETTE</text><text x="697" y="138">04 / PATCH</text></g>
+<g class="line"><path d="M81 180H170"></path><path d="M342 168L304 223L380 223Z"></path><path d="M514 175H602V227H514Z"></path></g>
+<g fill="#087d79"><circle cx="81" cy="180" r="9"></circle><circle cx="170" cy="180" r="9"></circle><circle cx="342" cy="168" r="8"></circle><circle cx="304" cy="223" r="8"></circle><circle cx="380" cy="223" r="8"></circle><circle cx="514" cy="175" r="8"></circle><circle cx="602" cy="175" r="8"></circle><circle cx="514" cy="227" r="8"></circle><circle cx="602" cy="227" r="8"></circle></g>
+<path class="fine" d="M725 168H826M725 193H826M725 218H826M725 168V218M750 168V218M776 168V218M801 168V218M826 168V218"></path>
+<g class="label"><text x="49" y="270">Useful coupling?</text><text x="265" y="270">Isolated doublet?</text><text x="481" y="270">Right operator?</text><text x="697" y="270">Correct phase?</text></g>
+<g class="small"><text x="49" y="305">Check spectrum</text><text x="49" y="329">and controls.</text><text x="265" y="305">Check leakage</text><text x="265" y="329">and disorder.</text><text x="481" y="305">Fit all competing</text><text x="481" y="329">Pauli terms.</text><text x="697" y="305">Check gap, sectors,</text><text x="697" y="329">and size scaling.</text></g>
+<text class="small" x="36" y="404">A positive result validates one link in the argument. It does not skip the remaining links.</text>
+</svg>

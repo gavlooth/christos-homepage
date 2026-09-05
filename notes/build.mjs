@@ -17,6 +17,7 @@ import {
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { marked } from "marked";
+import { createHash } from "node:crypto";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const postsDir = join(here, "posts");
@@ -24,6 +25,25 @@ const pagesDir = join(here, "pages");
 const repoRoot = join(here, "..");
 const webDir = join(repoRoot, "public");
 const notesOutDir = join(webDir, "notes");
+
+// The qubit PDF and Markdown are exports of the hand-edited HTML, not
+// independent manuscripts. Refuse to publish an older downloadable edition.
+const qubitManifestPath = join(here, "qubits-exports.json");
+if (!existsSync(qubitManifestPath)) {
+  throw new Error("Missing qubit exports. Run npm run notes:export:qubits first.");
+}
+const qubitManifest = JSON.parse(readFileSync(qubitManifestPath, "utf8"));
+const digest = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
+const qubitFiles = {
+  [join(repoRoot, qubitManifest.source)]: qubitManifest.sha256,
+  ...Object.fromEntries(Object.entries(qubitManifest.inputs).map(([path, hash]) => [join(here, path), hash])),
+  ...Object.fromEntries(Object.entries(qubitManifest.outputs).map(([path, hash]) => [join(here, path), hash])),
+};
+for (const [path, expected] of Object.entries(qubitFiles)) {
+  if (!existsSync(path) || digest(path) !== expected) {
+    throw new Error(`Outdated or missing qubit export: ${path}. Run npm run notes:export:qubits.`);
+  }
+}
 mkdirSync(notesOutDir, { recursive: true });
 
 // Hand-authored notes whose layouts are too specialized for the Markdown

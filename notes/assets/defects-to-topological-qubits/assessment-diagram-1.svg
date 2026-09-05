@@ -1,0 +1,34 @@
+<svg aria-labelledby="cluster-levels-title cluster-levels-desc" role="img" viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg"><title id="cluster-levels-title">One cluster, two different gaps</title><desc id="cluster-levels-desc">Three physical two-level defects give eight joint states. Retaining the two lowest energy levels defines an encoded qubit. The internal doublet splitting is E1 minus E0; the leakage gap is E2 minus E1. The six excluded states remain relevant through leakage and virtual processes.</desc><defs><style>
+text{font-family:system-ui,-apple-system,sans-serif;fill:#193447}
+.title{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.label{font-size:20px;font-weight:650}
+.small{font-size:17px;fill:#536976}
+.tiny{font-size:15px;fill:#536976}
+.teal{fill:#087d79}.rust{fill:#b55235}.muted{fill:#536976}
+.box{fill:#f3f7f6;stroke:#cddcd9;stroke-width:1.5}
+.line{stroke:#087d79;stroke-width:4;fill:none;stroke-linecap:round}
+.fine{stroke:#718995;stroke-width:2;fill:none}
+.level{stroke:#193447;stroke-width:4;stroke-linecap:round}
+</style><marker id="cluster-levels-arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M0 0L10 5L0 10Z" fill="#718995"></path></marker></defs><rect fill="#fff" height="440" rx="12" width="900"></rect>
+<text class="title" x="36" y="44">One cluster, two different gaps</text>
+<rect class="box" height="310" rx="12" width="310" x="30" y="72"></rect>
+<text class="label" text-anchor="middle" x="185" y="108">Three physical qubits</text>
+<path class="line" d="M185 145L105 263L265 263Z"></path>
+<g fill="#def1ee" stroke="#087d79" stroke-width="3"><circle cx="185" cy="145" r="20"></circle><circle cx="105" cy="263" r="20"></circle><circle cx="265" cy="263" r="20"></circle></g>
+<text class="label" text-anchor="middle" x="185" y="318">2³ = 8 joint states</text>
+<text class="small" text-anchor="middle" x="185" y="348">Diagonalize their Hamiltonian.</text>
+<path class="fine" d="M363 218H425" marker-end="url(#cluster-levels-arrow)"></path>
+<path class="fine" d="M458 372V94" marker-end="url(#cluster-levels-arrow)"></path>
+<text class="small" x="447" y="83">Energy</text>
+<path class="level" d="M495 117H637M495 137H637M495 157H637M495 177H637M495 197H637M495 217H637" opacity=".48"></path>
+<text class="label" x="658" y="146">Excluded states</text>
+<text class="small" x="658" y="173">Six states outside</text><text class="small" x="658" y="197">the chosen encoding</text>
+<rect fill="#def1ee" height="62" rx="8" width="164" x="482" y="314"></rect>
+<path class="line" d="M495 335H637M495 355H637"></path>
+<text class="label teal" x="662" y="336">Retained doublet</text>
+<text class="small" x="662" y="362">One encoded qubit</text>
+<path class="fine" d="M608 229V322" marker-end="url(#cluster-levels-arrow)" marker-start="url(#cluster-levels-arrow)"></path>
+<text class="label rust" x="645" y="268">Leakage gap</text>
+<text class="small" x="645" y="294">ΔC = E2 − E1</text>
+<text class="small" x="35" y="420">The splitting inside the doublet, δC = E1 − E0, is a separate quantity.</text>
+</svg>

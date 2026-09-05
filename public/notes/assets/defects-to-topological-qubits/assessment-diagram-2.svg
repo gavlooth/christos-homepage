@@ -1,0 +1,28 @@
+<svg aria-labelledby="perturbation-scale-title perturbation-scale-desc" role="img" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg"><title id="perturbation-scale-title">Isolation suppresses the interactions generated virtually</title><desc id="perturbation-scale-desc">A log-log plot shows the relative effective interaction scale for second-order and fourth-order processes with unit path coefficient. As epsilon decreases from 0.2 to 0.01, second-order interactions scale as epsilon and fourth-order interactions as epsilon cubed. At epsilon 0.1 the fourth-order scale is a hundred times smaller than the second-order scale at the same microscopic interaction.</desc><defs><style>
+text{font-family:system-ui,-apple-system,sans-serif;fill:#193447}
+.title{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.label{font-size:20px;font-weight:650}
+.small{font-size:17px;fill:#536976}
+.tiny{font-size:15px;fill:#536976}
+.teal{fill:#087d79}.rust{fill:#b55235}.muted{fill:#536976}
+.box{fill:#f3f7f6;stroke:#cddcd9;stroke-width:1.5}
+.line{stroke:#087d79;stroke-width:4;fill:none;stroke-linecap:round}
+.fine{stroke:#718995;stroke-width:2;fill:none}
+.level{stroke:#193447;stroke-width:4;stroke-linecap:round}
+</style><marker id="perturbation-scale-arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M0 0L10 5L0 10Z" fill="#718995"></path></marker></defs><rect fill="#fff" height="460" rx="12" width="900"></rect>
+<text class="title" x="36" y="42">Isolation has a cost in interaction strength</text>
+<text class="small" x="36" y="69">Relative effective scale, Jeff / v · unit path coefficient · logarithmic axes</text>
+<g stroke="#dce5e5" stroke-width="1"><path d="M120 105H620M120 150H620M120 195H620M120 240H620M120 285H620M120 330H620"></path><path d="M120 90V330M236 90V330M390 90V330M505 90V330M620 90V330"></path></g>
+<path class="fine" d="M120 85V330H632"></path>
+<g class="small" text-anchor="end"><text x="105" y="110">10⁻¹</text><text x="105" y="155">10⁻²</text><text x="105" y="200">10⁻³</text><text x="105" y="245">10⁻⁴</text><text x="105" y="290">10⁻⁵</text><text x="105" y="335">10⁻⁶</text></g>
+<path class="line" d="M120 150L620 91.5"></path>
+<path d="M120 330L620 154.4" fill="none" stroke="#b55235" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="505" cy="105" fill="#087d79" r="6"></circle><circle cx="505" cy="195" fill="#b55235" r="6"></circle>
+<path class="fine" d="M521 113V187" marker-end="url(#perturbation-scale-arrow)" marker-start="url(#perturbation-scale-arrow)"></path>
+<g class="small" text-anchor="middle"><text x="120" y="356">0.01</text><text x="236" y="356">0.02</text><text x="390" y="356">0.05</text><text x="505" y="356">0.10</text><text x="620" y="356">0.20</text></g>
+<text class="label" text-anchor="middle" x="370" y="391">Expansion ratio ε = v / ΔC</text>
+<text class="label teal" x="663" y="116">Second order</text><text class="small" x="663" y="144">Jeff / v ≈ ε</text>
+<text class="label rust" x="663" y="194">Fourth order</text><text class="small" x="663" y="222">Jeff / v ≈ ε³</text>
+<text class="label" x="663" y="277">At ε = 0.1</text><text class="small" x="663" y="306">100× between the</text><text class="small" x="663" y="330">two effective scales</text>
+<text class="small" x="36" y="430">Stronger isolation ← smaller ε</text><text class="small" text-anchor="end" x="864" y="430">larger ε → stronger virtual mixing</text>
+</svg>

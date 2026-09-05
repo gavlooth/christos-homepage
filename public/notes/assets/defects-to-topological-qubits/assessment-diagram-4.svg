@@ -1,0 +1,23 @@
+<svg aria-labelledby="four-cluster-model-title four-cluster-model-desc" role="img" viewBox="0 0 900 530" xmlns="http://www.w3.org/2000/svg"><title id="four-cluster-model-title">Twelve physical qubits become four encoded qubits</title><desc id="four-cluster-model-desc">Four triangular clusters sit on a loop. Each triangle has three physical qubits. Retaining one doublet per triangle gives four encoded qubits, a sixteen-dimensional encoded space. A useful four-body term must be compared with every lower-weight interaction and with leakage. Dotted diagonals illustrate additional physical couplings; the drawing is not an exhaustive bond graph.</desc><defs><style>
+text{font-family:system-ui,-apple-system,sans-serif;fill:#193447}
+.title{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.label{font-size:20px;font-weight:650}
+.small{font-size:17px;fill:#536976}
+.tiny{font-size:15px;fill:#536976}
+.teal{fill:#087d79}.rust{fill:#b55235}.muted{fill:#536976}
+.box{fill:#f3f7f6;stroke:#cddcd9;stroke-width:1.5}
+.line{stroke:#087d79;stroke-width:4;fill:none;stroke-linecap:round}
+.fine{stroke:#718995;stroke-width:2;fill:none}
+.level{stroke:#193447;stroke-width:4;stroke-linecap:round}
+</style><marker id="four-cluster-model-arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M0 0L10 5L0 10Z" fill="#718995"></path></marker></defs><rect fill="#fff" height="530" rx="12" width="900"></rect>
+<text class="title" x="36" y="43">Four triangles test the interaction mechanism</text>
+<rect class="box" height="387" rx="12" width="437" x="30" y="76"></rect>
+<path d="M160 161H347V333H160Z" fill="none" stroke="#708a96" stroke-width="3"></path>
+<path d="M160 161L347 333M347 161L160 333" opacity=".8" stroke="#b55235" stroke-dasharray="7 7" stroke-width="2"></path>
+<g transform="translate(150 154)"><path class="line" d="M0 -35L-38 30L38 30Z"></path><g fill="#def1ee" stroke="#087d79" stroke-width="3"><circle cy="-35" r="10"></circle><circle cx="-38" cy="30" r="10"></circle><circle cx="38" cy="30" r="10"></circle></g><text class="label" text-anchor="middle" y="70">Cluster A</text></g><g transform="translate(350 154)"><path class="line" d="M0 -35L-38 30L38 30Z"></path><g fill="#def1ee" stroke="#087d79" stroke-width="3"><circle cy="-35" r="10"></circle><circle cx="-38" cy="30" r="10"></circle><circle cx="38" cy="30" r="10"></circle></g><text class="label" text-anchor="middle" y="70">Cluster B</text></g><g transform="translate(150 341)"><path class="line" d="M0 -35L-38 30L38 30Z"></path><g fill="#def1ee" stroke="#087d79" stroke-width="3"><circle cy="-35" r="10"></circle><circle cx="-38" cy="30" r="10"></circle><circle cx="38" cy="30" r="10"></circle></g><text class="label" text-anchor="middle" y="70">Cluster D</text></g><g transform="translate(350 341)"><path class="line" d="M0 -35L-38 30L38 30Z"></path><g fill="#def1ee" stroke="#087d79" stroke-width="3"><circle cy="-35" r="10"></circle><circle cx="-38" cy="30" r="10"></circle><circle cx="38" cy="30" r="10"></circle></g><text class="label" text-anchor="middle" y="70">Cluster C</text></g>
+<text class="small" x="515" y="113">FULL TWO-LEVEL MODEL</text><text class="title" x="515" y="151">12 physical qubits</text><text class="small" x="515" y="182">2¹² = 4,096 basis states</text>
+<path class="fine" d="M538 203V236" marker-end="url(#four-cluster-model-arrow)"></path>
+<text class="small" x="515" y="269">ONE DOUBLET PER TRIANGLE</text><text class="title teal" x="515" y="307">4 encoded qubits</text><text class="small" x="515" y="338">2⁴ = 16 encoded states</text>
+<text class="label" x="515" y="393">Candidate: K4 ZA ZB ZC ZD</text><text class="small" x="515" y="423">Compare with all other Pauli terms.</text>
+<text class="small" x="36" y="506">Illustrative connections only: the microscopic calculation must include all physical dipolar bonds.</text>
+</svg>

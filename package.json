@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node notes/build.mjs"
+    "build": "node notes/build.mjs",
+    "notes:export:qubits": "python3 notes/export-qubits.py"
   },
   "dependencies": {
     "marked": "^14.1.3"
