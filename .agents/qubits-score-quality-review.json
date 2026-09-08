@@ -1,0 +1,74 @@
+{
+  "status": "personal_targeted_sample_only",
+  "scope": "Five difficult sentences, selected intentionally rather than statistically; no subagent review used. Unfinished scoring not resumed.",
+  "integrity": {
+    "records": 11407,
+    "unique_ids": 11407,
+    "bad_text_hashes": 0,
+    "bad_score_ranges": 0,
+    "source_sha256": "704021172f8c15bd25222428bd0ef59bb0b3bf47130e224854cc0aac3f61d203"
+  },
+  "findings": [
+    {
+      "id": "s000061",
+      "readability": 1,
+      "rigor": 2,
+      "verdict": "Agree: unresolved amplitudes/outcomes/probability/classical comparison; Born rule does not assign amplitudes.",
+      "text": "The Born rule attaches a complex amplitude to each quantum outcome and converts it to a probability through its squared magnitude, generalizing the classical assignment of nonnegative numbers summing to one.",
+      "source_lines": [
+        212
+      ],
+      "agent_readability": 1,
+      "agent_rigor": 2
+    },
+    {
+      "id": "s001429",
+      "readability": 3,
+      "rigor": 4,
+      "verdict": "Too harsh on readability: source2539–2543 explicitly explains preparation and spin-dependent brightness before this summary. Still combines two operational roles.",
+      "text": "A single green laser drives optical spin preparation by accumulating population in \\(m_s=0\\) and enables statistical spin readout by mapping spin projection onto fluorescence brightness.",
+      "source_lines": [
+        2544
+      ],
+      "agent_readability": 2,
+      "agent_rigor": 4
+    },
+    {
+      "id": "s001912",
+      "readability": 3,
+      "rigor": 5,
+      "verdict": "Readability5 too generous: two nested relative clauses interrupt the main warning, carrying two technical definitions in parallel. Necessary scientific negation is not the problem.",
+      "text": "A long longitudinal relaxation time \\(T_1\\), which characterizes the decay of spin-state populations toward thermal equilibrium, must not be interpreted as a long transverse coherence time \\(T_2\\), which characterizes the loss of relative phase coherence.",
+      "source_lines": [
+        3358
+      ],
+      "agent_readability": 5,
+      "agent_rigor": 5
+    },
+    {
+      "id": "s003531",
+      "readability": 3,
+      "rigor": 4,
+      "verdict": "Readability3 defensible; rigor5 too generous for imprecise wording about steps/order. Source7394–7398 correctly states F^-1 R F, but sentence does not explicitly distinguish different operators from noncommuting operators.",
+      "text": "A basis transformation followed by unequal channel-dependent phases generally fails to commute with the same steps in a different order, so exchanges of different neighboring pairs generate different rotations of the encoded state.",
+      "source_lines": [
+        7399
+      ],
+      "agent_readability": 3,
+      "agent_rigor": 5
+    },
+    {
+      "id": "s005497",
+      "readability": 3,
+      "rigor": 1,
+      "verdict": "Rigor1 justified: Levin–Wen is not necessary for anyons. Readability1 rationale ignores prior treatment of quasiparticles, braids and lattice models; at Chapter24 these are not all new notions.",
+      "text": "An anyon is an emergent quasiparticle in two spatial dimensions whose exchange behavior can depart from boson or fermion statistics, and it appears only when the lattice Hamiltonian realizes the Levin–Wen construction.",
+      "source_lines": [
+        11995
+      ],
+      "agent_readability": 1,
+      "agent_rigor": 1
+    }
+  ],
+  "conclusion": "Useful defect-finding, inconsistent readability calibration; not reliable as an accepted final audit. Scores are judgments, not measured accuracy. Prior80.4% means processed/sample-checked coverage, not80.4% validated judgments."
+}

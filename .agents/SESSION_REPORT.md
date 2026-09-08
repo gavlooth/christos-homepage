@@ -74,3 +74,14 @@ Signature: openai-codex/gpt-6-astra
 - Version control: save this partial audit as its own described change using an increased per-command new-file snapshot allowance for the requested audit/handoff artifacts; do not ignore them. Required `jj describe` follows immediately. No push requested or performed for this audit.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-08 — Personal spot-check of sentence-score quality
+
+- Objective: evaluate agent scoring quality. User explicitly prohibited subagents and requested a personal sample of difficult sentences. Two specialist reviewers failed before starting; two replacement workers were cancelled immediately on that instruction. No subagent findings were used.
+- Scope/coverage: personally checked five targeted sentences and surrounding source: s000061, s001429, s001912, s003531, s005497. This is 100% of the chosen five-item check, not a representative estimate of all scores. Saved evidence and proposed ratings in `.agents/qubits-score-quality-review.json`; original scores/manuscript unchanged.
+- Findings: Born-rule criticism is sound. NV laser summary was scored too harshly without crediting the preceding physical explanation. T1/T2 sentence was scored too generously despite nested definitions interrupting its warning. Braid sentence has plausible readability scoring but an overly generous rigor score for imprecise operator-order wording. Levin–Wen exclusivity is a real scientific error, but its readability rationale incorrectly treats established Chapter24 concepts as new.
+- Verification: Eval reloaded all 11,407 saved records: unique IDs, no invalid score ranges, no text-hash mismatches, source SHA unchanged. Read actual source context at lines2530–2547,3348–3363,7380–7404,11987–11998. No build/tests needed for this read-only content investigation.
+- Conclusion: useful defect-finding, inconsistent readability calibration; do not treat current ratings as a reliably accepted final audit. The prior80.4% figure measures processed and sample-checked coverage, not correctness of80.4% of judgments. No population error rate inferred from this targeted sample.
+- Next action: if authorized, correct context handling and calibrate on a small personally reviewed batch before continuing. Full scoring remains paused. Required `jj describe` follows immediately; no push.
+
+Signature: openai-codex/gpt-6-astra
