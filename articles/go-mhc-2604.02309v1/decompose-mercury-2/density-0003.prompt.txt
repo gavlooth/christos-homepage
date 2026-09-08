@@ -1,0 +1,248 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000103",
+    "kind": "definition",
+    "text": "Φ_{d,s}(Q)_{ij} equals the average squared Frobenius norm of block Q_ij, i.e., (1/s) Σ_{k,l}(Q_ij)_{kl}^2."
+  },
+  {
+    "id": "n0000109",
+    "kind": "definition",
+    "text": "𝒫go maps learned parameters (αlres,Wlres,blres) to a d×d mixing matrix using generalized orthostochastic matrices."
+  },
+  {
+    "id": "n0000110",
+    "kind": "topic",
+    "text": "### 3.2 Generalized Orthostochastic Matrices"
+  },
+  {
+    "id": "n0000111",
+    "kind": "claim",
+    "text": "Φ_{d,s}(Q) ∈ B_d for all Q ∈ Q(ds) and s"
+  },
+  {
+    "id": "n0000112",
+    "kind": "claim",
+    "text": "The set {Φ_{d,s}(Q): Q ∈ Q(ds)} converges to B_d as s→∞"
+  },
+  {
+    "id": "n0000113",
+    "kind": "claim",
+    "text": "Parameter s determines the rank of the block-wise Frobenius projection"
+  },
+  {
+    "id": "n0000114",
+    "kind": "claim",
+    "text": "Larger s provides a more faithful representation of the polytope interior"
+  },
+  {
+    "id": "n0000115",
+    "kind": "claim",
+    "text": "At s=1 we recover the orthostochastic set by definition"
+  },
+  {
+    "id": "n0000116",
+    "kind": "claim",
+    "text": "The geometry of the orthostochastic set is a concave cycloid that meets the permutation vertices of B_d but does not occupy the interior when d>2"
+  },
+  {
+    "id": "n0000117",
+    "kind": "claim",
+    "text": "Theorem 2.8 guarantees convergence to the full polytope B_d as s→∞ with monotonically increasing volume"
+  },
+  {
+    "id": "n0000118",
+    "kind": "claim",
+    "text": "We choose s=2 as the default variant of go-mHC"
+  },
+  {
+    "id": "n0000119",
+    "kind": "claim",
+    "text": "We show comparisons with s=1 and s=3"
+  },
+  {
+    "id": "n0000120",
+    "kind": "claim",
+    "text": "Implications of s on geometry are discussed in appendix D"
+  },
+  {
+    "id": "n0000121",
+    "kind": "claim",
+    "text": "Figure 2 illustrates the Karpelevič region – the spectrum of stochastic matrices – for B_d with d=2 to d=5"
+  },
+  {
+    "id": "n0000122",
+    "kind": "claim",
+    "text": "The black circle corresponds to the unit disc and red points are eigenvalues of permutation matrices"
+  },
+  {
+    "id": "n0000123",
+    "kind": "claim",
+    "text": "The affine space of doubly stochastic matrices is strictly contained within the volume of the blue region, except for B_2 where the space is a line"
+  },
+  {
+    "id": "n0000124",
+    "kind": "claim",
+    "text": "The spectrum of B_d is the union of the spectrum of B_{d-1} and the polygon with d sides inscribed on the unit disc"
+  },
+  {
+    "id": "n0000125",
+    "kind": "claim",
+    "text": "3.3 Learning the s-Orthostochastic Manifold"
+  },
+  {
+    "id": "n0000130",
+    "kind": "claim",
+    "text": "skew maps vectors of size ds(ds-1)/2 to ds×ds skew-symmetric matrix A_l (A_l^T = -A_l)"
+  },
+  {
+    "id": "n0000131",
+    "kind": "claim",
+    "text": "Equation [8] uses Cayley transform to map A_l to special orthogonal matrix Q_l (Q_l^T Q_l = I)"
+  },
+  {
+    "id": "n0000132",
+    "kind": "claim",
+    "text": "Φ_{d,s} from equation [6] maps Q_l to exactly doubly stochastic matrix H_l^res ∈ B_d (equation [9])"
+  },
+  {
+    "id": "n0000134",
+    "kind": "claim",
+    "text": "Cayley transform generates matrices with det(Q_l)=+1"
+  },
+  {
+    "id": "n0000135",
+    "kind": "claim",
+    "text": "This is sufficient for full coverage because orthostochastic transform takes the Frobenius norm squared of block matrices and removes information about reflections, keeping only positive determinant solutions"
+  },
+  {
+    "id": "n0000136",
+    "kind": "claim",
+    "text": "Advantageous due to path-connectedness of the special orthogonal group, the group of all pure rotations in ℝ^d"
+  },
+  {
+    "id": "n0000137",
+    "kind": "claim",
+    "text": "See appendix B.7 for proofs"
+  },
+  {
+    "id": "n0000138",
+    "kind": "claim",
+    "text": "Cayley transform maps learned parameters onto Q_l, bypassing need for softmax activation"
+  },
+  {
+    "id": "n0000139",
+    "kind": "claim",
+    "text": "Cayley transform is norm-preserving, ensuring numerical stability without additional normalization"
+  },
+  {
+    "id": "n0000140",
+    "kind": "claim",
+    "text": "Replacing softmax with Cayley transform may accelerate convergence by avoiding saturation regions of exponential function (section 5)"
+  },
+  {
+    "id": "n0000141",
+    "kind": "claim",
+    "text": "Mitigates vanishing gradients (appendix B.10) and maintains well-conditioned Jacobian"
+  },
+  {
+    "id": "n0000142",
+    "kind": "claim",
+    "text": "Vanishing gradients trade-off how close mixing matrices near polytope boundary can be learned and ability to unlearn them and return to barycenter"
+  },
+  {
+    "id": "n0000143",
+    "kind": "claim",
+    "text": "Xie et al. (2026) use Amax Gain Magnitude (AGM) to quantify worst-case amplification for residual hyper-connection product H_{l→L}^{res} = ∏_{i=1}^{L-l} H_{L-i}^{res}"
+  },
+  {
+    "id": "n0000144",
+    "kind": "source",
+    "text": "We write out our full projection, replacing equation [5](#S3.E5 \"Equation 5 ‣ 3.1 Hyper-Connections ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\"), below:"
+  },
+  {
+    "id": "n0000146",
+    "kind": "claim",
+    "text": "We do not rely on the AGM metric because the exactness of P_go makes it equal to 1 by definition."
+  },
+  {
+    "id": "n0000147",
+    "kind": "claim",
+    "text": "B_d is closed under matrix multiplication, so H_{l→L}^{res} remains doubly stochastic regardless of depth."
+  },
+  {
+    "id": "n0000148",
+    "kind": "claim",
+    "text": "go-mHC, mHC-lite, and KromHC all achieve the same performance on the AGM metric, so we evaluate expressivity and convergence as additional metrics."
+  },
+  {
+    "id": "n0000149",
+    "kind": "claim",
+    "text": "Expressivity"
+  },
+  {
+    "id": "n0000151",
+    "kind": "claim",
+    "text": "When s=1 and d=3, the model learns maps covering the full spectral region within the Karpelevič region of B_3\\B_2 up to error ε(s=1), and also covers real eigenvalues on interval [-1,1] (Karpelevič region of B_2)."
+  },
+  {
+    "id": "n0000152",
+    "kind": "claim",
+    "text": "When s=2, the model covers a larger region with a smaller spectral gap, i.e., ε(s=2) < ε(s=1)."
+  },
+  {
+    "id": "n0000153",
+    "kind": "claim",
+    "text": "Bounding the spectrum stabilizes gradients, as discussed in Appendix B.8 and prior work."
+  },
+  {
+    "id": "n0000154",
+    "kind": "claim",
+    "text": "We evaluate expressivity by using the spectrum of matrices constructed with P_M as a surrogate, measuring how many unique matrices can be spanned by their eigenvalues."
+  },
+  {
+    "id": "n0000155",
+    "kind": "claim",
+    "text": "Exact volume of B_d is unknown, so we rely on surrogate measures for expressivity of doubly stochastic matrices."
+  },
+  {
+    "id": "n0000156",
+    "kind": "claim",
+    "text": "Spectral reach of H^{res} matrices constructed using method M is defined as the set {λ∈ℂ | H^{res} v = λ v, H^{res}=P_M(...), v≠0}."
+  },
+  {
+    "id": "n0000158",
+    "kind": "claim",
+    "text": "Spectral Reach of B_d Subsets"
+  },
+  {
+    "id": "n0000159",
+    "kind": "claim",
+    "text": "A mapping M with high spectral reach generates matrices that span a larger volume of the Karpelevič region, the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices."
+  },
+  {
+    "id": "n0000160",
+    "kind": "claim",
+    "text": "The Karpelevič region is defined as the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices."
+  },
+  {
+    "id": "n0000161",
+    "kind": "claim",
+    "text": "Its boundary is defined by algebraic curves connecting the roots of unity."
+  },
+  {
+    "id": "n0000173",
+    "kind": "evidence",
+    "text": "|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E10.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>fwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>j</mi></munder><mprescripts /><mi>i</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,</annotation></semantics></math> --> AGMfwd​(ℋl→Lres)=max⁡∑ji⁡|(ℋl→Lres)i​j|,\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|, |  | (10) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |\n|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E11.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>bwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>i</mi></munder><mprescripts /><mi>j</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo lspace=\"0em\">.</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.</annotation></semantics></math> --> AGMbwd​(ℋl→Lres)=max⁡∑ij⁡|(ℋl→Lres)i​j|.\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|. |  | (11) |"
+  },
+  {
+    "id": "n0000174",
+    "kind": "source",
+    "text": "![Refer to caption](2604.02309v1/spectra_numerics_d_eq_3_ours.png)"
+  }
+]

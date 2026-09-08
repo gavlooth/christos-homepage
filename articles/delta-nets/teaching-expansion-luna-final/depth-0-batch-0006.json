@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 6,
+  "items": [
+    {
+      "recordId": "teach-n0000727",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "When two replicators operate at different levels, their operations commute: applying one and then the other gives the same result as applying them in the opposite order.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "intuition",
+          "basis": "source",
+          "text": "These differently leveled replicators therefore do not annihilate one another; instead, neither operation cancels the other, and their order of application does not affect the outcome.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

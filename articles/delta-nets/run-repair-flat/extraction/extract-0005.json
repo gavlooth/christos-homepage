@@ -1,0 +1,1645 @@
+{
+  "nodes": [
+    {
+      "kind": "topic",
+      "text": "## Reduction needs housekeeping and a schedule.",
+      "sourceUnitIds": [
+        "u000318"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The full algorithm is more than the interaction core. It adds canonicalization—cleanup rewrites that restore the special term-like net shape—and, for the nonlinear systems, a global leftmost-outermost schedule.",
+      "sourceUnitIds": [
+        "u000319"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 6.1 Canonical and proper are different states",
+      "sourceUnitIds": [
+        "u000320"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Translation produces a canonical net: the standard shape the reverse translation knows how to read. After zero or more core interactions you have a proper net—any intermediate shape reachable during reduction. Canonicalization is the cleanup that walks a proper net back to canonical form.",
+      "sourceUnitIds": [
+        "u000321"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "State | Meaning in the paper | Why a reader should care | |",
+      "sourceUnitIds": [
+        "u000322"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Canonical | Directly produced by the φ translation and in the special normal shape the back-translation expects. | It is the stable, term-like representation. | |",
+      "sourceUnitIds": [
+        "u000323"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Proper | Reachable from a canonical net by zero or more Δ interactions. | It is the broader space where reduction does its work. | |",
+      "sourceUnitIds": [
+        "u000324"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 6.2 Erasure needs a root-reachability sweep",
+      "sourceUnitIds": [
+        "u000325"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "In ΔA and ΔK, an eraser can leave disconnected subnets—smaller graph regions—behind. Erasure canonicalization gathers that unreachable material in one reachability sweep:",
+      "sourceUnitIds": [
+        "u000326"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A",
+      "sourceUnitIds": [
+        "u000327"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Mark from the root",
+      "sourceUnitIds": [
+        "u000328"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Walk parent–child wires from the root and mark every node you reach.",
+      "sourceUnitIds": [
+        "u000329"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "B",
+      "sourceUnitIds": [
+        "u000330"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Discard what was not marked",
+      "sourceUnitIds": [
+        "u000331"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000318",
+        "u000319",
+        "u000320",
+        "u000321",
+        "u000322",
+        "u000323",
+        "u000324",
+        "u000325",
+        "u000326",
+        "u000327",
+        "u000328",
+        "u000329",
+        "u000330",
+        "u000331"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-01 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Delete the unmarked nodes. Wires that still touch them end in erasers instead.",
+      "sourceUnitIds": [
+        "u000332"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "C",
+      "sourceUnitIds": [
+        "u000333"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Choose the space/time trade-off",
+      "sourceUnitIds": [
+        "u000334"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Run the sweep at the end, or earlier to save space. When memory matters most, the paper recommends it after every application of an abstraction that ignores its argument.",
+      "sourceUnitIds": [
+        "u000335"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "1 · Proper net with a detached island",
+      "sourceUnitIds": [
+        "u000336"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootS((root))\nkeep[\"reachable subnet\"]\nisland[\"unmarked island\"]\nrootS --> keep",
+      "sourceUnitIds": [
+        "u000337"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "2–3 · Mark, then delete unmarked",
+      "sourceUnitIds": [
+        "u000338"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootC((root))\nkeep2[\"reachable subnet\"]\nEcap[\"E · exposed wires\"]\nrootC --> keep2\nkeep2 -.-> Ecap",
+      "sourceUnitIds": [
+        "u000339"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "This is a global cleanup pass, not a principal-port interaction. The sweep begins at the distinguished root, marks the graph material reachable through the parent–child wiring, and deletes everything else. Where deleting an unmarked node exposes a connection that remains in the net, that connection is terminated by E. The schematic follows the erasure canonicalization described in [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4).",
+      "sourceUnitIds": [
+        "u000340"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 6.3 Sharing needs replicator cleanup",
+      "sourceUnitIds": [
+        "u000341"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "In ΔI and ΔK, interactions can build trees made only of replicators. A merge rule collapses consecutive replicators once a local level test shows they are unpaired. Pairing information stays intact; the tree gets shorter.",
+      "sourceUnitIds": [
+        "u000342"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Δ",
+      "sourceUnitIds": [
+        "u000343"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### The local merge test",
+      "sourceUnitIds": [
+        "u000344"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000332",
+        "u000333",
+        "u000334",
+        "u000335",
+        "u000336",
+        "u000337",
+        "u000338",
+        "u000339",
+        "u000340",
+        "u000341",
+        "u000342",
+        "u000343",
+        "u000344"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-02 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "For consecutive replicators A and B joined through a port with delta d, B is known unpaired when 0 ≤ lB − lA ≤ d. In the paper’s reading, B cannot interact before A is annihilated—and since A is unpaired, that never happens. The inequality is a safety proof, not a performance hint.",
+      "sourceUnitIds": [
+        "u000345"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Before: two-agent replicator tree",
+      "sourceUnitIds": [
+        "u000346"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootM((root))\nA[\"A · unpaired · ℓ = 2\"]\nlive[\"endpoint ℓ = 2\"]\nB[\"B · ℓ = 4\"]\nb1[\"endpoint ℓ = 3\"]\nb2[\"endpoint ℓ = 6\"]\nrootM --> A\nA -->|d = 0| live\nA -->|d = 3| B\nB --> b1\nB --> b2",
+      "sourceUnitIds": [
+        "u000347"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "After: one equivalent replicator",
+      "sourceUnitIds": [
+        "u000348"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootN((root))\nAm[\"A merged · ℓ = 2\"]\ne0[\"ℓ = 2 · d = 0\"]\ne1[\"ℓ = 3 · d = +1\"]\ne2[\"ℓ = 6 · d = +4\"]\nrootN --> Am\nAm --> e0\nAm --> e1\nAm --> e2",
+      "sourceUnitIds": [
+        "u000349"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The inequality establishes safety; endpoint levels determine the new numbers. Here A is known unpaired, and its connecting port has d = 3. Since 0 ≤ lB − lA = 2 ≤ 3, B is also known unpaired and the consecutive agents may merge. The surviving replicator keeps level 2; the external endpoint levels remain 2, 3, 6, so the new deltas are ⟨0, +1, +4⟩.",
+      "sourceUnitIds": [
+        "u000350"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "ΔK has one more cleanup: unpaired replicator decay. Drop auxiliary ports of unpaired replicators that lead straight into erasers. If one zero-delta port remains, the replicator collapses to the wire it already was.",
+      "sourceUnitIds": [
+        "u000351"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Before: unpaired R with two erasers",
+      "sourceUnitIds": [
+        "u000352"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\ninD((input))\nRd@{ shape: trapezoid, label: \"R · unpaired\" }\nlive0[\"live · d = 0\"]\nEe1@{ shape: stadium, label: \"E\" }\nEe2@{ shape: stadium, label: \"E\" }\ninD ---|principal| Rd\nRd --- live0\nRd --- Ee1\nRd --- Ee2",
+      "sourceUnitIds": [
+        "u000353"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "After: one-port zero-delta R is a wire",
+      "sourceUnitIds": [
+        "u000354"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\ninW((input))\noutW[\"live wire\"]\ninW --> outW",
+      "sourceUnitIds": [
+        "u000355"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000345",
+        "u000346",
+        "u000347",
+        "u000348",
+        "u000349",
+        "u000350",
+        "u000351",
+        "u000352",
+        "u000353",
+        "u000354",
+        "u000355"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-03 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-03",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Decay removes only eraser-bound auxiliary ports. In this ΔK example, the two E-bound exits contribute no surviving consumers, so they are deleted. The remaining one-port replicator has delta 0; by the canonical representation rule it carries no information beyond the connection itself and collapses to a wire. The paper applies this cleanup during erasure canonicalization or lazily just before relevant replication rules.",
+      "sourceUnitIds": [
+        "u000356"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 6.4 Why the algorithm specifies leftmost-outermost",
+      "sourceUnitIds": [
+        "u000357"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Core interaction rules enjoy local confluence. Canonicalization can touch ports that are not a principal-to-principal pair, so it needs a schedule. Leftmost-outermost first picks an outermost reducible pattern—one with no reducible pattern wrapped around it—then takes the leftmost candidate in the term-like reading of the net. “Sequential” here just means that priority rule chooses the next interaction. The paper uses that order for ΔA, ΔI, and ΔK so cleanup runs early and merges beat later commutations.",
+      "sourceUnitIds": [
+        "u000358"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Choose work from the outside, then leftward",
+      "sourceUnitIds": [
+        "u000359"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nfirst[\"1 · outermost leftmost\"]\nsecond[\"2 · outer later\"]\nthird[\"3 · nested\"]\nfourth[\"4 · nested later\"]\nfirst --> third\nsecond --> fourth",
+      "sourceUnitIds": [
+        "u000360"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Important nuance. The paper also permits a reducible pair to run early if it will eventually reach the leftmost-outermost position unchanged. This preserves some safe parallelism while retaining the schedule’s optimality rationale.",
+      "sourceUnitIds": [
+        "u000361"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "07 Synthesis",
+      "sourceUnitIds": [
+        "u000362"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "## What does this proposal actually promise?",
+      "sourceUnitIds": [
+        "u000363"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The paper’s final claim is an algorithm for optimal parallel λ-reduction: translate a term to a canonical net, reduce with the core rules plus the required cleanups and schedule, then read the canonical net back as a term.",
+      "sourceUnitIds": [
+        "u000364"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The whole algorithm in one line",
+      "sourceUnitIds": [
+        "u000365"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart LR\nt[\"t · source λ-term\"]\nphi[\"φ(t) · canonical net\"]\nproper[\"Δ* · proper states\"]\nomega[\"Ω(φ(t)) · normal canonical\"]\ntp[\"t′ · λ normal form\"]\nt -->|encode| phi\nphi -->|interact| proper\nproper -->|normalize + canonicalize| omega\nomega -->|φ⁻¹ read back| tp",
+      "sourceUnitIds": [
+        "u000366"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000356",
+        "u000357",
+        "u000358",
+        "u000359",
+        "u000360",
+        "u000361",
+        "u000362",
+        "u000363",
+        "u000364",
+        "u000365",
+        "u000366"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-04 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-04",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Keep the state changes separate. The bijection φ creates the initial canonical net. Core interactions enter the broader space of proper nets; the subsystem’s prescribed interaction order and canonicalizations are collected by Ω until the net is both normal and canonical. Only then does φ−1 read it back as a λ-term. This is the construction formalized near the end of [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4).",
+      "sourceUnitIds": [
+        "u000367"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "01 / NO DISCARDED WORK",
+      "sourceUnitIds": [
+        "u000368"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Erasure is controlled",
+      "sourceUnitIds": [
+        "u000369"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Leftmost-outermost reduction avoids evaluating a subnet that will later be erased; the reachability sweep clears the leftover garbage.",
+      "sourceUnitIds": [
+        "u000370"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "02 / NO REPEATED WORK",
+      "sourceUnitIds": [
+        "u000371"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Sharing stays interior",
+      "sourceUnitIds": [
+        "u000372"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Replicators put shared use in the graph, so necessary work need not be redone merely because an expression has several consumers.",
+      "sourceUnitIds": [
+        "u000373"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "03 / LOCAL PARALLELISM",
+      "sourceUnitIds": [
+        "u000374"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Independent pairs can run",
+      "sourceUnitIds": [
+        "u000375"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Perfect confluence in the interaction core lets disjoint active pairs choose and apply their local rules independently.",
+      "sourceUnitIds": [
+        "u000376"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 7.1 The guarantee differs by subsystem",
+      "sourceUnitIds": [
+        "u000377"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "In ΔL, fan annihilation is the only interaction. The paper states that every proper net is already canonical, and that if n β-reductions normalize a λL term, n interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure.",
+      "sourceUnitIds": [
+        "u000378"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "System | Extra concern | Paper’s prescribed response | |",
+      "sourceUnitIds": [
+        "u000379"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "ΔL | None beyond fan annihilation. | Any interaction order; perfect confluence. | |",
+      "sourceUnitIds": [
+        "u000380"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000367",
+        "u000368",
+        "u000369",
+        "u000370",
+        "u000371",
+        "u000372",
+        "u000373",
+        "u000374",
+        "u000375",
+        "u000376",
+        "u000377",
+        "u000378",
+        "u000379",
+        "u000380"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: edge 15 has invalid endpoints 23 -> 24",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-05",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "ΔA | Discarded subnet garbage. | Leftmost-outermost annihilations + erasure canonicalization. | |",
+      "sourceUnitIds": [
+        "u000381"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "ΔI | Replicator trees and early copies. | Leftmost-outermost + unpaired merging / canonicalization. | |",
+      "sourceUnitIds": [
+        "u000382"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "ΔK | Both garbage and sharing context. | Leftmost-outermost + erasure, merge, and decay canonicalizations. | |",
+      "sourceUnitIds": [
+        "u000383"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 7.2 A useful way to separate the claims",
+      "sourceUnitIds": [
+        "u000384"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Expressiveness: every term in the four λ fragments has a canonical net, via a stated bijection.",
+      "sourceUnitIds": [
+        "u000385"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Local behavior: the three-agent core is an interaction system with the one-step diamond property.",
+      "sourceUnitIds": [
+        "u000386"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Whole-algorithm behavior: add canonicalization and the global schedule, and the paper claims Church–Rosser confluence and optimality for the nonlinear systems. Church–Rosser is the broader agreement property: paths that start together can be continued to a common result—not necessarily in one step.",
+      "sourceUnitIds": [
+        "u000387"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The split matters. The third layer needs erasure sweeps, replicator merging, decay, and leftmost-outermost scheduling on top of the core rules.",
+      "sourceUnitIds": [
+        "u000388"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 7.3 The broader proposition",
+      "sourceUnitIds": [
+        "u000389"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The paper invites you to see λ-calculus as a projection of Δ-Nets. λ-terms force a narrow form of sharing; nets can say sharing relationships that plain syntax hides. If the reduction machinery holds up, that freedom could matter for parallel runtimes and machine architectures.",
+      "sourceUnitIds": [
+        "u000390"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "✓",
+      "sourceUnitIds": [
+        "u000391"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### One-sentence takeaway",
+      "sourceUnitIds": [
+        "u000392"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Δ-Nets tries to make optimal parallel evaluation practical by packing each sharing context into a variable-arity replicator, then combining local interactions with only as much global discipline as you need to avoid preventable work.",
+      "sourceUnitIds": [
+        "u000393"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000381",
+        "u000382",
+        "u000383",
+        "u000384",
+        "u000385",
+        "u000386",
+        "u000387",
+        "u000388",
+        "u000389",
+        "u000390",
+        "u000391",
+        "u000392",
+        "u000393"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-06 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-06",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "08 Keep nearby",
+      "sourceUnitIds": [
+        "u000394"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "## A compact glossary, then the source.",
+      "sourceUnitIds": [
+        "u000395"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Keep these short definitions nearby while reading the formal article. They aim at intuition. Exact notation and proofs stay with the paper.",
+      "sourceUnitIds": [
+        "u000396"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### λ-term",
+      "sourceUnitIds": [
+        "u000397"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000394",
+        "u000395",
+        "u000396",
+        "u000397"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-07 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-07",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

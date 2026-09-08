@@ -1,0 +1,253 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001-flat-03",
+  "context": [
+    "Δ-Nets",
+    "Read this before the notation",
+    "Six ideas you need before Chapter 1",
+    "Bound vs. free"
+  ],
+  "units": [
+    {
+      "id": "u000034",
+      "kind": "prose",
+      "text": "An occurrence of x is bound when a surrounding λx owns it. It is free when no surrounding abstraction does—like a name that still comes from outside the term."
+    },
+    {
+      "id": "u000035",
+      "kind": "heading",
+      "text": "#### Levels & Δ"
+    },
+    {
+      "id": "u000036",
+      "kind": "prose",
+      "text": "Levels track nested abstractions. Each level shift adds a cost (a \"delta\") when a variable travels through a lambda. This is how we keep track of scopes without global lookups."
+    },
+    {
+      "id": "u000037",
+      "kind": "prose",
+      "text": "01 Motivation"
+    },
+    {
+      "id": "u000038",
+      "kind": "heading",
+      "text": "## The problem is wasted work."
+    },
+    {
+      "id": "u000039",
+      "kind": "prose",
+      "text": "Ordinary λ-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?"
+    },
+    {
+      "id": "u000040",
+      "kind": "prose",
+      "text": "03 Mechanics"
+    },
+    {
+      "id": "u000041",
+      "kind": "heading",
+      "text": "## The anatomy of a connection"
+    },
+    {
+      "id": "u000042",
+      "kind": "prose",
+      "text": "In interaction nets, we model λ-terms as wiring. The λ-node has a binding port (for the parameter) and a body port (for the expression). The logic depends on how variables are distributed."
+    },
+    {
+      "id": "u000043",
+      "kind": "prose",
+      "text": "Δ"
+    },
+    {
+      "id": "u000044",
+      "kind": "heading",
+      "text": "### The \"Why\" of Deltas"
+    },
+    {
+      "id": "u000045",
+      "kind": "prose",
+      "text": "Deltas are not just numbers; they are the cost of crossing a scope. When a variable moves out of one lambda and into another, it gains depth. Deltas ensure that the interaction net \"knows\" where its variables live without ever scanning the code."
+    },
+    {
+      "id": "u000046",
+      "kind": "heading",
+      "text": "### How connections resolve"
+    },
+    {
+      "id": "u000047",
+      "kind": "prose",
+      "text": "When an application node (the @) meets a λ-abstraction, they interact. The λ-node's binding port determines if it needs to replicate the variable (using a Replicator node) or erase it (if it doesn't appear in the body)."
+    }
+  ]
+}

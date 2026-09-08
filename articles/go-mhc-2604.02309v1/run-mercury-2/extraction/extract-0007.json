@@ -1,0 +1,435 @@
+{
+  "nodes": [
+    {
+      "kind": "claim",
+      "text": "go-mHC’s per-layer parameter complexity is similar to mHC and much lower than mHC-lite.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000087"
+      ],
+      "defines": [],
+      "requires": [
+        "go-mhc",
+        "mhc",
+        "mhc-lite"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "go-mHC per-layer parameter complexity is O(dC·d^2 s^2).",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000087"
+      ],
+      "defines": [],
+      "requires": [
+        "big-o notation"
+      ],
+      "mentions": [
+        "d",
+        "c",
+        "s"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "mHC per-layer parameter complexity is O(dC·d^2).",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000087"
+      ],
+      "defines": [],
+      "requires": [
+        "big-o notation"
+      ],
+      "mentions": [
+        "d",
+        "c"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "mHC-lite per-layer parameter complexity is O(dC·d!).",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000087"
+      ],
+      "defines": [],
+      "requires": [
+        "big-o notation",
+        "factorial"
+      ],
+      "mentions": [
+        "d",
+        "c"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC trades off expressivity for a smaller parameter count O(dC·d).",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000087"
+      ],
+      "defines": [],
+      "requires": [
+        "expressivity"
+      ],
+      "mentions": [
+        "d",
+        "c"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Figure 5 compares total learnable parameters of mHC and its variants.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000088"
+      ],
+      "defines": [],
+      "requires": [
+        "figure 5"
+      ],
+      "mentions": [
+        "mhc",
+        "go-mhc",
+        "mhc-lite",
+        "kromhc"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "go-mHC scales with s, with s=1 requiring fewer parameters due to skew‑symmetry.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000088"
+      ],
+      "defines": [],
+      "requires": [
+        "skew‐symmetry"
+      ],
+      "mentions": [
+        "s"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "mHC-lite scales with O(d!) and becomes intractable beyond d=8.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000088"
+      ],
+      "defines": [],
+      "requires": [
+        "factorial",
+        "intractability"
+      ],
+      "mentions": [
+        "d"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC scales as O(d log d) faster than mHC by imposing strong symmetry on residual stream interactions.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000088"
+      ],
+      "defines": [],
+      "requires": [
+        "logarithm",
+        "symmetry"
+      ],
+      "mentions": [
+        "d"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC relies on factorization of d; best‑case parameter count is analyzed when d is a power of 2.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000088"
+      ],
+      "defines": [],
+      "requires": [
+        "factorization"
+      ],
+      "mentions": [
+        "d"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Table 1 provides total parameter counts for each method.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000089"
+      ],
+      "defines": [],
+      "requires": [
+        "table 1"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Parameter count for mHC is (dC+1)d² + 2d²C + 2d + 3.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000090"
+      ],
+      "defines": [],
+      "requires": [
+        "big‐o"
+      ],
+      "mentions": [
+        "d",
+        "c"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Parameter count for go‑mHC (ss) is (dC+1)·ds(ds‑1)/2 + 2d²C + 2d + 3.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000090"
+      ],
+      "defines": [],
+      "requires": [
+        "big‐o"
+      ],
+      "mentions": [
+        "d",
+        "c",
+        "s"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Parameter count for mHC‑lite is (dC+1)d! + 2d²C + 2d + 3.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000090"
+      ],
+      "defines": [],
+      "requires": [
+        "big‐o",
+        "factorial"
+      ],
+      "mentions": [
+        "d",
+        "c"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Parameter count for KromHC is (dC+1) Σ_{k=1}^{K} (i_k)! + 2d²C + 2d + 3.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000090"
+      ],
+      "defines": [],
+      "requires": [
+        "big‐o",
+        "factorial"
+      ],
+      "mentions": [
+        "d",
+        "c",
+        "k",
+        "ik"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC and go‑mHC are complementary methods that can be used simultaneously.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000091"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "kromhc",
+        "go‐mhc"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Using both methods enables learning tensor products of generalized orthostochastic matrices.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000091"
+      ],
+      "defines": [],
+      "requires": [
+        "tensor product",
+        "orthostochastic matrices"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC can regain expressivity with larger product sizes at quadratic cost instead of factorial.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000091"
+      ],
+      "defines": [],
+      "requires": [
+        "expressivity",
+        "quadratic cost"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Quadratic cost is O((dC+1)·∑_{k=1}^{K} ½ s i_k (s i_k‑1)).",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000091"
+      ],
+      "defines": [],
+      "requires": [
+        "big‐o"
+      ],
+      "mentions": [
+        "d",
+        "c",
+        "s",
+        "ik",
+        "k"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "Expressivity scales as O(s² i_k²·log_{i_k}d) instead of O(i_k!·log_{i_k}d).",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000091"
+      ],
+      "defines": [],
+      "requires": [
+        "logarithm",
+        "factorial"
+      ],
+      "mentions": [
+        "s",
+        "ik",
+        "d"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    },
+    {
+      "kind": "claim",
+      "text": "4.3 FLOP Complexity",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000092"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0007"
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": [
+    {
+      "claim": 0,
+      "evidence": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "warrantGap": null,
+      "limitations": []
+    }
+  ]
+}

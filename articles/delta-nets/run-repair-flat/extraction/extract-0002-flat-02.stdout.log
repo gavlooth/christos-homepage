@@ -1,0 +1,555 @@
+{
+  "nodes": [
+    {
+      "kind": "heading",
+      "text": "Earlier optimal-reduction nets had practical difficulties.",
+      "sourceUnitIds": [
+        "u000110"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "optimal-reduction nets"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Earlier interaction-net approaches tracked sharing scopes.",
+      "sourceUnitIds": [
+        "u000111"
+      ],
+      "defines": [
+        "sharing scope"
+      ],
+      "requires": [
+        "interaction net"
+      ],
+      "mentions": [
+        "duplication context",
+        "lambda binding"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "A sharing scope is a region governed by one duplication context.",
+      "sourceUnitIds": [
+        "u000111"
+      ],
+      "defines": [
+        "sharing scope",
+        "duplication context"
+      ],
+      "requires": [],
+      "mentions": [
+        "lambda binding",
+        "bound use"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Earlier systems marked sharing regions with indexed fans and delimiter agents.",
+      "sourceUnitIds": [
+        "u000111"
+      ],
+      "defines": [],
+      "requires": [
+        "sharing scope",
+        "indexed fan",
+        "delimiter agent"
+      ],
+      "mentions": [
+        "bracket",
+        "croissant"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Delimiter agents can accumulate and interact more often than useful fan work.",
+      "sourceUnitIds": [
+        "u000111"
+      ],
+      "defines": [],
+      "requires": [
+        "delimiter agent",
+        "fan"
+      ],
+      "mentions": [
+        "interaction overhead"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Some earlier systems allowed indices to grow without bound.",
+      "sourceUnitIds": [
+        "u000111"
+      ],
+      "defines": [],
+      "requires": [
+        "index"
+      ],
+      "mentions": [
+        "earlier interaction-net systems"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "context",
+      "text": "The source uses an exclamation mark as a standalone separator or marker.",
+      "sourceUnitIds": [
+        "u000112"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Δ-Nets simplify the bookkeeping used to represent sharing context.",
+      "sourceUnitIds": [
+        "u000113"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Δ-Nets",
+        "sharing context"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Δ-Nets store sharing bookkeeping in one variable-arity replicator agent.",
+      "sourceUnitIds": [
+        "u000114"
+      ],
+      "defines": [
+        "replicator"
+      ],
+      "requires": [
+        "variable-arity agent"
+      ],
+      "mentions": [
+        "Δ-Nets",
+        "sharing context"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The Δ-Net replicator has a level and a delta value for each port.",
+      "sourceUnitIds": [
+        "u000114"
+      ],
+      "defines": [
+        "replicator level",
+        "per-port delta"
+      ],
+      "requires": [
+        "replicator",
+        "auxiliary port"
+      ],
+      "mentions": [
+        "Δ-Nets"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "One replicator structure holds the sharing context.",
+      "sourceUnitIds": [
+        "u000114"
+      ],
+      "defines": [],
+      "requires": [
+        "replicator",
+        "sharing context"
+      ],
+      "mentions": [
+        "Δ-Nets"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "The core vocabulary introduces three agents.",
+      "sourceUnitIds": [
+        "u000115"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "core vocabulary"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Three agents make up the whole core of a Δ-Net.",
+      "sourceUnitIds": [
+        "u000116"
+      ],
+      "defines": [],
+      "requires": [
+        "Δ-Net"
+      ],
+      "mentions": [
+        "fan",
+        "eraser",
+        "replicator"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "A Δ-Net contains a fan, an eraser, and a replicator.",
+      "sourceUnitIds": [
+        "u000117"
+      ],
+      "defines": [
+        "Δ-Net"
+      ],
+      "requires": [],
+      "mentions": [
+        "fan",
+        "eraser",
+        "replicator"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Each Δ-Net agent is a small component.",
+      "sourceUnitIds": [
+        "u000117"
+      ],
+      "defines": [
+        "agent"
+      ],
+      "requires": [
+        "Δ-Net"
+      ],
+      "mentions": [
+        "fan",
+        "eraser",
+        "replicator"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "The principal port is the socket that can initiate a rewrite.",
+      "sourceUnitIds": [
+        "u000117"
+      ],
+      "defines": [
+        "principal port",
+        "rewrite"
+      ],
+      "requires": [
+        "agent"
+      ],
+      "mentions": [
+        "socket"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Auxiliary ports carry surrounding wiring through a rewrite.",
+      "sourceUnitIds": [
+        "u000117"
+      ],
+      "defines": [
+        "auxiliary port"
+      ],
+      "requires": [
+        "rewrite",
+        "agent"
+      ],
+      "mentions": [
+        "wiring"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "A fan has two auxiliary ports.",
+      "sourceUnitIds": [
+        "u000118"
+      ],
+      "defines": [
+        "fan"
+      ],
+      "requires": [
+        "auxiliary port"
+      ],
+      "mentions": [
+        "Δ-Net agent"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "code",
+      "text": null,
+      "sourceUnitIds": [
+        "u000119"
+      ],
+      "defines": [
+        "fan principal port",
+        "fan first auxiliary port",
+        "fan second auxiliary port"
+      ],
+      "requires": [
+        "fan",
+        "principal port",
+        "auxiliary port"
+      ],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "An eraser has no auxiliary ports.",
+      "sourceUnitIds": [
+        "u000120"
+      ],
+      "defines": [
+        "eraser"
+      ],
+      "requires": [
+        "auxiliary port"
+      ],
+      "mentions": [
+        "Δ-Net agent"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "code",
+      "text": null,
+      "sourceUnitIds": [
+        "u000121"
+      ],
+      "defines": [
+        "eraser"
+      ],
+      "requires": [
+        "eraser"
+      ],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "A replicator can have any number of auxiliary ports.",
+      "sourceUnitIds": [
+        "u000122"
+      ],
+      "defines": [
+        "replicator"
+      ],
+      "requires": [
+        "auxiliary port"
+      ],
+      "mentions": [
+        "variable arity",
+        "Δ-Net agent"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 2,
+      "relation": "defines",
+      "reason": "The sharing-scope claim is clarified by its definition."
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "relation": "enables",
+      "reason": "Understanding sharing scopes enables understanding how earlier systems represented them."
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "relation": "supports",
+      "reason": "The delimiter representation explains the stated interaction overhead."
+    },
+    {
+      "from": 3,
+      "to": 5,
+      "relation": "supports",
+      "reason": "Indexed representations provide the context for unbounded index growth."
+    },
+    {
+      "from": 3,
+      "to": 8,
+      "relation": "contrasts",
+      "reason": "Earlier delimiter-based bookkeeping is contrasted with the proposed Δ-Net simplification."
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "relation": "elaborates",
+      "reason": "The level and per-port delta elaborate the replicator's bookkeeping."
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "relation": "supports",
+      "reason": "The replicator's stored metadata enables one structure to hold sharing context."
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "relation": "defines",
+      "reason": "The heading's three-agent summary is stated explicitly in the following claim."
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "relation": "elaborates",
+      "reason": "The component description elaborates the three agents in a Δ-Net."
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "relation": "enables",
+      "reason": "The agent model is needed to understand ports."
+    },
+    {
+      "from": 15,
+      "to": 16,
+      "relation": "elaborates",
+      "reason": "The principal-port definition explains the port used to initiate rewrites."
+    },
+    {
+      "from": 15,
+      "to": 17,
+      "relation": "elaborates",
+      "reason": "The auxiliary-port definition explains the ports that carry surrounding wiring."
+    },
+    {
+      "from": 17,
+      "to": 18,
+      "relation": "enables",
+      "reason": "The auxiliary-port concept is required to state the fan's arity."
+    },
+    {
+      "from": 18,
+      "to": 19,
+      "relation": "exemplifies",
+      "reason": "The diagram depicts the fan and its two auxiliary ports."
+    },
+    {
+      "from": 17,
+      "to": 20,
+      "relation": "enables",
+      "reason": "The auxiliary-port concept is required to state that an eraser has none."
+    },
+    {
+      "from": 20,
+      "to": 21,
+      "relation": "exemplifies",
+      "reason": "The diagram depicts the eraser agent."
+    },
+    {
+      "from": 17,
+      "to": 22,
+      "relation": "enables",
+      "reason": "The auxiliary-port concept is required to state the replicator's arity."
+    }
+  ],
+  "evidenceFrames": [
+    {
+      "claim": 4,
+      "evidence": [
+        4
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 5,
+      "evidence": [
+        5
+      ],
+      "warrantGap": null,
+      "limitations": []
+    }
+  ]
+}

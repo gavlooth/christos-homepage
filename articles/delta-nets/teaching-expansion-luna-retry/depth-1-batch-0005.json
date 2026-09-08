@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 5,
+  "items": [
+    {
+      "recordId": "teach-generated-299515557436ab69",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Normalizing order means converting different representations of an ordering into a consistent standard form so that items can be compared or arranged reliably.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-633ae498da6c86da",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A result is the outcome produced by a calculation, process, experiment, or argument.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

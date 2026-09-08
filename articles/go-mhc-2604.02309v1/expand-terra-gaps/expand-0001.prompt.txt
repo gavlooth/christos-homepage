@@ -1,0 +1,240 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "n0000002",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000002"
+    ]
+  },
+  {
+    "id": "n0000044",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000024"
+    ]
+  },
+  {
+    "id": "n0000066",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000036"
+    ]
+  },
+  {
+    "id": "n0000073",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "n0000076",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "n0000091",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000047"
+    ]
+  },
+  {
+    "id": "n0000126",
+    "targetType": "gap",
+    "need": "Missing equation 5",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000061"
+    ]
+  },
+  {
+    "id": "n0000133",
+    "targetType": "gap",
+    "need": "Missing equation 6",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000063"
+    ]
+  },
+  {
+    "id": "n0000145",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000067"
+    ]
+  },
+  {
+    "id": "n0000150",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000070"
+    ]
+  },
+  {
+    "id": "n0000157",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000073"
+    ]
+  },
+  {
+    "id": "n0000162",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000076"
+    ]
+  },
+  {
+    "id": "n0000163",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000077"
+    ]
+  },
+  {
+    "id": "n0000164",
+    "targetType": "gap",
+    "need": "Define AGM metric",
+    "gapType": "missing_definition",
+    "sourceUnitIds": []
+  },
+  {
+    "id": "n0000165",
+    "targetType": "gap",
+    "need": "Define P_go",
+    "gapType": "missing_definition",
+    "sourceUnitIds": []
+  },
+  {
+    "id": "n0000168",
+    "targetType": "gap",
+    "need": "Define spectral reach",
+    "gapType": "missing_definition",
+    "sourceUnitIds": []
+  },
+  {
+    "id": "n0000169",
+    "targetType": "gap",
+    "need": "Define P_M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": []
+  },
+  {
+    "id": "n0000172",
+    "targetType": "gap",
+    "need": "Define method M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": []
+  },
+  {
+    "id": "n0000207",
+    "targetType": "gap",
+    "need": "definition of s-ssostochastic matrices",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000081"
+    ]
+  },
+  {
+    "id": "n0000208",
+    "targetType": "gap",
+    "need": "definition of mHC, mHC-lite, KromHC, go-mHC",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000078",
+      "u000083",
+      "u000084",
+      "u000085"
+    ]
+  },
+  {
+    "id": "n0000209",
+    "targetType": "gap",
+    "need": "definition of H_res",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ]
+  },
+  {
+    "id": "n0000210",
+    "targetType": "gap",
+    "need": "definition of d-streams",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ]
+  },
+  {
+    "id": "n0000212",
+    "targetType": "gap",
+    "need": "definition of spectral hull",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000084"
+    ]
+  },
+  {
+    "id": "n0000213",
+    "targetType": "gap",
+    "need": "definition of i_k",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000085"
+    ]
+  },
+  {
+    "id": "n0000263",
+    "targetType": "gap",
+    "need": "artifact storage metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000103"
+    ]
+  },
+  {
+    "id": "n0000264",
+    "targetType": "gap",
+    "need": "pagination metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000104"
+    ]
+  }
+]

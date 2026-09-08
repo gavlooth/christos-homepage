@@ -1,0 +1,237 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0005-flat-04",
+  "context": [
+    "Δ-Nets",
+    "Reduction needs housekeeping and a schedule.",
+    "The local merge test"
+  ],
+  "units": [
+    {
+      "id": "u000356",
+      "kind": "prose",
+      "text": "Decay removes only eraser-bound auxiliary ports. In this ΔK example, the two E-bound exits contribute no surviving consumers, so they are deleted. The remaining one-port replicator has delta 0; by the canonical representation rule it carries no information beyond the connection itself and collapses to a wire. The paper applies this cleanup during erasure canonicalization or lazily just before relevant replication rules."
+    },
+    {
+      "id": "u000357",
+      "kind": "heading",
+      "text": "### 6.4 Why the algorithm specifies leftmost-outermost"
+    },
+    {
+      "id": "u000358",
+      "kind": "prose",
+      "text": "Core interaction rules enjoy local confluence. Canonicalization can touch ports that are not a principal-to-principal pair, so it needs a schedule. Leftmost-outermost first picks an outermost reducible pattern—one with no reducible pattern wrapped around it—then takes the leftmost candidate in the term-like reading of the net. “Sequential” here just means that priority rule chooses the next interaction. The paper uses that order for ΔA, ΔI, and ΔK so cleanup runs early and merges beat later commutations."
+    },
+    {
+      "id": "u000359",
+      "kind": "prose",
+      "text": "Choose work from the outside, then leftward"
+    },
+    {
+      "id": "u000360",
+      "kind": "prose",
+      "text": "flowchart TB\nfirst[\"1 · outermost leftmost\"]\nsecond[\"2 · outer later\"]\nthird[\"3 · nested\"]\nfourth[\"4 · nested later\"]\nfirst --> third\nsecond --> fourth"
+    },
+    {
+      "id": "u000361",
+      "kind": "prose",
+      "text": "Important nuance. The paper also permits a reducible pair to run early if it will eventually reach the leftmost-outermost position unchanged. This preserves some safe parallelism while retaining the schedule’s optimality rationale."
+    },
+    {
+      "id": "u000362",
+      "kind": "prose",
+      "text": "07 Synthesis"
+    },
+    {
+      "id": "u000363",
+      "kind": "heading",
+      "text": "## What does this proposal actually promise?"
+    },
+    {
+      "id": "u000364",
+      "kind": "prose",
+      "text": "The paper’s final claim is an algorithm for optimal parallel λ-reduction: translate a term to a canonical net, reduce with the core rules plus the required cleanups and schedule, then read the canonical net back as a term."
+    },
+    {
+      "id": "u000365",
+      "kind": "prose",
+      "text": "The whole algorithm in one line"
+    },
+    {
+      "id": "u000366",
+      "kind": "prose",
+      "text": "flowchart LR\nt[\"t · source λ-term\"]\nphi[\"φ(t) · canonical net\"]\nproper[\"Δ* · proper states\"]\nomega[\"Ω(φ(t)) · normal canonical\"]\ntp[\"t′ · λ normal form\"]\nt -->|encode| phi\nphi -->|interact| proper\nproper -->|normalize + canonicalize| omega\nomega -->|φ⁻¹ read back| tp"
+    }
+  ]
+}

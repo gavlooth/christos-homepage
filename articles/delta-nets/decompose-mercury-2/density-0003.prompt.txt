@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000132",
+    "kind": "source",
+    "text": "flowchart TB\nu1[use] --> a1[argument]\nu1 --> w1[work]\nu2[use] --> a2[argument]\nu2 --> w2[work]"
+  },
+  {
+    "id": "n0000133",
+    "kind": "source",
+    "text": "flowchart TB\nu3[use] --> share[share]\nu4[use] --> share\nshare --> arg[one argument]"
+  },
+  {
+    "id": "n0000135",
+    "kind": "source",
+    "text": "The pair either disappears or passes through the other, reconnecting only nearby wires. That single application is one interaction step."
+  },
+  {
+    "id": "n0000136",
+    "kind": "source",
+    "text": "03"
+  },
+  {
+    "id": "n0000137",
+    "kind": "topic",
+    "text": "### Do independent work together"
+  },
+  {
+    "id": "n0000138",
+    "kind": "source",
+    "text": "Each agent has one principal port, so two distinct active pairs never share an agent. They can fire at the same time and pick their local rules independently."
+  },
+  {
+    "id": "n0000139",
+    "kind": "topic",
+    "text": "### 2.3 “Perfect confluence” is the parallelism enabler"
+  },
+  {
+    "id": "n0000140",
+    "kind": "source",
+    "text": "Confluence asks whether different valid reduction choices can disagree. The one-step diamond property is a strong “no”: if a net N has two possible single steps, either choice leads to a net that meets the other after exactly one more interaction."
+  },
+  {
+    "id": "n0000141",
+    "kind": "source",
+    "text": "The one-step diamond"
+  },
+  {
+    "id": "n0000142",
+    "kind": "source",
+    "text": "flowchart TB\nN((N))\nN1((N₁))\nN2((N₂))\nM((M))\nN -->|one interaction| N1\nN -->|one interaction| N2\nN1 -->|one interaction| M\nN2 -->|one interaction| M"
+  },
+  {
+    "id": "n0000143",
+    "kind": "source",
+    "text": "How to read the diamond. Starting at N, choose either available step. The paths meet at M. Every arrow shows exactly one local interaction."
+  },
+  {
+    "id": "n0000144",
+    "kind": "source",
+    "text": "The paper calls this perfect confluence. Each active pair owns the only principal port of each of its two agents, so distinct active pairs use distinct agents. Their rewrites commute: left-then-right and right-then-left leave the same nearby wiring."
+  },
+  {
+    "id": "n0000145",
+    "kind": "source",
+    "text": "◇"
+  },
+  {
+    "id": "n0000146",
+    "kind": "topic",
+    "text": "### Agreement and termination are separate questions"
+  },
+  {
+    "id": "n0000147",
+    "kind": "source",
+    "text": "The diamond says competing local steps agree. Termination is separate: some nets can reduce forever. The paper’s claim is narrower: when a core interaction order normalizes, every normalizing order reaches the same result in the same number of interactions."
+  },
+  {
+    "id": "n0000148",
+    "kind": "topic",
+    "text": "### 2.4 What earlier optimal-reduction nets struggled with"
+  },
+  {
+    "id": "n0000149",
+    "kind": "source",
+    "text": "Earlier interaction-net approaches tracked sharing scopes—regions governed by one duplication context, the way a λ governs its bound uses. They marked those regions with indexed fans plus extra delimiter agents (brackets, croissants, and kin). The critique is practical as much as theoretical: delimiters pile up, and their interactions can outnumber the useful fan work. Some systems also let indices grow without bound."
+  },
+  {
+    "id": "n0000150",
+    "kind": "source",
+    "text": "!"
+  },
+  {
+    "id": "n0000151",
+    "kind": "topic",
+    "text": "### The proposed simplification"
+  },
+  {
+    "id": "n0000152",
+    "kind": "source",
+    "text": "Δ-Nets folds that bookkeeping into one variable-arity agent—the replicator—with a level and a per-port delta. One structure holds the sharing context."
+  },
+  {
+    "id": "n0000153",
+    "kind": "source",
+    "text": "03 Core vocabulary"
+  },
+  {
+    "id": "n0000154",
+    "kind": "topic",
+    "text": "## Three agents carry the whole core."
+  },
+  {
+    "id": "n0000155",
+    "kind": "source",
+    "text": "A Δ-Net is built from three agents: fan, eraser, and replicator. Think of each as a tiny component. The principal port is the socket that can start a rewrite. The auxiliary ports carry the surrounding wiring through that rewrite."
+  },
+  {
+    "id": "n0000156",
+    "kind": "source",
+    "text": "Fan · 2 auxiliary ports"
+  },
+  {
+    "id": "n0000157",
+    "kind": "source",
+    "text": "flowchart TB\nFp[\"principal\"]\nF@{ shape: triangle, label: \"F\" }\nFa0@{ shape: rect, label: \"1st aux\" }\nFa1@{ shape: rect, label: \"2nd aux\" }\nFp -->|principal| F\nF --- Fa0\nF --- Fa1"
+  },
+  {
+    "id": "n0000158",
+    "kind": "source",
+    "text": "Eraser · no auxiliary ports"
+  },
+  {
+    "id": "n0000159",
+    "kind": "source",
+    "text": "flowchart TB\nE@{ shape: stadium, label: \"E\" }"
+  },
+  {
+    "id": "n0000160",
+    "kind": "source",
+    "text": "Replicator · any number of auxiliary ports"
+  },
+  {
+    "id": "n0000161",
+    "kind": "source",
+    "text": "flowchart TB\nRp[\"principal\"]\nR@{ shape: trapezoid, label: \"R\" }\nRd0@{ shape: rect, label: \"aux d₀\" }\nRd1@{ shape: rect, label: \"aux d₁\" }\nRd2@{ shape: rect, label: \"aux d₂\" }\nRdn@{ shape: rect, label: \"aux …\" }\nRp -->|principal| R\nR --- Rd0\nR --- Rd1\nR --- Rd2\nR --- Rdn"
+  },
+  {
+    "id": "n0000162",
+    "kind": "source",
+    "text": "Diagram key. Application and function fans are triangles: the principal port is fixed at the top apex and the two auxiliary wires leave fixed, symmetric positions along the bottom edge. Only replicators are trapezoids: the principal port is centered on the short top side and the auxiliary wires are evenly spaced along the wide bottom side. Rectangles label fragments or wire endpoints; they are not agents. An eraser has only a principal port."
+  },
+  {
+    "id": "n0000163",
+    "kind": "source",
+    "text": "Structure"
+  },
+  {
+    "id": "n0000164",
+    "kind": "topic",
+    "text": "### Fan"
+  },
+  {
+    "id": "n0000165",
+    "kind": "source",
+    "text": "Exactly two auxiliary ports. Fans build the application and abstraction skeleton of a λ-term. When two fans annihilate, that is β-reduction in graph form."
+  },
+  {
+    "id": "n0000166",
+    "kind": "source",
+    "text": "Discard"
+  },
+  {
+    "id": "n0000167",
+    "kind": "topic",
+    "text": "### Eraser"
+  },
+  {
+    "id": "n0000168",
+    "kind": "source",
+    "text": "No auxiliary ports. It marks “this bound variable is unused,” and deletes an agent it meets in a distinct-agent interaction."
+  },
+  {
+    "id": "n0000169",
+    "kind": "source",
+    "text": "Share"
+  },
+  {
+    "id": "n0000170",
+    "kind": "topic",
+    "text": "### Replicator"
+  },
+  {
+    "id": "n0000171",
+    "kind": "source",
+    "text": "Any natural-number arity—one, two, three auxiliary ports, and so on. It joins the uses of one shared value and records the sharing context: a level on the agent, plus a delta on each auxiliary port."
+  },
+  {
+    "id": "n0000172",
+    "kind": "source",
+    "text": "Context"
+  },
+  {
+    "id": "n0000173",
+    "kind": "topic",
+    "text": "### Level delta"
+  },
+  {
+    "id": "n0000174",
+    "kind": "source",
+    "text": "The integer level names the replicator’s sharing context. Each auxiliary port carries an integer delta. A replica that leaves through a port adds that delta to its current level—like a signed offset stamped on the exit door."
+  },
+  {
+    "id": "n0000175",
+    "kind": "topic",
+    "text": "### 3.1 Four systems fall out of the same pieces"
+  },
+  {
+    "id": "n0000176",
+    "kind": "source",
+    "text": "System | Agents permitted | Corresponding term fragment | |"
+  },
+  {
+    "id": "n0000177",
+    "kind": "source",
+    "text": "ΔL | Fan | Linear: exactly one use. | |"
+  },
+  {
+    "id": "n0000178",
+    "kind": "source",
+    "text": "ΔA | Fan + eraser | Affine: a use may be absent. | |"
+  },
+  {
+    "id": "n0000179",
+    "kind": "source",
+    "text": "ΔI | Fan + replicator | Relevant: a use may repeat. | |"
+  },
+  {
+    "id": "n0000180",
+    "kind": "source",
+    "text": "ΔK | Fan + eraser + replicator | Full: absence and repetition are both allowed. | |"
+  },
+  {
+    "id": "n0000181",
+    "kind": "source",
+    "text": "In plain language: linear means exactly one bound use, affine at most one, relevant at least one, and full any count. The split mirrors the paper’s opening taxonomy and shows which agent pays for which feature: fans for structure, erasers for omission, replicators for sharing."
+  },
+  {
+    "id": "n0000182",
+    "kind": "topic",
+    "text": "### 3.2 Equality is deliberately local in practice"
+  },
+  {
+    "id": "n0000183",
+    "kind": "source",
+    "text": "Formally, equal replicators must match in level, arity, and every port delta. For well-formed nets from the paper’s λ-term translation, active replicators at the same level are already equal—so an implementation may compare levels alone in that setting. Hand-built nets do not get that shortcut."
+  },
+  {
+    "id": "n0000184",
+    "kind": "source",
+    "text": "What does “fan-in” versus “fan-out” mean here?"
+  },
+  {
+    "id": "n0000185",
+    "kind": "source",
+    "text": "Parent and child are direction labels on a wire. In a rooted net, a parent points toward the root and a child points away from it—think “who faces whom,” not family trees. Canonical nets start with unpaired fan-in replicators: auxiliaries are parents, principal is a child. Reduction can also create fan-outs, with that orientation flipped. A fan-out is paired upstream with at least one fan-in; a fan-in need not have a partner. Levels and deltas let you reason about that pairing locally."
+  },
+  {
+    "id": "n0000186",
+    "kind": "source",
+    "text": "04 Local dynamics"
+  },
+  {
+    "id": "n0000187",
+    "kind": "topic",
+    "text": "## When two principal ports touch, one of three things happens."
+  },
+  {
+    "id": "n0000188",
+    "kind": "source",
+    "text": "The interaction rules are the engine. This chapter groups their wire reconnections into three families: cancellation, deletion, and passage-with-copying. Each name describes what happens to one active pair."
+  },
+  {
+    "id": "n0000189",
+    "kind": "topic",
+    "text": "### 1. Annihilation"
+  },
+  {
+    "id": "n0000190",
+    "kind": "source",
+    "text": "Equal agents cancel. In a well-formed net from a λ-term, active replicators at the same level are equal: both nodes disappear and matching auxiliary ports reconnect. For fans, that same cancellation is applying a λ to its argument."
+  },
+  {
+    "id": "n0000191",
+    "kind": "topic",
+    "text": "### 2. Erasure"
+  },
+  {
+    "id": "n0000192",
+    "kind": "source",
+    "text": "An eraser is distinct from its neighbour and has zero auxiliary ports, so the agent it meets has nowhere to continue through. It is deleted."
+  },
+  {
+    "id": "n0000193",
+    "kind": "topic",
+    "text": "### 3. Commutation"
+  },
+  {
+    "id": "n0000194",
+    "kind": "source",
+    "text": "Distinct non-eraser agents pass through each other. How many outgoing copies you get depends on the other agent’s auxiliary ports."
+  },
+  {
+    "id": "n0000195",
+    "kind": "source",
+    "text": "flowchart TB\nE@{ shape: stadium, label: \"E\" }\nF@{ shape: triangle, label: \"F\" }\nM@{ shape: rect, label: \"subnet M\" }\nN@{ shape: rect, label: \"subnet N\" }\nE -->|\"principal ↔ principal\"| F\nF --- M\nF --- N"
+  },
+  {
+    "id": "n0000196",
+    "kind": "source",
+    "text": "After: E reaches both branches"
+  }
+]

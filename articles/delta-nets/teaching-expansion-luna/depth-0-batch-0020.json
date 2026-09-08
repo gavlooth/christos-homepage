@@ -1,0 +1,119 @@
+{
+  "depth": 0,
+  "batch": 20,
+  "items": [
+    {
+      "recordId": "teach-n0001108",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The source identifies the interaction core as an interaction among three agents.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The source states that this three-agent interaction core has the one-step diamond property.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "The one-step diamond property means that when two one-step interactions start from the same state, each resulting state can take one additional interaction to reach the same state.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001109",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For nonlinear systems, the paper claims Church-Rosser confluence only after canonicalization and a global schedule are added.",
+          "requires": [
+            "Church-Rosser confluence",
+            "canonicalization",
+            "global schedule"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For nonlinear systems, the paper claims optimality only after canonicalization and a global schedule are added.",
+          "requires": [
+            "optimality",
+            "canonicalization",
+            "global schedule"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Church-Rosser confluence means that different valid interaction or rewrite sequences can be continued until they reach a common result.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Canonicalization converts equivalent representations into one chosen canonical form, while a global schedule constrains the interaction order across the whole system.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001110",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Δ-Nets aims to represent each sharing context with a variable-arity replicator.",
+          "requires": [
+            "sharing context",
+            "variable-arity replicator"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Δ-Nets uses local interactions and limited global discipline to avoid preventable work.",
+          "requires": [
+            "local interactions",
+            "global discipline"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Variable arity means that an operation can handle different numbers of connections or copies instead of one fixed number.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A sharing context is a computation context in which one value, resource, or structure is used by multiple consumers.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Local interactions update directly connected components, whereas global discipline coordinates behavior across a wider system when needed.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

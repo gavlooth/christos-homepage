@@ -1,0 +1,493 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "split-000051",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Each resulting agent retains its original role in the other agent’s surrounding context.",
+    "sourceUnitIds": [
+      "u000168"
+    ]
+  },
+  {
+    "id": "split-000052",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.75,
+    "text": "Matching levels allow annihilation in a well-formed λ translation.",
+    "sourceUnitIds": [
+      "u000176"
+    ]
+  },
+  {
+    "id": "split-000053",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "Annihilation removes both replicators and reconnects matching auxiliary ports.",
+    "sourceUnitIds": [
+      "u000176"
+    ]
+  },
+  {
+    "id": "split-000054",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.65,
+    "text": "Annihilation creates no replicas.",
+    "sourceUnitIds": [
+      "u000176"
+    ]
+  },
+  {
+    "id": "split-000055",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Hand-built nets require matching arity and every port delta in addition to matching levels.",
+    "sourceUnitIds": [
+      "u000176"
+    ]
+  },
+  {
+    "id": "split-000056",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "When levels differ, the replicators commute rather than annihilate.",
+    "sourceUnitIds": [
+      "u000177"
+    ]
+  },
+  {
+    "id": "split-000057",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "The lower-level replicator creates one higher-level replica per auxiliary port.",
+    "sourceUnitIds": [
+      "u000177"
+    ]
+  },
+  {
+    "id": "split-000058",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The higher-level replicator creates exact lower-level replicas per auxiliary port.",
+    "sourceUnitIds": [
+      "u000177"
+    ]
+  },
+  {
+    "id": "split-000059",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "Each higher-level replica adds the exit-port delta to its current level.",
+    "sourceUnitIds": [
+      "u000177"
+    ]
+  },
+  {
+    "id": "split-000060",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.62,
+    "text": "Duplicate means an exact copy.",
+    "sourceUnitIds": [
+      "u000213"
+    ]
+  },
+  {
+    "id": "split-000061",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Replicate allows copies whose levels differ.",
+    "sourceUnitIds": [
+      "u000213"
+    ]
+  },
+  {
+    "id": "split-000062",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.64,
+    "text": "Deltas may be negative, zero, or positive.",
+    "sourceUnitIds": [
+      "u000213"
+    ]
+  },
+  {
+    "id": "split-000063",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Each calculus has a bijection from terms to canonical Δ-Nets.",
+    "sourceUnitIds": [
+      "u000219"
+    ]
+  },
+  {
+    "id": "split-000064",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Every term maps to one canonical net.",
+    "sourceUnitIds": [
+      "u000219"
+    ]
+  },
+  {
+    "id": "split-000065",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Each canonical net maps back to one term.",
+    "sourceUnitIds": [
+      "u000219"
+    ]
+  },
+  {
+    "id": "split-000066",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "Translation builds a larger net inductively from translated subterms.",
+    "sourceUnitIds": [
+      "u000219"
+    ]
+  },
+  {
+    "id": "split-000067",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "Each fragment has one incoming wire and zero or more outgoing wires.",
+    "sourceUnitIds": [
+      "u000226"
+    ]
+  },
+  {
+    "id": "split-000068",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The outermost fragment connects to a single root.",
+    "sourceUnitIds": [
+      "u000226"
+    ]
+  },
+  {
+    "id": "split-000069",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Free variables become named interface nodes.",
+    "sourceUnitIds": [
+      "u000226"
+    ]
+  },
+  {
+    "id": "split-000070",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.75,
+    "text": "The fragment interface allows a translated subterm to plug into its parent.",
+    "sourceUnitIds": [
+      "u000226"
+    ]
+  },
+  {
+    "id": "split-000071",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "A free variable remains a named node at the canonical net interface.",
+    "sourceUnitIds": [
+      "u000243"
+    ]
+  },
+  {
+    "id": "split-000072",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "A bound occurrence has no variable agent.",
+    "sourceUnitIds": [
+      "u000243"
+    ]
+  },
+  {
+    "id": "split-000073",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "A single bound use connects directly to its owning abstraction.",
+    "sourceUnitIds": [
+      "u000243"
+    ]
+  },
+  {
+    "id": "split-000074",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Several bound uses connect through a replicator.",
+    "sourceUnitIds": [
+      "u000243"
+    ]
+  },
+  {
+    "id": "split-000075",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "A replicator connects the abstraction’s variable port to multiple concrete use sites.",
+    "sourceUnitIds": [
+      "u000246"
+    ]
+  },
+  {
+    "id": "split-000076",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "For λx.x x, the two replicator auxiliaries connect to the application’s argument and function ports.",
+    "sourceUnitIds": [
+      "u000246"
+    ]
+  },
+  {
+    "id": "split-000077",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "A one-port zero-delta replicator is omitted because it is equivalent to a wire.",
+    "sourceUnitIds": [
+      "u000246"
+    ]
+  },
+  {
+    "id": "split-000078",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "The abstraction’s second auxiliary port represents its bound parameter.",
+    "sourceUnitIds": [
+      "u000253"
+    ]
+  },
+  {
+    "id": "split-000079",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.77,
+    "text": "An unused parameter port terminates at an eraser in ΔA and ΔK.",
+    "sourceUnitIds": [
+      "u000253"
+    ]
+  },
+  {
+    "id": "split-000080",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.75,
+    "text": "A single use connects directly to the parameter port.",
+    "sourceUnitIds": [
+      "u000253"
+    ]
+  },
+  {
+    "id": "split-000081",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.75,
+    "text": "Multiple uses connect through a replicator.",
+    "sourceUnitIds": [
+      "u000253"
+    ]
+  },
+  {
+    "id": "split-000082",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "The abstraction’s first auxiliary port represents its body.",
+    "sourceUnitIds": [
+      "u000253"
+    ]
+  },
+  {
+    "id": "split-000083",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "In λx.x x, the body port connects to the application result and the replicator ports connect to the function and argument.",
+    "sourceUnitIds": [
+      "u000253"
+    ]
+  },
+  {
+    "id": "split-000084",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The application result uses the first auxiliary port.",
+    "sourceUnitIds": [
+      "u000260"
+    ]
+  },
+  {
+    "id": "split-000085",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The argument fragment uses the second auxiliary port.",
+    "sourceUnitIds": [
+      "u000260"
+    ]
+  },
+  {
+    "id": "split-000086",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The function fragment meets the principal port.",
+    "sourceUnitIds": [
+      "u000260"
+    ]
+  },
+  {
+    "id": "split-000087",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "This wiring lets an abstraction on the function side form a β-redex.",
+    "sourceUnitIds": [
+      "u000260"
+    ]
+  },
+  {
+    "id": "split-000088",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.62,
+    "text": "The whole term starts at level 0.",
+    "sourceUnitIds": [
+      "u000265"
+    ]
+  },
+  {
+    "id": "split-000089",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Abstraction bodies inherit their abstraction’s level.",
+    "sourceUnitIds": [
+      "u000265"
+    ]
+  },
+  {
+    "id": "split-000090",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "An application keeps the function at the current level.",
+    "sourceUnitIds": [
+      "u000265"
+    ]
+  },
+  {
+    "id": "split-000091",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "An application assigns the argument level one greater than the current level.",
+    "sourceUnitIds": [
+      "u000265"
+    ]
+  },
+  {
+    "id": "split-000092",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "These levels track sharing contexts rather than runtime closure contents.",
+    "sourceUnitIds": [
+      "u000265"
+    ]
+  },
+  {
+    "id": "split-000093",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "The outer application gives the function occurrence level 0.",
+    "sourceUnitIds": [
+      "u000276"
+    ]
+  },
+  {
+    "id": "split-000094",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "The outer application gives its argument subtree level 1.",
+    "sourceUnitIds": [
+      "u000276"
+    ]
+  },
+  {
+    "id": "split-000095",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "The inner application keeps g at level 1 and gives its argument x level 2.",
+    "sourceUnitIds": [
+      "u000276"
+    ]
+  },
+  {
+    "id": "split-000096",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "The binder’s replicator is at level 1.",
+    "sourceUnitIds": [
+      "u000276"
+    ]
+  },
+  {
+    "id": "split-000097",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The resulting deltas are ⟨−1, +1⟩.",
+    "sourceUnitIds": [
+      "u000276"
+    ]
+  },
+  {
+    "id": "split-000098",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Each bound occurrence connects to one auxiliary port of its replicator.",
+    "sourceUnitIds": [
+      "u000281"
+    ]
+  }
+]

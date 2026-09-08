@@ -1,0 +1,293 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "split-000021",
+    "kind": "claim",
+    "text": "The framework learns doubly stochastic matrices."
+  },
+  {
+    "id": "split-000022",
+    "kind": "claim",
+    "text": "The framework balances computational efficiency and expressivity."
+  },
+  {
+    "id": "split-000023",
+    "kind": "claim",
+    "text": "A hyperparameter s controls the position of this efficiency–expressivity trade-off."
+  },
+  {
+    "id": "expand-000013",
+    "kind": "expansion",
+    "text": "Changing s changes the size of the matrix family that the parameterization can represent and the resources needed to use it."
+  },
+  {
+    "id": "split-000024",
+    "kind": "claim",
+    "text": "The method can be combined with KromHC."
+  },
+  {
+    "id": "split-000025",
+    "kind": "claim",
+    "text": "The combination permits larger Kronecker factors."
+  },
+  {
+    "id": "split-000026",
+    "kind": "claim",
+    "text": "The method mitigates the super-exponential scaling introduced by mHC-lite."
+  },
+  {
+    "id": "expand-000014",
+    "kind": "expansion",
+    "text": "Combining the methods uses KromHC for structured factorization while reducing the cost of representing larger factors."
+  },
+  {
+    "id": "split-000027",
+    "kind": "claim",
+    "text": "Hyper-Connections can let models learn connections across depth and width."
+  },
+  {
+    "id": "split-000028",
+    "kind": "claim",
+    "text": "Hyper-Connections can dynamically rearrange layer connectivity."
+  },
+  {
+    "id": "split-000029",
+    "kind": "claim",
+    "text": "Hyper-Connections provide a potential avenue for model scaling."
+  },
+  {
+    "id": "expand-000015",
+    "kind": "expansion",
+    "text": "Depth connections link representations across layers, while width connections link parallel streams within a layer."
+  },
+  {
+    "id": "split-000030",
+    "kind": "claim",
+    "text": "Later work split the feature dimension into independent sub-streams and applied Hyper-Connections to those sub-streams."
+  },
+  {
+    "id": "split-000031",
+    "kind": "claim",
+    "text": "Later work applied Hyper-Connections to vision neural networks."
+  },
+  {
+    "id": "split-000032",
+    "kind": "claim",
+    "text": "Later work applied Hyper-Connections to graph neural networks."
+  },
+  {
+    "id": "split-000033",
+    "kind": "claim",
+    "text": "Unconstrained dynamic connectivity in Hyper-Connections removes an explicit identity-property guarantee for residual blocks."
+  },
+  {
+    "id": "split-000034",
+    "kind": "claim",
+    "text": "Repeated application of the mixing terms can therefore cause gradient instability."
+  },
+  {
+    "id": "expand-000016",
+    "kind": "expansion",
+    "text": "The identity property ensures that a residual pathway can preserve its input without amplification or attenuation by the mixing operation."
+  },
+  {
+    "id": "expand-000017",
+    "kind": "expansion",
+    "text": "Repeated unconstrained mixing can compound spectral amplification or contraction across layers, destabilizing gradients."
+  },
+  {
+    "id": "split-000035",
+    "kind": "claim",
+    "text": "Subsequent methods constrain connectivity to a manifold."
+  },
+  {
+    "id": "split-000036",
+    "kind": "claim",
+    "text": "The constraint bounds gradient updates through the spectral norm."
+  },
+  {
+    "id": "split-000037",
+    "kind": "claim",
+    "text": "The purpose of the constraint is to address instability from unconstrained connectivity."
+  },
+  {
+    "id": "expand-000018",
+    "kind": "expansion",
+    "text": "The spectral norm is the largest singular value of a matrix and measures its maximum amplification of vector length."
+  },
+  {
+    "id": "expand-000019",
+    "kind": "expansion",
+    "text": "Bounding the spectral norm limits how strongly a connectivity matrix can amplify signals and gradients."
+  },
+  {
+    "id": "split-000038",
+    "kind": "claim",
+    "text": "Manifold-Constrained Hyper-Connections constrain dynamic residual matrices to a manifold."
+  },
+  {
+    "id": "split-000039",
+    "kind": "claim",
+    "text": "The constraint improves training stability while preserving dynamic connections."
+  },
+  {
+    "id": "split-000040",
+    "kind": "claim",
+    "text": "mHC changes the definition of the residual connection matrix ℋₗʳᵉˢ."
+  },
+  {
+    "id": "split-000041",
+    "kind": "claim",
+    "text": "The modified residual matrices converge to the Birkhoff polytope B_d."
+  },
+  {
+    "id": "split-000042",
+    "kind": "claim",
+    "text": "B_d is the closed set of doubly stochastic matrices."
+  },
+  {
+    "id": "expand-000020",
+    "kind": "expansion",
+    "text": "Convergence to B_d means the learned residual matrices approach matrices with nonnegative entries and unit row and column sums."
+  },
+  {
+    "id": "split-000043",
+    "kind": "claim",
+    "text": "mHC-lite uses the Birkhoff–von Neumann theorem to define learned connections as convex combinations of permutation matrices."
+  },
+  {
+    "id": "split-000044",
+    "kind": "claim",
+    "text": "The construction uses d! permutation matrices."
+  },
+  {
+    "id": "split-000045",
+    "kind": "claim",
+    "text": "mHC-lite is intended to remove the approximation gap."
+  },
+  {
+    "id": "expand-000021",
+    "kind": "expansion",
+    "text": "A convex combination is a weighted sum with nonnegative weights whose total is one."
+  },
+  {
+    "id": "expand-000022",
+    "kind": "expansion",
+    "text": "The Birkhoff–von Neumann theorem states that every doubly stochastic matrix can be expressed as a convex combination of permutation matrices."
+  },
+  {
+    "id": "split-000046",
+    "kind": "claim",
+    "text": "KromHC represents residual connections with tensor products."
+  },
+  {
+    "id": "split-000047",
+    "kind": "claim",
+    "text": "KromHC covers only a smaller subset of exactly doubly stochastic matrices."
+  },
+  {
+    "id": "split-000048",
+    "kind": "claim",
+    "text": "KromHC has computational cost O(d² C)."
+  },
+  {
+    "id": "split-000049",
+    "kind": "claim",
+    "text": "KromHC sacrifices expressivity and complete coverage of B_d."
+  },
+  {
+    "id": "expand-000023",
+    "kind": "expansion",
+    "text": "Exact constraint satisfaction does not imply that every point in the Birkhoff polytope can be represented by KromHC."
+  },
+  {
+    "id": "split-000050",
+    "kind": "claim",
+    "text": "Generalized s-orthostochastic matrices are contained in B_d."
+  },
+  {
+    "id": "split-000051",
+    "kind": "claim",
+    "text": "Generalized s-orthostochastic matrices span all of B_d as s tends to infinity."
+  },
+  {
+    "id": "expand-000024",
+    "kind": "expansion",
+    "text": "Increasing s enlarges the representable family until it can express the full doubly stochastic set in the limit."
+  },
+  {
+    "id": "split-000052",
+    "kind": "claim",
+    "text": "The authors claim to be the first to apply this construction in machine learning."
+  },
+  {
+    "id": "split-000053",
+    "kind": "claim",
+    "text": "The claimed application is learned residual-stream routing in deep networks."
+  },
+  {
+    "id": "split-000054",
+    "kind": "claim",
+    "text": "The orthostochastic set has the geometry of a concave cycloid."
+  },
+  {
+    "id": "split-000055",
+    "kind": "claim",
+    "text": "The set meets the permutation vertices of B_d."
+  },
+  {
+    "id": "split-000056",
+    "kind": "claim",
+    "text": "For d greater than 2, the set does not occupy the interior of B_d."
+  },
+  {
+    "id": "expand-000025",
+    "kind": "expansion",
+    "text": "The permutation vertices of B_d are the permutation matrices, which are the extreme points of the Birkhoff polytope."
+  },
+  {
+    "id": "expand-000026",
+    "kind": "expansion",
+    "text": "The interior of B_d consists of points that are not on the polytope's boundary."
+  },
+  {
+    "id": "split-000057",
+    "kind": "claim",
+    "text": "go-mHC provides an intermediate FLOP complexity for scaling residual streams."
+  },
+  {
+    "id": "split-000058",
+    "kind": "claim",
+    "text": "go-mHC avoids the super-exponential cost of mHC-lite."
+  },
+  {
+    "id": "split-000059",
+    "kind": "claim",
+    "text": "go-mHC avoids the iterative overhead of mHC SK iterations."
+  },
+  {
+    "id": "split-000060",
+    "kind": "claim",
+    "text": "The nominal estimates use S = 20, i_k = 2, and s ∈ {1, 2}."
+  },
+  {
+    "id": "split-000061",
+    "kind": "claim",
+    "text": "Full complexity estimates are provided in Appendix B.6."
+  },
+  {
+    "id": "expand-000027",
+    "kind": "expansion",
+    "text": "FLOPs are floating-point arithmetic operations used as a measure of computational cost."
+  },
+  {
+    "id": "expand-000028",
+    "kind": "expansion",
+    "text": "The method is positioned between approaches that offer broader coverage at very high cost and approaches that use iterative computation."
+  }
+]

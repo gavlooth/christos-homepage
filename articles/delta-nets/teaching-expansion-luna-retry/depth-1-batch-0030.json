@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 30,
+  "items": [
+    {
+      "recordId": "teach-generated-6296d5b32c1729c5",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A replicator is an entity or process that produces copies of itself, using information or instructions it contains or carries.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-e1881a6d333a0a72",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Unpaired means that an item, person, or component does not have a corresponding partner or match in the relevant set.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

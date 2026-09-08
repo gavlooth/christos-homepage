@@ -1,0 +1,9 @@
+Error: knowledge node 61 has no text
+    at <anonymous> (/home/christos/code/refine/bin/refine.mjs:272:42)
+    at map (native:1:11)
+    at validateExtraction (/home/christos/code/refine/bin/refine.mjs:255:29)
+    at callOmpJson (/home/christos/code/refine/bin/refine.mjs:338:66)
+    at unknown
+    at unknown
+    at async mapConcurrent (unknown)
+    at async main (unknown)

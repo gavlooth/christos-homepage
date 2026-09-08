@@ -1,0 +1,39 @@
+{
+  "depth": 0,
+  "batch": 1,
+  "items": [
+    {
+      "recordId": "teach-n0000778",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Levels record relative sharing contexts at consumer sites.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Deltas record relative sharing contexts at consumer sites.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A level generally describes the state of something at a particular point or context, rather than a change between states.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A delta generally describes a difference or change between states or contexts.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

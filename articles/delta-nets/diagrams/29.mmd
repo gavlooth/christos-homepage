@@ -1,0 +1,8 @@
+flowchart TB
+                  resN@{ shape: rect, label: "1st aux · result" }
+                  appN@{ shape: triangle, label: "app" }
+                  Mf2@{ shape: rect, label: "function M · ℓ" }
+                  Nf2@{ shape: rect, label: "argument N · ℓ+1" }
+                  Mf2 -->|principal| appN
+                  appN --- resN
+                  appN --- Nf2

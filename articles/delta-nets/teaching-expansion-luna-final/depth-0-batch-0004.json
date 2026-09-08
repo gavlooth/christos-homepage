@@ -1,0 +1,36 @@
+{
+  "depth": 0,
+  "batch": 4,
+  "items": [
+    {
+      "recordId": "teach-n0000693",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A λ-term is an expression in the lambda calculus, and a translation maps it into another formal representation.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The translations in this claim are well-formed translations of λ-terms.",
+          "requires": [
+            "the meaning of a well-formed λ-term translation"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "In well-formed λ-term translations, active replicators at the same structural level are equal.",
+          "requires": [
+            "the definition of an active replicator"
+          ],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

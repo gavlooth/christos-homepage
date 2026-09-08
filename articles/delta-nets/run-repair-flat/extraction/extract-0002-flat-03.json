@@ -1,0 +1,270 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "flowchart TB\nRp[\"principal\"]\nR@{ shape: trapezoid, label: \"R\" }\nRd0@{ shape: rect, label: \"aux d₀\" }\nRd1@{ shape: rect, label: \"aux d₁\" }\nRd2@{ shape: rect, label: \"aux d₂\" }\nRdn@{ shape: rect, label: \"aux …\" }\nRp -->|principal| R\nR --- Rd0\nR --- Rd1\nR --- Rd2\nR --- Rdn",
+      "sourceUnitIds": [
+        "u000123"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Diagram key. Application and function fans are triangles: the principal port is fixed at the top apex and the two auxiliary wires leave fixed, symmetric positions along the bottom edge. Only replicators are trapezoids: the principal port is centered on the short top side and the auxiliary wires are evenly spaced along the wide bottom side. Rectangles label fragments or wire endpoints; they are not agents. An eraser has only a principal port.",
+      "sourceUnitIds": [
+        "u000124"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Structure",
+      "sourceUnitIds": [
+        "u000125"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Fan",
+      "sourceUnitIds": [
+        "u000126"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Exactly two auxiliary ports. Fans build the application and abstraction skeleton of a λ-term. When two fans annihilate, that is β-reduction in graph form.",
+      "sourceUnitIds": [
+        "u000127"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Discard",
+      "sourceUnitIds": [
+        "u000128"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Eraser",
+      "sourceUnitIds": [
+        "u000129"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "No auxiliary ports. It marks “this bound variable is unused,” and deletes an agent it meets in a distinct-agent interaction.",
+      "sourceUnitIds": [
+        "u000130"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Share",
+      "sourceUnitIds": [
+        "u000131"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Replicator",
+      "sourceUnitIds": [
+        "u000132"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Any natural-number arity—one, two, three auxiliary ports, and so on. It joins the uses of one shared value and records the sharing context: a level on the agent, plus a delta on each auxiliary port.",
+      "sourceUnitIds": [
+        "u000133"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Context",
+      "sourceUnitIds": [
+        "u000134"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Level delta",
+      "sourceUnitIds": [
+        "u000135"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000123",
+        "u000124",
+        "u000125",
+        "u000126",
+        "u000127",
+        "u000128",
+        "u000129",
+        "u000130",
+        "u000131",
+        "u000132",
+        "u000133",
+        "u000134",
+        "u000135"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0002-flat-03 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0002-flat-03",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

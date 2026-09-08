@@ -1,0 +1,12 @@
+flowchart TB
+                  rootM((root))
+                  A["A · unpaired · ℓ = 2"]
+                  live["endpoint ℓ = 2"]
+                  B["B · ℓ = 4"]
+                  b1["endpoint ℓ = 3"]
+                  b2["endpoint ℓ = 6"]
+                  rootM --> A
+                  A -->|d = 0| live
+                  A -->|d = 3| B
+                  B --> b1
+                  B --> b2

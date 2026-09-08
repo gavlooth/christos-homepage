@@ -1,0 +1,251 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0005-flat-05",
+  "context": [
+    "Δ-Nets",
+    "What does this proposal actually promise?"
+  ],
+  "units": [
+    {
+      "id": "u000367",
+      "kind": "prose",
+      "text": "Keep the state changes separate. The bijection φ creates the initial canonical net. Core interactions enter the broader space of proper nets; the subsystem’s prescribed interaction order and canonicalizations are collected by Ω until the net is both normal and canonical. Only then does φ−1 read it back as a λ-term. This is the construction formalized near the end of [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4)."
+    },
+    {
+      "id": "u000368",
+      "kind": "prose",
+      "text": "01 / NO DISCARDED WORK"
+    },
+    {
+      "id": "u000369",
+      "kind": "heading",
+      "text": "### Erasure is controlled"
+    },
+    {
+      "id": "u000370",
+      "kind": "prose",
+      "text": "Leftmost-outermost reduction avoids evaluating a subnet that will later be erased; the reachability sweep clears the leftover garbage."
+    },
+    {
+      "id": "u000371",
+      "kind": "prose",
+      "text": "02 / NO REPEATED WORK"
+    },
+    {
+      "id": "u000372",
+      "kind": "heading",
+      "text": "### Sharing stays interior"
+    },
+    {
+      "id": "u000373",
+      "kind": "prose",
+      "text": "Replicators put shared use in the graph, so necessary work need not be redone merely because an expression has several consumers."
+    },
+    {
+      "id": "u000374",
+      "kind": "prose",
+      "text": "03 / LOCAL PARALLELISM"
+    },
+    {
+      "id": "u000375",
+      "kind": "heading",
+      "text": "### Independent pairs can run"
+    },
+    {
+      "id": "u000376",
+      "kind": "prose",
+      "text": "Perfect confluence in the interaction core lets disjoint active pairs choose and apply their local rules independently."
+    },
+    {
+      "id": "u000377",
+      "kind": "heading",
+      "text": "### 7.1 The guarantee differs by subsystem"
+    },
+    {
+      "id": "u000378",
+      "kind": "prose",
+      "text": "In ΔL, fan annihilation is the only interaction. The paper states that every proper net is already canonical, and that if n β-reductions normalize a λL term, n interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure."
+    },
+    {
+      "id": "u000379",
+      "kind": "prose",
+      "text": "System | Extra concern | Paper’s prescribed response | |"
+    },
+    {
+      "id": "u000380",
+      "kind": "prose",
+      "text": "ΔL | None beyond fan annihilation. | Any interaction order; perfect confluence. | |"
+    }
+  ]
+}

@@ -1,0 +1,888 @@
+# Δ-Nets: Local Graph Rewriting for Shared λ-Reduction
+
+> **Purpose.** This chapter is a guided reconstruction of the ideas behind Δ-Nets, an interaction-based proposal for optimal parallel λ-reduction. It explains the design and its intended invariants; the formal definitions and proofs remain authoritative in the source paper: Daniel Augusto Rizzi Salvadori, “[Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction](https://arxiv.org/html/2505.20314v4),” arXiv:2505.20314v4 (2026).
+
+## 1. The problem: substitution can waste work
+
+The untyped λ-calculus builds terms from:
+
+\[
+t ::= x \mid \lambda x.t \mid t\,u.
+\]
+
+- \(x\) is a **variable**.
+- \(\lambda x.t\) is an **abstraction**: a function whose parameter is \(x\) and whose body is \(t\).
+- \(t\,u\) is an **application**: apply function \(t\) to argument \(u\).
+
+An occurrence of \(x\) is **bound** if it lies inside the scope of a surrounding \(\lambda x\); otherwise it is **free**. The fundamental reduction rule is β-reduction:
+
+\[
+(\lambda x.t)\,u \;\longrightarrow_\beta\; t[x:=u].
+\]
+
+Here \(t[x:=u]\) means capture-avoiding substitution: replace the bound occurrences of \(x\) in \(t\) by \(u\), without changing which binders own which variables.
+
+This compact rule hides two operationally different cases.
+
+### 1.1 Erasure: work that will be discarded
+
+If \(x\) does not occur in \(t\), then:
+
+\[
+(\lambda x.t)\,u \;\longrightarrow_\beta\; t.
+\]
+
+The argument \(u\) disappears. Therefore, reducing inside \(u\) before discovering that \(x\) is unused may be wasted work.
+
+For example,
+
+\[
+(\lambda x.y)\;((\lambda z.z)\,w)
+\;\longrightarrow_\beta\;
+y.
+\]
+
+Reducing \((\lambda z.z)\,w\) first would not affect the final answer.
+
+### 1.2 Duplication: work that may be repeated
+
+If \(x\) occurs several times, naïve substitution copies \(u\):
+
+\[
+(\lambda x.x\,x)\,u
+\;\longrightarrow_\beta\;
+u\,u.
+\]
+
+If \(u\) contains a redex, each syntactic copy can reproduce the same computation. The desired behavior is instead:
+
+1. represent the multiple uses explicitly as sharing;
+2. reduce the shared computation once;
+3. let all consumers observe the resulting graph.
+
+A central motivation for Δ-Nets is therefore:
+
+> Avoid evaluating computation that will later be erased, and avoid recomputing necessary work merely because it has multiple consumers.
+
+A clever sequential reduction order can prevent some erasure waste—for example, normal order can reduce the outer application before its argument. But sharing is harder: as emphasized in the optimal-reduction tradition, there are terms for which no ordinary sequential order avoids every duplicated reduction. The representation itself must expose sharing.
+
+---
+
+## 2. From syntax trees to nets
+
+A syntax tree gives each occurrence its own branch. If an expression is used twice, a tree naturally presents two copies. A graph can instead let two consumers point to one connected subgraph.
+
+```text
+Tree-like duplication:              Shared graph:
+
+use₁ ── argument₁                  use₁ ─┐
+use₂ ── argument₂                          ├── shared argument
+                                           use₂ ─┘
+```
+
+A **graph rewriting system** computes by replacing a local matched subgraph with another subgraph according to a rule. In an interaction-net style system:
+
+- an **agent** is a small graph node;
+- an agent has connection sockets called **ports**;
+- every agent has one distinguished **principal port**;
+- it may also have zero or more **auxiliary ports**.
+
+Two agents connected at their principal ports form an **active pair**. An interaction rule may rewrite that pair, reconnecting only the wires incident to it.
+
+This locality has a decisive consequence:
+
+> An agent has only one principal port, so it cannot belong to two distinct active pairs simultaneously.
+
+Therefore distinct active pairs share no agent. Their rewrites can be performed independently.
+
+### 2.1 Perfect confluence
+
+Suppose a net \(N\) has two possible one-step interactions:
+
+\[
+N \longrightarrow N_1,
+\qquad
+N \longrightarrow N_2.
+\]
+
+The interaction-net core is said here to have the **one-step diamond property** when there exists \(M\) such that:
+
+\[
+N_1 \longrightarrow M,
+\qquad
+N_2 \longrightarrow M.
+\]
+
+Every arrow is exactly one local interaction.
+
+```text
+        N
+      /   \
+    N₁     N₂
+      \   /
+        M
+```
+
+The paper calls this property **perfect confluence**. Intuitively, disjoint local interactions commute:
+
+\[
+\text{left then right}
+=
+\text{right then left}.
+\]
+
+Perfect confluence is not the same as termination. A system may have commuting local choices and still admit infinite reduction sequences. The relevant claim is conditional: when normalization occurs in the interaction core, normalizing orders agree on the result and, according to the paper’s stated result, on the number of core interactions.
+
+---
+
+## 3. The three agents
+
+A Δ-Net core uses three kinds of agents.
+
+| Agent | Auxiliary ports | Role |
+|---|---:|---|
+| Fan \(F\) | 2 | Application and abstraction structure |
+| Eraser \(E\) | 0 | Explicit non-use / disposal |
+| Replicator \(R\) | Any natural number | Explicit sharing and sharing-context bookkeeping |
+
+The diagrams conventionally distinguish them as follows:
+
+- a **fan** is a triangle;
+- an **eraser** has only its principal port;
+- a **replicator** is a variable-arity node, often drawn as a trapezoid;
+- rectangles in explanatory diagrams are endpoints or subnet labels, not agents.
+
+### 3.1 Fans: λ-structure
+
+A fan has exactly two auxiliary ports. In a rooted net, orientation determines whether it represents an application or an abstraction.
+
+An application fan has:
+
+- principal port: the function connection;
+- first auxiliary port: the result or parent connection;
+- second auxiliary port: the argument connection.
+
+An abstraction fan has:
+
+- principal port: its parent connection;
+- first auxiliary port: its body;
+- second auxiliary port: its bound-variable connection.
+
+The same triangular shape may represent either construct. Its role is determined by the direction of its wires relative to the root, not by the triangle alone.
+
+### 3.2 Erasers: unused variables
+
+An eraser records that a bound parameter has no live occurrence in the body.
+
+Because an eraser has no auxiliary ports, it cannot preserve continuation through an agent it meets. Erasure therefore propagates through the neighboring agent’s auxiliary structure. For example, when \(E\) meets a two-port fan, the result places an eraser on each outgoing branch of that fan.
+
+More generally:
+
+\[
+E \text{ meets an } n\text{-port agent}
+\quad\Longrightarrow\quad
+n \text{ erasers continue on its auxiliary branches.}
+\]
+
+This is how “this value is not needed” becomes local graph behavior rather than a global search.
+
+### 3.3 Replicators: shared values with local context
+
+A replicator has one principal port and any number of auxiliary ports. Its principal connection receives a shared value; its auxiliary connections lead to the uses of that value.
+
+A replicator carries:
+
+- an integer **level** \(\ell_R\);
+- one integer **delta** \(d_i\) for each auxiliary port \(i\).
+
+The level names a sharing context. A delta is a relative level adjustment attached to one specific exit:
+
+\[
+\text{new level of a replica}
+=
+\text{old level}
++
+\text{delta of the exit port}.
+\]
+
+A delta is **not**:
+
+- a copy count;
+- a source-language variable value;
+- a runtime closure environment.
+
+The replicator’s arity already determines how many explicit consumer connections it has. Deltas instead record how each consumer’s structural context differs from the replicator’s context.
+
+A one-port replicator with delta \(0\) is equivalent to a wire: it neither branches nor changes level. Canonical construction omits it.
+
+---
+
+## 4. Four λ-fragments and their net subsystems
+
+The source distinguishes four variable-use disciplines.
+
+| λ-fragment | Bound-variable rule | Δ-Net subsystem | Permitted agents |
+|---|---|---|---|
+| \(\lambda L\) | Exactly once | \(\Delta L\) | Fan |
+| \(\lambda A\) | At most once | \(\Delta A\) | Fan, eraser |
+| \(\lambda I\) | At least once | \(\Delta I\) | Fan, replicator |
+| \(\lambda K\) | Any number of times | \(\Delta K\) | Fan, eraser, replicator |
+
+This gives the agent vocabulary an operational interpretation:
+
+- **fan** pays for structural λ-term shape;
+- **eraser** pays for omission;
+- **replicator** pays for sharing.
+
+A linear binder needs neither erasure nor duplication. An affine binder may need an eraser. A relevant binder may need a replicator. A full binder may need either or both.
+
+---
+
+## 5. The three local interaction families
+
+When two principal ports meet, the interaction belongs to one of three broad families.
+
+## 5.1 Annihilation
+
+Equal agents cancel. Both agents disappear and corresponding auxiliary ports reconnect.
+
+For fans, this is β-reduction in graph form. The application fan and abstraction fan meet at their principal ports; annihilation reconnects:
+
+\[
+\text{application result} \leftrightarrow \text{abstraction body},
+\]
+
+\[
+\text{application argument} \leftrightarrow \text{abstraction variable interface}.
+\]
+
+This realizes substitution structurally rather than by textual copying.
+
+Port identity, not geometric left-versus-right position, determines reconnection. Rotating a fan changes how a port appears in a drawing without changing its semantic index. Thus crossed wires can represent correct index-preserving reconnection.
+
+### Example: one linear β-step
+
+Consider:
+
+\[
+(\lambda x.x)(\lambda y.y)
+\;\longrightarrow_\beta\;
+\lambda y.y.
+\]
+
+Because \(x\) occurs exactly once, the corresponding \(\Delta L\) net needs fans only. The application fan meets the abstraction fan; the two fans annihilate; the root becomes connected directly to the net for \(\lambda y.y\).
+
+The paper states, for the linear subsystem, that if a \(\lambda L\) term normalizes in \(n\) β-steps, then its \(\Delta L\) encoding normalizes in \(n\) interactions in any interaction order.
+
+## 5.2 Erasure
+
+When an eraser meets a distinct agent, the latter has no continuation through the eraser’s side. The interaction deletes the encountered structure and propagates erasers through its auxiliary outputs.
+
+For a fan with two auxiliary ports:
+
+```text
+Before:                  After:
+
+      E                        E ── branch 1
+      |                        E ── branch 2
+      F
+    /   \
+ branch 1 branch 2
+```
+
+This local propagation is the net analogue of discovering that a value is unused.
+
+## 5.3 Commutation
+
+Distinct non-eraser agents commute: each passes through the other’s surrounding structure, generating copies according to the other agent’s arity.
+
+If an \(m\)-port replicator meets a two-port fan:
+
+- the replicator is copied through the fan’s two auxiliary ports;
+- the fan is copied once for each replicator auxiliary port;
+- the resulting connections form an \(m\times 2\) indexed grid.
+
+The indices determine the rule. In the notation used by the source discussion:
+
+\[
+(F_i)_j \leftrightarrow (R^j)_i.
+\]
+
+The essential principle is that port identity survives copying even if drawings are rotated.
+
+---
+
+## 6. Replicator–replicator interaction and deltas
+
+Replicators introduce the most distinctive Δ-Net behavior.
+
+Let two replicators meet at their principal ports.
+
+### 6.1 Equal replicators: annihilation
+
+Formally, equal replicators must match in:
+
+1. level;
+2. arity;
+3. every port delta.
+
+For canonical nets produced by the paper’s λ-term translation, the relevant invariant states that active replicators at the same level are already equal. In that restricted setting, comparing levels is sufficient.
+
+For hand-built nets, it is not sufficient. Equal levels alone do not prove equal arity or equal port-delta assignments.
+
+When equal replicators annihilate:
+
+- both disappear;
+- equal-indexed auxiliary ports reconnect;
+- no replicas are created.
+
+### 6.2 Different levels: commutation
+
+Suppose a lower-level replicator \(R\) meets a higher-level replicator \(H\).
+
+If their levels differ, they commute rather than annihilate.
+
+- \(R\) produces one replica of \(H\) for every auxiliary port of \(R\).
+- \(H\) produces one exact copy of \(R\) for every auxiliary port of \(H\).
+- Each copy of \(H\) receives the delta on the \(R\)-port through which it exits.
+
+Thus, if \(H\) has old level \(\ell_H\) and exits through \(R\)-port \(i\), then:
+
+\[
+\ell_{H_i}' = \ell_H + d_i.
+\]
+
+The copies of \(R\) preserve \(R\)’s own level and deltas. This asymmetry is essential: the delta belongs to the exit of \(R\), so it modifies the replica that traverses that exit.
+
+### Worked calculation
+
+Let:
+
+\[
+\ell_R = 2,
+\qquad
+\ell_H = 7.
+\]
+
+Suppose \(R\) has two ports whose endpoints lie at levels \(2\) and \(5\). Then:
+
+\[
+d_A = 2 - 2 = 0,
+\]
+
+\[
+d_B = 5 - 2 = +3.
+\]
+
+When \(H\) commutes through \(R\):
+
+\[
+\ell_{H_A}' = 7 + 0 = 7,
+\]
+
+\[
+\ell_{H_B}' = 7 + 3 = 10.
+\]
+
+The port values are local instructions:
+
+```text
+port A: use H's current level, unchanged
+port B: add 3 to H's current level
+```
+
+The same exit rule applies to every higher-level replicator that later passes through that port. If a replica begins at level \(12\), then exit \(B\) produces level:
+
+\[
+12 + 3 = 15.
+\]
+
+---
+
+## 7. Compiling λ-terms into canonical nets
+
+For each of the four λ-fragments, the paper defines a bijection:
+
+\[
+\varphi:
+\{\text{terms}\}
+\longleftrightarrow
+\{\text{canonical Δ-Nets}\}.
+\]
+
+A bijection has two directions:
+
+- each source term maps to one canonical net;
+- each canonical net maps back to one source term.
+
+The translation is inductive: translate smaller terms first, then wire their translated fragments together.
+
+### 7.1 Fragment interfaces
+
+Each translated fragment has:
+
+- one incoming result wire;
+- zero or more outgoing interface wires;
+- a single root for the whole closed net.
+
+A free variable appears as a named interface node. It is not a rewriting agent.
+
+A bound variable occurrence is different: it is represented by a wire, later connected to the structure of its owning binder.
+
+### 7.2 Variable cases
+
+For a binder \(\lambda x.M\), there are three cases.
+
+| Occurrences of \(x\) in \(M\) | Representation |
+|---:|---|
+| 0 | Connect the variable port to an eraser, where permitted |
+| 1 | Connect directly to the single occurrence |
+| \(>1\) | Connect to a replicator with one auxiliary port per occurrence |
+
+For example:
+
+\[
+\lambda x.x
+\]
+
+needs a direct wire from the binder’s variable port to the occurrence.
+
+\[
+\lambda x.y
+\]
+
+uses an eraser at the variable port in an erasure-capable subsystem.
+
+\[
+\lambda x.x\,x
+\]
+
+uses a two-port replicator: one auxiliary connection serves the function occurrence and the other serves the argument occurrence.
+
+### 7.3 Application and abstraction wiring
+
+For an application \(M\,N\) at level \(\ell\):
+
+- \([M]_\ell\) connects to the principal port;
+- the parent or result wire uses the first auxiliary port;
+- \([N]_{\ell+1}\) uses the second auxiliary port.
+
+Thus an abstraction occurring on the function side can meet the application fan principal-to-principal, exposing a β-redex.
+
+For an abstraction \(\lambda x.M\) at level \(\ell\):
+
+- the body \(M\) remains at level \(\ell\);
+- the binder’s replicator \(R_x\), if needed, is placed at level \(\ell+1\);
+- the abstraction’s first auxiliary port leads to the body;
+- its second auxiliary port leads to the bound-variable structure.
+
+---
+
+## 8. Where levels and deltas come from
+
+Levels are computed by walking the written λ-term.
+
+Start with:
+
+\[
+\operatorname{level}(T)=0
+\]
+
+for the whole term \(T\).
+
+Then apply these rules recursively.
+
+### 8.1 Level assignment
+
+For abstraction:
+
+\[
+\operatorname{level}(\lambda x.M)=\ell
+\quad\Longrightarrow\quad
+\operatorname{level}(M)=\ell.
+\]
+
+For application:
+
+\[
+\operatorname{level}(M\,N)=\ell
+\quad\Longrightarrow\quad
+\operatorname{level}(M)=\ell,
+\qquad
+\operatorname{level}(N)=\ell+1.
+\]
+
+Thus a node’s level can be understood as the number of application-argument edges encountered on the route from the term root to that node.
+
+These levels are not runtime closure contents. They are static structural annotations used to preserve sharing context through replication and commutation.
+
+### 8.2 Delta assignment
+
+For a bound occurrence \(x_i\) at level \(\ell_i\), served by replicator \(R_x\) at level \(\ell_R\):
+
+\[
+d_i = \ell_i - \ell_R.
+\]
+
+### Example: \(\lambda x.\,x\,(g\,x)\)
+
+Write the term with explicit structure:
+
+\[
+\lambda x.\bigl(x_0\;(g\;x_1)\bigr).
+\]
+
+Start at level \(0\).
+
+- The abstraction body remains at level \(0\).
+- In the outer application, function occurrence \(x_0\) has level \(0\).
+- The argument \(g\,x_1\) has level \(1\).
+- Inside \(g\,x_1\), \(g\) remains at level \(1\), while \(x_1\) has level \(2\).
+
+The binder replicator is at:
+
+\[
+\ell_{R_x}=0+1=1.
+\]
+
+Therefore:
+
+\[
+d_0=0-1=-1,
+\qquad
+d_1=2-1=+1.
+\]
+
+So the delta vector is:
+
+\[
+\langle -1,+1\rangle.
+\]
+
+### Example: deeper right nesting
+
+Consider:
+
+\[
+\lambda x.\,x\bigl(x\bigl(x\,x\bigr)\bigr).
+\]
+
+The four occurrences lie at levels:
+
+\[
+0,\;1,\;2,\;3.
+\]
+
+The binder replicator is at level \(1\), so:
+
+\[
+\langle d_0,d_1,d_2,d_3\rangle
+=
+\langle 0-1,\;1-1,\;2-1,\;3-1\rangle
+=
+\langle -1,0,+1,+2\rangle.
+\]
+
+Applying this abstraction to \(N\) yields:
+
+\[
+(\lambda x.\,x(x(x\,x)))\,N
+\;\longrightarrow_\beta\;
+N(N(N\,N)).
+\]
+
+The four replicator ports represent four consumers. The delta vector does not say “make four copies”; the arity already says that. Instead, it records the relative sharing context of each consumer.
+
+---
+
+## 9. Canonical nets, proper nets, and cleanup
+
+The interaction core is not the entire algorithm.
+
+A **canonical net** is the standard term-like form generated by \(\varphi\), the term-to-net translation. It is the shape that the inverse translation \(\varphi^{-1}\) knows how to read.
+
+A **proper net** is any net reachable from a canonical net through zero or more core Δ-interactions.
+
+Thus:
+
+\[
+\text{canonical}
+\subseteq
+\text{proper}.
+\]
+
+Core interactions may preserve computational meaning while leaving the net temporarily noncanonical. **Canonicalization** restores the special canonical shape. It is not itself necessarily a principal-port interaction.
+
+### 9.1 Erasure canonicalization
+
+In \(\Delta A\) and \(\Delta K\), erasure can leave disconnected subnets. The prescribed cleanup is a root-reachability sweep:
+
+1. begin at the distinguished root;
+2. follow parent–child wiring and mark reachable material;
+3. delete unmarked material;
+4. terminate exposed surviving connections with erasers where required.
+
+This is a global cleanup pass, unlike a local active-pair rewrite.
+
+The sweep may run at the end of reduction or earlier to control memory use. The source recommends early sweeping after applications of abstractions that ignore their arguments when memory consumption is especially important.
+
+### 9.2 Replicator merging
+
+In \(\Delta I\) and \(\Delta K\), interactions can create trees consisting only of replicators. A merge rule can collapse consecutive replicators when a local condition proves the later one is unpaired.
+
+Suppose consecutive replicators \(A\) and \(B\) are connected through a port of delta \(d\). The source gives the test:
+
+\[
+0 \leq \ell_B-\ell_A \leq d.
+\]
+
+Under the stated interpretation, this proves that \(B\) is unpaired: it cannot interact before \(A\) would be annihilated, and \(A\) is itself unpaired.
+
+The inequality is therefore a safety condition, not merely an optimization heuristic.
+
+After merging:
+
+- external endpoint levels remain unchanged;
+- the surviving replicator retains its level;
+- deltas are recomputed relative to that level.
+
+For example, if the surviving level is \(2\) and external endpoints are at levels \(2\), \(3\), and \(6\), then the new deltas are:
+
+\[
+\langle 2-2,\;3-2,\;6-2\rangle
+=
+\langle 0,+1,+4\rangle.
+\]
+
+### 9.3 Replicator decay in \(\Delta K\)
+
+A further \(\Delta K\) cleanup removes auxiliary ports of unpaired replicators that lead directly to erasers.
+
+If the remaining replicator has one auxiliary port with delta \(0\), it collapses to a wire. It no longer represents either sharing or a level transition.
+
+---
+
+## 10. Why a global schedule remains necessary
+
+The core local interactions are perfectly confluent. But canonicalization may inspect or rewrite structure outside principal-to-principal active pairs. Therefore local confluence alone does not specify when cleanup should occur.
+
+For the nonlinear systems \(\Delta A\), \(\Delta I\), and \(\Delta K\), the paper prescribes a **leftmost-outermost** schedule.
+
+A reducible pattern is **outermost** if it is not contained within another reducible pattern. The schedule:
+
+1. chooses an outermost reducible pattern;
+2. among those, chooses the leftmost one in the term-like reading of the net.
+
+This schedule serves two purposes:
+
+- it delays work inside an argument until the enclosing application establishes that the argument is needed;
+- it allows cleanup and merging to occur before later commutations spread unnecessary structure.
+
+The source also allows limited safe parallelism: a reducible pair may run early if it can be shown that it will later reach the leftmost-outermost position unchanged. This is a conditional permission, not a general license to reduce any currently disjoint pair early.
+
+---
+
+## 11. The whole proposed algorithm
+
+The intended pipeline is:
+
+\[
+t
+\;\xrightarrow{\varphi}\;
+\varphi(t)
+\;\xrightarrow{\Delta^\ast}\;
+\text{proper net}
+\;\xrightarrow{\Omega}\;
+\text{normal canonical net}
+\;\xrightarrow{\varphi^{-1}}\;
+t'.
+\]
+
+Here:
+
+- \(t\) is the source λ-term;
+- \(\varphi(t)\) is its canonical Δ-Net;
+- \(\Delta^\ast\) denotes zero or more core interactions;
+- \(\Omega\) denotes the subsystem’s full operational discipline: interactions, schedule, and canonicalizations;
+- \(t'\) is the read-back λ-term in normal form.
+
+The stages must remain distinct.
+
+1. **Encoding:** \(\varphi\) constructs a canonical net.
+2. **Core reduction:** local interactions may enter the larger space of proper nets.
+3. **Canonicalization and scheduling:** \(\Omega\) returns the net to a canonical normal form.
+4. **Read-back:** \(\varphi^{-1}\) applies only once the net is normal and canonical.
+
+A proper net should not be mistaken for a final term representation merely because it is reachable from a canonical one.
+
+---
+
+## 12. What the proposal claims—and what it does not
+
+### 12.1 Intended benefits
+
+The proposal separates three objectives.
+
+#### No discarded work
+
+Leftmost-outermost reduction aims to avoid evaluating a subnet that will be erased. Root-reachability cleanup then removes leftover garbage.
+
+#### No repeated work
+
+Replicators place shared use inside the graph. Multiple consumers can remain connected to one evolving computation rather than forcing independent textual substitutions.
+
+#### Local parallelism
+
+Perfect confluence allows disjoint active pairs to choose and apply local rules independently.
+
+### 12.2 Guarantees differ by subsystem
+
+| System | Extra concern | Prescribed response |
+|---|---|---|
+| \(\Delta L\) | None beyond fan annihilation | Any interaction order; perfect confluence |
+| \(\Delta A\) | Disconnected erased subnets | Leftmost-outermost plus erasure canonicalization |
+| \(\Delta I\) | Replicator trees and early copying | Leftmost-outermost plus merging/canonicalization |
+| \(\Delta K\) | Both garbage and sharing structure | Leftmost-outermost plus erasure, merging, and decay |
+
+The strongest claims are not claims about the bare three-agent interaction core alone. For nonlinear systems, the paper’s broader claims depend on adding the relevant cleanup procedures and global schedule.
+
+### 12.3 Confluence versus Church–Rosser confluence
+
+The one-step diamond property concerns immediate local competition:
+
+\[
+N\to N_1,\quad N\to N_2
+\quad\Longrightarrow\quad
+N_1\to M,\quad N_2\to M.
+\]
+
+**Church–Rosser confluence** is broader. If a net reduces along two finite paths to two results, those results can be extended along further paths to a common net. It does not require the two paths to agree after one additional step.
+
+The source attributes Church–Rosser confluence and optimality claims for nonlinear systems to the full algorithmic construction. The exact hypotheses and theorem scope should be checked against the paper’s formal statements.
+
+---
+
+## 13. Feasibility, limitations, and open questions
+
+Δ-Nets aims to move scope-sensitive sharing information from explicit delimiter-agent machinery into the local metadata of variable-arity replicators.
+
+That design has clear attractions:
+
+- sharing is visible in the graph;
+- local rules operate on small neighborhoods;
+- deltas provide per-port context adjustment;
+- the core retains a strong local confluence property;
+- variable arity can represent many consumers without encoding every sharing point as a binary structure.
+
+But several limitations matter.
+
+### 13.1 Locality is not the entire story
+
+Core interactions are local, but erasure canonicalization is global because it depends on reachability from the root. The nonlinear algorithm therefore is not “purely local” in the strongest possible sense.
+
+### 13.2 Equality shortcuts depend on translation invariants
+
+For a well-formed canonical λ-term translation, same-level active replicators may be treated as equal. Arbitrary hand-built nets do not inherit this guarantee. They require full comparison of levels, arities, and deltas.
+
+### 13.3 Deltas require disciplined interpretation
+
+A delta is a relative context displacement. Treating it as a copy count, value, or arbitrary scope label would obscure the intended invariant.
+
+### 13.4 “Optimal” is a formal claim, not a slogan
+
+The proposal’s optimality and confluence claims belong to the source paper and depend on its definitions, invariants, schedule, and theorem statements. A practical implementation must establish:
+
+- how canonical forms are represented;
+- how levels and deltas are stored and compared;
+- when reachability sweeps occur;
+- how early parallel interactions are certified safe;
+- whether the implementation preserves the paper’s translation invariants.
+
+---
+
+## 14. Exercises
+
+### Exercise 1: Classify variable use
+
+Classify each term as linear, affine, relevant, or full with respect to the displayed binder.
+
+1. \(\lambda x.x\)
+2. \(\lambda x.y\)
+3. \(\lambda x.x\,x\)
+4. \(\lambda x.x(x\,x)\)
+
+**Answer.**
+
+1. Linear: one occurrence.
+2. Affine: zero occurrences.
+3. Relevant: at least one occurrence, with repetition.
+4. Full: unrestricted use; this term happens to use \(x\) three times.
+
+### Exercise 2: Compute deltas
+
+For:
+
+\[
+\lambda x.\,x\,(h\,(k\,x)),
+\]
+
+find the levels of the two occurrences of \(x\), then compute their deltas.
+
+**Hint.** The binder is at level \(0\), so its replicator is at level \(1\). Each application argument edge adds one level.
+
+**Answer.**
+
+- The outer function occurrence \(x\) has level \(0\).
+- The second occurrence lies in the argument of the outer application, then in the argument of \(h(kx)\), hence at level \(2\).
+
+Thus:
+
+\[
+d_0=0-1=-1,
+\qquad
+d_1=2-1=+1.
+\]
+
+### Exercise 3: Erasure propagation
+
+An eraser meets a replicator with four auxiliary ports. How many erasers continue after the interaction?
+
+**Answer.** Four: one for each auxiliary branch.
+
+### Exercise 4: Replicator commutation
+
+Let \(R\) have level \(3\) and port deltas \(\langle -2,0,+4\rangle\). A higher-level replicator \(H\) at level \(8\) commutes through \(R\). What are the levels of the three \(H\)-replicas?
+
+**Answer.**
+
+\[
+8+(-2)=6,\qquad 8+0=8,\qquad 8+4=12.
+\]
+
+So the levels are:
+
+\[
+\langle 6,8,12\rangle.
+\]
+
+---
+
+## Conclusion
+
+Δ-Nets recasts λ-reduction as graph rewriting with explicit structural treatment of variable use.
+
+- Fans encode λ-term structure.
+- Erasers encode omission.
+- Variable-arity replicators encode shared use.
+- Levels and per-port deltas carry relative sharing-context information.
+- Principal-port interactions provide local, perfectly confluent core dynamics.
+- Canonicalization and leftmost-outermost scheduling provide the additional discipline needed for the nonlinear subsystems.
+
+The central idea is simple but demanding:
+
+> Put sharing into the graph itself, reduce necessary shared structure once, erase irrelevant structure promptly, and preserve scope-sensitive information through local level adjustments rather than separate delimiter machinery.
+
+## Source
+
+- Daniel Augusto Rizzi Salvadori, “[Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction](https://arxiv.org/html/2505.20314v4),” arXiv:2505.20314v4.
+- [arXiv abstract and download formats](https://arxiv.org/abs/2505.20314).

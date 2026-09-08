@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "Apply this abstraction to a term N and the replicator stands for four consumers of that one argument. When later interactions move sharing through the nested applications, exits through the four ports adjust an arriving replica’s level by −1, 0, +1, or +2. The numbers keep track of where each use belongs. They still do not say how many copies to make.",
+      "sourceUnitIds": [
+        "u000316"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "06 Beyond core interaction",
+      "sourceUnitIds": [
+        "u000317"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000316",
+        "u000317"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-07 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-07",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

@@ -1,0 +1,283 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "n0000229",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.55,
+    "text": "go-mHC scales with s, with s=1 requiring fewer parameters due to skew‑symmetry.",
+    "sourceUnitIds": [
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000231",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.62,
+    "text": "KromHC scales as O(d log d) faster than mHC by imposing strong symmetry on residual stream interactions.",
+    "sourceUnitIds": [
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000238",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "KromHC and go‑mHC are complementary methods that can be used simultaneously.",
+    "sourceUnitIds": [
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000240",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "KromHC can regain expressivity with larger product sizes at quadratic cost instead of factorial.",
+    "sourceUnitIds": [
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000242",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Expressivity scales as O(s² i_k²·log_{i_k}d) instead of O(i_k!·log_{i_k}d).",
+    "sourceUnitIds": [
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000246",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "In manifold-constrained Hyper-Connections (mHC), the FLOP overhead is about 8% increase for a 27B model, even after custom kernels and infrastructure improvements.",
+    "sourceUnitIds": [
+      "u000093"
+    ]
+  },
+  {
+    "id": "n0000247",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "KromHC and mHC-lite show significant speed‑ups because they remove iterative updates.",
+    "sourceUnitIds": [
+      "u000093"
+    ]
+  },
+  {
+    "id": "n0000250",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "go‑mHC has roughly the same order of magnitude in FLOP complexity as mHC with Sinkhorn‑Knopp iterations because O(d) ≈ O(S).",
+    "sourceUnitIds": [
+      "u000093"
+    ]
+  },
+  {
+    "id": "n0000251",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.9,
+    "text": "Model performance improvements generally outweigh computational cost, but scaling residual streams eventually hits a practical limit; go‑mHC aims to provide a middle‑ground balance between FLOP cost and expressivity.",
+    "sourceUnitIds": [
+      "u000094"
+    ]
+  },
+  {
+    "id": "n0000252",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.9,
+    "text": "go‑mHC offers a practical middle‑ground FLOP complexity for scaling residual streams, avoiding the super‑exponential cost of mHC‑lite and the iterative overhead of mHC SK iterations; nominal constants are S = 20, i_k = 2, and s ∈ {1,2}. See Appendix B.6 for full estimates.",
+    "sourceUnitIds": [
+      "u000095"
+    ]
+  },
+  {
+    "id": "n0000258",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Convergence of go‑mHC is governed by the geometry of the loss landscape introduced by manifold M and gradient stability; go‑mHC is expected to have learnable gradients, be convergent, and fully connected (able to reach any target matrix). See Appendix B.7 for proofs.",
+    "sourceUnitIds": [
+      "u000098"
+    ]
+  },
+  {
+    "id": "n0000259",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Not all matrix parameterizations are learnable and fully connected; mHC‑lite may suffer from vanishing gradients, making it difficult to relearn an n‑stream transform after convergence. See Appendix B.10.",
+    "sourceUnitIds": [
+      "u000099"
+    ]
+  },
+  {
+    "id": "n0000261",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "A synthetic toy‑model experiment generates ground‑truth doubly stochastic matrices T_i and dense activations X_j in the residual stream, then computes noisy targets Y_{i,j}=T_i X_j + ξ to evaluate reconstruction capability.",
+    "sourceUnitIds": [
+      "u000101"
+    ]
+  },
+  {
+    "id": "split-000010",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "go-mHC approximates the Birkhoff polytope within an epsilon(s) error using d(d−1)/2 parameters.",
+    "sourceUnitIds": [
+      "u000017"
+    ]
+  },
+  {
+    "id": "split-000015",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Hyper-Connections are integrated into the residual stream as xₗ₊₁ = ℋₗʳᵉˢ xₗ + Layer F(xₗ).",
+    "sourceUnitIds": [
+      "u000017"
+    ]
+  },
+  {
+    "id": "split-000062",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.62,
+    "text": "The parameterization is exact and is based on generalized orthostochastic matrices.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "split-000064",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.58,
+    "text": "A hyperparameter s interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "split-000065",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Matrix parameterization geometry increasingly affects the performance and stability of modern machine learning models.",
+    "sourceUnitIds": [
+      "u000013"
+    ]
+  },
+  {
+    "id": "split-000068",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.55,
+    "text": "The Birkhoff polytope enforces doubly stochastic constraints but involves a trade-off between exactness and scalability.",
+    "sourceUnitIds": [
+      "u000013"
+    ]
+  },
+  {
+    "id": "split-000069",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.58,
+    "text": "go-mHC approximates the Birkhoff polytope within error ε(s) using d(d−1)/2 parameters.",
+    "sourceUnitIds": [
+      "u000017"
+    ]
+  },
+  {
+    "id": "split-000070",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.52,
+    "text": "mHC-lite provides full coverage of the Birkhoff polytope but requires d! parameters.",
+    "sourceUnitIds": [
+      "u000017"
+    ]
+  },
+  {
+    "id": "split-000074",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Hyper-Connections are integrated into the residual stream as x_{l+1}=ℋ_l^{res}x_l+Layer F(x_l).",
+    "sourceUnitIds": [
+      "u000017"
+    ]
+  },
+  {
+    "id": "split-000087",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.52,
+    "text": "mHC-lite uses the Birkhoff–von Neumann theorem to define learned connections as convex combinations of permutation matrices.",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "split-000090",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "KromHC uses tensor products to train residual connections on a smaller set of exactly doubly stochastic matrices.",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "split-000098",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.52,
+    "text": "The quantity is applied to the residual hyper-connection product H_{l→L}^{res}=∏_{i=1}^{L−l}H_{L−i}^{res}.",
+    "sourceUnitIds": [
+      "u000066"
+    ]
+  },
+  {
+    "id": "split-000099",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.55,
+    "text": "For s=1 and d=3, the learned maps cover the spectral region inside the Karpelevič region of B₃\\B₂ up to error ε(s=1).",
+    "sourceUnitIds": [
+      "u000071"
+    ]
+  },
+  {
+    "id": "split-000104",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "The spectral reach of the Kronecker-parameterized manifold is invariant to the number of products.",
+    "sourceUnitIds": [
+      "u000084"
+    ]
+  }
+]

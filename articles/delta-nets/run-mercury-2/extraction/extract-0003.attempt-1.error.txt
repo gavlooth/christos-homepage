@@ -1,0 +1,9 @@
+Error: OMP exited 1: Working...
+Deadline exceeded
+
+    at callOmpOnce (/home/christos/code/refine/bin/refine.mjs:329:33)
+    at async callOmpJson (/home/christos/code/refine/bin/refine.mjs:337:30)
+    at async <anonymous> (/home/christos/code/refine/bin/refine.mjs:661:34)
+    at async <anonymous> (/home/christos/code/refine/bin/refine.mjs:354:36)
+    at async mapConcurrent (unknown)
+    at async main (unknown)

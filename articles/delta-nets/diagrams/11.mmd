@@ -1,0 +1,14 @@
+flowchart TB
+                  d0@{ shape: rect, label: "d₀" }
+                  d1@{ shape: rect, label: "d₁" }
+                  d2@{ shape: rect, label: "d₂" }
+                  R@{ shape: trapezoid, label: "R" }
+                  F@{ shape: triangle, label: "F" }
+                  a1@{ shape: rect, label: "a₁" }
+                  a0@{ shape: rect, label: "a₀" }
+                  d0 --- R
+                  d1 --- R
+                  d2 --- R
+                  R -->|"principal ↔ principal"| F
+                  F --- a1
+                  F --- a0

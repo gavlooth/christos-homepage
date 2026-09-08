@@ -1,0 +1,268 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001-flat-05",
+  "context": [
+    "Δ-Nets",
+    "The anatomy of a connection",
+    "1.2 The four familiar fragments of the λ-calculus",
+    "λL — linear"
+  ],
+  "units": [
+    {
+      "id": "u000064",
+      "kind": "prose",
+      "text": "Each bound variable appears exactly once."
+    },
+    {
+      "id": "u000065",
+      "kind": "prose",
+      "text": "→"
+    },
+    {
+      "id": "u000066",
+      "kind": "heading",
+      "text": "#### λA — affine"
+    },
+    {
+      "id": "u000067",
+      "kind": "prose",
+      "text": "It appears once, or not at all. Erasure is allowed."
+    },
+    {
+      "id": "u000068",
+      "kind": "heading",
+      "text": "#### λI — relevant"
+    },
+    {
+      "id": "u000069",
+      "kind": "prose",
+      "text": "It appears at least once. Sharing is allowed."
+    },
+    {
+      "id": "u000070",
+      "kind": "prose",
+      "text": "↘"
+    },
+    {
+      "id": "u000071",
+      "kind": "heading",
+      "text": "#### λK — full"
+    },
+    {
+      "id": "u000072",
+      "kind": "prose",
+      "text": "Any number of appearances. Both erasure and sharing are allowed."
+    },
+    {
+      "id": "u000073",
+      "kind": "prose",
+      "text": "The paper names ΔL, ΔA, ΔI, and ΔK as corresponding Δ-Net subsystems."
+    },
+    {
+      "id": "u000074",
+      "kind": "heading",
+      "text": "### 1.3 Why choosing a clever order is not enough"
+    },
+    {
+      "id": "u000075",
+      "kind": "prose",
+      "text": "A reduction order says which redex to simplify next. For erasure, normal order—outermost application before its argument—can avoid reducing something a function is about to throw away. Sharing is harder. The paper follows Lévy: some shared terms have no ordinary sequential order that avoids every duplicated reduction."
+    },
+    {
+      "id": "u000076",
+      "kind": "prose",
+      "text": "↯"
+    },
+    {
+      "id": "u000077",
+      "kind": "heading",
+      "text": "### The design target"
+    },
+    {
+      "id": "u000078",
+      "kind": "prose",
+      "text": "Put sharing in the graph. Reduce a shared subgraph once, then let every use see the result."
+    },
+    {
+      "id": "u000079",
+      "kind": "prose",
+      "text": "02 Model shift"
+    },
+    {
+      "id": "u000080",
+      "kind": "heading",
+      "text": "## Stop treating a program as a tree."
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003-flat-07",
+  "context": [
+    "Δ-Nets",
+    "Compile a λ-term into one rooted net.",
+    "5.3 The abstraction cases"
+  ],
+  "units": [
+    {
+      "id": "u000246",
+      "kind": "prose",
+      "text": "When a used variable has several occurrences, a replicator joins the abstraction’s variable port to those uses. Each auxiliary port of R lands on a concrete use site: for λx.x x, one auxiliary meets the application’s argument port and the other meets its function port. The application itself hangs from the abstraction’s body port. A one-port replicator with zero delta is just a wire, so canonical construction leaves it out."
+    },
+    {
+      "id": "u000247",
+      "kind": "prose",
+      "text": "One bound occurrence · λx.x"
+    },
+    {
+      "id": "u000248",
+      "kind": "prose",
+      "text": "flowchart TB\nroot0((root))\nlam0@{ shape: triangle, label: \"λ\" }\nvar0@{ shape: rect, label: \"2nd aux · variable\" }\nbody0@{ shape: rect, label: \"1st aux · body\" }\nuse0@{ shape: rect, label: \"x\" }\nroot0 -->|principal · parent| lam0\nlam0 --- var0\nlam0 --- body0\nbody0 ~~~ var0\nbody0 --- use0\nvar0 --- use0"
+    },
+    {
+      "id": "u000249",
+      "kind": "prose",
+      "text": "No bound occurrence · λx.y"
+    }
+  ]
+}

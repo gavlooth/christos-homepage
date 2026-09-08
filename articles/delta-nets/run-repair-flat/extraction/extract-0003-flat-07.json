@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "When a used variable has several occurrences, a replicator joins the abstraction’s variable port to those uses. Each auxiliary port of R lands on a concrete use site: for λx.x x, one auxiliary meets the application’s argument port and the other meets its function port. The application itself hangs from the abstraction’s body port. A one-port replicator with zero delta is just a wire, so canonical construction leaves it out.",
+      "sourceUnitIds": [
+        "u000246"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "One bound occurrence · λx.x",
+      "sourceUnitIds": [
+        "u000247"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot0((root))\nlam0@{ shape: triangle, label: \"λ\" }\nvar0@{ shape: rect, label: \"2nd aux · variable\" }\nbody0@{ shape: rect, label: \"1st aux · body\" }\nuse0@{ shape: rect, label: \"x\" }\nroot0 -->|principal · parent| lam0\nlam0 --- var0\nlam0 --- body0\nbody0 ~~~ var0\nbody0 --- use0\nvar0 --- use0",
+      "sourceUnitIds": [
+        "u000248"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "No bound occurrence · λx.y",
+      "sourceUnitIds": [
+        "u000249"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000246",
+        "u000247",
+        "u000248",
+        "u000249"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0003-flat-07 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0003-flat-07",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

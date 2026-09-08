@@ -1,0 +1,270 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "Delete the unmarked nodes. Wires that still touch them end in erasers instead.",
+      "sourceUnitIds": [
+        "u000332"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "C",
+      "sourceUnitIds": [
+        "u000333"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Choose the space/time trade-off",
+      "sourceUnitIds": [
+        "u000334"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Run the sweep at the end, or earlier to save space. When memory matters most, the paper recommends it after every application of an abstraction that ignores its argument.",
+      "sourceUnitIds": [
+        "u000335"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "1 · Proper net with a detached island",
+      "sourceUnitIds": [
+        "u000336"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootS((root))\nkeep[\"reachable subnet\"]\nisland[\"unmarked island\"]\nrootS --> keep",
+      "sourceUnitIds": [
+        "u000337"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "2–3 · Mark, then delete unmarked",
+      "sourceUnitIds": [
+        "u000338"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootC((root))\nkeep2[\"reachable subnet\"]\nEcap[\"E · exposed wires\"]\nrootC --> keep2\nkeep2 -.-> Ecap",
+      "sourceUnitIds": [
+        "u000339"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "This is a global cleanup pass, not a principal-port interaction. The sweep begins at the distinguished root, marks the graph material reachable through the parent–child wiring, and deletes everything else. Where deleting an unmarked node exposes a connection that remains in the net, that connection is terminated by E. The schematic follows the erasure canonicalization described in [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4).",
+      "sourceUnitIds": [
+        "u000340"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 6.3 Sharing needs replicator cleanup",
+      "sourceUnitIds": [
+        "u000341"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "In ΔI and ΔK, interactions can build trees made only of replicators. A merge rule collapses consecutive replicators once a local level test shows they are unpaired. Pairing information stays intact; the tree gets shorter.",
+      "sourceUnitIds": [
+        "u000342"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Δ",
+      "sourceUnitIds": [
+        "u000343"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### The local merge test",
+      "sourceUnitIds": [
+        "u000344"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000332",
+        "u000333",
+        "u000334",
+        "u000335",
+        "u000336",
+        "u000337",
+        "u000338",
+        "u000339",
+        "u000340",
+        "u000341",
+        "u000342",
+        "u000343",
+        "u000344"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-02 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-02",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

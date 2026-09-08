@@ -1,0 +1,71 @@
+{
+  "depth": 0,
+  "batch": 20,
+  "items": [
+    {
+      "recordId": "teach-n0000796",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A reducible pattern is a pattern to which an available reduction rule can be applied.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Leftmost-outermost chooses an outermost reducible pattern.",
+          "requires": [
+            "reducible pattern",
+            "outermost level"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "When there is more than one outermost reducible pattern, leftmost-outermost chooses the leftmost candidate.",
+          "requires": [
+            "leftmost candidate"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000797",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A schedule specifies the order in which operations are performed.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The schedule is used for each of ΔA, ΔI, and ΔK.",
+          "requires": [
+            "ΔA",
+            "ΔI",
+            "ΔK"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Within that schedule, cleanup runs early, and merges occur before later commutations.",
+          "requires": [
+            "cleanup",
+            "merge",
+            "commutation"
+          ],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

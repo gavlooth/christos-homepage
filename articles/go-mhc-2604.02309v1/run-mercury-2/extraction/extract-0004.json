@@ -1,0 +1,505 @@
+{
+  "nodes": [
+    {
+      "kind": "claim",
+      "text": "Φ_{d,s}(Q) ∈ B_d for all Q ∈ Q(ds) and s",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000057"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "The set {Φ_{d,s}(Q): Q ∈ Q(ds)} converges to B_d as s→∞",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000057"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Parameter s determines the rank of the block-wise Frobenius projection",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Larger s provides a more faithful representation of the polytope interior",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "At s=1 we recover the orthostochastic set by definition",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "The geometry of the orthostochastic set is a concave cycloid that meets the permutation vertices of B_d but does not occupy the interior when d>2",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Theorem 2.8 guarantees convergence to the full polytope B_d as s→∞ with monotonically increasing volume",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "We choose s=2 as the default variant of go-mHC",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "We show comparisons with s=1 and s=3",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Implications of s on geometry are discussed in appendix D",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Figure 2 illustrates the Karpelevič region – the spectrum of stochastic matrices – for B_d with d=2 to d=5",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000059"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "The black circle corresponds to the unit disc and red points are eigenvalues of permutation matrices",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000059"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "The affine space of doubly stochastic matrices is strictly contained within the volume of the blue region, except for B_2 where the space is a line",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000059"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "The spectrum of B_d is the union of the spectrum of B_{d-1} and the polygon with d sides inscribed on the unit disc",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000059"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "3.3 Learning the s-Orthostochastic Manifold",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000060"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "need": "Missing equation 5",
+      "gapType": "missing_reference",
+      "sourceUnitIds": [
+        "u000061"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "equation 5"
+      ],
+      "origin": "gap",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "equation",
+      "text": "A_l = skew(α_l^res x_l' W_l^res + b_l^res)",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000062"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "equation",
+      "text": "Q_l = (I - A_l)(I + A_l)^{-1}",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000062"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "equation",
+      "text": "H_l^res = Φ_{d,s}(Q_l)",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000062"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "skew maps vectors of size ds(ds-1)/2 to ds×ds skew-symmetric matrix A_l (A_l^T = -A_l)",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Equation [8] uses Cayley transform to map A_l to special orthogonal matrix Q_l (Q_l^T Q_l = I)",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Φ_{d,s} from equation [6] maps Q_l to exactly doubly stochastic matrix H_l^res ∈ B_d (equation [9])",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "need": "Missing equation 6",
+      "gapType": "missing_reference",
+      "sourceUnitIds": [
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "equation 6"
+      ],
+      "origin": "gap",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Cayley transform generates matrices with det(Q_l)=+1",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000064"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "This is sufficient for full coverage because orthostochastic transform takes the Frobenius norm squared of block matrices and removes information about reflections, keeping only positive determinant solutions",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000064"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Advantageous due to path-connectedness of the special orthogonal group, the group of all pure rotations in ℝ^d",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000064"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "See appendix B.7 for proofs",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000064"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Cayley transform maps learned parameters onto Q_l, bypassing need for softmax activation",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000065"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Cayley transform is norm-preserving, ensuring numerical stability without additional normalization",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000065"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Replacing softmax with Cayley transform may accelerate convergence by avoiding saturation regions of exponential function (section 5)",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000065"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Mitigates vanishing gradients (appendix B.10) and maintains well-conditioned Jacobian",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000065"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Vanishing gradients trade-off how close mixing matrices near polytope boundary can be learned and ability to unlearn them and return to barycenter",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000065"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    },
+    {
+      "kind": "claim",
+      "text": "Xie et al. (2026) use Amax Gain Magnitude (AGM) to quantify worst-case amplification for residual hyper-connection product H_{l→L}^{res} = ∏_{i=1}^{L-l} H_{L-i}^{res}",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000066"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0004"
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

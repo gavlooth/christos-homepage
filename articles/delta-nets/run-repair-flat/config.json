@@ -1,0 +1,15 @@
+{
+  "concurrency": 5,
+  "timeoutSeconds": 90,
+  "repairChars": 4000,
+  "maxSplitDepth": 3,
+  "flatRepair": true,
+  "model": "openai-codex/gpt-5.6-luna",
+  "thinking": "low",
+  "serviceTier": "priority",
+  "sourcePath": "/home/christos/code/refine/articles/delta-nets/source.md",
+  "previousRun": "/home/christos/code/refine/articles/delta-nets/run-mercury-2",
+  "outputPath": "/home/christos/code/refine/articles/delta-nets/graph.repaired.json",
+  "originalChunkChars": 24000,
+  "chunkCount": 6
+}

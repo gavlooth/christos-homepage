@@ -1,0 +1,392 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0006",
+  "context": [
+    "Δ-Nets",
+    "A compact glossary, then the source.",
+    "λ-term"
+  ],
+  "units": [
+    {
+      "id": "u000398",
+      "kind": "prose",
+      "text": "A program made from variables, abstractions, and applications. In λx.t, the abstraction binds parameter x in body t. In t u, t is the function and u is its argument."
+    },
+    {
+      "id": "u000399",
+      "kind": "heading",
+      "text": "### β-redex / β-reduction"
+    },
+    {
+      "id": "u000400",
+      "kind": "prose",
+      "text": "A β-redex is a function already applied to an argument, (λx.t)u. Its β-reduction substitutes u for the bound occurrences of x in t."
+    },
+    {
+      "id": "u000401",
+      "kind": "heading",
+      "text": "### Normal form / normalizing"
+    },
+    {
+      "id": "u000402",
+      "kind": "prose",
+      "text": "Normal form means no reducible pattern remains. A term or net is normalizing if some reduction sequence eventually reaches normal form; it need not do so in every system or every sequence."
+    },
+    {
+      "id": "u000403",
+      "kind": "heading",
+      "text": "### Interaction system"
+    },
+    {
+      "id": "u000404",
+      "kind": "prose",
+      "text": "A graph-rewriting system made of agent types and rules that apply only when two agents meet at their principal ports."
+    },
+    {
+      "id": "u000405",
+      "kind": "heading",
+      "text": "### Agent / port"
+    },
+    {
+      "id": "u000406",
+      "kind": "prose",
+      "text": "An agent is one small node in a net. Ports are its connection sockets. Each agent has one principal port and zero or more auxiliary ports."
+    },
+    {
+      "id": "u000407",
+      "kind": "heading",
+      "text": "### Active pair"
+    },
+    {
+      "id": "u000408",
+      "kind": "prose",
+      "text": "Two agents connected through their principal ports; exactly the local configuration that an interaction rule rewrites."
+    },
+    {
+      "id": "u000409",
+      "kind": "heading",
+      "text": "### One-step diamond"
+    },
+    {
+      "id": "u000410",
+      "kind": "prose",
+      "text": "If two different single interactions can begin at the same net, the results can meet after one more interaction each. Every edge of the “diamond” is exactly one step."
+    },
+    {
+      "id": "u000411",
+      "kind": "heading",
+      "text": "### Perfect confluence"
+    },
+    {
+      "id": "u000412",
+      "kind": "prose",
+      "text": "The paper’s name for the one-step diamond property of its interaction-system core. It means competing local steps agree immediately."
+    },
+    {
+      "id": "u000413",
+      "kind": "heading",
+      "text": "### Church–Rosser confluence"
+    },
+    {
+      "id": "u000414",
+      "kind": "prose",
+      "text": "The broader common-result property for reduction paths. It says divergent valid reductions can be joined again, not necessarily in one step."
+    },
+    {
+      "id": "u000415",
+      "kind": "heading",
+      "text": "### Canonical Δ-Net"
+    },
+    {
+      "id": "u000416",
+      "kind": "prose",
+      "text": "A net produced by the term-to-net translation, in the special representation expected by the translation back to a λ-term."
+    },
+    {
+      "id": "u000417",
+      "kind": "heading",
+      "text": "### Canonicalization"
+    },
+    {
+      "id": "u000418",
+      "kind": "prose",
+      "text": "A cleanup rewrite used to return a proper intermediate net to canonical, term-like form. It is not itself a core principal-port interaction."
+    },
+    {
+      "id": "u000419",
+      "kind": "heading",
+      "text": "### Commutation"
+    },
+    {
+      "id": "u000420",
+      "kind": "prose",
+      "text": "An interaction of distinct, non-eraser agents. Each travels through the other and may be copied according to the other’s arity."
+    },
+    {
+      "id": "u000421",
+      "kind": "heading",
+      "text": "### Fan"
+    },
+    {
+      "id": "u000422",
+      "kind": "prose",
+      "text": "The two-auxiliary-port structural agent. In a rooted net it can encode either application or abstraction, and fan annihilation expresses β-reduction."
+    },
+    {
+      "id": "u000423",
+      "kind": "heading",
+      "text": "### Level / delta"
+    },
+    {
+      "id": "u000424",
+      "kind": "prose",
+      "text": "In a canonical λ encoding, entering the argument of an application adds one level; entering its function or an abstraction body does not. A replicator port’s delta is its bound-variable occurrence level minus the replicator level."
+    },
+    {
+      "id": "u000425",
+      "kind": "heading",
+      "text": "### Proper Δ-Net"
+    },
+    {
+      "id": "u000426",
+      "kind": "prose",
+      "text": "Any net reachable from a canonical net through zero or more core Δ interactions; it can contain noncanonical intermediate shapes."
+    },
+    {
+      "id": "u000427",
+      "kind": "heading",
+      "text": "### Replicator"
+    },
+    {
+      "id": "u000428",
+      "kind": "prose",
+      "text": "The variable-arity agent used for sharing. It has a level and an integer delta associated with each auxiliary port."
+    },
+    {
+      "id": "u000429",
+      "kind": "heading",
+      "text": "### Sharing scope"
+    },
+    {
+      "id": "u000430",
+      "kind": "prose",
+      "text": "The region controlled by one duplication context. Older interaction-net approaches often marked scope boundaries with separate delimiter agents."
+    },
+    {
+      "id": "u000431",
+      "kind": "heading",
+      "text": "### Leftmost-outermost"
+    },
+    {
+      "id": "u000432",
+      "kind": "prose",
+      "text": "A priority order: choose a reducible pattern not nested inside another, then choose the leftmost such pattern in the term-like reading of the net."
+    },
+    {
+      "id": "u000433",
+      "kind": "heading",
+      "text": "### Primary source"
+    },
+    {
+      "id": "u000434",
+      "kind": "prose",
+      "text": "Daniel Augusto Rizzi Salvadori, “Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction,” arXiv:2505.20314v4, 22 July 2026."
+    },
+    {
+      "id": "u000435",
+      "kind": "prose",
+      "text": "- [Read the HTML version on arXiv](https://arxiv.org/html/2505.20314v4)"
+    },
+    {
+      "id": "u000436",
+      "kind": "prose",
+      "text": "- [Read the arXiv abstract and download formats](https://arxiv.org/abs/2505.20314)"
+    },
+    {
+      "id": "u000437",
+      "kind": "prose",
+      "text": "About this edition. An independently structured teaching summary of the paper’s abstract and Sections 1–5. Diagrams and wording here are original explanatory material, not reproductions of the author’s figures."
+    },
+    {
+      "id": "u000438",
+      "kind": "prose",
+      "text": "Δ-Nets, decoded · A single-file companion for slower technical reading."
+    },
+    {
+      "id": "u000439",
+      "kind": "prose",
+      "text": "Source paper: [arXiv:2505.20314v4 ↗](https://arxiv.org/html/2505.20314v4)"
+    }
+  ]
+}

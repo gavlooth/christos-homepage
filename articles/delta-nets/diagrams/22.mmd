@@ -1,0 +1,10 @@
+flowchart TB
+                  rootB((root))
+                  app@{ shape: triangle, label: "app" }
+                  Mf@{ shape: rect, label: "[M]ℓ function" }
+                  resB@{ shape: rect, label: "parent / result" }
+                  Narg@{ shape: rect, label: "[N]ℓ₊₁ argument" }
+                  rootB --- resB
+                  Mf -->|principal · function| app
+                  app ---|1st aux · result| resB
+                  app ---|2nd aux · argument| Narg

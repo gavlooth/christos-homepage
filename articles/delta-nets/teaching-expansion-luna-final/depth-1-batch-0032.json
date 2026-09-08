@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 32,
+  "items": [
+    {
+      "recordId": "teach-generated-9d2dcd7d076834d1",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A named boundary node is an explicitly labeled concept that marks the edge of a chapter, topic, or knowledge domain; it identifies where that scope begins or ends.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

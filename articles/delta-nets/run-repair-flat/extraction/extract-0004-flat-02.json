@@ -1,0 +1,251 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "One syntax constructor, three connections. For [M N]ℓ, the result or parent wire uses the first auxiliary port, [N]ℓ+1 uses the second auxiliary port, and [M]ℓ meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction.",
+      "sourceUnitIds": [
+        "u000260"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.5 Where levels come from",
+      "sourceUnitIds": [
+        "u000261"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Keep every word tied to the source syntax. An abstraction is the literal term λx.M: parameter x, body M. An application is the literal term M N: function M, argument N. A bound occurrence of x is one of the x leaves in M owned by that particular λx.",
+      "sourceUnitIds": [
+        "u000262"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "@",
+      "sourceUnitIds": [
+        "u000263"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### “Context” here is not a runtime closure",
+      "sourceUnitIds": [
+        "u000264"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Calculate levels by walking the written λ-term. Start the whole term at level 0. For an abstraction λx.M at level ℓ, continue into M at the same level ℓ. For an application M N at level ℓ, keep level ℓ on the function M and write level ℓ + 1 on the argument N. Repeat inside each subtree. During graph reduction those coordinates track sharing contexts; they do not count captured values or surrounding λ symbols the way a runtime closure would.",
+      "sourceUnitIds": [
+        "u000265"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "λ-calculus syntax | Given | Assign | |",
+      "sourceUnitIds": [
+        "u000266"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Whole term T | T is the root program. | level(T) = 0 | |",
+      "sourceUnitIds": [
+        "u000267"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Abstraction λx.M | level(λx.M) = l | level(M) = l; the replicator Rx belongs to level l + 1. | |",
+      "sourceUnitIds": [
+        "u000268"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Application M N | level(M N) = l | level(M) = l; level(N) = l + 1. | |",
+      "sourceUnitIds": [
+        "u000269"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Occurrence x | x is reached at level li. | Its wire endpoint has level li. | |",
+      "sourceUnitIds": [
+        "u000270"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Use the same instructions at every step. For λx.λy.x, start at level 0 and carry 0 through both bodies, so x sits at level 0. For λx.f (g x), carry 0 into the body, give the outer function f level 0, and give its argument g x level 1. Apply the rule again inside that argument: g stays at 1, and x lands at 2.",
+      "sourceUnitIds": [
+        "u000271"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000260",
+        "u000261",
+        "u000262",
+        "u000263",
+        "u000264",
+        "u000265",
+        "u000266",
+        "u000267",
+        "u000268",
+        "u000269",
+        "u000270",
+        "u000271"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-02 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

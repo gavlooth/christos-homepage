@@ -1,0 +1,327 @@
+{
+  "nodes": [
+    {
+      "kind": "topic",
+      "text": "#### Redex and reduction",
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A redex is a place you can simplify right now—here, a function already sitting next to its argument. A reduction is one such step.",
+      "sourceUnitIds": [
+        "u000049"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### Normal form",
+      "sourceUnitIds": [
+        "u000050"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A term or net is in normal form when nothing left can fire. Normalizing means some sequence of steps gets you there.",
+      "sourceUnitIds": [
+        "u000051"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The substitution view",
+      "sourceUnitIds": [
+        "u000052"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "(λx. t) u → t[x := u]",
+      "sourceUnitIds": [
+        "u000053"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "That one sentence hides two very different edge cases. They are where the paper begins.",
+      "sourceUnitIds": [
+        "u000054"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Erasure",
+      "sourceUnitIds": [
+        "u000055"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Work that gets discarded",
+      "sourceUnitIds": [
+        "u000056"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "If t never mentions x, the argument u vanishes. Any work you already did inside u was wasted.",
+      "sourceUnitIds": [
+        "u000057"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Sharing",
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Work that gets duplicated",
+      "sourceUnitIds": [
+        "u000059"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "If x occurs more than once, naive substitution copies u. If u still contains redexes, you may redo the same necessary work in every copy.",
+      "sourceUnitIds": [
+        "u000060"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 1.2 The four familiar fragments of the λ-calculus",
+      "sourceUnitIds": [
+        "u000061"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The paper frames the issue with a simple grid of variable-use rules. A bound variable is an occurrence owned by a surrounding λ—the x in λx.x, for example. Start from the linear calculus, where every bound variable appears exactly once. Then allow omission, repetition, or both.",
+      "sourceUnitIds": [
+        "u000062"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### λL — linear",
+      "sourceUnitIds": [
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000048",
+        "u000049",
+        "u000050",
+        "u000051",
+        "u000052",
+        "u000053",
+        "u000054",
+        "u000055",
+        "u000056",
+        "u000057",
+        "u000058",
+        "u000059",
+        "u000060",
+        "u000061",
+        "u000062",
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0001-flat-04 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

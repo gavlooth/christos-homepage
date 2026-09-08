@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 2,
+  "items": [
+    {
+      "recordId": "teach-generated-ae6bb90f7da29a75",
+      "units": [
+        {
+          "role": "prerequisite",
+          "basis": "common_knowledge",
+          "text": "An upward-rotated abstraction fan is a pattern in which one specific concept connects upward to several broader or more abstract concepts, like the spokes of a fan rotated toward higher levels of generality.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

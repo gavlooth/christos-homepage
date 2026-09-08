@@ -1,0 +1,422 @@
+{
+  "nodes": [
+    {
+      "kind": "claim",
+      "text": "The construction keeps state changes separate.",
+      "sourceUnitIds": ["u000367"],
+      "defines": [],
+      "requires": [],
+      "mentions": ["state changes"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The bijection φ creates the initial canonical net.",
+      "sourceUnitIds": ["u000367"],
+      "defines": ["bijection φ"],
+      "requires": ["bijection"],
+      "mentions": ["canonical net"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Core interactions move the construction into the broader space of proper nets.",
+      "sourceUnitIds": ["u000367"],
+      "defines": ["proper net"],
+      "requires": ["core interactions"],
+      "mentions": ["canonical net"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The operator Ω collects the subsystem's prescribed interaction order and canonicalizations.",
+      "sourceUnitIds": ["u000367"],
+      "defines": ["Ω"],
+      "requires": ["interaction order", "canonicalization"],
+      "mentions": ["proper net"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The net is read back as a λ-term by φ−1 only after it is both normal and canonical.",
+      "sourceUnitIds": ["u000367"],
+      "defines": ["bijection φ−1"],
+      "requires": ["normal net", "canonical net"],
+      "mentions": ["λ-term"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "The construction is formalized near the end of Section 4 of the cited paper.",
+      "sourceUnitIds": ["u000367"],
+      "defines": [],
+      "requires": [],
+      "mentions": ["Section 4", "cited paper"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "The proposal promises no discarded work.",
+      "sourceUnitIds": ["u000368"],
+      "defines": ["no discarded work"],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Erasure is controlled.",
+      "sourceUnitIds": ["u000369"],
+      "defines": ["controlled erasure"],
+      "requires": [],
+      "mentions": ["erasure"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Leftmost-outermost reduction avoids evaluating a subnet that will later be erased.",
+      "sourceUnitIds": ["u000370"],
+      "defines": ["leftmost-outermost reduction"],
+      "requires": ["subnet erasure"],
+      "mentions": ["evaluation"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "A reachability sweep removes leftover garbage after controlled erasure.",
+      "sourceUnitIds": ["u000370"],
+      "defines": ["reachability sweep"],
+      "requires": ["reachability", "leftover garbage"],
+      "mentions": ["erasure"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "The proposal promises no repeated work.",
+      "sourceUnitIds": ["u000371"],
+      "defines": ["no repeated work"],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Sharing stays inside the graph.",
+      "sourceUnitIds": ["u000372"],
+      "defines": ["interior sharing"],
+      "requires": [],
+      "mentions": ["sharing"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Replicators represent shared use in the graph.",
+      "sourceUnitIds": ["u000373"],
+      "defines": ["replicator"],
+      "requires": ["shared use"],
+      "mentions": ["graph"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Replicators prevent necessary work from being redone solely because an expression has several consumers.",
+      "sourceUnitIds": ["u000373"],
+      "defines": [],
+      "requires": ["replicator", "expression consumers"],
+      "mentions": ["necessary work"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "The proposal promises local parallelism.",
+      "sourceUnitIds": ["u000374"],
+      "defines": ["local parallelism"],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Independent active pairs can run independently.",
+      "sourceUnitIds": ["u000375"],
+      "defines": ["independent active pairs"],
+      "requires": [],
+      "mentions": ["local parallelism"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Perfect confluence in the interaction core allows disjoint active pairs to choose and apply local rules independently.",
+      "sourceUnitIds": ["u000376"],
+      "defines": ["perfect confluence"],
+      "requires": ["interaction core", "disjoint active pairs", "local rules"],
+      "mentions": ["parallelism"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "The guarantee differs by subsystem.",
+      "sourceUnitIds": ["u000377"],
+      "defines": ["subsystem-specific guarantee"],
+      "requires": [],
+      "mentions": ["subsystems"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "In ΔL, fan annihilation is the only interaction.",
+      "sourceUnitIds": ["u000378"],
+      "defines": ["ΔL"],
+      "requires": ["fan annihilation"],
+      "mentions": ["interaction"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The paper states that every proper ΔL net is already canonical.",
+      "sourceUnitIds": ["u000378"],
+      "defines": [],
+      "requires": ["proper net", "canonical net"],
+      "mentions": ["ΔL"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "If n β-reductions normalize a λL term, then n interactions normalize its ΔL encoding in any order.",
+      "sourceUnitIds": ["u000378"],
+      "defines": [],
+      "requires": ["β-reduction", "normalization", "λL", "ΔL encoding"],
+      "mentions": ["interaction order"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure.",
+      "sourceUnitIds": ["u000378"],
+      "defines": ["ΔA", "ΔI", "ΔK"],
+      "requires": ["canonicalization", "erasure structure", "sharing structure"],
+      "mentions": ["subsystem guarantee"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "The subsystem comparison is presented as a table of extra concerns and prescribed responses.",
+      "sourceUnitIds": ["u000379"],
+      "defines": [],
+      "requires": [],
+      "mentions": ["subsystem comparison"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "For ΔL, there is no extra concern beyond fan annihilation; any interaction order is allowed under perfect confluence.",
+      "sourceUnitIds": ["u000380"],
+      "defines": [],
+      "requires": ["ΔL", "fan annihilation", "perfect confluence"],
+      "mentions": ["interaction order"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 2,
+      "relation": "enables",
+      "reason": "The initial canonical net is the input to core interactions."
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "relation": "precedes",
+      "reason": "Core interactions occur before Ω collects ordering and canonicalization."
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "relation": "enables",
+      "reason": "Ω prepares the net for the final inverse mapping."
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "relation": "supports",
+      "reason": "The inverse mapping requires the net to be normal and canonical."
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "relation": "supports",
+      "reason": "The cited Section 4 formalization is evidence for the construction."
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "relation": "elaborates",
+      "reason": "The heading states the no-discarded-work promise and the next claim explains its mechanism."
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "relation": "enables",
+      "reason": "The reduction strategy leaves garbage for the reachability sweep to remove."
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "relation": "elaborates",
+      "reason": "The heading states the no-repeated-work promise and the next heading identifies interior sharing."
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "relation": "enables",
+      "reason": "Graph-based shared use explains why work is not repeated for multiple consumers."
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "relation": "elaborates",
+      "reason": "The local-parallelism promise is specified as independent execution of active pairs."
+    },
+    {
+      "from": 16,
+      "to": 17,
+      "relation": "supports",
+      "reason": "Perfect confluence supports independent local choices."
+    },
+    {
+      "from": 18,
+      "to": 19,
+      "relation": "elaborates",
+      "reason": "The subsystem-specific heading introduces the ΔL guarantee."
+    },
+    {
+      "from": 19,
+      "to": 20,
+      "relation": "supports",
+      "reason": "The interaction restriction supports the stated canonicality property."
+    },
+    {
+      "from": 20,
+      "to": 21,
+      "relation": "supports",
+      "reason": "Canonicality and the reduction correspondence are part of the ΔL guarantee."
+    },
+    {
+      "from": 21,
+      "to": 22,
+      "relation": "contrasts",
+      "reason": "The added canonicalization in ΔA, ΔI, and ΔK contrasts with ΔL's lack of extra interaction concerns."
+    },
+    {
+      "from": 23,
+      "to": 24,
+      "relation": "exemplifies",
+      "reason": "The ΔL table row instantiates the comparison table's structure."
+    },
+    {
+      "from": 19,
+      "to": 24,
+      "relation": "supports",
+      "reason": "The ΔL guarantee is summarized by the table row."
+    }
+  ],
+  "evidenceFrames": [
+    {
+      "claim": 4,
+      "evidence": [5],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 20,
+      "evidence": [23, 24],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 21,
+      "evidence": [23, 24],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 22,
+      "evidence": [23],
+      "warrantGap": null,
+      "limitations": []
+    }
+  ]
+}

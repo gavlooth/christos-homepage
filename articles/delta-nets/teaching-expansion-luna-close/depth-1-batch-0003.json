@@ -1,0 +1,20 @@
+{
+  "depth": 1,
+  "batch": 3,
+  "items": [
+    {
+      "recordId": "teach-generated-f3094460498c2b72",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A replicator auxiliary is an auxiliary quantity used alongside a replicator model.",
+          "requires": [
+            "replicator model"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

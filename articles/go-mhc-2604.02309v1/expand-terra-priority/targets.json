@@ -1,0 +1,3917 @@
+[
+  {
+    "id": "n0000002",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000002"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized",
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000044",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000024"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000066",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000036"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000073",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000076",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000091",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000047"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000126",
+    "kind": "gap",
+    "text": null,
+    "need": "Missing equation 5",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000061"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "equation 5"
+    ],
+    "origin": "gap",
+    "chunkId": "c0004",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000133",
+    "kind": "gap",
+    "text": null,
+    "need": "Missing equation 6",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000063"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "equation 6"
+    ],
+    "origin": "gap",
+    "chunkId": "c0004",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000145",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000067"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000150",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000070"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "kind_normalized",
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000157",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000073"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000162",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000076"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000163",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000077"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "kind_normalized",
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000164",
+    "kind": "gap",
+    "text": null,
+    "need": "Define AGM metric",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "agm metric"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000165",
+    "kind": "gap",
+    "text": null,
+    "need": "Define P_go",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "pgo"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000166",
+    "kind": "gap",
+    "text": null,
+    "need": "Define B_d",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "bd"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000167",
+    "kind": "gap",
+    "text": null,
+    "need": "Define Karpelevič region",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "karpelevič region"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000168",
+    "kind": "gap",
+    "text": null,
+    "need": "Define spectral reach",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "spectral reach"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000169",
+    "kind": "gap",
+    "text": null,
+    "need": "Define P_M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "pm"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000170",
+    "kind": "gap",
+    "text": null,
+    "need": "Define B_3\\B_2",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "b3\\b2"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000171",
+    "kind": "gap",
+    "text": null,
+    "need": "Define B_2",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "b2"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000172",
+    "kind": "gap",
+    "text": null,
+    "need": "Define method M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "method m"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000205",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of Birkhoff polytope B_d",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000081"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "birkhoff polytope"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000206",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of Karpelevič region",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000079"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "karpelevič region"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000207",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of s-ssostochastic matrices",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000081"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "s-ssostochastic matrices"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000208",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of mHC, mHC-lite, KromHC, go-mHC",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000078",
+      "u000083",
+      "u000084",
+      "u000085"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "mhc",
+      "mhc-lite",
+      "kromhc",
+      "go-mhc"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000209",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of H_res",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "hres"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000210",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of d-streams",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "d-streams"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000211",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of Kronecker product",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "kronecker product"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000212",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of spectral hull",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "spectral hull"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000213",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of i_k",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000085"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "ik"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000263",
+    "kind": "gap",
+    "text": null,
+    "need": "artifact storage metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000103"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0008",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000264",
+    "kind": "gap",
+    "text": null,
+    "need": "pagination metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000104"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0008",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000267",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"kronecker-factorized approaches\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "kronecker-factorized approaches"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000268",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"expressivity\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000087",
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "expressivity"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000269",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"kronecker-factorized methods\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "kronecker-factorized methods"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000270",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"synthetic stream-mixing tasks\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "synthetic stream-mixing tasks"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000271",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"gpt-style language model\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "gpt-style language model"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000272",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"manifold theory\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000013"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "manifold theory"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000273",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"symmetry\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "symmetry"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000274",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"cayley transform\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "cayley transform"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000275",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"birkhoff–von neumann theorem\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "birkhoff–von neumann theorem"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000276",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"kronecker products\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "kronecker products"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000277",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"synthetic data task\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000021"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "synthetic data task"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000278",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"gpt‐style language model\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000021"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "gpt‐style language model"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000279",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"birkhoff von‐neumann theorem\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000023"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "birkhoff von‐neumann theorem"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000280",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"big-o notation\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000087"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "big-o notation"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000281",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"factorial\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000087",
+      "u000088",
+      "u000090",
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "factorial"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000282",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"figure 5\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "figure 5"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000283",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"skew‐symmetry\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "skew‐symmetry"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000284",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"intractability\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "intractability"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000285",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"logarithm\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088",
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "logarithm"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000286",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"factorization\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "factorization"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000287",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"table 1\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000089"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "table 1"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000288",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"big‐o\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000090",
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "big‐o"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000289",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"tensor product\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "tensor product"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000290",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"orthostochastic matrices\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "orthostochastic matrices"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000291",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"quadratic cost\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "quadratic cost"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000292",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"section 5 convergence\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000098"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "section 5 convergence"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000293",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"section 5.1 synthetic stream mixing performance\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000101"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "section 5.1 synthetic stream mixing performance"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000294",
+    "kind": "gap",
+    "text": null,
+    "need": "Define or explain \"synthetic toy‐model experiment\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000102"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "synthetic toy‐model experiment"
+    ],
+    "origin": "gap",
+    "chunkId": null,
+    "generatedGap": true,
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000013",
+    "kind": "claim",
+    "text": "Existing exact methods scale factorially with the number of streams d, while Kronecker-factorized approaches are efficient but have limited expressivity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [
+      "kronecker-factorized approaches"
+    ],
+    "mentions": [
+      "factorial scaling",
+      "expressivity"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Contrasts factorial exact methods with efficient but less expressive alternatives."
+    ]
+  },
+  {
+    "id": "n0000014",
+    "kind": "claim",
+    "text": "We introduce a novel exact parameterization based on generalized orthostochastic matrices, scaling as O(d³) and exposing a hyperparameter s that interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [
+      "generalized orthostochastic matrices",
+      "hyperparameter s"
+    ],
+    "requires": [
+      "birkhoff polytope"
+    ],
+    "mentions": [
+      "o(d3) scaling"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a new construction, exactness, cubic scaling, and a tunable expressivity-efficiency range."
+    ]
+  },
+  {
+    "id": "n0000015",
+    "kind": "claim",
+    "text": "Our method composes naturally with Kronecker-factorized methods, substantially recovering expressivity at similar FLOP costs.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [
+      "kronecker-factorized methods"
+    ],
+    "mentions": [
+      "expressivity",
+      "flop costs"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines composition with another method, expressivity recovery, and FLOP comparison."
+    ]
+  },
+  {
+    "id": "n0000017",
+    "kind": "claim",
+    "text": "On synthetic stream-mixing tasks, go-mHC achieves the minimum theoretical loss while converging up to 10× faster.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [
+      "synthetic stream-mixing tasks"
+    ],
+    "mentions": [
+      "minimum theoretical loss",
+      "10× faster convergence"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines task setting, theoretical optimum, and convergence-speed result."
+    ]
+  },
+  {
+    "id": "n0000019",
+    "kind": "claim",
+    "text": "The expressivity, efficiency, and exactness of go-mHC offer a practical avenue for scaling d as a new dimension of model capacity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [
+      "scaling dimension d"
+    ],
+    "requires": [],
+    "mentions": [
+      "expressivity",
+      "efficiency",
+      "exactness"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines three properties with a proposed scaling implication."
+    ]
+  },
+  {
+    "id": "n0000021",
+    "kind": "claim",
+    "text": "The performance and stability of modern machine learning models increasingly depend on the geometric structure of their matrix parameterizations; traditional constraints such as symmetry or orthogonality have been foundational, while recent work leverages manifold theory to map unconstrained spaces onto constrained geometries like the Birkhoff polytope, which enforces doubly stochastic constraints but faces a trade-off between exactness and scalability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000013"
+    ],
+    "defines": [
+      "birkhoff polytope"
+    ],
+    "requires": [
+      "manifold theory"
+    ],
+    "mentions": [
+      "doubly stochastic matrices",
+      "symmetry",
+      "orthogonality"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "Compresses geometric parameterization context, manifold mapping, Birkhoff constraints, and an exactness-scalability trade-off."
+    ]
+  },
+  {
+    "id": "n0000022",
+    "kind": "claim",
+    "text": "Constraining attention patterns to doubly stochastic matrices improves accuracy in vision and language models and interprets learned parameters as probability trajectories.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000014"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "doubly stochastic matrices",
+      "vision models",
+      "language models"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an empirical benefit and an interpretive consequence of doubly stochastic attention."
+    ]
+  },
+  {
+    "id": "n0000023",
+    "kind": "claim",
+    "text": "Sinkhorn Attention provides memory-efficient implementations due to its ability to mix internal representations and smooth optimization landscape.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000014"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "sinkhorn attention",
+      "memory-efficient"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines implementation efficiency, representational mixing, and optimization effects."
+    ]
+  },
+  {
+    "id": "n0000025",
+    "kind": "claim",
+    "text": "Dynamic generalizations of residual streams increase topological complexity by increasing the number of streams d while preserving the identity mapping property.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000015"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "residual streams",
+      "identity mapping"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines increased stream count, topological complexity, and preservation of identity mapping."
+    ]
+  },
+  {
+    "id": "n0000027",
+    "kind": "claim",
+    "text": "Figure 1 illustrates spectral comparison showing go-mHC approximates the Birkhoff polytope within epsilon(s) error using d(d‑1)/2 parameters; mHC‑lite provides full coverage but requires d! parameters; KromHC is restricted to B₂ and disallows cycles >2. The parameterization maps skew‑symmetric X to orthogonal Q via the Cayley Transform, then projects to doubly stochastic B via block‑wise Frobenius norm. Hyper‑Connections ℋ_res is integrated into the residual stream as x_{l+1}=ℋ_l^{res} x_l + Layer F(x_l), where the doubly stochastic constraint ensures training stability and improved gradient flow.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [
+      "hyper‐connections",
+      "hres"
+    ],
+    "requires": [
+      "birkhoff polytope",
+      "cayley transform"
+    ],
+    "mentions": [
+      "epsilon(s)",
+      "d(d‐1)/2 parameters",
+      "d! parameters",
+      "b2",
+      "frobenius norm",
+      "gradient flow"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines multiple methods, parameter counts, approximation behavior, matrix transforms, integration equations, and stability rationale."
+    ]
+  },
+  {
+    "id": "n0000028",
+    "kind": "claim",
+    "text": "Manifold‑Constrained Hyper‑Connections (mHC) shows that constraining residual connections to the interior of the Birkhoff polytope significantly improves training stability and scalability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000018"
+    ],
+    "defines": [
+      "manifold‐constrained hyper‐connections"
+    ],
+    "requires": [
+      "birkhoff polytope"
+    ],
+    "mentions": [
+      "training stability",
+      "scalability"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a manifold constraint, Birkhoff-polytope interior, and two training benefits."
+    ]
+  },
+  {
+    "id": "n0000031",
+    "kind": "claim",
+    "text": "Exact parameterizations have been introduced to prevent error accumulation across layers (Yang and Gao 2026; Zhou et al. 2026).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "error accumulation",
+      "exact parameterizations"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines purpose, error mechanism, and cited follow-up work."
+    ]
+  },
+  {
+    "id": "n0000032",
+    "kind": "claim",
+    "text": "mHC‑lite uses the Birkhoff–von Neumann theorem to parameterize ℋ_res as a convex combination of all d! permutation matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [
+      "mhc‐lite"
+    ],
+    "requires": [
+      "birkhoff–von neumann theorem"
+    ],
+    "mentions": [
+      "convex combination",
+      "permutation matrices"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a theorem-based method, convex-combination structure, and factorial matrix count."
+    ]
+  },
+  {
+    "id": "n0000033",
+    "kind": "claim",
+    "text": "The parameter count O(d·d!) explodes super‑exponentially; for d=8, 8! = 40 320 permutations are required, making this approach memory‑prohibitive without sampling approximations.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "parameter count",
+      "memory‐prohibitive",
+      "sampling approximations"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines asymptotic growth, a numerical example, and a memory-prohibitive consequence."
+    ]
+  },
+  {
+    "id": "n0000034",
+    "kind": "claim",
+    "text": "KromHC employs Kronecker products of small doubly stochastic matrices to achieve exact constraints with O(d²) complexity, but at the cost of severely reduced expressivity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [
+      "kromhc"
+    ],
+    "requires": [
+      "kronecker products"
+    ],
+    "mentions": [
+      "exact constraints",
+      "o(d2) complexity",
+      "expressivity trade‐off"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines construction, exactness, quadratic complexity, and expressivity trade-off."
+    ]
+  },
+  {
+    "id": "n0000036",
+    "kind": "claim",
+    "text": "The framework learns doubly stochastic matrices while balancing efficiency and expressivity, exposing a hyperparameter s that allows tunability across these attributes.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000020"
+    ],
+    "defines": [
+      "hyperparameter s"
+    ],
+    "requires": [],
+    "mentions": [
+      "efficiency",
+      "expressivity"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines learning objective, efficiency-expressivity trade-off, and tunability mechanism."
+    ]
+  },
+  {
+    "id": "n0000039",
+    "kind": "claim",
+    "text": "The parameterization is evaluated on a synthetic data task mixing d residual streams and a 30 M‑parameter GPT‑style language model.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000021"
+    ],
+    "defines": [],
+    "requires": [
+      "synthetic data task",
+      "gpt‐style language model"
+    ],
+    "mentions": [
+      "30 m parameters",
+      "residual streams"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines synthetic evaluation and language-model validation settings."
+    ]
+  },
+  {
+    "id": "n0000041",
+    "kind": "claim",
+    "text": "Our method achieves faster convergence and better reachability than parametrizations invoking the Birkhoff von‑Neumann theorem, such as mHC‑lite and KromHC.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000023"
+    ],
+    "defines": [],
+    "requires": [
+      "birkhoff von‐neumann theorem"
+    ],
+    "mentions": [
+      "mhc‐lite",
+      "kromhc",
+      "convergence",
+      "reachability"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines convergence and reachability comparisons against two baselines."
+    ]
+  },
+  {
+    "id": "n0000043",
+    "kind": "claim",
+    "text": "The method scales as O(d^3) in FLOP complexity and parameter count, surpassing the super‑exponential scaling of mHC‑lite and KromHC’s component factors.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000024"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "o(d^3)",
+      "mhc-lite",
+      "kromhc"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines cubic FLOP and parameter scaling with two baseline comparisons."
+    ]
+  },
+  {
+    "id": "n0000045",
+    "kind": "claim",
+    "text": "The method requires no custom CUDA kernels, relying only on batched linear solves and tensor contractions.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000025"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "cuda kernels",
+      "batched linear solves",
+      "tensor contractions"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines absence of custom kernels with two implementation techniques."
+    ]
+  },
+  {
+    "id": "n0000046",
+    "kind": "claim",
+    "text": "The method achieves exact double stochasticity by construction, with no iterations and no approximation gap.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000026"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "double stochasticity"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines exactness, construction guarantee, iteration absence, and approximation-gap absence."
+    ]
+  },
+  {
+    "id": "n0000047",
+    "kind": "claim",
+    "text": "The method includes a hyperparameter s that interpolates between the orthostochastic boundary (s=1) and the dense interior of the Birkhoff polytope (s→∞).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000027"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "hyperparameter s",
+      "orthostochastic boundary",
+      "birkhoff polytope"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a tunable parameter with two limiting geometric regimes and interpolation behavior."
+    ]
+  },
+  {
+    "id": "n0000048",
+    "kind": "claim",
+    "text": "The method provides a potential avenue for scaling Hyper‑Connections with tractable complexity while maintaining significant expressivity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000028"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "hyper‐connections",
+      "expressivity"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines tractable complexity, expressivity preservation, and a scaling implication."
+    ]
+  },
+  {
+    "id": "n0000049",
+    "kind": "claim",
+    "text": "The method can be used simultaneously with KromHC to allow for larger Kronecker factors by mitigating the super‑exponential scaling introduced in mHC‑lite.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000028"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kromhc",
+      "kronecker factors",
+      "mhc‐lite"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines simultaneous method use, larger factor support, and mitigation of factorial scaling."
+    ]
+  },
+  {
+    "id": "n0000052",
+    "kind": "claim",
+    "text": "He et al. introduced skip connections that enable gradient flow via identity shortcuts in ResNets.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000031"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "he et al.",
+      "skip connections",
+      "resnets"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines historical attribution, mechanism, and ResNet relevance."
+    ]
+  },
+  {
+    "id": "n0000056",
+    "kind": "claim",
+    "text": "Hyper‑Connections (HC) introduced the first learnable, multi‑stream generalization of residual streams allowing for dynamic mixing matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000032"
+    ],
+    "defines": [
+      "hyper‐connections"
+    ],
+    "requires": [],
+    "mentions": [
+      "dynamic mixing matrices"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines historical introduction, learnability, multi-stream structure, and dynamic mixing."
+    ]
+  },
+  {
+    "id": "n0000057",
+    "kind": "claim",
+    "text": "HC can theoretically enable models to learn depth and width connections, dynamically rearrange layer connectivity and potentially adds a new avenue for scaling.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000032"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "depth connections",
+      "width connections",
+      "scaling"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines depth and width connectivity, dynamic rearrangement, and a scaling possibility."
+    ]
+  },
+  {
+    "id": "n0000058",
+    "kind": "claim",
+    "text": "Later works have expanded on HC by splitting the feature dimension into independent sub‑streams and applying HC to vision and graph neural networks.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000032"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "vision",
+      "graph neural networks"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines feature partitioning with applications to two neural-network domains."
+    ]
+  },
+  {
+    "id": "n0000059",
+    "kind": "claim",
+    "text": "The unconstrained dynamic connectivity of residual blocks in HC removes the explicit guarantee of the identity property, introducing the risk of gradient instability after repeated applications of the mixing terms.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000033"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "gradient instability",
+      "mixing terms"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines unconstrained connectivity, loss of identity guarantees, repeated mixing, and instability risk."
+    ]
+  },
+  {
+    "id": "n0000061",
+    "kind": "claim",
+    "text": "Subsequent works investigate constraining this connectivity to a manifold that bounds gradient updates through the spectral norm in order to address this instability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000033"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "manifold",
+      "spectral norm"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines later work, manifold constraints, spectral-norm bounding, and the instability target."
+    ]
+  },
+  {
+    "id": "n0000063",
+    "kind": "claim",
+    "text": "Manifold‑Constrained Hyper‑Connections (mHC) constrain the dynamic residual matrices to a manifold to improve training stability while still allowing for dynamic connections.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000035"
+    ],
+    "defines": [
+      "manifold‐constrained hyper‐connections",
+      "mhc"
+    ],
+    "requires": [],
+    "mentions": [
+      "training stability",
+      "dynamic connections"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines constrained residual matrices, manifold structure, stability, and dynamic connectivity."
+    ]
+  },
+  {
+    "id": "n0000064",
+    "kind": "claim",
+    "text": "mHC primarily changes the definition of ℋ_l^res such that it converges to the Birkhoff polytope B_d, the closed set of doubly stochastic matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000035"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "hl^res",
+      "birkhoff polytope",
+      "bd"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a definition change, convergence behavior, and the Birkhoff-polytope target."
+    ]
+  },
+  {
+    "id": "n0000065",
+    "kind": "definition",
+    "text": "B_d denotes the closed set of doubly stochastic matrices, defined as positive matrices with the property M^T J_d = M J_d = J_d.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000036"
+    ],
+    "defines": [
+      "bd"
+    ],
+    "requires": [],
+    "mentions": [
+      "doubly stochastic matrices",
+      "m",
+      "jd"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines set identification, positivity, two matrix equations, and notation for doubly stochasticity."
+    ]
+  },
+  {
+    "id": "n0000071",
+    "kind": "claim",
+    "text": "mHC‑lite attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of d! permutation matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [
+      "mhc‐lite"
+    ],
+    "requires": [],
+    "mentions": [
+      "birkhoff–von neumann theorem",
+      "permutation matrices"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines the motivation, theorem, parameterization strategy, and factorial-sized representation."
+    ]
+  },
+  {
+    "id": "n0000075",
+    "kind": "claim",
+    "text": "KromHC sacrifices expressivity and complete coverage of B_d by using tensor products to train residual connections on a much smaller set of exactly double‑stochastic matrices, with a cost of O(d² C).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [
+      "kromhc"
+    ],
+    "requires": [],
+    "mentions": [
+      "tensor products",
+      "double‐stochastic matrices",
+      "o(d2 c)"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines expressivity loss, coverage loss, tensor-product construction, exactness, matrix-set restriction, and complexity."
+    ]
+  },
+  {
+    "id": "n0000079",
+    "kind": "claim",
+    "text": "Comparisons with the matrix exponential show similar quality and better stability at lower FLOP cost.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000041"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "matrix exponential",
+      "flop cost"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines comparative quality, stability, and computational-cost findings."
+    ]
+  },
+  {
+    "id": "n0000084",
+    "kind": "claim",
+    "text": "Nechita et al. proved that the set of generalized s‑orthostochastic matrices is contained in B_d and spans all of B_d as s → ∞.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000043"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "s‐orthostochastic matrices",
+      "bd",
+      "s → ∞"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines containment, spanning, a parameterized matrix family, and an asymptotic limit."
+    ]
+  },
+  {
+    "id": "n0000087",
+    "kind": "claim",
+    "text": "To our knowledge, we are the first to apply this construction in a machine learning setting and, more specifically, to learned residual stream routing in deep networks.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000043"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "residual stream routing",
+      "deep networks"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a novelty claim, construction, machine-learning setting, and specific routing application."
+    ]
+  },
+  {
+    "id": "n0000090",
+    "kind": "claim",
+    "text": "A Hyper‑Connection block processes a d‑stream state x_l ∈ ℝ^{d×B×L×D} with a recursion relation that includes a residual block ℱ.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000046"
+    ],
+    "defines": [
+      "hyper‐connection block",
+      "xl"
+    ],
+    "requires": [],
+    "mentions": [
+      "residual block",
+      "f"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines the block's input state, tensor dimensions, recursion, and residual-block role."
+    ]
+  },
+  {
+    "id": "n0000100",
+    "kind": "definition",
+    "text": "A matrix B in 𝖡d is orthostochastic when there exists an orthogonal Q such that each entry B_ij equals Q_ij squared.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000054"
+    ],
+    "defines": [
+      "orthostochastic matrix"
+    ],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0003",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines membership in a matrix set with an existential orthogonal-matrix characterization and entrywise relation."
+    ]
+  },
+  {
+    "id": "n0000103",
+    "kind": "definition",
+    "text": "Φ_{d,s}(Q)_{ij} equals the average squared Frobenius norm of block Q_ij, i.e., (1/s) Σ_{k,l}(Q_ij)_{kl}^2.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000056"
+    ],
+    "defines": [
+      "φ{d,s}(q){ij}"
+    ],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0003",
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a projection definition, block indexing, Frobenius norm interpretation, averaging, and summation formula."
+    ]
+  },
+  {
+    "id": "n0000109",
+    "kind": "definition",
+    "text": "𝒫go maps learned parameters (αlres,Wlres,blres) to a d×d mixing matrix using generalized orthostochastic matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000052"
+    ],
+    "defines": [
+      "pgo"
+    ],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0003",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines input parameter groups, output dimensions, and generalized-orthostochastic mapping purpose."
+    ]
+  },
+  {
+    "id": "n0000112",
+    "kind": "claim",
+    "text": "The set {Φ_{d,s}(Q): Q ∈ Q(ds)} converges to B_d as s→∞",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000057"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a parameterized image set, target polytope, and asymptotic convergence claim."
+    ]
+  },
+  {
+    "id": "n0000116",
+    "kind": "claim",
+    "text": "The geometry of the orthostochastic set is a concave cycloid that meets the permutation vertices of B_d but does not occupy the interior when d>2",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000058"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines geometric shape, vertex intersection, interior-occupancy limitation, and a dimensional condition."
+    ]
+  },
+  {
+    "id": "n0000117",
+    "kind": "claim",
+    "text": "Theorem 2.8 guarantees convergence to the full polytope B_d as s→∞ with monotonically increasing volume",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000058"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines theorem attribution, asymptotic coverage, target set, and monotonic volume behavior."
+    ]
+  },
+  {
+    "id": "n0000121",
+    "kind": "claim",
+    "text": "Figure 2 illustrates the Karpelevič region – the spectrum of stochastic matrices – for B_d with d=2 to d=5",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000059"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines figure content, spectral interpretation, matrix-set scope, and a dimension range."
+    ]
+  },
+  {
+    "id": "n0000123",
+    "kind": "claim",
+    "text": "The affine space of doubly stochastic matrices is strictly contained within the volume of the blue region, except for B_2 where the space is a line",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000059"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an inclusion/volume relationship, an exception, and the geometric characterization of that exception."
+    ]
+  },
+  {
+    "id": "n0000124",
+    "kind": "claim",
+    "text": "The spectrum of B_d is the union of the spectrum of B_{d-1} and the polygon with d sides inscribed on the unit disc",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000059"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a spectrum decomposition, two indexed sets, and polygon geometry."
+    ]
+  },
+  {
+    "id": "n0000130",
+    "kind": "claim",
+    "text": "skew maps vectors of size ds(ds-1)/2 to ds×ds skew-symmetric matrix A_l (A_l^T = -A_l)",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000063"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines vector and matrix dimensions, skew-symmetry, and the mapping performed by the operator."
+    ]
+  },
+  {
+    "id": "n0000131",
+    "kind": "claim",
+    "text": "Equation [8] uses Cayley transform to map A_l to special orthogonal matrix Q_l (Q_l^T Q_l = I)",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000063"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an equation reference, input skew matrix, Cayley mapping, output dimensions, and orthogonality constraint."
+    ]
+  },
+  {
+    "id": "n0000132",
+    "kind": "claim",
+    "text": "Φ_{d,s} from equation [6] maps Q_l to exactly doubly stochastic matrix H_l^res ∈ B_d (equation [9])",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000063"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an equation reference, transform direction, exact double-stochasticity, output identity, and another equation reference."
+    ]
+  },
+  {
+    "id": "n0000135",
+    "kind": "claim",
+    "text": "This is sufficient for full coverage because orthostochastic transform takes the Frobenius norm squared of block matrices and removes information about reflections, keeping only positive determinant solutions",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000064"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a coverage conclusion, transform information loss, reflection handling, determinant restriction, and solution-set reasoning."
+    ]
+  },
+  {
+    "id": "n0000136",
+    "kind": "claim",
+    "text": "Advantageous due to path-connectedness of the special orthogonal group, the group of all pure rotations in ℝ^d",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000064"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an advantage claim, path-connectedness, group identity, and geometric interpretation."
+    ]
+  },
+  {
+    "id": "n0000139",
+    "kind": "claim",
+    "text": "Cayley transform is norm-preserving, ensuring numerical stability without additional normalization",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000065"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines norm preservation, numerical-stability consequence, and absence of extra normalization."
+    ]
+  },
+  {
+    "id": "n0000140",
+    "kind": "claim",
+    "text": "Replacing softmax with Cayley transform may accelerate convergence by avoiding saturation regions of exponential function (section 5)",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000065"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a proposed convergence benefit, softmax replacement, saturation mechanism, and section reference."
+    ]
+  },
+  {
+    "id": "n0000141",
+    "kind": "claim",
+    "text": "Mitigates vanishing gradients (appendix B.10) and maintains well-conditioned Jacobian",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000065"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines vanishing-gradient mitigation, Jacobian conditioning, and an appendix reference."
+    ]
+  },
+  {
+    "id": "n0000142",
+    "kind": "claim",
+    "text": "Vanishing gradients trade-off how close mixing matrices near polytope boundary can be learned and ability to unlearn them and return to barycenter",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000065"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a gradient-related trade-off, boundary learning, unlearning, and return to the barycenter."
+    ]
+  },
+  {
+    "id": "n0000143",
+    "kind": "claim",
+    "text": "Xie et al. (2026) use Amax Gain Magnitude (AGM) to quantify worst-case amplification for residual hyper-connection product H_{l→L}^{res} = ∏_{i=1}^{L-l} H_{L-i}^{res}",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000066"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines attribution, metric purpose, worst-case amplification, residual-product definition, indexing, and network-depth context."
+    ]
+  },
+  {
+    "id": "n0000146",
+    "kind": "claim",
+    "text": "We do not rely on the AGM metric because the exactness of P_go makes it equal to 1 by definition.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000068"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.55,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a decision about metric use with a definitional explanation for why the metric is fixed at 1."
+    ]
+  },
+  {
+    "id": "n0000147",
+    "kind": "claim",
+    "text": "B_d is closed under matrix multiplication, so H_{l→L}^{res} remains doubly stochastic regardless of depth.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000068"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.62,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an algebraic closure property, a causal implication, and a depth-independent invariant."
+    ]
+  },
+  {
+    "id": "n0000148",
+    "kind": "claim",
+    "text": "go-mHC, mHC-lite, and KromHC all achieve the same performance on the AGM metric, so we evaluate expressivity and convergence as additional metrics.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000068"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.72,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a three-method comparison, an equality claim, and the motivation for adding two evaluation metrics."
+    ]
+  },
+  {
+    "id": "n0000151",
+    "kind": "claim",
+    "text": "When s=1 and d=3, the model learns maps covering the full spectral region within the Karpelevič region of B_3\\B_2 up to error ε(s=1), and also covers real eigenvalues on interval [-1,1] (Karpelevič region of B_2).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000071"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.82,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines parameter conditions, a coverage claim, a named spectral region, an error bound, and a second interval-specific coverage claim."
+    ]
+  },
+  {
+    "id": "n0000154",
+    "kind": "claim",
+    "text": "We evaluate expressivity by using the spectrum of matrices constructed with P_M as a surrogate, measuring how many unique matrices can be spanned by their eigenvalues.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000072"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.78,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines the evaluation procedure, a surrogate choice, and an interpretation of eigenvalue spanning as matrix expressivity."
+    ]
+  },
+  {
+    "id": "n0000156",
+    "kind": "claim",
+    "text": "Spectral reach of H^{res} matrices constructed using method M is defined as the set {λ∈ℂ | H^{res} v = λ v, H^{res}=P_M(...), v≠0}.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000072"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.67,
+    "densitySource": "model",
+    "densityReasons": [
+      "Defines a set using an eigenvalue equation while also specifying the construction of the matrices and the nonzero-eigenvector condition."
+    ]
+  },
+  {
+    "id": "n0000159",
+    "kind": "claim",
+    "text": "A mapping M with high spectral reach generates matrices that span a larger volume of the Karpelevič region, the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000075"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.72,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a property of mappings, a matrix-volume consequence, and a definition of the Karpelevič region."
+    ]
+  },
+  {
+    "id": "n0000178",
+    "kind": "claim",
+    "text": "Figure 4 shows histogram of spectral reach of toy model implementing maps P_SK, P_lite, P_krom, P_go on random targets in B_4.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000078"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "psk",
+      "plite",
+      "pkrom",
+      "pgo",
+      "b4"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.57,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines figure identification, histogram content, four methods, and the random-target experimental setup."
+    ]
+  },
+  {
+    "id": "n0000179",
+    "kind": "claim",
+    "text": "Blue and green lines in (a-e) are boundaries of spectra of B_3\\B_2 and B_4\\B_3 polytopes.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000078"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "b3",
+      "b2",
+      "b4"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.55,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines color-based figure interpretation with two spectral boundaries and their associated polytopes."
+    ]
+  },
+  {
+    "id": "n0000182",
+    "kind": "claim",
+    "text": "(c) KromHC fails to represent complex region inside B_4 because its shadow is 1-dimensional, filling infinitesimal slice.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000078"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kromhc",
+      "b4"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.72,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines method failure, target-region limitation, a dimensionality explanation, and an infinitesimal-slice consequence."
+    ]
+  },
+  {
+    "id": "n0000183",
+    "kind": "claim",
+    "text": "(d) For s=1, go-mHC represents sizeable portion of region but cannot represent all matrices near boundary of polytope.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000078"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "s=1",
+      "go-mhc",
+      "polytope"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.55,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a parameter condition, a coverage result, and a boundary-specific limitation."
+    ]
+  },
+  {
+    "id": "n0000186",
+    "kind": "claim",
+    "text": "If a method's spectrum is clustered in a small sub-region, it is poorly expressive; filling Karpelevič region captures diverse dynamics.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000079"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "karpelevič region"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.62,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a diagnostic criterion, its interpretation, and a rationale linking region filling to dynamic diversity."
+    ]
+  },
+  {
+    "id": "n0000189",
+    "kind": "claim",
+    "text": "Eigenvalue distribution of s-ssostochastic matrices is constrained by membership in Birkhoff polytope B_d and residence within Karpelevič region.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000081"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "s-ssostochastic matrices",
+      "birkhoff polytope",
+      "bd",
+      "karpelevič region"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.55,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines Birkhoff-polytope membership with Karpelevič-region containment as two spectral constraints."
+    ]
+  },
+  {
+    "id": "n0000190",
+    "kind": "claim",
+    "text": "11-orthostochastic matrices have restricted hypo-cycloidal boundary; increasing parameter s provides denser approximation of B_d.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000081"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "11-orthostochastic matrices",
+      "s",
+      "bd"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.65,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a boundary restriction, a matrix-family description, and the effect of increasing s on approximation density."
+    ]
+  },
+  {
+    "id": "n0000191",
+    "kind": "claim",
+    "text": "As s increases, spectral support of ss-orthostochastic matrices expands to fill Karpelevič region, approaching density of general doubly stochastic matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000081"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "s",
+      "ss-orthostochastic matrices",
+      "karpelevič region",
+      "doubly stochastic matrices"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.58,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines parameter-dependent spectral expansion, region filling, and convergence toward general doubly stochastic density."
+    ]
+  },
+  {
+    "id": "n0000193",
+    "kind": "claim",
+    "text": "KromHC imposes symmetry on d-streams that prunes mixing terms in H_res.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kromhc",
+      "d-streams",
+      "hres"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.53,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a structural symmetry constraint with its effect on stream mixing and the residual matrix."
+    ]
+  },
+  {
+    "id": "n0000194",
+    "kind": "claim",
+    "text": "KromHC parameterizes only a sparse subset of B_d for d>2 by analyzing spectral reach of k-fold Kronecker products.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kromhc",
+      "bd",
+      "d>2",
+      "k-fold kronecker products"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.53,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a parameterization claim, a dimensionality condition, and a spectral-reach justification."
+    ]
+  },
+  {
+    "id": "n0000195",
+    "kind": "claim",
+    "text": "Spectral space of k-fold Kronecker product of doubly stochastic matrices is invariant to index k, restricting expressive reach to base manifold.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "k-fold kronecker product",
+      "doubly stochastic matrices",
+      "index k"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.68,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a Kronecker-product construction, index invariance, and the resulting expressive restriction."
+    ]
+  },
+  {
+    "id": "n0000197",
+    "kind": "claim",
+    "text": "Example 4×4 case: matrices A,B ∈ B_2 have spectra {1,λ_A} and {1,λ_B} with λ∈[-1,1].",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "a",
+      "b",
+      "b2",
+      "λ",
+      "[-1,1]"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.57,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines matrix dimensions, membership, two spectra, and the shared eigenvalue interval."
+    ]
+  },
+  {
+    "id": "n0000198",
+    "kind": "claim",
+    "text": "Spectrum of Kronecker product A⊗B is {1,λ_A,λ_B,λ_A λ_B} which remains within [-1,1] and inside spectral hull of B_2.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "a⊗b",
+      "λa",
+      "λb",
+      "b2"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.68,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines the product-spectrum formula with interval containment and a geometric spectral-hull conclusion."
+    ]
+  },
+  {
+    "id": "n0000199",
+    "kind": "claim",
+    "text": "Therefore spectral reach of Kronecker-parameterized manifold is invariant to number of products and fails to expand into broader Karpelevič region, representing negligible portion of B_d when d>i_k.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kronecker-parameterized manifold",
+      "karpelevič region",
+      "bd",
+      "d>ik"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.83,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines invariance, failure to reach a broader region, a dimensional condition, and a quantitative negligible-portion conclusion."
+    ]
+  },
+  {
+    "id": "n0000202",
+    "kind": "claim",
+    "text": "Constraints fail to represent cyclic permutations of order greater than i_k=2 (e.g., 1→2→3→1), preventing learning complex periodic dependencies.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000085"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "cyclic permutations",
+      "ik=2",
+      "1→2→3→1"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.63,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a representational constraint, a specific cyclic example, and an implication for periodic dependencies."
+    ]
+  },
+  {
+    "id": "n0000203",
+    "kind": "claim",
+    "text": "Restriction to real eigenvalues in 2×2 base case implies only pure diffusion without advection, limiting directional flow of signals.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000085"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "real eigenvalues",
+      "2×2",
+      "pure diffusion",
+      "advection",
+      "directional flow"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.65,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an eigenvalue restriction, a physical/dynamical interpretation, and a limitation on directional signal flow."
+    ]
+  },
+  {
+    "id": "n0000223",
+    "kind": "claim",
+    "text": "go-mHC’s per-layer parameter complexity is similar to mHC and much lower than mHC-lite.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000087"
+    ],
+    "defines": [],
+    "requires": [
+      "go-mhc",
+      "mhc",
+      "mhc-lite"
+    ],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0007",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a per-layer comparison across three methods with a relative complexity conclusion."
+    ]
+  },
+  {
+    "id": "n0000227",
+    "kind": "claim",
+    "text": "KromHC trades off expressivity for a smaller parameter count O(dC·d).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000087"
+    ],
+    "defines": [],
+    "requires": [
+      "expressivity"
+    ],
+    "mentions": [
+      "d",
+      "c"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0007",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a parameter-complexity claim, an asymptotic bound, and an expressivity tradeoff."
+    ]
+  },
+  {
+    "id": "n0000229",
+    "kind": "claim",
+    "text": "go-mHC scales with s, with s=1 requiring fewer parameters due to skew‑symmetry.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000088"
+    ],
+    "defines": [],
+    "requires": [
+      "skew‐symmetry"
+    ],
+    "mentions": [
+      "s"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0007",
+    "densityScore": 0.55,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines parameter scaling, a specific s value, and a skew-symmetry explanation for reduced parameters."
+    ]
+  },
+  {
+    "id": "n0000231",
+    "kind": "claim",
+    "text": "KromHC scales as O(d log d) faster than mHC by imposing strong symmetry on residual stream interactions.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000088"
+    ],
+    "defines": [],
+    "requires": [
+      "logarithm",
+      "symmetry"
+    ],
+    "mentions": [
+      "d"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0007",
+    "densityScore": 0.62,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines asymptotic scaling, a comparative speed claim, and the structural symmetry mechanism causing it."
+    ]
+  },
+  {
+    "id": "n0000238",
+    "kind": "claim",
+    "text": "KromHC and go‑mHC are complementary methods that can be used simultaneously.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kromhc",
+      "go‐mhc"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0007",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines complementarity with the claim that both methods can be used simultaneously."
+    ]
+  },
+  {
+    "id": "n0000240",
+    "kind": "claim",
+    "text": "KromHC can regain expressivity with larger product sizes at quadratic cost instead of factorial.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [
+      "expressivity",
+      "quadratic cost"
+    ],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0007",
+    "densityScore": 0.6,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines expressivity recovery, larger product sizes, and a comparison of quadratic versus factorial cost."
+    ]
+  },
+  {
+    "id": "n0000242",
+    "kind": "claim",
+    "text": "Expressivity scales as O(s² i_k²·log_{i_k}d) instead of O(i_k!·log_{i_k}d).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000091"
+    ],
+    "defines": [],
+    "requires": [
+      "logarithm",
+      "factorial"
+    ],
+    "mentions": [
+      "s",
+      "ik",
+      "d"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0007",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Compares two asymptotic expressivity scalings and includes logarithmic dependence on dimension."
+    ]
+  },
+  {
+    "id": "n0000246",
+    "kind": "claim",
+    "text": "In manifold-constrained Hyper-Connections (mHC), the FLOP overhead is about 8% increase for a 27B model, even after custom kernels and infrastructure improvements.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000093"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines the constrained setting, measured overhead, model scale, and optimization context."
+    ]
+  },
+  {
+    "id": "n0000247",
+    "kind": "claim",
+    "text": "KromHC and mHC-lite show significant speed‑ups because they remove iterative updates.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000093"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines two methods, a performance outcome, and the causal explanation of removing iterative updates."
+    ]
+  },
+  {
+    "id": "n0000250",
+    "kind": "claim",
+    "text": "go‑mHC has roughly the same order of magnitude in FLOP complexity as mHC with Sinkhorn‑Knopp iterations because O(d) ≈ O(S).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000093"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines an empirical complexity comparison, two methods, and an asymptotic justification."
+    ]
+  },
+  {
+    "id": "n0000251",
+    "kind": "claim",
+    "text": "Model performance improvements generally outweigh computational cost, but scaling residual streams eventually hits a practical limit; go‑mHC aims to provide a middle‑ground balance between FLOP cost and expressivity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000094"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Compresses a general cost-benefit judgment, a scaling limitation, and the motivation and positioning of go-mHC."
+    ]
+  },
+  {
+    "id": "n0000252",
+    "kind": "claim",
+    "text": "go‑mHC offers a practical middle‑ground FLOP complexity for scaling residual streams, avoiding the super‑exponential cost of mHC‑lite and the iterative overhead of mHC SK iterations; nominal constants are S = 20, i_k = 2, and s ∈ {1,2}. See Appendix B.6 for full estimates.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000095"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines positioning, multiple cost comparisons, a scaling claim, nominal parameter settings, and an appendix reference."
+    ]
+  },
+  {
+    "id": "n0000258",
+    "kind": "claim",
+    "text": "Convergence of go‑mHC is governed by the geometry of the loss landscape introduced by manifold M and gradient stability; go‑mHC is expected to have learnable gradients, be convergent, and fully connected (able to reach any target matrix). See Appendix B.7 for proofs.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000098"
+    ],
+    "defines": [],
+    "requires": [
+      "section 5 convergence"
+    ],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines geometric and gradient premises, three expected properties, a full-connectivity interpretation, and a proof reference."
+    ]
+  },
+  {
+    "id": "n0000259",
+    "kind": "claim",
+    "text": "Not all matrix parameterizations are learnable and fully connected; mHC‑lite may suffer from vanishing gradients, making it difficult to relearn an n‑stream transform after convergence. See Appendix B.10.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000099"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.7,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a limitation, its gradient-based cause, a relearning consequence, and an appendix reference."
+    ]
+  },
+  {
+    "id": "n0000261",
+    "kind": "claim",
+    "text": "A synthetic toy‑model experiment generates ground‑truth doubly stochastic matrices T_i and dense activations X_j in the residual stream, then computes noisy targets Y_{i,j}=T_i X_j + ξ to evaluate reconstruction capability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000101"
+    ],
+    "defines": [],
+    "requires": [
+      "section 5.1 synthetic stream mixing performance"
+    ],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines experiment setup, multiple variable definitions, a noise model, and the evaluation objective."
+    ]
+  },
+  {
+    "id": "split-000010",
+    "kind": "claim",
+    "text": "go-mHC approximates the Birkhoff polytope within an epsilon(s) error using d(d−1)/2 parameters.",
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000027",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines approximation target, error notation, and parameter-count scaling."
+    ]
+  },
+  {
+    "id": "split-000015",
+    "kind": "claim",
+    "text": "Hyper-Connections are integrated into the residual stream as xₗ₊₁ = ℋₗʳᵉˢ xₗ + Layer F(xₗ).",
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000027",
+    "densityScore": 0.5,
+    "densitySource": "model",
+    "densityReasons": [
+      "States an integration rule with multiple terms, indexed variables, and a residual-stream context."
+    ]
+  },
+  {
+    "id": "split-000062",
+    "kind": "claim",
+    "text": "The parameterization is exact and is based on generalized orthostochastic matrices.",
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000014",
+    "densityScore": 0.62,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000064",
+    "kind": "claim",
+    "text": "A hyperparameter s interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope.",
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000014",
+    "densityScore": 0.58,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000065",
+    "kind": "claim",
+    "text": "Matrix parameterization geometry increasingly affects the performance and stability of modern machine learning models.",
+    "sourceUnitIds": [
+      "u000013"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000021",
+    "densityScore": 0.5,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000068",
+    "kind": "claim",
+    "text": "The Birkhoff polytope enforces doubly stochastic constraints but involves a trade-off between exactness and scalability.",
+    "sourceUnitIds": [
+      "u000013"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000021",
+    "densityScore": 0.55,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000069",
+    "kind": "claim",
+    "text": "go-mHC approximates the Birkhoff polytope within error ε(s) using d(d−1)/2 parameters.",
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000027",
+    "densityScore": 0.58,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000070",
+    "kind": "claim",
+    "text": "mHC-lite provides full coverage of the Birkhoff polytope but requires d! parameters.",
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000027",
+    "densityScore": 0.52,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000074",
+    "kind": "claim",
+    "text": "Hyper-Connections are integrated into the residual stream as x_{l+1}=ℋ_l^{res}x_l+Layer F(x_l).",
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000027",
+    "densityScore": 0.5,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000087",
+    "kind": "claim",
+    "text": "mHC-lite uses the Birkhoff–von Neumann theorem to define learned connections as convex combinations of permutation matrices.",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000071",
+    "densityScore": 0.52,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000090",
+    "kind": "claim",
+    "text": "KromHC uses tensor products to train residual connections on a smaller set of exactly doubly stochastic matrices.",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000075",
+    "densityScore": 0.5,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000098",
+    "kind": "claim",
+    "text": "The quantity is applied to the residual hyper-connection product H_{l→L}^{res}=∏_{i=1}^{L−l}H_{L−i}^{res}.",
+    "sourceUnitIds": [
+      "u000066"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000143",
+    "densityScore": 0.52,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000099",
+    "kind": "claim",
+    "text": "For s=1 and d=3, the learned maps cover the spectral region inside the Karpelevič region of B₃\\B₂ up to error ε(s=1).",
+    "sourceUnitIds": [
+      "u000071"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000151",
+    "densityScore": 0.55,
+    "densitySource": "model"
+  },
+  {
+    "id": "split-000104",
+    "kind": "claim",
+    "text": "The spectral reach of the Kronecker-parameterized manifold is invariant to the number of products.",
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "decomposition",
+    "decompositionRole": "split",
+    "derivedFrom": "n0000199",
+    "densityScore": 0.5,
+    "densitySource": "model"
+  }
+]

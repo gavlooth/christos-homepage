@@ -1,0 +1,232 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "The previous term has only one application, so its two use sites differ by a single level. A clearer closed term is λx. x (x (x x)). The parentheses matter: each successive occurrence on the right sits inside another application’s argument, and every argument edge adds one to the term level.",
+      "sourceUnitIds": [
+        "u000305"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Source-level effect",
+      "sourceUnitIds": [
+        "u000306"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "(λx. x (x (x x))) N →β N (N (N N))",
+      "sourceUnitIds": [
+        "u000307"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "[λx. x (x (x x))]₀ — each @ result is a body/parent; each R auxiliary is a use",
+      "sourceUnitIds": [
+        "u000308"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot8((root))\nlam8@{ shape: triangle, label: \"λ\" }\nvar8@{ shape: rect, label: \"2nd aux · variable\" }\nbody8@{ shape: rect, label: \"1st aux · body\" }\nR8@{ shape: trapezoid, label: \"R · ℓ = 1\" }\na0@{ shape: triangle, label: \"app0\" }\nr0@{ shape: rect, label: \"result\" }\ng0@{ shape: rect, label: \"argument\" }\na1@{ shape: triangle, label: \"app1\" }\nr1@{ shape: rect, label: \"result\" }\ng1@{ shape: rect, label: \"argument\" }\na2@{ shape: triangle, label: \"app2\" }\nr2@{ shape: rect, label: \"result\" }\ng2@{ shape: rect, label: \"argument x₃\" }\nroot8 -->|parent| lam8\nlam8 --- var8\nlam8 --- body8\nbody8 ~~~ var8\nbody8 --- r0\nr0 --- a0\nvar8 --- R8\nR8 ---|function| a0\na0 --- g0\ng0 --- r1\nr1 --- a1\nR8 ---|function| a1\na1 --- g1\ng1 --- r2\nr2 --- a2\nR8 ---|function| a2\na2 --- g2\nclass a0,a1,a2 orient-right",
+      "sourceUnitIds": [
+        "u000309"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Why the vector grows. The outer application hangs from the λ body port. Each inner application hangs from the argument port of the application above it. The four replicator auxiliaries meet the three function ports and the deepest argument port. The abstraction is at level 0, so its replicator is at level 1. The four bound-variable endpoints are at levels 0, 1, 2, 3. Applying di = li − lR yields ⟨−1, 0, +1, +2⟩.",
+      "sourceUnitIds": [
+        "u000310"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Occurrence | Position in the term | Endpoint level | Stored delta | |",
+      "sourceUnitIds": [
+        "u000311"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₀ | Function of the outer application. | 0 | 0 − 1 = −1 | |",
+      "sourceUnitIds": [
+        "u000312"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₁ | Function inside the first argument. | 1 | 1 − 1 = 0 | |",
+      "sourceUnitIds": [
+        "u000313"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₂ | Function inside the second argument. | 2 | 2 − 1 = +1 | |",
+      "sourceUnitIds": [
+        "u000314"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₃ | Argument of the deepest application. | 3 | 3 − 1 = +2 | |",
+      "sourceUnitIds": [
+        "u000315"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000305",
+        "u000306",
+        "u000307",
+        "u000308",
+        "u000309",
+        "u000310",
+        "u000311",
+        "u000312",
+        "u000313",
+        "u000314",
+        "u000315"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-06 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

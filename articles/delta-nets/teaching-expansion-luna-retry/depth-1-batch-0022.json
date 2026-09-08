@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 22,
+  "items": [
+    {
+      "recordId": "teach-generated-dbc180a389e526e6",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "In this Δ-Net reduction, a replica is a copied agent or replicator instance that participates in the reduced network.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-fc39155b2ba342e3",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A port delta is the signed integer stored on an auxiliary replicator port, equal to the connected endpoint’s level minus the replicator’s level.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 24,
+  "items": [
+    {
+      "recordId": "teach-n0001073",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "An abstraction's bound-variable port is the connection through which the abstraction supplies a value to occurrences of a variable that it binds.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The port connects directly to one occurrence when the bound variable is used once, to an eraser when it is unused, or to a replicator when several occurrences share the same value.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

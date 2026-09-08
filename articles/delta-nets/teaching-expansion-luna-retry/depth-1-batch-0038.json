@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 38,
+  "items": [
+    {
+      "recordId": "teach-generated-f7cb961000d37f75",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A level difference is the amount by which a quantity at one point differs from the quantity at another point. It is calculated by subtracting one level from the other, with the sign indicating which point has the higher level.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-fee4cf6b04d34843",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An external endpoint level is the value of a measured or modeled quantity at the boundary point where a system connects to something outside it. This boundary value can serve as the reference for comparing conditions inside the system with conditions beyond it.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

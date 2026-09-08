@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0000660",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The model performs necessary work only once even when an expression is used multiple times.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000663",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The one-step diamond property requires either one-step result to reach a common net after one further interaction.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000667",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Rewrites of distinct active pairs commute and preserve the same nearby wiring.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000671",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "For a normalizing core interaction order, every normalizing order reaches the same result in the same number of interactions.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000673",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Earlier approaches represented each sharing scope with indexed fans and delimiter agents.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000675",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Delimiter interactions could outnumber the useful fan work.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000678",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Application and function fans are triangles with a top principal port and two fixed bottom auxiliary positions.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000679",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Replicators are trapezoids with a centered top principal port and evenly spaced bottom auxiliary ports.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

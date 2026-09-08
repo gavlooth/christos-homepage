@@ -1,0 +1,11 @@
+flowchart TB
+                  rootA((root))
+                  lam@{ shape: triangle, label: "λ" }
+                  Rx@{ shape: trapezoid, label: "Rₓ" }
+                  M@{ shape: rect, label: "[M]ℓ body" }
+                  uses@{ shape: rect, label: "bound uses" }
+                  rootA -->|principal · parent| lam
+                  lam ---|2nd aux · variable → principal| Rx
+                  lam ---|1st aux · body| M
+                  Rx ---|auxiliary ports| uses
+                  M ~~~ Rx

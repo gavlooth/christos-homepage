@@ -1,0 +1,32 @@
+{
+  "depth": 0,
+  "batch": 32,
+  "items": [
+    {
+      "recordId": "teach-n0001107",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "ΔA requires erasure canonicalization.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "ΔI requires replicator merging.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "ΔK requires erasure, merge, and decay canonicalizations.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

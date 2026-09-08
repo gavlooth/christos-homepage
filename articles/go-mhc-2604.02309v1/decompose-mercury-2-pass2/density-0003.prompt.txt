@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000146",
+    "kind": "claim",
+    "text": "We do not rely on the AGM metric because the exactness of P_go makes it equal to 1 by definition."
+  },
+  {
+    "id": "n0000147",
+    "kind": "claim",
+    "text": "B_d is closed under matrix multiplication, so H_{l→L}^{res} remains doubly stochastic regardless of depth."
+  },
+  {
+    "id": "n0000148",
+    "kind": "claim",
+    "text": "go-mHC, mHC-lite, and KromHC all achieve the same performance on the AGM metric, so we evaluate expressivity and convergence as additional metrics."
+  },
+  {
+    "id": "n0000149",
+    "kind": "claim",
+    "text": "Expressivity"
+  },
+  {
+    "id": "n0000151",
+    "kind": "claim",
+    "text": "When s=1 and d=3, the model learns maps covering the full spectral region within the Karpelevič region of B_3\\B_2 up to error ε(s=1), and also covers real eigenvalues on interval [-1,1] (Karpelevič region of B_2)."
+  },
+  {
+    "id": "n0000152",
+    "kind": "claim",
+    "text": "When s=2, the model covers a larger region with a smaller spectral gap, i.e., ε(s=2) < ε(s=1)."
+  },
+  {
+    "id": "n0000153",
+    "kind": "claim",
+    "text": "Bounding the spectrum stabilizes gradients, as discussed in Appendix B.8 and prior work."
+  },
+  {
+    "id": "n0000154",
+    "kind": "claim",
+    "text": "We evaluate expressivity by using the spectrum of matrices constructed with P_M as a surrogate, measuring how many unique matrices can be spanned by their eigenvalues."
+  },
+  {
+    "id": "n0000155",
+    "kind": "claim",
+    "text": "Exact volume of B_d is unknown, so we rely on surrogate measures for expressivity of doubly stochastic matrices."
+  },
+  {
+    "id": "n0000156",
+    "kind": "claim",
+    "text": "Spectral reach of H^{res} matrices constructed using method M is defined as the set {λ∈ℂ | H^{res} v = λ v, H^{res}=P_M(...), v≠0}."
+  },
+  {
+    "id": "n0000158",
+    "kind": "claim",
+    "text": "Spectral Reach of B_d Subsets"
+  },
+  {
+    "id": "n0000159",
+    "kind": "claim",
+    "text": "A mapping M with high spectral reach generates matrices that span a larger volume of the Karpelevič region, the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices."
+  },
+  {
+    "id": "n0000160",
+    "kind": "claim",
+    "text": "The Karpelevič region is defined as the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices."
+  },
+  {
+    "id": "n0000161",
+    "kind": "claim",
+    "text": "Its boundary is defined by algebraic curves connecting the roots of unity."
+  },
+  {
+    "id": "n0000173",
+    "kind": "evidence",
+    "text": "|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E10.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>fwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>j</mi></munder><mprescripts /><mi>i</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,</annotation></semantics></math> --> AGMfwd​(ℋl→Lres)=max⁡∑ji⁡|(ℋl→Lres)i​j|,\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|, |  | (10) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |\n|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E11.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>bwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>i</mi></munder><mprescripts /><mi>j</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo lspace=\"0em\">.</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.</annotation></semantics></math> --> AGMbwd​(ℋl→Lres)=max⁡∑ij⁡|(ℋl→Lres)i​j|.\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|. |  | (11) |"
+  },
+  {
+    "id": "n0000174",
+    "kind": "source",
+    "text": "![Refer to caption](2604.02309v1/spectra_numerics_d_eq_3_ours.png)"
+  },
+  {
+    "id": "n0000175",
+    "kind": "evidence",
+    "text": "|  | <!-- MathML: <math alttext=\"\\{\\lambda\\in\\mathbb{C}\\;|\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\;\\vec{v}\\neq\\vec{0}\\}\" class=\"ltx_math_unparsed\" display=\"block\" id=\"S4.E12.m1\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mi>λ</mi><mo>∈</mo><mi>ℂ</mi><mo fence=\"false\" lspace=\"0.280em\" rspace=\"0.447em\" stretchy=\"false\">|</mo><msup><mi>𝐇</mi><mtext>res</mtext></msup><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo>=</mo><mi>λ</mi><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo rspace=\"0.447em\">,</mo><msup><mi>𝐇</mi><mtext>res</mtext></msup><mo>=</mo><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mi>𝖬</mi></msub><mrow><mo stretchy=\"false\">(</mo><mo lspace=\"0em\" rspace=\"0em\">⋯</mo><mo stretchy=\"false\">)</mo></mrow><mo rspace=\"0.447em\">,</mo><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo>≠</mo><mover accent=\"true\"><mn>0</mn><mo stretchy=\"false\">→</mo></mover><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{\\lambda\\in\\mathbb{C}\\;|\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\;\\vec{v}\\neq\\vec{0}\\}</annotation></semantics></math> --> {λ∈ℂ|𝐇resv→=λv→,𝐇res=𝒫𝖬(⋯),v→≠0→}\\\\{\\lambda\\in\\mathbb{C}\\\\;|\\\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\\\;\\vec{v}\\neq\\vec{0}\\\\} |  | (12) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |"
+  },
+  {
+    "id": "n0000176",
+    "kind": "evidence",
+    "text": "|  | <!-- MathML: <math alttext=\"\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\}\" class=\"ltx_math_unparsed\" display=\"block\" id=\"S4.Ex2.m1\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><msup><mi>e</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>π</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mfrac><mi>j</mi><msup><mi>d</mi><mo>′</mo></msup></mfrac></mrow></msup><mo lspace=\"0em\" rspace=\"0.167em\">∣</mo><mi>j</mi><mo>∈</mo><mrow><mo stretchy=\"false\">[</mo><mn>1</mn><mo>,</mo><msup><mi>d</mi><mo>′</mo></msup><mo stretchy=\"false\">]</mo></mrow><mo>,</mo><msup><mi>d</mi><mo>′</mo></msup><mo>≤</mo><mi>d</mi><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\}</annotation></semantics></math> --> {ei​2​π​jd′∣j∈[1,d′],d′≤d}\\\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\\\} |  |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |"
+  },
+  {
+    "id": "n0000177",
+    "kind": "source",
+    "text": "![Refer to caption](2604.02309v1/spectra_numerics_compare.png)"
+  },
+  {
+    "id": "n0000178",
+    "kind": "claim",
+    "text": "Figure 4 shows histogram of spectral reach of toy model implementing maps P_SK, P_lite, P_krom, P_go on random targets in B_4."
+  },
+  {
+    "id": "n0000179",
+    "kind": "claim",
+    "text": "Blue and green lines in (a-e) are boundaries of spectra of B_3\\B_2 and B_4\\B_3 polytopes."
+  },
+  {
+    "id": "n0000180",
+    "kind": "claim",
+    "text": "(a) mHC contains points outside B_4."
+  },
+  {
+    "id": "n0000181",
+    "kind": "claim",
+    "text": "(b) mHC-lite fills region near boundary almost completely without extending past it."
+  },
+  {
+    "id": "n0000182",
+    "kind": "claim",
+    "text": "(c) KromHC fails to represent complex region inside B_4 because its shadow is 1-dimensional, filling infinitesimal slice."
+  },
+  {
+    "id": "n0000183",
+    "kind": "claim",
+    "text": "(d) For s=1, go-mHC represents sizeable portion of region but cannot represent all matrices near boundary of polytope."
+  },
+  {
+    "id": "n0000184",
+    "kind": "claim",
+    "text": "(e) With s=2, go-mHC begins to represent larger regions of B_4, filling region more densely."
+  },
+  {
+    "id": "n0000185",
+    "kind": "claim",
+    "text": "Figure illustrates Karpelevič region for dimensions d=2 to d=5."
+  },
+  {
+    "id": "n0000186",
+    "kind": "claim",
+    "text": "If a method's spectrum is clustered in a small sub-region, it is poorly expressive; filling Karpelevič region captures diverse dynamics."
+  },
+  {
+    "id": "n0000187",
+    "kind": "claim",
+    "text": "Spectral reach of mHC, KromHC, and go-mHC shown in figures 3 and 4."
+  },
+  {
+    "id": "n0000188",
+    "kind": "claim",
+    "text": "4.1.1 Eigenvalue Coverage of s-ssostochastic Matrices"
+  },
+  {
+    "id": "n0000189",
+    "kind": "claim",
+    "text": "Eigenvalue distribution of s-ssostochastic matrices is constrained by membership in Birkhoff polytope B_d and residence within Karpelevič region."
+  },
+  {
+    "id": "n0000190",
+    "kind": "claim",
+    "text": "11-orthostochastic matrices have restricted hypo-cycloidal boundary; increasing parameter s provides denser approximation of B_d."
+  },
+  {
+    "id": "n0000191",
+    "kind": "claim",
+    "text": "As s increases, spectral support of ss-orthostochastic matrices expands to fill Karpelevič region, approaching density of general doubly stochastic matrices."
+  },
+  {
+    "id": "n0000192",
+    "kind": "claim",
+    "text": "4.1.2 The Spectral Limitation of Kronecker Products"
+  },
+  {
+    "id": "n0000193",
+    "kind": "claim",
+    "text": "KromHC imposes symmetry on d-streams that prunes mixing terms in H_res."
+  },
+  {
+    "id": "n0000194",
+    "kind": "claim",
+    "text": "KromHC parameterizes only a sparse subset of B_d for d>2 by analyzing spectral reach of k-fold Kronecker products."
+  },
+  {
+    "id": "n0000195",
+    "kind": "claim",
+    "text": "Spectral space of k-fold Kronecker product of doubly stochastic matrices is invariant to index k, restricting expressive reach to base manifold."
+  },
+  {
+    "id": "n0000196",
+    "kind": "claim",
+    "text": "Formal proof of this invariance is in Appendix B.3.1."
+  },
+  {
+    "id": "n0000197",
+    "kind": "claim",
+    "text": "Example 4×4 case: matrices A,B ∈ B_2 have spectra {1,λ_A} and {1,λ_B} with λ∈[-1,1]."
+  },
+  {
+    "id": "n0000198",
+    "kind": "claim",
+    "text": "Spectrum of Kronecker product A⊗B is {1,λ_A,λ_B,λ_A λ_B} which remains within [-1,1] and inside spectral hull of B_2."
+  },
+  {
+    "id": "n0000199",
+    "kind": "claim",
+    "text": "Therefore spectral reach of Kronecker-parameterized manifold is invariant to number of products and fails to expand into broader Karpelevič region, representing negligible portion of B_d when d>i_k."
+  },
+  {
+    "id": "n0000200",
+    "kind": "claim",
+    "text": "Empirically shows O(d) additional error in minimum achievable loss compared to mHC-lite and go-mHC."
+  },
+  {
+    "id": "n0000201",
+    "kind": "claim",
+    "text": "Collapse in spectral volume for Kronecker-based transforms causes loss of functional diversity."
+  },
+  {
+    "id": "n0000202",
+    "kind": "claim",
+    "text": "Constraints fail to represent cyclic permutations of order greater than i_k=2 (e.g., 1→2→3→1), preventing learning complex periodic dependencies."
+  },
+  {
+    "id": "n0000203",
+    "kind": "claim",
+    "text": "Restriction to real eigenvalues in 2×2 base case implies only pure diffusion without advection, limiting directional flow of signals."
+  },
+  {
+    "id": "n0000204",
+    "kind": "claim",
+    "text": "4.2 Parameter Complexity"
+  },
+  {
+    "id": "n0000214",
+    "kind": "evidence",
+    "text": "Evidence from u000078"
+  },
+  {
+    "id": "n0000215",
+    "kind": "evidence",
+    "text": "Evidence from u000079"
+  },
+  {
+    "id": "n0000216",
+    "kind": "evidence",
+    "text": "Evidence from u000080"
+  },
+  {
+    "id": "n0000217",
+    "kind": "evidence",
+    "text": "Evidence from u000081"
+  },
+  {
+    "id": "n0000218",
+    "kind": "evidence",
+    "text": "Evidence from u000082"
+  },
+  {
+    "id": "n0000219",
+    "kind": "evidence",
+    "text": "Evidence from u000083"
+  },
+  {
+    "id": "n0000220",
+    "kind": "evidence",
+    "text": "Evidence from u000084"
+  },
+  {
+    "id": "n0000221",
+    "kind": "evidence",
+    "text": "Evidence from u000085"
+  },
+  {
+    "id": "n0000222",
+    "kind": "evidence",
+    "text": "Evidence from u000086"
+  },
+  {
+    "id": "n0000223",
+    "kind": "claim",
+    "text": "go-mHC’s per-layer parameter complexity is similar to mHC and much lower than mHC-lite."
+  },
+  {
+    "id": "n0000224",
+    "kind": "claim",
+    "text": "go-mHC per-layer parameter complexity is O(dC·d^2 s^2)."
+  },
+  {
+    "id": "n0000225",
+    "kind": "claim",
+    "text": "mHC per-layer parameter complexity is O(dC·d^2)."
+  },
+  {
+    "id": "n0000226",
+    "kind": "claim",
+    "text": "mHC-lite per-layer parameter complexity is O(dC·d!)."
+  },
+  {
+    "id": "n0000227",
+    "kind": "claim",
+    "text": "KromHC trades off expressivity for a smaller parameter count O(dC·d)."
+  },
+  {
+    "id": "n0000228",
+    "kind": "claim",
+    "text": "Figure 5 compares total learnable parameters of mHC and its variants."
+  },
+  {
+    "id": "n0000229",
+    "kind": "claim",
+    "text": "go-mHC scales with s, with s=1 requiring fewer parameters due to skew‑symmetry."
+  },
+  {
+    "id": "n0000230",
+    "kind": "claim",
+    "text": "mHC-lite scales with O(d!) and becomes intractable beyond d=8."
+  },
+  {
+    "id": "n0000231",
+    "kind": "claim",
+    "text": "KromHC scales as O(d log d) faster than mHC by imposing strong symmetry on residual stream interactions."
+  }
+]

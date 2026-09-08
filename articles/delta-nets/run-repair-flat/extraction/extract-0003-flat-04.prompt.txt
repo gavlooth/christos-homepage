@@ -1,0 +1,243 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003-flat-04",
+  "context": [
+    "Δ-Nets",
+    "When two principal ports touch, one of three things happens.",
+    "The operational rule",
+    "Add the exit’s delta"
+  ],
+  "units": [
+    {
+      "id": "u000212",
+      "kind": "prose",
+      "text": "new level of an H replica = old H level + delta on the R port it leaves through"
+    },
+    {
+      "id": "u000213",
+      "kind": "prose",
+      "text": "“Duplicate” means exact copies. “Replicate” is the paper’s word for copies that may differ by level. That distinction does real work: it replaces the separate indexed delimiters of older systems. A delta may be negative, zero, or positive; this example sticks to zero and a positive value only to keep the arithmetic easy to see."
+    },
+    {
+      "id": "u000214",
+      "kind": "prose",
+      "text": "How a delta carries context through an interaction"
+    },
+    {
+      "id": "u000215",
+      "kind": "prose",
+      "text": "Several higher-level replicators can arrive at the same R port with different current levels. The port applies the same local adjustment to each. With delta +3, level 7 becomes 10 and level 12 becomes 15."
+    },
+    {
+      "id": "u000216",
+      "kind": "prose",
+      "text": "Read the pair as an instruction: the replicator level is the current context; the chosen port adds the change for that exit. Chapter 5 shows how translation writes those deltas into the initial net."
+    },
+    {
+      "id": "u000217",
+      "kind": "prose",
+      "text": "05 Translation"
+    },
+    {
+      "id": "u000218",
+      "kind": "heading",
+      "text": "## Compile a λ-term into one rooted net."
+    },
+    {
+      "id": "u000219",
+      "kind": "prose",
+      "text": "For each of λL, λA, λI, and λK, the paper defines a bijection φ from terms to canonical Δ-Nets. A bijection is a one-to-one, reversible map: every term has one canonical net, and that net reads back as one term. The translation is inductive: translate the smaller pieces first, then wire those fragments into the larger term."
+    },
+    {
+      "id": "u000220",
+      "kind": "prose",
+      "text": "Vocabulary"
+    },
+    {
+      "id": "u000221",
+      "kind": "prose",
+      "text": "flowchart TB\nabs[\"λx.M · parameter x · body M\"]\napp[\"M N · function M · argument N\"]\nocc[\"x₀ and x₁ · two uses of x\"]"
+    },
+    {
+      "id": "u000222",
+      "kind": "prose",
+      "text": "Example: (λx. x (g x)) A"
+    },
+    {
+      "id": "u000223",
+      "kind": "prose",
+      "text": "flowchart TB\nA[\"argument A\"]\nlam[\"λx\"]\nbody[\"body = x₀ (g x₁)\"]\nA --> lam\nlam --> body"
+    }
+  ]
+}

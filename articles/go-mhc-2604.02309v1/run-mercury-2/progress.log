@@ -1,0 +1,12 @@
+extracting 104 source units in 8 chunks at concurrency 4
+  extract-0004: 33 nodes, 0 semantic edges
+  extract-0003: 17 nodes, 7 semantic edges
+  extract-0001 failed: extract-0001 failed after 1 attempt(s): knowledge node 1 has no text; salvaging remaining node data
+  extract-0002 failed: extract-0002 failed after 1 attempt(s): knowledge node 1 has no text; salvaging remaining node data
+  extract-0007: 21 nodes, 0 semantic edges
+  extract-0005 failed: extract-0005 failed after 1 attempt(s): knowledge node 0 has no text; salvaging remaining node data
+  extract-0006: 45 nodes, 30 semantic edges
+  extract-0008: 21 nodes, 6 semantic edges
+assembled 294 nodes; retained 78 model edges; exposed 61 knowledge gaps
+graph: /home/christos/code/refine/articles/go-mhc-2604.02309v1/graph.json
+validation: complete_with_gaps; 233 knowledge nodes, 61 gaps, 127 edges, 35 evidence frames

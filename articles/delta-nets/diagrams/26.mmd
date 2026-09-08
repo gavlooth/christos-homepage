@@ -1,0 +1,13 @@
+flowchart TB
+                  root1((root))
+                  lam1@{ shape: triangle, label: "λ" }
+                  var1@{ shape: rect, label: "2nd aux · variable" }
+                  body1@{ shape: rect, label: "1st aux · body" }
+                  erase@{ shape: stadium, label: "E" }
+                  freeY@{ shape: rect, label: "y" }
+                  root1 -->|principal · parent| lam1
+                  lam1 --- var1
+                  lam1 --- body1
+                  body1 ~~~ var1
+                  var1 --- erase
+                  body1 --- freeY

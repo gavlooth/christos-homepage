@@ -1,0 +1,44 @@
+{
+  "depth": 0,
+  "batch": 30,
+  "items": [
+    {
+      "recordId": "teach-n0001062",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For R operating at level 2, an endpoint is also at level 2 when the level difference, called delta, is 0.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For the same R at level 2, an endpoint at level 5 produces delta +3 because level 5 is three levels above level 2.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001063",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "An H replica operating at level 7 exits through delta 0 when the exit level is also 7.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The same H replica exits through delta +3 when the exit level is 10, because level 10 is three levels above level 7.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

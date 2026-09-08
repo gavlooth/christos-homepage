@@ -1,0 +1,164 @@
+{
+  "scores": [
+    {
+      "id": "n0000232",
+      "score": 0.5,
+      "reasons": ["two related ideas (reliance and analysis condition)"]
+    },
+    {
+      "id": "n0000233",
+      "score": 0,
+      "reasons": ["single factual statement"]
+    },
+    {
+      "id": "n0000234",
+      "score": 0,
+      "reasons": ["simple formula"]
+    },
+    {
+      "id": "n0000235",
+      "score": 0,
+      "reasons": ["simple formula"]
+    },
+    {
+      "id": "n0000236",
+      "score": 0,
+      "reasons": ["simple formula"]
+    },
+    {
+      "id": "n0000237",
+      "score": 0,
+      "reasons": ["simple formula"]
+    },
+    {
+      "id": "n0000238",
+      "score": 0,
+      "reasons": ["single claim"]
+    },
+    {
+      "id": "n0000239",
+      "score": 0,
+      "reasons": ["single claim"]
+    },
+    {
+      "id": "n0000240",
+      "score": 0.5,
+      "reasons": ["two ideas (expressivity gain and cost type)"]
+    },
+    {
+      "id": "n0000241",
+      "score": 0,
+      "reasons": ["single expression"]
+    },
+    {
+      "id": "n0000242",
+      "score": 0,
+      "reasons": ["single expression"]
+    },
+    {
+      "id": "n0000243",
+      "score": 0,
+      "reasons": ["section heading"]
+    },
+    {
+      "id": "n0000244",
+      "score": 0,
+      "reasons": ["single factual claim"]
+    },
+    {
+      "id": "n0000245",
+      "score": 0,
+      "reasons": ["single claim"]
+    },
+    {
+      "id": "n0000246",
+      "score": 0,
+      "reasons": ["single factual claim"]
+    },
+    {
+      "id": "n0000247",
+      "score": 0,
+      "reasons": ["single claim"]
+    },
+    {
+      "id": "n0000248",
+      "score": 0,
+      "reasons": ["single claim"]
+    },
+    {
+      "id": "n0000249",
+      "score": 0,
+      "reasons": ["single claim"]
+    },
+    {
+      "id": "n0000250",
+      "score": 0.5,
+      "reasons": ["two related ideas (complexity comparison and reasoning)"]
+    },
+    {
+      "id": "n0000251",
+      "score": 0.5,
+      "reasons": ["two ideas (trade‑off and goal)"]
+    },
+    {
+      "id": "n0000252",
+      "score": 1,
+      "reasons": ["multiple ideas, constants, and reference"]
+    },
+    {
+      "id": "n0000253",
+      "score": 0,
+      "reasons": ["single formula"]
+    },
+    {
+      "id": "n0000254",
+      "score": 0,
+      "reasons": ["single formula"]
+    },
+    {
+      "id": "n0000255",
+      "score": 0,
+      "reasons": ["single formula"]
+    },
+    {
+      "id": "n0000256",
+      "score": 0,
+      "reasons": ["single formula"]
+    },
+    {
+      "id": "n0000257",
+      "score": 0,
+      "reasons": ["section heading"]
+    },
+    {
+      "id": "n0000258",
+      "score": 0.5,
+      "reasons": ["multiple related claims (geometry, gradient, convergence)"]
+    },
+    {
+      "id": "n0000259",
+      "score": 0.5,
+      "reasons": ["two related claims (learnability and vanishing gradients)"]
+    },
+    {
+      "id": "n0000260",
+      "score": 0,
+      "reasons": ["section heading"]
+    },
+    {
+      "id": "n0000261",
+      "score": 0.5,
+      "reasons": ["multiple steps (generation, noise, evaluation)"]
+    },
+    {
+      "id": "n0000265",
+      "score": 0,
+      "reasons": ["artifact metadata"]
+    },
+    {
+      "id": "n0000266",
+      "score": 0,
+      "reasons": ["artifact metadata"]
+    }
+  ]
+}

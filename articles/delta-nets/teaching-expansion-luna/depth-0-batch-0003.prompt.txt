@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0000703",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "In a well-formed λ translation, same-level active replicators annihilate and matching auxiliary ports reconnect.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000704",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Fan annihilation represents applying a λ abstraction to its argument.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000707",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A two-port fan meeting an eraser leaves two erasers connected to its auxiliary outputs.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000708",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "An n-port replicator meeting an eraser leaves n erasers.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000711",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Their roles are identified by wire orientation relative to the root.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000712",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Principal-to-principal fan interaction removes both fans and reconnects matching auxiliary ports.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000717",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The rotated upward abstraction fan orders its auxiliaries right-to-left as first and second.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000718",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Matching semantic port indices can therefore cross the drawn wires.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

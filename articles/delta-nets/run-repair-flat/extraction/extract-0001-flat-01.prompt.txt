@@ -1,0 +1,268 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001-flat-01",
+  "context": [],
+  "units": [
+    {
+      "id": "u000001",
+      "kind": "prose",
+      "text": "[Skip to the guide](#guide)"
+    },
+    {
+      "id": "u000002",
+      "kind": "prose",
+      "text": "[Christos Chatzifountas](/)"
+    },
+    {
+      "id": "u000003",
+      "kind": "prose",
+      "text": "[About](/#about)\n[Work](/#work)\n[Notebook](/notes/)\n[Contact](/#contact)"
+    },
+    {
+      "id": "u000004",
+      "kind": "prose",
+      "text": "Reader-first technical explainer"
+    },
+    {
+      "id": "u000005",
+      "kind": "heading",
+      "text": "# Δ-Nets"
+    },
+    {
+      "id": "u000006",
+      "kind": "prose",
+      "text": "A slower walk through an interaction-based proposal for optimal parallel λ-reduction—diagrams first, notation second."
+    },
+    {
+      "id": "u000007",
+      "kind": "prose",
+      "text": "Based on Daniel Augusto Rizzi Salvadori’s paper\narXiv:2505.20314v4\n[Read the formal source ↗](https://arxiv.org/html/2505.20314v4)"
+    },
+    {
+      "id": "u000008",
+      "kind": "prose",
+      "text": "Reading size"
+    },
+    {
+      "id": "u000009",
+      "kind": "prose",
+      "text": "A\nA+\nA++"
+    },
+    {
+      "id": "u000010",
+      "kind": "prose",
+      "text": "Appearance"
+    },
+    {
+      "id": "u000011",
+      "kind": "prose",
+      "text": "☾\nDark mode"
+    },
+    {
+      "id": "u000012",
+      "kind": "prose",
+      "text": "In this guide"
+    },
+    {
+      "id": "u000013",
+      "kind": "prose",
+      "text": "- [00 How to read this](#orientation)"
+    },
+    {
+      "id": "u000014",
+      "kind": "prose",
+      "text": "- [01 The problem to solve](#problem)"
+    },
+    {
+      "id": "u000015",
+      "kind": "prose",
+      "text": "- [02 From terms to interactions](#shift)"
+    },
+    {
+      "id": "u000016",
+      "kind": "prose",
+      "text": "- [03 The three-agent core](#agents)"
+    },
+    {
+      "id": "u000017",
+      "kind": "prose",
+      "text": "- [04 When agents meet](#meetings)"
+    },
+    {
+      "id": "u000018",
+      "kind": "prose",
+      "text": "- [05 Encoding a λ-term](#compile)"
+    }
+  ]
+}

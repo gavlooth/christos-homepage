@@ -1,0 +1,469 @@
+[
+  {
+    "id": "n0000014",
+    "kind": "claim",
+    "text": "We introduce a novel exact parameterization based on generalized orthostochastic matrices, scaling as O(d³) and exposing a hyperparameter s that interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [
+      "generalized orthostochastic matrices",
+      "hyperparameter s"
+    ],
+    "requires": [
+      "birkhoff polytope"
+    ],
+    "mentions": [
+      "o(d3) scaling"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a new construction, exactness, cubic scaling, and a tunable expressivity-efficiency range."
+    ]
+  },
+  {
+    "id": "n0000021",
+    "kind": "claim",
+    "text": "The performance and stability of modern machine learning models increasingly depend on the geometric structure of their matrix parameterizations; traditional constraints such as symmetry or orthogonality have been foundational, while recent work leverages manifold theory to map unconstrained spaces onto constrained geometries like the Birkhoff polytope, which enforces doubly stochastic constraints but faces a trade-off between exactness and scalability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000013"
+    ],
+    "defines": [
+      "birkhoff polytope"
+    ],
+    "requires": [
+      "manifold theory"
+    ],
+    "mentions": [
+      "doubly stochastic matrices",
+      "symmetry",
+      "orthogonality"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "Compresses geometric parameterization context, manifold mapping, Birkhoff constraints, and an exactness-scalability trade-off."
+    ]
+  },
+  {
+    "id": "n0000027",
+    "kind": "claim",
+    "text": "Figure 1 illustrates spectral comparison showing go-mHC approximates the Birkhoff polytope within epsilon(s) error using d(d‑1)/2 parameters; mHC‑lite provides full coverage but requires d! parameters; KromHC is restricted to B₂ and disallows cycles >2. The parameterization maps skew‑symmetric X to orthogonal Q via the Cayley Transform, then projects to doubly stochastic B via block‑wise Frobenius norm. Hyper‑Connections ℋ_res is integrated into the residual stream as x_{l+1}=ℋ_l^{res} x_l + Layer F(x_l), where the doubly stochastic constraint ensures training stability and improved gradient flow.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [
+      "hyper‐connections",
+      "hres"
+    ],
+    "requires": [
+      "birkhoff polytope",
+      "cayley transform"
+    ],
+    "mentions": [
+      "epsilon(s)",
+      "d(d‐1)/2 parameters",
+      "d! parameters",
+      "b2",
+      "frobenius norm",
+      "gradient flow"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines multiple methods, parameter counts, approximation behavior, matrix transforms, integration equations, and stability rationale."
+    ]
+  },
+  {
+    "id": "n0000033",
+    "kind": "claim",
+    "text": "The parameter count O(d·d!) explodes super‑exponentially; for d=8, 8! = 40 320 permutations are required, making this approach memory‑prohibitive without sampling approximations.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "parameter count",
+      "memory‐prohibitive",
+      "sampling approximations"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines asymptotic growth, a numerical example, and a memory-prohibitive consequence."
+    ]
+  },
+  {
+    "id": "n0000047",
+    "kind": "claim",
+    "text": "The method includes a hyperparameter s that interpolates between the orthostochastic boundary (s=1) and the dense interior of the Birkhoff polytope (s→∞).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000027"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "hyperparameter s",
+      "orthostochastic boundary",
+      "birkhoff polytope"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a tunable parameter with two limiting geometric regimes and interpolation behavior."
+    ]
+  },
+  {
+    "id": "n0000049",
+    "kind": "claim",
+    "text": "The method can be used simultaneously with KromHC to allow for larger Kronecker factors by mitigating the super‑exponential scaling introduced in mHC‑lite.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000028"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kromhc",
+      "kronecker factors",
+      "mhc‐lite"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines simultaneous method use, larger factor support, and mitigation of factorial scaling."
+    ]
+  },
+  {
+    "id": "n0000065",
+    "kind": "definition",
+    "text": "B_d denotes the closed set of doubly stochastic matrices, defined as positive matrices with the property M^T J_d = M J_d = J_d.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000036"
+    ],
+    "defines": [
+      "bd"
+    ],
+    "requires": [],
+    "mentions": [
+      "doubly stochastic matrices",
+      "m",
+      "jd"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines set identification, positivity, two matrix equations, and notation for doubly stochasticity."
+    ]
+  },
+  {
+    "id": "n0000071",
+    "kind": "claim",
+    "text": "mHC‑lite attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of d! permutation matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [
+      "mhc‐lite"
+    ],
+    "requires": [],
+    "mentions": [
+      "birkhoff–von neumann theorem",
+      "permutation matrices"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines the motivation, theorem, parameterization strategy, and factorial-sized representation."
+    ]
+  },
+  {
+    "id": "n0000075",
+    "kind": "claim",
+    "text": "KromHC sacrifices expressivity and complete coverage of B_d by using tensor products to train residual connections on a much smaller set of exactly double‑stochastic matrices, with a cost of O(d² C).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [
+      "kromhc"
+    ],
+    "requires": [],
+    "mentions": [
+      "tensor products",
+      "double‐stochastic matrices",
+      "o(d2 c)"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines expressivity loss, coverage loss, tensor-product construction, exactness, matrix-set restriction, and complexity."
+    ]
+  },
+  {
+    "id": "n0000135",
+    "kind": "claim",
+    "text": "This is sufficient for full coverage because orthostochastic transform takes the Frobenius norm squared of block matrices and removes information about reflections, keeping only positive determinant solutions",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000064"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines a coverage conclusion, transform information loss, reflection handling, determinant restriction, and solution-set reasoning."
+    ]
+  },
+  {
+    "id": "n0000143",
+    "kind": "claim",
+    "text": "Xie et al. (2026) use Amax Gain Magnitude (AGM) to quantify worst-case amplification for residual hyper-connection product H_{l→L}^{res} = ∏_{i=1}^{L-l} H_{L-i}^{res}",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000066"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines attribution, metric purpose, worst-case amplification, residual-product definition, indexing, and network-depth context."
+    ]
+  },
+  {
+    "id": "n0000151",
+    "kind": "claim",
+    "text": "When s=1 and d=3, the model learns maps covering the full spectral region within the Karpelevič region of B_3\\B_2 up to error ε(s=1), and also covers real eigenvalues on interval [-1,1] (Karpelevič region of B_2).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000071"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.82,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines parameter conditions, a coverage claim, a named spectral region, an error bound, and a second interval-specific coverage claim."
+    ]
+  },
+  {
+    "id": "n0000154",
+    "kind": "claim",
+    "text": "We evaluate expressivity by using the spectrum of matrices constructed with P_M as a surrogate, measuring how many unique matrices can be spanned by their eigenvalues.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000072"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0.78,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines the evaluation procedure, a surrogate choice, and an interpretation of eigenvalue spanning as matrix expressivity."
+    ]
+  },
+  {
+    "id": "n0000199",
+    "kind": "claim",
+    "text": "Therefore spectral reach of Kronecker-parameterized manifold is invariant to number of products and fails to expand into broader Karpelevič region, representing negligible portion of B_d when d>i_k.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kronecker-parameterized manifold",
+      "karpelevič region",
+      "bd",
+      "d>ik"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0006",
+    "densityScore": 0.83,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines invariance, failure to reach a broader region, a dimensional condition, and a quantitative negligible-portion conclusion."
+    ]
+  },
+  {
+    "id": "n0000251",
+    "kind": "claim",
+    "text": "Model performance improvements generally outweigh computational cost, but scaling residual streams eventually hits a practical limit; go‑mHC aims to provide a middle‑ground balance between FLOP cost and expressivity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000094"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Compresses a general cost-benefit judgment, a scaling limitation, and the motivation and positioning of go-mHC."
+    ]
+  },
+  {
+    "id": "n0000252",
+    "kind": "claim",
+    "text": "go‑mHC offers a practical middle‑ground FLOP complexity for scaling residual streams, avoiding the super‑exponential cost of mHC‑lite and the iterative overhead of mHC SK iterations; nominal constants are S = 20, i_k = 2, and s ∈ {1,2}. See Appendix B.6 for full estimates.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000095"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.9,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines positioning, multiple cost comparisons, a scaling claim, nominal parameter settings, and an appendix reference."
+    ]
+  },
+  {
+    "id": "n0000258",
+    "kind": "claim",
+    "text": "Convergence of go‑mHC is governed by the geometry of the loss landscape introduced by manifold M and gradient stability; go‑mHC is expected to have learnable gradients, be convergent, and fully connected (able to reach any target matrix). See Appendix B.7 for proofs.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000098"
+    ],
+    "defines": [],
+    "requires": [
+      "section 5 convergence"
+    ],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines geometric and gradient premises, three expected properties, a full-connectivity interpretation, and a proof reference."
+    ]
+  },
+  {
+    "id": "n0000261",
+    "kind": "claim",
+    "text": "A synthetic toy‑model experiment generates ground‑truth doubly stochastic matrices T_i and dense activations X_j in the residual stream, then computes noisy targets Y_{i,j}=T_i X_j + ξ to evaluate reconstruction capability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000101"
+    ],
+    "defines": [],
+    "requires": [
+      "section 5.1 synthetic stream mixing performance"
+    ],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "Combines experiment setup, multiple variable definitions, a noise model, and the evaluation objective."
+    ]
+  }
+]

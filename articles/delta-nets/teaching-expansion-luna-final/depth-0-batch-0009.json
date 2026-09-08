@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 9,
+  "items": [
+    {
+      "recordId": "teach-n0000750",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The object being considered is a one-port zero-delta replicator.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "limitation",
+          "basis": "source",
+          "text": "This replicator is omitted because it is equivalent to a wire.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

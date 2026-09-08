@@ -1,0 +1,1417 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot1((root))\nlam1@{ shape: triangle, label: \"λ\" }\nvar1@{ shape: rect, label: \"2nd aux · variable\" }\nbody1@{ shape: rect, label: \"1st aux · body\" }\nerase@{ shape: stadium, label: \"E\" }\nfreeY@{ shape: rect, label: \"y\" }\nroot1 -->|principal · parent| lam1\nlam1 --- var1\nlam1 --- body1\nbody1 ~~~ var1\nvar1 --- erase\nbody1 --- freeY",
+      "sourceUnitIds": [
+        "u000250"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Several bound occurrences · λx.x x",
+      "sourceUnitIds": [
+        "u000251"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot2((root))\nlam2@{ shape: triangle, label: \"λ\" }\nvar2@{ shape: rect, label: \"2nd aux · variable\" }\nbody2@{ shape: rect, label: \"1st aux · body\" }\nR@{ shape: trapezoid, label: \"R\" }\napp2@{ shape: triangle, label: \"app\" }\nres2@{ shape: rect, label: \"result\" }\nfun2@{ shape: rect, label: \"function x₀\" }\narg2@{ shape: rect, label: \"argument x₁\" }\nroot2 -->|principal · parent| lam2\nlam2 --- var2\nlam2 --- body2\nbody2 ~~~ var2\nbody2 --- res2\napp2 --- res2\nvar2 --- R\nR --- fun2\nR --- arg2\nfun2 -->|principal| app2\napp2 --- arg2",
+      "sourceUnitIds": [
+        "u000252"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Read each picture from its λ binder. The second auxiliary port is the bound parameter x: it closes directly to one occurrence, terminates at E when unused, or reaches R when several occurrences must share one incoming value. The first auxiliary port is the body. In λx.x x that body port meets the application’s result port; the replicator’s auxiliary ports meet the application’s function and argument ports. §5.7 adds the levels and deltas.",
+      "sourceUnitIds": [
+        "u000253"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.4 The application case",
+      "sourceUnitIds": [
+        "u000254"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "An application is a triangular fan (the app label is only visual). Its principal port is fixed at the top apex and meets the function fragment. Its result and argument auxiliary ports are fixed symmetrically along the bottom edge. During reduction the application fan eventually meets an abstraction fan; their principal-port annihilation is the application.",
+      "sourceUnitIds": [
+        "u000255"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Source syntax",
+      "sourceUnitIds": [
+        "u000256"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nappS[\"[M N] · ℓ\"]\nMS[\"[M]ℓ · same level\"]\nNS[\"[N]ℓ₊₁ · one deeper\"]\nappS -->|function +0| MS\nappS -->|argument +1| NS",
+      "sourceUnitIds": [
+        "u000257"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Three fan ports",
+      "sourceUnitIds": [
+        "u000258"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nresN@{ shape: rect, label: \"1st aux · result\" }\nappN@{ shape: triangle, label: \"app\" }\nMf2@{ shape: rect, label: \"function M · ℓ\" }\nNf2@{ shape: rect, label: \"argument N · ℓ+1\" }\nMf2 -->|principal| appN\nappN --- resN\nappN --- Nf2",
+      "sourceUnitIds": [
+        "u000259"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000250",
+        "u000251",
+        "u000252",
+        "u000253",
+        "u000254",
+        "u000255",
+        "u000256",
+        "u000257",
+        "u000258",
+        "u000259"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-01 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "One syntax constructor, three connections. For [M N]ℓ, the result or parent wire uses the first auxiliary port, [N]ℓ+1 uses the second auxiliary port, and [M]ℓ meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction.",
+      "sourceUnitIds": [
+        "u000260"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.5 Where levels come from",
+      "sourceUnitIds": [
+        "u000261"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Keep every word tied to the source syntax. An abstraction is the literal term λx.M: parameter x, body M. An application is the literal term M N: function M, argument N. A bound occurrence of x is one of the x leaves in M owned by that particular λx.",
+      "sourceUnitIds": [
+        "u000262"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "@",
+      "sourceUnitIds": [
+        "u000263"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### “Context” here is not a runtime closure",
+      "sourceUnitIds": [
+        "u000264"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Calculate levels by walking the written λ-term. Start the whole term at level 0. For an abstraction λx.M at level ℓ, continue into M at the same level ℓ. For an application M N at level ℓ, keep level ℓ on the function M and write level ℓ + 1 on the argument N. Repeat inside each subtree. During graph reduction those coordinates track sharing contexts; they do not count captured values or surrounding λ symbols the way a runtime closure would.",
+      "sourceUnitIds": [
+        "u000265"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "λ-calculus syntax | Given | Assign | |",
+      "sourceUnitIds": [
+        "u000266"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Whole term T | T is the root program. | level(T) = 0 | |",
+      "sourceUnitIds": [
+        "u000267"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Abstraction λx.M | level(λx.M) = l | level(M) = l; the replicator Rx belongs to level l + 1. | |",
+      "sourceUnitIds": [
+        "u000268"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Application M N | level(M N) = l | level(M) = l; level(N) = l + 1. | |",
+      "sourceUnitIds": [
+        "u000269"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Occurrence x | x is reached at level li. | Its wire endpoint has level li. | |",
+      "sourceUnitIds": [
+        "u000270"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Use the same instructions at every step. For λx.λy.x, start at level 0 and carry 0 through both bodies, so x sits at level 0. For λx.f (g x), carry 0 into the body, give the outer function f level 0, and give its argument g x level 1. Apply the rule again inside that argument: g stays at 1, and x lands at 2.",
+      "sourceUnitIds": [
+        "u000271"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000260",
+        "u000261",
+        "u000262",
+        "u000263",
+        "u000264",
+        "u000265",
+        "u000266",
+        "u000267",
+        "u000268",
+        "u000269",
+        "u000270",
+        "u000271"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-02 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-02",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Walk the syntax tree",
+      "sourceUnitIds": [
+        "u000272"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nT[\"[λx. x (g x)]₀\"]\nbinder[\"λx · ℓ = 0\"]\nouter[\"x (g x) · ℓ = 0\"]\nx0[\"x₀ · ℓ = 0\"]\ngx[\"g x · ℓ = 1\"]\ng[\"g · ℓ = 1\"]\nx1[\"x₁ · ℓ = 2\"]\nT --> binder\nbinder --> outer\nouter -->|function +0| x0\nouter -->|argument +1| gx\ngx -->|function +0| g\ngx -->|argument +1| x1",
+      "sourceUnitIds": [
+        "u000273"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Turn the two x levels into deltas",
+      "sourceUnitIds": [
+        "u000274"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nRx@{ shape: trapezoid, label: \"Rₓ · ℓ = 1\" }\np0[\"x₀ · d = 0 − 1 = −1\"]\np1[\"x₁ · d = 2 − 1 = +1\"]\nRx --> p0\nRx --> p1",
+      "sourceUnitIds": [
+        "u000275"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Walk λx.x (g x) mechanically. Begin at level 0 and keep that level through λx into its body x (g x). At the outer application, give the function x₀ level 0 and the argument g x level 1. Now apply the same rule to g x: g stays at 1 and x₁ lands at 2. The binder’s replicator is at level 1, so the stored deltas are ⟨−1, +1⟩.",
+      "sourceUnitIds": [
+        "u000276"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "To encode a term by hand:",
+      "sourceUnitIds": [
+        "u000277"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Fully parenthesize applications so every function and argument position is unambiguous.",
+      "sourceUnitIds": [
+        "u000278"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Write level 0 on the whole term, then walk inward. Keep the current level through every λx.M body and every function position; add one only when you enter an application’s argument.",
+      "sourceUnitIds": [
+        "u000279"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- For each binder λx at level l, put its sharing replicator Rx at level l + 1 when a replicator is needed.",
+      "sourceUnitIds": [
+        "u000280"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Connect each bound occurrence xi to one auxiliary port of Rx. If that occurrence was reached at level li, label its port di = li − (l + 1).",
+      "sourceUnitIds": [
+        "u000281"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A wire endpoint level is simply the level of that concrete variable occurrence. Its port delta is the gap between where the occurrence sits and where its binder’s replicator sits:",
+      "sourceUnitIds": [
+        "u000282"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Construction rule",
+      "sourceUnitIds": [
+        "u000283"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "port delta = level of its connected wire endpoint − level of the replicator",
+      "sourceUnitIds": [
+        "u000284"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000272",
+        "u000273",
+        "u000274",
+        "u000275",
+        "u000276",
+        "u000277",
+        "u000278",
+        "u000279",
+        "u000280",
+        "u000281",
+        "u000282",
+        "u000283",
+        "u000284"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-03 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "That is where Chapter 4’s numbers came from: a replicator at level 2 wired to an occurrence at level 5 stores delta +3. During reduction, that +3 is the local adjustment whenever another replicator exits through the port. Section [5.8](#deep-deltas) works the full calculation for four occurrences of one bound variable.",
+      "sourceUnitIds": [
+        "u000285"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.6 Follow a β-redex from term, to net, to term",
+      "sourceUnitIds": [
+        "u000286"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The rules feel less abstract when one small program stays on screen the whole way. Start with the closed linear term (λx.x)(λy.y). Each bound variable occurs once, so this is a ΔL example: fans only—no eraser, no replicator.",
+      "sourceUnitIds": [
+        "u000287"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "λ-calculus view",
+      "sourceUnitIds": [
+        "u000288"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "(λx.x)(λy.y) →β λy.y",
+      "sourceUnitIds": [
+        "u000289"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Canonical ΔL net — orange link is the active pair",
+      "sourceUnitIds": [
+        "u000290"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootI((root))\nresI@{ shape: rect, label: \"result\" }\nappI@{ shape: triangle, label: \"app\" }\nargI@{ shape: rect, label: \"argument\" }\nlamx@{ shape: triangle, label: \"λx\" }\nlamy@{ shape: triangle, label: \"λy\" }\nrootI --- resI\nresI --- appI\nappI -->|\"principal ↔ principal\"| lamx\nappI --- argI\nargI --- lamy",
+      "sourceUnitIds": [
+        "u000291"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "After one fan annihilation",
+      "sourceUnitIds": [
+        "u000292"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nrootR((root))\nlamy2@{ shape: triangle, label: \"λy\" }\nrootR --> lamy2",
+      "sourceUnitIds": [
+        "u000293"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "How to read the wiring. The downward @-fan’s first auxiliary port is the application result (the root reaches it); its principal port leads to the function; its second auxiliary port leads to the argument. The upward λ-fan’s first auxiliary port is its body and its second auxiliary port is its bound variable. Since the body and variable ports of λx.x are already joined, annihilating the two principal ports connects the root directly to λy.y.",
+      "sourceUnitIds": [
+        "u000294"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "ordinary wire\nactive principal-port connection\nwire exposed after annihilation",
+      "sourceUnitIds": [
+        "u000295"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.7 The δ in λx.x x is where Δ-Net levels enter",
+      "sourceUnitIds": [
+        "u000296"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000285",
+        "u000286",
+        "u000287",
+        "u000288",
+        "u000289",
+        "u000290",
+        "u000291",
+        "u000292",
+        "u000293",
+        "u000294",
+        "u000295",
+        "u000296"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-04 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-04",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The [Katharos diagram for λx.x x](https://zicklag.katharos.group/_astro/lam-x-xx.excalidraw.394327a5_ZJMpfg.webp) is useful because the extra structure is visible: γ nodes carry λ/application shape, and the δ node splits one bound input x into two uses. That image uses symmetric interaction combinators, not Δ-Net notation itself. The map below is conceptual: each γ role becomes a Δ-Net fan; the binary δ becomes a two-port replicator R.",
+      "sourceUnitIds": [
+        "u000297"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The same sharing is exercised by a redex",
+      "sourceUnitIds": [
+        "u000298"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "(λx.x x)(λy.y) →β (λy.y)(λy.y) →β λy.y",
+      "sourceUnitIds": [
+        "u000299"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Canonical [λx.x x]₀ — ports, not sides",
+      "sourceUnitIds": [
+        "u000300"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot7((root))\nlam7@{ shape: triangle, label: \"λ\" }\nvar7@{ shape: rect, label: \"2nd aux · variable\" }\nbody7@{ shape: rect, label: \"1st aux · body\" }\nR7@{ shape: trapezoid, label: \"R · ℓ = 1\" }\napp7@{ shape: triangle, label: \"app\" }\nres7@{ shape: rect, label: \"result\" }\nfun7@{ shape: rect, label: \"function x₀\" }\narg7@{ shape: rect, label: \"argument x₁\" }\nroot7 -->|parent| lam7\nlam7 --- var7\nlam7 --- body7\nbody7 ~~~ var7\nbody7 --- res7\nres7 --- app7\nvar7 --- R7\nR7 --- fun7\nR7 --- arg7\nfun7 ---|function| app7\narg7 --- app7\nclass app7 orient-left",
+      "sourceUnitIds": [
+        "u000301"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "What the numbers mean in this exact term. The application hangs from the λ body port: its first auxiliary is the result. One replicator auxiliary meets the application’s argument port; the other meets its function (principal) port. The outer term has level 0. The body application is also level 0; the application rule puts the argument occurrence at level 1, while the function occurrence stays at level 0. The replicator belongs to the surrounding abstraction, so it has level 0 + 1 = 1. Therefore its function-use port stores d0 = 0 − 1 = −1, and its argument-use port stores d1 = 1 − 1 = 0.",
+      "sourceUnitIds": [
+        "u000302"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A level delta is not a copy count, and it is not a source-level variable value. The two-port replicator already says “one bound value, two consumers.” Level and per-port deltas only record the relative sharing context at each consumer. When replicators later commute through structure, those deltas adjust the levels of replicas leaving through their ports. That bookkeeping is how Δ-Nets express the sharing a δ would introduce—without separate scope-delimiter agents.",
+      "sourceUnitIds": [
+        "u000303"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.8 Let right nesting expose a deeper delta vector",
+      "sourceUnitIds": [
+        "u000304"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000297",
+        "u000298",
+        "u000299",
+        "u000300",
+        "u000301",
+        "u000302",
+        "u000303",
+        "u000304"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-05 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-05",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The previous term has only one application, so its two use sites differ by a single level. A clearer closed term is λx. x (x (x x)). The parentheses matter: each successive occurrence on the right sits inside another application’s argument, and every argument edge adds one to the term level.",
+      "sourceUnitIds": [
+        "u000305"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Source-level effect",
+      "sourceUnitIds": [
+        "u000306"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "(λx. x (x (x x))) N →β N (N (N N))",
+      "sourceUnitIds": [
+        "u000307"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "[λx. x (x (x x))]₀ — each @ result is a body/parent; each R auxiliary is a use",
+      "sourceUnitIds": [
+        "u000308"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot8((root))\nlam8@{ shape: triangle, label: \"λ\" }\nvar8@{ shape: rect, label: \"2nd aux · variable\" }\nbody8@{ shape: rect, label: \"1st aux · body\" }\nR8@{ shape: trapezoid, label: \"R · ℓ = 1\" }\na0@{ shape: triangle, label: \"app0\" }\nr0@{ shape: rect, label: \"result\" }\ng0@{ shape: rect, label: \"argument\" }\na1@{ shape: triangle, label: \"app1\" }\nr1@{ shape: rect, label: \"result\" }\ng1@{ shape: rect, label: \"argument\" }\na2@{ shape: triangle, label: \"app2\" }\nr2@{ shape: rect, label: \"result\" }\ng2@{ shape: rect, label: \"argument x₃\" }\nroot8 -->|parent| lam8\nlam8 --- var8\nlam8 --- body8\nbody8 ~~~ var8\nbody8 --- r0\nr0 --- a0\nvar8 --- R8\nR8 ---|function| a0\na0 --- g0\ng0 --- r1\nr1 --- a1\nR8 ---|function| a1\na1 --- g1\ng1 --- r2\nr2 --- a2\nR8 ---|function| a2\na2 --- g2\nclass a0,a1,a2 orient-right",
+      "sourceUnitIds": [
+        "u000309"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Why the vector grows. The outer application hangs from the λ body port. Each inner application hangs from the argument port of the application above it. The four replicator auxiliaries meet the three function ports and the deepest argument port. The abstraction is at level 0, so its replicator is at level 1. The four bound-variable endpoints are at levels 0, 1, 2, 3. Applying di = li − lR yields ⟨−1, 0, +1, +2⟩.",
+      "sourceUnitIds": [
+        "u000310"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Occurrence | Position in the term | Endpoint level | Stored delta | |",
+      "sourceUnitIds": [
+        "u000311"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₀ | Function of the outer application. | 0 | 0 − 1 = −1 | |",
+      "sourceUnitIds": [
+        "u000312"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₁ | Function inside the first argument. | 1 | 1 − 1 = 0 | |",
+      "sourceUnitIds": [
+        "u000313"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₂ | Function inside the second argument. | 2 | 2 − 1 = +1 | |",
+      "sourceUnitIds": [
+        "u000314"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "x₃ | Argument of the deepest application. | 3 | 3 − 1 = +2 | |",
+      "sourceUnitIds": [
+        "u000315"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000305",
+        "u000306",
+        "u000307",
+        "u000308",
+        "u000309",
+        "u000310",
+        "u000311",
+        "u000312",
+        "u000313",
+        "u000314",
+        "u000315"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-06 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-06",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Apply this abstraction to a term N and the replicator stands for four consumers of that one argument. When later interactions move sharing through the nested applications, exits through the four ports adjust an arriving replica’s level by −1, 0, +1, or +2. The numbers keep track of where each use belongs. They still do not say how many copies to make.",
+      "sourceUnitIds": [
+        "u000316"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "06 Beyond core interaction",
+      "sourceUnitIds": [
+        "u000317"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000316",
+        "u000317"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-07 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-07",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

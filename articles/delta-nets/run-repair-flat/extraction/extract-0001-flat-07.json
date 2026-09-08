@@ -1,0 +1,49 @@
+{
+  "nodes": [
+    {
+      "kind": "procedure",
+      "text": "Step 2 applies an active pair's local rule.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000095",
+        "u000096"
+      ],
+      "defines": [],
+      "requires": [
+        "local rule"
+      ],
+      "mentions": [
+        "active pair",
+        "δ-nets"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0001-flat-07"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "need": "The chunk does not specify the local rule or how to apply it.",
+      "gapType": "missing_context",
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "local rule"
+      ],
+      "origin": "gap",
+      "chunkId": "c0001-flat-07"
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 0,
+      "relation": "fills",
+      "reason": "The procedure depends on the unspecified local rule and its application."
+    }
+  ],
+  "evidenceFrames": []
+}

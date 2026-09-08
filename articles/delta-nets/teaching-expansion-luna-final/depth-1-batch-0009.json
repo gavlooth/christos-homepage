@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 9,
+  "items": [
+    {
+      "recordId": "teach-generated-59f7c0b28e74de4d",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Replicator output is the result produced by a system that copies, reproduces, or generates another object, process, or pattern.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

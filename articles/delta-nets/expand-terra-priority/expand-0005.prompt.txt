@@ -1,0 +1,493 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "split-000003",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "Confluence asks whether different valid reduction choices can produce different results.",
+    "sourceUnitIds": [
+      "u000102"
+    ]
+  },
+  {
+    "id": "split-000004",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "The one-step diamond property requires either one-step result to reach a common net after one further interaction.",
+    "sourceUnitIds": [
+      "u000102"
+    ]
+  },
+  {
+    "id": "split-000005",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "Each active pair owns the only principal port of each participating agent.",
+    "sourceUnitIds": [
+      "u000106"
+    ]
+  },
+  {
+    "id": "split-000006",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Distinct active pairs therefore use distinct agents.",
+    "sourceUnitIds": [
+      "u000106"
+    ]
+  },
+  {
+    "id": "split-000007",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "Rewrites of distinct active pairs commute and preserve the same nearby wiring.",
+    "sourceUnitIds": [
+      "u000106"
+    ]
+  },
+  {
+    "id": "split-000008",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "The diamond property concerns agreement between competing local steps.",
+    "sourceUnitIds": [
+      "u000109"
+    ]
+  },
+  {
+    "id": "split-000009",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.73,
+    "text": "The diamond property does not imply that reduction terminates.",
+    "sourceUnitIds": [
+      "u000109"
+    ]
+  },
+  {
+    "id": "split-000010",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "For a normalizing core interaction order, every normalizing order reaches the same result in the same number of interactions.",
+    "sourceUnitIds": [
+      "u000109"
+    ]
+  },
+  {
+    "id": "split-000011",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Earlier approaches represented each sharing scope with indexed fans and delimiter agents.",
+    "sourceUnitIds": [
+      "u000111"
+    ]
+  },
+  {
+    "id": "split-000012",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.65,
+    "text": "Delimiter agents included brackets, croissants, and related constructs.",
+    "sourceUnitIds": [
+      "u000111"
+    ]
+  },
+  {
+    "id": "split-000013",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.77,
+    "text": "Delimiter interactions could outnumber the useful fan work.",
+    "sourceUnitIds": [
+      "u000111"
+    ]
+  },
+  {
+    "id": "split-000014",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.73,
+    "text": "Some earlier systems allowed indices to grow without bound.",
+    "sourceUnitIds": [
+      "u000111"
+    ]
+  },
+  {
+    "id": "split-000015",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "Application and function fans are triangles with a top principal port and two fixed bottom auxiliary positions.",
+    "sourceUnitIds": [
+      "u000124"
+    ]
+  },
+  {
+    "id": "split-000016",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Replicators are trapezoids with a centered top principal port and evenly spaced bottom auxiliary ports.",
+    "sourceUnitIds": [
+      "u000124"
+    ]
+  },
+  {
+    "id": "split-000017",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "Rectangles denote fragments or wire endpoints rather than agents.",
+    "sourceUnitIds": [
+      "u000124"
+    ]
+  },
+  {
+    "id": "split-000018",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "An eraser has only a principal port.",
+    "sourceUnitIds": [
+      "u000124"
+    ]
+  },
+  {
+    "id": "split-000019",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "A replicator may have any natural-number arity.",
+    "sourceUnitIds": [
+      "u000133"
+    ]
+  },
+  {
+    "id": "split-000020",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "A replicator joins the uses of one shared value.",
+    "sourceUnitIds": [
+      "u000133"
+    ]
+  },
+  {
+    "id": "split-000021",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The replicator stores a sharing context as a level on the agent and a delta on each auxiliary port.",
+    "sourceUnitIds": [
+      "u000133"
+    ]
+  },
+  {
+    "id": "split-000022",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "Linear terms use each bound variable exactly once.",
+    "sourceUnitIds": [
+      "u000143"
+    ]
+  },
+  {
+    "id": "split-000023",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "Affine terms use each bound variable at most once.",
+    "sourceUnitIds": [
+      "u000143"
+    ]
+  },
+  {
+    "id": "split-000024",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "Relevant terms use each bound variable at least once.",
+    "sourceUnitIds": [
+      "u000143"
+    ]
+  },
+  {
+    "id": "split-000025",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "Full terms permit any number of uses.",
+    "sourceUnitIds": [
+      "u000143"
+    ]
+  },
+  {
+    "id": "split-000026",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "Fans encode structure, erasers encode omission, and replicators encode sharing.",
+    "sourceUnitIds": [
+      "u000143"
+    ]
+  },
+  {
+    "id": "split-000027",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "Equal replicators must match in level, arity, and every port delta.",
+    "sourceUnitIds": [
+      "u000145"
+    ]
+  },
+  {
+    "id": "split-000028",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "Well-formed λ-term translations make same-level active replicators equal.",
+    "sourceUnitIds": [
+      "u000145"
+    ]
+  },
+  {
+    "id": "split-000029",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "Hand-built nets cannot compare replicator levels alone.",
+    "sourceUnitIds": [
+      "u000145"
+    ]
+  },
+  {
+    "id": "split-000030",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Parent and child are orientation labels on a wire relative to the root.",
+    "sourceUnitIds": [
+      "u000147"
+    ]
+  },
+  {
+    "id": "split-000031",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "Canonical nets begin with unpaired fan-in replicators whose auxiliaries are parents and principal is a child.",
+    "sourceUnitIds": [
+      "u000147"
+    ]
+  },
+  {
+    "id": "split-000032",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.75,
+    "text": "Reduction can create fan-outs with the opposite orientation.",
+    "sourceUnitIds": [
+      "u000147"
+    ]
+  },
+  {
+    "id": "split-000033",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "A fan-out is paired upstream with at least one fan-in, but a fan-in need not have a partner.",
+    "sourceUnitIds": [
+      "u000147"
+    ]
+  },
+  {
+    "id": "split-000034",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Levels and deltas provide local evidence for pairing.",
+    "sourceUnitIds": [
+      "u000147"
+    ]
+  },
+  {
+    "id": "split-000035",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.65,
+    "text": "Equal agents annihilate each other.",
+    "sourceUnitIds": [
+      "u000152"
+    ]
+  },
+  {
+    "id": "split-000036",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "In a well-formed λ translation, same-level active replicators annihilate and matching auxiliary ports reconnect.",
+    "sourceUnitIds": [
+      "u000152"
+    ]
+  },
+  {
+    "id": "split-000037",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Fan annihilation represents applying a λ abstraction to its argument.",
+    "sourceUnitIds": [
+      "u000152"
+    ]
+  },
+  {
+    "id": "split-000038",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "An eraser passes through one auxiliary port of a distinct agent at a time.",
+    "sourceUnitIds": [
+      "u000160"
+    ]
+  },
+  {
+    "id": "split-000039",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.77,
+    "text": "A two-port fan meeting an eraser leaves two erasers connected to its auxiliary outputs.",
+    "sourceUnitIds": [
+      "u000160"
+    ]
+  },
+  {
+    "id": "split-000040",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.75,
+    "text": "An n-port replicator meeting an eraser leaves n erasers.",
+    "sourceUnitIds": [
+      "u000160"
+    ]
+  },
+  {
+    "id": "split-000041",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Applications and abstractions use the same triangular fan shape.",
+    "sourceUnitIds": [
+      "u000162"
+    ]
+  },
+  {
+    "id": "split-000042",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.75,
+    "text": "Their roles are identified by wire orientation relative to the root.",
+    "sourceUnitIds": [
+      "u000162"
+    ]
+  },
+  {
+    "id": "split-000043",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Principal-to-principal fan interaction removes both fans and reconnects matching auxiliary ports.",
+    "sourceUnitIds": [
+      "u000162"
+    ]
+  },
+  {
+    "id": "split-000044",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Auxiliary ports are ordered clockwise when the principal port points down.",
+    "sourceUnitIds": [
+      "u000162"
+    ]
+  },
+  {
+    "id": "split-000045",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The fan interaction represents β-reduction.",
+    "sourceUnitIds": [
+      "u000162"
+    ]
+  },
+  {
+    "id": "split-000046",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "The downward application fan orders its auxiliaries left-to-right as first and second.",
+    "sourceUnitIds": [
+      "u000166"
+    ]
+  },
+  {
+    "id": "split-000047",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "The rotated upward abstraction fan orders its auxiliaries right-to-left as first and second.",
+    "sourceUnitIds": [
+      "u000166"
+    ]
+  },
+  {
+    "id": "split-000048",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.77,
+    "text": "Matching semantic port indices can therefore cross the drawn wires.",
+    "sourceUnitIds": [
+      "u000166"
+    ]
+  },
+  {
+    "id": "split-000049",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "A replicator meeting a fan produces one exact fan copy per replicator auxiliary port.",
+    "sourceUnitIds": [
+      "u000168"
+    ]
+  },
+  {
+    "id": "split-000050",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The fan produces one fan per auxiliary port of the replicator.",
+    "sourceUnitIds": [
+      "u000168"
+    ]
+  }
+]

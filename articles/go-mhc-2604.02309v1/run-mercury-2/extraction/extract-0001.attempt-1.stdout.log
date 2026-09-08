@@ -1,0 +1,764 @@
+{
+  "nodes": [
+    {
+      "kind": "metadata",
+      "text": "URL: https://arxiv.org/html/2604.02309v1 Content-Type: text/html Method: native",
+      "sourceUnitIds": [
+        "u000001"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "separator",
+      "text": null,
+      "sourceUnitIds": [
+        "u000002"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "metadata",
+      "text": "meta-viewport: width=device-width, initial-scale=1, shrink-to-fit=no title: go-mHC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices",
+      "sourceUnitIds": [
+        "u000003"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "arXiv is now an independent nonprofit",
+      "sourceUnitIds": [
+        "u000004"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Back to arXiv",
+      "sourceUnitIds": [
+        "u000005"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "License: arXiv.org perpetual non-exclusive license",
+      "sourceUnitIds": [
+        "u000006"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "arXiv:2604.02309v1 [cs.LG] 02 Apr 2026",
+      "sourceUnitIds": [
+        "u000007"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "go-mHC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices",
+      "sourceUnitIds": [
+        "u000008"
+      ],
+      "defines": [
+        "go-mHC"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Torque Dandachi, Independent, San Francisco, USA; correspondence hi@itstorque.com; Sophia Diggs-Galligan, Independent, San Francisco, USA",
+      "sourceUnitIds": [
+        "u000009"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "section",
+      "text": "Abstract",
+      "sourceUnitIds": [
+        "u000010"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Doubly stochastic matrices enable learned mixing across residual streams.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "doubly stochastic matrices",
+        "residual streams"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Parameterizing the Birkhoff polytope exactly and efficiently remains an open challenge.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [
+        "Birkhoff polytope"
+      ],
+      "mentions": [
+        "exact parameterization",
+        "efficiency"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Existing exact methods scale factorially with the number of streams d, while Kronecker-factorized approaches are efficient but have limited expressivity.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [
+        "Kronecker-factorized approaches"
+      ],
+      "mentions": [
+        "factorial scaling",
+        "expressivity"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "We introduce a novel exact parameterization based on generalized orthostochastic matrices, scaling as O(d³) and exposing a hyperparameter s that interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [
+        "generalized orthostochastic matrices",
+        "hyperparameter s"
+      ],
+      "requires": [
+        "Birkhoff polytope"
+      ],
+      "mentions": [
+        "O(d³) scaling"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Our method composes naturally with Kronecker-factorized methods, substantially recovering expressivity at similar FLOP costs.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [
+        "Kronecker-factorized methods"
+      ],
+      "mentions": [
+        "expressivity",
+        "FLOP costs"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Spectral analysis indicates that go-mHC fills the Birkhoff polytope far more completely than Kronecker-factorized baselines.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [
+        "Birkhoff polytope"
+      ],
+      "mentions": [
+        "spectral analysis",
+        "Kronecker-factorized baselines"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "On synthetic stream-mixing tasks, go-mHC achieves the minimum theoretical loss while converging up to 10× faster.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [
+        "synthetic stream-mixing tasks"
+      ],
+      "mentions": [
+        "minimum theoretical loss",
+        "10× faster convergence"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "We validate our approach in a 30M parameter GPT-style language model.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [
+        "GPT-style language model"
+      ],
+      "mentions": [
+        "30M parameters"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The expressivity, efficiency, and exactness of go-mHC offer a practical avenue for scaling d as a new dimension of model capacity.",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [
+        "scaling dimension d"
+      ],
+      "requires": [],
+      "mentions": [
+        "expressivity",
+        "efficiency",
+        "exactness"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "section",
+      "text": "1 Introduction",
+      "sourceUnitIds": [
+        "u000012"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The performance and stability of modern machine learning models increasingly depend on the geometric structure of their matrix parameterizations; traditional constraints such as symmetry or orthogonality have been foundational, while recent work leverages manifold theory to map unconstrained spaces onto constrained geometries like the Birkhoff polytope, which enforces doubly stochastic constraints but faces a trade-off between exactness and scalability.",
+      "sourceUnitIds": [
+        "u000013"
+      ],
+      "defines": [
+        "Birkhoff polytope"
+      ],
+      "requires": [
+        "manifold theory"
+      ],
+      "mentions": [
+        "doubly stochastic matrices",
+        "symmetry",
+        "orthogonality"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Constraining attention patterns to doubly stochastic matrices improves accuracy in vision and language models and interprets learned parameters as probability trajectories.",
+      "sourceUnitIds": [
+        "u000014"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "doubly stochastic matrices",
+        "vision models",
+        "language models"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Sinkhorn Attention provides memory-efficient implementations due to its ability to mix internal representations and smooth optimization landscape.",
+      "sourceUnitIds": [
+        "u000014"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Sinkhorn Attention",
+        "memory-efficient"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Residual connections are crucial for stabilizing training of deep neural networks and are a building block of modern large language models.",
+      "sourceUnitIds": [
+        "u000015"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "deep neural networks",
+        "large language models"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Dynamic generalizations of residual streams increase topological complexity by increasing the number of streams d while preserving the identity mapping property.",
+      "sourceUnitIds": [
+        "u000015"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "residual streams",
+        "identity mapping"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "figure",
+      "text": "Figure 1: Spectral analysis and architectural integration of go-mHC.",
+      "sourceUnitIds": [
+        "u000016"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Figure 1 illustrates spectral comparison showing go-mHC approximates the Birkhoff polytope within epsilon(s) error using d(d‑1)/2 parameters; mHC‑lite provides full coverage but requires d! parameters; KromHC is restricted to B₂ and disallows cycles >2. The parameterization maps skew‑symmetric X to orthogonal Q via the Cayley Transform, then projects to doubly stochastic B via block‑wise Frobenius norm. Hyper‑Connections ℋ_res is integrated into the residual stream as x_{l+1}=ℋ_l^{res} x_l + Layer F(x_l), where the doubly stochastic constraint ensures training stability and improved gradient flow.",
+      "sourceUnitIds": [
+        "u000017"
+      ],
+      "defines": [
+        "Hyper‑Connections",
+        "ℋ_res"
+      ],
+      "requires": [
+        "Birkhoff polytope",
+        "Cayley Transform"
+      ],
+      "mentions": [
+        "epsilon(s)",
+        "d(d‑1)/2 parameters",
+        "d! parameters",
+        "B₂",
+        "Frobenius norm",
+        "gradient flow"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Manifold‑Constrained Hyper‑Connections (mHC) shows that constraining residual connections to the interior of the Birkhoff polytope significantly improves training stability and scalability.",
+      "sourceUnitIds": [
+        "u000018"
+      ],
+      "defines": [
+        "Manifold‑Constrained Hyper‑Connections"
+      ],
+      "requires": [
+        "Birkhoff polytope"
+      ],
+      "mentions": [
+        "training stability",
+        "scalability"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Dynamic generalizations reveal a new scaling dimension: the number of residual streams d.",
+      "sourceUnitIds": [
+        "u000018"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "scaling dimension",
+        "residual streams"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Follow‑up works have adopted mHC as the default backbone due to its superior modeling capabilities.",
+      "sourceUnitIds": [
+        "u000018"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "default backbone",
+        "modeling capabilities"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Exact parameterizations have been introduced to prevent error accumulation across layers (Yang and Gao 2026; Zhou et al. 2026).",
+      "sourceUnitIds": [
+        "u000019"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "error accumulation",
+        "exact parameterizations"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "mHC‑lite uses the Birkhoff–von Neumann theorem to parameterize ℋ_res as a convex combination of all d! permutation matrices.",
+      "sourceUnitIds": [
+        "u000019"
+      ],
+      "defines": [
+        "mHC‑lite"
+      ],
+      "requires": [
+        "Birkhoff–von Neumann theorem"
+      ],
+      "mentions": [
+        "convex combination",
+        "permutation matrices"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The parameter count O(d·d!) explodes super‑exponentially; for d=8, 8! = 40 320 permutations are required, making this approach memory‑prohibitive without sampling approximations.",
+      "sourceUnitIds": [
+        "u000019"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "parameter count",
+        "memory‑prohibitive",
+        "sampling approximations"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC employs Kronecker products of small doubly stochastic matrices to achieve exact constraints with O(d²) complexity, but at the cost of severely reduced expressivity.",
+      "sourceUnitIds": [
+        "u000019"
+      ],
+      "defines": [
+        "KromHC"
+      ],
+      "requires": [
+        "Kronecker products"
+      ],
+      "mentions": [
+        "exact constraints",
+        "O(d²) complexity",
+        "expressivity trade‑off"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The proposed solution is based on the algebraic theory of generalized orthostochastic matrices (Gutkin 2013; Nechita et al. 2023; Korzekwa et al. 2018; Shahbeigi et al. 2021).",
+      "sourceUnitIds": [
+        "u000020"
+      ],
+      "defines": [
+        "generalized orthostochastic matrices"
+      ],
+      "requires": [],
+      "mentions": [
+        "algebraic theory",
+        "references"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The framework learns doubly stochastic matrices while balancing efficiency and expressivity, exposing a hyperparameter s that allows tunability across these attributes.",
+      "sourceUnitIds": [
+        "u000020"
+      ],
+      "defines": [
+        "hyperparameter s"
+      ],
+      "requires": [],
+      "mentions": [
+        "efficiency",
+        "expressivity"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "This approach opens possibilities for further exploration and new scaling approaches for Hyper‑Connections.",
+      "sourceUnitIds": [
+        "u000020"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Hyper‑Connections",
+        "scaling approaches"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The go‑mHC construction can be applied broadly to parametrize and learn the interior of the Birkhoff polytope, beyond the mHC example.",
+      "sourceUnitIds": [
+        "u000021"
+      ],
+      "defines": [],
+      "requires": [
+        "Birkhoff polytope"
+      ],
+      "mentions": [
+        "go‑mHC",
+        "mHC"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The parameterization is evaluated on a synthetic data task mixing d residual streams and a 30 M‑parameter GPT‑style language model.",
+      "sourceUnitIds": [
+        "u000021"
+      ],
+      "defines": [],
+      "requires": [
+        "synthetic data task",
+        "GPT‑style language model"
+      ],
+      "mentions": [
+        "30 M parameters",
+        "residual streams"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "We specifically contribute analytics and explorations that indicate that our method:",
+      "sourceUnitIds": [
+        "u000022"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Our method achieves faster convergence and better reachability than parametrizations invoking the Birkhoff von‑Neumann theorem, such as mHC‑lite and KromHC.",
+      "sourceUnitIds": [
+        "u000023"
+      ],
+      "defines": [],
+      "requires": [
+        "Birkhoff von‑Neumann theorem"
+      ],
+      "mentions": [
+        "mHC‑lite",
+        "KromHC",
+        "convergence",
+        "reachability"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    }
+  ],
+  "edges": [
+    {
+      "from": 7,
+      "to": 10,
+      "relation": "supports",
+      "reason": ""
+    },
+    {
+      "from": 7,
+      "to": 23,
+      "relation": "supports",
+      "reason": ""
+    },
+    {
+      "from": 7,
+      "to": 27,
+      "relation": "supports",
+      "reason": ""
+    },
+    {
+      "from": 7,
+      "to": 30,
+      "relation": "supports",
+      "reason": ""
+    },
+    {
+      "from": 7,
+      "to": 34,
+      "relation": "supports",
+      "reason": ""
+    },
+    {
+      "from": 7,
+      "to": 37,
+      "relation": "supports",
+      "reason": ""
+    }
+  ],
+  "evidenceFrames": []
+}

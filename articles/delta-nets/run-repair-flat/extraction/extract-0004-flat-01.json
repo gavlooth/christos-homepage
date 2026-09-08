@@ -1,0 +1,213 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot1((root))\nlam1@{ shape: triangle, label: \"λ\" }\nvar1@{ shape: rect, label: \"2nd aux · variable\" }\nbody1@{ shape: rect, label: \"1st aux · body\" }\nerase@{ shape: stadium, label: \"E\" }\nfreeY@{ shape: rect, label: \"y\" }\nroot1 -->|principal · parent| lam1\nlam1 --- var1\nlam1 --- body1\nbody1 ~~~ var1\nvar1 --- erase\nbody1 --- freeY",
+      "sourceUnitIds": [
+        "u000250"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Several bound occurrences · λx.x x",
+      "sourceUnitIds": [
+        "u000251"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nroot2((root))\nlam2@{ shape: triangle, label: \"λ\" }\nvar2@{ shape: rect, label: \"2nd aux · variable\" }\nbody2@{ shape: rect, label: \"1st aux · body\" }\nR@{ shape: trapezoid, label: \"R\" }\napp2@{ shape: triangle, label: \"app\" }\nres2@{ shape: rect, label: \"result\" }\nfun2@{ shape: rect, label: \"function x₀\" }\narg2@{ shape: rect, label: \"argument x₁\" }\nroot2 -->|principal · parent| lam2\nlam2 --- var2\nlam2 --- body2\nbody2 ~~~ var2\nbody2 --- res2\napp2 --- res2\nvar2 --- R\nR --- fun2\nR --- arg2\nfun2 -->|principal| app2\napp2 --- arg2",
+      "sourceUnitIds": [
+        "u000252"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Read each picture from its λ binder. The second auxiliary port is the bound parameter x: it closes directly to one occurrence, terminates at E when unused, or reaches R when several occurrences must share one incoming value. The first auxiliary port is the body. In λx.x x that body port meets the application’s result port; the replicator’s auxiliary ports meet the application’s function and argument ports. §5.7 adds the levels and deltas.",
+      "sourceUnitIds": [
+        "u000253"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.4 The application case",
+      "sourceUnitIds": [
+        "u000254"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "An application is a triangular fan (the app label is only visual). Its principal port is fixed at the top apex and meets the function fragment. Its result and argument auxiliary ports are fixed symmetrically along the bottom edge. During reduction the application fan eventually meets an abstraction fan; their principal-port annihilation is the application.",
+      "sourceUnitIds": [
+        "u000255"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Source syntax",
+      "sourceUnitIds": [
+        "u000256"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nappS[\"[M N] · ℓ\"]\nMS[\"[M]ℓ · same level\"]\nNS[\"[N]ℓ₊₁ · one deeper\"]\nappS -->|function +0| MS\nappS -->|argument +1| NS",
+      "sourceUnitIds": [
+        "u000257"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Three fan ports",
+      "sourceUnitIds": [
+        "u000258"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nresN@{ shape: rect, label: \"1st aux · result\" }\nappN@{ shape: triangle, label: \"app\" }\nMf2@{ shape: rect, label: \"function M · ℓ\" }\nNf2@{ shape: rect, label: \"argument N · ℓ+1\" }\nMf2 -->|principal| appN\nappN --- resN\nappN --- Nf2",
+      "sourceUnitIds": [
+        "u000259"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000250",
+        "u000251",
+        "u000252",
+        "u000253",
+        "u000254",
+        "u000255",
+        "u000256",
+        "u000257",
+        "u000258",
+        "u000259"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-01 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-01",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

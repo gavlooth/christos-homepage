@@ -1,0 +1,57 @@
+{
+  "depth": 0,
+  "batch": 17,
+  "items": [
+    {
+      "recordId": "teach-n0000785",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For consecutive replicators A and B, the difference lB − lA is nonnegative, expressed as 0 ≤ lB − lA.",
+          "requires": [
+            "definition of consecutive replicators",
+            "meaning of lA, lB, and d"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For consecutive replicators A and B, the difference lB − lA is no greater than d, expressed as lB − lA ≤ d.",
+          "requires": [
+            "definition of consecutive replicators",
+            "meaning of lA, lB, and d"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000786",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The implication assumes that A is known to be unpaired.",
+          "requires": [
+            "definition of replicator",
+            "meaning of unpaired"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Given that assumption, the condition 0 ≤ lB − lA ≤ d proves that B is unpaired.",
+          "requires": [
+            "definition of consecutive replicators",
+            "meaning of lA, lB, and d",
+            "meaning of unpaired"
+          ],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

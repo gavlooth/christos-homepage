@@ -1,0 +1,202 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0002-flat-07",
+  "context": [
+    "Δ-Nets",
+    "When two principal ports touch, one of three things happens.",
+    "4.2 Replicator meets fan: structure splits around sharing"
+  ],
+  "units": [
+    {
+      "id": "u000170",
+      "kind": "prose",
+      "text": "flowchart TB\nd0@{ shape: rect, label: \"d₀\" }\nd1@{ shape: rect, label: \"d₁\" }\nd2@{ shape: rect, label: \"d₂\" }\nR@{ shape: trapezoid, label: \"R\" }\nF@{ shape: triangle, label: \"F\" }\na1@{ shape: rect, label: \"a₁\" }\na0@{ shape: rect, label: \"a₀\" }\nd0 --- R\nd1 --- R\nd2 --- R\nR -->|\"principal ↔ principal\"| F\nF --- a1\nF --- a0"
+    },
+    {
+      "id": "u000171",
+      "kind": "prose",
+      "text": "After: (Fᵢ)ⱼ ↔ (Rʲ)ᵢ"
+    },
+    {
+      "id": "u000172",
+      "kind": "prose",
+      "text": "flowchart TB\nF0@{ shape: triangle, label: \"F₀\" }\nF1@{ shape: triangle, label: \"F₁\" }\nF2@{ shape: triangle, label: \"F₂\" }\nR1@{ shape: trapezoid, label: \"R¹\" }\nR0@{ shape: trapezoid, label: \"R⁰\" }\nF0 --- R1\nF0 --- R0\nF1 --- R1\nF1 --- R0\nF2 --- R1\nF2 --- R0"
+    },
+    {
+      "id": "u000173",
+      "kind": "prose",
+      "text": "Finite version of the paper’s fan–replicator rule. Port identities, not geometric sides, determine the reconnection: (Fᵢ)ⱼ ↔ (Rʲ)ᵢ. This guide-specific diagram uses a three-port replicator so every copy has a visible port and wire. It adapts the structure of [Figure 4 in the source paper](https://arxiv.org/html/2505.20314v4#S2.F4) (CC BY 4.0)."
+    }
+  ]
+}

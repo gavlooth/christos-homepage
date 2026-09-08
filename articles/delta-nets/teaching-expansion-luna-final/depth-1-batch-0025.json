@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 25,
+  "items": [
+    {
+      "recordId": "teach-generated-6c5bf70e9fae5f69",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A well-formed λ-term translation follows the formation rules of lambda calculus: a λ-term is built from variables, abstractions, and applications in a syntactically valid arrangement.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

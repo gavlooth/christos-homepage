@@ -1,0 +1,10 @@
+Error: edge 15 has invalid endpoints 23 -> 24
+    at <anonymous> (/home/christos/code/refine/bin/refine.mjs:285:82)
+    at map (native:1:11)
+    at validateExtraction (/home/christos/code/refine/bin/refine.mjs:282:29)
+    at callOmp (/home/christos/code/refine/bin/repair-sharded-graph.mjs:83:21)
+    at async repairFlatChunk (/home/christos/code/refine/bin/repair-sharded-graph.mjs:126:32)
+    at unknown
+    at unknown
+    at async mapConcurrent (unknown)
+    at async main (unknown)

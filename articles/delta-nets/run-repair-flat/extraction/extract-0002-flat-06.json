@@ -1,0 +1,194 @@
+{
+  "nodes": [
+    {
+      "kind": "topic",
+      "text": "### 4.1 Fan meets fan: the familiar redex disappears",
+      "sourceUnitIds": [
+        "u000161"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Applications and abstractions are both fans. You tell them apart by how their wires point when you look from the root—the unique top entry of the whole net. When the right pair of fans meets principal-to-principal, they annihilate: both nodes go away and matching auxiliary ports reconnect. Auxiliary ports are ordered clockwise when the principal port points down; flipping one fan upside down swaps its visible left and right, so the wires cross in the drawing. That is β-reduction at the net level.",
+      "sourceUnitIds": [
+        "u000162"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nres@{ shape: rect, label: \"result · 1st aux\" }\narg@{ shape: rect, label: \"argument · 2nd aux\" }\napp@{ shape: triangle, label: \"app\" }\nlam@{ shape: triangle, label: \"λ\" }\nbody@{ shape: rect, label: \"body · 1st aux\" }\nvar@{ shape: rect, label: \"variable · 2nd aux\" }\nres --- app\narg --- app\napp -->|\"principal ↔ principal\"| lam\nlam --- var\nlam --- body\nbody ~~~ var",
+      "sourceUnitIds": [
+        "u000163"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "After: matching indices reconnect",
+      "sourceUnitIds": [
+        "u000164"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nres2@{ shape: rect, label: \"result · 1st\" }\narg2@{ shape: rect, label: \"argument · 2nd\" }\nbody2@{ shape: rect, label: \"body · 1st\" }\nvar2@{ shape: rect, label: \"variable · 2nd\" }\nres2 -->|1st ↔ 1st| body2\narg2 -->|2nd ↔ 2nd| var2",
+      "sourceUnitIds": [
+        "u000165"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The crossing is structural. For the downward application fan, the left auxiliary is first and the right auxiliary is second. For the rotated upward abstraction fan, the right auxiliary is first and the left auxiliary is second. Matching first-to-first and second-to-second—not geometric sides—therefore crosses the wires.",
+      "sourceUnitIds": [
+        "u000166"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 4.2 Replicator meets fan: structure splits around sharing",
+      "sourceUnitIds": [
+        "u000167"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "When a replicator meets a fan, the replicator leaves through the fan’s two auxiliary ports as two exact copies. At the same time, the fan leaves through every auxiliary port of the replicator—one fan per port. Each keeps its role, but now sits in the other’s surrounding context.",
+      "sourceUnitIds": [
+        "u000168"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Before: R meets F",
+      "sourceUnitIds": [
+        "u000169"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000161",
+        "u000162",
+        "u000163",
+        "u000164",
+        "u000165",
+        "u000166",
+        "u000167",
+        "u000168",
+        "u000169"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0002-flat-06 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0002-flat-06",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

@@ -1,0 +1,232 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "A variable free in the outermost term becomes a single-port, non-agent node labelled with its name. It sits on the net’s interface, not among the rewriting agents.",
+      "sourceUnitIds": [
+        "u000235"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Bound occurrence",
+      "sourceUnitIds": [
+        "u000236"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Just a wire—until it meets sharing",
+      "sourceUnitIds": [
+        "u000237"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A bound occurrence is just a vertical wire. Its lower end later joins an auxiliary port of the sharing replicator—when sharing is required at all.",
+      "sourceUnitIds": [
+        "u000238"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Free in the whole term",
+      "sourceUnitIds": [
+        "u000239"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\ninY((fragment input))\ny[\"y · named boundary\"]\ninY --> y",
+      "sourceUnitIds": [
+        "u000240"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Bound by a surrounding λx",
+      "sourceUnitIds": [
+        "u000241"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\ninX((fragment input))\nendp[\"wire endpoint · ℓᵢ\"]\nRx2@{ shape: trapezoid, label: \"Rₓ\" }\ninX --> endp\nendp -->|one aux port| Rx2",
+      "sourceUnitIds": [
+        "u000242"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The distinction is at the fragment boundary. A free variable survives as a named node in the canonical net’s interface. A bound occurrence introduces no variable agent at all: it is a wire whose endpoint is later connected to its owning λx, directly when there is one use or through Rx when that value is shared. This follows the two variable clauses in [the paper’s inductive translation](https://arxiv.org/html/2505.20314v4#S3.F5).",
+      "sourceUnitIds": [
+        "u000243"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 5.3 The abstraction cases",
+      "sourceUnitIds": [
+        "u000244"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "An abstraction is an upward-pointing fan (the λ label is only visual). Its first auxiliary port is the body and its second auxiliary port is the bound variable; in this upward view, those appear on the right and left respectively. If that variable is unused, the second auxiliary port meets an eraser—only in the erasure-capable systems ΔA and ΔK.",
+      "sourceUnitIds": [
+        "u000245"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000235",
+        "u000236",
+        "u000237",
+        "u000238",
+        "u000239",
+        "u000240",
+        "u000241",
+        "u000242",
+        "u000243",
+        "u000244",
+        "u000245"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0003-flat-06 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0003-flat-06",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

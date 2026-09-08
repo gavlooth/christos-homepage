@@ -1,0 +1,10 @@
+flowchart TB
+                  inD((input))
+                  Rd@{ shape: trapezoid, label: "R · unpaired" }
+                  live0["live · d = 0"]
+                  Ee1@{ shape: stadium, label: "E" }
+                  Ee2@{ shape: stadium, label: "E" }
+                  inD ---|principal| Rd
+                  Rd --- live0
+                  Rd --- Ee1
+                  Rd --- Ee2

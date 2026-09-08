@@ -1,0 +1,31 @@
+{
+  "depth": 0,
+  "batch": 8,
+  "items": [
+    {
+      "recordId": "teach-n0000749",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "In λx.x x, the same bound variable x occurs twice in the term’s body.",
+          "requires": [
+            "bound variable"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The two replicator auxiliaries connect to the application’s argument port and function port, respectively.",
+          "requires": [
+            "replicator auxiliary",
+            "application",
+            "argument port"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

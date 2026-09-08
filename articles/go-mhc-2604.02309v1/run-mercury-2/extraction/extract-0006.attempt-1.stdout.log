@@ -1,0 +1,1132 @@
+{
+  "nodes": [
+    {
+      "kind": "statement",
+      "text": "Figure 4 shows histogram of spectral reach of toy model implementing maps P_SK, P_lite, P_krom, P_go on random targets in B_4.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "P_SK",
+        "P_lite",
+        "P_krom",
+        "P_go",
+        "B_4"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Blue and green lines in (a-e) are boundaries of spectra of B_3\\B_2 and B_4\\B_3 polytopes.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "B_3",
+        "B_2",
+        "B_4"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "(a) mHC contains points outside B_4.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "mHC",
+        "B_4"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "(b) mHC-lite fills region near boundary almost completely without extending past it.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "mHC-lite"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "(c) KromHC fails to represent complex region inside B_4 because its shadow is 1-dimensional, filling infinitesimal slice.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "KromHC",
+        "B_4"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "(d) For s=1, go-mHC represents sizeable portion of region but cannot represent all matrices near boundary of polytope.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "s=1",
+        "go-mHC",
+        "polytope"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "(e) With s=2, go-mHC begins to represent larger regions of B_4, filling region more densely.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "s=2",
+        "go-mHC",
+        "B_4"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Figure illustrates Karpelevič region for dimensions d=2 to d=5.",
+      "sourceUnitIds": [
+        "u000079"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Karpelevič region",
+        "d"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "If a method's spectrum is clustered in a small sub-region, it is poorly expressive; filling Karpelevič region captures diverse dynamics.",
+      "sourceUnitIds": [
+        "u000079"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Karpelevič region"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Spectral reach of mHC, KromHC, and go-mHC shown in figures 3 and 4.",
+      "sourceUnitIds": [
+        "u000079"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "mHC",
+        "KromHC",
+        "go-mHC",
+        "figures 3",
+        "4"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "4.1.1 Eigenvalue Coverage of s-ssostochastic Matrices",
+      "sourceUnitIds": [
+        "u000080"
+      ],
+      "defines": [
+        "Eigenvalue Coverage of s-ssostochastic Matrices"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Eigenvalue distribution of s-ssostochastic matrices is constrained by membership in Birkhoff polytope B_d and residence within Karpelevič region.",
+      "sourceUnitIds": [
+        "u000081"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "s-ssostochastic matrices",
+        "Birkhoff polytope",
+        "B_d",
+        "Karpelevič region"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "11-orthostochastic matrices have restricted hypo-cycloidal boundary; increasing parameter s provides denser approximation of B_d.",
+      "sourceUnitIds": [
+        "u000081"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "11-orthostochastic matrices",
+        "s",
+        "B_d"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "As s increases, spectral support of ss-orthostochastic matrices expands to fill Karpelevič region, approaching density of general doubly stochastic matrices.",
+      "sourceUnitIds": [
+        "u000081"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "s",
+        "ss-orthostochastic matrices",
+        "Karpelevič region",
+        "doubly stochastic matrices"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "4.1.2 The Spectral Limitation of Kronecker Products",
+      "sourceUnitIds": [
+        "u000082"
+      ],
+      "defines": [
+        "The Spectral Limitation of Kronecker Products"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "KromHC imposes symmetry on d-streams that prunes mixing terms in H_res.",
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "KromHC",
+        "d-streams",
+        "H_res"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "KromHC parameterizes only a sparse subset of B_d for d>2 by analyzing spectral reach of k-fold Kronecker products.",
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "KromHC",
+        "B_d",
+        "d>2",
+        "k-fold Kronecker products"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Spectral space of k-fold Kronecker product of doubly stochastic matrices is invariant to index k, restricting expressive reach to base manifold.",
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "k-fold Kronecker product",
+        "doubly stochastic matrices",
+        "index k"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Formal proof of this invariance is in Appendix B.3.1.",
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Appendix B.3.1"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Example 4×4 case: matrices A,B ∈ B_2 have spectra {1,λ_A} and {1,λ_B} with λ∈[-1,1].",
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "A",
+        "B",
+        "B_2",
+        "λ",
+        "[-1,1]"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Spectrum of Kronecker product A⊗B is {1,λ_A,λ_B,λ_A λ_B} which remains within [-1,1] and inside spectral hull of B_2.",
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "A⊗B",
+        "λ_A",
+        "λ_B",
+        "B_2"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Therefore spectral reach of Kronecker-parameterized manifold is invariant to number of products and fails to expand into broader Karpelevič region, representing negligible portion of B_d when d>i_k.",
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Kronecker-parameterized manifold",
+        "Karpelevič region",
+        "B_d",
+        "d>i_k"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Empirically shows O(d) additional error in minimum achievable loss compared to mHC-lite and go-mHC.",
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "O(d) error",
+        "mHC-lite",
+        "go-mHC"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Collapse in spectral volume for Kronecker-based transforms causes loss of functional diversity.",
+      "sourceUnitIds": [
+        "u000085"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Kronecker-based transforms"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Constraints fail to represent cyclic permutations of order greater than i_k=2 (e.g., 1→2→3→1), preventing learning complex periodic dependencies.",
+      "sourceUnitIds": [
+        "u000085"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "cyclic permutations",
+        "i_k=2",
+        "1→2→3→1"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Restriction to real eigenvalues in 2×2 base case implies only pure diffusion without advection, limiting directional flow of signals.",
+      "sourceUnitIds": [
+        "u000085"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "real eigenvalues",
+        "2×2",
+        "pure diffusion",
+        "advection",
+        "directional flow"
+      ],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "4.2 Parameter Complexity",
+      "sourceUnitIds": [
+        "u000086"
+      ],
+      "defines": [
+        "Parameter Complexity"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000081"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "Birkhoff polytope"
+      ],
+      "need": "definition of Birkhoff polytope B_d",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000079"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "Karpelevič region"
+      ],
+      "need": "definition of Karpelevič region",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000081"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "s-ssostochastic matrices"
+      ],
+      "need": "definition of s-ssostochastic matrices",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000078",
+        "u000083",
+        "u000084",
+        "u000085"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "mHC",
+        "mHC-lite",
+        "KromHC",
+        "go-mHC"
+      ],
+      "need": "definition of mHC, mHC-lite, KromHC, go-mHC",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "H_res"
+      ],
+      "need": "definition of H_res",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "d-streams"
+      ],
+      "need": "definition of d-streams",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "Kronecker product"
+      ],
+      "need": "definition of Kronecker product",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "spectral hull"
+      ],
+      "need": "definition of spectral hull",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000085"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "i_k"
+      ],
+      "need": "definition of i_k",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000078",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000079",
+      "sourceUnitIds": [
+        "u000079"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000080",
+      "sourceUnitIds": [
+        "u000080"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000081",
+      "sourceUnitIds": [
+        "u000081"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000082",
+      "sourceUnitIds": [
+        "u000082"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000083",
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000084",
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000085",
+      "sourceUnitIds": [
+        "u000085"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "evidence",
+      "text": "Evidence from u000086",
+      "sourceUnitIds": [
+        "u000086"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    }
+  ],
+  "edges": [
+    {
+      "from": 27,
+      "to": 11,
+      "relation": "enables"
+    },
+    {
+      "from": 27,
+      "to": 12,
+      "relation": "enables"
+    },
+    {
+      "from": 27,
+      "to": 13,
+      "relation": "enables"
+    },
+    {
+      "from": 28,
+      "to": 7,
+      "relation": "enables"
+    },
+    {
+      "from": 28,
+      "to": 8,
+      "relation": "enables"
+    },
+    {
+      "from": 28,
+      "to": 9,
+      "relation": "enables"
+    },
+    {
+      "from": 29,
+      "to": 11,
+      "relation": "enables"
+    },
+    {
+      "from": 29,
+      "to": 12,
+      "relation": "enables"
+    },
+    {
+      "from": 29,
+      "to": 13,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 2,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 3,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 4,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 5,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 6,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 15,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 16,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 17,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 18,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 21,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 22,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 23,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 24,
+      "relation": "enables"
+    },
+    {
+      "from": 30,
+      "to": 25,
+      "relation": "enables"
+    },
+    {
+      "from": 31,
+      "to": 15,
+      "relation": "enables"
+    },
+    {
+      "from": 32,
+      "to": 15,
+      "relation": "enables"
+    },
+    {
+      "from": 33,
+      "to": 19,
+      "relation": "enables"
+    },
+    {
+      "from": 33,
+      "to": 20,
+      "relation": "enables"
+    },
+    {
+      "from": 34,
+      "to": 20,
+      "relation": "enables"
+    },
+    {
+      "from": 34,
+      "to": 21,
+      "relation": "enables"
+    },
+    {
+      "from": 35,
+      "to": 24,
+      "relation": "enables"
+    }
+  ],
+  "evidenceFrames": [
+    {
+      "claim": 0,
+      "evidence": [
+        36
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 1,
+      "evidence": [
+        36
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 2,
+      "evidence": [
+        36
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 3,
+      "evidence": [
+        36
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 4,
+      "evidence": [
+        36
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 5,
+      "evidence": [
+        36
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 6,
+      "evidence": [
+        36
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 7,
+      "evidence": [
+        37
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 8,
+      "evidence": [
+        37
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 9,
+      "evidence": [
+        37
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 10,
+      "evidence": [
+        38
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 11,
+      "evidence": [
+        39
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 12,
+      "evidence": [
+        39
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 13,
+      "evidence": [
+        39
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 14,
+      "evidence": [
+        40
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 15,
+      "evidence": [
+        41
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 16,
+      "evidence": [
+        41
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 17,
+      "evidence": [
+        41
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 18,
+      "evidence": [
+        41
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 19,
+      "evidence": [
+        42
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 20,
+      "evidence": [
+        42
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 21,
+      "evidence": [
+        42
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 22,
+      "evidence": [
+        42
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 23,
+      "evidence": [
+        43
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 24,
+      "evidence": [
+        43
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 25,
+      "evidence": [
+        43
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 26,
+      "evidence": [
+        44
+      ],
+      "warrantGap": null,
+      "limitations": []
+    }
+  ]
+}

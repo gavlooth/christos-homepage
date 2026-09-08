@@ -1,0 +1,758 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "n0000062",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000053"
+    ]
+  },
+  {
+    "id": "n0000098",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000085"
+    ]
+  },
+  {
+    "id": "n0000100",
+    "targetType": "gap",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000087"
+    ]
+  },
+  {
+    "id": "n0000134",
+    "targetType": "gap",
+    "need": "extract-0002 failed after 1 attempt(s): OMP exited 1: Working...\nDeadline exceeded\n",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000097",
+      "u000098",
+      "u000099",
+      "u000100",
+      "u000101",
+      "u000102",
+      "u000103",
+      "u000104",
+      "u000105",
+      "u000106",
+      "u000107",
+      "u000108",
+      "u000109",
+      "u000110",
+      "u000111",
+      "u000112",
+      "u000113",
+      "u000114",
+      "u000115",
+      "u000116",
+      "u000117",
+      "u000118",
+      "u000119",
+      "u000120",
+      "u000121",
+      "u000122",
+      "u000123",
+      "u000124",
+      "u000125",
+      "u000126",
+      "u000127",
+      "u000128",
+      "u000129",
+      "u000130",
+      "u000131",
+      "u000132",
+      "u000133",
+      "u000134",
+      "u000135",
+      "u000136",
+      "u000137",
+      "u000138",
+      "u000139",
+      "u000140",
+      "u000141",
+      "u000142",
+      "u000143",
+      "u000144",
+      "u000145",
+      "u000146",
+      "u000147",
+      "u000148",
+      "u000149",
+      "u000150",
+      "u000151",
+      "u000152",
+      "u000153",
+      "u000154",
+      "u000155",
+      "u000156",
+      "u000157",
+      "u000158",
+      "u000159",
+      "u000160",
+      "u000161",
+      "u000162",
+      "u000163",
+      "u000164",
+      "u000165",
+      "u000166",
+      "u000167",
+      "u000168",
+      "u000169",
+      "u000170",
+      "u000171",
+      "u000172",
+      "u000173"
+    ]
+  },
+  {
+    "id": "n0000212",
+    "targetType": "gap",
+    "need": "extract-0003 failed after 1 attempt(s): OMP exited 1: Working...\nDeadline exceeded\n",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000174",
+      "u000175",
+      "u000176",
+      "u000177",
+      "u000178",
+      "u000179",
+      "u000180",
+      "u000181",
+      "u000182",
+      "u000183",
+      "u000184",
+      "u000185",
+      "u000186",
+      "u000187",
+      "u000188",
+      "u000189",
+      "u000190",
+      "u000191",
+      "u000192",
+      "u000193",
+      "u000194",
+      "u000195",
+      "u000196",
+      "u000197",
+      "u000198",
+      "u000199",
+      "u000200",
+      "u000201",
+      "u000202",
+      "u000203",
+      "u000204",
+      "u000205",
+      "u000206",
+      "u000207",
+      "u000208",
+      "u000209",
+      "u000210",
+      "u000211",
+      "u000212",
+      "u000213",
+      "u000214",
+      "u000215",
+      "u000216",
+      "u000217",
+      "u000218",
+      "u000219",
+      "u000220",
+      "u000221",
+      "u000222",
+      "u000223",
+      "u000224",
+      "u000225",
+      "u000226",
+      "u000227",
+      "u000228",
+      "u000229",
+      "u000230",
+      "u000231",
+      "u000232",
+      "u000233",
+      "u000234",
+      "u000235",
+      "u000236",
+      "u000237",
+      "u000238",
+      "u000239",
+      "u000240",
+      "u000241",
+      "u000242",
+      "u000243",
+      "u000244",
+      "u000245",
+      "u000246",
+      "u000247",
+      "u000248",
+      "u000249"
+    ]
+  },
+  {
+    "id": "n0000289",
+    "targetType": "gap",
+    "need": "extract-0004 failed after 1 attempt(s): OMP exited 1: Working...\nDeadline exceeded\n",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000250",
+      "u000251",
+      "u000252",
+      "u000253",
+      "u000254",
+      "u000255",
+      "u000256",
+      "u000257",
+      "u000258",
+      "u000259",
+      "u000260",
+      "u000261",
+      "u000262",
+      "u000263",
+      "u000264",
+      "u000265",
+      "u000266",
+      "u000267",
+      "u000268",
+      "u000269",
+      "u000270",
+      "u000271",
+      "u000272",
+      "u000273",
+      "u000274",
+      "u000275",
+      "u000276",
+      "u000277",
+      "u000278",
+      "u000279",
+      "u000280",
+      "u000281",
+      "u000282",
+      "u000283",
+      "u000284",
+      "u000285",
+      "u000286",
+      "u000287",
+      "u000288",
+      "u000289",
+      "u000290",
+      "u000291",
+      "u000292",
+      "u000293",
+      "u000294",
+      "u000295",
+      "u000296",
+      "u000297",
+      "u000298",
+      "u000299",
+      "u000300",
+      "u000301",
+      "u000302",
+      "u000303",
+      "u000304",
+      "u000305",
+      "u000306",
+      "u000307",
+      "u000308",
+      "u000309",
+      "u000310",
+      "u000311",
+      "u000312",
+      "u000313",
+      "u000314",
+      "u000315",
+      "u000316",
+      "u000317"
+    ]
+  },
+  {
+    "id": "n0000358",
+    "targetType": "gap",
+    "need": "extract-0005 failed after 1 attempt(s): JSON Parse error: Expected ']'",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000318",
+      "u000319",
+      "u000320",
+      "u000321",
+      "u000322",
+      "u000323",
+      "u000324",
+      "u000325",
+      "u000326",
+      "u000327",
+      "u000328",
+      "u000329",
+      "u000330",
+      "u000331",
+      "u000332",
+      "u000333",
+      "u000334",
+      "u000335",
+      "u000336",
+      "u000337",
+      "u000338",
+      "u000339",
+      "u000340",
+      "u000341",
+      "u000342",
+      "u000343",
+      "u000344",
+      "u000345",
+      "u000346",
+      "u000347",
+      "u000348",
+      "u000349",
+      "u000350",
+      "u000351",
+      "u000352",
+      "u000353",
+      "u000354",
+      "u000355",
+      "u000356",
+      "u000357",
+      "u000358",
+      "u000359",
+      "u000360",
+      "u000361",
+      "u000362",
+      "u000363",
+      "u000364",
+      "u000365",
+      "u000366",
+      "u000367",
+      "u000368",
+      "u000369",
+      "u000370",
+      "u000371",
+      "u000372",
+      "u000373",
+      "u000374",
+      "u000375",
+      "u000376",
+      "u000377",
+      "u000378",
+      "u000379",
+      "u000380",
+      "u000381",
+      "u000382",
+      "u000383",
+      "u000384",
+      "u000385",
+      "u000386",
+      "u000387",
+      "u000388",
+      "u000389",
+      "u000390",
+      "u000391",
+      "u000392",
+      "u000393",
+      "u000394",
+      "u000395",
+      "u000396",
+      "u000397"
+    ]
+  },
+  {
+    "id": "n0000505",
+    "targetType": "gap",
+    "need": "Define or explain \"parallel reduction\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000025"
+    ]
+  },
+  {
+    "id": "n0000506",
+    "targetType": "gap",
+    "need": "Define or explain \"net\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000051",
+      "u000406",
+      "u000410"
+    ]
+  },
+  {
+    "id": "n0000507",
+    "targetType": "gap",
+    "need": "Define or explain \"graph\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000078",
+      "u000083",
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000508",
+    "targetType": "gap",
+    "need": "Define or explain \"scope\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000036",
+      "u000045"
+    ]
+  },
+  {
+    "id": "n0000509",
+    "targetType": "gap",
+    "need": "Define or explain \"abstraction\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000034",
+      "u000036",
+      "u000424"
+    ]
+  },
+  {
+    "id": "n0000510",
+    "targetType": "gap",
+    "need": "Define or explain \"variable\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000036",
+      "u000045"
+    ]
+  },
+  {
+    "id": "n0000511",
+    "targetType": "gap",
+    "need": "Define or explain \"lambda\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000045",
+      "u000062"
+    ]
+  },
+  {
+    "id": "n0000512",
+    "targetType": "gap",
+    "need": "Define or explain \"lambda calculus\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "n0000513",
+    "targetType": "gap",
+    "need": "Define or explain \"variable distribution\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000042"
+    ]
+  },
+  {
+    "id": "n0000514",
+    "targetType": "gap",
+    "need": "Define or explain \"depth\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000045"
+    ]
+  },
+  {
+    "id": "n0000515",
+    "targetType": "gap",
+    "need": "Define or explain \"interaction net\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000045"
+    ]
+  },
+  {
+    "id": "n0000516",
+    "targetType": "gap",
+    "need": "Define or explain \"lambda abstraction\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000047"
+    ]
+  },
+  {
+    "id": "n0000517",
+    "targetType": "gap",
+    "need": "Define or explain \"interaction\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000410",
+      "u000420"
+    ]
+  },
+  {
+    "id": "n0000518",
+    "targetType": "gap",
+    "need": "Define or explain \"term\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000051"
+    ]
+  },
+  {
+    "id": "n0000519",
+    "targetType": "gap",
+    "need": "Define or explain \"substitution\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000054",
+      "u000055",
+      "u000058"
+    ]
+  },
+  {
+    "id": "n0000520",
+    "targetType": "gap",
+    "need": "Define or explain \"δ-net\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000073"
+    ]
+  },
+  {
+    "id": "n0000521",
+    "targetType": "gap",
+    "need": "Define or explain \"syntax tree\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000083"
+    ]
+  },
+  {
+    "id": "n0000522",
+    "targetType": "gap",
+    "need": "Define or explain \"substitution machine\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000081"
+    ]
+  },
+  {
+    "id": "n0000523",
+    "targetType": "gap",
+    "need": "Define or explain \"textual substitution\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000084",
+      "u000085"
+    ]
+  },
+  {
+    "id": "n0000524",
+    "targetType": "gap",
+    "need": "Define or explain \"graph representation\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000086",
+      "u000087"
+    ]
+  },
+  {
+    "id": "n0000525",
+    "targetType": "gap",
+    "need": "Define or explain \"graph rewriting\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000526",
+    "targetType": "gap",
+    "need": "Define or explain \"node\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000090"
+    ]
+  },
+  {
+    "id": "n0000527",
+    "targetType": "gap",
+    "need": "Define or explain \"rewrite\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000090"
+    ]
+  },
+  {
+    "id": "n0000528",
+    "targetType": "gap",
+    "need": "Define or explain \"reducible-pattern\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000432"
+    ]
+  },
+  {
+    "id": "n0000529",
+    "targetType": "gap",
+    "need": "Define or explain \"reduction-sequence\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000402"
+    ]
+  },
+  {
+    "id": "n0000530",
+    "targetType": "gap",
+    "need": "Define or explain \"graph-rewriting\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000404"
+    ]
+  },
+  {
+    "id": "n0000531",
+    "targetType": "gap",
+    "need": "Define or explain \"interaction-rule\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000408"
+    ]
+  },
+  {
+    "id": "n0000532",
+    "targetType": "gap",
+    "need": "Define or explain \"reduction-path\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000414"
+    ]
+  },
+  {
+    "id": "n0000533",
+    "targetType": "gap",
+    "need": "Define or explain \"term-to-net-translation\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000416"
+    ]
+  },
+  {
+    "id": "n0000534",
+    "targetType": "gap",
+    "need": "Define or explain \"net-to-term-translation\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000416"
+    ]
+  },
+  {
+    "id": "n0000535",
+    "targetType": "gap",
+    "need": "Define or explain \"principal-port-interaction\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000418"
+    ]
+  },
+  {
+    "id": "n0000536",
+    "targetType": "gap",
+    "need": "Define or explain \"arity\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000420"
+    ]
+  },
+  {
+    "id": "n0000537",
+    "targetType": "gap",
+    "need": "Define or explain \"rooted-net\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000422"
+    ]
+  },
+  {
+    "id": "n0000538",
+    "targetType": "gap",
+    "need": "Define or explain \"canonical-lambda-encoding\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000424"
+    ]
+  },
+  {
+    "id": "n0000539",
+    "targetType": "gap",
+    "need": "Define or explain \"delta-interaction\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000426"
+    ]
+  },
+  {
+    "id": "n0000540",
+    "targetType": "gap",
+    "need": "Define or explain \"duplication-context\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000430"
+    ]
+  },
+  {
+    "id": "n0000541",
+    "targetType": "gap",
+    "need": "Define or explain \"nesting\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000432"
+    ]
+  },
+  {
+    "id": "n0000542",
+    "targetType": "gap",
+    "need": "Define or explain \"term-like-reading\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000432"
+    ]
+  },
+  {
+    "id": "n0000543",
+    "targetType": "gap",
+    "need": "Define or explain \"teaching-summary\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000437"
+    ]
+  },
+  {
+    "id": "n0000027",
+    "targetType": "node",
+    "kind": "procedure",
+    "densityScore": 0.688,
+    "text": "To use the model, convert a program into a graph of small nodes and wires, then repeatedly replace small matching graph pieces.",
+    "sourceUnitIds": [
+      "u000025"
+    ]
+  },
+  {
+    "id": "n0000028",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.844,
+    "text": "The model aims for optimal parallel reduction by avoiding work that will later be discarded and reducing necessary work once even when an expression has multiple uses.",
+    "sourceUnitIds": [
+      "u000025"
+    ]
+  }
+]

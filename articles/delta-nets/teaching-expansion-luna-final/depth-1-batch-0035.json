@@ -1,0 +1,21 @@
+{
+  "depth": 1,
+  "batch": 35,
+  "items": [
+    {
+      "recordId": "teach-generated-d7afa6df218746e1",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A proper ΔL net is any net reachable from a canonical net by applying zero or more core Δ-interactions.",
+          "requires": [
+            "canonical net",
+            "core Δ-interaction"
+          ],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

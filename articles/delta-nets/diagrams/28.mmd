@@ -1,0 +1,6 @@
+flowchart TB
+                  appS["[M N] · ℓ"]
+                  MS["[M]ℓ · same level"]
+                  NS["[N]ℓ₊₁ · one deeper"]
+                  appS -->|function +0| MS
+                  appS -->|argument +1| NS

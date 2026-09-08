@@ -1,0 +1,493 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "n0000079",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Comparisons with the matrix exponential show similar quality and better stability at lower FLOP cost.",
+    "sourceUnitIds": [
+      "u000041"
+    ]
+  },
+  {
+    "id": "n0000084",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Nechita et al. proved that the set of generalized s‑orthostochastic matrices is contained in B_d and spans all of B_d as s → ∞.",
+    "sourceUnitIds": [
+      "u000043"
+    ]
+  },
+  {
+    "id": "n0000087",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "To our knowledge, we are the first to apply this construction in a machine learning setting and, more specifically, to learned residual stream routing in deep networks.",
+    "sourceUnitIds": [
+      "u000043"
+    ]
+  },
+  {
+    "id": "n0000090",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "A Hyper‑Connection block processes a d‑stream state x_l ∈ ℝ^{d×B×L×D} with a recursion relation that includes a residual block ℱ.",
+    "sourceUnitIds": [
+      "u000046"
+    ]
+  },
+  {
+    "id": "n0000100",
+    "targetType": "node",
+    "kind": "definition",
+    "densityScore": 0.5,
+    "text": "A matrix B in 𝖡d is orthostochastic when there exists an orthogonal Q such that each entry B_ij equals Q_ij squared.",
+    "sourceUnitIds": [
+      "u000054"
+    ]
+  },
+  {
+    "id": "n0000103",
+    "targetType": "node",
+    "kind": "definition",
+    "densityScore": 0.6,
+    "text": "Φ_{d,s}(Q)_{ij} equals the average squared Frobenius norm of block Q_ij, i.e., (1/s) Σ_{k,l}(Q_ij)_{kl}^2.",
+    "sourceUnitIds": [
+      "u000056"
+    ]
+  },
+  {
+    "id": "n0000109",
+    "targetType": "node",
+    "kind": "definition",
+    "densityScore": 0.5,
+    "text": "𝒫go maps learned parameters (αlres,Wlres,blres) to a d×d mixing matrix using generalized orthostochastic matrices.",
+    "sourceUnitIds": [
+      "u000052"
+    ]
+  },
+  {
+    "id": "n0000112",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "The set {Φ_{d,s}(Q): Q ∈ Q(ds)} converges to B_d as s→∞",
+    "sourceUnitIds": [
+      "u000057"
+    ]
+  },
+  {
+    "id": "n0000116",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The geometry of the orthostochastic set is a concave cycloid that meets the permutation vertices of B_d but does not occupy the interior when d>2",
+    "sourceUnitIds": [
+      "u000058"
+    ]
+  },
+  {
+    "id": "n0000117",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Theorem 2.8 guarantees convergence to the full polytope B_d as s→∞ with monotonically increasing volume",
+    "sourceUnitIds": [
+      "u000058"
+    ]
+  },
+  {
+    "id": "n0000121",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Figure 2 illustrates the Karpelevič region – the spectrum of stochastic matrices – for B_d with d=2 to d=5",
+    "sourceUnitIds": [
+      "u000059"
+    ]
+  },
+  {
+    "id": "n0000123",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "The affine space of doubly stochastic matrices is strictly contained within the volume of the blue region, except for B_2 where the space is a line",
+    "sourceUnitIds": [
+      "u000059"
+    ]
+  },
+  {
+    "id": "n0000124",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "The spectrum of B_d is the union of the spectrum of B_{d-1} and the polygon with d sides inscribed on the unit disc",
+    "sourceUnitIds": [
+      "u000059"
+    ]
+  },
+  {
+    "id": "n0000130",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "skew maps vectors of size ds(ds-1)/2 to ds×ds skew-symmetric matrix A_l (A_l^T = -A_l)",
+    "sourceUnitIds": [
+      "u000063"
+    ]
+  },
+  {
+    "id": "n0000131",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Equation [8] uses Cayley transform to map A_l to special orthogonal matrix Q_l (Q_l^T Q_l = I)",
+    "sourceUnitIds": [
+      "u000063"
+    ]
+  },
+  {
+    "id": "n0000132",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Φ_{d,s} from equation [6] maps Q_l to exactly doubly stochastic matrix H_l^res ∈ B_d (equation [9])",
+    "sourceUnitIds": [
+      "u000063"
+    ]
+  },
+  {
+    "id": "n0000135",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "This is sufficient for full coverage because orthostochastic transform takes the Frobenius norm squared of block matrices and removes information about reflections, keeping only positive determinant solutions",
+    "sourceUnitIds": [
+      "u000064"
+    ]
+  },
+  {
+    "id": "n0000136",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Advantageous due to path-connectedness of the special orthogonal group, the group of all pure rotations in ℝ^d",
+    "sourceUnitIds": [
+      "u000064"
+    ]
+  },
+  {
+    "id": "n0000139",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Cayley transform is norm-preserving, ensuring numerical stability without additional normalization",
+    "sourceUnitIds": [
+      "u000065"
+    ]
+  },
+  {
+    "id": "n0000140",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Replacing softmax with Cayley transform may accelerate convergence by avoiding saturation regions of exponential function (section 5)",
+    "sourceUnitIds": [
+      "u000065"
+    ]
+  },
+  {
+    "id": "n0000141",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Mitigates vanishing gradients (appendix B.10) and maintains well-conditioned Jacobian",
+    "sourceUnitIds": [
+      "u000065"
+    ]
+  },
+  {
+    "id": "n0000142",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Vanishing gradients trade-off how close mixing matrices near polytope boundary can be learned and ability to unlearn them and return to barycenter",
+    "sourceUnitIds": [
+      "u000065"
+    ]
+  },
+  {
+    "id": "n0000143",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.9,
+    "text": "Xie et al. (2026) use Amax Gain Magnitude (AGM) to quantify worst-case amplification for residual hyper-connection product H_{l→L}^{res} = ∏_{i=1}^{L-l} H_{L-i}^{res}",
+    "sourceUnitIds": [
+      "u000066"
+    ]
+  },
+  {
+    "id": "n0000146",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.55,
+    "text": "We do not rely on the AGM metric because the exactness of P_go makes it equal to 1 by definition.",
+    "sourceUnitIds": [
+      "u000068"
+    ]
+  },
+  {
+    "id": "n0000147",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.62,
+    "text": "B_d is closed under matrix multiplication, so H_{l→L}^{res} remains doubly stochastic regardless of depth.",
+    "sourceUnitIds": [
+      "u000068"
+    ]
+  },
+  {
+    "id": "n0000148",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "go-mHC, mHC-lite, and KromHC all achieve the same performance on the AGM metric, so we evaluate expressivity and convergence as additional metrics.",
+    "sourceUnitIds": [
+      "u000068"
+    ]
+  },
+  {
+    "id": "n0000151",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "When s=1 and d=3, the model learns maps covering the full spectral region within the Karpelevič region of B_3\\B_2 up to error ε(s=1), and also covers real eigenvalues on interval [-1,1] (Karpelevič region of B_2).",
+    "sourceUnitIds": [
+      "u000071"
+    ]
+  },
+  {
+    "id": "n0000154",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "We evaluate expressivity by using the spectrum of matrices constructed with P_M as a surrogate, measuring how many unique matrices can be spanned by their eigenvalues.",
+    "sourceUnitIds": [
+      "u000072"
+    ]
+  },
+  {
+    "id": "n0000156",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.67,
+    "text": "Spectral reach of H^{res} matrices constructed using method M is defined as the set {λ∈ℂ | H^{res} v = λ v, H^{res}=P_M(...), v≠0}.",
+    "sourceUnitIds": [
+      "u000072"
+    ]
+  },
+  {
+    "id": "n0000159",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "A mapping M with high spectral reach generates matrices that span a larger volume of the Karpelevič region, the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices.",
+    "sourceUnitIds": [
+      "u000075"
+    ]
+  },
+  {
+    "id": "n0000178",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.57,
+    "text": "Figure 4 shows histogram of spectral reach of toy model implementing maps P_SK, P_lite, P_krom, P_go on random targets in B_4.",
+    "sourceUnitIds": [
+      "u000078"
+    ]
+  },
+  {
+    "id": "n0000179",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.55,
+    "text": "Blue and green lines in (a-e) are boundaries of spectra of B_3\\B_2 and B_4\\B_3 polytopes.",
+    "sourceUnitIds": [
+      "u000078"
+    ]
+  },
+  {
+    "id": "n0000182",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "(c) KromHC fails to represent complex region inside B_4 because its shadow is 1-dimensional, filling infinitesimal slice.",
+    "sourceUnitIds": [
+      "u000078"
+    ]
+  },
+  {
+    "id": "n0000183",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.55,
+    "text": "(d) For s=1, go-mHC represents sizeable portion of region but cannot represent all matrices near boundary of polytope.",
+    "sourceUnitIds": [
+      "u000078"
+    ]
+  },
+  {
+    "id": "n0000186",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.62,
+    "text": "If a method's spectrum is clustered in a small sub-region, it is poorly expressive; filling Karpelevič region captures diverse dynamics.",
+    "sourceUnitIds": [
+      "u000079"
+    ]
+  },
+  {
+    "id": "n0000189",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.55,
+    "text": "Eigenvalue distribution of s-ssostochastic matrices is constrained by membership in Birkhoff polytope B_d and residence within Karpelevič region.",
+    "sourceUnitIds": [
+      "u000081"
+    ]
+  },
+  {
+    "id": "n0000190",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.65,
+    "text": "11-orthostochastic matrices have restricted hypo-cycloidal boundary; increasing parameter s provides denser approximation of B_d.",
+    "sourceUnitIds": [
+      "u000081"
+    ]
+  },
+  {
+    "id": "n0000191",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.58,
+    "text": "As s increases, spectral support of ss-orthostochastic matrices expands to fill Karpelevič region, approaching density of general doubly stochastic matrices.",
+    "sourceUnitIds": [
+      "u000081"
+    ]
+  },
+  {
+    "id": "n0000193",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.53,
+    "text": "KromHC imposes symmetry on d-streams that prunes mixing terms in H_res.",
+    "sourceUnitIds": [
+      "u000083"
+    ]
+  },
+  {
+    "id": "n0000194",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.53,
+    "text": "KromHC parameterizes only a sparse subset of B_d for d>2 by analyzing spectral reach of k-fold Kronecker products.",
+    "sourceUnitIds": [
+      "u000083"
+    ]
+  },
+  {
+    "id": "n0000195",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Spectral space of k-fold Kronecker product of doubly stochastic matrices is invariant to index k, restricting expressive reach to base manifold.",
+    "sourceUnitIds": [
+      "u000083"
+    ]
+  },
+  {
+    "id": "n0000197",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.57,
+    "text": "Example 4×4 case: matrices A,B ∈ B_2 have spectra {1,λ_A} and {1,λ_B} with λ∈[-1,1].",
+    "sourceUnitIds": [
+      "u000084"
+    ]
+  },
+  {
+    "id": "n0000198",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Spectrum of Kronecker product A⊗B is {1,λ_A,λ_B,λ_A λ_B} which remains within [-1,1] and inside spectral hull of B_2.",
+    "sourceUnitIds": [
+      "u000084"
+    ]
+  },
+  {
+    "id": "n0000199",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.83,
+    "text": "Therefore spectral reach of Kronecker-parameterized manifold is invariant to number of products and fails to expand into broader Karpelevič region, representing negligible portion of B_d when d>i_k.",
+    "sourceUnitIds": [
+      "u000084"
+    ]
+  },
+  {
+    "id": "n0000202",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.63,
+    "text": "Constraints fail to represent cyclic permutations of order greater than i_k=2 (e.g., 1→2→3→1), preventing learning complex periodic dependencies.",
+    "sourceUnitIds": [
+      "u000085"
+    ]
+  },
+  {
+    "id": "n0000203",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.65,
+    "text": "Restriction to real eigenvalues in 2×2 base case implies only pure diffusion without advection, limiting directional flow of signals.",
+    "sourceUnitIds": [
+      "u000085"
+    ]
+  },
+  {
+    "id": "n0000223",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "go-mHC’s per-layer parameter complexity is similar to mHC and much lower than mHC-lite.",
+    "sourceUnitIds": [
+      "u000087"
+    ]
+  },
+  {
+    "id": "n0000227",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "KromHC trades off expressivity for a smaller parameter count O(dC·d).",
+    "sourceUnitIds": [
+      "u000087"
+    ]
+  }
+]

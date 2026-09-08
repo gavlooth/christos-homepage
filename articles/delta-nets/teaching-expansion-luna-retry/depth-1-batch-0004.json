@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 4,
+  "items": [
+    {
+      "recordId": "teach-generated-f886c8d7ec0d737c",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Nearby wiring means the local connections that link a component to the other components immediately around it, such as passing data, control signals, or configuration between neighboring steps in a system.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-601682bc1c4b93c8",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Normalizing interaction order means applying a consistent sequence to interactions between components or participants, so equivalent interactions follow the same ordering convention.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

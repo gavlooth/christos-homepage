@@ -1,0 +1,1 @@
+{"items":[{"recordId":"teach-n0000692","units":[{"role":"statement","basis":"source","text":"Equal replicators must have the same level and the same arity.","requires":[],"citationRequired":true},{"role":"statement","basis":"source","text":"Equal replicators must also have matching port deltas at every port.","requires":[],"citationRequired":true}]}]}

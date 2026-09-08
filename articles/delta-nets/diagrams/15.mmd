@@ -1,0 +1,14 @@
+flowchart TB
+                  rd0["d = 0"]
+                  rd1["d = +3"]
+                  rd2["d = −1"]
+                  Rlow@{ shape: trapezoid, label: "R · ℓ = 2" }
+                  Hhi@{ shape: trapezoid, label: "H · ℓ = 7" }
+                  e1["e₁"]
+                  e0["e₀"]
+                  rd0 --- Rlow
+                  rd1 --- Rlow
+                  rd2 --- Rlow
+                  Rlow ---|"principal ↔ principal"| Hhi
+                  Hhi --- e1
+                  Hhi --- e0

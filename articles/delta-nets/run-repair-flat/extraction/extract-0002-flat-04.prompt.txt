@@ -1,0 +1,242 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0002-flat-04",
+  "context": [
+    "Δ-Nets",
+    "Three agents carry the whole core.",
+    "Level delta"
+  ],
+  "units": [
+    {
+      "id": "u000136",
+      "kind": "prose",
+      "text": "The integer level names the replicator’s sharing context. Each auxiliary port carries an integer delta. A replica that leaves through a port adds that delta to its current level—like a signed offset stamped on the exit door."
+    },
+    {
+      "id": "u000137",
+      "kind": "heading",
+      "text": "### 3.1 Four systems fall out of the same pieces"
+    },
+    {
+      "id": "u000138",
+      "kind": "prose",
+      "text": "System | Agents permitted | Corresponding term fragment | |"
+    },
+    {
+      "id": "u000139",
+      "kind": "prose",
+      "text": "ΔL | Fan | Linear: exactly one use. | |"
+    },
+    {
+      "id": "u000140",
+      "kind": "prose",
+      "text": "ΔA | Fan + eraser | Affine: a use may be absent. | |"
+    },
+    {
+      "id": "u000141",
+      "kind": "prose",
+      "text": "ΔI | Fan + replicator | Relevant: a use may repeat. | |"
+    },
+    {
+      "id": "u000142",
+      "kind": "prose",
+      "text": "ΔK | Fan + eraser + replicator | Full: absence and repetition are both allowed. | |"
+    },
+    {
+      "id": "u000143",
+      "kind": "prose",
+      "text": "In plain language: linear means exactly one bound use, affine at most one, relevant at least one, and full any count. The split mirrors the paper’s opening taxonomy and shows which agent pays for which feature: fans for structure, erasers for omission, replicators for sharing."
+    },
+    {
+      "id": "u000144",
+      "kind": "heading",
+      "text": "### 3.2 Equality is deliberately local in practice"
+    },
+    {
+      "id": "u000145",
+      "kind": "prose",
+      "text": "Formally, equal replicators must match in level, arity, and every port delta. For well-formed nets from the paper’s λ-term translation, active replicators at the same level are already equal—so an implementation may compare levels alone in that setting. Hand-built nets do not get that shortcut."
+    },
+    {
+      "id": "u000146",
+      "kind": "prose",
+      "text": "What does “fan-in” versus “fan-out” mean here?"
+    },
+    {
+      "id": "u000147",
+      "kind": "prose",
+      "text": "Parent and child are direction labels on a wire. In a rooted net, a parent points toward the root and a child points away from it—think “who faces whom,” not family trees. Canonical nets start with unpaired fan-in replicators: auxiliaries are parents, principal is a child. Reduction can also create fan-outs, with that orientation flipped. A fan-out is paired upstream with at least one fan-in; a fan-in need not have a partner. Levels and deltas let you reason about that pairing locally."
+    }
+  ]
+}

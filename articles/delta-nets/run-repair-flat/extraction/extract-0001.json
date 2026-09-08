@@ -1,0 +1,1937 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "[Skip to the guide](#guide)",
+      "sourceUnitIds": [
+        "u000001"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "[Christos Chatzifountas](/)",
+      "sourceUnitIds": [
+        "u000002"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "[About](/#about)\n[Work](/#work)\n[Notebook](/notes/)\n[Contact](/#contact)",
+      "sourceUnitIds": [
+        "u000003"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Reader-first technical explainer",
+      "sourceUnitIds": [
+        "u000004"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "# Δ-Nets",
+      "sourceUnitIds": [
+        "u000005"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A slower walk through an interaction-based proposal for optimal parallel λ-reduction—diagrams first, notation second.",
+      "sourceUnitIds": [
+        "u000006"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Based on Daniel Augusto Rizzi Salvadori’s paper\narXiv:2505.20314v4\n[Read the formal source ↗](https://arxiv.org/html/2505.20314v4)",
+      "sourceUnitIds": [
+        "u000007"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Reading size",
+      "sourceUnitIds": [
+        "u000008"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A\nA+\nA++",
+      "sourceUnitIds": [
+        "u000009"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Appearance",
+      "sourceUnitIds": [
+        "u000010"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "☾\nDark mode",
+      "sourceUnitIds": [
+        "u000011"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "In this guide",
+      "sourceUnitIds": [
+        "u000012"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [00 How to read this](#orientation)",
+      "sourceUnitIds": [
+        "u000013"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [01 The problem to solve](#problem)",
+      "sourceUnitIds": [
+        "u000014"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [02 From terms to interactions](#shift)",
+      "sourceUnitIds": [
+        "u000015"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [03 The three-agent core](#agents)",
+      "sourceUnitIds": [
+        "u000016"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [04 When agents meet](#meetings)",
+      "sourceUnitIds": [
+        "u000017"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [05 Encoding a λ-term](#compile)",
+      "sourceUnitIds": [
+        "u000018"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000001",
+        "u000002",
+        "u000003",
+        "u000004",
+        "u000005",
+        "u000006",
+        "u000007",
+        "u000008",
+        "u000009",
+        "u000010",
+        "u000011",
+        "u000012",
+        "u000013",
+        "u000014",
+        "u000015",
+        "u000016",
+        "u000017",
+        "u000018"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0001-flat-01 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0001-flat-01",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [05a Trace a λ-term](#lambda-trace)",
+      "sourceUnitIds": [
+        "u000019"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [06 Reduction discipline](#discipline)",
+      "sourceUnitIds": [
+        "u000020"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [07 What the proposal claims](#guarantees)",
+      "sourceUnitIds": [
+        "u000021"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- [08 Glossary & source](#glossary)",
+      "sourceUnitIds": [
+        "u000022"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Scope. This guide rearranges the paper’s argument for learning and uses original diagrams. The paper remains the authority for definitions and proofs.",
+      "sourceUnitIds": [
+        "u000023"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "## Read this before the notation",
+      "sourceUnitIds": [
+        "u000024"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Δ-Nets is a proposed graph-rewriting model. Instead of walking a syntax tree, you turn a program into a graph of tiny nodes and wires, then repeatedly replace small matching pieces of that graph. The aim is optimal parallel reduction: do not spend effort on work that will later be thrown away, and do each necessary reduction once even when an expression is used in several places.",
+      "sourceUnitIds": [
+        "u000025"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### The core idea",
+      "sourceUnitIds": [
+        "u000026"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Build the program as a net of very small agents. Let local pairs interact on their own. Put sharing in the graph itself, not in a side table of copies.",
+      "sourceUnitIds": [
+        "u000027"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### The important caveat",
+      "sourceUnitIds": [
+        "u000028"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "“Optimal” and the confluence guarantees here are the paper’s claims, argued in the linked source. This guide teaches the design. The definitions and proofs stay with the paper.",
+      "sourceUnitIds": [
+        "u000029"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Six ideas you need before Chapter 1",
+      "sourceUnitIds": [
+        "u000030"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### λ-term",
+      "sourceUnitIds": [
+        "u000031"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A tiny functional program. λx.t is a function with parameter x and body t. t u means “apply t to u.”",
+      "sourceUnitIds": [
+        "u000032"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### Bound vs. free",
+      "sourceUnitIds": [
+        "u000033"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000019",
+        "u000020",
+        "u000021",
+        "u000022",
+        "u000023",
+        "u000024",
+        "u000025",
+        "u000026",
+        "u000027",
+        "u000028",
+        "u000029",
+        "u000030",
+        "u000031",
+        "u000032",
+        "u000033"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0001-flat-02 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0001-flat-02",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "An occurrence of x is bound when a surrounding λx owns it. It is free when no surrounding abstraction does—like a name that still comes from outside the term.",
+      "sourceUnitIds": [
+        "u000034"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### Levels & Δ",
+      "sourceUnitIds": [
+        "u000035"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Levels track nested abstractions. Each level shift adds a cost (a \"delta\") when a variable travels through a lambda. This is how we keep track of scopes without global lookups.",
+      "sourceUnitIds": [
+        "u000036"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "01 Motivation",
+      "sourceUnitIds": [
+        "u000037"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "## The problem is wasted work.",
+      "sourceUnitIds": [
+        "u000038"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Ordinary λ-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?",
+      "sourceUnitIds": [
+        "u000039"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "03 Mechanics",
+      "sourceUnitIds": [
+        "u000040"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "## The anatomy of a connection",
+      "sourceUnitIds": [
+        "u000041"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "In interaction nets, we model λ-terms as wiring. The λ-node has a binding port (for the parameter) and a body port (for the expression). The logic depends on how variables are distributed.",
+      "sourceUnitIds": [
+        "u000042"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Δ",
+      "sourceUnitIds": [
+        "u000043"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### The \"Why\" of Deltas",
+      "sourceUnitIds": [
+        "u000044"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Deltas are not just numbers; they are the cost of crossing a scope. When a variable moves out of one lambda and into another, it gains depth. Deltas ensure that the interaction net \"knows\" where its variables live without ever scanning the code.",
+      "sourceUnitIds": [
+        "u000045"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### How connections resolve",
+      "sourceUnitIds": [
+        "u000046"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "When an application node (the @) meets a λ-abstraction, they interact. The λ-node's binding port determines if it needs to replicate the variable (using a Replicator node) or erase it (if it doesn't appear in the body).",
+      "sourceUnitIds": [
+        "u000047"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000034",
+        "u000035",
+        "u000036",
+        "u000037",
+        "u000038",
+        "u000039",
+        "u000040",
+        "u000041",
+        "u000042",
+        "u000043",
+        "u000044",
+        "u000045",
+        "u000046",
+        "u000047"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0001-flat-03 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0001-flat-03",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### Redex and reduction",
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A redex is a place you can simplify right now—here, a function already sitting next to its argument. A reduction is one such step.",
+      "sourceUnitIds": [
+        "u000049"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### Normal form",
+      "sourceUnitIds": [
+        "u000050"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A term or net is in normal form when nothing left can fire. Normalizing means some sequence of steps gets you there.",
+      "sourceUnitIds": [
+        "u000051"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The substitution view",
+      "sourceUnitIds": [
+        "u000052"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "(λx. t) u → t[x := u]",
+      "sourceUnitIds": [
+        "u000053"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "That one sentence hides two very different edge cases. They are where the paper begins.",
+      "sourceUnitIds": [
+        "u000054"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Erasure",
+      "sourceUnitIds": [
+        "u000055"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Work that gets discarded",
+      "sourceUnitIds": [
+        "u000056"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "If t never mentions x, the argument u vanishes. Any work you already did inside u was wasted.",
+      "sourceUnitIds": [
+        "u000057"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Sharing",
+      "sourceUnitIds": [
+        "u000058"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Work that gets duplicated",
+      "sourceUnitIds": [
+        "u000059"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "If x occurs more than once, naive substitution copies u. If u still contains redexes, you may redo the same necessary work in every copy.",
+      "sourceUnitIds": [
+        "u000060"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 1.2 The four familiar fragments of the λ-calculus",
+      "sourceUnitIds": [
+        "u000061"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The paper frames the issue with a simple grid of variable-use rules. A bound variable is an occurrence owned by a surrounding λ—the x in λx.x, for example. Start from the linear calculus, where every bound variable appears exactly once. Then allow omission, repetition, or both.",
+      "sourceUnitIds": [
+        "u000062"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### λL — linear",
+      "sourceUnitIds": [
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000048",
+        "u000049",
+        "u000050",
+        "u000051",
+        "u000052",
+        "u000053",
+        "u000054",
+        "u000055",
+        "u000056",
+        "u000057",
+        "u000058",
+        "u000059",
+        "u000060",
+        "u000061",
+        "u000062",
+        "u000063"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0001-flat-04 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0001-flat-04",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Each bound variable appears exactly once.",
+      "sourceUnitIds": [
+        "u000064"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "→",
+      "sourceUnitIds": [
+        "u000065"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### λA — affine",
+      "sourceUnitIds": [
+        "u000066"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "It appears once, or not at all. Erasure is allowed.",
+      "sourceUnitIds": [
+        "u000067"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### λI — relevant",
+      "sourceUnitIds": [
+        "u000068"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "It appears at least once. Sharing is allowed.",
+      "sourceUnitIds": [
+        "u000069"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "↘",
+      "sourceUnitIds": [
+        "u000070"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### λK — full",
+      "sourceUnitIds": [
+        "u000071"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Any number of appearances. Both erasure and sharing are allowed.",
+      "sourceUnitIds": [
+        "u000072"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The paper names ΔL, ΔA, ΔI, and ΔK as corresponding Δ-Net subsystems.",
+      "sourceUnitIds": [
+        "u000073"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 1.3 Why choosing a clever order is not enough",
+      "sourceUnitIds": [
+        "u000074"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A reduction order says which redex to simplify next. For erasure, normal order—outermost application before its argument—can avoid reducing something a function is about to throw away. Sharing is harder. The paper follows Lévy: some shared terms have no ordinary sequential order that avoids every duplicated reduction.",
+      "sourceUnitIds": [
+        "u000075"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "↯",
+      "sourceUnitIds": [
+        "u000076"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### The design target",
+      "sourceUnitIds": [
+        "u000077"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Put sharing in the graph. Reduce a shared subgraph once, then let every use see the result.",
+      "sourceUnitIds": [
+        "u000078"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "02 Model shift",
+      "sourceUnitIds": [
+        "u000079"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "## Stop treating a program as a tree.",
+      "sourceUnitIds": [
+        "u000080"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000064",
+        "u000065",
+        "u000066",
+        "u000067",
+        "u000068",
+        "u000069",
+        "u000070",
+        "u000071",
+        "u000072",
+        "u000073",
+        "u000074",
+        "u000075",
+        "u000076",
+        "u000077",
+        "u000078",
+        "u000079",
+        "u000080"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0001-flat-05 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0001-flat-05",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The paper leaves the sequential substitution machine behind and moves to an interaction system: a graph whose tiny local rewrites can happen independently. First, pin down what “local” and “independent” mean here.",
+      "sourceUnitIds": [
+        "u000081"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 2.1 Graphs make sharing visible",
+      "sourceUnitIds": [
+        "u000082"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A syntax tree treats every occurrence as its own copy. A graph can let several uses point at one shared subgraph—a connected piece of the larger graph. That is the essential move: compute the shared piece once, then reuse it.",
+      "sourceUnitIds": [
+        "u000083"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Textual substitution",
+      "sourceUnitIds": [
+        "u000084"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nu1[use] --> a1[argument]\nu1 --> w1[work]\nu2[use] --> a2[argument]\nu2 --> w2[work]",
+      "sourceUnitIds": [
+        "u000085"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Graph representation",
+      "sourceUnitIds": [
+        "u000086"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nu3[use] --> share[share]\nu4[use] --> share\nshare --> arg[one argument]",
+      "sourceUnitIds": [
+        "u000087"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Why a net at all? A graph can keep one identity for many uses. Δ-Nets is one local way to manage that identity while the graph rewrites.",
+      "sourceUnitIds": [
+        "u000088"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 2.2 Interaction systems, in one minute",
+      "sourceUnitIds": [
+        "u000089"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "An interaction system has agents and interaction rules. An agent is a small node with sockets called ports. One socket is special—the principal port—and that is what can start a rewrite. The rest are auxiliary ports; they carry the surrounding wiring through the rewrite.",
+      "sourceUnitIds": [
+        "u000090"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "When two agents meet principal-to-principal, they form an active pair. A rule rewrites that pattern by reconnecting only the wires attached right there. The pair and those nearby wires are the rule’s entire input.",
+      "sourceUnitIds": [
+        "u000091"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "01",
+      "sourceUnitIds": [
+        "u000092"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Find an active pair",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Only a principal-to-principal wire counts. Each local decision stays sharply bounded.",
+      "sourceUnitIds": [
+        "u000094"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000081",
+        "u000082",
+        "u000083",
+        "u000084",
+        "u000085",
+        "u000086",
+        "u000087",
+        "u000088",
+        "u000089",
+        "u000090",
+        "u000091",
+        "u000092",
+        "u000093",
+        "u000094"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0001-flat-06 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0001-flat-06",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    },
+    {
+      "kind": "procedure",
+      "text": "Step 2 applies an active pair's local rule.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000095",
+        "u000096"
+      ],
+      "defines": [],
+      "requires": [
+        "local rule"
+      ],
+      "mentions": [
+        "active pair",
+        "δ-nets"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0001-flat-07"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "need": "The chunk does not specify the local rule or how to apply it.",
+      "gapType": "missing_context",
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "local rule"
+      ],
+      "origin": "gap",
+      "chunkId": "c0001-flat-07"
+    }
+  ],
+  "edges": [
+    {
+      "from": 101,
+      "to": 100,
+      "relation": "fills",
+      "reason": "The procedure depends on the unspecified local rule and its application."
+    }
+  ],
+  "evidenceFrames": []
+}

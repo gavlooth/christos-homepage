@@ -1,0 +1,607 @@
+You perform phase-two cognitive decompression on a knowledge graph. Return JSON only:
+{"items":[{"parentId":"...","splits":[{"text":"small source-faithful idea","densityScore":0.0}],"expansions":[{"type":"definition|mechanism|context|interpretation|example","text":"small standalone explanatory idea","densityScore":0.0}]}]}
+
+Rules:
+- Split only independently meaningful ideas already compressed in the parent.
+- Expansions explain prerequisites, mechanism, or interpretation that make the parent easier to understand. They are model-derived knowledge, not source claims.
+- Keep each returned text one small standalone idea.
+- Do not repeat the parent or produce prose summaries.
+- Return an item only when it improves cognitive decompression.
+
+DENSE NODES:
+[
+  {
+    "id": "n0000028",
+    "kind": "claim",
+    "densityScore": 0.844,
+    "text": "The model aims for optimal parallel reduction by avoiding work that will later be discarded and reducing necessary work once even when an expression has multiple uses.",
+    "sourceUnitIds": [
+      "u000025"
+    ]
+  },
+  {
+    "id": "n0000140",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Confluence asks whether different valid reduction choices can disagree. The one-step diamond property is a strong “no”: if a net N has two possible single steps, either choice leads to a net that meets the other after exactly one more interaction.",
+    "sourceUnitIds": [
+      "u000102"
+    ]
+  },
+  {
+    "id": "n0000144",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "The paper calls this perfect confluence. Each active pair owns the only principal port of each of its two agents, so distinct active pairs use distinct agents. Their rewrites commute: left-then-right and right-then-left leave the same nearby wiring.",
+    "sourceUnitIds": [
+      "u000106"
+    ]
+  },
+  {
+    "id": "n0000147",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "The diamond says competing local steps agree. Termination is separate: some nets can reduce forever. The paper’s claim is narrower: when a core interaction order normalizes, every normalizing order reaches the same result in the same number of interactions.",
+    "sourceUnitIds": [
+      "u000109"
+    ]
+  },
+  {
+    "id": "n0000149",
+    "kind": "source",
+    "densityScore": 0.95,
+    "text": "Earlier interaction-net approaches tracked sharing scopes—regions governed by one duplication context, the way a λ governs its bound uses. They marked those regions with indexed fans plus extra delimiter agents (brackets, croissants, and kin). The critique is practical as much as theoretical: delimiters pile up, and their interactions can outnumber the useful fan work. Some systems also let indices grow without bound.",
+    "sourceUnitIds": [
+      "u000111"
+    ]
+  },
+  {
+    "id": "n0000162",
+    "kind": "source",
+    "densityScore": 0.95,
+    "text": "Diagram key. Application and function fans are triangles: the principal port is fixed at the top apex and the two auxiliary wires leave fixed, symmetric positions along the bottom edge. Only replicators are trapezoids: the principal port is centered on the short top side and the auxiliary wires are evenly spaced along the wide bottom side. Rectangles label fragments or wire endpoints; they are not agents. An eraser has only a principal port.",
+    "sourceUnitIds": [
+      "u000124"
+    ]
+  },
+  {
+    "id": "n0000171",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Any natural-number arity—one, two, three auxiliary ports, and so on. It joins the uses of one shared value and records the sharing context: a level on the agent, plus a delta on each auxiliary port.",
+    "sourceUnitIds": [
+      "u000133"
+    ]
+  },
+  {
+    "id": "n0000181",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "In plain language: linear means exactly one bound use, affine at most one, relevant at least one, and full any count. The split mirrors the paper’s opening taxonomy and shows which agent pays for which feature: fans for structure, erasers for omission, replicators for sharing.",
+    "sourceUnitIds": [
+      "u000143"
+    ]
+  },
+  {
+    "id": "n0000183",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "Formally, equal replicators must match in level, arity, and every port delta. For well-formed nets from the paper’s λ-term translation, active replicators at the same level are already equal—so an implementation may compare levels alone in that setting. Hand-built nets do not get that shortcut.",
+    "sourceUnitIds": [
+      "u000145"
+    ]
+  },
+  {
+    "id": "n0000185",
+    "kind": "source",
+    "densityScore": 0.95,
+    "text": "Parent and child are direction labels on a wire. In a rooted net, a parent points toward the root and a child points away from it—think “who faces whom,” not family trees. Canonical nets start with unpaired fan-in replicators: auxiliaries are parents, principal is a child. Reduction can also create fan-outs, with that orientation flipped. A fan-out is paired upstream with at least one fan-in; a fan-in need not have a partner. Levels and deltas let you reason about that pairing locally.",
+    "sourceUnitIds": [
+      "u000147"
+    ]
+  },
+  {
+    "id": "n0000190",
+    "kind": "source",
+    "densityScore": 0.85,
+    "text": "Equal agents cancel. In a well-formed net from a λ-term, active replicators at the same level are equal: both nodes disappear and matching auxiliary ports reconnect. For fans, that same cancellation is applying a λ to its argument.",
+    "sourceUnitIds": [
+      "u000152"
+    ]
+  },
+  {
+    "id": "n0000198",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "Why erasure propagates. Distinct agents pass through one another once per auxiliary port. Because E has zero auxiliary ports, the fan produces zero surviving copies; because the fan has two auxiliary ports, two copies of E continue into M and N. An n-port replicator would analogously leave n erasers. This is the erasure family from [the paper’s core interaction rules](https://arxiv.org/html/2505.20314v4#S2.F4).",
+    "sourceUnitIds": [
+      "u000160"
+    ]
+  },
+  {
+    "id": "n0000200",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "Applications and abstractions are both fans. You tell them apart by how their wires point when you look from the root—the unique top entry of the whole net. When the right pair of fans meets principal-to-principal, they annihilate: both nodes go away and matching auxiliary ports reconnect. Auxiliary ports are ordered clockwise when the principal port points down; flipping one fan upside down swaps its visible left and right, so the wires cross in the drawing. That is β-reduction at the net level.",
+    "sourceUnitIds": [
+      "u000162"
+    ]
+  },
+  {
+    "id": "n0000204",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "The crossing is structural. For the downward application fan, the left auxiliary is first and the right auxiliary is second. For the rotated upward abstraction fan, the right auxiliary is first and the left auxiliary is second. Matching first-to-first and second-to-second—not geometric sides—therefore crosses the wires.",
+    "sourceUnitIds": [
+      "u000166"
+    ]
+  },
+  {
+    "id": "n0000206",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "When a replicator meets a fan, the replicator leaves through the fan’s two auxiliary ports as two exact copies. At the same time, the fan leaves through every auxiliary port of the replicator—one fan per port. Each keeps its role, but now sits in the other’s surrounding context.",
+    "sourceUnitIds": [
+      "u000168"
+    ]
+  },
+  {
+    "id": "n0000211",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "Finite version of the paper’s fan–replicator rule. Port identities, not geometric sides, determine the reconnection: (Fᵢ)ⱼ ↔ (Rʲ)ᵢ. This guide-specific diagram uses a three-port replicator so every copy has a visible port and wire. It adapts the structure of [Figure 4 in the source paper](https://arxiv.org/html/2505.20314v4#S2.F4) (CC BY 4.0).",
+    "sourceUnitIds": [
+      "u000173"
+    ]
+  },
+  {
+    "id": "n0000213",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Count both sides. R has three auxiliary ports, so three fans F₀, F₁, F₂ appear. F has two auxiliary ports, so two replicators R⁰, R¹ appear. Because F points upward, its clockwise auxiliary-port order is visible right-to-left: a₁ is on the left and a₀ is on the right. Thus the old visible-left a₁ wire remains attached to R¹, while the old visible-right a₀ wire remains attached to R⁰; those two outer wires do not cross. Internally, auxiliary port j of each new Fᵢ connects to port dᵢ of Rʲ.",
+    "sourceUnitIds": [
+      "u000174"
+    ]
+  },
+  {
+    "id": "n0000215",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "First compare the two levels. If they match—and the net came from a well-formed λ translation—the replicators are equal: they annihilate, both nodes disappear, and matching auxiliary ports reconnect. No replicas are created. In a hand-built net, matching levels alone are not enough; arity and every port delta must match too.",
+    "sourceUnitIds": [
+      "u000176"
+    ]
+  },
+  {
+    "id": "n0000216",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "If the levels differ, the replicators are distinct and commute. Call the lower-level one R and the higher-level one H. R makes one replica of H for each of R’s auxiliary ports; H makes exact copies of R for each of H’s ports. Each H replica takes the delta on its exit port through R and adds it to H’s current level. The second diagram shows that different-level case.",
+    "sourceUnitIds": [
+      "u000177"
+    ]
+  },
+  {
+    "id": "n0000221",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Same-level annihilation. The lower replicator is rotated, so its clockwise auxiliary-port indices appear right-to-left. Matching indices reconnect—top d₀ to lower d₀, and so on—making the two outer wires cross. Both replicators are gone.",
+    "sourceUnitIds": [
+      "u000182"
+    ]
+  },
+  {
+    "id": "n0000225",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "flowchart TB\nd0[\"d₀\"]\nd1[\"d₁\"]\nd2[\"d₂\"]\nH0@{ shape: trapezoid, label: \"H · ℓ = 7\" }\nH1@{ shape: trapezoid, label: \"H · ℓ = 10\" }\nH2@{ shape: trapezoid, label: \"H · ℓ = 6\" }\nRc1@{ shape: trapezoid, label: \"R¹ · ℓ = 2\" }\nRc0@{ shape: trapezoid, label: \"R⁰ · ℓ = 2\" }\ne1[\"e₁\"]\ne0[\"e₀\"]\nd0 ---|principal| H0\nd1 ---|principal| H1\nd2 ---|principal| H2\nH0 --- Rc1\nH0 --- Rc0\nH1 --- Rc1\nH1 --- Rc0\nH2 --- Rc1\nH2 --- Rc0\nRc1 ---|principal| e1\nRc0 ---|principal| e0",
+    "sourceUnitIds": [
+      "u000186"
+    ]
+  },
+  {
+    "id": "n0000226",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Two simultaneous outcomes. The upper copies of H inherit R’s three port deltas, so their levels become 7, 10, and 6. The lower copies R¹ and R⁰ leave through H’s ports e₁ and e₀; both are exact copies that keep R’s level 2 and deltas 0, +3, −1. This diagram adapts the structure of [Figure 4 in the source paper](https://arxiv.org/html/2505.20314v4#S2.F4) (CC BY 4.0).",
+    "sourceUnitIds": [
+      "u000187"
+    ]
+  },
+  {
+    "id": "n0000227",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Read both halves of the result. Across the top, R’s three auxiliary ports create three H replicas, and each port’s delta shifts that replica’s level. Across the bottom, H’s two auxiliary ports create two exact R copies: R’s level and deltas stay put. The old eⱼ wire stays on the principal port of Rʲ. Between the families, the wires form a complete 3-by-2 grid: auxiliary port j of every H replica meets the matching port of Rʲ.",
+    "sourceUnitIds": [
+      "u000188"
+    ]
+  },
+  {
+    "id": "n0000232",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Suppose R sits at level 2 with two auxiliary ports. The first meets a wire endpoint at level 2, so its delta is 2 − 2 = 0. The second meets an endpoint at level 5, so its delta is 5 − 2 = +3. Now let a higher-level replicator H, at level 7, meet R.",
+    "sourceUnitIds": [
+      "u000193"
+    ]
+  },
+  {
+    "id": "n0000252",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "“Duplicate” means exact copies. “Replicate” is the paper’s word for copies that may differ by level. That distinction does real work: it replaces the separate indexed delimiters of older systems. A delta may be negative, zero, or positive; this example sticks to zero and a positive value only to keep the arithmetic easy to see.",
+    "sourceUnitIds": [
+      "u000213"
+    ]
+  },
+  {
+    "id": "n0000254",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Several higher-level replicators can arrive at the same R port with different current levels. The port applies the same local adjustment to each. With delta +3, level 7 becomes 10 and level 12 becomes 15.",
+    "sourceUnitIds": [
+      "u000215"
+    ]
+  },
+  {
+    "id": "n0000255",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Read the pair as an instruction: the replicator level is the current context; the chosen port adds the change for that exit. Chapter 5 shows how translation writes those deltas into the initial net.",
+    "sourceUnitIds": [
+      "u000216"
+    ]
+  },
+  {
+    "id": "n0000258",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "For each of λL, λA, λI, and λK, the paper defines a bijection φ from terms to canonical Δ-Nets. A bijection is a one-to-one, reversible map: every term has one canonical net, and that net reads back as one term. The translation is inductive: translate the smaller pieces first, then wire those fragments into the larger term.",
+    "sourceUnitIds": [
+      "u000219"
+    ]
+  },
+  {
+    "id": "n0000263",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "The vocabulary used by the translation. λx.M defines a function; x is its parameter and M is its body. M N applies function M to argument N. In the example, A is the actual argument supplied to the abstraction, while x₀ and x₁ are the two places that use x.",
+    "sourceUnitIds": [
+      "u000224"
+    ]
+  },
+  {
+    "id": "n0000265",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Every fragment has an interface: one incoming wire at the top and zero or more outgoing wires at the bottom. The outermost fragment hangs from a single root. Free variables—names no surrounding λ owns—become named interface nodes. That stable shape lets you plug a fragment into its parent the way a function plugs into a call.",
+    "sourceUnitIds": [
+      "u000226"
+    ]
+  },
+  {
+    "id": "n0000267",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "flowchart TB\nrootA((root))\nlam@{ shape: triangle, label: \"λ\" }\nRx@{ shape: trapezoid, label: \"Rₓ\" }\nM@{ shape: rect, label: \"[M]ℓ body\" }\nuses@{ shape: rect, label: \"bound uses\" }\nrootA -->|principal · parent| lam\nlam ---|2nd aux · variable → principal| Rx\nlam ---|1st aux · body| M\nRx ---|auxiliary ports| uses\nM ~~~ Rx",
+    "sourceUnitIds": [
+      "u000228"
+    ]
+  },
+  {
+    "id": "n0000270",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "Canonical fragment interface. In the abstraction, the parent enters λ’s principal port; λ’s right auxiliary reaches body M, while its left auxiliary reaches the replicator’s principal port when x is shared. In the application, function M reaches the application’s principal port; the parent/result wire and argument N use its two auxiliary ports.",
+    "sourceUnitIds": [
+      "u000231"
+    ]
+  },
+  {
+    "id": "n0000282",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "The distinction is at the fragment boundary. A free variable survives as a named node in the canonical net’s interface. A bound occurrence introduces no variable agent at all: it is a wire whose endpoint is later connected to its owning λx, directly when there is one use or through Rx when that value is shared. This follows the two variable clauses in [the paper’s inductive translation](https://arxiv.org/html/2505.20314v4#S3.F5).",
+    "sourceUnitIds": [
+      "u000243"
+    ]
+  },
+  {
+    "id": "n0000284",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "An abstraction is an upward-pointing fan (the λ label is only visual). Its first auxiliary port is the body and its second auxiliary port is the bound variable; in this upward view, those appear on the right and left respectively. If that variable is unused, the second auxiliary port meets an eraser—only in the erasure-capable systems ΔA and ΔK.",
+    "sourceUnitIds": [
+      "u000245"
+    ]
+  },
+  {
+    "id": "n0000285",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "When a used variable has several occurrences, a replicator joins the abstraction’s variable port to those uses. Each auxiliary port of R lands on a concrete use site: for λx.x x, one auxiliary meets the application’s argument port and the other meets its function port. The application itself hangs from the abstraction’s body port. A one-port replicator with zero delta is just a wire, so canonical construction leaves it out.",
+    "sourceUnitIds": [
+      "u000246"
+    ]
+  },
+  {
+    "id": "n0000287",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "flowchart TB\nroot0((root))\nlam0@{ shape: triangle, label: \"λ\" }\nvar0@{ shape: rect, label: \"2nd aux · variable\" }\nbody0@{ shape: rect, label: \"1st aux · body\" }\nuse0@{ shape: rect, label: \"x\" }\nroot0 -->|principal · parent| lam0\nlam0 --- var0\nlam0 --- body0\nbody0 ~~~ var0\nbody0 --- use0\nvar0 --- use0",
+    "sourceUnitIds": [
+      "u000248"
+    ]
+  },
+  {
+    "id": "n0000292",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "flowchart TB\nroot2((root))\nlam2@{ shape: triangle, label: \"λ\" }\nvar2@{ shape: rect, label: \"2nd aux · variable\" }\nbody2@{ shape: rect, label: \"1st aux · body\" }\nR@{ shape: trapezoid, label: \"R\" }\napp2@{ shape: triangle, label: \"app\" }\nres2@{ shape: rect, label: \"result\" }\nfun2@{ shape: rect, label: \"function x₀\" }\narg2@{ shape: rect, label: \"argument x₁\" }\nroot2 -->|principal · parent| lam2\nlam2 --- var2\nlam2 --- body2\nbody2 ~~~ var2\nbody2 --- res2\napp2 --- res2\nvar2 --- R\nR --- fun2\nR --- arg2\nfun2 -->|principal| app2\napp2 --- arg2",
+    "sourceUnitIds": [
+      "u000252"
+    ]
+  },
+  {
+    "id": "n0000293",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Read each picture from its λ binder. The second auxiliary port is the bound parameter x: it closes directly to one occurrence, terminates at E when unused, or reaches R when several occurrences must share one incoming value. The first auxiliary port is the body. In λx.x x that body port meets the application’s result port; the replicator’s auxiliary ports meet the application’s function and argument ports. §5.7 adds the levels and deltas.",
+    "sourceUnitIds": [
+      "u000253"
+    ]
+  },
+  {
+    "id": "n0000295",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "An application is a triangular fan (the app label is only visual). Its principal port is fixed at the top apex and meets the function fragment. Its result and argument auxiliary ports are fixed symmetrically along the bottom edge. During reduction the application fan eventually meets an abstraction fan; their principal-port annihilation is the application.",
+    "sourceUnitIds": [
+      "u000255"
+    ]
+  },
+  {
+    "id": "n0000300",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "One syntax constructor, three connections. For [M N]ℓ, the result or parent wire uses the first auxiliary port, [N]ℓ+1 uses the second auxiliary port, and [M]ℓ meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction.",
+    "sourceUnitIds": [
+      "u000260"
+    ]
+  },
+  {
+    "id": "n0000302",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Keep every word tied to the source syntax. An abstraction is the literal term λx.M: parameter x, body M. An application is the literal term M N: function M, argument N. A bound occurrence of x is one of the x leaves in M owned by that particular λx.",
+    "sourceUnitIds": [
+      "u000262"
+    ]
+  },
+  {
+    "id": "n0000305",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Calculate levels by walking the written λ-term. Start the whole term at level 0. For an abstraction λx.M at level ℓ, continue into M at the same level ℓ. For an application M N at level ℓ, keep level ℓ on the function M and write level ℓ + 1 on the argument N. Repeat inside each subtree. During graph reduction those coordinates track sharing contexts; they do not count captured values or surrounding λ symbols the way a runtime closure would.",
+    "sourceUnitIds": [
+      "u000265"
+    ]
+  },
+  {
+    "id": "n0000311",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Use the same instructions at every step. For λx.λy.x, start at level 0 and carry 0 through both bodies, so x sits at level 0. For λx.f (g x), carry 0 into the body, give the outer function f level 0, and give its argument g x level 1. Apply the rule again inside that argument: g stays at 1, and x lands at 2.",
+    "sourceUnitIds": [
+      "u000271"
+    ]
+  },
+  {
+    "id": "n0000313",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "flowchart TB\nT[\"[λx. x (g x)]₀\"]\nbinder[\"λx · ℓ = 0\"]\nouter[\"x (g x) · ℓ = 0\"]\nx0[\"x₀ · ℓ = 0\"]\ngx[\"g x · ℓ = 1\"]\ng[\"g · ℓ = 1\"]\nx1[\"x₁ · ℓ = 2\"]\nT --> binder\nbinder --> outer\nouter -->|function +0| x0\nouter -->|argument +1| gx\ngx -->|function +0| g\ngx -->|argument +1| x1",
+    "sourceUnitIds": [
+      "u000273"
+    ]
+  },
+  {
+    "id": "n0000316",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Walk λx.x (g x) mechanically. Begin at level 0 and keep that level through λx into its body x (g x). At the outer application, give the function x₀ level 0 and the argument g x level 1. Now apply the same rule to g x: g stays at 1 and x₁ lands at 2. The binder’s replicator is at level 1, so the stored deltas are ⟨−1, +1⟩.",
+    "sourceUnitIds": [
+      "u000276"
+    ]
+  },
+  {
+    "id": "n0000321",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "- Connect each bound occurrence xi to one auxiliary port of Rx. If that occurrence was reached at level li, label its port di = li − (l + 1).",
+    "sourceUnitIds": [
+      "u000281"
+    ]
+  },
+  {
+    "id": "n0000325",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "That is where Chapter 4’s numbers came from: a replicator at level 2 wired to an occurrence at level 5 stores delta +3. During reduction, that +3 is the local adjustment whenever another replicator exits through the port. Section [5.8](#deep-deltas) works the full calculation for four occurrences of one bound variable.",
+    "sourceUnitIds": [
+      "u000285"
+    ]
+  },
+  {
+    "id": "n0000334",
+    "kind": "source",
+    "densityScore": 0.78,
+    "text": "How to read the wiring. The downward @-fan’s first auxiliary port is the application result (the root reaches it); its principal port leads to the function; its second auxiliary port leads to the argument. The upward λ-fan’s first auxiliary port is its body and its second auxiliary port is its bound variable. Since the body and variable ports of λx.x are already joined, annihilating the two principal ports connects the root directly to λy.y.",
+    "sourceUnitIds": [
+      "u000294"
+    ]
+  },
+  {
+    "id": "n0000342",
+    "kind": "source",
+    "densityScore": 0.88,
+    "text": "What the numbers mean in this exact term. The application hangs from the λ body port: its first auxiliary is the result. One replicator auxiliary meets the application’s argument port; the other meets its function (principal) port. The outer term has level 0. The body application is also level 0; the application rule puts the argument occurrence at level 1, while the function occurrence stays at level 0. The replicator belongs to the surrounding abstraction, so it has level 0 + 1 = 1. Therefore its function-use port stores d0 = 0 − 1 = −1, and its argument-use port stores d1 = 1 − 1 = 0.",
+    "sourceUnitIds": [
+      "u000302"
+    ]
+  },
+  {
+    "id": "n0000343",
+    "kind": "source",
+    "densityScore": 0.77,
+    "text": "A level delta is not a copy count, and it is not a source-level variable value. The two-port replicator already says “one bound value, two consumers.” Level and per-port deltas only record the relative sharing context at each consumer. When replicators later commute through structure, those deltas adjust the levels of replicas leaving through their ports. That bookkeeping is how Δ-Nets express the sharing a δ would introduce—without separate scope-delimiter agents.",
+    "sourceUnitIds": [
+      "u000303"
+    ]
+  },
+  {
+    "id": "n0000349",
+    "kind": "source",
+    "densityScore": 0.75,
+    "text": "flowchart TB\nroot8((root))\nlam8@{ shape: triangle, label: \"λ\" }\nvar8@{ shape: rect, label: \"2nd aux · variable\" }\nbody8@{ shape: rect, label: \"1st aux · body\" }\nR8@{ shape: trapezoid, label: \"R · ℓ = 1\" }\na0@{ shape: triangle, label: \"app0\" }\nr0@{ shape: rect, label: \"result\" }\ng0@{ shape: rect, label: \"argument\" }\na1@{ shape: triangle, label: \"app1\" }\nr1@{ shape: rect, label: \"result\" }\ng1@{ shape: rect, label: \"argument\" }\na2@{ shape: triangle, label: \"app2\" }\nr2@{ shape: rect, label: \"result\" }\ng2@{ shape: rect, label: \"argument x₃\" }\nroot8 -->|parent| lam8\nlam8 --- var8\nlam8 --- body8\nbody8 ~~~ var8\nbody8 --- r0\nr0 --- a0\nvar8 --- R8\nR8 ---|function| a0\na0 --- g0\ng0 --- r1\nr1 --- a1\nR8 ---|function| a1\na1 --- g1\ng1 --- r2\nr2 --- a2\nR8 ---|function| a2\na2 --- g2\nclass a0,a1,a2 orient-right",
+    "sourceUnitIds": [
+      "u000309"
+    ]
+  },
+  {
+    "id": "n0000350",
+    "kind": "source",
+    "densityScore": 0.84,
+    "text": "Why the vector grows. The outer application hangs from the λ body port. Each inner application hangs from the argument port of the application above it. The four replicator auxiliaries meet the three function ports and the deepest argument port. The abstraction is at level 0, so its replicator is at level 1. The four bound-variable endpoints are at levels 0, 1, 2, 3. Applying di = li − lR yields ⟨−1, 0, +1, +2⟩.",
+    "sourceUnitIds": [
+      "u000310"
+    ]
+  },
+  {
+    "id": "n0000381",
+    "kind": "source",
+    "densityScore": 0.82,
+    "text": "This is a global cleanup pass, not a principal-port interaction. The sweep begins at the distinguished root, marks the graph material reachable through the parent–child wiring, and deletes everything else. Where deleting an unmarked node exposes a connection that remains in the net, that connection is terminated by E. The schematic follows the erasure canonicalization described in [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4).",
+    "sourceUnitIds": [
+      "u000340"
+    ]
+  },
+  {
+    "id": "n0000386",
+    "kind": "source",
+    "densityScore": 0.86,
+    "text": "For consecutive replicators A and B joined through a port with delta d, B is known unpaired when 0 ≤ lB − lA ≤ d. In the paper’s reading, B cannot interact before A is annihilated—and since A is unpaired, that never happens. The inequality is a safety proof, not a performance hint.",
+    "sourceUnitIds": [
+      "u000345"
+    ]
+  },
+  {
+    "id": "n0000391",
+    "kind": "source",
+    "densityScore": 0.88,
+    "text": "The inequality establishes safety; endpoint levels determine the new numbers. Here A is known unpaired, and its connecting port has d = 3. Since 0 ≤ lB − lA = 2 ≤ 3, B is also known unpaired and the consecutive agents may merge. The surviving replicator keeps level 2; the external endpoint levels remain 2, 3, 6, so the new deltas are ⟨0, +1, +4⟩.",
+    "sourceUnitIds": [
+      "u000350"
+    ]
+  },
+  {
+    "id": "n0000392",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "ΔK has one more cleanup: unpaired replicator decay. Drop auxiliary ports of unpaired replicators that lead straight into erasers. If one zero-delta port remains, the replicator collapses to the wire it already was.",
+    "sourceUnitIds": [
+      "u000351"
+    ]
+  },
+  {
+    "id": "n0000397",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Decay removes only eraser-bound auxiliary ports. In this ΔK example, the two E-bound exits contribute no surviving consumers, so they are deleted. The remaining one-port replicator has delta 0; by the canonical representation rule it carries no information beyond the connection itself and collapses to a wire. The paper applies this cleanup during erasure canonicalization or lazily just before relevant replication rules.",
+    "sourceUnitIds": [
+      "u000356"
+    ]
+  },
+  {
+    "id": "n0000399",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "Core interaction rules enjoy local confluence. Canonicalization can touch ports that are not a principal-to-principal pair, so it needs a schedule. Leftmost-outermost first picks an outermost reducible pattern—one with no reducible pattern wrapped around it—then takes the leftmost candidate in the term-like reading of the net. “Sequential” here just means that priority rule chooses the next interaction. The paper uses that order for ΔA, ΔI, and ΔK so cleanup runs early and merges beat later commutations.",
+    "sourceUnitIds": [
+      "u000358"
+    ]
+  },
+  {
+    "id": "n0000402",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Important nuance. The paper also permits a reducible pair to run early if it will eventually reach the leftmost-outermost position unchanged. This preserves some safe parallelism while retaining the schedule’s optimality rationale.",
+    "sourceUnitIds": [
+      "u000361"
+    ]
+  },
+  {
+    "id": "n0000405",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "The paper’s final claim is an algorithm for optimal parallel λ-reduction: translate a term to a canonical net, reduce with the core rules plus the required cleanups and schedule, then read the canonical net back as a term.",
+    "sourceUnitIds": [
+      "u000364"
+    ]
+  },
+  {
+    "id": "n0000408",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "Keep the state changes separate. The bijection φ creates the initial canonical net. Core interactions enter the broader space of proper nets; the subsystem’s prescribed interaction order and canonicalizations are collected by Ω until the net is both normal and canonical. Only then does φ−1 read it back as a λ-term. This is the construction formalized near the end of [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4).",
+    "sourceUnitIds": [
+      "u000367"
+    ]
+  },
+  {
+    "id": "n0000419",
+    "kind": "source",
+    "densityScore": 0.9,
+    "text": "In ΔL, fan annihilation is the only interaction. The paper states that every proper net is already canonical, and that if n β-reductions normalize a λL term, n interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure.",
+    "sourceUnitIds": [
+      "u000378"
+    ]
+  },
+  {
+    "id": "n0000424",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "ΔK | Both garbage and sharing context. | Leftmost-outermost + erasure, merge, and decay canonicalizations. | |",
+    "sourceUnitIds": [
+      "u000383"
+    ]
+  },
+  {
+    "id": "n0000428",
+    "kind": "source",
+    "densityScore": 1,
+    "text": "- Whole-algorithm behavior: add canonicalization and the global schedule, and the paper claims Church–Rosser confluence and optimality for the nonlinear systems. Church–Rosser is the broader agreement property: paths that start together can be continued to a common result—not necessarily in one step.",
+    "sourceUnitIds": [
+      "u000387"
+    ]
+  },
+  {
+    "id": "n0000431",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "The paper invites you to see λ-calculus as a projection of Δ-Nets. λ-terms force a narrow form of sharing; nets can say sharing relationships that plain syntax hides. If the reduction machinery holds up, that freedom could matter for parallel runtimes and machine architectures.",
+    "sourceUnitIds": [
+      "u000390"
+    ]
+  },
+  {
+    "id": "n0000434",
+    "kind": "source",
+    "densityScore": 0.8,
+    "text": "Δ-Nets tries to make optimal parallel evaluation practical by packing each sharing context into a variable-arity replicator, then combining local interactions with only as much global discipline as you need to avoid preventable work.",
+    "sourceUnitIds": [
+      "u000393"
+    ]
+  }
+]

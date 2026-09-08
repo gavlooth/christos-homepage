@@ -1,0 +1,247 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0005-flat-02",
+  "context": [
+    "Δ-Nets",
+    "Reduction needs housekeeping and a schedule.",
+    "Discard what was not marked"
+  ],
+  "units": [
+    {
+      "id": "u000332",
+      "kind": "prose",
+      "text": "Delete the unmarked nodes. Wires that still touch them end in erasers instead."
+    },
+    {
+      "id": "u000333",
+      "kind": "prose",
+      "text": "C"
+    },
+    {
+      "id": "u000334",
+      "kind": "heading",
+      "text": "### Choose the space/time trade-off"
+    },
+    {
+      "id": "u000335",
+      "kind": "prose",
+      "text": "Run the sweep at the end, or earlier to save space. When memory matters most, the paper recommends it after every application of an abstraction that ignores its argument."
+    },
+    {
+      "id": "u000336",
+      "kind": "prose",
+      "text": "1 · Proper net with a detached island"
+    },
+    {
+      "id": "u000337",
+      "kind": "prose",
+      "text": "flowchart TB\nrootS((root))\nkeep[\"reachable subnet\"]\nisland[\"unmarked island\"]\nrootS --> keep"
+    },
+    {
+      "id": "u000338",
+      "kind": "prose",
+      "text": "2–3 · Mark, then delete unmarked"
+    },
+    {
+      "id": "u000339",
+      "kind": "prose",
+      "text": "flowchart TB\nrootC((root))\nkeep2[\"reachable subnet\"]\nEcap[\"E · exposed wires\"]\nrootC --> keep2\nkeep2 -.-> Ecap"
+    },
+    {
+      "id": "u000340",
+      "kind": "prose",
+      "text": "This is a global cleanup pass, not a principal-port interaction. The sweep begins at the distinguished root, marks the graph material reachable through the parent–child wiring, and deletes everything else. Where deleting an unmarked node exposes a connection that remains in the net, that connection is terminated by E. The schematic follows the erasure canonicalization described in [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4)."
+    },
+    {
+      "id": "u000341",
+      "kind": "heading",
+      "text": "### 6.3 Sharing needs replicator cleanup"
+    },
+    {
+      "id": "u000342",
+      "kind": "prose",
+      "text": "In ΔI and ΔK, interactions can build trees made only of replicators. A merge rule collapses consecutive replicators once a local level test shows they are unpaired. Pairing information stays intact; the tree gets shorter."
+    },
+    {
+      "id": "u000343",
+      "kind": "prose",
+      "text": "Δ"
+    },
+    {
+      "id": "u000344",
+      "kind": "heading",
+      "text": "### The local merge test"
+    }
+  ]
+}

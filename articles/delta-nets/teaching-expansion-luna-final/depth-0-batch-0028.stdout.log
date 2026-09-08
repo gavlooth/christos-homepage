@@ -1,0 +1,1 @@
+{"items":[{"recordId":"teach-n0001087","units":[{"role":"statement","basis":"source","text":"The lambda expression λx. x (x (x x)) has four occurrence endpoints.","requires":[],"citationRequired":true},{"role":"statement","basis":"source","text":"The four occurrence endpoint levels in this expression are 0, 1, 2, and 3.","requires":[],"citationRequired":true}]}]}

@@ -1,0 +1,300 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0002",
+  "context": [
+    "go-mHC: Direct Parameterization of Manifold-Constrained  Hyper-Connections via Generalized Orthostochastic Matrices",
+    "1 Introduction"
+  ],
+  "units": [
+    {
+      "id": "u000024",
+      "kind": "prose",
+      "text": "2. 2.\n     Scales as <!-- MathML: <math alttext=\"\\mathcal{O}(d^{3})\" class=\"ltx_Math\" display=\"inline\" id=\"S1.I1.i2.p1.m1\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><msup><mi>d</mi><mn>3</mn></msup><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d^{3})</annotation></semantics></math> --> 𝒪⁡(d3)\\mathcal{O}(d^{3}) with the number of residual streams <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S1.I1.i2.p1.m2\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd, both in FLOP complexity and parameter count, surpassing the super-exponential scaling of mHC-lite and KromHC’s component factors."
+    },
+    {
+      "id": "u000025",
+      "kind": "prose",
+      "text": "3. 3.\n     Requires no custom CUDA kernels, relying only on batched linear solves and tensor contractions."
+    },
+    {
+      "id": "u000026",
+      "kind": "prose",
+      "text": "4. 4.\n     Achieves exact double stochasticity by construction, with no iterations and no approximation gap."
+    },
+    {
+      "id": "u000027",
+      "kind": "prose",
+      "text": "5. 5.\n     Includes a hyperparameter <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S1.I1.i5.p1.m1\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss, which serves as a tunable degree of freedom, interpolating between the orthostochastic boundary (<!-- MathML: <math alttext=\"s=1\" class=\"ltx_Math\" display=\"inline\" id=\"S1.I1.i5.p1.m2\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">s=1</annotation></semantics></math> --> s=1s=1) and the dense interior of the Birkhoff polytope (<!-- MathML: <math alttext=\"s\\to\\infty\" class=\"ltx_Math\" display=\"inline\" id=\"S1.I1.i5.p1.m3\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo stretchy=\"false\">→</mo><mi mathvariant=\"normal\">∞</mi></mrow><annotation encoding=\"application/x-tex\">s\\to\\infty</annotation></semantics></math> --> s→∞s\\to\\infty)."
+    },
+    {
+      "id": "u000028",
+      "kind": "prose",
+      "text": "We believe that this method presents a potential avenue for scaling Hyper-Connections with tractable complexity while maintaining significant expressivity. Additionally, our method can be used simultaneously with KromHC to allow for larger Kronecker factors due to the mitigation of the super-exponential scaling introduced in mHC-lite."
+    },
+    {
+      "id": "u000029",
+      "kind": "heading",
+      "text": "## 2 Related Work"
+    },
+    {
+      "id": "u000030",
+      "kind": "heading",
+      "text": "##### Residual connections and their generalizations."
+    },
+    {
+      "id": "u000031",
+      "kind": "prose",
+      "text": "He et al. ([He et al., 2015](#bib.bib7 \"\")) introduced skip connections that enable gradient flow via identity shortcuts in ResNets.\nThis paradigm has evolved to become a key component in the design of large language models (LLMs) owing to its stability and scalability ([Vaswani et al., 2023](#bib.bib20 \"\"); [Radford et al., 2019](#bib.bib21 \"\")).\nDenseNet ([Huang et al., 2018](#bib.bib12 \"\")), FractalNet ([Larsson et al., 2017](#bib.bib28 \"\")), and subsequent works explored richer connectivity patterns passing intermediate features across networks. Other works have explored novel ways of increasing the effective size of the residual stream ([Mak and Flanigan, 2025](#bib.bib29 \"\"); [Pagliardini et al., 2024](#bib.bib30 \"\"); [Xie et al., 2023](#bib.bib19 \"\"); [Baykal et al., 2023](#bib.bib22 \"\")), examples include: ResiDual ([Xie et al., 2023](#bib.bib19 \"\")), which explored improvements to layer normalization by doubling the size of the residual stream, and AltUp ([Baykal et al., 2023](#bib.bib22 \"\")), which widened the effective hidden dimension while maintaining low compute by processing partitioned representations in different layers."
+    },
+    {
+      "id": "u000032",
+      "kind": "prose",
+      "text": "Hyper-Connections (HC) ([Zhu et al., 2025a](#bib.bib2 \"\")) proposed the first learnable, multi-stream generalization of residual streams allowing for dynamic mixing matrices. A sketch of one such residual block is shown in the green box of figure [1](#S1.F1 \"Figure 1 ‣ 1 Introduction ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\"). HC can theoretically enable models to learn depth and width connections to dynamically rearrange layer connectivity and potentially adds a new avenue for scaling.\nMultiple approaches have expanded on this work since, such as splitting\nthe feature dimension into independent sub-streams ([Zhu et al., 2025b](#bib.bib5 \"\")) and applying HC to vision and graph neural networks ([Zhu et al., 2025a](#bib.bib2 \"\"); [Mishra, 2026](#bib.bib23 \"\"))."
+    },
+    {
+      "id": "u000033",
+      "kind": "prose",
+      "text": "However, the unconstrained dynamic connectivity of residual blocks in HC removes the explicit guarantee of the identity property – introducing the risk of gradient instability after repeated applications of the mixing terms ([Xie et al., 2026](#bib.bib1 \"\")). This instability impacts deep networks and restricts scalability due to vanishing and exploding gradients. Subsequent works investigate constraining this connectivity to a manifold that bounds gradient updates through the spectral norm in order to address this instability."
+    },
+    {
+      "id": "u000034",
+      "kind": "heading",
+      "text": "##### Manifold-Constrained Hyper-Connections."
+    },
+    {
+      "id": "u000035",
+      "kind": "prose",
+      "text": "Building on top of Hyper-Connections, Manifold-Constrained Hyper Connections (mHC) constrain the dynamic residual matrices to a manifold to improve training stability while still allowing for dynamic connections ([Xie et al., 2026](#bib.bib1 \"\")). mHC primarily changes the definition of <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p1.m1\" intent=\":literal\"><semantics><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{res}}</annotation></semantics></math> --> ℋlres\\mathcal{H}_{l}^{\\text{res}} such that it converges to the Birkhoff polytope <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p1.m2\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d}, where <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} denotes the closed set of doubly stochastic matrices, defined as positive matrices with the following property:"
+    },
+    {
+      "id": "u000036",
+      "kind": "table",
+      "text": "|  | <!-- MathML: <math alttext=\"\\mathbf{M}^{\\top}\\mathbf{J}_{d}=\\mathbf{M}\\mathbf{J}_{d}=\\mathbf{J}_{d},\" class=\"ltx_Math\" display=\"block\" id=\"S2.Ex1.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mi>𝐌</mi><mo>⊤</mo></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐉</mi><mi>d</mi></msub></mrow><mo>=</mo><msub><mi>𝐌𝐉</mi><mi>d</mi></msub><mo>=</mo><msub><mi>𝐉</mi><mi>d</mi></msub></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\mathbf{M}^{\\top}\\mathbf{J}_{d}=\\mathbf{M}\\mathbf{J}_{d}=\\mathbf{J}_{d},</annotation></semantics></math> --> 𝐌⊤​𝐉d=𝐌𝐉d=𝐉d,\\mathbf{M}^{\\top}\\mathbf{J}_{d}=\\mathbf{M}\\mathbf{J}_{d}=\\mathbf{J}_{d}, |  |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |"
+    },
+    {
+      "id": "u000037",
+      "kind": "prose",
+      "text": "where <!-- MathML: <math alttext=\"\\mathbf{J}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p1.m4\" intent=\":literal\"><semantics><msub><mi>𝐉</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathbf{J}_{d}</annotation></semantics></math> --> 𝐉d\\mathbf{J}_{d} denotes the <!-- MathML: <math alttext=\"d\\times d\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p1.m5\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d\\times d</annotation></semantics></math> --> d×dd\\times d ones matrix. See the blue spectral region in figure [1](#S1.F1 \"Figure 1 ‣ 1 Introduction ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") of mHC."
+    },
+    {
+      "id": "u000038",
+      "kind": "prose",
+      "text": "While mHC attempts to enforce this constraint after weight updates using the Sinkhorn-Knopp (SK) algorithm ([Knopp and Sinkhorn, 1967](#bib.bib8 \"\")), an iterative normalization method for generating doubly stochastic matrices, recent works ([Yang and Gao, 2026](#bib.bib3 \"\"); [Zhou et al., 2026](#bib.bib6 \"\")) aim to build HC networks where the learned map is exactly constrained to the polytope. This has two major implications: 1. implementing the SK kernel requires careful kernel-level optimization for efficiency, and 2. finite SK iterations introduce an approximation gap that accumulates with network depth."
+    },
+    {
+      "id": "u000039",
+      "kind": "prose",
+      "text": "mHC-lite ([Yang and Gao, 2026](#bib.bib3 \"\")) attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of the <!-- MathML: <math alttext=\"d!\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m1\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>!</mo></mrow><annotation encoding=\"application/x-tex\">d!</annotation></semantics></math> --> d!d! permutation matrices (where <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m2\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd is the number of residual streams), at an <!-- MathML: <math alttext=\"\\mathcal{O}(dC\\cdot d!)\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m3\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><mi>d</mi><mo>!</mo></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(dC\\cdot d!)</annotation></semantics></math> --> 𝒪⁡(d​C⋅d!)\\mathcal{O}(dC\\cdot d!) cost. This method works well for small <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m4\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd, however, this is not tenable in the limit of scaling <!-- MathML: <math alttext=\"d&gt;8\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m5\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>8</mn></mrow><annotation encoding=\"application/x-tex\">d&gt;8</annotation></semantics></math> --> d>8d>8. KromHC ([Zhou et al., 2026](#bib.bib6 \"\")) sacrifices expressivity and complete coverage of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m6\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} by using tensor products to train residual connections on a much smaller set of exactly double-stochastic matrices with the added benefit of costing only <!-- MathML: <math alttext=\"\\mathcal{O}(d^{2}C)\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m7\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d^{2}C)</annotation></semantics></math> --> 𝒪⁡(d2​C)\\mathcal{O}(d^{2}C)."
+    },
+    {
+      "id": "u000040",
+      "kind": "heading",
+      "text": "##### Cayley transforms in neural networks."
+    },
+    {
+      "id": "u000041",
+      "kind": "prose",
+      "text": "The Cayley transform has been used to parameterize orthogonal matrices in recurrent networks ([Helfrich et al., 2018](#bib.bib9 \"\")), and comparisons with the matrix exponential show similar quality and better stability at lower FLOP cost ([Lezcano-Casado and Martínez-Rubio, 2019](#bib.bib10 \"\")).\nLi et al. ([Li et al. (2020)](#bib.bib11 \"\")) further demonstrate that iterative Cayley-based optimization outperforms matrix exponential approaches for Stiefel manifold problems."
+    },
+    {
+      "id": "u000042",
+      "kind": "heading",
+      "text": "##### Doubly Stochastic & Orthostochastic matrices."
+    },
+    {
+      "id": "u000043",
+      "kind": "prose",
+      "text": "Multiple works have investigated the use of doubly stochastic matrices in the context of neural network parameterization ([Sander et al., 2022](#bib.bib25 \"\"); [Adams and Zemel, 2011](#bib.bib31 \"\"); [Tay et al., 2020](#bib.bib26 \"\")). [Gutkin (2013)](#bib.bib45 \"\") introduced generalized orthostochastic matrices, and more recently, [Nechita et al. (2023)](#bib.bib4 \"\") proved that the set of generalized <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px4.p1.m1\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-orthostochastic matrices is contained in <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px4.p1.m2\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} and spans all of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px4.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} as <!-- MathML: <math alttext=\"s\\to\\infty\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px4.p1.m4\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo stretchy=\"false\">→</mo><mi mathvariant=\"normal\">∞</mi></mrow><annotation encoding=\"application/x-tex\">s\\to\\infty</annotation></semantics></math> --> s→∞s\\to\\infty. Other works have investigated further properties of the spectral span of the Birkhoff polytope ([Kim and Kim, 2022](#bib.bib52 \"\")) and the geometry of <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px4.p1.m5\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-orthostochastic matrices in the quantum setting ([Zyczkowski et al., 2003](#bib.bib15 \"\"); [Korzekwa et al., 2018](#bib.bib47 \"\"); [Shahbeigi et al., 2021](#bib.bib46 \"\")).\nThese theoretical foundations underlie our choice of parameterization.\nTo our knowledge, we are the first to apply this construction in a machine learning setting and, more specifically, to learned residual stream routing in deep networks."
+    },
+    {
+      "id": "u000044",
+      "kind": "heading",
+      "text": "## 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections"
+    },
+    {
+      "id": "u000045",
+      "kind": "heading",
+      "text": "### 3.1 Hyper-Connections"
+    },
+    {
+      "id": "u000046",
+      "kind": "prose",
+      "text": "Following the illustration in figure [1](#S1.F1 \"Figure 1 ‣ 1 Introduction ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") and prior work ([Zhu et al., 2025a](#bib.bib2 \"\"); [Xie et al., 2026](#bib.bib1 \"\")), we define a single Hyper-Connection block’s <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd-stream state <!-- MathML: <math alttext=\"\\mathbf{x}_{l}\\in\\mathbb{R}^{d\\times B\\times L\\times D}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m2\" intent=\":literal\"><semantics><mrow><msub><mi>𝐱</mi><mi>l</mi></msub><mo>∈</mo><msup><mi>ℝ</mi><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>B</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>L</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>D</mi></mrow></msup></mrow><annotation encoding=\"application/x-tex\">\\mathbf{x}_{l}\\in\\mathbb{R}^{d\\times B\\times L\\times D}</annotation></semantics></math> --> 𝐱l∈ℝd×B×L×D\\mathbf{x}_{l}\\in\\mathbb{R}^{d\\times B\\times L\\times D} with the recursion relation including a residual block <!-- MathML: <math alttext=\"\\mathcal{F}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m3\" intent=\":literal\"><semantics><mi class=\"ltx_font_mathcaligraphic\">ℱ</mi><annotation encoding=\"application/x-tex\">\\mathcal{F}</annotation></semantics></math> --> ℱ\\mathcal{F}:"
+    },
+    {
+      "id": "u000047",
+      "kind": "table",
+      "text": "|  | <!-- MathML: <math alttext=\"\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\,\\mathcal{F}\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\,\\mathbf{x}_{l},\\,\\mathbf{W}_{l}\\right),\" class=\"ltx_Math\" display=\"block\" id=\"S3.E1.m1\" intent=\":literal\"><semantics><mrow><mrow><msub><mi>𝐱</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐱</mi><mi>l</mi></msub></mrow><mo>+</mo><mrow><msup><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>post</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mo>⊤</mo></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mpadded style=\"width:0.648em;\" width=\"0.648em\"><mi class=\"ltx_font_mathcaligraphic\">ℱ</mi></mpadded><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo>(</mo><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>pre</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐱</mi><mi>l</mi></msub></mrow><mo>,</mo><msub><mi>𝐖</mi><mi>l</mi></msub><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\,\\mathcal{F}\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\,\\mathbf{x}_{l},\\,\\mathbf{W}_{l}\\right),</annotation></semantics></math> --> 𝐱l+1=ℋlres​𝐱l+(ℋlpost)⊤​ℱ​(ℋlpre​𝐱l,𝐖l),\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\\\,\\mathcal{F}\\\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\\\,\\mathbf{x}_{l},\\\\,\\mathbf{W}_{l}\\right), |  | (1) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --- |"
+    }
+  ]
+}

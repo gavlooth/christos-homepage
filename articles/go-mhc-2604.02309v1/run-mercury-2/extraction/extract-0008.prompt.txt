@@ -1,0 +1,241 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0008",
+  "context": [
+    "go-mHC: Direct Parameterization of Manifold-Constrained  Hyper-Connections via Generalized Orthostochastic Matrices",
+    "4 Expressivity",
+    "4.3 FLOP Complexity"
+  ],
+  "units": [
+    {
+      "id": "u000093",
+      "kind": "prose",
+      "text": "We additionally track the additional overhead of our method on top of Hyper-Connections. In unconstrained HC, experiments show negligible incurred FLOP complexity (<!-- MathML: <math alttext=\"\\approx 0.15\\%\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m1\" intent=\":literal\"><semantics><mrow><mphantom /><mo>≈</mo><mrow><mn>0.15</mn><mo>%</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\approx 0.15\\%</annotation></semantics></math> --> ≈0.15%\\approx 0.15\\\\% increase) during a forward pass in a 7B parameter model ([Zhu et al., 2025a](#bib.bib2 \"\")). Projecting onto a manifold with <!-- MathML: <math alttext=\"\\mathcal{P}_{\\mathsf{M}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m2\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mi>𝖬</mi></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\mathsf{M}}</annotation></semantics></math> --> 𝒫𝖬\\mathcal{P}_{\\mathsf{M}} incurs an additional FLOP complexity due to the procedure introduced by <!-- MathML: <math alttext=\"\\mathsf{M}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m3\" intent=\":literal\"><semantics><mi>𝖬</mi><annotation encoding=\"application/x-tex\">\\mathsf{M}</annotation></semantics></math> --> 𝖬\\mathsf{M}. In mHC, this is significant (<!-- MathML: <math alttext=\"\\approx 8\\%\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m4\" intent=\":literal\"><semantics><mrow><mphantom /><mo>≈</mo><mrow><mn>8</mn><mo>%</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\approx 8\\%</annotation></semantics></math> --> ≈8%\\approx 8\\\\% additional time overhead for a 27B model) even after the development of custom kernels and major infrastructure improvements to perform the Sinkhorn-Knopp iterations. KromHC and mHC-lite (in the small <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m5\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd regime) both show significant speed ups due to the removal of the iterative updates. We here calculate the FLOP complexity of our method to show that it is superexponentially better than mHC-lite and incurs a small relative overhead compared to KromHC for the increased expressivity. For example, for <!-- MathML: <math alttext=\"d=16\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m6\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>=</mo><mn>16</mn></mrow><annotation encoding=\"application/x-tex\">d=16</annotation></semantics></math> --> d=16d=16, the flop complexity of go-mHC is <!-- MathML: <math alttext=\"2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m7\" intent=\":literal\"><semantics><mn>2</mn><annotation encoding=\"application/x-tex\">2</annotation></semantics></math> --> 22 orders of magnitude slower than KromHC, compared to the <!-- MathML: <math alttext=\"16\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m8\" intent=\":literal\"><semantics><mn>16</mn><annotation encoding=\"application/x-tex\">16</annotation></semantics></math> --> 1616 orders of magnitude imposed by mHC-lite. It is also approximately the same order of magnitude in complexity as mHC with SK iterations due to <!-- MathML: <math alttext=\"\\mathcal{O}(d)\\approx\\mathcal{O}(S)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS3.p1.m9\" intent=\":literal\"><semantics><mrow><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mi>d</mi><mo stretchy=\"false\">)</mo></mrow></mrow><mo>≈</mo><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mi>S</mi><mo stretchy=\"false\">)</mo></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d)\\approx\\mathcal{O}(S)</annotation></semantics></math> --> 𝒪⁡(d)≈𝒪⁡(S)\\mathcal{O}(d)\\approx\\mathcal{O}(S)."
+    },
+    {
+      "id": "u000094",
+      "kind": "prose",
+      "text": "In general, the model performance improvement is larger than the incurred computational\ncost; however, when considering scaling the number of residual streams to allow for richer\ntopology, the complexity begins to set a practical limit – we hope to provide a\nmiddle ground method that provides a good balance of incurred FLOP cost while maintaining\nrich enough expressivity to allow for scaling."
+    },
+    {
+      "id": "u000095",
+      "kind": "prose",
+      "text": "*Table 2: Theoretical FLOP complexity per layer. FLOP counts demonstrate that go-mHC provides a practical middle ground for scaling residual streams, bypassing the superexponential cost of mHC-lite and the iterative overhead of SK iterations in mHC, with <!-- MathML: <math alttext=\"S\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m4\" intent=\":literal\"><semantics><mi>S</mi><annotation encoding=\"application/x-tex\">S</annotation></semantics></math> --> SS being the number of SK iterations. Nominal values for the constants below are: <!-- MathML: <math alttext=\"S=20,i_{k}=2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m5\" intent=\":literal\"><semantics><mrow><mrow><mi>S</mi><mo>=</mo><mn>20</mn></mrow><mo>,</mo><mrow><msub><mi>i</mi><mi>k</mi></msub><mo>=</mo><mn>2</mn></mrow></mrow><annotation encoding=\"application/x-tex\">S=20,i_{k}=2</annotation></semantics></math> --> S=20,ik=2S=20,i_{k}=2, and <!-- MathML: <math alttext=\"s\\in\\{1,2\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m6\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>∈</mo><mrow><mo maxsize=\"1.110em\" minsize=\"1.110em\">{</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow><mo maxsize=\"1.110em\" minsize=\"1.110em\">}</mo></mrow></mrow><annotation encoding=\"application/x-tex\">s\\in\\{1,2\\}</annotation></semantics></math> --> s∈{1,2}s\\in\\\\{1,2\\\\}. See appendix [B.6](#A2.SS6 \"B.6 Approximate FLOP Expressions ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") for our full FLOP estimates.*"
+    },
+    {
+      "id": "u000096",
+      "kind": "table",
+      "text": "| Method                                                                                                                                                                                                   | FLOP complexity (per layer)                                                                                                                                                                              |\n| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| mHC                                                                                                                                                                                                      | <!-- MathML: <math alttext=\"\\mathcal{O}\\left(C\\cdot S\\cdot d^{2}\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m7\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mi>S</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><msup><mi>d</mi><mn>2</mn></msup></mrow><mo>)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}\\left(C\\cdot S\\cdot d^{2}\\right)</annotation></semantics></math> --> 𝒪⁡(C⋅S⋅d2)\\mathcal{O}\\left(C\\cdot S\\cdot d^{2}\\right) |\n| go-mHC (<!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m8\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss) | <!-- MathML: <math alttext=\"\\mathcal{O}\\left(C\\cdot s^{3}\\cdot d^{3}\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m9\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><msup><mi>s</mi><mn>3</mn></msup><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><msup><mi>d</mi><mn>3</mn></msup></mrow><mo>)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}\\left(C\\cdot s^{3}\\cdot d^{3}\\right)</annotation></semantics></math> --> 𝒪⁡(C⋅s3⋅d3)\\mathcal{O}\\left(C\\cdot s^{3}\\cdot d^{3}\\right) |\n| mHC-lite                                                                                                                                                                                                 | <!-- MathML: <math alttext=\"\\mathcal{O}\\left(C\\cdot d^{2}\\cdot d!\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m10\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><mi>d</mi><mo>!</mo></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}\\left(C\\cdot d^{2}\\cdot d!\\right)</annotation></semantics></math> --> 𝒪⁡(C⋅d2⋅d!)\\mathcal{O}\\left(C\\cdot d^{2}\\cdot d!\\right) |\n| KromHC                                                                                                                                                                                                   | <!-- MathML: <math alttext=\"\\mathcal{O}\\left(C\\cdot\\log_{i_{k}}(d)\\cdot i_{k}^{2}\\cdot(i_{k}!)+C\\cdot d^{2}\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T2.m11\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mrow><mi>C</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><msub><mi>log</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mi>d</mi><mo rspace=\"0.055em\" stretchy=\"false\">)</mo></mrow></mrow><mo rspace=\"0.222em\">⋅</mo><msubsup><mi>i</mi><mi>k</mi><mn>2</mn></msubsup><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><mo stretchy=\"false\">(</mo><mrow><msub><mi>i</mi><mi>k</mi></msub><mo>!</mo></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><mo>+</mo><mrow><mi>C</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><msup><mi>d</mi><mn>2</mn></msup></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}\\left(C\\cdot\\log_{i_{k}}(d)\\cdot i_{k}^{2}\\cdot(i_{k}!)+C\\cdot d^{2}\\right)</annotation></semantics></math> --> 𝒪⁡(C⋅logik⁡(d)⋅ik2⋅(ik!)+C⋅d2)\\mathcal{O}\\left(C\\cdot\\log_{i_{k}}(d)\\cdot i_{k}^{2}\\cdot(i_{k}!)+C\\cdot d^{2}\\right) |"
+    },
+    {
+      "id": "u000097",
+      "kind": "heading",
+      "text": "## 5 Convergence"
+    },
+    {
+      "id": "u000098",
+      "kind": "prose",
+      "text": "The performance and convergence properties of <!-- MathML: <math alttext=\"\\mathcal{P}_{\\mathsf{M}}\" class=\"ltx_Math\" display=\"inline\" id=\"S5.p1.m1\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mi>𝖬</mi></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\mathsf{M}}</annotation></semantics></math> --> 𝒫𝖬\\mathcal{P}_{\\mathsf{M}} are fundamentally governed by the geometry of the underlying loss landscape introduced by <!-- MathML: <math alttext=\"\\mathsf{M}\" class=\"ltx_Math\" display=\"inline\" id=\"S5.p1.m2\" intent=\":literal\"><semantics><mi>𝖬</mi><annotation encoding=\"application/x-tex\">\\mathsf{M}</annotation></semantics></math> --> 𝖬\\mathsf{M} and the stability of the associated gradient signals. In the context of mHC this indicates that any target matrix should be reachable regardless of initial conditions using finite optimization iterations. We do expect go-mHC to have learnable gradients, be convergent and fully connected (able to get to any target matrix). See appendix [B.7](#A2.SS7 \"B.7 Proofs of Coverage, Path Connectedness and Gradient Stability ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") for more details on this claim and associated proofs."
+    },
+    {
+      "id": "u000099",
+      "kind": "prose",
+      "text": "Not all matrix parameterizations are learnable and fully connected. mHC-lite should generally perform well by choosing a good initialization, but we suspect that this does not mitigate the fact that it may become very difficult to relearn an <!-- MathML: <math alttext=\"n\" class=\"ltx_Math\" display=\"inline\" id=\"S5.p2.m1\" intent=\":literal\"><semantics><mi>n</mi><annotation encoding=\"application/x-tex\">n</annotation></semantics></math> --> nn-stream transform after having previously converged as the model trains for longer due to the potential of vanishing gradients (a heuristic example is from needing to remap streams due to generalization). Numerics and further discussion can be found in the appendix [B.10](#A2.SS10 \"B.10 Gradient Vanishing and Crosstalk in mHC-lite ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+    },
+    {
+      "id": "u000100",
+      "kind": "heading",
+      "text": "### 5.1 Synthetic Stream Mixing Performance"
+    },
+    {
+      "id": "u000101",
+      "kind": "prose",
+      "text": "To establish a baseline for performance, we first conduct a synthetic “toy model” experiment designed to evaluate the reconstruction capabilities of\nthe proposed manifold parameterizations in a controlled environment.\nThe framework generates a set of ground truth doubly stochastic matrices <!-- MathML: <math alttext=\"\\mathbf{T}_{i}\" class=\"ltx_Math\" display=\"inline\" id=\"S5.SS1.p1.m1\" intent=\":literal\"><semantics><msub><mi>𝐓</mi><mi>i</mi></msub><annotation encoding=\"application/x-tex\">\\mathbf{T}_{i}</annotation></semantics></math> --> 𝐓i\\mathbf{T}_{i} and a dataset of dense activations in the residual stream <!-- MathML: <math alttext=\"\\mathbf{X}_{j}\\in\\mathcal{X}\" class=\"ltx_Math\" display=\"inline\" id=\"S5.SS1.p1.m2\" intent=\":literal\"><semantics><mrow><msub><mi>𝐗</mi><mi>j</mi></msub><mo>∈</mo><mi class=\"ltx_font_mathcaligraphic\">𝒳</mi></mrow><annotation encoding=\"application/x-tex\">\\mathbf{X}_{j}\\in\\mathcal{X}</annotation></semantics></math> --> 𝐗j∈𝒳\\mathbf{X}_{j}\\in\\mathcal{X}. We then calculate noisy targets <!-- MathML: <math alttext=\"\\mathbf{Y}_{i,j}\" class=\"ltx_Math\" display=\"inline\" id=\"S5.SS1.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝐘</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><annotation encoding=\"application/x-tex\">\\mathbf{Y}_{i,j}</annotation></semantics></math> --> 𝐘i,j\\mathbf{Y}_{i,j} representing\na target latent representation within the residual stream:"
+    },
+    {
+      "id": "u000102",
+      "kind": "table",
+      "text": "|  | <!-- MathML: <math alttext=\"\\mathbf{Y}_{i,j}=\\mathbf{T}_{i}\\mathbf{X}_{j}+\\mathbf{\\xi}\" class=\"ltx_Math\" display=\"block\" id=\"S5.E13.m1\" intent=\":literal\"><semantics><mrow><msub><mi>𝐘</mi><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub><mo>=</mo><mrow><mrow><msub><mi>𝐓</mi><mi>i</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐗</mi><mi>j</mi></msub></mrow><mo>+</mo><mi>ξ</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathbf{Y}_{i,j}=\\mathbf{T}_{i}\\mathbf{X}_{j}+\\mathbf{\\xi}</annotation></semantics></math> --> 𝐘i,j=𝐓i​𝐗j+ξ\\mathbf{Y}_{i,j}=\\mathbf{T}_{i}\\mathbf{X}_{j}+\\mathbf{\\xi} |  | (13) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |"
+    },
+    {
+      "id": "u000103",
+      "kind": "prose",
+      "text": "[Artifact storage: ~/.omp/agent/sessions/-code-refine/2026-08-27T06-37-15-375Z_01a041ef-e2ef-7000-add7-e3bcd8126883/75.read.log (496.0KB). Use artifact://75:N-M to page, artifact://75:raw:N-M for verbatim chunks, and the artifact file path for search/copy workflows.]"
+    },
+    {
+      "id": "u000104",
+      "kind": "prose",
+      "text": "[Showing lines 1-271 of 1161 (149.7KB limit). Use :272 to continue]"
+    }
+  ]
+}

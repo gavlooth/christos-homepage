@@ -1,0 +1,211 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0007",
+  "context": [
+    "go-mHC: Direct Parameterization of Manifold-Constrained  Hyper-Connections via Generalized Orthostochastic Matrices",
+    "4 Expressivity",
+    "4.2 Parameter Complexity"
+  ],
+  "units": [
+    {
+      "id": "u000087",
+      "kind": "prose",
+      "text": "go-mHC’s per-layer parameter complexity is similar to that of mHC, and much lower than that of mHC-lite.\nWe note that it is <!-- MathML: <math alttext=\"\\mathcal{O}(dC\\cdot d^{2}s^{2})\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p1.m1\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><msup><mi>d</mi><mn>2</mn></msup></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><msup><mi>s</mi><mn>2</mn></msup></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(dC\\cdot d^{2}s^{2})</annotation></semantics></math> --> 𝒪⁡(d​C⋅d2​s2)\\mathcal{O}(dC\\cdot d^{2}s^{2}), similar to mHC’s <!-- MathML: <math alttext=\"\\mathcal{O}(dC\\cdot d^{2})\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p1.m2\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><msup><mi>d</mi><mn>2</mn></msup></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(dC\\cdot d^{2})</annotation></semantics></math> --> 𝒪⁡(d​C⋅d2)\\mathcal{O}(dC\\cdot d^{2}) and much better than the exact solution inmHC-lite that requires <!-- MathML: <math alttext=\"\\mathcal{O}(dC\\cdot d!)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p1.m3\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><mi>d</mi><mo>!</mo></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(dC\\cdot d!)</annotation></semantics></math> --> 𝒪⁡(d​C⋅d!)\\mathcal{O}(dC\\cdot d!). KromHC trades off expressivity for a much smaller parameter\ncount that is <!-- MathML: <math alttext=\"\\mathcal{O}(dC\\cdot d)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p1.m4\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mi>d</mi></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(dC\\cdot d)</annotation></semantics></math> --> 𝒪⁡(d​C⋅d)\\mathcal{O}(dC\\cdot d). See table [1](#S4.T1 \"Table 1 ‣ 4.2 Parameter Complexity ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") for exact expressions and figure [5](#S4.F5 \"Figure 5 ‣ 4.2 Parameter Complexity ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") for a visual comparison for residual streams of size <!-- MathML: <math alttext=\"d\\in[2,32]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p1.m5\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>∈</mo><mrow><mo stretchy=\"false\">[</mo><mrow><mn>2</mn><mo>,</mo><mn>32</mn></mrow><mo stretchy=\"false\">]</mo></mrow></mrow><annotation encoding=\"application/x-tex\">d\\in[2,32]</annotation></semantics></math> --> d∈[2,32]d\\in[2,32]."
+    },
+    {
+      "id": "u000088",
+      "kind": "prose",
+      "text": "*Figure 5: Comparing the total number of learnable parameters in mHC with its exact variants. go-mHC (green), same scaling as mHC regardless of <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m9\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss, with <!-- MathML: <math alttext=\"s=1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m10\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">s=1</annotation></semantics></math> --> s=1s=1 requiring less parameters due to the skew-symmetry. mHC-lite (orange) scales with <!-- MathML: <math alttext=\"\\mathcal{O}(d!)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m11\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>d</mi><mo>!</mo></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d!)</annotation></semantics></math> --> 𝒪⁡(d!)\\mathcal{O}(d!) despite its exactness and completeness over <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m12\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d}, blowing up beyond <!-- MathML: <math alttext=\"d=8\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m13\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding=\"application/x-tex\">d=8</annotation></semantics></math> --> d=8d=8 and becoming intractable. KromHC (red) scales the fastest <!-- MathML: <math alttext=\"\\mathcal{O}(d\\log d)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m14\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>d</mi><mo lspace=\"0.167em\" rspace=\"0em\">​</mo><mrow><mi>log</mi><mo lspace=\"0.167em\">⁡</mo><mi>d</mi></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d\\log d)</annotation></semantics></math> --> 𝒪⁡(d​log⁡d)\\mathcal{O}(d\\log d) faster than mHC by trading off expressivity and imposing a strong symmetry on residual stream interactions. KromHC relies on the factorization of <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m15\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd and we therefore only analyze the best case parameter count when <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F5.m16\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd is a power of 2.*"
+    },
+    {
+      "id": "u000089",
+      "kind": "prose",
+      "text": "*Table 1: Total Parameter Counts*"
+    },
+    {
+      "id": "u000090",
+      "kind": "table",
+      "text": "| Method                                                                                                                                                                                                   | Parameter Count                                                                                                                                                                                          |\n| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| mHC                                                                                                                                                                                                      | <!-- MathML: <math alttext=\"\\color[rgb]{0,0,1}(dC+1)d^{2}+2d^{2}C+2d+3\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T1.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">C</mi></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">+</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><msup><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">2</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>d</mi></mrow><mo>+</mo><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">\\color[rgb]{0,0,1}(dC+1)d^{2}+2d^{2}C+2d+3</annotation></semantics></math> --> (d​C+1)​d2+2​d2​C+2​d+3\\color[rgb]{0,0,1}(dC+1)d^{2}+2d^{2}C+2d+3 |\n| go-mHC (<!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T1.m2\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss) | <!-- MathML: <math alttext=\"\\color[rgb]{0,0,1}(dC+1)\\frac{ds(ds-1)}{2}+2d^{2}C+2d+3\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T1.m3\" intent=\":literal\"><semantics><mrow><mrow><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">C</mi></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">+</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><mfrac mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\"><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">s</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">s</mi></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">−</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow></mrow><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">2</mn></mfrac></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>d</mi></mrow><mo>+</mo><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">\\color[rgb]{0,0,1}(dC+1)\\frac{ds(ds-1)}{2}+2d^{2}C+2d+3</annotation></semantics></math> --> (d​C+1)​d​s​(d​s−1)2+2​d2​C+2​d+3\\color[rgb]{0,0,1}(dC+1)\\frac{ds(ds-1)}{2}+2d^{2}C+2d+3 |\n| mHC-lite                                                                                                                                                                                                 | <!-- MathML: <math alttext=\"\\color[rgb]{0,0,1}(dC+1)d!+2d^{2}C+2d+3\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T1.m4\" intent=\":literal\"><semantics><mrow><mrow><mrow><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">C</mi></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">+</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">!</mo></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>d</mi></mrow><mo>+</mo><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">\\color[rgb]{0,0,1}(dC+1)d!+2d^{2}C+2d+3</annotation></semantics></math> --> (d​C+1)​d!+2​d2​C+2​d+3\\color[rgb]{0,0,1}(dC+1)d!+2d^{2}C+2d+3 |\n| KromHC                                                                                                                                                                                                   | <!-- MathML: <math alttext=\"\\color[rgb]{0,0,1}(dC+1)\\sum_{k=1}^{K}(i_{k}!)+2d^{2}C+2d+3\" class=\"ltx_Math\" display=\"inline\" id=\"S4.T1.m5\" intent=\":literal\"><semantics><mrow><mrow><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">C</mi></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">+</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><msubsup><mo mathcolor=\"#0000FF\" rspace=\"0em\" style=\"--ltx-fg-color:#0000FF;\">∑</mo><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">k</mi><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">=</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">K</mi></msubsup><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><msub><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">i</mi><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">k</mi></msub><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">!</mo></mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>d</mi></mrow><mo>+</mo><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">\\color[rgb]{0,0,1}(dC+1)\\sum_{k=1}^{K}(i_{k}!)+2d^{2}C+2d+3</annotation></semantics></math> --> (d​C+1)​∑k=1K(ik!)+2​d2​C+2​d+3\\color[rgb]{0,0,1}(dC+1)\\sum_{k=1}^{K}(i_{k}!)+2d^{2}C+2d+3 |"
+    },
+    {
+      "id": "u000091",
+      "kind": "prose",
+      "text": "We note that KromHC and go-mHC are complementary methods that can be used simultaneously. Using both methods, we can learn tensor products of\ngeneralized orthostochastic matrices, which would allow KromHC to gain back some expressivity (using larger product sizes, <!-- MathML: <math alttext=\"i_{k}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p2.m1\" intent=\":literal\"><semantics><msub><mi>i</mi><mi>k</mi></msub><annotation encoding=\"application/x-tex\">i_{k}</annotation></semantics></math> --> iki_{k}) at quadratic expressivity cost instead of factorial: <!-- MathML: <math alttext=\"\\color[rgb]{0,0,1}(dC+1)\\cdot\\sum_{k=1}^{K}\\frac{1}{2}si_{k}(si_{k}-1)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p2.m2\" intent=\":literal\"><semantics><mrow><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">C</mi></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">+</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mo mathcolor=\"#0000FF\" rspace=\"0.055em\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow><mo mathcolor=\"#0000FF\" rspace=\"0.055em\" style=\"--ltx-fg-color:#0000FF;\">⋅</mo><mrow><msubsup><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">∑</mo><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">k</mi><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">=</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">K</mi></msubsup><mrow><mfrac mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\"><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">2</mn></mfrac><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">s</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">i</mi><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">k</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">(</mo><mrow><mrow><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">s</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">i</mi><mi mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">k</mi></msub></mrow><mo mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">−</mo><mn mathcolor=\"#0000FF\" style=\"--ltx-fg-color:#0000FF;\">1</mn></mrow><mo mathcolor=\"#0000FF\" stretchy=\"false\" style=\"--ltx-fg-color:#0000FF;\">)</mo></mrow></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\color[rgb]{0,0,1}(dC+1)\\cdot\\sum_{k=1}^{K}\\frac{1}{2}si_{k}(si_{k}-1)</annotation></semantics></math> --> (d​C+1)⋅∑k=1K12​s​ik​(s​ik−1)\\color[rgb]{0,0,1}(dC+1)\\cdot\\sum_{k=1}^{K}\\frac{1}{2}si_{k}(si_{k}-1). This allows the expressivity to become a tunable parameter that scales as <!-- MathML: <math alttext=\"\\mathcal{O}(s^{2}i_{k}^{2}\\cdot\\log_{i_{k}}d)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p2.m3\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><msup><mi>s</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mi>i</mi><mi>k</mi><mn>2</mn></msubsup></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><msub><mi>log</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo lspace=\"0.167em\">⁡</mo><mi>d</mi></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(s^{2}i_{k}^{2}\\cdot\\log_{i_{k}}d)</annotation></semantics></math> --> 𝒪⁡(s2​ik2⋅logik⁡d)\\mathcal{O}(s^{2}i_{k}^{2}\\cdot\\log_{i_{k}}d) instead of <!-- MathML: <math alttext=\"\\mathcal{O}(i_{k}!\\cdot\\log_{i_{k}}d)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS2.p2.m4\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><msub><mi>i</mi><mi>k</mi></msub><mo rspace=\"0.055em\">!</mo></mrow><mo rspace=\"0.222em\">⋅</mo><mrow><msub><mi>log</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo lspace=\"0.167em\">⁡</mo><mi>d</mi></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(i_{k}!\\cdot\\log_{i_{k}}d)</annotation></semantics></math> --> 𝒪⁡(ik!⋅logik⁡d)\\mathcal{O}(i_{k}!\\cdot\\log_{i_{k}}d) – allowing for greater flexibility across a variety of compute-limited applications."
+    },
+    {
+      "id": "u000092",
+      "kind": "heading",
+      "text": "### 4.3 FLOP Complexity"
+    }
+  ]
+}

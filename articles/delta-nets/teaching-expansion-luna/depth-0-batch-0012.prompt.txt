@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001044",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A replicator level names its sharing context, while each auxiliary port delta adjusts a replica's level when it exits that port.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001045",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "ΔL permits fans only; ΔA adds erasers; ΔI adds replicators; ΔK permits all three agents.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001046",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Linear terms have exactly one bound use, affine terms at most one, relevant terms at least one, and full terms any count.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001047",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Equal replicators formally require matching level, arity, and every port delta.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001048",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "For well-formed nets translated from lambda terms, active replicators at the same level are already equal.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001049",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Annihilation removes equal agents and reconnects corresponding auxiliary ports.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001050",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Erasure deletes the distinct agent met by an eraser because the eraser has no auxiliary ports.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001051",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Distinct non-eraser agents commute, producing outgoing copies according to the other agent's auxiliary-port count.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

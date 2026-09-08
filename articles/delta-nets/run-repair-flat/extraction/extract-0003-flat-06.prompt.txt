@@ -1,0 +1,237 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003-flat-06",
+  "context": [
+    "Δ-Nets",
+    "Compile a λ-term into one rooted net.",
+    "A named boundary node"
+  ],
+  "units": [
+    {
+      "id": "u000235",
+      "kind": "prose",
+      "text": "A variable free in the outermost term becomes a single-port, non-agent node labelled with its name. It sits on the net’s interface, not among the rewriting agents."
+    },
+    {
+      "id": "u000236",
+      "kind": "prose",
+      "text": "Bound occurrence"
+    },
+    {
+      "id": "u000237",
+      "kind": "heading",
+      "text": "### Just a wire—until it meets sharing"
+    },
+    {
+      "id": "u000238",
+      "kind": "prose",
+      "text": "A bound occurrence is just a vertical wire. Its lower end later joins an auxiliary port of the sharing replicator—when sharing is required at all."
+    },
+    {
+      "id": "u000239",
+      "kind": "prose",
+      "text": "Free in the whole term"
+    },
+    {
+      "id": "u000240",
+      "kind": "prose",
+      "text": "flowchart TB\ninY((fragment input))\ny[\"y · named boundary\"]\ninY --> y"
+    },
+    {
+      "id": "u000241",
+      "kind": "prose",
+      "text": "Bound by a surrounding λx"
+    },
+    {
+      "id": "u000242",
+      "kind": "prose",
+      "text": "flowchart TB\ninX((fragment input))\nendp[\"wire endpoint · ℓᵢ\"]\nRx2@{ shape: trapezoid, label: \"Rₓ\" }\ninX --> endp\nendp -->|one aux port| Rx2"
+    },
+    {
+      "id": "u000243",
+      "kind": "prose",
+      "text": "The distinction is at the fragment boundary. A free variable survives as a named node in the canonical net’s interface. A bound occurrence introduces no variable agent at all: it is a wire whose endpoint is later connected to its owning λx, directly when there is one use or through Rx when that value is shared. This follows the two variable clauses in [the paper’s inductive translation](https://arxiv.org/html/2505.20314v4#S3.F5)."
+    },
+    {
+      "id": "u000244",
+      "kind": "heading",
+      "text": "### 5.3 The abstraction cases"
+    },
+    {
+      "id": "u000245",
+      "kind": "prose",
+      "text": "An abstraction is an upward-pointing fan (the λ label is only visual). Its first auxiliary port is the body and its second auxiliary port is the bound variable; in this upward view, those appear on the right and left respectively. If that variable is unused, the second auxiliary port meets an eraser—only in the erasure-capable systems ΔA and ΔK."
+    }
+  ]
+}

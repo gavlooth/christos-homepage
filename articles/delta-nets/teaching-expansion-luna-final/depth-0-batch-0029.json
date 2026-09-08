@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 29,
+  "items": [
+    {
+      "recordId": "teach-n0001100",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The prescribed schedule for simplifying a nonlinear system first chooses a reducible pattern at the outermost applicable level.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "If multiple candidate patterns remain at that level, the schedule chooses the leftmost candidate.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

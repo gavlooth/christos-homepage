@@ -1,0 +1,21 @@
+flowchart TB
+                  root2((root))
+                  lam2@{ shape: triangle, label: "λ" }
+                  var2@{ shape: rect, label: "2nd aux · variable" }
+                  body2@{ shape: rect, label: "1st aux · body" }
+                  R@{ shape: trapezoid, label: "R" }
+                  app2@{ shape: triangle, label: "app" }
+                  res2@{ shape: rect, label: "result" }
+                  fun2@{ shape: rect, label: "function x₀" }
+                  arg2@{ shape: rect, label: "argument x₁" }
+                  root2 -->|principal · parent| lam2
+                  lam2 --- var2
+                  lam2 --- body2
+                  body2 ~~~ var2
+                  body2 --- res2
+                  app2 --- res2
+                  var2 --- R
+                  R --- fun2
+                  R --- arg2
+                  fun2 -->|principal| app2
+                  app2 --- arg2

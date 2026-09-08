@@ -1,0 +1,32 @@
+{
+  "depth": 0,
+  "batch": 10,
+  "items": [
+    {
+      "recordId": "teach-n0000753",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "In ΔA, an unused parameter port terminates at an eraser.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "In ΔK, an unused parameter port terminates at an eraser.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An eraser discards a parameter value rather than passing it to another component.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

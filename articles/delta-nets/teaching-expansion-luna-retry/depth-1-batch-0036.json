@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 36,
+  "items": [
+    {
+      "recordId": "teach-generated-bc9e102f9d40e066",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Node reachability is the property of being able to follow edges in a graph from one node to another, possibly through intermediate nodes.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-aaf3687984deda93",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A local level test is a test that checks a property within a specified neighborhood, region, or other limited part of a structure rather than across the entire structure.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

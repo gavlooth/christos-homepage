@@ -1,0 +1,8 @@
+flowchart TB
+                  E@{ shape: stadium, label: "E" }
+                  F@{ shape: triangle, label: "F" }
+                  M@{ shape: rect, label: "subnet M" }
+                  N@{ shape: rect, label: "subnet N" }
+                  E -->|"principal ↔ principal"| F
+                  F --- M
+                  F --- N

@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 4,
+  "items": [
+    {
+      "recordId": "teach-generated-b1b16bc107b7ffca",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Delimiter interaction is the way boundary markers, such as quotation marks, brackets, or code fences, affect how surrounding text is grouped and interpreted.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

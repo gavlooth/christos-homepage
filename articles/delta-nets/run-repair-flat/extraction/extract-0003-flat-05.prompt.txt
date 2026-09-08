@@ -1,0 +1,236 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003-flat-05",
+  "context": [
+    "Δ-Nets",
+    "Compile a λ-term into one rooted net."
+  ],
+  "units": [
+    {
+      "id": "u000224",
+      "kind": "prose",
+      "text": "The vocabulary used by the translation. λx.M defines a function; x is its parameter and M is its body. M N applies function M to argument N. In the example, A is the actual argument supplied to the abstraction, while x₀ and x₁ are the two places that use x."
+    },
+    {
+      "id": "u000225",
+      "kind": "heading",
+      "text": "### 5.1 Start with a uniform interface"
+    },
+    {
+      "id": "u000226",
+      "kind": "prose",
+      "text": "Every fragment has an interface: one incoming wire at the top and zero or more outgoing wires at the bottom. The outermost fragment hangs from a single root. Free variables—names no surrounding λ owns—become named interface nodes. That stable shape lets you plug a fragment into its parent the way a function plugs into a call."
+    },
+    {
+      "id": "u000227",
+      "kind": "prose",
+      "text": "abstraction fragment [λx.M]ℓ"
+    },
+    {
+      "id": "u000228",
+      "kind": "prose",
+      "text": "flowchart TB\nrootA((root))\nlam@{ shape: triangle, label: \"λ\" }\nRx@{ shape: trapezoid, label: \"Rₓ\" }\nM@{ shape: rect, label: \"[M]ℓ body\" }\nuses@{ shape: rect, label: \"bound uses\" }\nrootA -->|principal · parent| lam\nlam ---|2nd aux · variable → principal| Rx\nlam ---|1st aux · body| M\nRx ---|auxiliary ports| uses\nM ~~~ Rx"
+    },
+    {
+      "id": "u000229",
+      "kind": "prose",
+      "text": "application fragment [M N]ℓ"
+    },
+    {
+      "id": "u000230",
+      "kind": "prose",
+      "text": "flowchart TB\nrootB((root))\napp@{ shape: triangle, label: \"app\" }\nMf@{ shape: rect, label: \"[M]ℓ function\" }\nresB@{ shape: rect, label: \"parent / result\" }\nNarg@{ shape: rect, label: \"[N]ℓ₊₁ argument\" }\nrootB --- resB\nMf -->|principal · function| app\napp ---|1st aux · result| resB\napp ---|2nd aux · argument| Narg"
+    },
+    {
+      "id": "u000231",
+      "kind": "prose",
+      "text": "Canonical fragment interface. In the abstraction, the parent enters λ’s principal port; λ’s right auxiliary reaches body M, while its left auxiliary reaches the replicator’s principal port when x is shared. In the application, function M reaches the application’s principal port; the parent/result wire and argument N use its two auxiliary ports."
+    },
+    {
+      "id": "u000232",
+      "kind": "heading",
+      "text": "### 5.2 The variable cases"
+    },
+    {
+      "id": "u000233",
+      "kind": "prose",
+      "text": "Free variable"
+    },
+    {
+      "id": "u000234",
+      "kind": "heading",
+      "text": "### A named boundary node"
+    }
+  ]
+}

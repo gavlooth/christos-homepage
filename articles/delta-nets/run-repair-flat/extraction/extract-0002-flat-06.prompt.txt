@@ -1,0 +1,227 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0002-flat-06",
+  "context": [
+    "Δ-Nets",
+    "When two principal ports touch, one of three things happens.",
+    "4.1 Fan meets fan: the familiar redex disappears"
+  ],
+  "units": [
+    {
+      "id": "u000161",
+      "kind": "heading",
+      "text": "### 4.1 Fan meets fan: the familiar redex disappears"
+    },
+    {
+      "id": "u000162",
+      "kind": "prose",
+      "text": "Applications and abstractions are both fans. You tell them apart by how their wires point when you look from the root—the unique top entry of the whole net. When the right pair of fans meets principal-to-principal, they annihilate: both nodes go away and matching auxiliary ports reconnect. Auxiliary ports are ordered clockwise when the principal port points down; flipping one fan upside down swaps its visible left and right, so the wires cross in the drawing. That is β-reduction at the net level."
+    },
+    {
+      "id": "u000163",
+      "kind": "prose",
+      "text": "flowchart TB\nres@{ shape: rect, label: \"result · 1st aux\" }\narg@{ shape: rect, label: \"argument · 2nd aux\" }\napp@{ shape: triangle, label: \"app\" }\nlam@{ shape: triangle, label: \"λ\" }\nbody@{ shape: rect, label: \"body · 1st aux\" }\nvar@{ shape: rect, label: \"variable · 2nd aux\" }\nres --- app\narg --- app\napp -->|\"principal ↔ principal\"| lam\nlam --- var\nlam --- body\nbody ~~~ var"
+    },
+    {
+      "id": "u000164",
+      "kind": "prose",
+      "text": "After: matching indices reconnect"
+    },
+    {
+      "id": "u000165",
+      "kind": "prose",
+      "text": "flowchart TB\nres2@{ shape: rect, label: \"result · 1st\" }\narg2@{ shape: rect, label: \"argument · 2nd\" }\nbody2@{ shape: rect, label: \"body · 1st\" }\nvar2@{ shape: rect, label: \"variable · 2nd\" }\nres2 -->|1st ↔ 1st| body2\narg2 -->|2nd ↔ 2nd| var2"
+    },
+    {
+      "id": "u000166",
+      "kind": "prose",
+      "text": "The crossing is structural. For the downward application fan, the left auxiliary is first and the right auxiliary is second. For the rotated upward abstraction fan, the right auxiliary is first and the left auxiliary is second. Matching first-to-first and second-to-second—not geometric sides—therefore crosses the wires."
+    },
+    {
+      "id": "u000167",
+      "kind": "heading",
+      "text": "### 4.2 Replicator meets fan: structure splits around sharing"
+    },
+    {
+      "id": "u000168",
+      "kind": "prose",
+      "text": "When a replicator meets a fan, the replicator leaves through the fan’s two auxiliary ports as two exact copies. At the same time, the fan leaves through every auxiliary port of the replicator—one fan per port. Each keeps its role, but now sits in the other’s surrounding context."
+    },
+    {
+      "id": "u000169",
+      "kind": "prose",
+      "text": "Before: R meets F"
+    }
+  ]
+}

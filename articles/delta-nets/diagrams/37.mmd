@@ -1,0 +1,6 @@
+flowchart TB
+                  rootC((root))
+                  keep2["reachable subnet"]
+                  Ecap["E · exposed wires"]
+                  rootC --> keep2
+                  keep2 -.-> Ecap

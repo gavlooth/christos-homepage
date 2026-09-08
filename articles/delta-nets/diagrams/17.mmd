@@ -1,0 +1,12 @@
+flowchart TB
+                  A["port A · d = 0"]
+                  B["port B · d = +3"]
+                  Rbox@{ shape: trapezoid, label: "R · ℓ = 2" }
+                  Hbox@{ shape: trapezoid, label: "H · ℓ = 7" }
+                  e1b["e₁"]
+                  e0b["e₀"]
+                  A --- Rbox
+                  B --- Rbox
+                  Rbox ---|"principal ↔ principal"| Hbox
+                  Hbox --- e1b
+                  Hbox --- e0b

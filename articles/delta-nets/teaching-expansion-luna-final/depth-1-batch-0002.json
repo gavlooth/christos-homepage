@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 2,
+  "items": [
+    {
+      "recordId": "teach-generated-659fd4f9402d3331",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An indexed fan is a collection of related elements or connections arranged around a central element, with each branch identified by an index so that individual branches can be referenced precisely.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

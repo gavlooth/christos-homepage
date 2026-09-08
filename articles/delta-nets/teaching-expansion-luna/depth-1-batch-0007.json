@@ -1,0 +1,102 @@
+{
+  "depth": 1,
+  "batch": 7,
+  "items": [
+    {
+      "recordId": "teach-generated-d1bc7dcb638a350b",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A lambda abstraction is an expression of the form λx.M that defines a function, where x is the input variable and M is the function body. Within M, occurrences of x refer to the input supplied to that function.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-61a48d42f2277a2c",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Substitution replaces the free occurrences of a target variable in one expression with another expression. An occurrence is free when it is not inside a lambda abstraction that binds that same target variable.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-84bd07f7ad5fb152",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A free occurrence is an appearance of a variable that is not controlled by an enclosing lambda abstraction with the same variable name. In λx.(x y), x is controlled by λx, while y has a free occurrence.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-6f60789809a0d7ca",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Variable capture occurs when substitution makes a variable that was free in the inserted expression become controlled by an enclosing lambda abstraction. Capture-avoiding substitution renames a conflicting bound variable before performing the replacement.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-bd3e97bee69efaf5",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A wire is a connection represented as an edge between attachment points in a computational graph. It preserves which components are connected and can be redirected when the graph is rewritten.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-da3c108d9a23691e",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An interaction step is one local computation in which two connected graph components are replaced according to an interaction rule, meaning the specified replacement and reconnection pattern for that pair. The replacement reconnects the surrounding wires and attachment points.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-4d202b7f011a437e",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A graph representation describes a computational structure as components joined by connections. Components have named attachment points, and connections show which attachment points are linked, making local rewrites explicit.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-bc2f6e263808d0db",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Port identity is the identity of a particular attachment point on a component or at the boundary of a graph. Preserving that identity during rewriting specifies exactly where each resulting connection remains attached.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

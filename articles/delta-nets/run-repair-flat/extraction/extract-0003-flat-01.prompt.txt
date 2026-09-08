@@ -1,0 +1,232 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003-flat-01",
+  "context": [
+    "Δ-Nets",
+    "When two principal ports touch, one of three things happens.",
+    "4.2 Replicator meets fan: structure splits around sharing"
+  ],
+  "units": [
+    {
+      "id": "u000174",
+      "kind": "prose",
+      "text": "Count both sides. R has three auxiliary ports, so three fans F₀, F₁, F₂ appear. F has two auxiliary ports, so two replicators R⁰, R¹ appear. Because F points upward, its clockwise auxiliary-port order is visible right-to-left: a₁ is on the left and a₀ is on the right. Thus the old visible-left a₁ wire remains attached to R¹, while the old visible-right a₀ wire remains attached to R⁰; those two outer wires do not cross. Internally, auxiliary port j of each new Fᵢ connects to port dᵢ of Rʲ."
+    },
+    {
+      "id": "u000175",
+      "kind": "heading",
+      "text": "### 4.3 Replicator meets replicator: equal levels cancel; different levels commute"
+    },
+    {
+      "id": "u000176",
+      "kind": "prose",
+      "text": "First compare the two levels. If they match—and the net came from a well-formed λ translation—the replicators are equal: they annihilate, both nodes disappear, and matching auxiliary ports reconnect. No replicas are created. In a hand-built net, matching levels alone are not enough; arity and every port delta must match too."
+    },
+    {
+      "id": "u000177",
+      "kind": "prose",
+      "text": "If the levels differ, the replicators are distinct and commute. Call the lower-level one R and the higher-level one H. R makes one replica of H for each of R’s auxiliary ports; H makes exact copies of R for each of H’s ports. Each H replica takes the delta on its exit port through R and adds it to H’s current level. The second diagram shows that different-level case."
+    },
+    {
+      "id": "u000178",
+      "kind": "prose",
+      "text": "Before: equal level = 2"
+    },
+    {
+      "id": "u000179",
+      "kind": "prose",
+      "text": "flowchart TB\nu0[\"d₀\"]\nu1[\"d₁\"]\nu2[\"d₂\"]\nRu@{ shape: trapezoid, label: \"R\" }\nRl@{ shape: trapezoid, label: \"R\" }\nl0[\"d₀\"]\nl1[\"d₁\"]\nl2[\"d₂\"]\nu0 --> Ru\nu1 --> Ru\nu2 --> Ru\nRu -->|\"principal ↔ principal\"| Rl\nRl --> l0\nRl --> l1\nRl --> l2"
+    },
+    {
+      "id": "u000180",
+      "kind": "prose",
+      "text": "After: matching ports reconnect"
+    },
+    {
+      "id": "u000181",
+      "kind": "prose",
+      "text": "flowchart TB\ntu0[\"d₀\"]\ntu1[\"d₁\"]\ntu2[\"d₂\"]\ntl0[\"d₀\"]\ntl1[\"d₁\"]\ntl2[\"d₂\"]\ntu0 --> tl0\ntu1 --> tl1\ntu2 --> tl2"
+    },
+    {
+      "id": "u000182",
+      "kind": "prose",
+      "text": "Same-level annihilation. The lower replicator is rotated, so its clockwise auxiliary-port indices appear right-to-left. Matching indices reconnect—top d₀ to lower d₀, and so on—making the two outer wires cross. Both replicators are gone."
+    },
+    {
+      "id": "u000183",
+      "kind": "prose",
+      "text": "Before: R level 2 meets H level 7"
+    }
+  ]
+}

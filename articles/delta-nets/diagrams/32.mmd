@@ -1,0 +1,12 @@
+flowchart TB
+                    rootI((root))
+                    resI@{ shape: rect, label: "result" }
+                    appI@{ shape: triangle, label: "app" }
+                    argI@{ shape: rect, label: "argument" }
+                    lamx@{ shape: triangle, label: "λx" }
+                    lamy@{ shape: triangle, label: "λy" }
+                    rootI --- resI
+                    resI --- appI
+                    appI -->|"principal ↔ principal"| lamx
+                    appI --- argI
+                    argI --- lamy

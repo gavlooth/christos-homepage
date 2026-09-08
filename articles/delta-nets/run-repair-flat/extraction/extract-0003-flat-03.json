@@ -1,0 +1,346 @@
+{
+  "nodes": [
+    {
+      "kind": "topic",
+      "text": "#### Write the local differences",
+      "sourceUnitIds": [
+        "u000195"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "R’s own level is 2. Each port stores how far its endpoint sits from that 2.",
+      "sourceUnitIds": [
+        "u000196"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "port A: 2 − 2 = 0\nport B: 5 − 2 = +3",
+      "sourceUnitIds": [
+        "u000197"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "02",
+      "sourceUnitIds": [
+        "u000198"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### Copy H once per R port",
+      "sourceUnitIds": [
+        "u000199"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "H is higher, so R replicates it. Both replicas start from H’s old level: 7.",
+      "sourceUnitIds": [
+        "u000200"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "old level of H = 7",
+      "sourceUnitIds": [
+        "u000201"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "03",
+      "sourceUnitIds": [
+        "u000202"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "#### Add the exit’s delta",
+      "sourceUnitIds": [
+        "u000203"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The copy leaving port A stays at 7. The copy leaving port B shifts up by 3.",
+      "sourceUnitIds": [
+        "u000204"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A: 7 + 0 = 7\nB: 7 + 3 = 10",
+      "sourceUnitIds": [
+        "u000205"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Before the interaction",
+      "sourceUnitIds": [
+        "u000206"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nA[\"port A · d = 0\"]\nB[\"port B · d = +3\"]\nRbox@{ shape: trapezoid, label: \"R · ℓ = 2\" }\nHbox@{ shape: trapezoid, label: \"H · ℓ = 7\" }\ne1b[\"e₁\"]\ne0b[\"e₀\"]\nA --- Rbox\nB --- Rbox\nRbox ---|\"principal ↔ principal\"| Hbox\nHbox --- e1b\nHbox --- e0b",
+      "sourceUnitIds": [
+        "u000207"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "H replicas after leaving R",
+      "sourceUnitIds": [
+        "u000208"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nHA[\"through A · 7 + 0 = 7\"]\nHB[\"through B · 7 + 3 = 10\"]",
+      "sourceUnitIds": [
+        "u000209"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Read the calculation from left to right. Port B stores +3. The H replica begins at level 7, then follows that port’s instruction: 7 + 3 = 10.",
+      "sourceUnitIds": [
+        "u000210"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The general rule, after the example",
+      "sourceUnitIds": [
+        "u000211"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000195",
+        "u000196",
+        "u000197",
+        "u000198",
+        "u000199",
+        "u000200",
+        "u000201",
+        "u000202",
+        "u000203",
+        "u000204",
+        "u000205",
+        "u000206",
+        "u000207",
+        "u000208",
+        "u000209",
+        "u000210",
+        "u000211"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0003-flat-03 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0003-flat-03",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 16,
+  "items": [
+    {
+      "recordId": "teach-generated-42fffc3657069f75",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A second auxiliary is the additional helping verb used in a verb phrase after a first auxiliary, such as “have” in “will have finished.”",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

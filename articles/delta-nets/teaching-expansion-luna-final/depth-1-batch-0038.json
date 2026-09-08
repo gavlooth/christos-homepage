@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 38,
+  "items": [
+    {
+      "recordId": "teach-generated-d461dd3e578d2697",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An interaction is a way that two or more things affect one another, so the outcome depends on their relationship rather than on each thing acting independently.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "depth": 0,
+  "batch": 40,
+  "items": [
+    {
+      "recordId": "teach-n0001090",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Canonicalization restores a proper net to a canonical shape.",
+          "requires": [
+            "proper net"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "That canonical shape is the one expected by back-translation.",
+          "requires": [
+            "back-translation"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001091",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "In ΔA and ΔK, erasure canonicalization marks nodes that are reachable from the root.",
+          "requires": [
+            "net root",
+            "node reachability"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "After marking the reachable nodes, erasure canonicalization deletes the material that remains unmarked.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

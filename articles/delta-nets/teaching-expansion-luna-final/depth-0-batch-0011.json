@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 11,
+  "items": [
+    {
+      "recordId": "teach-n0000757",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "In the expression λx.x x, the lambda abstraction has a body, x x, that applies one occurrence of x to another occurrence of x.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The body port connects to the result of the application, while the replicator's ports connect separately to the function and the argument.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "depth": 0,
+  "batch": 31,
+  "items": [
+    {
+      "recordId": "teach-n0001106",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "In ΔL, every proper net is canonical.",
+          "requires": [
+            "ΔL’s definition of a proper net",
+            "ΔL’s definition of a canonical net"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "In ΔL, n beta-reductions correspond to n interactions, and this correspondence holds regardless of the order in which the interactions occur.",
+          "requires": [
+            "Meaning of beta-reduction",
+            "Meaning of interaction",
+            "Meaning of interaction order"
+          ],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

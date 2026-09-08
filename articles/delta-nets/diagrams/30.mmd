@@ -1,0 +1,14 @@
+flowchart TB
+                  T["[λx. x (g x)]₀"]
+                  binder["λx · ℓ = 0"]
+                  outer["x (g x) · ℓ = 0"]
+                  x0["x₀ · ℓ = 0"]
+                  gx["g x · ℓ = 1"]
+                  g["g · ℓ = 1"]
+                  x1["x₁ · ℓ = 2"]
+                  T --> binder
+                  binder --> outer
+                  outer -->|function +0| x0
+                  outer -->|argument +1| gx
+                  gx -->|function +0| g
+                  gx -->|argument +1| x1

@@ -1,0 +1,13 @@
+flowchart TB
+                  res@{ shape: rect, label: "result · 1st aux" }
+                  arg@{ shape: rect, label: "argument · 2nd aux" }
+                  app@{ shape: triangle, label: "app" }
+                  lam@{ shape: triangle, label: "λ" }
+                  body@{ shape: rect, label: "body · 1st aux" }
+                  var@{ shape: rect, label: "variable · 2nd aux" }
+                  res --- app
+                  arg --- app
+                  app -->|"principal ↔ principal"| lam
+                  lam --- var
+                  lam --- body
+                  body ~~~ var

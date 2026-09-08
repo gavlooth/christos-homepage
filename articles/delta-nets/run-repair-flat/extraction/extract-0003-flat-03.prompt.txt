@@ -1,0 +1,268 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003-flat-03",
+  "context": [
+    "Δ-Nets",
+    "When two principal ports touch, one of three things happens.",
+    "The operational rule",
+    "Write the local differences"
+  ],
+  "units": [
+    {
+      "id": "u000195",
+      "kind": "heading",
+      "text": "#### Write the local differences"
+    },
+    {
+      "id": "u000196",
+      "kind": "prose",
+      "text": "R’s own level is 2. Each port stores how far its endpoint sits from that 2."
+    },
+    {
+      "id": "u000197",
+      "kind": "prose",
+      "text": "port A: 2 − 2 = 0\nport B: 5 − 2 = +3"
+    },
+    {
+      "id": "u000198",
+      "kind": "prose",
+      "text": "02"
+    },
+    {
+      "id": "u000199",
+      "kind": "heading",
+      "text": "#### Copy H once per R port"
+    },
+    {
+      "id": "u000200",
+      "kind": "prose",
+      "text": "H is higher, so R replicates it. Both replicas start from H’s old level: 7."
+    },
+    {
+      "id": "u000201",
+      "kind": "prose",
+      "text": "old level of H = 7"
+    },
+    {
+      "id": "u000202",
+      "kind": "prose",
+      "text": "03"
+    },
+    {
+      "id": "u000203",
+      "kind": "heading",
+      "text": "#### Add the exit’s delta"
+    },
+    {
+      "id": "u000204",
+      "kind": "prose",
+      "text": "The copy leaving port A stays at 7. The copy leaving port B shifts up by 3."
+    },
+    {
+      "id": "u000205",
+      "kind": "prose",
+      "text": "A: 7 + 0 = 7\nB: 7 + 3 = 10"
+    },
+    {
+      "id": "u000206",
+      "kind": "prose",
+      "text": "Before the interaction"
+    },
+    {
+      "id": "u000207",
+      "kind": "prose",
+      "text": "flowchart TB\nA[\"port A · d = 0\"]\nB[\"port B · d = +3\"]\nRbox@{ shape: trapezoid, label: \"R · ℓ = 2\" }\nHbox@{ shape: trapezoid, label: \"H · ℓ = 7\" }\ne1b[\"e₁\"]\ne0b[\"e₀\"]\nA --- Rbox\nB --- Rbox\nRbox ---|\"principal ↔ principal\"| Hbox\nHbox --- e1b\nHbox --- e0b"
+    },
+    {
+      "id": "u000208",
+      "kind": "prose",
+      "text": "H replicas after leaving R"
+    },
+    {
+      "id": "u000209",
+      "kind": "prose",
+      "text": "flowchart TB\nHA[\"through A · 7 + 0 = 7\"]\nHB[\"through B · 7 + 3 = 10\"]"
+    },
+    {
+      "id": "u000210",
+      "kind": "prose",
+      "text": "Read the calculation from left to right. Port B stores +3. The H replica begins at level 7, then follows that port’s instruction: 7 + 3 = 10."
+    },
+    {
+      "id": "u000211",
+      "kind": "prose",
+      "text": "The general rule, after the example"
+    }
+  ]
+}

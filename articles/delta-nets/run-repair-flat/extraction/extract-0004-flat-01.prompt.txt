@@ -1,0 +1,232 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0004-flat-01",
+  "context": [
+    "Δ-Nets",
+    "Compile a λ-term into one rooted net.",
+    "5.3 The abstraction cases"
+  ],
+  "units": [
+    {
+      "id": "u000250",
+      "kind": "prose",
+      "text": "flowchart TB\nroot1((root))\nlam1@{ shape: triangle, label: \"λ\" }\nvar1@{ shape: rect, label: \"2nd aux · variable\" }\nbody1@{ shape: rect, label: \"1st aux · body\" }\nerase@{ shape: stadium, label: \"E\" }\nfreeY@{ shape: rect, label: \"y\" }\nroot1 -->|principal · parent| lam1\nlam1 --- var1\nlam1 --- body1\nbody1 ~~~ var1\nvar1 --- erase\nbody1 --- freeY"
+    },
+    {
+      "id": "u000251",
+      "kind": "prose",
+      "text": "Several bound occurrences · λx.x x"
+    },
+    {
+      "id": "u000252",
+      "kind": "prose",
+      "text": "flowchart TB\nroot2((root))\nlam2@{ shape: triangle, label: \"λ\" }\nvar2@{ shape: rect, label: \"2nd aux · variable\" }\nbody2@{ shape: rect, label: \"1st aux · body\" }\nR@{ shape: trapezoid, label: \"R\" }\napp2@{ shape: triangle, label: \"app\" }\nres2@{ shape: rect, label: \"result\" }\nfun2@{ shape: rect, label: \"function x₀\" }\narg2@{ shape: rect, label: \"argument x₁\" }\nroot2 -->|principal · parent| lam2\nlam2 --- var2\nlam2 --- body2\nbody2 ~~~ var2\nbody2 --- res2\napp2 --- res2\nvar2 --- R\nR --- fun2\nR --- arg2\nfun2 -->|principal| app2\napp2 --- arg2"
+    },
+    {
+      "id": "u000253",
+      "kind": "prose",
+      "text": "Read each picture from its λ binder. The second auxiliary port is the bound parameter x: it closes directly to one occurrence, terminates at E when unused, or reaches R when several occurrences must share one incoming value. The first auxiliary port is the body. In λx.x x that body port meets the application’s result port; the replicator’s auxiliary ports meet the application’s function and argument ports. §5.7 adds the levels and deltas."
+    },
+    {
+      "id": "u000254",
+      "kind": "heading",
+      "text": "### 5.4 The application case"
+    },
+    {
+      "id": "u000255",
+      "kind": "prose",
+      "text": "An application is a triangular fan (the app label is only visual). Its principal port is fixed at the top apex and meets the function fragment. Its result and argument auxiliary ports are fixed symmetrically along the bottom edge. During reduction the application fan eventually meets an abstraction fan; their principal-port annihilation is the application."
+    },
+    {
+      "id": "u000256",
+      "kind": "prose",
+      "text": "Source syntax"
+    },
+    {
+      "id": "u000257",
+      "kind": "prose",
+      "text": "flowchart TB\nappS[\"[M N] · ℓ\"]\nMS[\"[M]ℓ · same level\"]\nNS[\"[N]ℓ₊₁ · one deeper\"]\nappS -->|function +0| MS\nappS -->|argument +1| NS"
+    },
+    {
+      "id": "u000258",
+      "kind": "prose",
+      "text": "Three fan ports"
+    },
+    {
+      "id": "u000259",
+      "kind": "prose",
+      "text": "flowchart TB\nresN@{ shape: rect, label: \"1st aux · result\" }\nappN@{ shape: triangle, label: \"app\" }\nMf2@{ shape: rect, label: \"function M · ℓ\" }\nNf2@{ shape: rect, label: \"argument N · ℓ+1\" }\nMf2 -->|principal| appN\nappN --- resN\nappN --- Nf2"
+    }
+  ]
+}

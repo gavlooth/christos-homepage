@@ -1,0 +1,349 @@
+{
+  "nodes": [
+    {
+      "kind": "definition",
+      "text": "ℋlres is a d‑by‑d real matrix representing residual streams.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [
+        "hlres"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "ℋlpre is a 1‑by‑d real matrix that aggregates streams into the branch input.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [
+        "hlpre"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "ℋlpost is a 1‑by‑d real matrix that distributes branch output back to streams.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [
+        "hlpost"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "x0 denotes d repetitions of the initial input.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [
+        "x0"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "claim",
+      "text": "When ℋlres, ℋlpre, ℋlpost all equal the matrix [1], the model reduces to a single‑stream residual connection.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [],
+      "requires": [
+        "hlres",
+        "hlpre",
+        "hlpost"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "The network learns parameters (αls, Wls, bls) for each stream type s∈{pre,post,res} to allow dynamic topology.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000049"
+      ],
+      "defines": [
+        "αls",
+        "wls",
+        "bls"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "𝒫 is the Sinkhorn‑Knopp projection operator applied via 20 iterations.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000051"
+      ],
+      "defines": [
+        "p"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "A matrix B in 𝖡d is orthostochastic when there exists an orthogonal Q such that each entry B_ij equals Q_ij squared.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000054"
+      ],
+      "defines": [
+        "orthostochastic matrix"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "claim",
+      "text": "For dimension n≥3, orthostochastic matrices form a proper non‑convex subset of 𝖡d.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000054"
+      ],
+      "defines": [],
+      "requires": [
+        "orthostochastic matrix"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "Q, an orthogonal matrix of size ds, can be seen as a d×d block matrix where each block Q_ij is s×s.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000055"
+      ],
+      "defines": [
+        "block matrix q"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "Φ_{d,s}(Q)_{ij} equals the average squared Frobenius norm of block Q_ij, i.e., (1/s) Σ_{k,l}(Q_ij)_{kl}^2.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000056"
+      ],
+      "defines": [
+        "φ{d,s}(q){ij}"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "equation",
+      "text": "ℋlres = ℋlpre = ℋlpost = [1]",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000048"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "equation",
+      "text": "B_ij = Q_ij^2",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000054"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "equation",
+      "text": "ℋlpre = sigmoid(αlpre·𝐱l′·𝐖lpre + 𝐛lpre)",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000050"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "equation",
+      "text": "ℋlpost = 2·sigmoid(αlpost·𝐱l′·𝐖lpost + 𝐛lpost)",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000050"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "equation",
+      "text": "ℋlres = 𝒫( mat( αlres·𝐱̂l′·𝐖lres + 𝐛lres ) )",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000050"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    },
+    {
+      "kind": "definition",
+      "text": "𝒫go maps learned parameters (αlres,Wlres,blres) to a d×d mixing matrix using generalized orthostochastic matrices.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000052"
+      ],
+      "defines": [
+        "pgo"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0003"
+    }
+  ],
+  "edges": [
+    {
+      "from": 0,
+      "to": 4,
+      "relation": "enables",
+      "reason": ""
+    },
+    {
+      "from": 1,
+      "to": 4,
+      "relation": "enables",
+      "reason": ""
+    },
+    {
+      "from": 2,
+      "to": 4,
+      "relation": "enables",
+      "reason": ""
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "relation": "enables",
+      "reason": ""
+    },
+    {
+      "from": 0,
+      "to": 15,
+      "relation": "exemplifies",
+      "reason": ""
+    },
+    {
+      "from": 1,
+      "to": 13,
+      "relation": "exemplifies",
+      "reason": ""
+    },
+    {
+      "from": 2,
+      "to": 14,
+      "relation": "exemplifies",
+      "reason": ""
+    }
+  ],
+  "evidenceFrames": [
+    {
+      "claim": 4,
+      "evidence": [
+        11
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 8,
+      "evidence": [
+        12
+      ],
+      "warrantGap": null,
+      "limitations": []
+    }
+  ]
+}

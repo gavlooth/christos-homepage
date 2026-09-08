@@ -1,0 +1,396 @@
+[
+  {
+    "id": "n0000002",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000002"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000002",
+        "kind": "prose",
+        "text": "---"
+      }
+    ]
+  },
+  {
+    "id": "n0000044",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000024"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000024",
+        "kind": "prose",
+        "text": "2. 2.\n     Scales as <!-- MathML: <math alttext=\"\\mathcal{O}(d^{3})\" class=\"ltx_Math\" display=\"inline\" id=\"S1.I1.i2.p1.m1\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><msup><mi>d</mi><mn>3</mn></msup><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d^{3})</annotation></semantics></math> --> 𝒪⁡(d3)\\mathcal{O}(d^{3}) with the number of residual streams <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S1.I1.i2.p1.m2\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd, both in FLOP complexity and parameter count, surpassing the super-exponential scaling of mHC-lite and KromHC’s component factors."
+      }
+    ]
+  },
+  {
+    "id": "n0000066",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000036"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000036",
+        "kind": "table",
+        "text": "|  | <!-- MathML: <math alttext=\"\\mathbf{M}^{\\top}\\mathbf{J}_{d}=\\mathbf{M}\\mathbf{J}_{d}=\\mathbf{J}_{d},\" class=\"ltx_Math\" display=\"block\" id=\"S2.Ex1.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mi>𝐌</mi><mo>⊤</mo></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐉</mi><mi>d</mi></msub></mrow><mo>=</mo><msub><mi>𝐌𝐉</mi><mi>d</mi></msub><mo>=</mo><msub><mi>𝐉</mi><mi>d</mi></msub></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\mathbf{M}^{\\top}\\mathbf{J}_{d}=\\mathbf{M}\\mathbf{J}_{d}=\\mathbf{J}_{d},</annotation></semantics></math> --> 𝐌⊤​𝐉d=𝐌𝐉d=𝐉d,\\mathbf{M}^{\\top}\\mathbf{J}_{d}=\\mathbf{M}\\mathbf{J}_{d}=\\mathbf{J}_{d}, |  |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |"
+      }
+    ]
+  },
+  {
+    "id": "n0000073",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000039",
+        "kind": "prose",
+        "text": "mHC-lite ([Yang and Gao, 2026](#bib.bib3 \"\")) attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of the <!-- MathML: <math alttext=\"d!\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m1\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>!</mo></mrow><annotation encoding=\"application/x-tex\">d!</annotation></semantics></math> --> d!d! permutation matrices (where <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m2\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd is the number of residual streams), at an <!-- MathML: <math alttext=\"\\mathcal{O}(dC\\cdot d!)\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m3\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><mi>d</mi><mo>!</mo></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(dC\\cdot d!)</annotation></semantics></math> --> 𝒪⁡(d​C⋅d!)\\mathcal{O}(dC\\cdot d!) cost. This method works well for small <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m4\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd, however, this is not tenable in the limit of scaling <!-- MathML: <math alttext=\"d&gt;8\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m5\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>8</mn></mrow><annotation encoding=\"application/x-tex\">d&gt;8</annotation></semantics></math> --> d>8d>8. KromHC ([Zhou et al., 2026](#bib.bib6 \"\")) sacrifices expressivity and complete coverage of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m6\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} by using tensor products to train residual connections on a much smaller set of exactly double-stochastic matrices with the added benefit of costing only <!-- MathML: <math alttext=\"\\mathcal{O}(d^{2}C)\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m7\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d^{2}C)</annotation></semantics></math> --> 𝒪⁡(d2​C)\\mathcal{O}(d^{2}C)."
+      }
+    ]
+  },
+  {
+    "id": "n0000076",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000039",
+        "kind": "prose",
+        "text": "mHC-lite ([Yang and Gao, 2026](#bib.bib3 \"\")) attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of the <!-- MathML: <math alttext=\"d!\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m1\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>!</mo></mrow><annotation encoding=\"application/x-tex\">d!</annotation></semantics></math> --> d!d! permutation matrices (where <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m2\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd is the number of residual streams), at an <!-- MathML: <math alttext=\"\\mathcal{O}(dC\\cdot d!)\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m3\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><mi>d</mi><mo>!</mo></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(dC\\cdot d!)</annotation></semantics></math> --> 𝒪⁡(d​C⋅d!)\\mathcal{O}(dC\\cdot d!) cost. This method works well for small <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m4\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd, however, this is not tenable in the limit of scaling <!-- MathML: <math alttext=\"d&gt;8\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m5\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>8</mn></mrow><annotation encoding=\"application/x-tex\">d&gt;8</annotation></semantics></math> --> d>8d>8. KromHC ([Zhou et al., 2026](#bib.bib6 \"\")) sacrifices expressivity and complete coverage of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m6\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} by using tensor products to train residual connections on a much smaller set of exactly double-stochastic matrices with the added benefit of costing only <!-- MathML: <math alttext=\"\\mathcal{O}(d^{2}C)\" class=\"ltx_Math\" display=\"inline\" id=\"S2.SS0.SSS0.Px2.p3.m7\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><msup><mi>d</mi><mn>2</mn></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>C</mi></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d^{2}C)</annotation></semantics></math> --> 𝒪⁡(d2​C)\\mathcal{O}(d^{2}C)."
+      }
+    ]
+  },
+  {
+    "id": "n0000091",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000047"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000047",
+        "kind": "table",
+        "text": "|  | <!-- MathML: <math alttext=\"\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\,\\mathcal{F}\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\,\\mathbf{x}_{l},\\,\\mathbf{W}_{l}\\right),\" class=\"ltx_Math\" display=\"block\" id=\"S3.E1.m1\" intent=\":literal\"><semantics><mrow><mrow><msub><mi>𝐱</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐱</mi><mi>l</mi></msub></mrow><mo>+</mo><mrow><msup><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>post</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mo>⊤</mo></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mpadded style=\"width:0.648em;\" width=\"0.648em\"><mi class=\"ltx_font_mathcaligraphic\">ℱ</mi></mpadded><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo>(</mo><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>pre</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐱</mi><mi>l</mi></msub></mrow><mo>,</mo><msub><mi>𝐖</mi><mi>l</mi></msub><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\,\\mathcal{F}\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\,\\mathbf{x}_{l},\\,\\mathbf{W}_{l}\\right),</annotation></semantics></math> --> 𝐱l+1=ℋlres​𝐱l+(ℋlpost)⊤​ℱ​(ℋlpre​𝐱l,𝐖l),\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\\\,\\mathcal{F}\\\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\\\,\\mathbf{x}_{l},\\\\,\\mathbf{W}_{l}\\right), |  | (1) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --- |"
+      }
+    ]
+  },
+  {
+    "id": "n0000126",
+    "gapClass": "missing_reference",
+    "need": "Missing equation 5",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000061"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000061",
+        "kind": "prose",
+        "text": "We write out our full projection, replacing equation [5](#S3.E5 \"Equation 5 ‣ 3.1 Hyper-Connections ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\"), below:"
+      }
+    ]
+  },
+  {
+    "id": "n0000133",
+    "gapClass": "missing_reference",
+    "need": "Missing equation 6",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000063"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000063",
+        "kind": "prose",
+        "text": "where the function skew maps vectors of size <!-- MathML: <math alttext=\"\\frac{ds(ds-1)}{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m2\" intent=\":literal\"><semantics><mfrac><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><mn>2</mn></mfrac><annotation encoding=\"application/x-tex\">\\frac{ds(ds-1)}{2}</annotation></semantics></math> --> d​s​(d​s−1)2\\frac{ds(ds-1)}{2} to a <!-- MathML: <math alttext=\"ds\\times ds\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m3\" intent=\":literal\"><semantics><mrow><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><annotation encoding=\"application/x-tex\">ds\\times ds</annotation></semantics></math> --> d​s×d​sds\\times ds skew-symmetric matrix <!-- MathML: <math alttext=\"\\left(\\mathbf{A}_{l}^{\\top}=-\\mathbf{A}_{l}\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m4\" intent=\":literal\"><semantics><mrow><mo>(</mo><mrow><msubsup><mi>𝐀</mi><mi>l</mi><mo>⊤</mo></msubsup><mo>=</mo><mrow><mo>−</mo><msub><mi>𝐀</mi><mi>l</mi></msub></mrow></mrow><mo>)</mo></mrow><annotation encoding=\"application/x-tex\">\\left(\\mathbf{A}_{l}^{\\top}=-\\mathbf{A}_{l}\\right)</annotation></semantics></math> --> (𝐀l⊤=−𝐀l)\\left(\\mathbf{A}_{l}^{\\top}=-\\mathbf{A}_{l}\\right). Equation [8](#S3.E8 \"Equation 8 ‣ 3.3 Learning the 𝑠-Orthostochastic Manifold ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") makes use of the Cayley transform to map <!-- MathML: <math alttext=\"\\mathbf{A}_{l}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m5\" intent=\":literal\"><semantics><msub><mi>𝐀</mi><mi>l</mi></msub><annotation encoding=\"application/x-tex\">\\mathbf{A}_{l}</annotation></semantics></math> --> 𝐀l\\mathbf{A}_{l} to the space of special orthogonal matrices <!-- MathML: <math alttext=\"\\left(\\mathbf{Q}_{l}^{\\top}\\mathbf{Q}_{l}=\\mathbf{I}\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m6\" intent=\":literal\"><semantics><mrow><mo>(</mo><mrow><mrow><msubsup><mi>𝐐</mi><mi>l</mi><mo>⊤</mo></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐐</mi><mi>l</mi></msub></mrow><mo>=</mo><mi>𝐈</mi></mrow><mo>)</mo></mrow><annotation encoding=\"application/x-tex\">\\left(\\mathbf{Q}_{l}^{\\top}\\mathbf{Q}_{l}=\\mathbf{I}\\right)</annotation></semantics></math> --> (𝐐l⊤​𝐐l=𝐈)\\left(\\mathbf{Q}_{l}^{\\top}\\mathbf{Q}_{l}=\\mathbf{I}\\right). We can then use <!-- MathML: <math alttext=\"\\Phi_{d,s}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m7\" intent=\":literal\"><semantics><msub><mi mathvariant=\"normal\">Φ</mi><mrow><mi>d</mi><mo>,</mo><mi>s</mi></mrow></msub><annotation encoding=\"application/x-tex\">\\Phi_{d,s}</annotation></semantics></math> --> Φd,s\\Phi_{d,s} from equation [6](#S3.E6 \"Equation 6 ‣ 3.2 Generalized Orthostochastic Matrices ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") to map <!-- MathML: <math alttext=\"\\mathbf{Q}_{l}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m8\" intent=\":literal\"><semantics><msub><mi>𝐐</mi><mi>l</mi></msub><annotation encoding=\"application/x-tex\">\\mathbf{Q}_{l}</annotation></semantics></math> --> 𝐐l\\mathbf{Q}_{l} to an exactly doubly stochastic matrix <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{res}}\\in\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m9\" intent=\":literal\"><semantics><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo>∈</mo><msub><mi>𝖡</mi><mi>d</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{res}}\\in\\mathsf{B}_{d}</annotation></semantics></math> --> ℋlres∈𝖡d\\mathcal{H}_{l}^{\\text{res}}\\in\\mathsf{B}_{d} in equation [9](#S3.E9 \"Equation 9 ‣ 3.3 Learning the 𝑠-Orthostochastic Manifold ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+      }
+    ]
+  },
+  {
+    "id": "n0000145",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000067"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000067",
+        "kind": "table",
+        "text": "|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E10.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>fwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>j</mi></munder><mprescripts /><mi>i</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,</annotation></semantics></math> --> AGMfwd​(ℋl→Lres)=max⁡∑ji⁡|(ℋl→Lres)i​j|,\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|, |  | (10) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |\n|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E11.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>bwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>i</mi></munder><mprescripts /><mi>j</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo lspace=\"0em\">.</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.</annotation></semantics></math> --> AGMbwd​(ℋl→Lres)=max⁡∑ij⁡|(ℋl→Lres)i​j|.\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|. |  | (11) |"
+      }
+    ]
+  },
+  {
+    "id": "n0000150",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000070"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000070",
+        "kind": "prose",
+        "text": "![Refer to caption](2604.02309v1/spectra_numerics_d_eq_3_ours.png)"
+      }
+    ]
+  },
+  {
+    "id": "n0000157",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000073"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000073",
+        "kind": "table",
+        "text": "|  | <!-- MathML: <math alttext=\"\\{\\lambda\\in\\mathbb{C}\\;|\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\;\\vec{v}\\neq\\vec{0}\\}\" class=\"ltx_math_unparsed\" display=\"block\" id=\"S4.E12.m1\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mi>λ</mi><mo>∈</mo><mi>ℂ</mi><mo fence=\"false\" lspace=\"0.280em\" rspace=\"0.447em\" stretchy=\"false\">|</mo><msup><mi>𝐇</mi><mtext>res</mtext></msup><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo>=</mo><mi>λ</mi><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo rspace=\"0.447em\">,</mo><msup><mi>𝐇</mi><mtext>res</mtext></msup><mo>=</mo><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mi>𝖬</mi></msub><mrow><mo stretchy=\"false\">(</mo><mo lspace=\"0em\" rspace=\"0em\">⋯</mo><mo stretchy=\"false\">)</mo></mrow><mo rspace=\"0.447em\">,</mo><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo>≠</mo><mover accent=\"true\"><mn>0</mn><mo stretchy=\"false\">→</mo></mover><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{\\lambda\\in\\mathbb{C}\\;|\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\;\\vec{v}\\neq\\vec{0}\\}</annotation></semantics></math> --> {λ∈ℂ|𝐇resv→=λv→,𝐇res=𝒫𝖬(⋯),v→≠0→}\\\\{\\lambda\\in\\mathbb{C}\\\\;|\\\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\\\;\\vec{v}\\neq\\vec{0}\\\\} |  | (12) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |"
+      }
+    ]
+  },
+  {
+    "id": "n0000162",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000076"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000076",
+        "kind": "table",
+        "text": "|  | <!-- MathML: <math alttext=\"\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\}\" class=\"ltx_math_unparsed\" display=\"block\" id=\"S4.Ex2.m1\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><msup><mi>e</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>π</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mfrac><mi>j</mi><msup><mi>d</mi><mo>′</mo></msup></mfrac></mrow></msup><mo lspace=\"0em\" rspace=\"0.167em\">∣</mo><mi>j</mi><mo>∈</mo><mrow><mo stretchy=\"false\">[</mo><mn>1</mn><mo>,</mo><msup><mi>d</mi><mo>′</mo></msup><mo stretchy=\"false\">]</mo></mrow><mo>,</mo><msup><mi>d</mi><mo>′</mo></msup><mo>≤</mo><mi>d</mi><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\}</annotation></semantics></math> --> {ei​2​π​jd′∣j∈[1,d′],d′≤d}\\\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\\\} |  |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |"
+      }
+    ]
+  },
+  {
+    "id": "n0000163",
+    "gapClass": "parsing_error",
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000077"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000077",
+        "kind": "prose",
+        "text": "![Refer to caption](2604.02309v1/spectra_numerics_compare.png)"
+      }
+    ]
+  },
+  {
+    "id": "n0000164",
+    "gapClass": "missing_definition",
+    "need": "Define AGM metric",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "sourceUnits": []
+  },
+  {
+    "id": "n0000165",
+    "gapClass": "missing_definition",
+    "need": "Define P_go",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "sourceUnits": []
+  },
+  {
+    "id": "n0000168",
+    "gapClass": "missing_definition",
+    "need": "Define spectral reach",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "sourceUnits": []
+  },
+  {
+    "id": "n0000169",
+    "gapClass": "missing_definition",
+    "need": "Define P_M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "sourceUnits": []
+  },
+  {
+    "id": "n0000172",
+    "gapClass": "missing_definition",
+    "need": "Define method M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "sourceUnits": []
+  },
+  {
+    "id": "n0000207",
+    "gapClass": "missing_definition",
+    "need": "definition of s-ssostochastic matrices",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000081"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000081",
+        "kind": "prose",
+        "text": "The eigenvalue distribution of <!-- MathML: <math alttext=\"d\\times d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m1\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d\\times d</annotation></semantics></math> --> d×dd\\times d <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m2\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-orthostochastic matrices is fundamentally constrained by their membership in the Birkhoff polytope <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} and residence within the Karpelevič region. While <!-- MathML: <math alttext=\"1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m4\" intent=\":literal\"><semantics><mn>1</mn><annotation encoding=\"application/x-tex\">1</annotation></semantics></math> --> 11-orthostochastic matrices exhibit a restricted, hypo-cycloidal boundary, increasing the parameter <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m5\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss provides a progressively denser approximation of the full <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m6\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} ([Nechita et al., 2023](#bib.bib4 \"\")). Consequently, as <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m7\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss increases, the spectral support of <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m8\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-orthostochastic matrices expands to fill the Karpelevič region, approaching the density of general doubly stochastic matrices, as demonstrated in figure [3](#S4.F3 \"Figure 3 ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+      }
+    ]
+  },
+  {
+    "id": "n0000208",
+    "gapClass": "missing_definition",
+    "need": "definition of mHC, mHC-lite, KromHC, go-mHC",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000078",
+      "u000083",
+      "u000084",
+      "u000085"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000078",
+        "kind": "prose",
+        "text": "*Figure 4: Histogram of the spectral reach of a toy model implementing the maps <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{SK}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m15\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>SK</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{SK}}</annotation></semantics></math> --> 𝒫SK\\mathcal{P}_{\\text{SK}}, <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{lite}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m16\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>lite</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{lite}}</annotation></semantics></math> --> 𝒫lite\\mathcal{P}_{\\text{lite}}, <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{krom}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m17\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>krom</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{krom}}</annotation></semantics></math> --> 𝒫krom\\mathcal{P}_{\\text{krom}}, and <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{go}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m18\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>go</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{go}}</annotation></semantics></math> --> 𝒫go\\mathcal{P}_{\\text{go}} on random targets in <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m19\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4}.\nThe blue and green lines in (a-e) are the boundary of the spectrum of the <!-- MathML: <math alttext=\"\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m20\" intent=\":literal\"><semantics><mrow><msub><mi>𝖡</mi><mn>3</mn></msub><mo>∖</mo><msub><mi>𝖡</mi><mn>2</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡3∖𝖡2\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2} and <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\\setminus\\mathsf{B}_{3}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m21\" intent=\":literal\"><semantics><mrow><msub><mi>𝖡</mi><mn>4</mn></msub><mo>∖</mo><msub><mi>𝖡</mi><mn>3</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}\\setminus\\mathsf{B}_{3}</annotation></semantics></math> --> 𝖡4∖𝖡3\\mathsf{B}_{4}\\setminus\\mathsf{B}_{3} polytopes respectively,\nas illustrated in figure [2](#S3.F2 \"Figure 2 ‣ 3.2 Generalized Orthostochastic Matrices ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\").(a) mHC(implemented via <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{SK}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m22\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>SK</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{SK}}</annotation></semantics></math> --> 𝒫SK\\mathcal{P}_{\\text{SK}}) contains points outside of <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m23\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4} (this effect is exaggerated for illustration via initial conditions with large variance).(b) mHC-lite shows good expressivity, filling the region near the boundary almost completely, without extending past it.(c) KromHC fails to represent the complex region inside of <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m24\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4} – since the “shadow” is <!-- MathML: <math alttext=\"1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m25\" intent=\":literal\"><semantics><mn>1</mn><annotation encoding=\"application/x-tex\">1</annotation></semantics></math> --> 11-dimensional, it fills an infinitesimal slice of the full polytope.(d) For <!-- MathML: <math alttext=\"s=1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m26\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">s=1</annotation></semantics></math> --> s=1s=1, we see go-mHCrepresent a sizeable portion of the region, although it cannot represent all matrices near the boundary of the polytope.(e) With <!-- MathML: <math alttext=\"s=2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m27\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">s=2</annotation></semantics></math> --> s=2s=2, go-mHCbegins to represent larger regions of <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m28\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4}, filling the region more densely.*"
+      },
+      {
+        "id": "u000083",
+        "kind": "prose",
+        "text": "While KromHC is the most efficient of the proposed methods, it imposes a symmetry on the <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd-streams that significantly prunes the space of potential mixing terms in <!-- MathML: <math alttext=\"\\mathcal{H}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m2\" intent=\":literal\"><semantics><msup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mtext>res</mtext></msup><annotation encoding=\"application/x-tex\">\\mathcal{H}^{\\text{res}}</annotation></semantics></math> --> ℋres\\mathcal{H}^{\\text{res}}, as shown in figure [4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")c. We demonstrate that KromHC parameterizes only a sparse subset of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} for <!-- MathML: <math alttext=\"d&gt;2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m4\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">d&gt;2</annotation></semantics></math> --> d>2d>2 by analyzing the spectral reach of <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m5\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker products. Specifically, we prove that the spectral space of a <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m6\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker product of doubly stochastic matrices is invariant to the index <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m7\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk, effectively restricting the expressive reach of the resulting constraint to that of its constituent base manifold. A formal proof of this invariance is provided in Appendix [B.3.1](#A2.SS3.SSS1 \"B.3.1 Proof of 𝖲𝗉𝖾𝖼(𝐀_𝑗)⊆𝖲𝗉𝖾𝖼(⨂{𝐀_𝑖}) ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+      },
+      {
+        "id": "u000084",
+        "kind": "prose",
+        "text": "To illustrate this expressivity bottleneck, consider the <!-- MathML: <math alttext=\"4\\times 4\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m1\" intent=\":literal\"><semantics><mrow><mn>4</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mn>4</mn></mrow><annotation encoding=\"application/x-tex\">4\\times 4</annotation></semantics></math> --> 4×44\\times 4 case where <!-- MathML: <math alttext=\"\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m2\" intent=\":literal\"><semantics><mrow><mrow><mi>𝐀</mi><mo>,</mo><mi>𝐁</mi></mrow><mo>∈</mo><msub><mi>𝖡</mi><mn>2</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}</annotation></semantics></math> --> 𝐀,𝐁∈𝖡2\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}. Their individual spectra are defined as <!-- MathML: <math alttext=\"\\{1,\\lambda_{A}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m3\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>A</mi></msub><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{A}\\}</annotation></semantics></math> --> {1,λA}\\\\{1,\\lambda_{A}\\\\} and <!-- MathML: <math alttext=\"\\{1,\\lambda_{B}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m4\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>B</mi></msub><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{B}\\}</annotation></semantics></math> --> {1,λB}\\\\{1,\\lambda_{B}\\\\} for <!-- MathML: <math alttext=\"\\lambda\\in[-1,1]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m5\" intent=\":literal\"><semantics><mrow><mi>λ</mi><mo>∈</mo><mrow><mo stretchy=\"false\">[</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy=\"false\">]</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\lambda\\in[-1,1]</annotation></semantics></math> --> λ∈[−1,1]\\lambda\\in[-1,1]. The spectrum of the Kronecker product <!-- MathML: <math alttext=\"\\mathbf{A}\\otimes\\mathbf{B}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m6\" intent=\":literal\"><semantics><mrow><mi>𝐀</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⊗</mo><mi>𝐁</mi></mrow><annotation encoding=\"application/x-tex\">\\mathbf{A}\\otimes\\mathbf{B}</annotation></semantics></math> --> 𝐀⊗𝐁\\mathbf{A}\\otimes\\mathbf{B} is thus <!-- MathML: <math alttext=\"\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m7\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mrow><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>A</mi></msub><mo>,</mo><msub><mi>λ</mi><mi>B</mi></msub><mo>,</mo><mrow><msub><mi>λ</mi><mi>A</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>λ</mi><mi>B</mi></msub></mrow></mrow><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\}</annotation></semantics></math> --> {1,λA,λB,λA​λB}\\\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\\\}. Crucially, since the product <!-- MathML: <math alttext=\"\\lambda_{A}\\lambda_{B}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m8\" intent=\":literal\"><semantics><mrow><msub><mi>λ</mi><mi>A</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>λ</mi><mi>B</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\lambda_{A}\\lambda_{B}</annotation></semantics></math> --> λA​λB\\lambda_{A}\\lambda_{B} remains real and within the interval <!-- MathML: <math alttext=\"[-1,1]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m9\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">[</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">[-1,1]</annotation></semantics></math> --> [−1,1][-1,1], the resulting eigenvalues are strictly contained within the spectral hull of <!-- MathML: <math alttext=\"\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m10\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>2</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡2\\mathsf{B}_{2} (see Figure [4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")b for emperical results and a full proof in [B.3.1](#A2.SS3.SSS1 \"B.3.1 Proof of 𝖲𝗉𝖾𝖼(𝐀_𝑗)⊆𝖲𝗉𝖾𝖼(⨂{𝐀_𝑖}) ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")). Due to this closure, the spectral reach of the Kronecker-parameterized manifold is invariant to the number of products and fails to expand into the broader Karpelevič region available to the full Birkhoff polytope, representing increasingly smaller fractions of the full polytope. By volume, this is a negligible portion of the full <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m11\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} when <!-- MathML: <math alttext=\"d&gt;i_{k}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m12\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow><annotation encoding=\"application/x-tex\">d&gt;i_{k}</annotation></semantics></math> --> d>ikd>i_{k}, and we show emperically in appendix [B.3.2](#A2.SS3.SSS2 \"B.3.2 Effect of 𝑑 on approximation error in KromHC ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-Cons"
+      },
+      {
+        "id": "u000085",
+        "kind": "prose",
+        "text": "The collapse in spectral volume for Kronecker-based transforms represents a significant loss in functional diversity. Specifically, these constraints fail to represent cyclic permutations of order greater than <!-- MathML: <math alttext=\"i_{k}=2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m1\" intent=\":literal\"><semantics><mrow><msub><mi>i</mi><mi>k</mi></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">i_{k}=2</annotation></semantics></math> --> ik=2i_{k}=2 (e.g., <!-- MathML: <math alttext=\"1\\to 2\\to 3\\to 1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m2\" intent=\":literal\"><semantics><mrow><mn>1</mn><mo stretchy=\"false\">→</mo><mn>2</mn><mo stretchy=\"false\">→</mo><mn>3</mn><mo stretchy=\"false\">→</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">1\\to 2\\to 3\\to 1</annotation></semantics></math> --> 1→2→3→11\\to 2\\to 3\\to 1), effectively preventing the model from learning complex periodic dependencies. Furthermore, the restriction to real eigenvalues in the <!-- MathML: <math alttext=\"2\\times 2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m3\" intent=\":literal\"><semantics><mrow><mn>2</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">2\\times 2</annotation></semantics></math> --> 2×22\\times 2 base case implies that the system can only model pure diffusion (information spreading) without advection (directed rotation of information), severely limiting the directional flow of signals within the reservoir."
+      }
+    ]
+  },
+  {
+    "id": "n0000209",
+    "gapClass": "missing_definition",
+    "need": "definition of H_res",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000083",
+        "kind": "prose",
+        "text": "While KromHC is the most efficient of the proposed methods, it imposes a symmetry on the <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd-streams that significantly prunes the space of potential mixing terms in <!-- MathML: <math alttext=\"\\mathcal{H}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m2\" intent=\":literal\"><semantics><msup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mtext>res</mtext></msup><annotation encoding=\"application/x-tex\">\\mathcal{H}^{\\text{res}}</annotation></semantics></math> --> ℋres\\mathcal{H}^{\\text{res}}, as shown in figure [4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")c. We demonstrate that KromHC parameterizes only a sparse subset of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} for <!-- MathML: <math alttext=\"d&gt;2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m4\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">d&gt;2</annotation></semantics></math> --> d>2d>2 by analyzing the spectral reach of <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m5\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker products. Specifically, we prove that the spectral space of a <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m6\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker product of doubly stochastic matrices is invariant to the index <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m7\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk, effectively restricting the expressive reach of the resulting constraint to that of its constituent base manifold. A formal proof of this invariance is provided in Appendix [B.3.1](#A2.SS3.SSS1 \"B.3.1 Proof of 𝖲𝗉𝖾𝖼(𝐀_𝑗)⊆𝖲𝗉𝖾𝖼(⨂{𝐀_𝑖}) ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+      }
+    ]
+  },
+  {
+    "id": "n0000210",
+    "gapClass": "missing_definition",
+    "need": "definition of d-streams",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000083",
+        "kind": "prose",
+        "text": "While KromHC is the most efficient of the proposed methods, it imposes a symmetry on the <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd-streams that significantly prunes the space of potential mixing terms in <!-- MathML: <math alttext=\"\\mathcal{H}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m2\" intent=\":literal\"><semantics><msup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mtext>res</mtext></msup><annotation encoding=\"application/x-tex\">\\mathcal{H}^{\\text{res}}</annotation></semantics></math> --> ℋres\\mathcal{H}^{\\text{res}}, as shown in figure [4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")c. We demonstrate that KromHC parameterizes only a sparse subset of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} for <!-- MathML: <math alttext=\"d&gt;2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m4\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">d&gt;2</annotation></semantics></math> --> d>2d>2 by analyzing the spectral reach of <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m5\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker products. Specifically, we prove that the spectral space of a <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m6\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker product of doubly stochastic matrices is invariant to the index <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m7\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk, effectively restricting the expressive reach of the resulting constraint to that of its constituent base manifold. A formal proof of this invariance is provided in Appendix [B.3.1](#A2.SS3.SSS1 \"B.3.1 Proof of 𝖲𝗉𝖾𝖼(𝐀_𝑗)⊆𝖲𝗉𝖾𝖼(⨂{𝐀_𝑖}) ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+      }
+    ]
+  },
+  {
+    "id": "n0000212",
+    "gapClass": "missing_definition",
+    "need": "definition of spectral hull",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000084",
+        "kind": "prose",
+        "text": "To illustrate this expressivity bottleneck, consider the <!-- MathML: <math alttext=\"4\\times 4\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m1\" intent=\":literal\"><semantics><mrow><mn>4</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mn>4</mn></mrow><annotation encoding=\"application/x-tex\">4\\times 4</annotation></semantics></math> --> 4×44\\times 4 case where <!-- MathML: <math alttext=\"\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m2\" intent=\":literal\"><semantics><mrow><mrow><mi>𝐀</mi><mo>,</mo><mi>𝐁</mi></mrow><mo>∈</mo><msub><mi>𝖡</mi><mn>2</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}</annotation></semantics></math> --> 𝐀,𝐁∈𝖡2\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}. Their individual spectra are defined as <!-- MathML: <math alttext=\"\\{1,\\lambda_{A}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m3\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>A</mi></msub><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{A}\\}</annotation></semantics></math> --> {1,λA}\\\\{1,\\lambda_{A}\\\\} and <!-- MathML: <math alttext=\"\\{1,\\lambda_{B}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m4\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>B</mi></msub><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{B}\\}</annotation></semantics></math> --> {1,λB}\\\\{1,\\lambda_{B}\\\\} for <!-- MathML: <math alttext=\"\\lambda\\in[-1,1]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m5\" intent=\":literal\"><semantics><mrow><mi>λ</mi><mo>∈</mo><mrow><mo stretchy=\"false\">[</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy=\"false\">]</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\lambda\\in[-1,1]</annotation></semantics></math> --> λ∈[−1,1]\\lambda\\in[-1,1]. The spectrum of the Kronecker product <!-- MathML: <math alttext=\"\\mathbf{A}\\otimes\\mathbf{B}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m6\" intent=\":literal\"><semantics><mrow><mi>𝐀</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⊗</mo><mi>𝐁</mi></mrow><annotation encoding=\"application/x-tex\">\\mathbf{A}\\otimes\\mathbf{B}</annotation></semantics></math> --> 𝐀⊗𝐁\\mathbf{A}\\otimes\\mathbf{B} is thus <!-- MathML: <math alttext=\"\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m7\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mrow><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>A</mi></msub><mo>,</mo><msub><mi>λ</mi><mi>B</mi></msub><mo>,</mo><mrow><msub><mi>λ</mi><mi>A</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>λ</mi><mi>B</mi></msub></mrow></mrow><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\}</annotation></semantics></math> --> {1,λA,λB,λA​λB}\\\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\\\}. Crucially, since the product <!-- MathML: <math alttext=\"\\lambda_{A}\\lambda_{B}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m8\" intent=\":literal\"><semantics><mrow><msub><mi>λ</mi><mi>A</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>λ</mi><mi>B</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\lambda_{A}\\lambda_{B}</annotation></semantics></math> --> λA​λB\\lambda_{A}\\lambda_{B} remains real and within the interval <!-- MathML: <math alttext=\"[-1,1]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m9\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">[</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">[-1,1]</annotation></semantics></math> --> [−1,1][-1,1], the resulting eigenvalues are strictly contained within the spectral hull of <!-- MathML: <math alttext=\"\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m10\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>2</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡2\\mathsf{B}_{2} (see Figure [4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")b for emperical results and a full proof in [B.3.1](#A2.SS3.SSS1 \"B.3.1 Proof of 𝖲𝗉𝖾𝖼(𝐀_𝑗)⊆𝖲𝗉𝖾𝖼(⨂{𝐀_𝑖}) ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")). Due to this closure, the spectral reach of the Kronecker-parameterized manifold is invariant to the number of products and fails to expand into the broader Karpelevič region available to the full Birkhoff polytope, representing increasingly smaller fractions of the full polytope. By volume, this is a negligible portion of the full <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m11\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} when <!-- MathML: <math alttext=\"d&gt;i_{k}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m12\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow><annotation encoding=\"application/x-tex\">d&gt;i_{k}</annotation></semantics></math> --> d>ikd>i_{k}, and we show emperically in appendix [B.3.2](#A2.SS3.SSS2 \"B.3.2 Effect of 𝑑 on approximation error in KromHC ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-Cons"
+      }
+    ]
+  },
+  {
+    "id": "n0000213",
+    "gapClass": "missing_definition",
+    "need": "definition of i_k",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000085"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000085",
+        "kind": "prose",
+        "text": "The collapse in spectral volume for Kronecker-based transforms represents a significant loss in functional diversity. Specifically, these constraints fail to represent cyclic permutations of order greater than <!-- MathML: <math alttext=\"i_{k}=2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m1\" intent=\":literal\"><semantics><mrow><msub><mi>i</mi><mi>k</mi></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">i_{k}=2</annotation></semantics></math> --> ik=2i_{k}=2 (e.g., <!-- MathML: <math alttext=\"1\\to 2\\to 3\\to 1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m2\" intent=\":literal\"><semantics><mrow><mn>1</mn><mo stretchy=\"false\">→</mo><mn>2</mn><mo stretchy=\"false\">→</mo><mn>3</mn><mo stretchy=\"false\">→</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">1\\to 2\\to 3\\to 1</annotation></semantics></math> --> 1→2→3→11\\to 2\\to 3\\to 1), effectively preventing the model from learning complex periodic dependencies. Furthermore, the restriction to real eigenvalues in the <!-- MathML: <math alttext=\"2\\times 2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m3\" intent=\":literal\"><semantics><mrow><mn>2</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">2\\times 2</annotation></semantics></math> --> 2×22\\times 2 base case implies that the system can only model pure diffusion (information spreading) without advection (directed rotation of information), severely limiting the directional flow of signals within the reservoir."
+      }
+    ]
+  },
+  {
+    "id": "n0000263",
+    "gapClass": "metadata",
+    "need": "artifact storage metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000103"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000103",
+        "kind": "prose",
+        "text": "[Artifact storage: ~/.omp/agent/sessions/-code-refine/2026-08-27T06-37-15-375Z_01a041ef-e2ef-7000-add7-e3bcd8126883/75.read.log (496.0KB). Use artifact://75:N-M to page, artifact://75:raw:N-M for verbatim chunks, and the artifact file path for search/copy workflows.]"
+      }
+    ]
+  },
+  {
+    "id": "n0000264",
+    "gapClass": "metadata",
+    "need": "pagination metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000104"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000104",
+        "kind": "prose",
+        "text": "[Showing lines 1-271 of 1161 (149.7KB limit). Use :272 to continue]"
+      }
+    ]
+  }
+]

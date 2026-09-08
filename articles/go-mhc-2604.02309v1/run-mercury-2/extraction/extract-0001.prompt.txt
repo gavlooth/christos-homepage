@@ -1,0 +1,292 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001",
+  "context": [],
+  "units": [
+    {
+      "id": "u000001",
+      "kind": "prose",
+      "text": "URL: https://arxiv.org/html/2604.02309v1\nContent-Type: text/html\nMethod: native"
+    },
+    {
+      "id": "u000002",
+      "kind": "prose",
+      "text": "---"
+    },
+    {
+      "id": "u000003",
+      "kind": "prose",
+      "text": "---\nmeta-viewport: width=device-width, initial-scale=1, shrink-to-fit=no\ntitle: go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\n---"
+    },
+    {
+      "id": "u000004",
+      "kind": "prose",
+      "text": "![](/static/base/1.0.1/images/icons/smileybones-small.svg) arXiv is now an independent nonprofit! [Learn more](https://info.arxiv.org/about) ×"
+    },
+    {
+      "id": "u000005",
+      "kind": "prose",
+      "text": "[![arXiv logo](/static/base/1.0.1/images/arxiv-logo-primary-light.svg) Back to arXiv](/)"
+    },
+    {
+      "id": "u000006",
+      "kind": "prose",
+      "text": "[License: arXiv.org perpetual non-exclusive license](https://info.arxiv.org/help/license/index.html#licenses-available)"
+    },
+    {
+      "id": "u000007",
+      "kind": "prose",
+      "text": "arXiv:2604.02309v1 [cs.LG] 02 Apr 2026"
+    },
+    {
+      "id": "u000008",
+      "kind": "heading",
+      "text": "# go-mHC: Direct Parameterization of Manifold-Constrained  Hyper-Connections via Generalized Orthostochastic Matrices"
+    },
+    {
+      "id": "u000009",
+      "kind": "prose",
+      "text": "Torque Dandachi Affiliation: Independent, San Francisco, United States of AmericaCorrespondence to: <hi@itstorque.com>    Sophia Diggs-Galligan Affiliation: Independent, San Francisco, United States of America"
+    },
+    {
+      "id": "u000010",
+      "kind": "heading",
+      "text": "###### Abstract"
+    },
+    {
+      "id": "u000011",
+      "kind": "prose",
+      "text": "Doubly stochastic matrices enable learned mixing across residual streams, but parameterizing the set of doubly stochastic matrices (the Birkhoff polytope) exactly and efficiently remains an open challenge. Existing exact methods scale factorially with the number of streams (<!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"abstract1.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd), while Kronecker-factorized approaches are efficient but expressivity-limited. We introduce a novel exact parameterization grounded in the theory of generalized orthostochastic matrices, which scales as <!-- MathML: <math alttext=\"\\mathcal{O}(d^{3})\" class=\"ltx_Math\" display=\"inline\" id=\"abstract1.m2\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><msup><mi>d</mi><mn>3</mn></msup><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d^{3})</annotation></semantics></math> --> 𝒪⁡(d3)\\mathcal{O}(d^{3}) and exposes a single hyperparameter <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"abstract1.m3\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss which continuously interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope. Building on Manifold-Constrained Hyper-Connections (mHC), a framework for learned dynamic layer connectivity, we instantiate this parameterization in go-mHC. Our method composes naturally with Kronecker-factorized methods, substantially recovering expressivity at similar FLOP costs. Spectral analysis indicates that go-mHC fills the Birkhoff polytope far more completely than Kronecker-factorized baselines. On synthetic stream-mixing tasks, go-mHC achieves the minimum theoretical loss while converging up to <!-- MathML: <math alttext=\"10\\times\" class=\"ltx_math_unparsed\" display=\"inline\" id=\"abstract1.m4\" intent=\":literal\"><semantics><mrow><mn>10</mn><mo lspace=\"0.222em\">×</mo></mrow><annotation encoding=\"application/x-tex\">10\\times</annotation></semantics></math> --> 10×10\\times faster. We validate our approach in a 30M parameter GPT-style language model. The expressivity, efficiency, and exactness of go-mHC offer a practical avenue for scaling <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"abstract1.m5\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd as a new dimension of model capacity."
+    },
+    {
+      "id": "u000012",
+      "kind": "heading",
+      "text": "## 1 Introduction"
+    },
+    {
+      "id": "u000013",
+      "kind": "prose",
+      "text": "The performance and stability of modern machine learning models increasingly depends on the geometric structure of their underlying matrix parameterizations ([Bronstein et al., 2021](#bib.bib33 \"\"); [Arjovsky et al., 2016](#bib.bib34 \"\"); [Saxe et al., 2014](#bib.bib35 \"\"); [Zhao et al., 2025](#bib.bib38 \"\")). While traditional constraints—such as symmetry or orthogonality—have long served as foundational tools ([Arjovsky et al., 2016](#bib.bib34 \"\"); [Wisdom et al., 2016](#bib.bib36 \"\"); [Henaff et al., 2017](#bib.bib37 \"\")), recent breakthroughs have pivoted toward more complex geometric structures ([Papillon et al., 2025](#bib.bib32 \"\"); [Bronstein et al., 2021](#bib.bib33 \"\")).\nA promising frontier for addressing these limitations lies in leveraging manifold theory to map unconstrained optimization spaces onto computationally tractable, constrained geometries ([Xie et al., 2026](#bib.bib1 \"\"); [Chen et al., 2026](#bib.bib40 \"\"); [Smith, 2014](#bib.bib39 \"\"); [Lu et al., 2021](#bib.bib41 \"\")). Of particular interest is the Birkhoff polytope ([Adams and Zemel, 2011](#bib.bib31 \"\"); [Tay et al., 2020](#bib.bib26 \"\"); [Sander et al., 2022](#bib.bib25 \"\"); [Xie et al., 2026](#bib.bib1 \"\")), the manifold of doubly stochastic matrices. By enforcing unit row and column sum constraints, the Birkhoff polytope offers a rigorous framework for learning permutations, alignments, and hyper-connections, yet its practical utility has been bottlenecked by the trade-off between exactness and computational scalability ([Xie et al., 2026](#bib.bib1 \"\"))."
+    },
+    {
+      "id": "u000014",
+      "kind": "prose",
+      "text": "[Sander et al. (2022)](#bib.bib25 \"\") demonstrated that constraining the attention pattern to doubly stochastic matrices both improved accuracy in vision and language models while providing an elegant interpretation of learned parameters as probability trajectories ([Sander et al., 2022](#bib.bib25 \"\"); [Shahbazi et al., 2025](#bib.bib42 \"\")). [Tay et al. (2020)](#bib.bib26 \"\") investigated memory-efficient implementations of Sinkhorn Attention due to it’s ability to mix internal representations and have an associated smooth optimization landscape."
+    },
+    {
+      "id": "u000015",
+      "kind": "prose",
+      "text": "A more recent application of such manifold constraints is in the generalization of residual connections ([Sander et al., 2022](#bib.bib25 \"\"); [Xie et al., 2026](#bib.bib1 \"\")).\nResidual connections have become a crucial component in stabilizing the training of deep neural networks ([He et al., 2015](#bib.bib7 \"\"); [He et al., 2016](#bib.bib43 \"\")) and a critical building block of modern large language models ([Radford et al., 2019](#bib.bib21 \"\"); [Vaswani et al., 2023](#bib.bib20 \"\")).\nOngoing work investigates dynamic generalizations of the residual streams aimed at increasing the topological complexity of residual function connectivity by increasing the number of streams, <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p3.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd, while preserving the identity mapping property of the residual stream ([Zhu et al., 2025a](#bib.bib2 \"\"))."
+    },
+    {
+      "id": "u000016",
+      "kind": "prose",
+      "text": "![Refer to caption](2604.02309v1/main_fig.png)"
+    },
+    {
+      "id": "u000017",
+      "kind": "prose",
+      "text": "*Figure 1: Spectral analysis and architectural integration of go-mHC. (Left) Spectral Comparison: Illustration of spectral reach and approximation gaps across several manifold parameterization methods.mHC (and the Sinkhorn-Knopp algorithm) is not guaranteed to always remain within the manifold after finite iterations iterations (red points).\ngo-mHC (Ours) closely approximates the Birkhoff polytope <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m14\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} within an <!-- MathML: <math alttext=\"\\epsilon(s)\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m15\" intent=\":literal\"><semantics><mrow><mi>ϵ</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mi>s</mi><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\epsilon(s)</annotation></semantics></math> --> ϵ⁡(s)\\epsilon(s) error margin using only <!-- MathML: <math alttext=\"\\frac{d(d-1)}{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m16\" intent=\":literal\"><semantics><mfrac><mrow><mi>d</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>d</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><mn>2</mn></mfrac><annotation encoding=\"application/x-tex\">\\frac{d(d-1)}{2}</annotation></semantics></math> --> d⁡(d−1)2\\frac{d(d-1)}{2} parameters.mHC-lite provides full coverage but requires <!-- MathML: <math alttext=\"d!\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m17\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>!</mo></mrow><annotation encoding=\"application/x-tex\">d!</annotation></semantics></math> --> d!d! parameters, while KromHC is restricted to tensors of <!-- MathML: <math alttext=\"\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m18\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>2</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡2\\mathsf{B}_{2}, disallowing non-adjacent cycles of length <!-- MathML: <math alttext=\"&gt;2\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m19\" intent=\":literal\"><semantics><mrow><mphantom /><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">&gt;2</annotation></semantics></math> --> >2>2 and severely restricting the space of learnable matrices.(Middle) Parameterization Pipeline: Our method maps learned skew-symmetric parameters <!-- MathML: <math alttext=\"\\mathbf{X}=-\\mathbf{X}^{\\top}\\in\\mathbb{R}^{ds\\times ds}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m20\" intent=\":literal\"><semantics><mrow><mi>𝐗</mi><mo>=</mo><mrow><mo>−</mo><msup><mi>𝐗</mi><mo>⊤</mo></msup></mrow><mo>∈</mo><msup><mi>ℝ</mi><mrow><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow></msup></mrow><annotation encoding=\"application/x-tex\">\\mathbf{X}=-\\mathbf{X}^{\\top}\\in\\mathbb{R}^{ds\\times ds}</annotation></semantics></math> --> 𝐗=−𝐗⊤∈ℝd​s×d​s\\mathbf{X}=-\\mathbf{X}^{\\top}\\in\\mathbb{R}^{ds\\times ds} to an orthogonal matrix <!-- MathML: <math alttext=\"\\mathbf{Q}\\in\\mathcal{Q}(ds)\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m21\" intent=\":literal\"><semantics><mrow><mi>𝐐</mi><mo>∈</mo><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒬</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo stretchy=\"false\">)</mo></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathbf{Q}\\in\\mathcal{Q}(ds)</annotation></semantics></math> --> 𝐐∈𝒬⁡(d​s)\\mathbf{Q}\\in\\mathcal{Q}(ds) via the Cayley Transform <!-- MathML: <math alttext=\"(\\mathbf{I}-\\mathbf{X})(\\mathbf{I}+\\mathbf{X})^{-1}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m22\" intent=\":literal\"><semantics><mrow><mrow><mo stretchy=\"false\">(</mo><mrow><mi>𝐈</mi><mo>−</mo><mi>𝐗</mi></mrow><mo stretchy=\"false\">)</mo></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><msup><mrow><mo stretchy=\"false\">(</mo><mrow><mi>𝐈</mi><mo>+</mo><mi>𝐗</mi></mrow><mo stretchy=\"false\">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding=\"application/x-tex\">(\\mathbf{I}-\\mathbf{X})(\\mathbf{I}+\\mathbf{X})^{-1}</annotation></semantics></math> --> (𝐈−𝐗)​(𝐈+𝐗)−1(\\mathbf{I}-\\mathbf{X})(\\mathbf{I}+\\mathbf{X})^{-1}. The final doubly stochastic matrix <!-- MathML: <math alttext=\"\\mathbf{B}\\in\\mathbb{R}^{d\\times d}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m23\" intent=\":literal\"><semantics><mrow><mi>𝐁</mi><mo>∈</mo><msup><mi>ℝ</mi><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow></msup></mrow><annotation encoding=\"application/x-tex\">\\mathbf{B}\\in\\mathbb{R}^{d\\times d}</annotation></semantics></math> --> 𝐁∈ℝd×d\\mathbf{B}\\in\\mathbb{R}^{d\\times d} is obtained by a block-wise Frobenius norm projection <!-- MathML: <math alttext=\"\\frac{1}{s}\\|\\mathbf{Q}_{ij}\\|_{F}^{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m24\" intent=\":literal\"><semantics><mrow><mfrac><mn>1</mn><mi>s</mi></mfrac><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mrow><mo stretchy=\"false\">‖</mo><msub><mi>𝐐</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup></mrow><annotation encoding=\"application/x-tex\">\\frac{1}{s}\\|\\mathbf{Q}_{ij}\\|_{F}^{2}</annotation></semantics></math> --> 1s​‖𝐐i​j‖F2\\frac{1}{s}\\\\|\\mathbf{Q}_{ij}\\\\|_{F}^{2}.(Right) Hyper-Connections: The transformation <!-- MathML: <math alttext=\"\\mathcal{H}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m25\" intent=\":literal\"><semantics><msup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mtext>res</mtext></msup><annotation encoding=\"application/x-tex\">\\mathcal{H}^{\\text{res}}</annotation></semantics></math> --> ℋres\\mathcal{H}^{\\text{res}} is integrated into the residual stream <!-- MathML: <math alttext=\"\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\mathbf{x}_{l}+\\text{Layer }\\mathcal{F}(\\mathbf{x}_{l})\" class=\"ltx_Math\" display=\"inline\" id=\"S1.F1.m26\" intent=\":literal\"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐱</mi><mi>l</mi></msub></mrow><mo>+</mo><mrow><mtext>Layer&nbsp;</mtext><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi class=\"ltx_font_mathcaligraphic\">ℱ</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msub><mi>𝐱</mi><mi>l</mi></msub><mo stretchy=\"false\">)</mo></mrow></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\mathbf{x}_{l}+\\text{Layer }\\mathcal{F}(\\mathbf{x}_{l})</annotation></semantics></math> --> 𝐱l+1=ℋlres​𝐱l+Layer ​ℱ​(𝐱l)\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\mathbf{x}_{l}+\\text{Layer }\\mathcal{F}(\\mathbf{x}_{l}), where the doubly stochastic constraint ensures training stability and improved gradient flow.*"
+    },
+    {
+      "id": "u000018",
+      "kind": "prose",
+      "text": "Manifold-Constrained Hyper-Connections (mHC) ([Xie et al., 2026](#bib.bib1 \"\")) provides evidence that constraining the residual connections to the interior of the Birkhoff polytope significantly improves training stability and scalability. These dynamic generalizations reveal the possibility for a new scaling dimension complementing that of traditional scaling laws: the number of residual streams, <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p4.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd. Follow-up works have already implemented mHC as the default backbone due to its superior modeling capabilities ([Cheng et al., 2026](#bib.bib44 \"\"))."
+    },
+    {
+      "id": "u000019",
+      "kind": "prose",
+      "text": "In order to further explore the feasibility of this scaling dimension, two works have since introduced the use of exact parameterizations to prevent error accumulation across layers ([Yang and Gao, 2026](#bib.bib3 \"\"); [Zhou et al., 2026](#bib.bib6 \"\")). These methods additionally avoid the overhead introduced by iterative normalization and overcome the need for custom infrastructure optimization.mHC-lite ([Yang and Gao, 2026](#bib.bib3 \"\")) invokes the Birkhoff–von Neumann theorem to parameterize <!-- MathML: <math alttext=\"\\mathcal{H}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p5.m1\" intent=\":literal\"><semantics><msup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mtext>res</mtext></msup><annotation encoding=\"application/x-tex\">\\mathcal{H}^{\\text{res}}</annotation></semantics></math> --> ℋres\\mathcal{H}^{\\text{res}} as a convex combination of all <!-- MathML: <math alttext=\"d!\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p5.m2\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>!</mo></mrow><annotation encoding=\"application/x-tex\">d!</annotation></semantics></math> --> d!d! permutation matrices.\nHowever, the <!-- MathML: <math alttext=\"\\mathcal{O}(d\\cdot d!)\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p5.m3\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mrow><mi>d</mi><mo>!</mo></mrow></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d\\cdot d!)</annotation></semantics></math> --> 𝒪⁡(d⋅d!)\\mathcal{O}(d\\cdot d!) parameter count explodes super-exponentially: at <!-- MathML: <math alttext=\"d=8\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p5.m4\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding=\"application/x-tex\">d=8</annotation></semantics></math> --> d=8d=8, <!-- MathML: <math alttext=\"8!=40{,}320\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p5.m5\" intent=\":literal\"><semantics><mrow><mrow><mn>8</mn><mo>!</mo></mrow><mo>=</mo><mn>40,320</mn></mrow><annotation encoding=\"application/x-tex\">8!=40{,}320</annotation></semantics></math> --> 8!=40,3208!=40{,}320 permutations are required, rendering this approach memory-prohibitive without sampling approximations that restore an approximation gap.\nConversely, KromHC ([Zhou et al., 2026](#bib.bib6 \"\")) uses the Kronecker products of small doubly stochastic matrices to achieve exact constraints at <!-- MathML: <math alttext=\"\\mathcal{O}(d^{2})\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p5.m6\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><msup><mi>d</mi><mn>2</mn></msup><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d^{2})</annotation></semantics></math> --> 𝒪⁡(d2)\\mathcal{O}(d^{2}) complexity, but in doing so, severely trades off expresivity."
+    },
+    {
+      "id": "u000020",
+      "kind": "prose",
+      "text": "We propose a complementary solution rooted in the algebraic theory of generalized orthostochastic matrices ([Gutkin, 2013](#bib.bib45 \"\"); [Nechita et al., 2023](#bib.bib4 \"\"); [Korzekwa et al., 2018](#bib.bib47 \"\"); [Shahbeigi et al., 2021](#bib.bib46 \"\")).\nOur framework for exactly learning doubly stochastic matrices attempts to balance the need for efficiency and expressivity, while exposing a hyperparameter <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p6.m1\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss that allows for tunability across these attributes. This opens up the possibility for further exploration and new approaches towards scaling Hyper-Connections."
+    },
+    {
+      "id": "u000021",
+      "kind": "prose",
+      "text": "In this work, we focus on mHC as an example application, but our generalized orthostochastic construction (go-mHC) can be applied more broadly as a way to parameterize and learn the interior of the Birkhoff polytope. We characterize our parameterization in the context of a synthetic data task mixing <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S1.p7.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd residual streams and a 30M parameter GPT-style language model."
+    },
+    {
+      "id": "u000022",
+      "kind": "prose",
+      "text": "We specifically contribute analytics and explorations that indicate that our method:"
+    },
+    {
+      "id": "u000023",
+      "kind": "prose",
+      "text": "1. 1.\n     Achieves faster convergence and better reachability than parametrizations invoking the Birkhoff von-neumann theorem, as in mHC-lite and KromHC"
+    }
+  ]
+}

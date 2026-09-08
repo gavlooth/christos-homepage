@@ -1,0 +1,226 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003",
+  "context": [
+    "go-mHC: Direct Parameterization of Manifold-Constrained  Hyper-Connections via Generalized Orthostochastic Matrices",
+    "3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections",
+    "3.1 Hyper-Connections"
+  ],
+  "units": [
+    {
+      "id": "u000048",
+      "kind": "prose",
+      "text": "where <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{res}}\\in\\mathbb{R}^{d\\times d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m4\" intent=\":literal\"><semantics><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo>∈</mo><msup><mi>ℝ</mi><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow></msup></mrow><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{res}}\\in\\mathbb{R}^{d\\times d}</annotation></semantics></math> --> ℋlres∈ℝd×d\\mathcal{H}_{l}^{\\text{res}}\\in\\mathbb{R}^{d\\times d} mixes residual streams, <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{pre}}\\in\\mathbb{R}^{1\\times d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m5\" intent=\":literal\"><semantics><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>pre</mtext></msubsup><mo>∈</mo><msup><mi>ℝ</mi><mrow><mn>1</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow></msup></mrow><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{pre}}\\in\\mathbb{R}^{1\\times d}</annotation></semantics></math> --> ℋlpre∈ℝ1×d\\mathcal{H}_{l}^{\\text{pre}}\\in\\mathbb{R}^{1\\times d} aggregates streams into the branch input, and <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{post}}\\in\\mathbb{R}^{1\\times d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m6\" intent=\":literal\"><semantics><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>post</mtext></msubsup><mo>∈</mo><msup><mi>ℝ</mi><mrow><mn>1</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow></msup></mrow><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{post}}\\in\\mathbb{R}^{1\\times d}</annotation></semantics></math> --> ℋlpost∈ℝ1×d\\mathcal{H}_{l}^{\\text{post}}\\in\\mathbb{R}^{1\\times d} distributes branch output back to streams. With <!-- MathML: <math alttext=\"\\mathbf{x}_{0}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m7\" intent=\":literal\"><semantics><msub><mi>𝐱</mi><mn>0</mn></msub><annotation encoding=\"application/x-tex\">\\mathbf{x}_{0}</annotation></semantics></math> --> 𝐱0\\mathbf{x}_{0} defined as <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m8\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd repetitions of the initial input as done in [Zhu et al. (2025a)](#bib.bib2 \"\"). In the limit of <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{res}}=\\mathcal{H}_{l}^{\\text{pre}}=\\mathcal{H}_{l}^{\\text{post}}=[1]\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p1.m9\" intent=\":literal\"><semantics><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo>=</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>pre</mtext></msubsup><mo>=</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>post</mtext></msubsup><mo>=</mo><mrow><mo stretchy=\"false\">[</mo><mn>1</mn><mo stretchy=\"false\">]</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{res}}=\\mathcal{H}_{l}^{\\text{pre}}=\\mathcal{H}_{l}^{\\text{post}}=[1]</annotation></semantics></math> --> ℋlres=ℋlpre=ℋlpost=[1]\\mathcal{H}_{l}^{\\text{res}}=\\mathcal{H}_{l}^{\\text{pre}}=\\mathcal{H}_{l}^{\\text{post}}=[1], this is the typical single-stream residual connection."
+    },
+    {
+      "id": "u000049",
+      "kind": "prose",
+      "text": "To allow for a dynamic topology of the network, the <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p2.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd-stream mixing, readout and write-in terms are\nallowed to be dynamic with learned parameters <!-- MathML: <math alttext=\"\\{(\\alpha^{s}_{l},\\mathbf{W}^{s}_{l},\\mathbf{b}^{s}_{l})\\}_{s\\in\\{\\text{pre, post, res}\\}}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p2.m2\" intent=\":literal\"><semantics><msub><mrow><mo stretchy=\"false\">{</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi>α</mi><mi>l</mi><mi>s</mi></msubsup><mo>,</mo><msubsup><mi>𝐖</mi><mi>l</mi><mi>s</mi></msubsup><mo>,</mo><msubsup><mi>𝐛</mi><mi>l</mi><mi>s</mi></msubsup><mo stretchy=\"false\">)</mo></mrow><mo stretchy=\"false\">}</mo></mrow><mrow><mi>s</mi><mo>∈</mo><mrow><mo stretchy=\"false\">{</mo><mtext>pre, post, res</mtext><mo stretchy=\"false\">}</mo></mrow></mrow></msub><annotation encoding=\"application/x-tex\">\\{(\\alpha^{s}_{l},\\mathbf{W}^{s}_{l},\\mathbf{b}^{s}_{l})\\}_{s\\in\\{\\text{pre, post, res}\\}}</annotation></semantics></math> --> {(αls,𝐖ls,𝐛ls)}s∈{pre, post, res}\\\\{(\\alpha^{s}_{l},\\mathbf{W}^{s}_{l},\\mathbf{b}^{s}_{l})\\\\}_{s\\in\\\\{\\text{pre, post, res}\\\\}}:"
+    },
+    {
+      "id": "u000050",
+      "kind": "table",
+      "text": "|  |  | <!-- MathML: <math alttext=\"\\displaystyle\\mathbf{x}_{l}^{\\prime}=\\text{RMSNorm}(\\mathbf{x}_{l}),\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E2.m1\" intent=\":literal\"><semantics><mrow><mrow><msubsup><mi>𝐱</mi><mi>l</mi><mo>′</mo></msubsup><mo>=</mo><mrow><mtext>RMSNorm</mtext><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msub><mi>𝐱</mi><mi>l</mi></msub><mo stretchy=\"false\">)</mo></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\mathbf{x}_{l}^{\\prime}=\\text{RMSNorm}(\\mathbf{x}_{l}),</annotation></semantics></math> --> 𝐱l′=RMSNorm​(𝐱l),\\displaystyle\\mathbf{x}_{l}^{\\prime}=\\text{RMSNorm}(\\mathbf{x}_{l}), |  | (2) |\n| --- | --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --- |\n|  |  | <!-- MathML: <math alttext=\"\\displaystyle\\mathcal{H}_{l}^{\\text{pre}}=\\text{sigmoid}\\left(\\alpha_{l}^{\\text{pre}}\\mathbf{x}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{pre}}+\\mathbf{b}_{l}^{\\text{pre}}\\right),\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E3.m1\" intent=\":literal\"><semantics><mrow><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>pre</mtext></msubsup><mo>=</mo><mrow><mtext>sigmoid</mtext><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo>(</mo><mrow><mrow><msubsup><mi>α</mi><mi>l</mi><mtext>pre</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mi>𝐱</mi><mi>l</mi><mo>′</mo></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mi>𝐖</mi><mi>l</mi><mtext>pre</mtext></msubsup></mrow><mo>+</mo><msubsup><mi>𝐛</mi><mi>l</mi><mtext>pre</mtext></msubsup></mrow><mo>)</mo></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\mathcal{H}_{l}^{\\text{pre}}=\\text{sigmoid}\\left(\\alpha_{l}^{\\text{pre}}\\mathbf{x}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{pre}}+\\mathbf{b}_{l}^{\\text{pre}}\\right),</annotation></semantics></math> --> ℋlpre=sigmoid​(αlpre​𝐱l′​𝐖lpre+𝐛lpre),\\displaystyle\\mathcal{H}_{l}^{\\text{pre}}=\\text{sigmoid}\\left(\\alpha_{l}^{\\text{pre}}\\mathbf{x}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{pre}}+\\mathbf{b}_{l}^{\\text{pre}}\\right), |  | (3) |\n|  |  | <!-- MathML: <math alttext=\"\\displaystyle\\mathcal{H}_{l}^{\\text{post}}=2\\cdot\\text{sigmoid}\\left(\\alpha_{l}^{\\text{post}}\\mathbf{x}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{post}}+\\mathbf{b}_{l}^{\\text{post}}\\right),\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E4.m1\" intent=\":literal\"><semantics><mrow><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>post</mtext></msubsup><mo>=</mo><mrow><mrow><mn>2</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">⋅</mo><mtext>sigmoid</mtext></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo>(</mo><mrow><mrow><msubsup><mi>α</mi><mi>l</mi><mtext>post</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mi>𝐱</mi><mi>l</mi><mo>′</mo></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mi>𝐖</mi><mi>l</mi><mtext>post</mtext></msubsup></mrow><mo>+</mo><msubsup><mi>𝐛</mi><mi>l</mi><mtext>post</mtext></msubsup></mrow><mo>)</mo></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\mathcal{H}_{l}^{\\text{post}}=2\\cdot\\text{sigmoid}\\left(\\alpha_{l}^{\\text{post}}\\mathbf{x}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{post}}+\\mathbf{b}_{l}^{\\text{post}}\\right),</annotation></semantics></math> --> ℋlpost=2⋅sigmoid​(αlpost​𝐱l′​𝐖lpost+𝐛lpost),\\displaystyle\\mathcal{H}_{l}^{\\text{post}}=2\\cdot\\text{sigmoid}\\left(\\alpha_{l}^{\\text{post}}\\mathbf{x}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{post}}+\\mathbf{b}_{l}^{\\text{post}}\\right), |  | (4) |\n|  |  | <!-- MathML: <math alttext=\"\\displaystyle\\mathcal{H}_{l}^{\\text{res}}=\\mathcal{P}\\left(\\text{mat}\\left(\\alpha_{l}^{\\text{res}}\\hat{\\mathbf{x}}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{res}}+\\mathbf{b}_{l}^{\\text{res}}\\right)\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E5.m1\" intent=\":literal\"><semantics><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo>=</mo><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mtext>mat</mtext><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo>(</mo><mrow><mrow><msubsup><mi>α</mi><mi>l</mi><mtext>res</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mover accent=\"true\"><mi>𝐱</mi><mo>^</mo></mover><mi>l</mi><mo>′</mo></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msubsup><mi>𝐖</mi><mi>l</mi><mtext>res</mtext></msubsup></mrow><mo>+</mo><msubsup><mi>𝐛</mi><mi>l</mi><mtext>res</mtext></msubsup></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\mathcal{H}_{l}^{\\text{res}}=\\mathcal{P}\\left(\\text{mat}\\left(\\alpha_{l}^{\\text{res}}\\hat{\\mathbf{x}}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{res}}+\\mathbf{b}_{l}^{\\text{res}}\\right)\\right)</annotation></semantics></math> --> ℋlres=𝒫⁡(mat​(αlres​𝐱^l′​𝐖lres+𝐛lres))\\displaystyle\\mathcal{H}_{l}^{\\text{res}}=\\mathcal{P}\\left(\\text{mat}\\left(\\alpha_{l}^{\\text{res}}\\hat{\\mathbf{x}}_{l}^{\\prime}\\mathbf{W}_{l}^{\\text{res}}+\\mathbf{b}_{l}^{\\text{res}}\\right)\\right) |  | (5) |"
+    },
+    {
+      "id": "u000051",
+      "kind": "prose",
+      "text": "In mHC, the manifold constraint operator <!-- MathML: <math alttext=\"\\mathcal{P}=\\mathcal{P}_{\\text{SK}}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p4.m1\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mo>=</mo><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>SK</mtext></msub></mrow><annotation encoding=\"application/x-tex\">\\mathcal{P}=\\mathcal{P}_{\\text{SK}}</annotation></semantics></math> --> 𝒫=𝒫SK\\mathcal{P}=\\mathcal{P}_{\\text{SK}} is realized via 20 iterations of the Sinkhorn-Knopp algorithm, where rows and columns are normalized iteratively."
+    },
+    {
+      "id": "u000052",
+      "kind": "prose",
+      "text": "As done in mHC-lite and KromHC, we opt to keep the above formulation\nand choose to only modify <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p5.m1\" intent=\":literal\"><semantics><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{res}}</annotation></semantics></math> --> ℋlres\\mathcal{H}_{l}^{\\text{res}} in equation [5](#S3.E5 \"Equation 5 ‣ 3.1 Hyper-Connections ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") to be an exact projection.\nWe instead take <!-- MathML: <math alttext=\"\\mathcal{P}=\\mathcal{P}_{\\text{go}}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p5.m2\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mo>=</mo><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>go</mtext></msub></mrow><annotation encoding=\"application/x-tex\">\\mathcal{P}=\\mathcal{P}_{\\text{go}}</annotation></semantics></math> --> 𝒫=𝒫go\\mathcal{P}=\\mathcal{P}_{\\text{go}} as a map from <!-- MathML: <math alttext=\"\\frac{ds(ds-1)}{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p5.m3\" intent=\":literal\"><semantics><mfrac><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><mn>2</mn></mfrac><annotation encoding=\"application/x-tex\">\\frac{ds(ds-1)}{2}</annotation></semantics></math> --> d​s​(d​s−1)2\\frac{ds(ds-1)}{2} parameters generated by our learned parameters <!-- MathML: <math alttext=\"(\\alpha^{\\text{res}}_{l},\\mathbf{W}^{\\text{res}}_{l},\\mathbf{b}^{\\text{res}}_{l})\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p5.m4\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">(</mo><msubsup><mi>α</mi><mi>l</mi><mtext>res</mtext></msubsup><mo>,</mo><msubsup><mi>𝐖</mi><mi>l</mi><mtext>res</mtext></msubsup><mo>,</mo><msubsup><mi>𝐛</mi><mi>l</mi><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(\\alpha^{\\text{res}}_{l},\\mathbf{W}^{\\text{res}}_{l},\\mathbf{b}^{\\text{res}}_{l})</annotation></semantics></math> --> (αlres,𝐖lres,𝐛lres)(\\alpha^{\\text{res}}_{l},\\mathbf{W}^{\\text{res}}_{l},\\mathbf{b}^{\\text{res}}_{l}) to the target <!-- MathML: <math alttext=\"d\\times d\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS1.p5.m5\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d\\times d</annotation></semantics></math> --> d×dd\\times d mixing matrix using the algebraic theory of generalized orthostochastic matrices."
+    },
+    {
+      "id": "u000053",
+      "kind": "heading",
+      "text": "### 3.2 Generalized Orthostochastic Matrices"
+    },
+    {
+      "id": "u000054",
+      "kind": "prose",
+      "text": "A matrix <!-- MathML: <math alttext=\"\\mathbf{B}\\in\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p1.m1\" intent=\":literal\"><semantics><mrow><mi>𝐁</mi><mo>∈</mo><msub><mi>𝖡</mi><mi>d</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\mathbf{B}\\in\\mathsf{B}_{d}</annotation></semantics></math> --> 𝐁∈𝖡d\\mathbf{B}\\in\\mathsf{B}_{d} is called *orthostochastic* if <!-- MathML: <math alttext=\"\\mathbf{B}_{ij}=\\mathbf{Q}_{ij}^{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p1.m2\" intent=\":literal\"><semantics><mrow><msub><mi>𝐁</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo>=</mo><msubsup><mi>𝐐</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow><mn>2</mn></msubsup></mrow><annotation encoding=\"application/x-tex\">\\mathbf{B}_{ij}=\\mathbf{Q}_{ij}^{2}</annotation></semantics></math> --> 𝐁i​j=𝐐i​j2\\mathbf{B}_{ij}=\\mathbf{Q}_{ij}^{2} for some orthogonal matrix <!-- MathML: <math alttext=\"\\mathbf{Q}\\in\\mathcal{Q}(n)\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p1.m3\" intent=\":literal\"><semantics><mrow><mi>𝐐</mi><mo>∈</mo><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒬</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathbf{Q}\\in\\mathcal{Q}(n)</annotation></semantics></math> --> 𝐐∈𝒬⁡(n)\\mathbf{Q}\\in\\mathcal{Q}(n). When <!-- MathML: <math alttext=\"n\\geq 3\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p1.m4\" intent=\":literal\"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">n\\geq 3</annotation></semantics></math> --> n≥3n\\geq 3, the set of orthostochastic matrices are proper non-convex subsets of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p1.m5\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} ([Au-Yeung and Poon, 1979](#bib.bib50 \"\"); [Rajchel-Mieldzioć et al., 2022](#bib.bib51 \"\"); [Nechita et al., 2023](#bib.bib4 \"\"))."
+    },
+    {
+      "id": "u000055",
+      "kind": "prose",
+      "text": "For <!-- MathML: <math alttext=\"d,s\\in\\mathbb{Z}^{+}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p2.m1\" intent=\":literal\"><semantics><mrow><mrow><mi>d</mi><mo>,</mo><mi>s</mi></mrow><mo>∈</mo><msup><mi>ℤ</mi><mo>+</mo></msup></mrow><annotation encoding=\"application/x-tex\">d,s\\in\\mathbb{Z}^{+}</annotation></semantics></math> --> d,s∈ℤ+d,s\\in\\mathbb{Z}^{+}, let <!-- MathML: <math alttext=\"\\mathbf{Q}\\in\\mathcal{Q}(ds)\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p2.m2\" intent=\":literal\"><semantics><mrow><mi>𝐐</mi><mo>∈</mo><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒬</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo stretchy=\"false\">)</mo></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathbf{Q}\\in\\mathcal{Q}(ds)</annotation></semantics></math> --> 𝐐∈𝒬⁡(d​s)\\mathbf{Q}\\in\\mathcal{Q}(ds) be viewed as a <!-- MathML: <math alttext=\"d\\times d\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p2.m3\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d\\times d</annotation></semantics></math> --> d×dd\\times d block matrix with <!-- MathML: <math alttext=\"s\\times s\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p2.m4\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>s</mi></mrow><annotation encoding=\"application/x-tex\">s\\times s</annotation></semantics></math> --> s×ss\\times s blocks <!-- MathML: <math alttext=\"\\mathbf{Q}_{ij}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS2.p2.m5\" intent=\":literal\"><semantics><msub><mi>𝐐</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><annotation encoding=\"application/x-tex\">\\mathbf{Q}_{ij}</annotation></semantics></math> --> 𝐐i​j\\mathbf{Q}_{ij}. Define:"
+    },
+    {
+      "id": "u000056",
+      "kind": "table",
+      "text": "|  | <!-- MathML: <math alttext=\"\\Phi_{d,s}(\\mathbf{Q})_{ij}=\\frac{1}{s}\\,\\|\\mathbf{Q}_{ij}\\|_{F}^{2}=\\frac{1}{s}\\sum_{k=1}^{s}\\sum_{l=1}^{s}(\\mathbf{Q}_{ij})_{kl}^{2}.\" class=\"ltx_Math\" display=\"block\" id=\"S3.E6.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msub><mi mathvariant=\"normal\">Φ</mi><mrow><mi>d</mi><mo>,</mo><mi>s</mi></mrow></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mrow><mo stretchy=\"false\">(</mo><mi>𝐐</mi><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mi>s</mi></mfrac><mo lspace=\"0.170em\" rspace=\"0em\">​</mo><msubsup><mrow><mo stretchy=\"false\">‖</mo><msub><mi>𝐐</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">‖</mo></mrow><mi>F</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mi>s</mi></mfrac><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><munderover><mo movablelimits=\"false\" rspace=\"0em\">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><mrow><munderover><mo movablelimits=\"false\" rspace=\"0em\">∑</mo><mrow><mi>l</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><msubsup><mrow><mo stretchy=\"false\">(</mo><msub><mi>𝐐</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">)</mo></mrow><mrow><mi>k</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>l</mi></mrow><mn>2</mn></msubsup></mrow></mrow></mrow></mrow><mo lspace=\"0em\">.</mo></mrow><annotation encoding=\"application/x-tex\">\\Phi_{d,s}(\\mathbf{Q})_{ij}=\\frac{1}{s}\\,\\|\\mathbf{Q}_{ij}\\|_{F}^{2}=\\frac{1}{s}\\sum_{k=1}^{s}\\sum_{l=1}^{s}(\\mathbf{Q}_{ij})_{kl}^{2}.</annotation></semantics></math> --> Φd,s​(𝐐)i​j=1s​‖𝐐i​j‖F2=1s​∑k=1s∑l=1s(𝐐i​j)k​l2.\\Phi_{d,s}(\\mathbf{Q})_{ij}=\\frac{1}{s}\\\\,\\\\|\\mathbf{Q}_{ij}\\\\|_{F}^{2}=\\frac{1}{s}\\sum_{k=1}^{s}\\sum_{l=1}^{s}(\\mathbf{Q}_{ij})_{kl}^{2}. |  | (6) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --- |"
+    }
+  ]
+}

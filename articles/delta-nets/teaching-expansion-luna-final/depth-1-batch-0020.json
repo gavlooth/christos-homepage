@@ -1,0 +1,20 @@
+{
+  "depth": 1,
+  "batch": 20,
+  "items": [
+    {
+      "recordId": "teach-generated-8fa2f2c64c39ad2d",
+      "units": [
+        {
+          "role": "prerequisite",
+          "basis": "source",
+          "text": "Understanding this notation requires the source-specific definitions of l_A, l_B, and d; their meanings are unresolved in the available context.",
+          "requires": [
+            "source-specific definitions of l_A, l_B, and d"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

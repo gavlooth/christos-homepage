@@ -1,0 +1,242 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0004-flat-02",
+  "context": [
+    "Δ-Nets",
+    "Compile a λ-term into one rooted net.",
+    "5.4 The application case"
+  ],
+  "units": [
+    {
+      "id": "u000260",
+      "kind": "prose",
+      "text": "One syntax constructor, three connections. For [M N]ℓ, the result or parent wire uses the first auxiliary port, [N]ℓ+1 uses the second auxiliary port, and [M]ℓ meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction."
+    },
+    {
+      "id": "u000261",
+      "kind": "heading",
+      "text": "### 5.5 Where levels come from"
+    },
+    {
+      "id": "u000262",
+      "kind": "prose",
+      "text": "Keep every word tied to the source syntax. An abstraction is the literal term λx.M: parameter x, body M. An application is the literal term M N: function M, argument N. A bound occurrence of x is one of the x leaves in M owned by that particular λx."
+    },
+    {
+      "id": "u000263",
+      "kind": "prose",
+      "text": "@"
+    },
+    {
+      "id": "u000264",
+      "kind": "heading",
+      "text": "### “Context” here is not a runtime closure"
+    },
+    {
+      "id": "u000265",
+      "kind": "prose",
+      "text": "Calculate levels by walking the written λ-term. Start the whole term at level 0. For an abstraction λx.M at level ℓ, continue into M at the same level ℓ. For an application M N at level ℓ, keep level ℓ on the function M and write level ℓ + 1 on the argument N. Repeat inside each subtree. During graph reduction those coordinates track sharing contexts; they do not count captured values or surrounding λ symbols the way a runtime closure would."
+    },
+    {
+      "id": "u000266",
+      "kind": "prose",
+      "text": "λ-calculus syntax | Given | Assign | |"
+    },
+    {
+      "id": "u000267",
+      "kind": "prose",
+      "text": "Whole term T | T is the root program. | level(T) = 0 | |"
+    },
+    {
+      "id": "u000268",
+      "kind": "prose",
+      "text": "Abstraction λx.M | level(λx.M) = l | level(M) = l; the replicator Rx belongs to level l + 1. | |"
+    },
+    {
+      "id": "u000269",
+      "kind": "prose",
+      "text": "Application M N | level(M N) = l | level(M) = l; level(N) = l + 1. | |"
+    },
+    {
+      "id": "u000270",
+      "kind": "prose",
+      "text": "Occurrence x | x is reached at level li. | Its wire endpoint has level li. | |"
+    },
+    {
+      "id": "u000271",
+      "kind": "prose",
+      "text": "Use the same instructions at every step. For λx.λy.x, start at level 0 and carry 0 through both bodies, so x sits at level 0. For λx.f (g x), carry 0 into the body, give the outer function f level 0, and give its argument g x level 1. Apply the rule again inside that argument: g stays at 1, and x lands at 2."
+    }
+  ]
+}

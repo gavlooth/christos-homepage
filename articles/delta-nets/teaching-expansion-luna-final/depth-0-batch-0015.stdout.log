@@ -1,0 +1,1 @@
+{"items":[{"recordId":"teach-n0000781","units":[{"role":"definition","basis":"source","text":"Erasure canonicalization is performed as a global cleanup pass.","requires":[],"citationRequired":false},{"role":"limitation","basis":"source","text":"It is not performed as an interaction between principal ports.","requires":[],"citationRequired":false}]}]}

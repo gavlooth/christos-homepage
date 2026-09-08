@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000066",
+    "kind": "claim",
+    "text": "Work performed inside an argument that is later erased is wasted."
+  },
+  {
+    "id": "n0000067",
+    "kind": "topic",
+    "text": "Sharing is the other edge case of substitution."
+  },
+  {
+    "id": "n0000068",
+    "kind": "claim",
+    "text": "If x occurs more than once, naive substitution copies u."
+  },
+  {
+    "id": "n0000069",
+    "kind": "claim",
+    "text": "If the copied argument still contains redexes, the same necessary work may be repeated in every copy."
+  },
+  {
+    "id": "n0000070",
+    "kind": "claim",
+    "text": "The paper organizes lambda calculus fragments by variable-use rules."
+  },
+  {
+    "id": "n0000071",
+    "kind": "definition",
+    "text": "A bound variable is an occurrence owned by a surrounding lambda."
+  },
+  {
+    "id": "n0000072",
+    "kind": "example",
+    "text": "In λx.x, the occurrence of x is bound by the surrounding lambda."
+  },
+  {
+    "id": "n0000073",
+    "kind": "claim",
+    "text": "The linear calculus requires every bound variable to occur exactly once."
+  },
+  {
+    "id": "n0000074",
+    "kind": "definition",
+    "text": "λL is the linear fragment in which each bound variable occurs exactly once."
+  },
+  {
+    "id": "n0000075",
+    "kind": "claim",
+    "text": "An arrow links the variable-use fragments in the guide’s diagram."
+  },
+  {
+    "id": "n0000076",
+    "kind": "definition",
+    "text": "λA is the affine fragment in which a bound variable occurs once or not at all."
+  },
+  {
+    "id": "n0000077",
+    "kind": "definition",
+    "text": "λI is the relevant fragment in which a bound variable occurs at least once."
+  },
+  {
+    "id": "n0000078",
+    "kind": "claim",
+    "text": "A diagonal arrow links the relevant and full fragments in the guide’s diagram."
+  },
+  {
+    "id": "n0000079",
+    "kind": "definition",
+    "text": "λK is the full fragment allowing any number of appearances of a bound variable."
+  },
+  {
+    "id": "n0000080",
+    "kind": "claim",
+    "text": "The paper defines ΔL, ΔA, ΔI, and ΔK as corresponding Δ-Net subsystems."
+  },
+  {
+    "id": "n0000081",
+    "kind": "claim",
+    "text": "The guide explains why reduction order alone cannot solve duplication."
+  },
+  {
+    "id": "n0000082",
+    "kind": "definition",
+    "text": "A reduction order chooses which redex to simplify next."
+  },
+  {
+    "id": "n0000083",
+    "kind": "claim",
+    "text": "For erasure, normal order can avoid reducing an argument that will be discarded."
+  },
+  {
+    "id": "n0000084",
+    "kind": "claim",
+    "text": "Some shared terms have no ordinary sequential reduction order that avoids every duplicated reduction."
+  },
+  {
+    "id": "n0000085",
+    "kind": "claim",
+    "text": "The guide marks a limitation or difficulty in the reduction-order discussion."
+  },
+  {
+    "id": "n0000086",
+    "kind": "claim",
+    "text": "The design target is to represent sharing directly in the graph."
+  },
+  {
+    "id": "n0000087",
+    "kind": "claim",
+    "text": "A shared subgraph should be reduced once so every use observes the result."
+  },
+  {
+    "id": "n0000088",
+    "kind": "claim",
+    "text": "The second chapter shifts the model from trees to interactions."
+  },
+  {
+    "id": "n0000089",
+    "kind": "claim",
+    "text": "The guide argues that programs should not be treated as trees."
+  },
+  {
+    "id": "n0000090",
+    "kind": "claim",
+    "text": "The paper replaces a sequential substitution machine with an interaction system."
+  },
+  {
+    "id": "n0000091",
+    "kind": "definition",
+    "text": "An interaction system is a graph whose small local rewrites can occur independently."
+  },
+  {
+    "id": "n0000092",
+    "kind": "claim",
+    "text": "The guide next defines what local and independent mean in this system."
+  },
+  {
+    "id": "n0000093",
+    "kind": "claim",
+    "text": "Graphs make sharing visible."
+  },
+  {
+    "id": "n0000094",
+    "kind": "claim",
+    "text": "A syntax tree represents every occurrence as a separate copy."
+  },
+  {
+    "id": "n0000095",
+    "kind": "claim",
+    "text": "A graph can connect multiple uses to one shared subgraph."
+  },
+  {
+    "id": "n0000096",
+    "kind": "claim",
+    "text": "Computing a shared graph piece once allows it to be reused."
+  },
+  {
+    "id": "n0000097",
+    "kind": "claim",
+    "text": "Textual substitution duplicates work for separate uses."
+  },
+  {
+    "id": "n0000099",
+    "kind": "claim",
+    "text": "A graph representation connects multiple uses through sharing."
+  },
+  {
+    "id": "n0000101",
+    "kind": "claim",
+    "text": "A graph preserves one identity for multiple uses while rewriting."
+  },
+  {
+    "id": "n0000102",
+    "kind": "claim",
+    "text": "Δ-Nets is one local method for managing shared identity during graph rewriting."
+  },
+  {
+    "id": "n0000103",
+    "kind": "claim",
+    "text": "The guide gives a short introduction to interaction systems."
+  },
+  {
+    "id": "n0000104",
+    "kind": "definition",
+    "text": "An interaction system consists of agents and interaction rules."
+  },
+  {
+    "id": "n0000105",
+    "kind": "definition",
+    "text": "An agent is a small node with sockets called ports."
+  },
+  {
+    "id": "n0000106",
+    "kind": "definition",
+    "text": "The principal port is the distinguished port that can initiate a rewrite."
+  },
+  {
+    "id": "n0000107",
+    "kind": "definition",
+    "text": "Auxiliary ports carry surrounding wiring through a rewrite."
+  },
+  {
+    "id": "n0000108",
+    "kind": "definition",
+    "text": "Two agents meeting principal-to-principal form an active pair."
+  },
+  {
+    "id": "n0000109",
+    "kind": "procedure",
+    "text": "An interaction rule rewrites an active pair by reconnecting only the wires attached at that location."
+  },
+  {
+    "id": "n0000110",
+    "kind": "claim",
+    "text": "The active pair and its nearby wires are the complete input to the rule."
+  },
+  {
+    "id": "n0000111",
+    "kind": "claim",
+    "text": "The first step is to find an active pair."
+  },
+  {
+    "id": "n0000112",
+    "kind": "claim",
+    "text": "Only a principal-to-principal wire counts as an active pair."
+  },
+  {
+    "id": "n0000113",
+    "kind": "claim",
+    "text": "The second step is to apply the active pair’s local rule."
+  },
+  {
+    "id": "n0000114",
+    "kind": "topic",
+    "text": "### The core idea"
+  },
+  {
+    "id": "n0000115",
+    "kind": "topic",
+    "text": "### The important caveat"
+  },
+  {
+    "id": "n0000116",
+    "kind": "topic",
+    "text": "#### λ-term"
+  },
+  {
+    "id": "n0000117",
+    "kind": "topic",
+    "text": "#### Bound vs. free"
+  },
+  {
+    "id": "n0000118",
+    "kind": "topic",
+    "text": "#### Levels & Δ"
+  },
+  {
+    "id": "n0000119",
+    "kind": "topic",
+    "text": "## The anatomy of a connection"
+  },
+  {
+    "id": "n0000120",
+    "kind": "topic",
+    "text": "### The \"Why\" of Deltas"
+  },
+  {
+    "id": "n0000121",
+    "kind": "topic",
+    "text": "### How connections resolve"
+  },
+  {
+    "id": "n0000122",
+    "kind": "topic",
+    "text": "#### Redex and reduction"
+  },
+  {
+    "id": "n0000123",
+    "kind": "topic",
+    "text": "#### Normal form"
+  },
+  {
+    "id": "n0000124",
+    "kind": "source",
+    "text": "(λx. t) u → t[x := u]"
+  },
+  {
+    "id": "n0000125",
+    "kind": "topic",
+    "text": "### Work that gets discarded"
+  },
+  {
+    "id": "n0000126",
+    "kind": "topic",
+    "text": "### Work that gets duplicated"
+  },
+  {
+    "id": "n0000127",
+    "kind": "topic",
+    "text": "#### λL — linear"
+  },
+  {
+    "id": "n0000128",
+    "kind": "topic",
+    "text": "#### λA — affine"
+  },
+  {
+    "id": "n0000129",
+    "kind": "topic",
+    "text": "#### λI — relevant"
+  },
+  {
+    "id": "n0000130",
+    "kind": "topic",
+    "text": "#### λK — full"
+  },
+  {
+    "id": "n0000131",
+    "kind": "topic",
+    "text": "### The design target"
+  }
+]

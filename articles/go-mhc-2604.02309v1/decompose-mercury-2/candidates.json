@@ -1,0 +1,609 @@
+[
+  {
+    "id": "n0000003",
+    "kind": "claim",
+    "text": "meta-viewport: width=device-width, initial-scale=1, shrink-to-fit=no title: go-mHC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000003"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "combines viewport meta and title"
+    ]
+  },
+  {
+    "id": "n0000013",
+    "kind": "claim",
+    "text": "Existing exact methods scale factorially with the number of streams d, while Kronecker-factorized approaches are efficient but have limited expressivity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000011"
+    ],
+    "defines": [],
+    "requires": [
+      "kronecker-factorized approaches"
+    ],
+    "mentions": [
+      "factorial scaling",
+      "expressivity"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "contrasts two method families"
+    ]
+  },
+  {
+    "id": "n0000021",
+    "kind": "claim",
+    "text": "The performance and stability of modern machine learning models increasingly depend on the geometric structure of their matrix parameterizations; traditional constraints such as symmetry or orthogonality have been foundational, while recent work leverages manifold theory to map unconstrained spaces onto constrained geometries like the Birkhoff polytope, which enforces doubly stochastic constraints but faces a trade-off between exactness and scalability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000013"
+    ],
+    "defines": [
+      "birkhoff polytope"
+    ],
+    "requires": [
+      "manifold theory"
+    ],
+    "mentions": [
+      "doubly stochastic matrices",
+      "symmetry",
+      "orthogonality"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple intertwined concepts about geometry, constraints, trade‑offs"
+    ]
+  },
+  {
+    "id": "n0000027",
+    "kind": "claim",
+    "text": "Figure 1 illustrates spectral comparison showing go-mHC approximates the Birkhoff polytope within epsilon(s) error using d(d‑1)/2 parameters; mHC‑lite provides full coverage but requires d! parameters; KromHC is restricted to B₂ and disallows cycles >2. The parameterization maps skew‑symmetric X to orthogonal Q via the Cayley Transform, then projects to doubly stochastic B via block‑wise Frobenius norm. Hyper‑Connections ℋ_res is integrated into the residual stream as x_{l+1}=ℋ_l^{res} x_l + Layer F(x_l), where the doubly stochastic constraint ensures training stability and improved gradient flow.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000017"
+    ],
+    "defines": [
+      "hyper‐connections",
+      "hres"
+    ],
+    "requires": [
+      "birkhoff polytope",
+      "cayley transform"
+    ],
+    "mentions": [
+      "epsilon(s)",
+      "d(d‐1)/2 parameters",
+      "d! parameters",
+      "b2",
+      "frobenius norm",
+      "gradient flow"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "dense technical description with several steps"
+    ]
+  },
+  {
+    "id": "n0000034",
+    "kind": "claim",
+    "text": "KromHC employs Kronecker products of small doubly stochastic matrices to achieve exact constraints with O(d²) complexity, but at the cost of severely reduced expressivity.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000019"
+    ],
+    "defines": [
+      "kromhc"
+    ],
+    "requires": [
+      "kronecker products"
+    ],
+    "mentions": [
+      "exact constraints",
+      "o(d2) complexity",
+      "expressivity trade‐off"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "two trade‑offs: complexity vs expressivity"
+    ]
+  },
+  {
+    "id": "n0000035",
+    "kind": "claim",
+    "text": "The proposed solution is based on the algebraic theory of generalized orthostochastic matrices (Gutkin 2013; Nechita et al. 2023; Korzekwa et al. 2018; Shahbeigi et al. 2021).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000020"
+    ],
+    "defines": [
+      "generalized orthostochastic matrices"
+    ],
+    "requires": [],
+    "mentions": [
+      "algebraic theory",
+      "references"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple citations and theoretical basis"
+    ]
+  },
+  {
+    "id": "n0000036",
+    "kind": "claim",
+    "text": "The framework learns doubly stochastic matrices while balancing efficiency and expressivity, exposing a hyperparameter s that allows tunability across these attributes.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000020"
+    ],
+    "defines": [
+      "hyperparameter s"
+    ],
+    "requires": [],
+    "mentions": [
+      "efficiency",
+      "expressivity"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "balances two objectives and introduces hyperparameter"
+    ]
+  },
+  {
+    "id": "n0000040",
+    "kind": "claim",
+    "text": "We specifically contribute analytics and explorations that indicate that our method:",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000022"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "intro to list of multiple contributions"
+    ]
+  },
+  {
+    "id": "n0000049",
+    "kind": "claim",
+    "text": "The method can be used simultaneously with KromHC to allow for larger Kronecker factors by mitigating the super‑exponential scaling introduced in mHC‑lite.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000028"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "kromhc",
+      "kronecker factors",
+      "mhc‐lite"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "two combined ideas: simultaneous use and scaling benefit"
+    ]
+  },
+  {
+    "id": "n0000057",
+    "kind": "claim",
+    "text": "HC can theoretically enable models to learn depth and width connections, dynamically rearrange layer connectivity and potentially adds a new avenue for scaling.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000032"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "depth connections",
+      "width connections",
+      "scaling"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple effects (depth/width, dynamic rearrangement, scaling)"
+    ]
+  },
+  {
+    "id": "n0000058",
+    "kind": "claim",
+    "text": "Later works have expanded on HC by splitting the feature dimension into independent sub‑streams and applying HC to vision and graph neural networks.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000032"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "vision",
+      "graph neural networks"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple expansions (splitting streams, vision and GNN)"
+    ]
+  },
+  {
+    "id": "n0000059",
+    "kind": "claim",
+    "text": "The unconstrained dynamic connectivity of residual blocks in HC removes the explicit guarantee of the identity property, introducing the risk of gradient instability after repeated applications of the mixing terms.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000033"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "gradient instability",
+      "mixing terms"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "cause‑effect (removing identity guarantee → gradient instability)"
+    ]
+  },
+  {
+    "id": "n0000061",
+    "kind": "claim",
+    "text": "Subsequent works investigate constraining this connectivity to a manifold that bounds gradient updates through the spectral norm in order to address this instability.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000033"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "manifold",
+      "spectral norm"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple techniques (manifold, spectral norm)"
+    ]
+  },
+  {
+    "id": "n0000063",
+    "kind": "claim",
+    "text": "Manifold‑Constrained Hyper‑Connections (mHC) constrain the dynamic residual matrices to a manifold to improve training stability while still allowing for dynamic connections.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000035"
+    ],
+    "defines": [
+      "manifold‐constrained hyper‐connections",
+      "mhc"
+    ],
+    "requires": [],
+    "mentions": [
+      "training stability",
+      "dynamic connections"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "two actions (constrain to manifold, improve stability)"
+    ]
+  },
+  {
+    "id": "n0000064",
+    "kind": "claim",
+    "text": "mHC primarily changes the definition of ℋ_l^res such that it converges to the Birkhoff polytope B_d, the closed set of doubly stochastic matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000035"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "hl^res",
+      "birkhoff polytope",
+      "bd"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "definition plus target (converge to Birkhoff polytope)"
+    ]
+  },
+  {
+    "id": "n0000071",
+    "kind": "claim",
+    "text": "mHC‑lite attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of d! permutation matrices.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [
+      "mhc‐lite"
+    ],
+    "requires": [],
+    "mentions": [
+      "birkhoff–von neumann theorem",
+      "permutation matrices"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple ideas (bypass gap, use Birkhoff‑von Neumann theorem)"
+    ]
+  },
+  {
+    "id": "n0000075",
+    "kind": "claim",
+    "text": "KromHC sacrifices expressivity and complete coverage of B_d by using tensor products to train residual connections on a much smaller set of exactly double‑stochastic matrices, with a cost of O(d² C).",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [
+      "kromhc"
+    ],
+    "requires": [],
+    "mentions": [
+      "tensor products",
+      "double‐stochastic matrices",
+      "o(d2 c)"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple aspects (sacrifice expressivity, tensor products, cost)"
+    ]
+  },
+  {
+    "id": "n0000084",
+    "kind": "claim",
+    "text": "Nechita et al. proved that the set of generalized s‑orthostochastic matrices is contained in B_d and spans all of B_d as s → ∞.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000043"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "s‐orthostochastic matrices",
+      "bd",
+      "s → ∞"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "two results (containment, spanning)"
+    ]
+  },
+  {
+    "id": "n0000085",
+    "kind": "claim",
+    "text": "Other works have investigated further properties of the spectral span of the Birkhoff polytope and the geometry of s‑orthostochastic matrices in the quantum setting.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000043"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "spectral span",
+      "birkhoff polytope",
+      "quantum setting"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple investigations (spectral span, geometry, quantum)"
+    ]
+  },
+  {
+    "id": "n0000087",
+    "kind": "claim",
+    "text": "To our knowledge, we are the first to apply this construction in a machine learning setting and, more specifically, to learned residual stream routing in deep networks.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000043"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [
+      "residual stream routing",
+      "deep networks"
+    ],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0002",
+    "annotations": [
+      "kind_normalized"
+    ],
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "two statements (first application, specific to routing)"
+    ]
+  },
+  {
+    "id": "n0000116",
+    "kind": "claim",
+    "text": "The geometry of the orthostochastic set is a concave cycloid that meets the permutation vertices of B_d but does not occupy the interior when d>2",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000058"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0004",
+    "densityScore": 0.8,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple geometric properties in one statement"
+    ]
+  },
+  {
+    "id": "n0000252",
+    "kind": "claim",
+    "text": "go‑mHC offers a practical middle‑ground FLOP complexity for scaling residual streams, avoiding the super‑exponential cost of mHC‑lite and the iterative overhead of mHC SK iterations; nominal constants are S = 20, i_k = 2, and s ∈ {1,2}. See Appendix B.6 for full estimates.",
+    "need": "",
+    "gapType": null,
+    "sourceUnitIds": [
+      "u000095"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "source",
+    "chunkId": "c0008",
+    "densityScore": 1,
+    "densitySource": "model",
+    "densityReasons": [
+      "multiple ideas, constants, and reference"
+    ]
+  }
+]

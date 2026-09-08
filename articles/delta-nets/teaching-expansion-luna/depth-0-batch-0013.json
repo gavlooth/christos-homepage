@@ -1,0 +1,221 @@
+{
+  "depth": 0,
+  "batch": 13,
+  "items": [
+    {
+      "recordId": "teach-n0001052",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "Fan annihilation is the graph-form counterpart of beta-reduction.",
+          "requires": [
+            "fan",
+            "beta-reduction",
+            "graph representation"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The equivalence means that performing fan annihilation in the graph corresponds to carrying out beta-reduction in the represented computation.",
+          "requires": [
+            "fan annihilation",
+            "beta-reduction"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001053",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "When a replicator meets a fan, the replicator is copied through the fan's two auxiliary ports.",
+          "requires": [
+            "replicator",
+            "fan",
+            "auxiliary port"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The fan is copied through every port of the replicator.",
+          "requires": [
+            "fan",
+            "replicator",
+            "port"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001054",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Fan-replicator reconnection is determined by port identities rather than by an arbitrary ordering of the surrounding graph.",
+          "requires": [
+            "fan",
+            "replicator",
+            "port identity"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The exact port pairing is written (Fᵢ)ⱼ ↔ (Rʲ)ᵢ; the labels identify the ports that are paired without changing the stated notation.",
+          "requires": [
+            "fan",
+            "replicator",
+            "port identity"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001055",
+      "units": [
+        {
+          "role": "limitation",
+          "basis": "source",
+          "text": "Equal replicators annihilate only when their level, arity, and every corresponding port delta all match.",
+          "requires": [
+            "replicator",
+            "annihilation",
+            "level"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For well-formed lambda translations, matching levels alone is sufficient for the replicators to satisfy the other matching conditions needed for annihilation.",
+          "requires": [
+            "replicator",
+            "level",
+            "well-formed lambda translation"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001056",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Replicators at different levels do not annihilate because their levels do not match.",
+          "requires": [
+            "replicator",
+            "level",
+            "annihilation"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Instead, replicators at different levels commute with one another.",
+          "requires": [
+            "replicator",
+            "level",
+            "commutation"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001057",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "When a lower-level replicator R meets a higher-level replicator H, R creates replicas of H.",
+          "requires": [
+            "replicator",
+            "level",
+            "replica"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "R creates exactly one H replica for each auxiliary port of R.",
+          "requires": [
+            "replicator",
+            "auxiliary port",
+            "replica"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001058",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Each H replica exits through one auxiliary port of R, and that R port supplies the delta used in the level update.",
+          "requires": [
+            "replicator",
+            "auxiliary port",
+            "level"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "derivation",
+          "basis": "source",
+          "text": "If H's old level is L and the delta on the R port used by a replica is Δ, that replica's new level is L + Δ.",
+          "requires": [
+            "replicator",
+            "level",
+            "delta"
+          ],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001059",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "When the higher-level replicator H meets the lower-level replicator R, H creates one exact R copy for each auxiliary port of H.",
+          "requires": [
+            "replicator",
+            "level",
+            "auxiliary port"
+          ],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Each R copy preserves R's level and all of R's port deltas.",
+          "requires": [
+            "replicator",
+            "level",
+            "port delta"
+          ],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

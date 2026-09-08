@@ -1,0 +1,44 @@
+{
+  "depth": 0,
+  "batch": 41,
+  "items": [
+    {
+      "recordId": "teach-n0001092",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Deleting unreachable material from a net can expose a connection that no longer has a valid destination or continuation.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "When such an exposed connection appears, an eraser terminates it, removing the now-useless connection from the net.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001093",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The erasure sweep can be postponed until the end of evaluation or performed earlier during evaluation.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "intuition",
+          "basis": "source",
+          "text": "Performing the sweep earlier can reduce memory usage; the paper specifically recommends sweeping after applying abstractions that ignore their arguments when memory pressure is greatest.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

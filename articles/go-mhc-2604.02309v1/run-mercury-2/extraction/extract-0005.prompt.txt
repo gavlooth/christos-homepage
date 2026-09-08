@@ -1,0 +1,236 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0005",
+  "context": [
+    "go-mHC: Direct Parameterization of Manifold-Constrained  Hyper-Connections via Generalized Orthostochastic Matrices",
+    "3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections",
+    "3.3 Learning the <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.m1\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-Orthostochastic Manifold"
+  ],
+  "units": [
+    {
+      "id": "u000067",
+      "kind": "table",
+      "text": "|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E10.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>fwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>j</mi></munder><mprescripts /><mi>i</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|,</annotation></semantics></math> --> AGMfwd​(ℋl→Lres)=max⁡∑ji⁡|(ℋl→Lres)i​j|,\\displaystyle\\text{AGM}^{\\text{fwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{i}\\sum_{j}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|, |  | (10) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |\n|  | <!-- MathML: <math alttext=\"\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.\" class=\"ltx_Math\" display=\"inline\" id=\"S3.E11.m1\" intent=\":literal\"><semantics><mrow><mrow><mrow><msup><mtext>AGM</mtext><mtext>bwd</mtext></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo lspace=\"0.167em\">⁡</mo><mrow><mstyle displaystyle=\"true\"><mmultiscripts><munder><mo movablelimits=\"false\">∑</mo><mi>i</mi></munder><mprescripts /><mi>j</mi><mrow /></mmultiscripts></mstyle><mo>⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow></mrow><mo lspace=\"0em\">.</mo></mrow><annotation encoding=\"application/x-tex\">\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|.</annotation></semantics></math> --> AGMbwd​(ℋl→Lres)=max⁡∑ij⁡|(ℋl→Lres)i​j|.\\displaystyle\\text{AGM}^{\\text{bwd}}(\\mathcal{H}_{l\\to L}^{\\text{res}})=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l\\to L}^{\\text{res}})_{ij}|. |  | (11) |"
+    },
+    {
+      "id": "u000068",
+      "kind": "prose",
+      "text": "We don’t rely on this metric due to the exactness of <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{go}}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p5.m1\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>go</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{go}}</annotation></semantics></math> --> 𝒫go\\mathcal{P}_{\\text{go}}:\nby definition, <!-- MathML: <math alttext=\"\\max_{i}\\sum_{j}|(\\mathcal{H}_{l}^{\\text{res}})_{ij}|=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l}^{\\text{res}})_{ij}|=1\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p5.m2\" intent=\":literal\"><semantics><mrow><mrow><mi>max</mi><mo>⁡</mo><mrow><mmultiscripts><mo>∑</mo><mi>j</mi><mrow /><mprescripts /><mi>i</mi><mrow /></mmultiscripts><mo lspace=\"0em\">⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mmultiscripts><mo>∑</mo><mi>i</mi><mrow /><mprescripts /><mi>j</mi><mrow /></mmultiscripts><mo lspace=\"0em\">⁡</mo><mrow><mo stretchy=\"false\">|</mo><msub><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>j</mi></mrow></msub><mo stretchy=\"false\">|</mo></mrow></mrow></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">\\max_{i}\\sum_{j}|(\\mathcal{H}_{l}^{\\text{res}})_{ij}|=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l}^{\\text{res}})_{ij}|=1</annotation></semantics></math> --> max⁡∑ji⁡|(ℋlres)i​j|=max⁡∑ij⁡|(ℋlres)i​j|=1\\max_{i}\\sum_{j}|(\\mathcal{H}_{l}^{\\text{res}})_{ij}|=\\max_{j}\\sum_{i}|(\\mathcal{H}_{l}^{\\text{res}})_{ij}|=1. Moreover, since <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p5.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} is closed under matrix multiplication, the product <!-- MathML: <math alttext=\"\\mathcal{H}_{l\\to L}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p5.m4\" intent=\":literal\"><semantics><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mrow><mi>l</mi><mo stretchy=\"false\">→</mo><mi>L</mi></mrow><mtext>res</mtext></msubsup><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l\\to L}^{\\text{res}}</annotation></semantics></math> --> ℋl→Lres\\mathcal{H}_{l\\to L}^{\\text{res}} remains doubly stochastic regardless of depth. Since go-mHC, mHC-lite, and KromHC all perform equally well on the AGM metric due to their exactness, we use two additional metrics to benchmark our method: expressivity and convergence."
+    },
+    {
+      "id": "u000069",
+      "kind": "heading",
+      "text": "## 4 Expressivity"
+    },
+    {
+      "id": "u000070",
+      "kind": "prose",
+      "text": "![Refer to caption](2604.02309v1/spectra_numerics_d_eq_3_ours.png)"
+    },
+    {
+      "id": "u000071",
+      "kind": "prose",
+      "text": "*Figure 3: Histogram of the spectral reach of a toy model implementing the map <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{go}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m13\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>go</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{go}}</annotation></semantics></math> --> 𝒫go\\mathcal{P}_{\\text{go}} to <!-- MathML: <math alttext=\"\\mathsf{B}_{3}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m14\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>3</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{3}</annotation></semantics></math> --> 𝖡3\\mathsf{B}_{3} (<!-- MathML: <math alttext=\"d=3\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m15\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">d=3</annotation></semantics></math> --> d=3d=3) for different values of <!-- MathML: <math alttext=\"s\\in\\{1,2\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m16\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>∈</mo><mrow><mo maxsize=\"1.110em\" minsize=\"1.110em\">{</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow><mo maxsize=\"1.110em\" minsize=\"1.110em\">}</mo></mrow></mrow><annotation encoding=\"application/x-tex\">s\\in\\{1,2\\}</annotation></semantics></math> --> s∈{1,2}s\\in\\\\{1,2\\\\} on random targets.(a) When <!-- MathML: <math alttext=\"s=1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m17\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">s=1</annotation></semantics></math> --> s=1s=1, the <!-- MathML: <math alttext=\"d=3\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m18\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding=\"application/x-tex\">d=3</annotation></semantics></math> --> d=3d=3 model is able to learn maps with full spectral coverage within the hypocycloid–covering the triangular region (Karpelevič region of <!-- MathML: <math alttext=\"\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m19\" intent=\":literal\"><semantics><mrow><msub><mi>𝖡</mi><mn>3</mn></msub><mo>∖</mo><msub><mi>𝖡</mi><mn>2</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡3∖𝖡2\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2}) up to error <!-- MathML: <math alttext=\"\\epsilon(s=1)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m20\" intent=\":literal\"><semantics><mrow><mi>ϵ</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\epsilon(s=1)</annotation></semantics></math> --> ϵ⁡(s=1)\\epsilon(s=1), as well all real eigenvalues on the interval <!-- MathML: <math alttext=\"[-1,1]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m21\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">[</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">[-1,1]</annotation></semantics></math> --> [−1,1][-1,1] (Karpelevič region of <!-- MathML: <math alttext=\"\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m22\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>2</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡2\\mathsf{B}_{2}).(b) <!-- MathML: <math alttext=\"s=2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m23\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">s=2</annotation></semantics></math> --> s=2s=2 covers a larger region, with a smaller gap in the spectra <!-- MathML: <math alttext=\"\\epsilon(s=2)&lt;\\epsilon(s=1)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F3.m24\" intent=\":literal\"><semantics><mrow><mrow><mi>ϵ</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><mo>&lt;</mo><mrow><mi>ϵ</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><mo stretchy=\"false\">)</mo></mrow></mrow></mrow><annotation encoding=\"application/x-tex\">\\epsilon(s=2)&lt;\\epsilon(s=1)</annotation></semantics></math> --> ϵ⁡(s=2)<ϵ⁡(s=1)\\epsilon(s=2)<\\epsilon(s=1).*"
+    },
+    {
+      "id": "u000072",
+      "kind": "prose",
+      "text": "Motivated by the effect of bounding the spectrum on having stable gradients (see appendix [B.8](#A2.SS8 \"B.8 Impact of Spectral Radius on Gradient Stability ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")) ([Xie et al., 2026](#bib.bib1 \"\"); [Yang and Gao, 2026](#bib.bib3 \"\")), we choose to evaluate the expressivity of\nthe different methods by using the spectrum of matrices constructed with <!-- MathML: <math alttext=\"\\mathcal{P}_{\\mathsf{M}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.p1.m1\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mi>𝖬</mi></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\mathsf{M}}</annotation></semantics></math> --> 𝒫𝖬\\mathcal{P}_{\\mathsf{M}} as a surrogate for expressivity – quantifying how many unique matrices can be spanned using their set of eigenvalues. We rely on surrogate measures for the expressivity of doubly stochastic matrices due to the complicated geometry of the Birkhoff polytope and given that finding the exact volume of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.p1.m2\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} is an open problem ([Chan and Robbins, 1999](#bib.bib24 \"\"); [Beck and Pixton, 2005](#bib.bib49 \"\"); [Kim and Kim, 2022](#bib.bib52 \"\")). Formally, we define the spectral reach of <!-- MathML: <math alttext=\"\\mathbf{H}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.p1.m3\" intent=\":literal\"><semantics><msup><mi>𝐇</mi><mtext>res</mtext></msup><annotation encoding=\"application/x-tex\">\\mathbf{H}^{\\text{res}}</annotation></semantics></math> --> 𝐇res\\mathbf{H}^{\\text{res}} matrices constructed using a given method <!-- MathML: <math alttext=\"\\mathsf{M}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.p1.m4\" intent=\":literal\"><semantics><mi>𝖬</mi><annotation encoding=\"application/x-tex\">\\mathsf{M}</annotation></semantics></math> --> 𝖬\\mathsf{M} as:"
+    },
+    {
+      "id": "u000073",
+      "kind": "table",
+      "text": "|  | <!-- MathML: <math alttext=\"\\{\\lambda\\in\\mathbb{C}\\;|\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\;\\vec{v}\\neq\\vec{0}\\}\" class=\"ltx_math_unparsed\" display=\"block\" id=\"S4.E12.m1\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mi>λ</mi><mo>∈</mo><mi>ℂ</mi><mo fence=\"false\" lspace=\"0.280em\" rspace=\"0.447em\" stretchy=\"false\">|</mo><msup><mi>𝐇</mi><mtext>res</mtext></msup><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo>=</mo><mi>λ</mi><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo rspace=\"0.447em\">,</mo><msup><mi>𝐇</mi><mtext>res</mtext></msup><mo>=</mo><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mi>𝖬</mi></msub><mrow><mo stretchy=\"false\">(</mo><mo lspace=\"0em\" rspace=\"0em\">⋯</mo><mo stretchy=\"false\">)</mo></mrow><mo rspace=\"0.447em\">,</mo><mover accent=\"true\"><mi>v</mi><mo stretchy=\"false\">→</mo></mover><mo>≠</mo><mover accent=\"true\"><mn>0</mn><mo stretchy=\"false\">→</mo></mover><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{\\lambda\\in\\mathbb{C}\\;|\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\;\\vec{v}\\neq\\vec{0}\\}</annotation></semantics></math> --> {λ∈ℂ|𝐇resv→=λv→,𝐇res=𝒫𝖬(⋯),v→≠0→}\\\\{\\lambda\\in\\mathbb{C}\\\\;|\\\\;\\mathbf{H}^{\\text{res}}\\vec{v}=\\lambda\\vec{v},\\\\;\\mathbf{H}^{\\text{res}}=\\mathcal{P}_{\\mathsf{M}}(\\cdots),\\\\;\\vec{v}\\neq\\vec{0}\\\\} |  | (12) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---- |"
+    },
+    {
+      "id": "u000074",
+      "kind": "heading",
+      "text": "### 4.1 Spectral Reach of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.m1\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} Subsets"
+    },
+    {
+      "id": "u000075",
+      "kind": "prose",
+      "text": "A mapping <!-- MathML: <math alttext=\"\\mathsf{M}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.p1.m1\" intent=\":literal\"><semantics><mi>𝖬</mi><annotation encoding=\"application/x-tex\">\\mathsf{M}</annotation></semantics></math> --> 𝖬\\mathsf{M} with high spectral reach generates matrices spanning a larger volume of the Karpelevič region—the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices. This region’s boundary is defined by algebraic curves connecting the roots of unity ([Zyczkowski et al., 2003](#bib.bib15 \"\"); [Kim and Kim, 2022](#bib.bib52 \"\")):"
+    },
+    {
+      "id": "u000076",
+      "kind": "table",
+      "text": "|  | <!-- MathML: <math alttext=\"\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\}\" class=\"ltx_math_unparsed\" display=\"block\" id=\"S4.Ex2.m1\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><msup><mi>e</mi><mrow><mi>i</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>π</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mfrac><mi>j</mi><msup><mi>d</mi><mo>′</mo></msup></mfrac></mrow></msup><mo lspace=\"0em\" rspace=\"0.167em\">∣</mo><mi>j</mi><mo>∈</mo><mrow><mo stretchy=\"false\">[</mo><mn>1</mn><mo>,</mo><msup><mi>d</mi><mo>′</mo></msup><mo stretchy=\"false\">]</mo></mrow><mo>,</mo><msup><mi>d</mi><mo>′</mo></msup><mo>≤</mo><mi>d</mi><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\}</annotation></semantics></math> --> {ei​2​π​jd′∣j∈[1,d′],d′≤d}\\\\{e^{i2\\pi\\frac{j}{d^{\\prime}}}\\mid j\\in[1,d^{\\prime}],d^{\\prime}\\leq d\\\\} |  |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |"
+    },
+    {
+      "id": "u000077",
+      "kind": "prose",
+      "text": "![Refer to caption](2604.02309v1/spectra_numerics_compare.png)"
+    }
+  ]
+}

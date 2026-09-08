@@ -1,0 +1,158 @@
+{
+  "depth": 0,
+  "batch": 16,
+  "items": [
+    {
+      "recordId": "teach-n0001076",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For an abstraction λx.M assigned level ℓ, the body M stays at level ℓ rather than moving to a new level.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "If the variable x must be shared, its replicator Rₓ is assigned level ℓ + 1, one level above the abstraction's body.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001077",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The translated term has an initial level assigned to it before any traversal of its syntax begins.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "That initial level is 0, which is the outermost level of the whole translated term.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001078",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A bound occurrence is connected to a wire endpoint whose level is determined by traversing the source syntax to that occurrence.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The endpoint therefore receives the level reached at the occurrence's position during that syntax walk.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001079",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "When traversal enters a lambda body, it keeps the current level unchanged.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "When traversal follows an application's function, the level also stays unchanged; entering the application's argument instead increases the level by one.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001080",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "For a replicator port, the connected occurrence has an occurrence level and the replicator has its own replicator level.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "derivation",
+          "basis": "source",
+          "text": "The port delta is computed as the connected occurrence level minus the replicator level.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001081",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "In λx. x (g x), the first x occurrence has level 0, while the x occurring inside the application argument has level 2.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The sharing replicator Rₓ has level 1, giving its two port deltas as ⟨−1, +1⟩.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001082",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The linear term (λx.x)(λy.y) reduces by one fan annihilation step.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The result of that reduction is λy.y.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001083",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "In λx.x x, the bound variable x occurs twice in the body, so its single bound input has two consumers.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Because one input must feed two consumers, the translation uses a two-port replicator.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

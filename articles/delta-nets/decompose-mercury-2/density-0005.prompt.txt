@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000262",
+    "kind": "source",
+    "text": "flowchart TB\nA[\"argument A\"]\nlam[\"λx\"]\nbody[\"body = x₀ (g x₁)\"]\nA --> lam\nlam --> body"
+  },
+  {
+    "id": "n0000263",
+    "kind": "source",
+    "text": "The vocabulary used by the translation. λx.M defines a function; x is its parameter and M is its body. M N applies function M to argument N. In the example, A is the actual argument supplied to the abstraction, while x₀ and x₁ are the two places that use x."
+  },
+  {
+    "id": "n0000264",
+    "kind": "topic",
+    "text": "### 5.1 Start with a uniform interface"
+  },
+  {
+    "id": "n0000265",
+    "kind": "source",
+    "text": "Every fragment has an interface: one incoming wire at the top and zero or more outgoing wires at the bottom. The outermost fragment hangs from a single root. Free variables—names no surrounding λ owns—become named interface nodes. That stable shape lets you plug a fragment into its parent the way a function plugs into a call."
+  },
+  {
+    "id": "n0000266",
+    "kind": "source",
+    "text": "abstraction fragment [λx.M]ℓ"
+  },
+  {
+    "id": "n0000267",
+    "kind": "source",
+    "text": "flowchart TB\nrootA((root))\nlam@{ shape: triangle, label: \"λ\" }\nRx@{ shape: trapezoid, label: \"Rₓ\" }\nM@{ shape: rect, label: \"[M]ℓ body\" }\nuses@{ shape: rect, label: \"bound uses\" }\nrootA -->|principal · parent| lam\nlam ---|2nd aux · variable → principal| Rx\nlam ---|1st aux · body| M\nRx ---|auxiliary ports| uses\nM ~~~ Rx"
+  },
+  {
+    "id": "n0000268",
+    "kind": "source",
+    "text": "application fragment [M N]ℓ"
+  },
+  {
+    "id": "n0000269",
+    "kind": "source",
+    "text": "flowchart TB\nrootB((root))\napp@{ shape: triangle, label: \"app\" }\nMf@{ shape: rect, label: \"[M]ℓ function\" }\nresB@{ shape: rect, label: \"parent / result\" }\nNarg@{ shape: rect, label: \"[N]ℓ₊₁ argument\" }\nrootB --- resB\nMf -->|principal · function| app\napp ---|1st aux · result| resB\napp ---|2nd aux · argument| Narg"
+  },
+  {
+    "id": "n0000270",
+    "kind": "source",
+    "text": "Canonical fragment interface. In the abstraction, the parent enters λ’s principal port; λ’s right auxiliary reaches body M, while its left auxiliary reaches the replicator’s principal port when x is shared. In the application, function M reaches the application’s principal port; the parent/result wire and argument N use its two auxiliary ports."
+  },
+  {
+    "id": "n0000271",
+    "kind": "topic",
+    "text": "### 5.2 The variable cases"
+  },
+  {
+    "id": "n0000272",
+    "kind": "source",
+    "text": "Free variable"
+  },
+  {
+    "id": "n0000273",
+    "kind": "topic",
+    "text": "### A named boundary node"
+  },
+  {
+    "id": "n0000274",
+    "kind": "source",
+    "text": "A variable free in the outermost term becomes a single-port, non-agent node labelled with its name. It sits on the net’s interface, not among the rewriting agents."
+  },
+  {
+    "id": "n0000275",
+    "kind": "source",
+    "text": "Bound occurrence"
+  },
+  {
+    "id": "n0000276",
+    "kind": "topic",
+    "text": "### Just a wire—until it meets sharing"
+  },
+  {
+    "id": "n0000277",
+    "kind": "source",
+    "text": "A bound occurrence is just a vertical wire. Its lower end later joins an auxiliary port of the sharing replicator—when sharing is required at all."
+  },
+  {
+    "id": "n0000278",
+    "kind": "source",
+    "text": "Free in the whole term"
+  },
+  {
+    "id": "n0000279",
+    "kind": "source",
+    "text": "flowchart TB\ninY((fragment input))\ny[\"y · named boundary\"]\ninY --> y"
+  },
+  {
+    "id": "n0000280",
+    "kind": "source",
+    "text": "Bound by a surrounding λx"
+  },
+  {
+    "id": "n0000281",
+    "kind": "source",
+    "text": "flowchart TB\ninX((fragment input))\nendp[\"wire endpoint · ℓᵢ\"]\nRx2@{ shape: trapezoid, label: \"Rₓ\" }\ninX --> endp\nendp -->|one aux port| Rx2"
+  },
+  {
+    "id": "n0000282",
+    "kind": "source",
+    "text": "The distinction is at the fragment boundary. A free variable survives as a named node in the canonical net’s interface. A bound occurrence introduces no variable agent at all: it is a wire whose endpoint is later connected to its owning λx, directly when there is one use or through Rx when that value is shared. This follows the two variable clauses in [the paper’s inductive translation](https://arxiv.org/html/2505.20314v4#S3.F5)."
+  },
+  {
+    "id": "n0000283",
+    "kind": "topic",
+    "text": "### 5.3 The abstraction cases"
+  },
+  {
+    "id": "n0000284",
+    "kind": "source",
+    "text": "An abstraction is an upward-pointing fan (the λ label is only visual). Its first auxiliary port is the body and its second auxiliary port is the bound variable; in this upward view, those appear on the right and left respectively. If that variable is unused, the second auxiliary port meets an eraser—only in the erasure-capable systems ΔA and ΔK."
+  },
+  {
+    "id": "n0000285",
+    "kind": "source",
+    "text": "When a used variable has several occurrences, a replicator joins the abstraction’s variable port to those uses. Each auxiliary port of R lands on a concrete use site: for λx.x x, one auxiliary meets the application’s argument port and the other meets its function port. The application itself hangs from the abstraction’s body port. A one-port replicator with zero delta is just a wire, so canonical construction leaves it out."
+  },
+  {
+    "id": "n0000286",
+    "kind": "source",
+    "text": "One bound occurrence · λx.x"
+  },
+  {
+    "id": "n0000287",
+    "kind": "source",
+    "text": "flowchart TB\nroot0((root))\nlam0@{ shape: triangle, label: \"λ\" }\nvar0@{ shape: rect, label: \"2nd aux · variable\" }\nbody0@{ shape: rect, label: \"1st aux · body\" }\nuse0@{ shape: rect, label: \"x\" }\nroot0 -->|principal · parent| lam0\nlam0 --- var0\nlam0 --- body0\nbody0 ~~~ var0\nbody0 --- use0\nvar0 --- use0"
+  },
+  {
+    "id": "n0000288",
+    "kind": "source",
+    "text": "No bound occurrence · λx.y"
+  },
+  {
+    "id": "n0000290",
+    "kind": "source",
+    "text": "flowchart TB\nroot1((root))\nlam1@{ shape: triangle, label: \"λ\" }\nvar1@{ shape: rect, label: \"2nd aux · variable\" }\nbody1@{ shape: rect, label: \"1st aux · body\" }\nerase@{ shape: stadium, label: \"E\" }\nfreeY@{ shape: rect, label: \"y\" }\nroot1 -->|principal · parent| lam1\nlam1 --- var1\nlam1 --- body1\nbody1 ~~~ var1\nvar1 --- erase\nbody1 --- freeY"
+  },
+  {
+    "id": "n0000291",
+    "kind": "source",
+    "text": "Several bound occurrences · λx.x x"
+  },
+  {
+    "id": "n0000292",
+    "kind": "source",
+    "text": "flowchart TB\nroot2((root))\nlam2@{ shape: triangle, label: \"λ\" }\nvar2@{ shape: rect, label: \"2nd aux · variable\" }\nbody2@{ shape: rect, label: \"1st aux · body\" }\nR@{ shape: trapezoid, label: \"R\" }\napp2@{ shape: triangle, label: \"app\" }\nres2@{ shape: rect, label: \"result\" }\nfun2@{ shape: rect, label: \"function x₀\" }\narg2@{ shape: rect, label: \"argument x₁\" }\nroot2 -->|principal · parent| lam2\nlam2 --- var2\nlam2 --- body2\nbody2 ~~~ var2\nbody2 --- res2\napp2 --- res2\nvar2 --- R\nR --- fun2\nR --- arg2\nfun2 -->|principal| app2\napp2 --- arg2"
+  },
+  {
+    "id": "n0000293",
+    "kind": "source",
+    "text": "Read each picture from its λ binder. The second auxiliary port is the bound parameter x: it closes directly to one occurrence, terminates at E when unused, or reaches R when several occurrences must share one incoming value. The first auxiliary port is the body. In λx.x x that body port meets the application’s result port; the replicator’s auxiliary ports meet the application’s function and argument ports. §5.7 adds the levels and deltas."
+  },
+  {
+    "id": "n0000294",
+    "kind": "topic",
+    "text": "### 5.4 The application case"
+  },
+  {
+    "id": "n0000295",
+    "kind": "source",
+    "text": "An application is a triangular fan (the app label is only visual). Its principal port is fixed at the top apex and meets the function fragment. Its result and argument auxiliary ports are fixed symmetrically along the bottom edge. During reduction the application fan eventually meets an abstraction fan; their principal-port annihilation is the application."
+  },
+  {
+    "id": "n0000296",
+    "kind": "source",
+    "text": "Source syntax"
+  },
+  {
+    "id": "n0000297",
+    "kind": "source",
+    "text": "flowchart TB\nappS[\"[M N] · ℓ\"]\nMS[\"[M]ℓ · same level\"]\nNS[\"[N]ℓ₊₁ · one deeper\"]\nappS -->|function +0| MS\nappS -->|argument +1| NS"
+  },
+  {
+    "id": "n0000298",
+    "kind": "source",
+    "text": "Three fan ports"
+  },
+  {
+    "id": "n0000299",
+    "kind": "source",
+    "text": "flowchart TB\nresN@{ shape: rect, label: \"1st aux · result\" }\nappN@{ shape: triangle, label: \"app\" }\nMf2@{ shape: rect, label: \"function M · ℓ\" }\nNf2@{ shape: rect, label: \"argument N · ℓ+1\" }\nMf2 -->|principal| appN\nappN --- resN\nappN --- Nf2"
+  },
+  {
+    "id": "n0000300",
+    "kind": "source",
+    "text": "One syntax constructor, three connections. For [M N]ℓ, the result or parent wire uses the first auxiliary port, [N]ℓ+1 uses the second auxiliary port, and [M]ℓ meets the principal port. This is why a λ-fan connected to the function side can later form the active pair for β-reduction."
+  },
+  {
+    "id": "n0000301",
+    "kind": "topic",
+    "text": "### 5.5 Where levels come from"
+  },
+  {
+    "id": "n0000302",
+    "kind": "source",
+    "text": "Keep every word tied to the source syntax. An abstraction is the literal term λx.M: parameter x, body M. An application is the literal term M N: function M, argument N. A bound occurrence of x is one of the x leaves in M owned by that particular λx."
+  },
+  {
+    "id": "n0000303",
+    "kind": "source",
+    "text": "@"
+  },
+  {
+    "id": "n0000304",
+    "kind": "topic",
+    "text": "### “Context” here is not a runtime closure"
+  },
+  {
+    "id": "n0000305",
+    "kind": "source",
+    "text": "Calculate levels by walking the written λ-term. Start the whole term at level 0. For an abstraction λx.M at level ℓ, continue into M at the same level ℓ. For an application M N at level ℓ, keep level ℓ on the function M and write level ℓ + 1 on the argument N. Repeat inside each subtree. During graph reduction those coordinates track sharing contexts; they do not count captured values or surrounding λ symbols the way a runtime closure would."
+  },
+  {
+    "id": "n0000306",
+    "kind": "source",
+    "text": "λ-calculus syntax | Given | Assign | |"
+  },
+  {
+    "id": "n0000307",
+    "kind": "source",
+    "text": "Whole term T | T is the root program. | level(T) = 0 | |"
+  },
+  {
+    "id": "n0000308",
+    "kind": "source",
+    "text": "Abstraction λx.M | level(λx.M) = l | level(M) = l; the replicator Rx belongs to level l + 1. | |"
+  },
+  {
+    "id": "n0000309",
+    "kind": "source",
+    "text": "Application M N | level(M N) = l | level(M) = l; level(N) = l + 1. | |"
+  },
+  {
+    "id": "n0000310",
+    "kind": "source",
+    "text": "Occurrence x | x is reached at level li. | Its wire endpoint has level li. | |"
+  },
+  {
+    "id": "n0000311",
+    "kind": "source",
+    "text": "Use the same instructions at every step. For λx.λy.x, start at level 0 and carry 0 through both bodies, so x sits at level 0. For λx.f (g x), carry 0 into the body, give the outer function f level 0, and give its argument g x level 1. Apply the rule again inside that argument: g stays at 1, and x lands at 2."
+  },
+  {
+    "id": "n0000312",
+    "kind": "source",
+    "text": "Walk the syntax tree"
+  },
+  {
+    "id": "n0000313",
+    "kind": "source",
+    "text": "flowchart TB\nT[\"[λx. x (g x)]₀\"]\nbinder[\"λx · ℓ = 0\"]\nouter[\"x (g x) · ℓ = 0\"]\nx0[\"x₀ · ℓ = 0\"]\ngx[\"g x · ℓ = 1\"]\ng[\"g · ℓ = 1\"]\nx1[\"x₁ · ℓ = 2\"]\nT --> binder\nbinder --> outer\nouter -->|function +0| x0\nouter -->|argument +1| gx\ngx -->|function +0| g\ngx -->|argument +1| x1"
+  },
+  {
+    "id": "n0000314",
+    "kind": "source",
+    "text": "Turn the two x levels into deltas"
+  },
+  {
+    "id": "n0000315",
+    "kind": "source",
+    "text": "flowchart TB\nRx@{ shape: trapezoid, label: \"Rₓ · ℓ = 1\" }\np0[\"x₀ · d = 0 − 1 = −1\"]\np1[\"x₁ · d = 2 − 1 = +1\"]\nRx --> p0\nRx --> p1"
+  },
+  {
+    "id": "n0000316",
+    "kind": "source",
+    "text": "Walk λx.x (g x) mechanically. Begin at level 0 and keep that level through λx into its body x (g x). At the outer application, give the function x₀ level 0 and the argument g x level 1. Now apply the same rule to g x: g stays at 1 and x₁ lands at 2. The binder’s replicator is at level 1, so the stored deltas are ⟨−1, +1⟩."
+  },
+  {
+    "id": "n0000317",
+    "kind": "source",
+    "text": "To encode a term by hand:"
+  },
+  {
+    "id": "n0000318",
+    "kind": "source",
+    "text": "- Fully parenthesize applications so every function and argument position is unambiguous."
+  },
+  {
+    "id": "n0000319",
+    "kind": "source",
+    "text": "- Write level 0 on the whole term, then walk inward. Keep the current level through every λx.M body and every function position; add one only when you enter an application’s argument."
+  },
+  {
+    "id": "n0000320",
+    "kind": "source",
+    "text": "- For each binder λx at level l, put its sharing replicator Rx at level l + 1 when a replicator is needed."
+  },
+  {
+    "id": "n0000321",
+    "kind": "source",
+    "text": "- Connect each bound occurrence xi to one auxiliary port of Rx. If that occurrence was reached at level li, label its port di = li − (l + 1)."
+  },
+  {
+    "id": "n0000322",
+    "kind": "source",
+    "text": "A wire endpoint level is simply the level of that concrete variable occurrence. Its port delta is the gap between where the occurrence sits and where its binder’s replicator sits:"
+  },
+  {
+    "id": "n0000323",
+    "kind": "source",
+    "text": "Construction rule"
+  },
+  {
+    "id": "n0000324",
+    "kind": "source",
+    "text": "port delta = level of its connected wire endpoint − level of the replicator"
+  },
+  {
+    "id": "n0000325",
+    "kind": "source",
+    "text": "That is where Chapter 4’s numbers came from: a replicator at level 2 wired to an occurrence at level 5 stores delta +3. During reduction, that +3 is the local adjustment whenever another replicator exits through the port. Section [5.8](#deep-deltas) works the full calculation for four occurrences of one bound variable."
+  },
+  {
+    "id": "n0000326",
+    "kind": "topic",
+    "text": "### 5.6 Follow a β-redex from term, to net, to term"
+  }
+]

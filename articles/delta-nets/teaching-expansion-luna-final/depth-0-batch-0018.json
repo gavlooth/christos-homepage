@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 18,
+  "items": [
+    {
+      "recordId": "teach-n0000805",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "If a λL term normalizes in n β-reductions, then its ΔL encoding normalizes in n interactions as well.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "limitation",
+          "basis": "source",
+          "text": "The ΔL encoding reaches normalization in n interactions regardless of the order of those interactions.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

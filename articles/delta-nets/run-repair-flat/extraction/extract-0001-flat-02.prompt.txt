@@ -1,0 +1,255 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001-flat-02",
+  "context": [
+    "Δ-Nets"
+  ],
+  "units": [
+    {
+      "id": "u000019",
+      "kind": "prose",
+      "text": "- [05a Trace a λ-term](#lambda-trace)"
+    },
+    {
+      "id": "u000020",
+      "kind": "prose",
+      "text": "- [06 Reduction discipline](#discipline)"
+    },
+    {
+      "id": "u000021",
+      "kind": "prose",
+      "text": "- [07 What the proposal claims](#guarantees)"
+    },
+    {
+      "id": "u000022",
+      "kind": "prose",
+      "text": "- [08 Glossary & source](#glossary)"
+    },
+    {
+      "id": "u000023",
+      "kind": "prose",
+      "text": "Scope. This guide rearranges the paper’s argument for learning and uses original diagrams. The paper remains the authority for definitions and proofs."
+    },
+    {
+      "id": "u000024",
+      "kind": "heading",
+      "text": "## Read this before the notation"
+    },
+    {
+      "id": "u000025",
+      "kind": "prose",
+      "text": "Δ-Nets is a proposed graph-rewriting model. Instead of walking a syntax tree, you turn a program into a graph of tiny nodes and wires, then repeatedly replace small matching pieces of that graph. The aim is optimal parallel reduction: do not spend effort on work that will later be thrown away, and do each necessary reduction once even when an expression is used in several places."
+    },
+    {
+      "id": "u000026",
+      "kind": "heading",
+      "text": "### The core idea"
+    },
+    {
+      "id": "u000027",
+      "kind": "prose",
+      "text": "Build the program as a net of very small agents. Let local pairs interact on their own. Put sharing in the graph itself, not in a side table of copies."
+    },
+    {
+      "id": "u000028",
+      "kind": "heading",
+      "text": "### The important caveat"
+    },
+    {
+      "id": "u000029",
+      "kind": "prose",
+      "text": "“Optimal” and the confluence guarantees here are the paper’s claims, argued in the linked source. This guide teaches the design. The definitions and proofs stay with the paper."
+    },
+    {
+      "id": "u000030",
+      "kind": "heading",
+      "text": "### Six ideas you need before Chapter 1"
+    },
+    {
+      "id": "u000031",
+      "kind": "heading",
+      "text": "#### λ-term"
+    },
+    {
+      "id": "u000032",
+      "kind": "prose",
+      "text": "A tiny functional program. λx.t is a function with parameter x and body t. t u means “apply t to u.”"
+    },
+    {
+      "id": "u000033",
+      "kind": "heading",
+      "text": "#### Bound vs. free"
+    }
+  ]
+}

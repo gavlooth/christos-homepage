@@ -1,0 +1,44 @@
+{
+  "depth": 0,
+  "batch": 34,
+  "items": [
+    {
+      "recordId": "teach-n0001070",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "An abstraction fan has a first auxiliary port and a second auxiliary port, each used for a distinct connection.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The first auxiliary port connects to the abstraction body, while the second auxiliary port connects to the bound variable.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001071",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "When a bound variable is unused, the abstraction's variable port connects to an eraser.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "This eraser connection occurs in both ΔA and ΔK.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

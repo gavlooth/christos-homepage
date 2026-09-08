@@ -1,0 +1,1 @@
+{"items":[{"recordId":"teach-generated-209163225799547c","units":[{"role":"definition","basis":"common_knowledge","text":"A function fan describes the number or pattern of a function’s connections in a call graph; the specific direction must be stated, because fan-in counts callers while fan-out counts functions it calls.","requires":[],"citationRequired":false}]}]}

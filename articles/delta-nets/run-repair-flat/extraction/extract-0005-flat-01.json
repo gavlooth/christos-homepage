@@ -1,0 +1,289 @@
+{
+  "nodes": [
+    {
+      "kind": "topic",
+      "text": "## Reduction needs housekeeping and a schedule.",
+      "sourceUnitIds": [
+        "u000318"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "The full algorithm is more than the interaction core. It adds canonicalization—cleanup rewrites that restore the special term-like net shape—and, for the nonlinear systems, a global leftmost-outermost schedule.",
+      "sourceUnitIds": [
+        "u000319"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 6.1 Canonical and proper are different states",
+      "sourceUnitIds": [
+        "u000320"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Translation produces a canonical net: the standard shape the reverse translation knows how to read. After zero or more core interactions you have a proper net—any intermediate shape reachable during reduction. Canonicalization is the cleanup that walks a proper net back to canonical form.",
+      "sourceUnitIds": [
+        "u000321"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "State | Meaning in the paper | Why a reader should care | |",
+      "sourceUnitIds": [
+        "u000322"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Canonical | Directly produced by the φ translation and in the special normal shape the back-translation expects. | It is the stable, term-like representation. | |",
+      "sourceUnitIds": [
+        "u000323"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Proper | Reachable from a canonical net by zero or more Δ interactions. | It is the broader space where reduction does its work. | |",
+      "sourceUnitIds": [
+        "u000324"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### 6.2 Erasure needs a root-reachability sweep",
+      "sourceUnitIds": [
+        "u000325"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "In ΔA and ΔK, an eraser can leave disconnected subnets—smaller graph regions—behind. Erasure canonicalization gathers that unreachable material in one reachability sweep:",
+      "sourceUnitIds": [
+        "u000326"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A",
+      "sourceUnitIds": [
+        "u000327"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Mark from the root",
+      "sourceUnitIds": [
+        "u000328"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Walk parent–child wires from the root and mark every node you reach.",
+      "sourceUnitIds": [
+        "u000329"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "B",
+      "sourceUnitIds": [
+        "u000330"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "topic",
+      "text": "### Discard what was not marked",
+      "sourceUnitIds": [
+        "u000331"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000318",
+        "u000319",
+        "u000320",
+        "u000321",
+        "u000322",
+        "u000323",
+        "u000324",
+        "u000325",
+        "u000326",
+        "u000327",
+        "u000328",
+        "u000329",
+        "u000330",
+        "u000331"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0005-flat-01 timed out after 90s",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0005-flat-01",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

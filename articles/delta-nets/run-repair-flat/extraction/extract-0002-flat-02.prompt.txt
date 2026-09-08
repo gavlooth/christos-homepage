@@ -1,0 +1,247 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0002-flat-02",
+  "context": [
+    "Δ-Nets",
+    "Stop treating a program as a tree.",
+    "2.4 What earlier optimal-reduction nets struggled with"
+  ],
+  "units": [
+    {
+      "id": "u000110",
+      "kind": "heading",
+      "text": "### 2.4 What earlier optimal-reduction nets struggled with"
+    },
+    {
+      "id": "u000111",
+      "kind": "prose",
+      "text": "Earlier interaction-net approaches tracked sharing scopes—regions governed by one duplication context, the way a λ governs its bound uses. They marked those regions with indexed fans plus extra delimiter agents (brackets, croissants, and kin). The critique is practical as much as theoretical: delimiters pile up, and their interactions can outnumber the useful fan work. Some systems also let indices grow without bound."
+    },
+    {
+      "id": "u000112",
+      "kind": "prose",
+      "text": "!"
+    },
+    {
+      "id": "u000113",
+      "kind": "heading",
+      "text": "### The proposed simplification"
+    },
+    {
+      "id": "u000114",
+      "kind": "prose",
+      "text": "Δ-Nets folds that bookkeeping into one variable-arity agent—the replicator—with a level and a per-port delta. One structure holds the sharing context."
+    },
+    {
+      "id": "u000115",
+      "kind": "prose",
+      "text": "03 Core vocabulary"
+    },
+    {
+      "id": "u000116",
+      "kind": "heading",
+      "text": "## Three agents carry the whole core."
+    },
+    {
+      "id": "u000117",
+      "kind": "prose",
+      "text": "A Δ-Net is built from three agents: fan, eraser, and replicator. Think of each as a tiny component. The principal port is the socket that can start a rewrite. The auxiliary ports carry the surrounding wiring through that rewrite."
+    },
+    {
+      "id": "u000118",
+      "kind": "prose",
+      "text": "Fan · 2 auxiliary ports"
+    },
+    {
+      "id": "u000119",
+      "kind": "prose",
+      "text": "flowchart TB\nFp[\"principal\"]\nF@{ shape: triangle, label: \"F\" }\nFa0@{ shape: rect, label: \"1st aux\" }\nFa1@{ shape: rect, label: \"2nd aux\" }\nFp -->|principal| F\nF --- Fa0\nF --- Fa1"
+    },
+    {
+      "id": "u000120",
+      "kind": "prose",
+      "text": "Eraser · no auxiliary ports"
+    },
+    {
+      "id": "u000121",
+      "kind": "prose",
+      "text": "flowchart TB\nE@{ shape: stadium, label: \"E\" }"
+    },
+    {
+      "id": "u000122",
+      "kind": "prose",
+      "text": "Replicator · any number of auxiliary ports"
+    }
+  ]
+}

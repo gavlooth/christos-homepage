@@ -1,0 +1,482 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "n0000282",
+    "targetType": "gap",
+    "need": "Define or explain \"figure 5\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000283",
+    "targetType": "gap",
+    "need": "Define or explain \"skew‐symmetry\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000284",
+    "targetType": "gap",
+    "need": "Define or explain \"intractability\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000285",
+    "targetType": "gap",
+    "need": "Define or explain \"logarithm\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088",
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000286",
+    "targetType": "gap",
+    "need": "Define or explain \"factorization\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000088"
+    ]
+  },
+  {
+    "id": "n0000287",
+    "targetType": "gap",
+    "need": "Define or explain \"table 1\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000089"
+    ]
+  },
+  {
+    "id": "n0000288",
+    "targetType": "gap",
+    "need": "Define or explain \"big‐o\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000090",
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000289",
+    "targetType": "gap",
+    "need": "Define or explain \"tensor product\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000290",
+    "targetType": "gap",
+    "need": "Define or explain \"orthostochastic matrices\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000291",
+    "targetType": "gap",
+    "need": "Define or explain \"quadratic cost\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000091"
+    ]
+  },
+  {
+    "id": "n0000292",
+    "targetType": "gap",
+    "need": "Define or explain \"section 5 convergence\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000098"
+    ]
+  },
+  {
+    "id": "n0000293",
+    "targetType": "gap",
+    "need": "Define or explain \"section 5.1 synthetic stream mixing performance\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000101"
+    ]
+  },
+  {
+    "id": "n0000294",
+    "targetType": "gap",
+    "need": "Define or explain \"synthetic toy‐model experiment\" before the dependent knowledge can be understood.",
+    "gapType": "definition",
+    "sourceUnitIds": [
+      "u000102"
+    ]
+  },
+  {
+    "id": "n0000013",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Existing exact methods scale factorially with the number of streams d, while Kronecker-factorized approaches are efficient but have limited expressivity.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "n0000014",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.9,
+    "text": "We introduce a novel exact parameterization based on generalized orthostochastic matrices, scaling as O(d³) and exposing a hyperparameter s that interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "n0000015",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Our method composes naturally with Kronecker-factorized methods, substantially recovering expressivity at similar FLOP costs.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "n0000017",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "On synthetic stream-mixing tasks, go-mHC achieves the minimum theoretical loss while converging up to 10× faster.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "n0000019",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "The expressivity, efficiency, and exactness of go-mHC offer a practical avenue for scaling d as a new dimension of model capacity.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "n0000021",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "The performance and stability of modern machine learning models increasingly depend on the geometric structure of their matrix parameterizations; traditional constraints such as symmetry or orthogonality have been foundational, while recent work leverages manifold theory to map unconstrained spaces onto constrained geometries like the Birkhoff polytope, which enforces doubly stochastic constraints but faces a trade-off between exactness and scalability.",
+    "sourceUnitIds": [
+      "u000013"
+    ]
+  },
+  {
+    "id": "n0000022",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Constraining attention patterns to doubly stochastic matrices improves accuracy in vision and language models and interprets learned parameters as probability trajectories.",
+    "sourceUnitIds": [
+      "u000014"
+    ]
+  },
+  {
+    "id": "n0000023",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Sinkhorn Attention provides memory-efficient implementations due to its ability to mix internal representations and smooth optimization landscape.",
+    "sourceUnitIds": [
+      "u000014"
+    ]
+  },
+  {
+    "id": "n0000025",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Dynamic generalizations of residual streams increase topological complexity by increasing the number of streams d while preserving the identity mapping property.",
+    "sourceUnitIds": [
+      "u000015"
+    ]
+  },
+  {
+    "id": "n0000027",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Figure 1 illustrates spectral comparison showing go-mHC approximates the Birkhoff polytope within epsilon(s) error using d(d‑1)/2 parameters; mHC‑lite provides full coverage but requires d! parameters; KromHC is restricted to B₂ and disallows cycles >2. The parameterization maps skew‑symmetric X to orthogonal Q via the Cayley Transform, then projects to doubly stochastic B via block‑wise Frobenius norm. Hyper‑Connections ℋ_res is integrated into the residual stream as x_{l+1}=ℋ_l^{res} x_l + Layer F(x_l), where the doubly stochastic constraint ensures training stability and improved gradient flow.",
+    "sourceUnitIds": [
+      "u000017"
+    ]
+  },
+  {
+    "id": "n0000028",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Manifold‑Constrained Hyper‑Connections (mHC) shows that constraining residual connections to the interior of the Birkhoff polytope significantly improves training stability and scalability.",
+    "sourceUnitIds": [
+      "u000018"
+    ]
+  },
+  {
+    "id": "n0000031",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Exact parameterizations have been introduced to prevent error accumulation across layers (Yang and Gao 2026; Zhou et al. 2026).",
+    "sourceUnitIds": [
+      "u000019"
+    ]
+  },
+  {
+    "id": "n0000032",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "mHC‑lite uses the Birkhoff–von Neumann theorem to parameterize ℋ_res as a convex combination of all d! permutation matrices.",
+    "sourceUnitIds": [
+      "u000019"
+    ]
+  },
+  {
+    "id": "n0000033",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The parameter count O(d·d!) explodes super‑exponentially; for d=8, 8! = 40 320 permutations are required, making this approach memory‑prohibitive without sampling approximations.",
+    "sourceUnitIds": [
+      "u000019"
+    ]
+  },
+  {
+    "id": "n0000034",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "KromHC employs Kronecker products of small doubly stochastic matrices to achieve exact constraints with O(d²) complexity, but at the cost of severely reduced expressivity.",
+    "sourceUnitIds": [
+      "u000019"
+    ]
+  },
+  {
+    "id": "n0000036",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "The framework learns doubly stochastic matrices while balancing efficiency and expressivity, exposing a hyperparameter s that allows tunability across these attributes.",
+    "sourceUnitIds": [
+      "u000020"
+    ]
+  },
+  {
+    "id": "n0000039",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "The parameterization is evaluated on a synthetic data task mixing d residual streams and a 30 M‑parameter GPT‑style language model.",
+    "sourceUnitIds": [
+      "u000021"
+    ]
+  },
+  {
+    "id": "n0000041",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Our method achieves faster convergence and better reachability than parametrizations invoking the Birkhoff von‑Neumann theorem, such as mHC‑lite and KromHC.",
+    "sourceUnitIds": [
+      "u000023"
+    ]
+  },
+  {
+    "id": "n0000043",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The method scales as O(d^3) in FLOP complexity and parameter count, surpassing the super‑exponential scaling of mHC‑lite and KromHC’s component factors.",
+    "sourceUnitIds": [
+      "u000024"
+    ]
+  },
+  {
+    "id": "n0000045",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "The method requires no custom CUDA kernels, relying only on batched linear solves and tensor contractions.",
+    "sourceUnitIds": [
+      "u000025"
+    ]
+  },
+  {
+    "id": "n0000046",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "The method achieves exact double stochasticity by construction, with no iterations and no approximation gap.",
+    "sourceUnitIds": [
+      "u000026"
+    ]
+  },
+  {
+    "id": "n0000047",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The method includes a hyperparameter s that interpolates between the orthostochastic boundary (s=1) and the dense interior of the Birkhoff polytope (s→∞).",
+    "sourceUnitIds": [
+      "u000027"
+    ]
+  },
+  {
+    "id": "n0000048",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "The method provides a potential avenue for scaling Hyper‑Connections with tractable complexity while maintaining significant expressivity.",
+    "sourceUnitIds": [
+      "u000028"
+    ]
+  },
+  {
+    "id": "n0000049",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The method can be used simultaneously with KromHC to allow for larger Kronecker factors by mitigating the super‑exponential scaling introduced in mHC‑lite.",
+    "sourceUnitIds": [
+      "u000028"
+    ]
+  },
+  {
+    "id": "n0000052",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "He et al. introduced skip connections that enable gradient flow via identity shortcuts in ResNets.",
+    "sourceUnitIds": [
+      "u000031"
+    ]
+  },
+  {
+    "id": "n0000056",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.5,
+    "text": "Hyper‑Connections (HC) introduced the first learnable, multi‑stream generalization of residual streams allowing for dynamic mixing matrices.",
+    "sourceUnitIds": [
+      "u000032"
+    ]
+  },
+  {
+    "id": "n0000057",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "HC can theoretically enable models to learn depth and width connections, dynamically rearrange layer connectivity and potentially adds a new avenue for scaling.",
+    "sourceUnitIds": [
+      "u000032"
+    ]
+  },
+  {
+    "id": "n0000058",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Later works have expanded on HC by splitting the feature dimension into independent sub‑streams and applying HC to vision and graph neural networks.",
+    "sourceUnitIds": [
+      "u000032"
+    ]
+  },
+  {
+    "id": "n0000059",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The unconstrained dynamic connectivity of residual blocks in HC removes the explicit guarantee of the identity property, introducing the risk of gradient instability after repeated applications of the mixing terms.",
+    "sourceUnitIds": [
+      "u000033"
+    ]
+  },
+  {
+    "id": "n0000061",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Subsequent works investigate constraining this connectivity to a manifold that bounds gradient updates through the spectral norm in order to address this instability.",
+    "sourceUnitIds": [
+      "u000033"
+    ]
+  },
+  {
+    "id": "n0000063",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.6,
+    "text": "Manifold‑Constrained Hyper‑Connections (mHC) constrain the dynamic residual matrices to a manifold to improve training stability while still allowing for dynamic connections.",
+    "sourceUnitIds": [
+      "u000035"
+    ]
+  },
+  {
+    "id": "n0000064",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "mHC primarily changes the definition of ℋ_l^res such that it converges to the Birkhoff polytope B_d, the closed set of doubly stochastic matrices.",
+    "sourceUnitIds": [
+      "u000035"
+    ]
+  },
+  {
+    "id": "n0000065",
+    "targetType": "node",
+    "kind": "definition",
+    "densityScore": 0.8,
+    "text": "B_d denotes the closed set of doubly stochastic matrices, defined as positive matrices with the property M^T J_d = M J_d = J_d.",
+    "sourceUnitIds": [
+      "u000036"
+    ]
+  },
+  {
+    "id": "n0000071",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "mHC‑lite attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of d! permutation matrices.",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "n0000075",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "KromHC sacrifices expressivity and complete coverage of B_d by using tensor products to train residual connections on a much smaller set of exactly double‑stochastic matrices, with a cost of O(d² C).",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  }
+]

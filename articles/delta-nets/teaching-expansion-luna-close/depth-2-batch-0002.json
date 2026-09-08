@@ -1,0 +1,18 @@
+{
+  "depth": 2,
+  "batch": 2,
+  "items": [
+    {
+      "recordId": "teach-generated-12ed2850440f0989",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A replicator model describes how the proportions of competing types change over time: types that perform better than the population average become more common, while types that perform worse become less common. In its standard form, the change in type i's proportion is proportional to its current proportion and its fitness advantage over the average fitness.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001036",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Confluence and termination are separate: some nets reduce forever.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001037",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "When a core interaction order normalizes, every normalizing order reaches the same result in the same number of interactions.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001038",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Earlier optimal-reduction nets used indexed fans and delimiter agents to track sharing scopes.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001039",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Δ-Nets replaces separate sharing-scope bookkeeping with a variable-arity replicator carrying a level and per-port deltas.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001040",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A Δ-Net core contains fans, erasers, and replicators.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001041",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A fan has exactly two auxiliary ports and represents lambda-term application and abstraction structure.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001042",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "An eraser has no auxiliary ports and marks an unused bound variable.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001043",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A replicator has any natural-number auxiliary arity and joins uses of one shared value.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

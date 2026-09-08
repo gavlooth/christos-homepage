@@ -1,0 +1,469 @@
+{
+  "nodes": [
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000067"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "We do not rely on the AGM metric because the exactness of P_go makes it equal to 1 by definition.",
+      "sourceUnitIds": [
+        "u000068"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "B_d is closed under matrix multiplication, so H_{l→L}^{res} remains doubly stochastic regardless of depth.",
+      "sourceUnitIds": [
+        "u000068"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "go-mHC, mHC-lite, and KromHC all achieve the same performance on the AGM metric, so we evaluate expressivity and convergence as additional metrics.",
+      "sourceUnitIds": [
+        "u000068"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "concept",
+      "text": "Expressivity",
+      "sourceUnitIds": [
+        "u000069"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "image",
+      "text": null,
+      "sourceUnitIds": [
+        "u000070"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "When s=1 and d=3, the model learns maps covering the full spectral region within the Karpelevič region of B_3\\B_2 up to error ε(s=1), and also covers real eigenvalues on interval [-1,1] (Karpelevič region of B_2).",
+      "sourceUnitIds": [
+        "u000071"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "When s=2, the model covers a larger region with a smaller spectral gap, i.e., ε(s=2) < ε(s=1).",
+      "sourceUnitIds": [
+        "u000071"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Bounding the spectrum stabilizes gradients, as discussed in Appendix B.8 and prior work.",
+      "sourceUnitIds": [
+        "u000072"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "We evaluate expressivity by using the spectrum of matrices constructed with P_M as a surrogate, measuring how many unique matrices can be spanned by their eigenvalues.",
+      "sourceUnitIds": [
+        "u000072"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Exact volume of B_d is unknown, so we rely on surrogate measures for expressivity of doubly stochastic matrices.",
+      "sourceUnitIds": [
+        "u000072"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Spectral reach of H^{res} matrices constructed using method M is defined as the set {λ∈ℂ | H^{res} v = λ v, H^{res}=P_M(...), v≠0}.",
+      "sourceUnitIds": [
+        "u000072"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000073"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "concept",
+      "text": "Spectral Reach of B_d Subsets",
+      "sourceUnitIds": [
+        "u000074"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "A mapping M with high spectral reach generates matrices that span a larger volume of the Karpelevič region, the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices.",
+      "sourceUnitIds": [
+        "u000075"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "The Karpelevič region is defined as the compact subset of the unit disk containing all possible eigenvalues of stochastic matrices.",
+      "sourceUnitIds": [
+        "u000075"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Its boundary is defined by algebraic curves connecting the roots of unity.",
+      "sourceUnitIds": [
+        "u000075"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000076"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "image",
+      "text": null,
+      "sourceUnitIds": [
+        "u000077"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "AGM metric"
+      ],
+      "need": "Define AGM metric",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "P_go"
+      ],
+      "need": "Define P_go",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "B_d"
+      ],
+      "need": "Define B_d",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "Karpelevič region"
+      ],
+      "need": "Define Karpelevič region",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "spectral reach"
+      ],
+      "need": "Define spectral reach",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "P_M"
+      ],
+      "need": "Define P_M",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "B_3\\B_2"
+      ],
+      "need": "Define B_3\\B_2",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "B_2"
+      ],
+      "need": "Define B_2",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [
+        "method M"
+      ],
+      "need": "Define method M",
+      "gapType": "missing_definition",
+      "origin": "gap"
+    }
+  ],
+  "edges": [
+    {
+      "from": 19,
+      "to": 1,
+      "relation": "defines"
+    },
+    {
+      "from": 20,
+      "to": 1,
+      "relation": "defines"
+    },
+    {
+      "from": 21,
+      "to": 2,
+      "relation": "defines"
+    },
+    {
+      "from": 22,
+      "to": 6,
+      "relation": "defines"
+    },
+    {
+      "from": 23,
+      "to": 11,
+      "relation": "defines"
+    },
+    {
+      "from": 24,
+      "to": 9,
+      "relation": "defines"
+    },
+    {
+      "from": 25,
+      "to": 6,
+      "relation": "defines"
+    },
+    {
+      "from": 26,
+      "to": 6,
+      "relation": "defines"
+    },
+    {
+      "from": 27,
+      "to": 11,
+      "relation": "defines"
+    },
+    {
+      "from": 22,
+      "to": 14,
+      "relation": "defines"
+    },
+    {
+      "from": 23,
+      "to": 14,
+      "relation": "defines"
+    },
+    {
+      "from": 22,
+      "to": 15,
+      "relation": "defines"
+    },
+    {
+      "from": 23,
+      "to": 15,
+      "relation": "defines"
+    },
+    {
+      "from": 23,
+      "to": 16,
+      "relation": "defines"
+    }
+  ],
+  "evidenceFrames": []
+}

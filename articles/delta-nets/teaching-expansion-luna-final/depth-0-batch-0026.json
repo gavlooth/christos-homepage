@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 26,
+  "items": [
+    {
+      "recordId": "teach-n0001085",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A level delta describes how a consumer shares a level relative to other consumers; it is not a count of copied items.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A level delta also does not store the value of a variable at the source level. Instead, it records the relative sharing context observed at the consumer.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

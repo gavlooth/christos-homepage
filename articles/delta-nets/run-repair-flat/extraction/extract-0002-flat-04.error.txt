@@ -1,0 +1,7 @@
+Error: extract-0002-flat-04 timed out after 90s
+    at callOmp (/home/christos/code/refine/bin/repair-sharded-graph.mjs:81:27)
+    at async repairFlatChunk (/home/christos/code/refine/bin/repair-sharded-graph.mjs:126:32)
+    at unknown
+    at unknown
+    at async mapConcurrent (unknown)
+    at async main (unknown)

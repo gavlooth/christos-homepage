@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 25,
+  "items": [
+    {
+      "recordId": "teach-n0001084",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For [λx.x x]₀, the replicator has level 1.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For [λx.x x]₀, the function-use delta is −1 and the argument-use delta is 0.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

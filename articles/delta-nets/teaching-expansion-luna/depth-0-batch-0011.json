@@ -1,0 +1,158 @@
+{
+  "depth": 0,
+  "batch": 11,
+  "items": [
+    {
+      "recordId": "teach-n0001036",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "Confluence and termination are distinct properties of a reduction system such as a net.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Some nets are non-terminating, meaning that they can continue reducing forever.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001037",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A core interaction order is a strategy for deciding which local net interaction to perform next.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "When a core interaction order normalizes, every normalizing order reaches the same result after the same number of interactions.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001038",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Earlier optimal-reduction nets used indexed fans to track sharing scopes.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Those nets also used delimiter agents to track the same sharing-scope information.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001039",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Δ-Nets replaces separate bookkeeping for sharing scopes.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Instead, a variable-arity replicator carries a level and a delta value for each port.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001040",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Fans are among the agent kinds contained in a Δ-Net core.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Erasers and replicators are also among the agent kinds contained in that core.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001041",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A fan has exactly two auxiliary ports.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Within the net, a fan represents application and abstraction structure from a lambda term.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001042",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "An eraser has no auxiliary ports.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "An eraser marks a bound variable that is unused.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001043",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A replicator can have any natural-number auxiliary arity.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "It joins uses of one shared value.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

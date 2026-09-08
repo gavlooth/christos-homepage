@@ -1,0 +1,270 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "Walk the syntax tree",
+      "sourceUnitIds": [
+        "u000272"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nT[\"[λx. x (g x)]₀\"]\nbinder[\"λx · ℓ = 0\"]\nouter[\"x (g x) · ℓ = 0\"]\nx0[\"x₀ · ℓ = 0\"]\ngx[\"g x · ℓ = 1\"]\ng[\"g · ℓ = 1\"]\nx1[\"x₁ · ℓ = 2\"]\nT --> binder\nbinder --> outer\nouter -->|function +0| x0\nouter -->|argument +1| gx\ngx -->|function +0| g\ngx -->|argument +1| x1",
+      "sourceUnitIds": [
+        "u000273"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Turn the two x levels into deltas",
+      "sourceUnitIds": [
+        "u000274"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nRx@{ shape: trapezoid, label: \"Rₓ · ℓ = 1\" }\np0[\"x₀ · d = 0 − 1 = −1\"]\np1[\"x₁ · d = 2 − 1 = +1\"]\nRx --> p0\nRx --> p1",
+      "sourceUnitIds": [
+        "u000275"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Walk λx.x (g x) mechanically. Begin at level 0 and keep that level through λx into its body x (g x). At the outer application, give the function x₀ level 0 and the argument g x level 1. Now apply the same rule to g x: g stays at 1 and x₁ lands at 2. The binder’s replicator is at level 1, so the stored deltas are ⟨−1, +1⟩.",
+      "sourceUnitIds": [
+        "u000276"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "To encode a term by hand:",
+      "sourceUnitIds": [
+        "u000277"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Fully parenthesize applications so every function and argument position is unambiguous.",
+      "sourceUnitIds": [
+        "u000278"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Write level 0 on the whole term, then walk inward. Keep the current level through every λx.M body and every function position; add one only when you enter an application’s argument.",
+      "sourceUnitIds": [
+        "u000279"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- For each binder λx at level l, put its sharing replicator Rx at level l + 1 when a replicator is needed.",
+      "sourceUnitIds": [
+        "u000280"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "- Connect each bound occurrence xi to one auxiliary port of Rx. If that occurrence was reached at level li, label its port di = li − (l + 1).",
+      "sourceUnitIds": [
+        "u000281"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "A wire endpoint level is simply the level of that concrete variable occurrence. Its port delta is the gap between where the occurrence sits and where its binder’s replicator sits:",
+      "sourceUnitIds": [
+        "u000282"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Construction rule",
+      "sourceUnitIds": [
+        "u000283"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "port delta = level of its connected wire endpoint − level of the replicator",
+      "sourceUnitIds": [
+        "u000284"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000272",
+        "u000273",
+        "u000274",
+        "u000275",
+        "u000276",
+        "u000277",
+        "u000278",
+        "u000279",
+        "u000280",
+        "u000281",
+        "u000282",
+        "u000283",
+        "u000284"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0004-flat-03 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0004-flat-03",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

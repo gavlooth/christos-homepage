@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 27,
+  "items": [
+    {
+      "recordId": "teach-generated-0ee1c030f134d1c9",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A partner is a person, group, or organization that works with another person or group toward a shared goal.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-72b76468716703f6",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Matching levels are corresponding stages, categories, or degrees in two things being compared or aligned.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+flowchart LR
+                t["t · source λ-term"]
+                phi["φ(t) · canonical net"]
+                proper["Δ* · proper states"]
+                omega["Ω(φ(t)) · normal canonical"]
+                tp["t′ · λ normal form"]
+                t -->|encode| phi
+                phi -->|interact| proper
+                proper -->|normalize + canonicalize| omega
+                omega -->|φ⁻¹ read back| tp

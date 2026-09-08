@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 23,
+  "items": [
+    {
+      "recordId": "teach-generated-9014cef95c55c8e8",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "The surviving replicator level is the degree or stage at which a replicator—an entity capable of making copies of itself—continues to persist and reproduce despite competition, selection, or other pressures.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

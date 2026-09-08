@@ -1,0 +1,533 @@
+[
+  {
+    "id": "n0000002",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000002"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0001",
+    "annotations": [
+      "kind_normalized",
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000044",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000024"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000066",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000036"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000073",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000076",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000039"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000091",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000047"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0002",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000126",
+    "kind": "gap",
+    "text": null,
+    "need": "Missing equation 5",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000061"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "equation 5"
+    ],
+    "origin": "gap",
+    "chunkId": "c0004",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000133",
+    "kind": "gap",
+    "text": null,
+    "need": "Missing equation 6",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000063"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "equation 6"
+    ],
+    "origin": "gap",
+    "chunkId": "c0004",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000145",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000067"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000150",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000070"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "kind_normalized",
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000157",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000073"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000162",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000076"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000163",
+    "kind": "gap",
+    "text": null,
+    "need": "Model node had no text.",
+    "gapType": "parsing_error",
+    "sourceUnitIds": [
+      "u000077"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [
+      "kind_normalized",
+      "parsing_error"
+    ],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000164",
+    "kind": "gap",
+    "text": null,
+    "need": "Define AGM metric",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "agm metric"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000165",
+    "kind": "gap",
+    "text": null,
+    "need": "Define P_go",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "pgo"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000168",
+    "kind": "gap",
+    "text": null,
+    "need": "Define spectral reach",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "spectral reach"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000169",
+    "kind": "gap",
+    "text": null,
+    "need": "Define P_M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "pm"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000172",
+    "kind": "gap",
+    "text": null,
+    "need": "Define method M",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "method m"
+    ],
+    "origin": "gap",
+    "chunkId": "c0005",
+    "annotations": [],
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000207",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of s-ssostochastic matrices",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000081"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "s-ssostochastic matrices"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000208",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of mHC, mHC-lite, KromHC, go-mHC",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000078",
+      "u000083",
+      "u000084",
+      "u000085"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "mhc",
+      "mhc-lite",
+      "kromhc",
+      "go-mhc"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000209",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of H_res",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "hres"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000210",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of d-streams",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000083"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "d-streams"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000212",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of spectral hull",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000084"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "spectral hull"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000213",
+    "kind": "gap",
+    "text": null,
+    "need": "definition of i_k",
+    "gapType": "missing_definition",
+    "sourceUnitIds": [
+      "u000085"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [
+      "ik"
+    ],
+    "origin": "gap",
+    "chunkId": "c0006",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000263",
+    "kind": "gap",
+    "text": null,
+    "need": "artifact storage metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000103"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0008",
+    "densityScore": 0,
+    "densitySource": "structural"
+  },
+  {
+    "id": "n0000264",
+    "kind": "gap",
+    "text": null,
+    "need": "pagination metadata",
+    "gapType": "metadata",
+    "sourceUnitIds": [
+      "u000104"
+    ],
+    "defines": [],
+    "requires": [],
+    "mentions": [],
+    "fills": [],
+    "origin": "gap",
+    "chunkId": "c0008",
+    "densityScore": 0,
+    "densitySource": "structural"
+  }
+]

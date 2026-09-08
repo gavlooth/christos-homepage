@@ -1,0 +1,8 @@
+Error: extract-0002-flat-06 exited 1: Working...
+Deadline exceeded
+    at callOmp (/home/christos/code/refine/bin/repair-sharded-graph.mjs:82:33)
+    at async repairFlatChunk (unknown)
+    at unknown
+    at unknown
+    at async mapConcurrent (unknown)
+    at async main (unknown)

@@ -1,0 +1,226 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0006",
+  "context": [
+    "go-mHC: Direct Parameterization of Manifold-Constrained  Hyper-Connections via Generalized Orthostochastic Matrices",
+    "4 Expressivity",
+    "4.1 Spectral Reach of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.m1\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} Subsets"
+  ],
+  "units": [
+    {
+      "id": "u000078",
+      "kind": "prose",
+      "text": "*Figure 4: Histogram of the spectral reach of a toy model implementing the maps <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{SK}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m15\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>SK</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{SK}}</annotation></semantics></math> --> 𝒫SK\\mathcal{P}_{\\text{SK}}, <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{lite}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m16\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>lite</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{lite}}</annotation></semantics></math> --> 𝒫lite\\mathcal{P}_{\\text{lite}}, <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{krom}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m17\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>krom</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{krom}}</annotation></semantics></math> --> 𝒫krom\\mathcal{P}_{\\text{krom}}, and <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{go}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m18\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>go</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{go}}</annotation></semantics></math> --> 𝒫go\\mathcal{P}_{\\text{go}} on random targets in <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m19\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4}.\nThe blue and green lines in (a-e) are the boundary of the spectrum of the <!-- MathML: <math alttext=\"\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m20\" intent=\":literal\"><semantics><mrow><msub><mi>𝖡</mi><mn>3</mn></msub><mo>∖</mo><msub><mi>𝖡</mi><mn>2</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡3∖𝖡2\\mathsf{B}_{3}\\setminus\\mathsf{B}_{2} and <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\\setminus\\mathsf{B}_{3}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m21\" intent=\":literal\"><semantics><mrow><msub><mi>𝖡</mi><mn>4</mn></msub><mo>∖</mo><msub><mi>𝖡</mi><mn>3</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}\\setminus\\mathsf{B}_{3}</annotation></semantics></math> --> 𝖡4∖𝖡3\\mathsf{B}_{4}\\setminus\\mathsf{B}_{3} polytopes respectively,\nas illustrated in figure [2](#S3.F2 \"Figure 2 ‣ 3.2 Generalized Orthostochastic Matrices ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\").(a) mHC(implemented via <!-- MathML: <math alttext=\"\\mathcal{P}_{\\text{SK}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m22\" intent=\":literal\"><semantics><msub><mi class=\"ltx_font_mathcaligraphic\">𝒫</mi><mtext>SK</mtext></msub><annotation encoding=\"application/x-tex\">\\mathcal{P}_{\\text{SK}}</annotation></semantics></math> --> 𝒫SK\\mathcal{P}_{\\text{SK}}) contains points outside of <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m23\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4} (this effect is exaggerated for illustration via initial conditions with large variance).(b) mHC-lite shows good expressivity, filling the region near the boundary almost completely, without extending past it.(c) KromHC fails to represent the complex region inside of <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m24\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4} – since the “shadow” is <!-- MathML: <math alttext=\"1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m25\" intent=\":literal\"><semantics><mn>1</mn><annotation encoding=\"application/x-tex\">1</annotation></semantics></math> --> 11-dimensional, it fills an infinitesimal slice of the full polytope.(d) For <!-- MathML: <math alttext=\"s=1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m26\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">s=1</annotation></semantics></math> --> s=1s=1, we see go-mHCrepresent a sizeable portion of the region, although it cannot represent all matrices near the boundary of the polytope.(e) With <!-- MathML: <math alttext=\"s=2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m27\" intent=\":literal\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">s=2</annotation></semantics></math> --> s=2s=2, go-mHCbegins to represent larger regions of <!-- MathML: <math alttext=\"\\mathsf{B}_{4}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.F4.m28\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>4</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{4}</annotation></semantics></math> --> 𝖡4\\mathsf{B}_{4}, filling the region more densely.*"
+    },
+    {
+      "id": "u000079",
+      "kind": "prose",
+      "text": "An illustration of the Karpelevič region for <!-- MathML: <math alttext=\"d=2\\text{ to }d=5\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.p2.m1\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>=</mo><mrow><mn>2</mn><mo lspace=\"0em\" rspace=\"0em\">​</mo><mtext>&nbsp;to&nbsp;</mtext><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>d</mi></mrow><mo>=</mo><mn>5</mn></mrow><annotation encoding=\"application/x-tex\">d=2\\text{ to }d=5</annotation></semantics></math> --> d=2​ to ​d=5d=2\\text{ to }d=5 is shown in figure [2](#S3.F2 \"Figure 2 ‣ 3.2 Generalized Orthostochastic Matrices ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\"). If a method’s spectrum is clustered within a small sub-region, it is poorly expressive; conversely, a method that “fills” the Karpelevič region captures the diverse dynamics represented by the polytope’s extremal points. The spectral reach of mHC, KromHC, and go-mHC can all be found in [3](#S4.F3 \"Figure 3 ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")&[4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+    },
+    {
+      "id": "u000080",
+      "kind": "heading",
+      "text": "#### 4.1.1 Eigenvalue Coverage of <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.m1\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-Orthostochastic Matrices"
+    },
+    {
+      "id": "u000081",
+      "kind": "prose",
+      "text": "The eigenvalue distribution of <!-- MathML: <math alttext=\"d\\times d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m1\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><annotation encoding=\"application/x-tex\">d\\times d</annotation></semantics></math> --> d×dd\\times d <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m2\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-orthostochastic matrices is fundamentally constrained by their membership in the Birkhoff polytope <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} and residence within the Karpelevič region. While <!-- MathML: <math alttext=\"1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m4\" intent=\":literal\"><semantics><mn>1</mn><annotation encoding=\"application/x-tex\">1</annotation></semantics></math> --> 11-orthostochastic matrices exhibit a restricted, hypo-cycloidal boundary, increasing the parameter <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m5\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss provides a progressively denser approximation of the full <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m6\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} ([Nechita et al., 2023](#bib.bib4 \"\")). Consequently, as <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m7\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss increases, the spectral support of <!-- MathML: <math alttext=\"s\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS1.p1.m8\" intent=\":literal\"><semantics><mi>s</mi><annotation encoding=\"application/x-tex\">s</annotation></semantics></math> --> ss-orthostochastic matrices expands to fill the Karpelevič region, approaching the density of general doubly stochastic matrices, as demonstrated in figure [3](#S4.F3 \"Figure 3 ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+    },
+    {
+      "id": "u000082",
+      "kind": "heading",
+      "text": "#### 4.1.2 The Spectral Limitation of Kronecker Products"
+    },
+    {
+      "id": "u000083",
+      "kind": "prose",
+      "text": "While KromHC is the most efficient of the proposed methods, it imposes a symmetry on the <!-- MathML: <math alttext=\"d\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m1\" intent=\":literal\"><semantics><mi>d</mi><annotation encoding=\"application/x-tex\">d</annotation></semantics></math> --> dd-streams that significantly prunes the space of potential mixing terms in <!-- MathML: <math alttext=\"\\mathcal{H}^{\\text{res}}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m2\" intent=\":literal\"><semantics><msup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mtext>res</mtext></msup><annotation encoding=\"application/x-tex\">\\mathcal{H}^{\\text{res}}</annotation></semantics></math> --> ℋres\\mathcal{H}^{\\text{res}}, as shown in figure [4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")c. We demonstrate that KromHC parameterizes only a sparse subset of <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m3\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} for <!-- MathML: <math alttext=\"d&gt;2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m4\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">d&gt;2</annotation></semantics></math> --> d>2d>2 by analyzing the spectral reach of <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m5\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker products. Specifically, we prove that the spectral space of a <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m6\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk-fold Kronecker product of doubly stochastic matrices is invariant to the index <!-- MathML: <math alttext=\"k\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p1.m7\" intent=\":literal\"><semantics><mi>k</mi><annotation encoding=\"application/x-tex\">k</annotation></semantics></math> --> kk, effectively restricting the expressive reach of the resulting constraint to that of its constituent base manifold. A formal proof of this invariance is provided in Appendix [B.3.1](#A2.SS3.SSS1 \"B.3.1 Proof of 𝖲𝗉𝖾𝖼(𝐀_𝑗)⊆𝖲𝗉𝖾𝖼(⨂{𝐀_𝑖}) ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+    },
+    {
+      "id": "u000084",
+      "kind": "prose",
+      "text": "To illustrate this expressivity bottleneck, consider the <!-- MathML: <math alttext=\"4\\times 4\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m1\" intent=\":literal\"><semantics><mrow><mn>4</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mn>4</mn></mrow><annotation encoding=\"application/x-tex\">4\\times 4</annotation></semantics></math> --> 4×44\\times 4 case where <!-- MathML: <math alttext=\"\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m2\" intent=\":literal\"><semantics><mrow><mrow><mi>𝐀</mi><mo>,</mo><mi>𝐁</mi></mrow><mo>∈</mo><msub><mi>𝖡</mi><mn>2</mn></msub></mrow><annotation encoding=\"application/x-tex\">\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}</annotation></semantics></math> --> 𝐀,𝐁∈𝖡2\\mathbf{A},\\mathbf{B}\\in\\mathsf{B}_{2}. Their individual spectra are defined as <!-- MathML: <math alttext=\"\\{1,\\lambda_{A}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m3\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>A</mi></msub><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{A}\\}</annotation></semantics></math> --> {1,λA}\\\\{1,\\lambda_{A}\\\\} and <!-- MathML: <math alttext=\"\\{1,\\lambda_{B}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m4\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>B</mi></msub><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{B}\\}</annotation></semantics></math> --> {1,λB}\\\\{1,\\lambda_{B}\\\\} for <!-- MathML: <math alttext=\"\\lambda\\in[-1,1]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m5\" intent=\":literal\"><semantics><mrow><mi>λ</mi><mo>∈</mo><mrow><mo stretchy=\"false\">[</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy=\"false\">]</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\lambda\\in[-1,1]</annotation></semantics></math> --> λ∈[−1,1]\\lambda\\in[-1,1]. The spectrum of the Kronecker product <!-- MathML: <math alttext=\"\\mathbf{A}\\otimes\\mathbf{B}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m6\" intent=\":literal\"><semantics><mrow><mi>𝐀</mi><mo lspace=\"0.222em\" rspace=\"0.222em\">⊗</mo><mi>𝐁</mi></mrow><annotation encoding=\"application/x-tex\">\\mathbf{A}\\otimes\\mathbf{B}</annotation></semantics></math> --> 𝐀⊗𝐁\\mathbf{A}\\otimes\\mathbf{B} is thus <!-- MathML: <math alttext=\"\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m7\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">{</mo><mrow><mn>1</mn><mo>,</mo><msub><mi>λ</mi><mi>A</mi></msub><mo>,</mo><msub><mi>λ</mi><mi>B</mi></msub><mo>,</mo><mrow><msub><mi>λ</mi><mi>A</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>λ</mi><mi>B</mi></msub></mrow></mrow><mo stretchy=\"false\">}</mo></mrow><annotation encoding=\"application/x-tex\">\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\}</annotation></semantics></math> --> {1,λA,λB,λA​λB}\\\\{1,\\lambda_{A},\\lambda_{B},\\lambda_{A}\\lambda_{B}\\\\}. Crucially, since the product <!-- MathML: <math alttext=\"\\lambda_{A}\\lambda_{B}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m8\" intent=\":literal\"><semantics><mrow><msub><mi>λ</mi><mi>A</mi></msub><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>λ</mi><mi>B</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\lambda_{A}\\lambda_{B}</annotation></semantics></math> --> λA​λB\\lambda_{A}\\lambda_{B} remains real and within the interval <!-- MathML: <math alttext=\"[-1,1]\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m9\" intent=\":literal\"><semantics><mrow><mo stretchy=\"false\">[</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn></mrow><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">[-1,1]</annotation></semantics></math> --> [−1,1][-1,1], the resulting eigenvalues are strictly contained within the spectral hull of <!-- MathML: <math alttext=\"\\mathsf{B}_{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m10\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mn>2</mn></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{2}</annotation></semantics></math> --> 𝖡2\\mathsf{B}_{2} (see Figure [4](#S4.F4 \"Figure 4 ‣ 4.1 Spectral Reach of 𝖡_𝑑 Subsets ‣ 4 Expressivity ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")b for emperical results and a full proof in [B.3.1](#A2.SS3.SSS1 \"B.3.1 Proof of 𝖲𝗉𝖾𝖼(𝐀_𝑗)⊆𝖲𝗉𝖾𝖼(⨂{𝐀_𝑖}) ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")). Due to this closure, the spectral reach of the Kronecker-parameterized manifold is invariant to the number of products and fails to expand into the broader Karpelevič region available to the full Birkhoff polytope, representing increasingly smaller fractions of the full polytope. By volume, this is a negligible portion of the full <!-- MathML: <math alttext=\"\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m11\" intent=\":literal\"><semantics><msub><mi>𝖡</mi><mi>d</mi></msub><annotation encoding=\"application/x-tex\">\\mathsf{B}_{d}</annotation></semantics></math> --> 𝖡d\\mathsf{B}_{d} when <!-- MathML: <math alttext=\"d&gt;i_{k}\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m12\" intent=\":literal\"><semantics><mrow><mi>d</mi><mo>&gt;</mo><msub><mi>i</mi><mi>k</mi></msub></mrow><annotation encoding=\"application/x-tex\">d&gt;i_{k}</annotation></semantics></math> --> d>ikd>i_{k}, and we show emperically in appendix [B.3.2](#A2.SS3.SSS2 \"B.3.2 Effect of 𝑑 on approximation error in KromHC ‣ B.3 Spectral Equivalence of 𝑘-fold and 1-fold Kronecker Products ‣ Appendix B Theoretical Derivations and Numerical Analysis ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") that this translates to a <!-- MathML: <math alttext=\"\\mathcal{O}(d)\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p2.m13\" intent=\":literal\"><semantics><mrow><mi class=\"ltx_font_mathcaligraphic\">𝒪</mi><mo>⁡</mo><mrow><mo stretchy=\"false\">(</mo><mi>d</mi><mo stretchy=\"false\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathcal{O}(d)</annotation></semantics></math> --> 𝒪⁡(d)\\mathcal{O}(d) additional error in the minimum achievable loss compared to mHC-lite and go-mHC."
+    },
+    {
+      "id": "u000085",
+      "kind": "prose",
+      "text": "The collapse in spectral volume for Kronecker-based transforms represents a significant loss in functional diversity. Specifically, these constraints fail to represent cyclic permutations of order greater than <!-- MathML: <math alttext=\"i_{k}=2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m1\" intent=\":literal\"><semantics><mrow><msub><mi>i</mi><mi>k</mi></msub><mo>=</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">i_{k}=2</annotation></semantics></math> --> ik=2i_{k}=2 (e.g., <!-- MathML: <math alttext=\"1\\to 2\\to 3\\to 1\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m2\" intent=\":literal\"><semantics><mrow><mn>1</mn><mo stretchy=\"false\">→</mo><mn>2</mn><mo stretchy=\"false\">→</mo><mn>3</mn><mo stretchy=\"false\">→</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">1\\to 2\\to 3\\to 1</annotation></semantics></math> --> 1→2→3→11\\to 2\\to 3\\to 1), effectively preventing the model from learning complex periodic dependencies. Furthermore, the restriction to real eigenvalues in the <!-- MathML: <math alttext=\"2\\times 2\" class=\"ltx_Math\" display=\"inline\" id=\"S4.SS1.SSS2.p3.m3\" intent=\":literal\"><semantics><mrow><mn>2</mn><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mn>2</mn></mrow><annotation encoding=\"application/x-tex\">2\\times 2</annotation></semantics></math> --> 2×22\\times 2 base case implies that the system can only model pure diffusion (information spreading) without advection (directed rotation of information), severely limiting the directional flow of signals within the reservoir."
+    },
+    {
+      "id": "u000086",
+      "kind": "heading",
+      "text": "### 4.2 Parameter Complexity"
+    }
+  ]
+}

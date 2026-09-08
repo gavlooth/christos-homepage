@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 25,
+  "items": [
+    {
+      "recordId": "teach-generated-b3b76deafd37c659",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Fan-out is the number of distinct destinations or branches that originate from one source node, component, or process.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-bbbfd6e4c2c961b9",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Orientation is the arrangement or direction of something relative to a chosen reference point, coordinate system, or perspective.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "depth": 0,
+  "batch": 8,
+  "items": [
+    {
+      "recordId": "teach-n0000728",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The lower-level replicator creates higher-level replicas.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "It creates exactly one higher-level replica for each auxiliary port.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000729",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The higher-level replicator creates lower-level replicas.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The higher-level replicator’s lower-level replicas are exact and are created per auxiliary port.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

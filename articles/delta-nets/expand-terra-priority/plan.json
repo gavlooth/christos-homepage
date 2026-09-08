@@ -1,0 +1,2546 @@
+[
+  {
+    "targetId": "n0000505",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Parallel reduction performs independent local reductions concurrently instead of choosing one sequential evaluation order.",
+        "densityScore": 0.91,
+        "relation": "fills",
+        "reason": "Defines the evaluation strategy named by the dependent claim."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000506",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A net is a graph-like program representation made from connected agents or nodes with explicitly typed ports.",
+        "densityScore": 0.89,
+        "relation": "fills",
+        "reason": "Defines the computational structure used throughout the model."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000507",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A graph is a collection of nodes connected by edges that represent relationships or data flow.",
+        "densityScore": 0.96,
+        "relation": "fills",
+        "reason": "Supplies the structural concept behind graph-based computation."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000508",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Scope is the region of a program in which a variable binding is visible and may be referenced.",
+        "densityScore": 0.95,
+        "relation": "fills",
+        "reason": "Defines the binding boundary relevant to variables and abstractions."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000509",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "An abstraction packages a computation while hiding selected implementation details behind an interface or binding structure.",
+        "densityScore": 0.85,
+        "relation": "fills",
+        "reason": "Defines the general concept used by lambda abstraction."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000510",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A variable is a symbolic name whose occurrences refer to a value or to a binding introduced elsewhere.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the binding reference used in lambda terms."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000511",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A lambda is the binder notation in lambda calculus that introduces a function parameter, as in λx. body.",
+        "densityScore": 0.96,
+        "relation": "fills",
+        "reason": "Defines the syntactic construct underlying lambda abstraction."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000512",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Lambda calculus is a minimal formal system in which functions are built from variables, abstraction, and application.",
+        "densityScore": 0.97,
+        "relation": "fills",
+        "reason": "Defines the source language whose reductions are represented by nets."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000513",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Variable distribution is the placement and routing of variable occurrences from one binding to every use that refers to it.",
+        "densityScore": 0.82,
+        "relation": "fills",
+        "reason": "Explains why a graph encoding must manage multiple uses of a bound variable."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000514",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Depth is the number of nesting levels or edges separating an element from a chosen outer context or root.",
+        "densityScore": 0.86,
+        "relation": "fills",
+        "reason": "Defines the structural measure used for nested constructs."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000515",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "An interaction net is a port graph whose agents rewrite locally when their principal ports are connected according to an interaction rule.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the formal graph-rewriting model at issue."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000516",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A lambda abstraction is a function-forming expression λx. M that binds x within body M.",
+        "densityScore": 0.98,
+        "relation": "fills",
+        "reason": "Defines the lambda-calculus construct being encoded."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000517",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "An interaction is a local computational event in which connected agents are eligible to be replaced by a rewrite rule.",
+        "densityScore": 0.88,
+        "relation": "fills",
+        "reason": "Defines the event that drives net reduction."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000518",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A term is a syntactic expression built from the constructors of a formal language, such as variables, applications, and abstractions.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the source-level expression translated into a net."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000519",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Substitution replaces free occurrences of a variable in an expression with another expression while preserving binding meaning.",
+        "densityScore": 0.96,
+        "relation": "fills",
+        "reason": "Defines the operation graph reduction is intended to realize."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000520",
+    "injections": [
+      {
+        "type": "uncertainty",
+        "text": "A δ-net appears to be a net formalism centered on a δ agent, likely used to model duplication or sharing; its exact rule set depends on the source formalism.",
+        "densityScore": 0.61,
+        "relation": "fills",
+        "reason": "Provides a cautious prerequisite definition without asserting source-specific rules."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000521",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A syntax tree is a rooted tree that represents how an expression is recursively composed from language constructors.",
+        "densityScore": 0.96,
+        "relation": "fills",
+        "reason": "Defines the tree representation contrasted with graphs."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000522",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A substitution machine is an abstract evaluator that implements variable replacement through an explicit operational representation rather than direct textual rewriting.",
+        "densityScore": 0.87,
+        "relation": "fills",
+        "reason": "Defines the machine model used as a comparison point."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000523",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Textual substitution rewrites an expression by replacing variable names in its written syntax with another expression.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the syntax-oriented alternative to graph-based substitution."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000524",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A graph representation encodes a structure as nodes and explicit connections rather than as a nested textual or tree form.",
+        "densityScore": 0.92,
+        "relation": "fills",
+        "reason": "Defines the representation used to expose sharing and local rewrites."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000525",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Graph rewriting transforms a graph by replacing a local matched subgraph with another graph according to a rule.",
+        "densityScore": 0.97,
+        "relation": "fills",
+        "reason": "Defines the computation mechanism used by nets."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000526",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A node is an individual graph element that represents an entity, operation, or constructor and connects through edges or ports.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the basic unit of a net."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000527",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A rewrite is one application of a transformation rule that replaces a matched local structure with its prescribed result.",
+        "densityScore": 0.95,
+        "relation": "fills",
+        "reason": "Defines an individual reduction step."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000528",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A reducible pattern is a local configuration that matches the left-hand side of a rewrite rule and can therefore be reduced.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the condition that makes a net region eligible for rewriting."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000529",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A reduction sequence is an ordered chain of rewrite steps from an initial expression or net toward a later form.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the multi-step computation path."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000530",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Graph-rewriting is computation by repeatedly applying local replacement rules to matched graph configurations.",
+        "densityScore": 0.95,
+        "relation": "fills",
+        "reason": "Defines the hyphenated form of the graph-rewriting concept."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000531",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "An interaction rule specifies how a particular pair of interacting agents is replaced when their principal ports meet.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the rule governing each local interaction."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000532",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A reduction path is a particular sequence of choices of reducible patterns and rewrites from one state to another.",
+        "densityScore": 0.9,
+        "relation": "fills",
+        "reason": "Defines a specific route through possible reductions."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000533",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Term-to-net translation maps a source term into a net whose connectivity represents the term's constructors, bindings, and variable uses.",
+        "densityScore": 0.92,
+        "relation": "fills",
+        "reason": "Defines the encoding direction from syntax to graph."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000534",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Net-to-term translation reconstructs a source-language term from a net when the net has a structure corresponding to that language.",
+        "densityScore": 0.87,
+        "relation": "fills",
+        "reason": "Defines the decoding direction from graph to syntax."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000535",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A principal-port interaction occurs when the distinguished principal ports of two agents are connected, triggering their interaction rule.",
+        "densityScore": 0.96,
+        "relation": "fills",
+        "reason": "Defines the exact local condition for interaction-net reduction."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000536",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Arity is the number of auxiliary ports, arguments, or inputs associated with an agent or operation.",
+        "densityScore": 0.94,
+        "relation": "fills",
+        "reason": "Defines the structural property of agents."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000537",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A rooted net is a net with a distinguished free port that identifies the whole computation's external result or entry point.",
+        "densityScore": 0.85,
+        "relation": "fills",
+        "reason": "Defines the designated interface of a net."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000538",
+    "injections": [
+      {
+        "type": "uncertainty",
+        "text": "A canonical lambda encoding is a chosen standard translation from lambda terms to nets that preserves the intended binding and reduction behavior.",
+        "densityScore": 0.73,
+        "relation": "fills",
+        "reason": "Defines the phrase cautiously because canonicality depends on the formalism."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000539",
+    "injections": [
+      {
+        "type": "uncertainty",
+        "text": "A delta interaction is an interaction involving a δ agent; in sharing-oriented net systems it commonly concerns duplication or distribution of connected structure.",
+        "densityScore": 0.66,
+        "relation": "fills",
+        "reason": "Provides a cautious source-formalism-dependent definition."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000540",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A duplication context is the surrounding graph structure that determines what must be copied or distributed when a shared value is used more than once.",
+        "densityScore": 0.82,
+        "relation": "fills",
+        "reason": "Defines the context governing duplication behavior."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000541",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Nesting is the containment of one syntactic or graph structure inside another, producing hierarchical depth.",
+        "densityScore": 0.91,
+        "relation": "fills",
+        "reason": "Defines the structural relation needed for term-like interpretations."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000542",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A term-like reading interprets a graph as if its connectivity expressed the hierarchical structure of a conventional syntactic term.",
+        "densityScore": 0.85,
+        "relation": "fills",
+        "reason": "Defines the interpretive bridge from nets back to terms."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000543",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A teaching summary is a simplified explanatory account designed to make the main ideas and dependencies easier to learn.",
+        "densityScore": 0.9,
+        "relation": "fills",
+        "reason": "Defines the pedagogical artifact referenced by the dependent knowledge."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000027",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Each rewrite acts only on a small local graph pattern, allowing independent patterns to be reduced without traversing the entire program.",
+        "densityScore": 0.88,
+        "relation": "elaborates",
+        "reason": "Explains why representing computation as local nodes and wires supports reduction."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000028",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Sharing represents one needed computation once and routes its result to multiple uses, avoiding repeated evaluation of the same expression.",
+        "densityScore": 0.93,
+        "relation": "supports",
+        "reason": "Explains the mechanism behind reducing necessary work once."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000045",
+    "injections": [
+      {
+        "type": "context",
+        "text": "To implement substitution in a graph, unused variables require disposal and repeated variables require explicit sharing.",
+        "densityScore": 0.86,
+        "relation": "elaborates",
+        "reason": "Connects the variable-occurrence cases to graph machinery."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000048",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The binding port identifies where occurrences of the parameter connect, while the body port preserves the expression evaluated after binding.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Explains the separate roles of the two lambda ports."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000069",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Copying an unreduced argument duplicates its remaining computation, whereas sharing can let one reduction update all uses.",
+        "densityScore": 0.87,
+        "relation": "supports",
+        "reason": "States why duplicated redexes cause repeated work."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000080",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The four subsystems distinguish which variable-use disciplines permit duplication, erasure, or both.",
+        "densityScore": 0.73,
+        "relation": "elaborates",
+        "reason": "Supplies the purpose of the subsystem classification."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000084",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Sequential reduction chooses one occurrence at a time, so it cannot always preserve a computation that several occurrences should observe jointly.",
+        "densityScore": 0.76,
+        "relation": "elaborates",
+        "reason": "Explains the limitation in operational terms."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000087",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Reducing before copying avoids evaluating the same shared redex independently in each future copy.",
+        "densityScore": 0.83,
+        "relation": "supports",
+        "reason": "Justifies reduce-once sharing."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000091",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A rewrite is triggered when two agents meet at their principal ports, making the redex boundary local to that pair.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Adds the condition that makes local interaction possible."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000109",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Because the rule changes only the active pair and its incident wires, unrelated parts of the graph need not be inspected or rewritten.",
+        "densityScore": 0.84,
+        "relation": "supports",
+        "reason": "Derives locality from the reconnection rule."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000138",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "An agent cannot belong to two active pairs because it has only one principal port.",
+        "densityScore": 0.91,
+        "relation": "supports",
+        "reason": "States the structural reason independent pairs are disjoint."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000142",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "The two branches represent alternative choices from the same net, and their convergence represents agreement of those choices.",
+        "densityScore": 0.77,
+        "relation": "elaborates",
+        "reason": "Explains what the diagram establishes."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000143",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The diagram is stronger than eventual convergence because it fixes the joining distance to one interaction per branch.",
+        "densityScore": 0.84,
+        "relation": "supports",
+        "reason": "Highlights the significance of the one-step diamond."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000144",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Disjoint active pairs commute because neither rewrite changes an agent or wire endpoint owned by the other pair.",
+        "densityScore": 0.9,
+        "relation": "supports",
+        "reason": "Explains why execution order does not matter."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000149",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Scope delimiters make sharing contexts explicit by forcing extra agents to travel with or cross context boundaries.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Explains why bookkeeping agents create overhead."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000152",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Encoding context on replicator ports removes the need to represent that context as a separate chain of delimiter agents.",
+        "densityScore": 0.85,
+        "relation": "supports",
+        "reason": "Connects the design to the preceding critique."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000155",
+    "injections": [
+      {
+        "type": "context",
+        "text": "A net's agent type determines which local interaction rule applies when its principal port meets another principal port.",
+        "densityScore": 0.81,
+        "relation": "enables",
+        "reason": "Links agent vocabulary to reduction rules."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000162",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "The drawings encode port identity by position, so rotating an agent can change which visible side represents a given auxiliary-port index.",
+        "densityScore": 0.85,
+        "relation": "elaborates",
+        "reason": "Prepares readers to distinguish geometry from port identity."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000165",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The two fan auxiliaries carry the two ordered connections needed by application or abstraction, while the principal port exposes the construct to interaction.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Explains why a fan has this arity."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000168",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "When erasure reaches a subgraph, local deletion rules propagate the fact that no result from that subgraph is needed.",
+        "densityScore": 0.83,
+        "relation": "elaborates",
+        "reason": "Connects an unused binder to graph-wide disposal."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000174",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Deltas make context adjustment local: a replica can determine its next level from the exit port it traverses.",
+        "densityScore": 0.86,
+        "relation": "supports",
+        "reason": "Explains the purpose of per-port offsets."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000181",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The agent inventory can be read as a cost model: omission needs erasure, repeated use needs replication, and term shape needs fans.",
+        "densityScore": 0.86,
+        "relation": "supports",
+        "reason": "Makes the taxonomy-agent correspondence useful."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000183",
+    "injections": [
+      {
+        "type": "uncertainty",
+        "text": "Using level equality as a complete equality test is valid only under the stated translation invariant, not for arbitrary nets.",
+        "densityScore": 0.93,
+        "relation": "supports",
+        "reason": "Preserves the boundary on the implementation shortcut."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000188",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The three families classify an active pair by whether it removes structure, propagates non-use, or distributes structure across surrounding ports.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Explains the organizing principle."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000190",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Cancellation preserves the surrounding graph by pairing corresponding auxiliary ports after removing the two equal agents.",
+        "densityScore": 0.86,
+        "relation": "elaborates",
+        "reason": "States the reconnection invariant."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000192",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Since an eraser offers no auxiliary continuation, interaction with it cannot preserve any branch through the erased neighbour.",
+        "densityScore": 0.83,
+        "relation": "supports",
+        "reason": "Explains why deletion follows from zero arity."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000194",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Passage-with-copying exchanges the agents' surrounding contexts: each outgoing auxiliary port requires a corresponding local copy.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Explains the dependence on arity."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000198",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Erasure propagates instead of stopping at one agent because every remaining branch that could demand the value must receive its own eraser.",
+        "densityScore": 0.87,
+        "relation": "supports",
+        "reason": "Explains why zero-copy deletion still creates downstream erasers."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000200",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Fan annihilation implements substitution structurally by reconnecting the application result to the body and the argument to the bound-variable connection.",
+        "densityScore": 0.92,
+        "relation": "supports",
+        "reason": "Connects the local rule to beta reduction."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000201",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The diagram identifies the two ordered auxiliary connections that must be preserved when the application and abstraction fans annihilate.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Explains what to inspect in the pre-reduction graph."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000204",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Port order is semantic, while left and right are drawing-dependent; the crossing follows from preserving port order across rotation.",
+        "densityScore": 0.91,
+        "relation": "supports",
+        "reason": "Distinguishes structural identity from layout."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000206",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The fan-replicator interaction forms a rectangular family of connections: one copy along each auxiliary direction of each participating agent.",
+        "densityScore": 0.85,
+        "relation": "elaborates",
+        "reason": "Summarizes the bidirectional copying pattern."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000208",
+    "injections": [
+      {
+        "type": "context",
+        "text": "This is an active pair between a three-port replicator and a two-port fan, so the resulting rule must account for both arities.",
+        "densityScore": 0.79,
+        "relation": "enables",
+        "reason": "Sets up the expected copy counts."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000211",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The formula preserves port identities across copying, so every new connection is determined even when the diagram's geometry is rotated.",
+        "densityScore": 0.88,
+        "relation": "supports",
+        "reason": "Explains why the indexed rule is unambiguous."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000213",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The copy counts follow independently from the source agent arities, preventing a visual reading of the diagram from hiding missing copies.",
+        "densityScore": 0.85,
+        "relation": "supports",
+        "reason": "Reinforces the counting invariant."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000215",
+    "injections": [
+      {
+        "type": "transition",
+        "text": "Equality determines the cancellation branch; only unequal replicators enter the copying-and-level-adjustment branch.",
+        "densityScore": 0.9,
+        "relation": "enables",
+        "reason": "Makes the rule decision explicit."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000216",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "In the unequal case, the lower-level replicator's port deltas are applied to the copies of the higher-level replicator that exit through those ports.",
+        "densityScore": 0.91,
+        "relation": "elaborates",
+        "reason": "Clarifies which agent receives level changes."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000218",
+    "injections": [
+      {
+        "type": "context",
+        "text": "This diagram is the decision point for the equal case: both replicators have the same displayed level and matching port structure.",
+        "densityScore": 0.78,
+        "relation": "enables",
+        "reason": "Connects the picture to cancellation."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000221",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Annihilation reconnects equal-indexed ports, so apparent crossing is a consequence of the lower agent's rotated port order.",
+        "densityScore": 0.89,
+        "relation": "supports",
+        "reason": "Explains the wire geometry after cancellation."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000223",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The unequal levels select the commuting rule rather than cancellation, with R's deltas determining the levels of the H copies.",
+        "densityScore": 0.87,
+        "relation": "enables",
+        "reason": "Sets up the next diagram's numeric outcome."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000226",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Only H's copies change level because they traverse R's delta-labelled exits; copying R through H does not apply an R exit delta to R itself.",
+        "densityScore": 0.91,
+        "relation": "supports",
+        "reason": "Justifies the asymmetric level update."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000227",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "The complete grid records all pairwise auxiliary connections created by commuting the two agents, not additional independent interactions.",
+        "densityScore": 0.86,
+        "relation": "elaborates",
+        "reason": "Prevents interpreting the grid as unrelated work."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000252",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Replication preserves the replicated agent’s structure while allowing each outgoing copy to carry the level required by its destination context.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Makes the copy-versus-level distinction operational."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000258",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Canonical translation makes net comparison meaningful because syntactically identical term structure is not left to arbitrary wiring choices.",
+        "densityScore": 0.76,
+        "relation": "supports",
+        "reason": "Explains why the one-to-one translation property matters."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000305",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A node’s level equals the number of application-argument edges on the path from the term root to that node.",
+        "densityScore": 0.88,
+        "relation": "elaborates",
+        "reason": "Compresses the recursive level rules into a path invariant."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000321",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The delta on a bound-use port is computed once during translation and remains attached to that specific exit as the net rewrites.",
+        "densityScore": 0.75,
+        "relation": "elaborates",
+        "reason": "Connects initial port annotation to later replication behavior."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000343",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Because each replicator exit carries its own relative adjustment, scope-context information travels with replication instead of requiring separate delimiter nodes in the net.",
+        "densityScore": 0.84,
+        "relation": "supports",
+        "reason": "States the architectural consequence of level-delta bookkeeping."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000350",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A node’s level is its nesting depth in the term-like parent–child structure, so descending through an application argument increases level by one.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Makes the level calculation behind the delta vector explicit."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000356",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "A delta is an address relative to the replicator’s sharing context: it identifies a consumer’s structural level, not a requested copy count.",
+        "densityScore": 0.84,
+        "relation": "elaborates",
+        "reason": "Separates routing information from replication multiplicity."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000362",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Canonicalization is needed because core reduction can preserve computational meaning while temporarily destroying the restricted shape required for inverse translation.",
+        "densityScore": 0.78,
+        "relation": "supports",
+        "reason": "Explains why proper nets require a cleanup phase before back-translation."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000367",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A discarded argument can become unreachable when an abstraction has no live variable occurrence that consumes that argument.",
+        "densityScore": 0.8,
+        "relation": "supports",
+        "reason": "Connects erased arguments to the disconnected material collected by the sweep."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000386",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Two replicators are paired when a future interaction can require both agents to remain distinct; an unpaired replicator has no such remaining counterpart.",
+        "densityScore": 0.66,
+        "relation": "elaborates",
+        "reason": "Supplies the pairing concept used by the merge safety condition."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000392",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "An auxiliary port ending at an eraser has no remaining consumer, so retaining it cannot affect any value that remains reachable.",
+        "densityScore": 0.81,
+        "relation": "supports",
+        "reason": "Justifies why decay may remove eraser-bound exits."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000399",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Local confluence says competing core interactions can be reconciled, but it does not prescribe when nonlocal cleanup rewrites should run.",
+        "densityScore": 0.85,
+        "relation": "supports",
+        "reason": "Explains why a global priority rule is added despite confluence of the core."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000402",
+    "injections": [
+      {
+        "type": "uncertainty",
+        "text": "Whether an early reducible pair will reach the scheduled position unchanged depends on a proof about intervening rewrites; it is not guaranteed merely because the pair is currently disjoint.",
+        "densityScore": 0.76,
+        "relation": "supports",
+        "reason": "Qualifies the safe-parallelism exception with its required invariant."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000411",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "If an argument is ignored, reducing inside that argument before its erasure performs work whose result cannot influence the enclosing normal form.",
+        "densityScore": 0.84,
+        "relation": "supports",
+        "reason": "States the causal reason leftmost-outermost order avoids wasted evaluation."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000414",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Sharing replaces separate syntactic substitutions with multiple graph consumers connected to one evolving computation.",
+        "densityScore": 0.83,
+        "relation": "elaborates",
+        "reason": "Explains how replicators avoid duplicated necessary work."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000428",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Church–Rosser confluence concerns multi-step reduction paths: whenever two paths diverge from one state, both can be extended to a common state.",
+        "densityScore": 0.86,
+        "relation": "elaborates",
+        "reason": "Makes the contrast with the one-step diamond property precise."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000431",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Treating λ-terms as a projection means distinct net sharing structures may correspond to the same term-level computation.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Clarifies the claimed extra representational freedom of nets."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000448",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A term is normalizing when at least one reduction sequence reaches a normal form; this does not imply that every possible sequence terminates.",
+        "densityScore": 0.89,
+        "relation": "elaborates",
+        "reason": "Defines the existential quantifier underlying the claim."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000476",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "An agent’s arity is its number of auxiliary ports, so passing through that agent can create one corresponding branch for each auxiliary connection.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Defines the quantity governing copying during commutation."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000484",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Positive and negative deltas record whether an occurrence lies deeper or shallower than its replicator’s own level.",
+        "densityScore": 0.83,
+        "relation": "elaborates",
+        "reason": "Gives an immediate reading of the delta sign."
+      }
+    ]
+  },
+  {
+    "targetId": "n0000486",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Properness is a reachability classification rather than a normal-form condition: a proper net may still contain active interactions.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Separates intermediate reachability from completion."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000001",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "An outermost-first strategy delays work inside an argument until the enclosing application establishes that the argument is needed.",
+        "densityScore": 0.82,
+        "relation": "supports",
+        "reason": "Provides the operational mechanism behind avoiding discarded work."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000002",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Several consumers can refer to one shared net region, allowing its reduction result to be propagated instead of independently recomputed.",
+        "densityScore": 0.86,
+        "relation": "supports",
+        "reason": "Provides the operational mechanism behind compute-once sharing."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000003",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Confluence compares reduction paths that start from the same net.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Defines the common starting point for competing choices."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000004",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A diamond closes when reducing the residual of each original step reaches an identical net.",
+        "densityScore": 0.84,
+        "relation": "elaborates",
+        "reason": "Makes the required join between the two branches explicit."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000005",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Because an agent has only one principal port, it can participate in at most one active pair at a time.",
+        "densityScore": 0.84,
+        "relation": "supports",
+        "reason": "Explains exclusive ownership of agents by active pairs."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000006",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Two active pairs sharing an agent would require that agent's single principal port to be connected twice.",
+        "densityScore": 0.83,
+        "relation": "supports",
+        "reason": "Derives disjointness from port uniqueness."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000007",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Disjoint rewrites modify separate local subnets, so applying either one leaves the other's redex intact.",
+        "densityScore": 0.85,
+        "relation": "supports",
+        "reason": "Explains why the two reductions commute."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000008",
+    "injections": [
+      {
+        "type": "context",
+        "text": "It is a local property: it only compares two one-step reductions from one net.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Distinguishes the local diamond condition from global reduction behavior."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000009",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "A system can have commuting local choices while still admitting an infinite reduction sequence.",
+        "densityScore": 0.79,
+        "relation": "supports",
+        "reason": "Separates confluence from termination."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000010",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "For normalizing nets, interaction scheduling changes neither the normal form nor the number of core interactions needed to reach it.",
+        "densityScore": 0.86,
+        "relation": "elaborates",
+        "reason": "States the operational consequence of uniform normalization length."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000011",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Indexed fans distinguished sharing scopes by carrying administrative scope information in the graph.",
+        "densityScore": 0.76,
+        "relation": "elaborates",
+        "reason": "Explains the purpose of the earlier representation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000012",
+    "injections": [
+      {
+        "type": "context",
+        "text": "These delimiter agents marked boundaries between nested sharing scopes.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Explains why delimiter constructs were introduced."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000013",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Administrative scope management can dominate the interaction count even when it performs no direct duplication work.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Makes the cost concern concrete."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000014",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Unbounded indices enlarge the representation carried by a net and complicate a fixed finite-agent implementation.",
+        "densityScore": 0.81,
+        "relation": "supports",
+        "reason": "Explains why unbounded scope labels are undesirable."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000015",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The fixed auxiliary positions give each fan a stable semantic ordering independent of its drawn orientation.",
+        "densityScore": 0.79,
+        "relation": "elaborates",
+        "reason": "Connects fan geometry to port identity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000016",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The number of bottom ports records how many outgoing uses the replicator serves.",
+        "densityScore": 0.79,
+        "relation": "elaborates",
+        "reason": "Relates the shape's arity to sharing."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000017",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "A rectangle is graphical boundary notation, so it does not participate in interaction rules as an agent.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Separates diagram notation from computational entities."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000018",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "When an eraser meets another agent, it propagates by creating erasers on that agent's auxiliary connections.",
+        "densityScore": 0.82,
+        "relation": "enables",
+        "reason": "Explains how a principal-only eraser removes a subnet."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000019",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Arity zero represents no retained uses, while larger arities represent correspondingly many shared uses.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Clarifies the endpoints of natural-number arity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000020",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Its principal connection receives the shared value, and its auxiliary connections distribute that value to its uses.",
+        "densityScore": 0.84,
+        "relation": "elaborates",
+        "reason": "Explains the direction of sharing through a replicator."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000021",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The level identifies a surrounding sharing stratum, while each delta records a local offset for one outgoing use.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Separates the roles of levels and deltas."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000022",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "A linear binder therefore needs neither erasure nor duplication for its bound variable.",
+        "densityScore": 0.81,
+        "relation": "supports",
+        "reason": "Connects exact single use to the graph encoding."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000023",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "An affine binder may require erasure when its bound variable has no occurrence.",
+        "densityScore": 0.79,
+        "relation": "supports",
+        "reason": "Connects optional use to erasure."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000024",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "A relevant binder may require duplication when its bound variable has multiple occurrences.",
+        "densityScore": 0.79,
+        "relation": "supports",
+        "reason": "Connects mandatory use to possible sharing."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000025",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Full terms combine the possibilities of zero, one, or many variable occurrences.",
+        "densityScore": 0.77,
+        "relation": "elaborates",
+        "reason": "Positions full terms relative to the restricted usage classes."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000026",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Together these agents encode the structural rules needed to represent unrestricted variable usage.",
+        "densityScore": 0.84,
+        "relation": "supports",
+        "reason": "Unifies the three structural roles."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000027",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Matching only the level is insufficient because different arities or delta assignments represent different sharing structures.",
+        "densityScore": 0.83,
+        "relation": "supports",
+        "reason": "Explains every component of equality."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000028",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The translation invariant constrains active replicators so that a same-level encounter has matching arity and deltas.",
+        "densityScore": 0.83,
+        "relation": "supports",
+        "reason": "Explains why level comparison works for translated terms."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000029",
+    "injections": [
+      {
+        "type": "uncertainty",
+        "text": "Without the translation invariant, equal levels alone do not establish that the replicators have equal arity or deltas.",
+        "densityScore": 0.82,
+        "relation": "supports",
+        "reason": "States the missing evidence in arbitrary nets."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000030",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The root induces a direction on each connection, letting the same local shape be classified by its position in the net.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Explains how orientation labels are determined."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000031",
+    "injections": [
+      {
+        "type": "context",
+        "text": "This initial orientation makes the principal port the downstream exit of a fan-in and its auxiliaries upstream inputs.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Clarifies the fan-in orientation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000032",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Copying and rewiring during reduction can reverse the parent-child direction of a replicator's ports.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Explains why fan-outs arise after reduction."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000033",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "A fan-out arises as the propagated counterpart of prior sharing, whereas an unused fan-in can remain unmatched.",
+        "densityScore": 0.79,
+        "relation": "supports",
+        "reason": "Explains the asymmetric pairing condition."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000034",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A candidate pair must satisfy compatible level and port-delta constraints before it can be treated as matching sharing structure.",
+        "densityScore": 0.82,
+        "relation": "enables",
+        "reason": "States how the annotations guide pairing."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000035",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Annihilation removes both agents and directly reconnects their corresponding remaining ports.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Describes the effect of equal-agent interaction."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000036",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The translation invariant supplies the equality conditions needed for same-level active replicators to annihilate safely.",
+        "densityScore": 0.84,
+        "relation": "supports",
+        "reason": "Connects translated-term well-formedness to the rewrite rule."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000037",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Reconnecting the abstraction body and argument wiring performs substitution without textual copying.",
+        "densityScore": 0.84,
+        "relation": "elaborates",
+        "reason": "Explains the lambda-calculus meaning of annihilation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000038",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The interaction deletes the encountered agent's principal connection and propagates erasure through one selected auxiliary branch.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Clarifies the local erasure step."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000039",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Each auxiliary output becomes the root of an erased subgraph, so both branches are discarded independently.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Explains why two erasers result."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000040",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Erasure distributes over every outgoing sharing branch, producing one eraser per auxiliary port.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Generalizes the propagation rule to arbitrary arity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000041",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Shape alone therefore does not determine whether a triangular fan represents application or abstraction.",
+        "densityScore": 0.8,
+        "relation": "supports",
+        "reason": "Highlights the need for orientation-based interpretation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000042",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A fan's direction toward or away from the root distinguishes how its principal and auxiliary connections are interpreted.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Explains role recovery from orientation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000043",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The reconnection pairs auxiliary ports by their semantic indices rather than by incidental drawing proximity.",
+        "densityScore": 0.83,
+        "relation": "elaborates",
+        "reason": "Clarifies the rewiring rule."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000044",
+    "injections": [
+      {
+        "type": "context",
+        "text": "This convention fixes a port numbering for diagrams and determines which auxiliary connections are corresponding.",
+        "densityScore": 0.78,
+        "relation": "supports",
+        "reason": "Explains why the orientation convention matters."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000045",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "The rewrite connects the argument net to the abstraction's bound-variable interface and exposes the abstraction body.",
+        "densityScore": 0.83,
+        "relation": "elaborates",
+        "reason": "Makes the beta-reduction correspondence concrete."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000046",
+    "injections": [
+      {
+        "type": "context",
+        "text": "For an application, the first auxiliary connection conventionally carries the function and the second carries the argument.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Gives the semantic meaning of the port order."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000047",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The reversed visual order preserves the same semantic port indices after the abstraction fan is rotated.",
+        "densityScore": 0.81,
+        "relation": "supports",
+        "reason": "Explains the reversed ordering convention."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000048",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Diagram geometry is secondary to port identity: a visual crossing can still represent the intended index-to-index reconnection.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Prevents interpreting crossing wires as changed semantics."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000049",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Each copy retains the original fan's arity and auxiliary-port arrangement while serving one replicated branch.",
+        "densityScore": 0.83,
+        "relation": "elaborates",
+        "reason": "Clarifies what an exact fan copy preserves."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000050",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The number of produced fans equals the replicator arity because each auxiliary port represents one required use of the copied structure.",
+        "densityScore": 0.83,
+        "relation": "supports",
+        "reason": "Explains the copy count."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000051",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Retaining each agent's role means the rewrite preserves how every external connection can still interact with the surviving local structure.",
+        "densityScore": 0.71,
+        "relation": "elaborates",
+        "reason": "Explains contextual preservation as preservation of external connectivity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000052",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Equal levels identify the two replicators as operating in the same sharing context, so their duplication structures can cancel instead of being propagated through one another.",
+        "densityScore": 0.78,
+        "relation": "supports",
+        "reason": "Connects the level-equality condition to annihilation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000053",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Reconnecting corresponding auxiliary ports preserves the paths that had passed through the two removed replicators.",
+        "densityScore": 0.73,
+        "relation": "elaborates",
+        "reason": "Explains why auxiliary-port reconnection is part of annihilation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000054",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Annihilation is a cancellation rewrite: it removes redundant sharing structure rather than distributing either net further.",
+        "densityScore": 0.74,
+        "relation": "elaborates",
+        "reason": "Contrasts annihilation with replication-producing commutation."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000055",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Matching levels alone does not determine a valid hand-built annihilation redex, because port count and level shifts must also align at every corresponding connection.",
+        "densityScore": 0.8,
+        "relation": "supports",
+        "reason": "Clarifies why the additional structural constraints matter."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000056",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Commutation moves differently scoped sharing structures past one another while preserving the distinction between their levels.",
+        "densityScore": 0.74,
+        "relation": "elaborates",
+        "reason": "Explains the operational meaning of the alternative rewrite."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000057",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "One new higher-level replica is needed for each branch because each auxiliary port represents a distinct continuation of the lower-level replicator's sharing structure.",
+        "densityScore": 0.76,
+        "relation": "supports",
+        "reason": "Explains the per-auxiliary-port replication count."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000058",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The lower-level replicas preserve the higher-level replicator's local shape at each branch, while the paired higher-level replicas account for the level shift of that branch.",
+        "densityScore": 0.77,
+        "relation": "elaborates",
+        "reason": "Relates exact lower-level copies to the asymmetric commutation rewrite."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000059",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Adding the exit-port delta transports a replica into the level context represented by the branch it follows.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Gives the semantic role of delta addition."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000061",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Replication is broader than duplication because it may preserve structure while transforming levels according to the traversed port deltas.",
+        "densityScore": 0.77,
+        "relation": "elaborates",
+        "reason": "Distinguishes the two terms through the role of levels."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000062",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "A port delta is an integer level adjustment applied when structure is propagated through that port.",
+        "densityScore": 0.74,
+        "relation": "enables",
+        "reason": "Defines how negative, zero, and positive values affect replicas."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000063",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "A bijection gives both a syntax-to-net translation and a unique inverse reading of canonical nets back into terms.",
+        "densityScore": 0.75,
+        "relation": "elaborates",
+        "reason": "Unpacks the two directions of the claimed correspondence."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000066",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Inductive translation makes each term constructor responsible for wiring together already translated child fragments.",
+        "densityScore": 0.76,
+        "relation": "elaborates",
+        "reason": "Explains how subterm translations compose."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000067",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "The incoming wire is the fragment's result connection, while outgoing wires expose the fragment's free-variable interface.",
+        "densityScore": 0.77,
+        "relation": "elaborates",
+        "reason": "Assigns roles to the two interface directions."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000070",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A parent constructor consumes the child's incoming result wire and combines the child's exposed variable wires with its own interface.",
+        "densityScore": 0.76,
+        "relation": "elaborates",
+        "reason": "Explains compositional plugging through the fragment interface."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000072",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "A bound occurrence is represented by a wire to its binder's parameter structure, so no separately named interface agent is needed.",
+        "densityScore": 0.76,
+        "relation": "supports",
+        "reason": "Explains the absence of a variable agent for bound uses."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000074",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The replicator turns one binder connection into several branch connections, one for each occurrence of the bound variable.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Explains why multiple uses require a replicator."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000077",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "With one auxiliary port and no level change, the replicator performs neither branching nor level transformation, so a direct wire has the same effect.",
+        "densityScore": 0.82,
+        "relation": "supports",
+        "reason": "Justifies omitting the degenerate replicator."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000079",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The eraser records that the abstraction receives an argument whose bound parameter has no occurrence in the body.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Connects the unused parameter to erasure behavior."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000083",
+    "injections": [
+      {
+        "type": "example",
+        "text": "This separates the body's computation path from the two distinct demand paths created by the two occurrences of x.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Explains the purpose of the three connections in the example."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000087",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Connecting the function fragment at the principal port places a translated abstraction and application in the active configuration required for β-reduction.",
+        "densityScore": 0.8,
+        "relation": "supports",
+        "reason": "Explains why this particular application wiring exposes a redex."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000091",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Increasing the argument level distinguishes the argument's sharing context from the function path without changing the term's syntax.",
+        "densityScore": 0.76,
+        "relation": "elaborates",
+        "reason": "Explains the purpose of the argument-level increment."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000092",
+    "injections": [
+      {
+        "type": "context",
+        "text": "The levels are static annotations of the translated net that guide replication and commutation rewrites.",
+        "densityScore": 0.77,
+        "relation": "elaborates",
+        "reason": "Separates level annotations from runtime environment data."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000097",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "The negative delta returns one replicated branch to a lower sharing level, while the positive delta moves the other branch to a higher one.",
+        "densityScore": 0.76,
+        "relation": "elaborates",
+        "reason": "Interprets the two signed deltas operationally."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000099",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "The occurrence level identifies the sharing context of a particular use, while the replicator level identifies the context represented by the sharing node itself.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Defines the two quantities whose difference is the port delta."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000100",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "A delta describes a relative displacement between sharing contexts, not how many replicas a replicator produces.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Separates the structural level annotation from replicator arity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000101",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Levels belong to the net's sharing structure, so they are not runtime values associated with source-language variables.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Distinguishes graph annotations from source-term data."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000102",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The two auxiliary ports are already the explicit representation of the two demand sites for the shared binding.",
+        "densityScore": 0.79,
+        "relation": "supports",
+        "reason": "Explains why a level delta need not encode consumer multiplicity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000103",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "A consumer site receives a relative annotation because its required sharing context is compared with that of the replicator supplying it.",
+        "densityScore": 0.77,
+        "relation": "elaborates",
+        "reason": "Connects relative levels and deltas to consumer-site structure."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000104",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "When replicators commute, delta adjustments preserve the relative context encoded at each replica after their structural order changes.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "States the invariant served by delta adjustment."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000105",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Its applicability depends on reachability from the root rather than on finding one active pair of principal ports.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Contrasts global garbage collection with local interaction rewriting."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000106",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Reachability marking preserves exactly the subgraph that can still contribute to the root's observable result.",
+        "densityScore": 0.78,
+        "relation": "supports",
+        "reason": "Explains the purpose of starting the sweep at the root."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000107",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Material unreachable from the root has no remaining path to the represented result, so it is garbage for that net evaluation.",
+        "densityScore": 0.77,
+        "relation": "supports",
+        "reason": "Provides the semantic rationale for deletion."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000108",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Replacing the surviving endpoint with an eraser preserves a well-formed termination of the connection after its unreachable neighbor disappears.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Explains why deletion can require an eraser insertion."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000109",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Here lA and lB are the replicator levels, and d bounds how far B's level may lie above A's level.",
+        "densityScore": 0.76,
+        "relation": "elaborates",
+        "reason": "Makes the inequality's variables and interval role explicit."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000110",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "The bounded level difference excludes the structural configuration that would make B a matching interaction partner at that stage.",
+        "densityScore": 0.75,
+        "relation": "supports",
+        "reason": "Links the inequality to the unpaired conclusion."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000111",
+    "injections": [
+      {
+        "type": "transition",
+        "text": "Because B remains unavailable for interaction, eliminating A first cannot skip an interaction that B was already entitled to perform.",
+        "densityScore": 0.78,
+        "relation": "supports",
+        "reason": "Connects unpairedness to the ordering constraint."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000112",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "The inequality establishes that the scheduled reduction order preserves a required structural invariant; it is not merely a strategy for reducing work sooner.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Clarifies the proof obligation enforced by the condition."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000113",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "An auxiliary port ending in an eraser represents a replica whose result is unused, so ΔK removes that dead branch.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Explains the operational meaning of the local cleanup rule."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000114",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "With one remaining consumer and zero relative displacement, the replicator no longer represents sharing or a context transition.",
+        "densityScore": 0.8,
+        "relation": "supports",
+        "reason": "Explains why the node can be replaced by direct connectivity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000115",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Local confluence means that competing one-step core interactions can be joined by further reductions whenever both are applicable.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Defines the property attributed to the core rules."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000116",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Canonicalization may inspect or rewrite auxiliary-port structure, so its redexes are not restricted to active pairs.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Identifies why canonicalization differs from core interaction."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000117",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Without a schedule, overlapping non-principal cleanup or sharing rewrites can leave the whole reduction process underspecified even if core interactions are locally confluent.",
+        "densityScore": 0.81,
+        "relation": "supports",
+        "reason": "Derives the need for a canonicalization strategy from its broader rewrite scope."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000118",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "An outermost pattern is one not contained inside another reducible pattern; leftmost breaks ties among such patterns according to the net's chosen traversal order.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Defines both components of the scheduling rule."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000119",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Scheduling cleanup before later commutations removes dead structure, while scheduling merges earlier consolidates sharing structure before it is moved again.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Explains the stated order among canonicalizations."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000120",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "The encoding bijection maps the source representation into a net representation satisfying the subsystem's initial canonical-form constraints.",
+        "densityScore": 0.78,
+        "relation": "elaborates",
+        "reason": "Clarifies what it means for φ to create an initial canonical net."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000121",
+    "injections": [
+      {
+        "type": "transition",
+        "text": "Interaction preserves properness while it may temporarily destroy canonical form, which is why canonicalization is performed during reduction rather than only at encoding time.",
+        "densityScore": 0.82,
+        "relation": "supports",
+        "reason": "Explains the transition from canonical to merely proper nets."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000122",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Ω denotes the complete operational prescription: which core interactions occur and when the subsystem's canonicalization steps are applied.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Makes the role of Ω explicit."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000123",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Readback requires canonical normal form so that the inverse encoding has an unambiguous source-level interpretation.",
+        "densityScore": 0.81,
+        "relation": "supports",
+        "reason": "Explains the precondition on φ−1."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000124",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Fan annihilation removes a matching sharing structure when its two sides meet in the interaction pattern defined by ΔL.",
+        "densityScore": 0.71,
+        "relation": "elaborates",
+        "reason": "Names the practical effect of ΔL's sole interaction."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000125",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Since ΔL has no additional erasure or commuting canonicalizations, properness alone satisfies its canonical-form requirements.",
+        "densityScore": 0.78,
+        "relation": "supports",
+        "reason": "Explains why canonicalization is vacuous in ΔL."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000126",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "The claim is a step-for-step simulation result: each source β-reduction corresponds to one net interaction, with no order-dependent extra interactions.",
+        "densityScore": 0.84,
+        "relation": "elaborates",
+        "reason": "States the operational significance of the equal reduction counts."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000127",
+    "injections": [
+      {
+        "type": "context",
+        "text": "Unlike ΔL, these systems contain explicit structures for discarded computation and nontrivial sharing that can require normalization outside core interactions.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Contrasts the nonlinear systems with ΔL."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000128",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "Because cleanup and sharing normalization can act outside active pairs, the algorithm needs an order that coordinates them with ordinary interactions.",
+        "densityScore": 0.81,
+        "relation": "supports",
+        "reason": "Explains why global scheduling is part of the whole-algorithm claim."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000129",
+    "injections": [
+      {
+        "type": "citation_needed",
+        "text": "The precise scope and hypotheses of the claimed Church–Rosser and optimality results should be checked against the paper's formal theorems.",
+        "densityScore": 0.78,
+        "relation": "supports",
+        "reason": "The strength of these metatheoretic claims depends on their stated conditions."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000130",
+    "injections": [
+      {
+        "type": "definition",
+        "text": "Formally, if one net reduces along two finite paths to two results, there are further reduction paths from those results to a common net.",
+        "densityScore": 0.82,
+        "relation": "elaborates",
+        "reason": "Supplies the joinability formulation of Church–Rosser."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000131",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Confluence permits intermediate reductions to differ; it constrains eventual joinability rather than requiring identical immediate successors.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Contrasts the property with one-step agreement."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000132",
+    "injections": [
+      {
+        "type": "mechanism",
+        "text": "Variable arity allows one replicator to expose the set of consumer sites belonging to a single sharing context without encoding each consumer as a separate binary sharing node.",
+        "densityScore": 0.81,
+        "relation": "elaborates",
+        "reason": "Explains the representational purpose of variable arity."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000133",
+    "injections": [
+      {
+        "type": "interpretation",
+        "text": "Most computation is expressed by local graph rewrites, while the schedule constrains only the ordering of selected global or canonicalization actions.",
+        "densityScore": 0.8,
+        "relation": "elaborates",
+        "reason": "Clarifies the division between locality and scheduling discipline."
+      }
+    ]
+  },
+  {
+    "targetId": "split-000134",
+    "injections": [
+      {
+        "type": "warrant",
+        "text": "By deleting unreachable or unused branches and normalizing sharing before unnecessary propagation, the discipline aims to avoid reductions whose results cannot affect the root.",
+        "densityScore": 0.8,
+        "relation": "supports",
+        "reason": "Connects scheduling discipline to avoidable-work prevention."
+      }
+    ]
+  }
+]

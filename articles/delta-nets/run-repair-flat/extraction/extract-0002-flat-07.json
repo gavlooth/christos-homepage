@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    {
+      "kind": "source",
+      "text": "flowchart TB\nd0@{ shape: rect, label: \"d₀\" }\nd1@{ shape: rect, label: \"d₁\" }\nd2@{ shape: rect, label: \"d₂\" }\nR@{ shape: trapezoid, label: \"R\" }\nF@{ shape: triangle, label: \"F\" }\na1@{ shape: rect, label: \"a₁\" }\na0@{ shape: rect, label: \"a₀\" }\nd0 --- R\nd1 --- R\nd2 --- R\nR -->|\"principal ↔ principal\"| F\nF --- a1\nF --- a0",
+      "sourceUnitIds": [
+        "u000170"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "After: (Fᵢ)ⱼ ↔ (Rʲ)ᵢ",
+      "sourceUnitIds": [
+        "u000171"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "flowchart TB\nF0@{ shape: triangle, label: \"F₀\" }\nF1@{ shape: triangle, label: \"F₁\" }\nF2@{ shape: triangle, label: \"F₂\" }\nR1@{ shape: trapezoid, label: \"R¹\" }\nR0@{ shape: trapezoid, label: \"R⁰\" }\nF0 --- R1\nF0 --- R0\nF1 --- R1\nF1 --- R0\nF2 --- R1\nF2 --- R0",
+      "sourceUnitIds": [
+        "u000172"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "source",
+      "text": "Finite version of the paper’s fan–replicator rule. Port identities, not geometric sides, determine the reconnection: (Fᵢ)ⱼ ↔ (Rʲ)ᵢ. This guide-specific diagram uses a three-port replicator so every copy has a visible port and wire. It adapts the structure of [Figure 4 in the source paper](https://arxiv.org/html/2505.20314v4#S2.F4) (CC BY 4.0).",
+      "sourceUnitIds": [
+        "u000173"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source",
+      "chunkId": "c0002-flat-07",
+      "annotations": [
+        "repair_source_fallback"
+      ]
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000170",
+        "u000171",
+        "u000172",
+        "u000173"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "Semantic shard repair failed: extract-0002-flat-07 exited 1: Working...\nDeadline exceeded",
+      "gapType": "parsing_error",
+      "origin": "gap",
+      "chunkId": "c0002-flat-07",
+      "annotations": [
+        "repair_parsing_error"
+      ]
+    }
+  ],
+  "edges": [],
+  "evidenceFrames": []
+}

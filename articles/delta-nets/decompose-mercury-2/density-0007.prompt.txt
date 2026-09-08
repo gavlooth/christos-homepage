@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000392",
+    "kind": "source",
+    "text": "ΔK has one more cleanup: unpaired replicator decay. Drop auxiliary ports of unpaired replicators that lead straight into erasers. If one zero-delta port remains, the replicator collapses to the wire it already was."
+  },
+  {
+    "id": "n0000393",
+    "kind": "source",
+    "text": "Before: unpaired R with two erasers"
+  },
+  {
+    "id": "n0000394",
+    "kind": "source",
+    "text": "flowchart TB\ninD((input))\nRd@{ shape: trapezoid, label: \"R · unpaired\" }\nlive0[\"live · d = 0\"]\nEe1@{ shape: stadium, label: \"E\" }\nEe2@{ shape: stadium, label: \"E\" }\ninD ---|principal| Rd\nRd --- live0\nRd --- Ee1\nRd --- Ee2"
+  },
+  {
+    "id": "n0000395",
+    "kind": "source",
+    "text": "After: one-port zero-delta R is a wire"
+  },
+  {
+    "id": "n0000396",
+    "kind": "source",
+    "text": "flowchart TB\ninW((input))\noutW[\"live wire\"]\ninW --> outW"
+  },
+  {
+    "id": "n0000397",
+    "kind": "source",
+    "text": "Decay removes only eraser-bound auxiliary ports. In this ΔK example, the two E-bound exits contribute no surviving consumers, so they are deleted. The remaining one-port replicator has delta 0; by the canonical representation rule it carries no information beyond the connection itself and collapses to a wire. The paper applies this cleanup during erasure canonicalization or lazily just before relevant replication rules."
+  },
+  {
+    "id": "n0000398",
+    "kind": "topic",
+    "text": "### 6.4 Why the algorithm specifies leftmost-outermost"
+  },
+  {
+    "id": "n0000399",
+    "kind": "source",
+    "text": "Core interaction rules enjoy local confluence. Canonicalization can touch ports that are not a principal-to-principal pair, so it needs a schedule. Leftmost-outermost first picks an outermost reducible pattern—one with no reducible pattern wrapped around it—then takes the leftmost candidate in the term-like reading of the net. “Sequential” here just means that priority rule chooses the next interaction. The paper uses that order for ΔA, ΔI, and ΔK so cleanup runs early and merges beat later commutations."
+  },
+  {
+    "id": "n0000400",
+    "kind": "source",
+    "text": "Choose work from the outside, then leftward"
+  },
+  {
+    "id": "n0000401",
+    "kind": "source",
+    "text": "flowchart TB\nfirst[\"1 · outermost leftmost\"]\nsecond[\"2 · outer later\"]\nthird[\"3 · nested\"]\nfourth[\"4 · nested later\"]\nfirst --> third\nsecond --> fourth"
+  },
+  {
+    "id": "n0000402",
+    "kind": "source",
+    "text": "Important nuance. The paper also permits a reducible pair to run early if it will eventually reach the leftmost-outermost position unchanged. This preserves some safe parallelism while retaining the schedule’s optimality rationale."
+  },
+  {
+    "id": "n0000403",
+    "kind": "source",
+    "text": "07 Synthesis"
+  },
+  {
+    "id": "n0000404",
+    "kind": "topic",
+    "text": "## What does this proposal actually promise?"
+  },
+  {
+    "id": "n0000405",
+    "kind": "source",
+    "text": "The paper’s final claim is an algorithm for optimal parallel λ-reduction: translate a term to a canonical net, reduce with the core rules plus the required cleanups and schedule, then read the canonical net back as a term."
+  },
+  {
+    "id": "n0000406",
+    "kind": "source",
+    "text": "The whole algorithm in one line"
+  },
+  {
+    "id": "n0000407",
+    "kind": "source",
+    "text": "flowchart LR\nt[\"t · source λ-term\"]\nphi[\"φ(t) · canonical net\"]\nproper[\"Δ* · proper states\"]\nomega[\"Ω(φ(t)) · normal canonical\"]\ntp[\"t′ · λ normal form\"]\nt -->|encode| phi\nphi -->|interact| proper\nproper -->|normalize + canonicalize| omega\nomega -->|φ⁻¹ read back| tp"
+  },
+  {
+    "id": "n0000408",
+    "kind": "source",
+    "text": "Keep the state changes separate. The bijection φ creates the initial canonical net. Core interactions enter the broader space of proper nets; the subsystem’s prescribed interaction order and canonicalizations are collected by Ω until the net is both normal and canonical. Only then does φ−1 read it back as a λ-term. This is the construction formalized near the end of [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4)."
+  },
+  {
+    "id": "n0000409",
+    "kind": "source",
+    "text": "01 / NO DISCARDED WORK"
+  },
+  {
+    "id": "n0000410",
+    "kind": "topic",
+    "text": "### Erasure is controlled"
+  },
+  {
+    "id": "n0000411",
+    "kind": "source",
+    "text": "Leftmost-outermost reduction avoids evaluating a subnet that will later be erased; the reachability sweep clears the leftover garbage."
+  },
+  {
+    "id": "n0000412",
+    "kind": "source",
+    "text": "02 / NO REPEATED WORK"
+  },
+  {
+    "id": "n0000413",
+    "kind": "topic",
+    "text": "### Sharing stays interior"
+  },
+  {
+    "id": "n0000414",
+    "kind": "source",
+    "text": "Replicators put shared use in the graph, so necessary work need not be redone merely because an expression has several consumers."
+  },
+  {
+    "id": "n0000415",
+    "kind": "source",
+    "text": "03 / LOCAL PARALLELISM"
+  },
+  {
+    "id": "n0000416",
+    "kind": "topic",
+    "text": "### Independent pairs can run"
+  },
+  {
+    "id": "n0000417",
+    "kind": "source",
+    "text": "Perfect confluence in the interaction core lets disjoint active pairs choose and apply their local rules independently."
+  },
+  {
+    "id": "n0000418",
+    "kind": "topic",
+    "text": "### 7.1 The guarantee differs by subsystem"
+  },
+  {
+    "id": "n0000419",
+    "kind": "source",
+    "text": "In ΔL, fan annihilation is the only interaction. The paper states that every proper net is already canonical, and that if n β-reductions normalize a λL term, n interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure."
+  },
+  {
+    "id": "n0000420",
+    "kind": "source",
+    "text": "System | Extra concern | Paper’s prescribed response | |"
+  },
+  {
+    "id": "n0000421",
+    "kind": "source",
+    "text": "ΔL | None beyond fan annihilation. | Any interaction order; perfect confluence. | |"
+  },
+  {
+    "id": "n0000422",
+    "kind": "source",
+    "text": "ΔA | Discarded subnet garbage. | Leftmost-outermost annihilations + erasure canonicalization. | |"
+  },
+  {
+    "id": "n0000423",
+    "kind": "source",
+    "text": "ΔI | Replicator trees and early copies. | Leftmost-outermost + unpaired merging / canonicalization. | |"
+  },
+  {
+    "id": "n0000424",
+    "kind": "source",
+    "text": "ΔK | Both garbage and sharing context. | Leftmost-outermost + erasure, merge, and decay canonicalizations. | |"
+  },
+  {
+    "id": "n0000425",
+    "kind": "topic",
+    "text": "### 7.2 A useful way to separate the claims"
+  },
+  {
+    "id": "n0000426",
+    "kind": "source",
+    "text": "- Expressiveness: every term in the four λ fragments has a canonical net, via a stated bijection."
+  },
+  {
+    "id": "n0000427",
+    "kind": "source",
+    "text": "- Local behavior: the three-agent core is an interaction system with the one-step diamond property."
+  },
+  {
+    "id": "n0000428",
+    "kind": "source",
+    "text": "- Whole-algorithm behavior: add canonicalization and the global schedule, and the paper claims Church–Rosser confluence and optimality for the nonlinear systems. Church–Rosser is the broader agreement property: paths that start together can be continued to a common result—not necessarily in one step."
+  },
+  {
+    "id": "n0000429",
+    "kind": "source",
+    "text": "The split matters. The third layer needs erasure sweeps, replicator merging, decay, and leftmost-outermost scheduling on top of the core rules."
+  },
+  {
+    "id": "n0000430",
+    "kind": "topic",
+    "text": "### 7.3 The broader proposition"
+  },
+  {
+    "id": "n0000431",
+    "kind": "source",
+    "text": "The paper invites you to see λ-calculus as a projection of Δ-Nets. λ-terms force a narrow form of sharing; nets can say sharing relationships that plain syntax hides. If the reduction machinery holds up, that freedom could matter for parallel runtimes and machine architectures."
+  },
+  {
+    "id": "n0000432",
+    "kind": "source",
+    "text": "✓"
+  },
+  {
+    "id": "n0000433",
+    "kind": "topic",
+    "text": "### One-sentence takeaway"
+  },
+  {
+    "id": "n0000434",
+    "kind": "source",
+    "text": "Δ-Nets tries to make optimal parallel evaluation practical by packing each sharing context into a variable-arity replicator, then combining local interactions with only as much global discipline as you need to avoid preventable work."
+  },
+  {
+    "id": "n0000435",
+    "kind": "source",
+    "text": "08 Keep nearby"
+  },
+  {
+    "id": "n0000436",
+    "kind": "topic",
+    "text": "## A compact glossary, then the source."
+  },
+  {
+    "id": "n0000437",
+    "kind": "source",
+    "text": "Keep these short definitions nearby while reading the formal article. They aim at intuition. Exact notation and proofs stay with the paper."
+  },
+  {
+    "id": "n0000438",
+    "kind": "topic",
+    "text": "### λ-term"
+  },
+  {
+    "id": "n0000439",
+    "kind": "definition",
+    "text": "A λ-term is a program made from variables, abstractions, and applications."
+  },
+  {
+    "id": "n0000440",
+    "kind": "definition",
+    "text": "In λx.t, the abstraction binds x in body t."
+  },
+  {
+    "id": "n0000441",
+    "kind": "definition",
+    "text": "In t u, t is the function and u is its argument."
+  },
+  {
+    "id": "n0000442",
+    "kind": "claim",
+    "text": "β-redex and β-reduction"
+  },
+  {
+    "id": "n0000443",
+    "kind": "definition",
+    "text": "A β-redex is a function applied to an argument in the form (λx.t)u."
+  },
+  {
+    "id": "n0000444",
+    "kind": "definition",
+    "text": "β-reduction substitutes u for the bound occurrences of x in t."
+  },
+  {
+    "id": "n0000445",
+    "kind": "claim",
+    "text": "Normal form and normalizing"
+  },
+  {
+    "id": "n0000446",
+    "kind": "definition",
+    "text": "A normal form has no reducible pattern remaining."
+  },
+  {
+    "id": "n0000447",
+    "kind": "definition",
+    "text": "A term or net is normalizing if at least one reduction sequence eventually reaches normal form."
+  },
+  {
+    "id": "n0000448",
+    "kind": "claim",
+    "text": "A normalizing term or net does not have to reach normal form in every system or along every reduction sequence."
+  },
+  {
+    "id": "n0000449",
+    "kind": "claim",
+    "text": "Interaction system"
+  },
+  {
+    "id": "n0000450",
+    "kind": "definition",
+    "text": "An interaction system is a graph-rewriting system consisting of agent types and interaction rules."
+  },
+  {
+    "id": "n0000451",
+    "kind": "claim",
+    "text": "An interaction rule applies only when two agents meet at their principal ports."
+  },
+  {
+    "id": "n0000452",
+    "kind": "claim",
+    "text": "Agent and port"
+  },
+  {
+    "id": "n0000453",
+    "kind": "definition",
+    "text": "An agent is a small node in a net."
+  },
+  {
+    "id": "n0000454",
+    "kind": "definition",
+    "text": "A port is a connection socket on an agent."
+  },
+  {
+    "id": "n0000455",
+    "kind": "definition",
+    "text": "Each agent has one principal port and zero or more auxiliary ports."
+  }
+]

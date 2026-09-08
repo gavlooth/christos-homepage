@@ -1,0 +1,21 @@
+{
+  "depth": 1,
+  "batch": 26,
+  "items": [
+    {
+      "recordId": "teach-generated-b86e28177afa1f58",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An active replicator is a replicator node whose principal port is connected to another agent’s principal port, so that a local interaction rule can apply.",
+          "requires": [
+            "replicator",
+            "principal port"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

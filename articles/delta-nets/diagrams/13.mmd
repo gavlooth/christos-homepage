@@ -1,0 +1,16 @@
+flowchart TB
+                  u0["d₀"]
+                  u1["d₁"]
+                  u2["d₂"]
+                  Ru@{ shape: trapezoid, label: "R" }
+                  Rl@{ shape: trapezoid, label: "R" }
+                  l0["d₀"]
+                  l1["d₁"]
+                  l2["d₂"]
+                  u0 --> Ru
+                  u1 --> Ru
+                  u2 --> Ru
+                  Ru -->|"principal ↔ principal"| Rl
+                  Rl --> l0
+                  Rl --> l1
+                  Rl --> l2

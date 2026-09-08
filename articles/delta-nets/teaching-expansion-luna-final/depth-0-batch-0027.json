@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 27,
+  "items": [
+    {
+      "recordId": "teach-n0001086",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For the expression λx. x (x (x x)), the binder replicator is at level 1.",
+          "requires": [],
+          "citationRequired": true
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The four occurrence deltas for λx. x (x (x x)) are ⟨−1, 0, +1, +2⟩.",
+          "requires": [],
+          "citationRequired": true
+        }
+      ]
+    }
+  ]
+}

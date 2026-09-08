@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 33,
+  "items": [
+    {
+      "recordId": "teach-generated-21eed55e04913a7c",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Cleanup is the process of removing obsolete, redundant, or temporary material so that the remaining content is consistent and easier to use.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-cb852f3b231d9201",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A merge is the process of combining separate pieces of content, data, or structure into one integrated result while preserving the information that should remain.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

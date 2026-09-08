@@ -1,0 +1,246 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0002-flat-03",
+  "context": [
+    "Δ-Nets",
+    "Three agents carry the whole core."
+  ],
+  "units": [
+    {
+      "id": "u000123",
+      "kind": "prose",
+      "text": "flowchart TB\nRp[\"principal\"]\nR@{ shape: trapezoid, label: \"R\" }\nRd0@{ shape: rect, label: \"aux d₀\" }\nRd1@{ shape: rect, label: \"aux d₁\" }\nRd2@{ shape: rect, label: \"aux d₂\" }\nRdn@{ shape: rect, label: \"aux …\" }\nRp -->|principal| R\nR --- Rd0\nR --- Rd1\nR --- Rd2\nR --- Rdn"
+    },
+    {
+      "id": "u000124",
+      "kind": "prose",
+      "text": "Diagram key. Application and function fans are triangles: the principal port is fixed at the top apex and the two auxiliary wires leave fixed, symmetric positions along the bottom edge. Only replicators are trapezoids: the principal port is centered on the short top side and the auxiliary wires are evenly spaced along the wide bottom side. Rectangles label fragments or wire endpoints; they are not agents. An eraser has only a principal port."
+    },
+    {
+      "id": "u000125",
+      "kind": "prose",
+      "text": "Structure"
+    },
+    {
+      "id": "u000126",
+      "kind": "heading",
+      "text": "### Fan"
+    },
+    {
+      "id": "u000127",
+      "kind": "prose",
+      "text": "Exactly two auxiliary ports. Fans build the application and abstraction skeleton of a λ-term. When two fans annihilate, that is β-reduction in graph form."
+    },
+    {
+      "id": "u000128",
+      "kind": "prose",
+      "text": "Discard"
+    },
+    {
+      "id": "u000129",
+      "kind": "heading",
+      "text": "### Eraser"
+    },
+    {
+      "id": "u000130",
+      "kind": "prose",
+      "text": "No auxiliary ports. It marks “this bound variable is unused,” and deletes an agent it meets in a distinct-agent interaction."
+    },
+    {
+      "id": "u000131",
+      "kind": "prose",
+      "text": "Share"
+    },
+    {
+      "id": "u000132",
+      "kind": "heading",
+      "text": "### Replicator"
+    },
+    {
+      "id": "u000133",
+      "kind": "prose",
+      "text": "Any natural-number arity—one, two, three auxiliary ports, and so on. It joins the uses of one shared value and records the sharing context: a level on the agent, plus a delta on each auxiliary port."
+    },
+    {
+      "id": "u000134",
+      "kind": "prose",
+      "text": "Context"
+    },
+    {
+      "id": "u000135",
+      "kind": "heading",
+      "text": "### Level delta"
+    }
+  ]
+}

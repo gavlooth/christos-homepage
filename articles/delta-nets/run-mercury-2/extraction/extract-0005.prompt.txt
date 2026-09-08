@@ -1,0 +1,581 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0005",
+  "context": [
+    "Δ-Nets",
+    "Reduction needs housekeeping and a schedule."
+  ],
+  "units": [
+    {
+      "id": "u000318",
+      "kind": "heading",
+      "text": "## Reduction needs housekeeping and a schedule."
+    },
+    {
+      "id": "u000319",
+      "kind": "prose",
+      "text": "The full algorithm is more than the interaction core. It adds canonicalization—cleanup rewrites that restore the special term-like net shape—and, for the nonlinear systems, a global leftmost-outermost schedule."
+    },
+    {
+      "id": "u000320",
+      "kind": "heading",
+      "text": "### 6.1 Canonical and proper are different states"
+    },
+    {
+      "id": "u000321",
+      "kind": "prose",
+      "text": "Translation produces a canonical net: the standard shape the reverse translation knows how to read. After zero or more core interactions you have a proper net—any intermediate shape reachable during reduction. Canonicalization is the cleanup that walks a proper net back to canonical form."
+    },
+    {
+      "id": "u000322",
+      "kind": "prose",
+      "text": "State | Meaning in the paper | Why a reader should care | |"
+    },
+    {
+      "id": "u000323",
+      "kind": "prose",
+      "text": "Canonical | Directly produced by the φ translation and in the special normal shape the back-translation expects. | It is the stable, term-like representation. | |"
+    },
+    {
+      "id": "u000324",
+      "kind": "prose",
+      "text": "Proper | Reachable from a canonical net by zero or more Δ interactions. | It is the broader space where reduction does its work. | |"
+    },
+    {
+      "id": "u000325",
+      "kind": "heading",
+      "text": "### 6.2 Erasure needs a root-reachability sweep"
+    },
+    {
+      "id": "u000326",
+      "kind": "prose",
+      "text": "In ΔA and ΔK, an eraser can leave disconnected subnets—smaller graph regions—behind. Erasure canonicalization gathers that unreachable material in one reachability sweep:"
+    },
+    {
+      "id": "u000327",
+      "kind": "prose",
+      "text": "A"
+    },
+    {
+      "id": "u000328",
+      "kind": "heading",
+      "text": "### Mark from the root"
+    },
+    {
+      "id": "u000329",
+      "kind": "prose",
+      "text": "Walk parent–child wires from the root and mark every node you reach."
+    },
+    {
+      "id": "u000330",
+      "kind": "prose",
+      "text": "B"
+    },
+    {
+      "id": "u000331",
+      "kind": "heading",
+      "text": "### Discard what was not marked"
+    },
+    {
+      "id": "u000332",
+      "kind": "prose",
+      "text": "Delete the unmarked nodes. Wires that still touch them end in erasers instead."
+    },
+    {
+      "id": "u000333",
+      "kind": "prose",
+      "text": "C"
+    },
+    {
+      "id": "u000334",
+      "kind": "heading",
+      "text": "### Choose the space/time trade-off"
+    },
+    {
+      "id": "u000335",
+      "kind": "prose",
+      "text": "Run the sweep at the end, or earlier to save space. When memory matters most, the paper recommends it after every application of an abstraction that ignores its argument."
+    },
+    {
+      "id": "u000336",
+      "kind": "prose",
+      "text": "1 · Proper net with a detached island"
+    },
+    {
+      "id": "u000337",
+      "kind": "prose",
+      "text": "flowchart TB\nrootS((root))\nkeep[\"reachable subnet\"]\nisland[\"unmarked island\"]\nrootS --> keep"
+    },
+    {
+      "id": "u000338",
+      "kind": "prose",
+      "text": "2–3 · Mark, then delete unmarked"
+    },
+    {
+      "id": "u000339",
+      "kind": "prose",
+      "text": "flowchart TB\nrootC((root))\nkeep2[\"reachable subnet\"]\nEcap[\"E · exposed wires\"]\nrootC --> keep2\nkeep2 -.-> Ecap"
+    },
+    {
+      "id": "u000340",
+      "kind": "prose",
+      "text": "This is a global cleanup pass, not a principal-port interaction. The sweep begins at the distinguished root, marks the graph material reachable through the parent–child wiring, and deletes everything else. Where deleting an unmarked node exposes a connection that remains in the net, that connection is terminated by E. The schematic follows the erasure canonicalization described in [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4)."
+    },
+    {
+      "id": "u000341",
+      "kind": "heading",
+      "text": "### 6.3 Sharing needs replicator cleanup"
+    },
+    {
+      "id": "u000342",
+      "kind": "prose",
+      "text": "In ΔI and ΔK, interactions can build trees made only of replicators. A merge rule collapses consecutive replicators once a local level test shows they are unpaired. Pairing information stays intact; the tree gets shorter."
+    },
+    {
+      "id": "u000343",
+      "kind": "prose",
+      "text": "Δ"
+    },
+    {
+      "id": "u000344",
+      "kind": "heading",
+      "text": "### The local merge test"
+    },
+    {
+      "id": "u000345",
+      "kind": "prose",
+      "text": "For consecutive replicators A and B joined through a port with delta d, B is known unpaired when 0 ≤ lB − lA ≤ d. In the paper’s reading, B cannot interact before A is annihilated—and since A is unpaired, that never happens. The inequality is a safety proof, not a performance hint."
+    },
+    {
+      "id": "u000346",
+      "kind": "prose",
+      "text": "Before: two-agent replicator tree"
+    },
+    {
+      "id": "u000347",
+      "kind": "prose",
+      "text": "flowchart TB\nrootM((root))\nA[\"A · unpaired · ℓ = 2\"]\nlive[\"endpoint ℓ = 2\"]\nB[\"B · ℓ = 4\"]\nb1[\"endpoint ℓ = 3\"]\nb2[\"endpoint ℓ = 6\"]\nrootM --> A\nA -->|d = 0| live\nA -->|d = 3| B\nB --> b1\nB --> b2"
+    },
+    {
+      "id": "u000348",
+      "kind": "prose",
+      "text": "After: one equivalent replicator"
+    },
+    {
+      "id": "u000349",
+      "kind": "prose",
+      "text": "flowchart TB\nrootN((root))\nAm[\"A merged · ℓ = 2\"]\ne0[\"ℓ = 2 · d = 0\"]\ne1[\"ℓ = 3 · d = +1\"]\ne2[\"ℓ = 6 · d = +4\"]\nrootN --> Am\nAm --> e0\nAm --> e1\nAm --> e2"
+    },
+    {
+      "id": "u000350",
+      "kind": "prose",
+      "text": "The inequality establishes safety; endpoint levels determine the new numbers. Here A is known unpaired, and its connecting port has d = 3. Since 0 ≤ lB − lA = 2 ≤ 3, B is also known unpaired and the consecutive agents may merge. The surviving replicator keeps level 2; the external endpoint levels remain 2, 3, 6, so the new deltas are ⟨0, +1, +4⟩."
+    },
+    {
+      "id": "u000351",
+      "kind": "prose",
+      "text": "ΔK has one more cleanup: unpaired replicator decay. Drop auxiliary ports of unpaired replicators that lead straight into erasers. If one zero-delta port remains, the replicator collapses to the wire it already was."
+    },
+    {
+      "id": "u000352",
+      "kind": "prose",
+      "text": "Before: unpaired R with two erasers"
+    },
+    {
+      "id": "u000353",
+      "kind": "prose",
+      "text": "flowchart TB\ninD((input))\nRd@{ shape: trapezoid, label: \"R · unpaired\" }\nlive0[\"live · d = 0\"]\nEe1@{ shape: stadium, label: \"E\" }\nEe2@{ shape: stadium, label: \"E\" }\ninD ---|principal| Rd\nRd --- live0\nRd --- Ee1\nRd --- Ee2"
+    },
+    {
+      "id": "u000354",
+      "kind": "prose",
+      "text": "After: one-port zero-delta R is a wire"
+    },
+    {
+      "id": "u000355",
+      "kind": "prose",
+      "text": "flowchart TB\ninW((input))\noutW[\"live wire\"]\ninW --> outW"
+    },
+    {
+      "id": "u000356",
+      "kind": "prose",
+      "text": "Decay removes only eraser-bound auxiliary ports. In this ΔK example, the two E-bound exits contribute no surviving consumers, so they are deleted. The remaining one-port replicator has delta 0; by the canonical representation rule it carries no information beyond the connection itself and collapses to a wire. The paper applies this cleanup during erasure canonicalization or lazily just before relevant replication rules."
+    },
+    {
+      "id": "u000357",
+      "kind": "heading",
+      "text": "### 6.4 Why the algorithm specifies leftmost-outermost"
+    },
+    {
+      "id": "u000358",
+      "kind": "prose",
+      "text": "Core interaction rules enjoy local confluence. Canonicalization can touch ports that are not a principal-to-principal pair, so it needs a schedule. Leftmost-outermost first picks an outermost reducible pattern—one with no reducible pattern wrapped around it—then takes the leftmost candidate in the term-like reading of the net. “Sequential” here just means that priority rule chooses the next interaction. The paper uses that order for ΔA, ΔI, and ΔK so cleanup runs early and merges beat later commutations."
+    },
+    {
+      "id": "u000359",
+      "kind": "prose",
+      "text": "Choose work from the outside, then leftward"
+    },
+    {
+      "id": "u000360",
+      "kind": "prose",
+      "text": "flowchart TB\nfirst[\"1 · outermost leftmost\"]\nsecond[\"2 · outer later\"]\nthird[\"3 · nested\"]\nfourth[\"4 · nested later\"]\nfirst --> third\nsecond --> fourth"
+    },
+    {
+      "id": "u000361",
+      "kind": "prose",
+      "text": "Important nuance. The paper also permits a reducible pair to run early if it will eventually reach the leftmost-outermost position unchanged. This preserves some safe parallelism while retaining the schedule’s optimality rationale."
+    },
+    {
+      "id": "u000362",
+      "kind": "prose",
+      "text": "07 Synthesis"
+    },
+    {
+      "id": "u000363",
+      "kind": "heading",
+      "text": "## What does this proposal actually promise?"
+    },
+    {
+      "id": "u000364",
+      "kind": "prose",
+      "text": "The paper’s final claim is an algorithm for optimal parallel λ-reduction: translate a term to a canonical net, reduce with the core rules plus the required cleanups and schedule, then read the canonical net back as a term."
+    },
+    {
+      "id": "u000365",
+      "kind": "prose",
+      "text": "The whole algorithm in one line"
+    },
+    {
+      "id": "u000366",
+      "kind": "prose",
+      "text": "flowchart LR\nt[\"t · source λ-term\"]\nphi[\"φ(t) · canonical net\"]\nproper[\"Δ* · proper states\"]\nomega[\"Ω(φ(t)) · normal canonical\"]\ntp[\"t′ · λ normal form\"]\nt -->|encode| phi\nphi -->|interact| proper\nproper -->|normalize + canonicalize| omega\nomega -->|φ⁻¹ read back| tp"
+    },
+    {
+      "id": "u000367",
+      "kind": "prose",
+      "text": "Keep the state changes separate. The bijection φ creates the initial canonical net. Core interactions enter the broader space of proper nets; the subsystem’s prescribed interaction order and canonicalizations are collected by Ω until the net is both normal and canonical. Only then does φ−1 read it back as a λ-term. This is the construction formalized near the end of [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4)."
+    },
+    {
+      "id": "u000368",
+      "kind": "prose",
+      "text": "01 / NO DISCARDED WORK"
+    },
+    {
+      "id": "u000369",
+      "kind": "heading",
+      "text": "### Erasure is controlled"
+    },
+    {
+      "id": "u000370",
+      "kind": "prose",
+      "text": "Leftmost-outermost reduction avoids evaluating a subnet that will later be erased; the reachability sweep clears the leftover garbage."
+    },
+    {
+      "id": "u000371",
+      "kind": "prose",
+      "text": "02 / NO REPEATED WORK"
+    },
+    {
+      "id": "u000372",
+      "kind": "heading",
+      "text": "### Sharing stays interior"
+    },
+    {
+      "id": "u000373",
+      "kind": "prose",
+      "text": "Replicators put shared use in the graph, so necessary work need not be redone merely because an expression has several consumers."
+    },
+    {
+      "id": "u000374",
+      "kind": "prose",
+      "text": "03 / LOCAL PARALLELISM"
+    },
+    {
+      "id": "u000375",
+      "kind": "heading",
+      "text": "### Independent pairs can run"
+    },
+    {
+      "id": "u000376",
+      "kind": "prose",
+      "text": "Perfect confluence in the interaction core lets disjoint active pairs choose and apply their local rules independently."
+    },
+    {
+      "id": "u000377",
+      "kind": "heading",
+      "text": "### 7.1 The guarantee differs by subsystem"
+    },
+    {
+      "id": "u000378",
+      "kind": "prose",
+      "text": "In ΔL, fan annihilation is the only interaction. The paper states that every proper net is already canonical, and that if n β-reductions normalize a λL term, n interactions normalize its ΔL encoding in any order. ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure."
+    },
+    {
+      "id": "u000379",
+      "kind": "prose",
+      "text": "System | Extra concern | Paper’s prescribed response | |"
+    },
+    {
+      "id": "u000380",
+      "kind": "prose",
+      "text": "ΔL | None beyond fan annihilation. | Any interaction order; perfect confluence. | |"
+    },
+    {
+      "id": "u000381",
+      "kind": "prose",
+      "text": "ΔA | Discarded subnet garbage. | Leftmost-outermost annihilations + erasure canonicalization. | |"
+    },
+    {
+      "id": "u000382",
+      "kind": "prose",
+      "text": "ΔI | Replicator trees and early copies. | Leftmost-outermost + unpaired merging / canonicalization. | |"
+    },
+    {
+      "id": "u000383",
+      "kind": "prose",
+      "text": "ΔK | Both garbage and sharing context. | Leftmost-outermost + erasure, merge, and decay canonicalizations. | |"
+    },
+    {
+      "id": "u000384",
+      "kind": "heading",
+      "text": "### 7.2 A useful way to separate the claims"
+    },
+    {
+      "id": "u000385",
+      "kind": "prose",
+      "text": "- Expressiveness: every term in the four λ fragments has a canonical net, via a stated bijection."
+    },
+    {
+      "id": "u000386",
+      "kind": "prose",
+      "text": "- Local behavior: the three-agent core is an interaction system with the one-step diamond property."
+    },
+    {
+      "id": "u000387",
+      "kind": "prose",
+      "text": "- Whole-algorithm behavior: add canonicalization and the global schedule, and the paper claims Church–Rosser confluence and optimality for the nonlinear systems. Church–Rosser is the broader agreement property: paths that start together can be continued to a common result—not necessarily in one step."
+    },
+    {
+      "id": "u000388",
+      "kind": "prose",
+      "text": "The split matters. The third layer needs erasure sweeps, replicator merging, decay, and leftmost-outermost scheduling on top of the core rules."
+    },
+    {
+      "id": "u000389",
+      "kind": "heading",
+      "text": "### 7.3 The broader proposition"
+    },
+    {
+      "id": "u000390",
+      "kind": "prose",
+      "text": "The paper invites you to see λ-calculus as a projection of Δ-Nets. λ-terms force a narrow form of sharing; nets can say sharing relationships that plain syntax hides. If the reduction machinery holds up, that freedom could matter for parallel runtimes and machine architectures."
+    },
+    {
+      "id": "u000391",
+      "kind": "prose",
+      "text": "✓"
+    },
+    {
+      "id": "u000392",
+      "kind": "heading",
+      "text": "### One-sentence takeaway"
+    },
+    {
+      "id": "u000393",
+      "kind": "prose",
+      "text": "Δ-Nets tries to make optimal parallel evaluation practical by packing each sharing context into a variable-arity replicator, then combining local interactions with only as much global discipline as you need to avoid preventable work."
+    },
+    {
+      "id": "u000394",
+      "kind": "prose",
+      "text": "08 Keep nearby"
+    },
+    {
+      "id": "u000395",
+      "kind": "heading",
+      "text": "## A compact glossary, then the source."
+    },
+    {
+      "id": "u000396",
+      "kind": "prose",
+      "text": "Keep these short definitions nearby while reading the formal article. They aim at intuition. Exact notation and proofs stay with the paper."
+    },
+    {
+      "id": "u000397",
+      "kind": "heading",
+      "text": "### λ-term"
+    }
+  ]
+}

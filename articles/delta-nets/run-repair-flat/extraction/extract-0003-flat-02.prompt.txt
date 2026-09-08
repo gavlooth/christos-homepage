@@ -1,0 +1,237 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0003-flat-02",
+  "context": [
+    "Δ-Nets",
+    "When two principal ports touch, one of three things happens.",
+    "4.3 Replicator meets replicator: equal levels cancel; different levels commute"
+  ],
+  "units": [
+    {
+      "id": "u000184",
+      "kind": "prose",
+      "text": "flowchart TB\nrd0[\"d = 0\"]\nrd1[\"d = +3\"]\nrd2[\"d = −1\"]\nRlow@{ shape: trapezoid, label: \"R · ℓ = 2\" }\nHhi@{ shape: trapezoid, label: \"H · ℓ = 7\" }\ne1[\"e₁\"]\ne0[\"e₀\"]\nrd0 --- Rlow\nrd1 --- Rlow\nrd2 --- Rlow\nRlow ---|\"principal ↔ principal\"| Hhi\nHhi --- e1\nHhi --- e0"
+    },
+    {
+      "id": "u000185",
+      "kind": "prose",
+      "text": "After: 3 H replicas · 2 R copies"
+    },
+    {
+      "id": "u000186",
+      "kind": "prose",
+      "text": "flowchart TB\nd0[\"d₀\"]\nd1[\"d₁\"]\nd2[\"d₂\"]\nH0@{ shape: trapezoid, label: \"H · ℓ = 7\" }\nH1@{ shape: trapezoid, label: \"H · ℓ = 10\" }\nH2@{ shape: trapezoid, label: \"H · ℓ = 6\" }\nRc1@{ shape: trapezoid, label: \"R¹ · ℓ = 2\" }\nRc0@{ shape: trapezoid, label: \"R⁰ · ℓ = 2\" }\ne1[\"e₁\"]\ne0[\"e₀\"]\nd0 ---|principal| H0\nd1 ---|principal| H1\nd2 ---|principal| H2\nH0 --- Rc1\nH0 --- Rc0\nH1 --- Rc1\nH1 --- Rc0\nH2 --- Rc1\nH2 --- Rc0\nRc1 ---|principal| e1\nRc0 ---|principal| e0"
+    },
+    {
+      "id": "u000187",
+      "kind": "prose",
+      "text": "Two simultaneous outcomes. The upper copies of H inherit R’s three port deltas, so their levels become 7, 10, and 6. The lower copies R¹ and R⁰ leave through H’s ports e₁ and e₀; both are exact copies that keep R’s level 2 and deltas 0, +3, −1. This diagram adapts the structure of [Figure 4 in the source paper](https://arxiv.org/html/2505.20314v4#S2.F4) (CC BY 4.0)."
+    },
+    {
+      "id": "u000188",
+      "kind": "prose",
+      "text": "Read both halves of the result. Across the top, R’s three auxiliary ports create three H replicas, and each port’s delta shifts that replica’s level. Across the bottom, H’s two auxiliary ports create two exact R copies: R’s level and deltas stay put. The old eⱼ wire stays on the principal port of Rʲ. Between the families, the wires form a complete 3-by-2 grid: auxiliary port j of every H replica meets the matching port of Rʲ."
+    },
+    {
+      "id": "u000189",
+      "kind": "prose",
+      "text": "+"
+    },
+    {
+      "id": "u000190",
+      "kind": "heading",
+      "text": "### The operational rule"
+    },
+    {
+      "id": "u000191",
+      "kind": "prose",
+      "text": "Every port carries one integer. When an H replica leaves through that port, add the integer to H’s current level. The delta is the level change stamped on that particular exit."
+    },
+    {
+      "id": "u000192",
+      "kind": "heading",
+      "text": "#### A worked example"
+    },
+    {
+      "id": "u000193",
+      "kind": "prose",
+      "text": "Suppose R sits at level 2 with two auxiliary ports. The first meets a wire endpoint at level 2, so its delta is 2 − 2 = 0. The second meets an endpoint at level 5, so its delta is 5 − 2 = +3. Now let a higher-level replicator H, at level 7, meet R."
+    },
+    {
+      "id": "u000194",
+      "kind": "prose",
+      "text": "01"
+    }
+  ]
+}

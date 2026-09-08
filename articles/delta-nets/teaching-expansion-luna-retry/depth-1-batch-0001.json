@@ -1,0 +1,32 @@
+{
+  "depth": 1,
+  "batch": 1,
+  "items": [
+    {
+      "recordId": "teach-generated-d5f4b1e7e5e7b53f",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An expression is a combination of values, names, operators, or function calls that can be evaluated to produce a result.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-b3534b6b9ef2e897",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Expression use means placing an expression in a context where its evaluated result is needed, such as assigning it to a variable, passing it as an argument, or using it in a condition.",
+          "requires": [
+            "expression"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

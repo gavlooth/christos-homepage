@@ -1,0 +1,222 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0004-flat-05",
+  "context": [
+    "Δ-Nets",
+    "Compile a λ-term into one rooted net.",
+    "5.7 The δ in λx.x x is where Δ-Net levels enter"
+  ],
+  "units": [
+    {
+      "id": "u000297",
+      "kind": "prose",
+      "text": "The [Katharos diagram for λx.x x](https://zicklag.katharos.group/_astro/lam-x-xx.excalidraw.394327a5_ZJMpfg.webp) is useful because the extra structure is visible: γ nodes carry λ/application shape, and the δ node splits one bound input x into two uses. That image uses symmetric interaction combinators, not Δ-Net notation itself. The map below is conceptual: each γ role becomes a Δ-Net fan; the binary δ becomes a two-port replicator R."
+    },
+    {
+      "id": "u000298",
+      "kind": "prose",
+      "text": "The same sharing is exercised by a redex"
+    },
+    {
+      "id": "u000299",
+      "kind": "prose",
+      "text": "(λx.x x)(λy.y) →β (λy.y)(λy.y) →β λy.y"
+    },
+    {
+      "id": "u000300",
+      "kind": "prose",
+      "text": "Canonical [λx.x x]₀ — ports, not sides"
+    },
+    {
+      "id": "u000301",
+      "kind": "prose",
+      "text": "flowchart TB\nroot7((root))\nlam7@{ shape: triangle, label: \"λ\" }\nvar7@{ shape: rect, label: \"2nd aux · variable\" }\nbody7@{ shape: rect, label: \"1st aux · body\" }\nR7@{ shape: trapezoid, label: \"R · ℓ = 1\" }\napp7@{ shape: triangle, label: \"app\" }\nres7@{ shape: rect, label: \"result\" }\nfun7@{ shape: rect, label: \"function x₀\" }\narg7@{ shape: rect, label: \"argument x₁\" }\nroot7 -->|parent| lam7\nlam7 --- var7\nlam7 --- body7\nbody7 ~~~ var7\nbody7 --- res7\nres7 --- app7\nvar7 --- R7\nR7 --- fun7\nR7 --- arg7\nfun7 ---|function| app7\narg7 --- app7\nclass app7 orient-left"
+    },
+    {
+      "id": "u000302",
+      "kind": "prose",
+      "text": "What the numbers mean in this exact term. The application hangs from the λ body port: its first auxiliary is the result. One replicator auxiliary meets the application’s argument port; the other meets its function (principal) port. The outer term has level 0. The body application is also level 0; the application rule puts the argument occurrence at level 1, while the function occurrence stays at level 0. The replicator belongs to the surrounding abstraction, so it has level 0 + 1 = 1. Therefore its function-use port stores d0 = 0 − 1 = −1, and its argument-use port stores d1 = 1 − 1 = 0."
+    },
+    {
+      "id": "u000303",
+      "kind": "prose",
+      "text": "A level delta is not a copy count, and it is not a source-level variable value. The two-port replicator already says “one bound value, two consumers.” Level and per-port deltas only record the relative sharing context at each consumer. When replicators later commute through structure, those deltas adjust the levels of replicas leaving through their ports. That bookkeeping is how Δ-Nets express the sharing a δ would introduce—without separate scope-delimiter agents."
+    },
+    {
+      "id": "u000304",
+      "kind": "heading",
+      "text": "### 5.8 Let right nesting expose a deeper delta vector"
+    }
+  ]
+}

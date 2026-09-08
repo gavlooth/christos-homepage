@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 4,
+  "items": [
+    {
+      "recordId": "teach-generated-f9cd3011a4607c23",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A β-redex is an expression of the form (λx.M) N in the lambda calculus, where a function that takes x is applied to an argument N and can be simplified by substituting N for x in M.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

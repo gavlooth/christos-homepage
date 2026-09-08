@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 14,
+  "items": [
+    {
+      "recordId": "teach-generated-fd37daa3aed82649",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Auxiliary port order is the fixed sequence used to distinguish or identify auxiliary ports.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

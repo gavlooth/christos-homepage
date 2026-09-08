@@ -1,0 +1,8 @@
+SyntaxError: JSON Parse error: Expected ']'
+    at <parse> (:0)
+    at parse (unknown)
+    at callOmpJson (/home/christos/code/refine/bin/refine.mjs:338:22)
+    at async <anonymous> (/home/christos/code/refine/bin/refine.mjs:661:34)
+    at async <anonymous> (/home/christos/code/refine/bin/refine.mjs:354:36)
+    at async mapConcurrent (unknown)
+    at async main (unknown)

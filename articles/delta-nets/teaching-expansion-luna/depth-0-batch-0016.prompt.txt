@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001076",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "For an abstraction λx.M at level ℓ, its body M remains at level ℓ and a needed sharing replicator Rₓ has level ℓ + 1.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001077",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The whole translated term begins at level 0.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001078",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A bound occurrence's wire endpoint has the level reached by walking the source syntax to that occurrence.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001079",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Walking a lambda body or an application function preserves the current level; entering an application argument adds one.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001080",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A replicator port delta equals its connected occurrence level minus the replicator level.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001081",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "For λx. x (g x), the two x occurrences have levels 0 and 2, while Rₓ has level 1 and deltas ⟨−1, +1⟩.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001082",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The linear term (λx.x)(λy.y) reduces by one fan annihilation to λy.y.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001083",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The term λx.x x uses a two-port replicator because one bound input has two consumers.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

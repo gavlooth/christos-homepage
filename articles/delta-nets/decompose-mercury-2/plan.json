@@ -1,0 +1,886 @@
+[
+  {
+    "parentId": "n0000028",
+    "splits": [
+      {
+        "text": "The model avoids work that will later be discarded.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "The model performs necessary work only once even when an expression is used multiple times.",
+        "densityScore": 0.75
+      }
+    ],
+    "expansions": [
+      {
+        "type": "interpretation",
+        "text": "Optimal parallel reduction treats duplication and erasure as scheduling costs rather than unavoidable consequences of syntax.",
+        "densityScore": 0.73
+      }
+    ]
+  },
+  {
+    "parentId": "n0000140",
+    "splits": [
+      {
+        "text": "Confluence asks whether different valid reduction choices can produce different results.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "The one-step diamond property requires either one-step result to reach a common net after one further interaction.",
+        "densityScore": 0.78
+      }
+    ],
+    "expansions": [
+      {
+        "type": "definition",
+        "text": "A reduction choice is a valid local interaction available in the current net.",
+        "densityScore": 0.68
+      }
+    ]
+  },
+  {
+    "parentId": "n0000144",
+    "splits": [
+      {
+        "text": "Each active pair owns the only principal port of each participating agent.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "Distinct active pairs therefore use distinct agents.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "Rewrites of distinct active pairs commute and preserve the same nearby wiring.",
+        "densityScore": 0.78
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Disjoint principal ports prevent two simultaneous rewrites from modifying the same agent.",
+        "densityScore": 0.74
+      }
+    ]
+  },
+  {
+    "parentId": "n0000147",
+    "splits": [
+      {
+        "text": "The diamond property concerns agreement between competing local steps.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "The diamond property does not imply that reduction terminates.",
+        "densityScore": 0.73
+      },
+      {
+        "text": "For a normalizing core interaction order, every normalizing order reaches the same result in the same number of interactions.",
+        "densityScore": 0.8
+      }
+    ],
+    "expansions": [
+      {
+        "type": "definition",
+        "text": "Termination means that no infinite sequence of reductions exists.",
+        "densityScore": 0.63
+      }
+    ]
+  },
+  {
+    "parentId": "n0000149",
+    "splits": [
+      {
+        "text": "Earlier approaches represented each sharing scope with indexed fans and delimiter agents.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Delimiter agents included brackets, croissants, and related constructs.",
+        "densityScore": 0.65
+      },
+      {
+        "text": "Delimiter interactions could outnumber the useful fan work.",
+        "densityScore": 0.77
+      },
+      {
+        "text": "Some earlier systems allowed indices to grow without bound.",
+        "densityScore": 0.73
+      }
+    ],
+    "expansions": [
+      {
+        "type": "interpretation",
+        "text": "The variable-arity replicator is intended to encode sharing without maintaining a separate delimiter structure for every scope.",
+        "densityScore": 0.79
+      }
+    ]
+  },
+  {
+    "parentId": "n0000162",
+    "splits": [
+      {
+        "text": "Application and function fans are triangles with a top principal port and two fixed bottom auxiliary positions.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "Replicators are trapezoids with a centered top principal port and evenly spaced bottom auxiliary ports.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Rectangles denote fragments or wire endpoints rather than agents.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "An eraser has only a principal port.",
+        "densityScore": 0.7
+      }
+    ],
+    "expansions": [
+      {
+        "type": "context",
+        "text": "The shapes encode port conventions so diagrams can distinguish agent structure from labels and endpoints.",
+        "densityScore": 0.7
+      }
+    ]
+  },
+  {
+    "parentId": "n0000171",
+    "splits": [
+      {
+        "text": "A replicator may have any natural-number arity.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "A replicator joins the uses of one shared value.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "The replicator stores a sharing context as a level on the agent and a delta on each auxiliary port.",
+        "densityScore": 0.8
+      }
+    ],
+    "expansions": [
+      {
+        "type": "definition",
+        "text": "Arity is the number of auxiliary ports on a replicator.",
+        "densityScore": 0.62
+      }
+    ]
+  },
+  {
+    "parentId": "n0000181",
+    "splits": [
+      {
+        "text": "Linear terms use each bound variable exactly once.",
+        "densityScore": 0.74
+      },
+      {
+        "text": "Affine terms use each bound variable at most once.",
+        "densityScore": 0.74
+      },
+      {
+        "text": "Relevant terms use each bound variable at least once.",
+        "densityScore": 0.74
+      },
+      {
+        "text": "Full terms permit any number of uses.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "Fans encode structure, erasers encode omission, and replicators encode sharing.",
+        "densityScore": 0.82
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000183",
+    "splits": [
+      {
+        "text": "Equal replicators must match in level, arity, and every port delta.",
+        "densityScore": 0.82
+      },
+      {
+        "text": "Well-formed λ-term translations make same-level active replicators equal.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "Hand-built nets cannot compare replicator levels alone.",
+        "densityScore": 0.72
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Level-only comparison is sound only when the construction invariant already guarantees matching arity and deltas.",
+        "densityScore": 0.77
+      }
+    ]
+  },
+  {
+    "parentId": "n0000185",
+    "splits": [
+      {
+        "text": "Parent and child are orientation labels on a wire relative to the root.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "Canonical nets begin with unpaired fan-in replicators whose auxiliaries are parents and principal is a child.",
+        "densityScore": 0.82
+      },
+      {
+        "text": "Reduction can create fan-outs with the opposite orientation.",
+        "densityScore": 0.75
+      },
+      {
+        "text": "A fan-out is paired upstream with at least one fan-in, but a fan-in need not have a partner.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Levels and deltas provide local evidence for pairing.",
+        "densityScore": 0.7
+      }
+    ],
+    "expansions": [
+      {
+        "type": "definition",
+        "text": "The root is the distinguished top entry from which parent–child orientation is read.",
+        "densityScore": 0.62
+      }
+    ]
+  },
+  {
+    "parentId": "n0000190",
+    "splits": [
+      {
+        "text": "Equal agents annihilate each other.",
+        "densityScore": 0.65
+      },
+      {
+        "text": "In a well-formed λ translation, same-level active replicators annihilate and matching auxiliary ports reconnect.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Fan annihilation represents applying a λ abstraction to its argument.",
+        "densityScore": 0.76
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Annihilation removes the active pair and preserves connectivity by joining corresponding auxiliary wires.",
+        "densityScore": 0.7
+      }
+    ]
+  },
+  {
+    "parentId": "n0000198",
+    "splits": [
+      {
+        "text": "An eraser passes through one auxiliary port of a distinct agent at a time.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "A two-port fan meeting an eraser leaves two erasers connected to its auxiliary outputs.",
+        "densityScore": 0.77
+      },
+      {
+        "text": "An n-port replicator meeting an eraser leaves n erasers.",
+        "densityScore": 0.75
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Erasure propagates by replacing the erased agent with one eraser per outgoing auxiliary connection.",
+        "densityScore": 0.74
+      }
+    ]
+  },
+  {
+    "parentId": "n0000200",
+    "splits": [
+      {
+        "text": "Applications and abstractions use the same triangular fan shape.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "Their roles are identified by wire orientation relative to the root.",
+        "densityScore": 0.75
+      },
+      {
+        "text": "Principal-to-principal fan interaction removes both fans and reconnects matching auxiliary ports.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Auxiliary ports are ordered clockwise when the principal port points down.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "The fan interaction represents β-reduction.",
+        "densityScore": 0.7
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Rotation changes how an auxiliary port appears geometrically without changing its semantic index.",
+        "densityScore": 0.71
+      }
+    ]
+  },
+  {
+    "parentId": "n0000204",
+    "splits": [
+      {
+        "text": "The downward application fan orders its auxiliaries left-to-right as first and second.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "The rotated upward abstraction fan orders its auxiliaries right-to-left as first and second.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "Matching semantic port indices can therefore cross the drawn wires.",
+        "densityScore": 0.77
+      }
+    ],
+    "expansions": [
+      {
+        "type": "interpretation",
+        "text": "Wire crossing in this diagram records index-preserving reconnection, not an additional crossing agent.",
+        "densityScore": 0.7
+      }
+    ]
+  },
+  {
+    "parentId": "n0000206",
+    "splits": [
+      {
+        "text": "A replicator meeting a fan produces one exact fan copy per replicator auxiliary port.",
+        "densityScore": 0.82
+      },
+      {
+        "text": "The fan produces one fan per auxiliary port of the replicator.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Each resulting agent retains its original role in the other agent’s surrounding context.",
+        "densityScore": 0.76
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000215",
+    "splits": [
+      {
+        "text": "Matching levels allow annihilation in a well-formed λ translation.",
+        "densityScore": 0.75
+      },
+      {
+        "text": "Annihilation removes both replicators and reconnects matching auxiliary ports.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "Annihilation creates no replicas.",
+        "densityScore": 0.65
+      },
+      {
+        "text": "Hand-built nets require matching arity and every port delta in addition to matching levels.",
+        "densityScore": 0.8
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000216",
+    "splits": [
+      {
+        "text": "When levels differ, the replicators commute rather than annihilate.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "The lower-level replicator creates one higher-level replica per auxiliary port.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "The higher-level replicator creates exact lower-level replicas per auxiliary port.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Each higher-level replica adds the exit-port delta to its current level.",
+        "densityScore": 0.82
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000252",
+    "splits": [
+      {
+        "text": "Duplicate means an exact copy.",
+        "densityScore": 0.62
+      },
+      {
+        "text": "Replicate allows copies whose levels differ.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "Deltas may be negative, zero, or positive.",
+        "densityScore": 0.64
+      }
+    ],
+    "expansions": [
+      {
+        "type": "interpretation",
+        "text": "Level adjustment lets one replication rule carry context information that indexed delimiters represented explicitly in older systems.",
+        "densityScore": 0.78
+      }
+    ]
+  },
+  {
+    "parentId": "n0000258",
+    "splits": [
+      {
+        "text": "Each calculus has a bijection from terms to canonical Δ-Nets.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Every term maps to one canonical net.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "Each canonical net maps back to one term.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "Translation builds a larger net inductively from translated subterms.",
+        "densityScore": 0.78
+      }
+    ],
+    "expansions": [
+      {
+        "type": "definition",
+        "text": "A bijection is reversible and one-to-one, so neither terms nor canonical nets are duplicated by the translation.",
+        "densityScore": 0.72
+      }
+    ]
+  },
+  {
+    "parentId": "n0000265",
+    "splits": [
+      {
+        "text": "Each fragment has one incoming wire and zero or more outgoing wires.",
+        "densityScore": 0.74
+      },
+      {
+        "text": "The outermost fragment connects to a single root.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "Free variables become named interface nodes.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "The fragment interface allows a translated subterm to plug into its parent.",
+        "densityScore": 0.75
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000282",
+    "splits": [
+      {
+        "text": "A free variable remains a named node at the canonical net interface.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "A bound occurrence has no variable agent.",
+        "densityScore": 0.74
+      },
+      {
+        "text": "A single bound use connects directly to its owning abstraction.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "Several bound uses connect through a replicator.",
+        "densityScore": 0.76
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000285",
+    "splits": [
+      {
+        "text": "A replicator connects the abstraction’s variable port to multiple concrete use sites.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "For λx.x x, the two replicator auxiliaries connect to the application’s argument and function ports.",
+        "densityScore": 0.82
+      },
+      {
+        "text": "A one-port zero-delta replicator is omitted because it is equivalent to a wire.",
+        "densityScore": 0.82
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "The replicator turns one incoming bound value into independently connected consumer paths.",
+        "densityScore": 0.74
+      }
+    ]
+  },
+  {
+    "parentId": "n0000293",
+    "splits": [
+      {
+        "text": "The abstraction’s second auxiliary port represents its bound parameter.",
+        "densityScore": 0.74
+      },
+      {
+        "text": "An unused parameter port terminates at an eraser in ΔA and ΔK.",
+        "densityScore": 0.77
+      },
+      {
+        "text": "A single use connects directly to the parameter port.",
+        "densityScore": 0.75
+      },
+      {
+        "text": "Multiple uses connect through a replicator.",
+        "densityScore": 0.75
+      },
+      {
+        "text": "The abstraction’s first auxiliary port represents its body.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "In λx.x x, the body port connects to the application result and the replicator ports connect to the function and argument.",
+        "densityScore": 0.8
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000300",
+    "splits": [
+      {
+        "text": "The application result uses the first auxiliary port.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "The argument fragment uses the second auxiliary port.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "The function fragment meets the principal port.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "This wiring lets an abstraction on the function side form a β-redex.",
+        "densityScore": 0.76
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000305",
+    "splits": [
+      {
+        "text": "The whole term starts at level 0.",
+        "densityScore": 0.62
+      },
+      {
+        "text": "Abstraction bodies inherit their abstraction’s level.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "An application keeps the function at the current level.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "An application assigns the argument level one greater than the current level.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "These levels track sharing contexts rather than runtime closure contents.",
+        "densityScore": 0.78
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000316",
+    "splits": [
+      {
+        "text": "The outer application gives the function occurrence level 0.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "The outer application gives its argument subtree level 1.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "The inner application keeps g at level 1 and gives its argument x level 2.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "The binder’s replicator is at level 1.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "The resulting deltas are ⟨−1, +1⟩.",
+        "densityScore": 0.7
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000321",
+    "splits": [
+      {
+        "text": "Each bound occurrence connects to one auxiliary port of its replicator.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "The port delta equals the occurrence level minus the replicator level.",
+        "densityScore": 0.82
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Subtracting the replicator level stores only the relative context needed when the port is later traversed.",
+        "densityScore": 0.77
+      }
+    ]
+  },
+  {
+    "parentId": "n0000343",
+    "splits": [
+      {
+        "text": "A level delta is not a copy count.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "A level delta is not a source-level variable value.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "A two-port replicator already records two consumers of one bound value.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "Levels and deltas record relative sharing contexts at consumer sites.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Commuting replicators use deltas to adjust replica levels.",
+        "densityScore": 0.78
+      }
+    ],
+    "expansions": [
+      {
+        "type": "interpretation",
+        "text": "The bookkeeping encodes scope-sensitive sharing without explicit scope-delimiter agents.",
+        "densityScore": 0.8
+      }
+    ]
+  },
+  {
+    "parentId": "n0000381",
+    "splits": [
+      {
+        "text": "Erasure canonicalization is a global cleanup pass rather than a principal-port interaction.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "The sweep starts at the distinguished root and marks reachable material.",
+        "densityScore": 0.74
+      },
+      {
+        "text": "Unmarked graph material is deleted.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "Deleting an unmarked node can expose a surviving connection that must be terminated by an eraser.",
+        "densityScore": 0.8
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000386",
+    "splits": [
+      {
+        "text": "For consecutive replicators A and B, the condition is 0 ≤ lB − lA ≤ d.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "The condition proves that B is unpaired when A is known unpaired.",
+        "densityScore": 0.77
+      },
+      {
+        "text": "The proof says B cannot interact before A is annihilated.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "The inequality is a safety proof rather than a performance heuristic.",
+        "densityScore": 0.7
+      }
+    ],
+    "expansions": [
+      {
+        "type": "interpretation",
+        "text": "Because the required predecessor annihilation never occurs for an unpaired A, the guarded successor is also safely unpaired.",
+        "densityScore": 0.76
+      }
+    ]
+  },
+  {
+    "parentId": "n0000392",
+    "splits": [
+      {
+        "text": "ΔK removes auxiliary ports of unpaired replicators that lead directly to erasers.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "A remaining one-port zero-delta replicator collapses to a wire.",
+        "densityScore": 0.77
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Decay removes consumers known to produce no surviving output before simplifying the resulting connection.",
+        "densityScore": 0.74
+      }
+    ]
+  },
+  {
+    "parentId": "n0000399",
+    "splits": [
+      {
+        "text": "Core interaction rules are locally confluent.",
+        "densityScore": 0.68
+      },
+      {
+        "text": "Canonicalization can modify ports outside principal-to-principal pairs.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "A schedule is therefore required for canonicalization.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "Leftmost-outermost chooses an outermost reducible pattern and then the leftmost candidate.",
+        "densityScore": 0.82
+      },
+      {
+        "text": "The schedule is used for ΔA, ΔI, and ΔK so cleanup runs early and merges precede later commutations.",
+        "densityScore": 0.82
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000408",
+    "splits": [
+      {
+        "text": "The bijection φ creates the initial canonical net.",
+        "densityScore": 0.72
+      },
+      {
+        "text": "Core interactions may move the net into the broader space of proper nets.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "The subsystem’s interaction order and canonicalizations are collected by Ω.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "The net is read back by φ−1 only after it is normal and canonical.",
+        "densityScore": 0.82
+      }
+    ],
+    "expansions": [
+      {
+        "type": "mechanism",
+        "text": "Separating φ, Ω, and φ−1 prevents intermediate proper nets from being mistaken for final canonical encodings.",
+        "densityScore": 0.76
+      }
+    ]
+  },
+  {
+    "parentId": "n0000419",
+    "splits": [
+      {
+        "text": "ΔL has fan annihilation as its only interaction.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "Every proper ΔL net is already canonical.",
+        "densityScore": 0.7
+      },
+      {
+        "text": "If a λL term normalizes in n β-reductions, its ΔL encoding normalizes in n interactions regardless of order.",
+        "densityScore": 0.84
+      },
+      {
+        "text": "ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure.",
+        "densityScore": 0.78
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000428",
+    "splits": [
+      {
+        "text": "The nonlinear systems require canonicalization and a global schedule for the whole-algorithm claim.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "The paper claims Church–Rosser confluence and optimality for those systems.",
+        "densityScore": 0.76
+      },
+      {
+        "text": "Church–Rosser means divergent paths can be continued to a common result.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "Church–Rosser does not require the paths to agree after one step.",
+        "densityScore": 0.74
+      }
+    ],
+    "expansions": []
+  },
+  {
+    "parentId": "n0000434",
+    "splits": [
+      {
+        "text": "Δ-Nets encode each sharing context in a variable-arity replicator.",
+        "densityScore": 0.8
+      },
+      {
+        "text": "Reduction combines local interactions with limited global scheduling discipline.",
+        "densityScore": 0.78
+      },
+      {
+        "text": "The discipline is intended to prevent avoidable work.",
+        "densityScore": 0.7
+      }
+    ],
+    "expansions": [
+      {
+        "type": "interpretation",
+        "text": "The design moves complexity from explicit scope delimiters into local level-and-delta metadata plus selective scheduling.",
+        "densityScore": 0.82
+      }
+    ]
+  }
+]

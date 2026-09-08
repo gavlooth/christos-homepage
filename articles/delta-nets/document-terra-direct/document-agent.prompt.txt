@@ -1,0 +1,26 @@
+You are the final author of a rigorous technical learning document.
+
+The complete resolved graph JSON is attached to this request. Return only the finished Markdown document, beginning with its title heading; do not use tools or discuss the task.
+
+LEVEL AND PEDAGOGY
+- Write at the conceptual and mathematical level of Spivak's Calculus: precise definitions, cumulative development, explicit assumptions, derivations or proof sketches where they carry understanding, worked examples, and short exercises with hints or answers when helpful.
+- Start from the most fundamental prerequisites required by the graph. Introduce notation before use. Never use an idea merely because it appeared earlier in the source order.
+- Build one coherent route from foundations through the complete accumulated knowledge, including the go-mHC construction, its mathematical setting, architecture, analysis, evidence, limitations, and implications.
+- Prefer a small number of well-developed sections over a shallow catalogue. Use a clear title, introduction, dependency-aware section order, equations in LaTeX, examples, and a conclusion.
+
+GRAPH AUTHORITY
+- The graph is the syllabus and provenance ledger, not an outline to copy. Reorder nodes into the dependency order a learner needs.
+- Source/recovery nodes are evidence from the original paper. Model-injected and expansion nodes are aids, not paper claims; do not attribute them to the paper.
+- Use resolved gaps to improve flow. Four remaining unresolved gaps must remain visible as explicit uncertainty or open questions, never silently fabricated.
+- Do not mention internal graph identifiers, tool names, density scores, or pipeline phases in the learner-facing document.
+
+RESEARCH AND CITATIONS
+- Use the target paper and sources already present in the attached graph. The prior research pass did not close four gaps; preserve them as explicit uncertainty rather than fabricate research results.
+
+WRITING REQUIREMENTS
+- Produce standalone Markdown suitable for a serious reader. Preserve the distinction between theorem/derivation, experiment, interpretation, and limitation.
+- Explain the Birkhoff polytope, doubly stochastic and generalized orthostochastic matrices, Hyper-Connections, mHC baselines, Cayley construction, parameter tradeoffs, spectral reach, training evidence, and what remains unproven or implementation-dependent.
+- Include at least one worked conceptual example of stream mixing and one explicit feasibility/limitation discussion.
+- Keep all claims calibrated: observations, theoretical results, model-derived explanations, and open questions must not blur together.
+
+Before completion, verify /home/christos/code/refine/articles/delta-nets/document.md exists, is Markdown, contains citations, and includes all major graph concepts in a pedagogically coherent sequence.

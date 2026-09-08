@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 24,
+  "items": [
+    {
+      "recordId": "teach-generated-cd16ae75c6fd50a8",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A replicator port is an interface or connection point through which a system receives or exposes the information, materials, or signals needed to make a copy of itself or another structure.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

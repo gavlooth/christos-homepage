@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001052",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Fan annihilation is beta-reduction in graph form.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001053",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "When a replicator meets a fan, the replicator is copied through the fan's two auxiliary ports and the fan is copied through every replicator port.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001054",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Fan-replicator reconnection is determined by port identities: (Fᵢ)ⱼ ↔ (Rʲ)ᵢ.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001055",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Equal replicators annihilate only when level, arity, and every port delta match; same level suffices for well-formed lambda translations.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001056",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Replicators at different levels commute rather than annihilate.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001057",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "When lower-level R meets higher-level H, R creates one H replica per R auxiliary port.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001058",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Each H replica's new level equals H's old level plus the delta on the R port it exits.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001059",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "H creates one exact copy of R per H auxiliary port; those R copies preserve R's level and deltas.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

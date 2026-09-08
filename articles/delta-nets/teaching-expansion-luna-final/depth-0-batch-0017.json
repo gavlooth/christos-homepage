@@ -1,0 +1,31 @@
+{
+  "depth": 0,
+  "batch": 17,
+  "items": [
+    {
+      "recordId": "teach-n0000801",
+      "units": [
+        {
+          "role": "prerequisite",
+          "basis": "source",
+          "text": "Before readback is allowed, the net must satisfy a joint condition: it is normal and canonical.",
+          "requires": [
+            "normal",
+            "canonical"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Once that joint condition holds, the net is read back through the inverse mapping φ−1.",
+          "requires": [
+            "normal",
+            "canonical"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

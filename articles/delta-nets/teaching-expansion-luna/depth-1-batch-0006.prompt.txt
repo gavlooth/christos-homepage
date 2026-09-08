@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-generated-73574120ccb1cc4c",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "drawn wire",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-643e5205111b24e4",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "interface node",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-2f716e34e72adabf",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "interface",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-30b2de9de6f91727",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "fragment interface",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-b37154d385111e14",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "canonical net interface",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-f710b39ba6b6b399",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "bound use",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-3a72cb76e9b9334c",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "abstraction",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-c4dd98e05506d9ed",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "local interaction",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  }
+]

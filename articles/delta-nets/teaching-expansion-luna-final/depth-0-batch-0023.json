@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 23,
+  "items": [
+    {
+      "recordId": "teach-n0001072",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A one-port replicator with zero delta is equivalent to a wire.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "limitation",
+          "basis": "source",
+          "text": "The canonical construction omits a one-port replicator with zero delta because it is equivalent to a wire.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

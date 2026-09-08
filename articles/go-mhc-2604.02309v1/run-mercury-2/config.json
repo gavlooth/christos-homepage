@@ -1,0 +1,12 @@
+{
+  "chunkChars": 24000,
+  "concurrency": 4,
+  "retries": 0,
+  "timeoutSeconds": 180,
+  "model": "openrouter/inception/mercury-2",
+  "thinking": "",
+  "serviceTier": "",
+  "inputPath": "/home/christos/code/refine/articles/go-mhc-2604.02309v1/source.md",
+  "outputPath": "/home/christos/code/refine/articles/go-mhc-2604.02309v1/graph.json",
+  "runDirectory": "/home/christos/code/refine/articles/go-mhc-2604.02309v1/run-mercury-2"
+}

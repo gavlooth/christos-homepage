@@ -1,0 +1,263 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001-flat-04",
+  "context": [
+    "Δ-Nets",
+    "The anatomy of a connection",
+    "How connections resolve",
+    "Redex and reduction"
+  ],
+  "units": [
+    {
+      "id": "u000048",
+      "kind": "heading",
+      "text": "#### Redex and reduction"
+    },
+    {
+      "id": "u000049",
+      "kind": "prose",
+      "text": "A redex is a place you can simplify right now—here, a function already sitting next to its argument. A reduction is one such step."
+    },
+    {
+      "id": "u000050",
+      "kind": "heading",
+      "text": "#### Normal form"
+    },
+    {
+      "id": "u000051",
+      "kind": "prose",
+      "text": "A term or net is in normal form when nothing left can fire. Normalizing means some sequence of steps gets you there."
+    },
+    {
+      "id": "u000052",
+      "kind": "prose",
+      "text": "The substitution view"
+    },
+    {
+      "id": "u000053",
+      "kind": "prose",
+      "text": "(λx. t) u → t[x := u]"
+    },
+    {
+      "id": "u000054",
+      "kind": "prose",
+      "text": "That one sentence hides two very different edge cases. They are where the paper begins."
+    },
+    {
+      "id": "u000055",
+      "kind": "prose",
+      "text": "Erasure"
+    },
+    {
+      "id": "u000056",
+      "kind": "heading",
+      "text": "### Work that gets discarded"
+    },
+    {
+      "id": "u000057",
+      "kind": "prose",
+      "text": "If t never mentions x, the argument u vanishes. Any work you already did inside u was wasted."
+    },
+    {
+      "id": "u000058",
+      "kind": "prose",
+      "text": "Sharing"
+    },
+    {
+      "id": "u000059",
+      "kind": "heading",
+      "text": "### Work that gets duplicated"
+    },
+    {
+      "id": "u000060",
+      "kind": "prose",
+      "text": "If x occurs more than once, naive substitution copies u. If u still contains redexes, you may redo the same necessary work in every copy."
+    },
+    {
+      "id": "u000061",
+      "kind": "heading",
+      "text": "### 1.2 The four familiar fragments of the λ-calculus"
+    },
+    {
+      "id": "u000062",
+      "kind": "prose",
+      "text": "The paper frames the issue with a simple grid of variable-use rules. A bound variable is an occurrence owned by a surrounding λ—the x in λx.x, for example. Start from the linear calculus, where every bound variable appears exactly once. Then allow omission, repetition, or both."
+    },
+    {
+      "id": "u000063",
+      "kind": "heading",
+      "text": "#### λL — linear"
+    }
+  ]
+}

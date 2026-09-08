@@ -1,0 +1,44 @@
+Recover source-grounded graph nodes for failed parsing or missing references. Return JSON only:
+{"items":[{"gapId":"...","nodes":[{"text":"one small factual source-grounded idea","densityScore":0.0}]}]}
+
+Rules:
+- Use only information present in that target's source units.
+- Recover equations/references as small textual factual nodes when possible.
+- Do not add outside knowledge or invent missing content.
+- Return no item if the supplied source does not support recovery.
+
+TARGETS:
+[
+  {
+    "id": "n0000126",
+    "gapClass": "missing_reference",
+    "need": "Missing equation 5",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000061"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000061",
+        "kind": "prose",
+        "text": "We write out our full projection, replacing equation [5](#S3.E5 \"Equation 5 ‣ 3.1 Hyper-Connections ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\"), below:"
+      }
+    ]
+  },
+  {
+    "id": "n0000133",
+    "gapClass": "missing_reference",
+    "need": "Missing equation 6",
+    "gapType": "missing_reference",
+    "sourceUnitIds": [
+      "u000063"
+    ],
+    "sourceUnits": [
+      {
+        "id": "u000063",
+        "kind": "prose",
+        "text": "where the function skew maps vectors of size <!-- MathML: <math alttext=\"\\frac{ds(ds-1)}{2}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m2\" intent=\":literal\"><semantics><mfrac><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo stretchy=\"false\">(</mo><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy=\"false\">)</mo></mrow></mrow><mn>2</mn></mfrac><annotation encoding=\"application/x-tex\">\\frac{ds(ds-1)}{2}</annotation></semantics></math> --> d​s​(d​s−1)2\\frac{ds(ds-1)}{2} to a <!-- MathML: <math alttext=\"ds\\times ds\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m3\" intent=\":literal\"><semantics><mrow><mrow><mrow><mi>d</mi><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><mo lspace=\"0.222em\" rspace=\"0.222em\">×</mo><mi>d</mi></mrow><mo lspace=\"0em\" rspace=\"0em\">​</mo><mi>s</mi></mrow><annotation encoding=\"application/x-tex\">ds\\times ds</annotation></semantics></math> --> d​s×d​sds\\times ds skew-symmetric matrix <!-- MathML: <math alttext=\"\\left(\\mathbf{A}_{l}^{\\top}=-\\mathbf{A}_{l}\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m4\" intent=\":literal\"><semantics><mrow><mo>(</mo><mrow><msubsup><mi>𝐀</mi><mi>l</mi><mo>⊤</mo></msubsup><mo>=</mo><mrow><mo>−</mo><msub><mi>𝐀</mi><mi>l</mi></msub></mrow></mrow><mo>)</mo></mrow><annotation encoding=\"application/x-tex\">\\left(\\mathbf{A}_{l}^{\\top}=-\\mathbf{A}_{l}\\right)</annotation></semantics></math> --> (𝐀l⊤=−𝐀l)\\left(\\mathbf{A}_{l}^{\\top}=-\\mathbf{A}_{l}\\right). Equation [8](#S3.E8 \"Equation 8 ‣ 3.3 Learning the 𝑠-Orthostochastic Manifold ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") makes use of the Cayley transform to map <!-- MathML: <math alttext=\"\\mathbf{A}_{l}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m5\" intent=\":literal\"><semantics><msub><mi>𝐀</mi><mi>l</mi></msub><annotation encoding=\"application/x-tex\">\\mathbf{A}_{l}</annotation></semantics></math> --> 𝐀l\\mathbf{A}_{l} to the space of special orthogonal matrices <!-- MathML: <math alttext=\"\\left(\\mathbf{Q}_{l}^{\\top}\\mathbf{Q}_{l}=\\mathbf{I}\\right)\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m6\" intent=\":literal\"><semantics><mrow><mo>(</mo><mrow><mrow><msubsup><mi>𝐐</mi><mi>l</mi><mo>⊤</mo></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐐</mi><mi>l</mi></msub></mrow><mo>=</mo><mi>𝐈</mi></mrow><mo>)</mo></mrow><annotation encoding=\"application/x-tex\">\\left(\\mathbf{Q}_{l}^{\\top}\\mathbf{Q}_{l}=\\mathbf{I}\\right)</annotation></semantics></math> --> (𝐐l⊤​𝐐l=𝐈)\\left(\\mathbf{Q}_{l}^{\\top}\\mathbf{Q}_{l}=\\mathbf{I}\\right). We can then use <!-- MathML: <math alttext=\"\\Phi_{d,s}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m7\" intent=\":literal\"><semantics><msub><mi mathvariant=\"normal\">Φ</mi><mrow><mi>d</mi><mo>,</mo><mi>s</mi></mrow></msub><annotation encoding=\"application/x-tex\">\\Phi_{d,s}</annotation></semantics></math> --> Φd,s\\Phi_{d,s} from equation [6](#S3.E6 \"Equation 6 ‣ 3.2 Generalized Orthostochastic Matrices ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\") to map <!-- MathML: <math alttext=\"\\mathbf{Q}_{l}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m8\" intent=\":literal\"><semantics><msub><mi>𝐐</mi><mi>l</mi></msub><annotation encoding=\"application/x-tex\">\\mathbf{Q}_{l}</annotation></semantics></math> --> 𝐐l\\mathbf{Q}_{l} to an exactly doubly stochastic matrix <!-- MathML: <math alttext=\"\\mathcal{H}_{l}^{\\text{res}}\\in\\mathsf{B}_{d}\" class=\"ltx_Math\" display=\"inline\" id=\"S3.SS3.p1.m9\" intent=\":literal\"><semantics><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo>∈</mo><msub><mi>𝖡</mi><mi>d</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\mathcal{H}_{l}^{\\text{res}}\\in\\mathsf{B}_{d}</annotation></semantics></math> --> ℋlres∈𝖡d\\mathcal{H}_{l}^{\\text{res}}\\in\\mathsf{B}_{d} in equation [9](#S3.E9 \"Equation 9 ‣ 3.3 Learning the 𝑠-Orthostochastic Manifold ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\")."
+      }
+    ]
+  }
+]

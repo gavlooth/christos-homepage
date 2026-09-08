@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001084",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "For [λx.x x]₀, the replicator has level 1, with function-use delta −1 and argument-use delta 0.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001085",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A level delta is neither a copy count nor a source-level variable value; it records relative sharing context at a consumer.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001086",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "For λx. x (x (x x)), the binder replicator is at level 1 and its four occurrence deltas are ⟨−1, 0, +1, +2⟩.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001087",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The four occurrence endpoint levels in λx. x (x (x x)) are 0, 1, 2, and 3.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001088",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Applying λx. x (x (x x)) to N produces N (N (N N)) by beta-reduction.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001089",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Translation produces canonical nets, while proper nets are intermediate nets reachable by zero or more Δ interactions.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001090",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Canonicalization restores a proper net to the canonical shape expected by back-translation.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001091",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "In ΔA and ΔK, erasure canonicalization marks nodes reachable from the root and deletes unmarked material.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

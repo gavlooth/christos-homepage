@@ -1,0 +1,32 @@
+{
+  "depth": 0,
+  "batch": 14,
+  "items": [
+    {
+      "recordId": "teach-n0000779",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The replicators described here are commuting replicators.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "These commuting replicators use deltas to adjust their replica levels.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A delta is a value that represents a change from one state or quantity to another.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

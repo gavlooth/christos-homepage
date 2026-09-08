@@ -1,0 +1,16 @@
+extracting 439 source units in 6 chunks at concurrency 4
+  extract-0001 failed: extract-0001 failed after 1 attempt(s): knowledge node 61 has no text; salvaging remaining node data
+  extract-0003 failed: extract-0003 failed after 1 attempt(s): OMP exited 1: Working...
+Deadline exceeded
+; salvaging remaining node data
+  extract-0004 failed: extract-0004 failed after 1 attempt(s): OMP exited 1: Working...
+Deadline exceeded
+; salvaging remaining node data
+  extract-0002 failed: extract-0002 failed after 1 attempt(s): OMP exited 1: Working...
+Deadline exceeded
+; salvaging remaining node data
+  extract-0006: 66 nodes, 25 semantic edges
+  extract-0005 failed: extract-0005 failed after 1 attempt(s): JSON Parse error: Expected ']'; salvaging remaining node data
+assembled 543 nodes; retained 74 model edges; exposed 46 knowledge gaps
+graph: /home/christos/code/refine/articles/delta-nets/graph.json
+validation: complete_with_gaps; 497 knowledge nodes, 46 gaps, 237 edges, 12 evidence frames

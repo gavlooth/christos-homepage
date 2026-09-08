@@ -1,0 +1,12 @@
+flowchart TB
+                  Rp["principal"]
+                  R@{ shape: trapezoid, label: "R" }
+                  Rd0@{ shape: rect, label: "aux d₀" }
+                  Rd1@{ shape: rect, label: "aux d₁" }
+                  Rd2@{ shape: rect, label: "aux d₂" }
+                  Rdn@{ shape: rect, label: "aux …" }
+                  Rp -->|principal| R
+                  R --- Rd0
+                  R --- Rd1
+                  R --- Rd2
+                  R --- Rdn

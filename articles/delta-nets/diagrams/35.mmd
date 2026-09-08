@@ -1,0 +1,33 @@
+flowchart TB
+                    root8((root))
+                    lam8@{ shape: triangle, label: "λ" }
+                    var8@{ shape: rect, label: "2nd aux · variable" }
+                    body8@{ shape: rect, label: "1st aux · body" }
+                    R8@{ shape: trapezoid, label: "R · ℓ = 1" }
+                    a0@{ shape: triangle, label: "app0" }
+                    r0@{ shape: rect, label: "result" }
+                    g0@{ shape: rect, label: "argument" }
+                    a1@{ shape: triangle, label: "app1" }
+                    r1@{ shape: rect, label: "result" }
+                    g1@{ shape: rect, label: "argument" }
+                    a2@{ shape: triangle, label: "app2" }
+                    r2@{ shape: rect, label: "result" }
+                    g2@{ shape: rect, label: "argument x₃" }
+                    root8 -->|parent| lam8
+                    lam8 --- var8
+                    lam8 --- body8
+                    body8 ~~~ var8
+                    body8 --- r0
+                    r0 --- a0
+                    var8 --- R8
+                    R8 ---|function| a0
+                    a0 --- g0
+                    g0 --- r1
+                    r1 --- a1
+                    R8 ---|function| a1
+                    a1 --- g1
+                    g1 --- r2
+                    r2 --- a2
+                    R8 ---|function| a2
+                    a2 --- g2
+                    class a0,a1,a2 orient-right

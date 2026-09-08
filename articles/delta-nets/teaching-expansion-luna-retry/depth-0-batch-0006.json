@@ -1,0 +1,49 @@
+{
+  "depth": 0,
+  "batch": 6,
+  "items": [
+    {
+      "recordId": "teach-n0000722",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Each resulting agent retains its original role.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "That retained role applies within the other agent’s surrounding context.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000723",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The claim concerns a λ translation that is well formed.",
+          "requires": [
+            "well-formed λ translation"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Within such a translation, matching levels allow annihilation.",
+          "requires": [
+            "matching levels",
+            "annihilation"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

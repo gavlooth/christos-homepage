@@ -1,0 +1,102 @@
+{
+  "depth": 1,
+  "batch": 6,
+  "items": [
+    {
+      "recordId": "teach-generated-73574120ccb1cc4c",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A drawn wire is a line explicitly shown connecting two ports or connection points in a diagram or net model. It represents a direct connection between those endpoints.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-643e5205111b24e4",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An interface node is a connection point that links one part of a network or structure to another part. It acts as a boundary through which connections or interactions pass.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-2f716e34e72adabf",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An interface is a defined boundary or set of connection points through which one part interacts with another. It specifies how the parts connect without exposing all of their internal details.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-30b2de9de6f91727",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A fragment interface is the boundary exposed by a fragment, where a fragment is a separately represented piece of a larger structure. It identifies the fragment’s external connection points while leaving its internal structure separate.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-b37154d385111e14",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A net is a set of connected points treated as one connection, and a fragment is a separately represented piece of a larger structure. A canonical net interface is the standardized representation of the boundary through which a fragment connects to that net.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-f710b39ba6b6b399",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A bound use is an occurrence of a name that has been linked to the particular named definition or object it denotes. The binding identifies which definition or object the occurrence refers to when multiple choices are possible.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-3a72cb76e9b9334c",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An abstraction is a simplified representation that preserves the details needed for a particular purpose while hiding implementation details. It lets a system be discussed or used at a higher level than its underlying construction.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-c4dd98e05506d9ed",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A local interaction is an interaction between parts that are directly connected or near each other in a structure. Its outcome depends primarily on those parts and their immediate context rather than on the whole system.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

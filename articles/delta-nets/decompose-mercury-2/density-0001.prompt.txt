@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000001",
+    "kind": "claim",
+    "text": "The page provides a link to the guide section."
+  },
+  {
+    "id": "n0000002",
+    "kind": "claim",
+    "text": "The author is Christos Chatzifountas."
+  },
+  {
+    "id": "n0000003",
+    "kind": "claim",
+    "text": "The site links to About, Work, Notebook, and Contact sections."
+  },
+  {
+    "id": "n0000004",
+    "kind": "claim",
+    "text": "The page is a reader-first technical explainer."
+  },
+  {
+    "id": "n0000005",
+    "kind": "topic",
+    "text": "The guide is titled Δ-Nets."
+  },
+  {
+    "id": "n0000006",
+    "kind": "claim",
+    "text": "The guide explains an interaction-based proposal for optimal parallel lambda reduction, using diagrams before notation."
+  },
+  {
+    "id": "n0000007",
+    "kind": "claim",
+    "text": "The guide is based on Daniel Augusto Rizzi Salvadori’s paper, arXiv:2505.20314v4."
+  },
+  {
+    "id": "n0000008",
+    "kind": "claim",
+    "text": "The page includes a reading-size control."
+  },
+  {
+    "id": "n0000009",
+    "kind": "claim",
+    "text": "The reading-size control offers A, A+, and A++ settings."
+  },
+  {
+    "id": "n0000010",
+    "kind": "claim",
+    "text": "The page includes an appearance control."
+  },
+  {
+    "id": "n0000011",
+    "kind": "claim",
+    "text": "The appearance control offers dark mode."
+  },
+  {
+    "id": "n0000012",
+    "kind": "claim",
+    "text": "The page provides a contents section for the guide."
+  },
+  {
+    "id": "n0000013",
+    "kind": "claim",
+    "text": "Section 00 explains how to read the guide."
+  },
+  {
+    "id": "n0000014",
+    "kind": "claim",
+    "text": "Section 01 presents the problem to solve."
+  },
+  {
+    "id": "n0000015",
+    "kind": "claim",
+    "text": "Section 02 moves from terms to interactions."
+  },
+  {
+    "id": "n0000016",
+    "kind": "claim",
+    "text": "Section 03 introduces the three-agent core."
+  },
+  {
+    "id": "n0000017",
+    "kind": "claim",
+    "text": "Section 04 discusses what happens when agents meet."
+  },
+  {
+    "id": "n0000018",
+    "kind": "claim",
+    "text": "Section 05 explains how to encode a lambda term."
+  },
+  {
+    "id": "n0000019",
+    "kind": "claim",
+    "text": "Section 05a traces a lambda term."
+  },
+  {
+    "id": "n0000020",
+    "kind": "claim",
+    "text": "Section 06 explains reduction discipline."
+  },
+  {
+    "id": "n0000021",
+    "kind": "claim",
+    "text": "Section 07 states what the proposal claims."
+  },
+  {
+    "id": "n0000022",
+    "kind": "claim",
+    "text": "Section 08 contains a glossary and source information."
+  },
+  {
+    "id": "n0000023",
+    "kind": "claim",
+    "text": "The guide rearranges the paper’s argument for learning and uses original diagrams."
+  },
+  {
+    "id": "n0000024",
+    "kind": "claim",
+    "text": "The paper remains authoritative for definitions and proofs."
+  },
+  {
+    "id": "n0000025",
+    "kind": "claim",
+    "text": "The guide introduces notation after an initial orientation."
+  },
+  {
+    "id": "n0000026",
+    "kind": "definition",
+    "text": "Δ-Nets is a proposed graph-rewriting model."
+  },
+  {
+    "id": "n0000027",
+    "kind": "procedure",
+    "text": "To use the model, convert a program into a graph of small nodes and wires, then repeatedly replace small matching graph pieces."
+  },
+  {
+    "id": "n0000028",
+    "kind": "claim",
+    "text": "The model aims for optimal parallel reduction by avoiding work that will later be discarded and reducing necessary work once even when an expression has multiple uses."
+  },
+  {
+    "id": "n0000029",
+    "kind": "claim",
+    "text": "A program is built as a net of very small agents."
+  },
+  {
+    "id": "n0000030",
+    "kind": "claim",
+    "text": "Local pairs of agents can interact independently."
+  },
+  {
+    "id": "n0000031",
+    "kind": "claim",
+    "text": "Sharing is represented directly in the graph rather than in a separate copy table."
+  },
+  {
+    "id": "n0000032",
+    "kind": "claim",
+    "text": "The paper claims optimality and confluence guarantees for the proposal."
+  },
+  {
+    "id": "n0000033",
+    "kind": "claim",
+    "text": "The guide teaches the design, while the paper retains the definitions and proofs."
+  },
+  {
+    "id": "n0000034",
+    "kind": "claim",
+    "text": "The guide lists six prerequisite ideas before Chapter 1."
+  },
+  {
+    "id": "n0000035",
+    "kind": "definition",
+    "text": "A lambda term is a small functional program."
+  },
+  {
+    "id": "n0000036",
+    "kind": "definition",
+    "text": "The expression λx.t denotes a function with parameter x and body t."
+  },
+  {
+    "id": "n0000037",
+    "kind": "definition",
+    "text": "The expression t u denotes applying t to u."
+  },
+  {
+    "id": "n0000038",
+    "kind": "definition",
+    "text": "An occurrence of x is bound when a surrounding λx owns it."
+  },
+  {
+    "id": "n0000039",
+    "kind": "definition",
+    "text": "An occurrence is free when no surrounding abstraction owns it."
+  },
+  {
+    "id": "n0000040",
+    "kind": "definition",
+    "text": "Levels track nested abstractions."
+  },
+  {
+    "id": "n0000041",
+    "kind": "definition",
+    "text": "A level shift adds a delta cost when a variable crosses a lambda."
+  },
+  {
+    "id": "n0000042",
+    "kind": "claim",
+    "text": "Levels and deltas track scopes without global lookups."
+  },
+  {
+    "id": "n0000043",
+    "kind": "claim",
+    "text": "The first chapter introduces the motivation."
+  },
+  {
+    "id": "n0000044",
+    "kind": "claim",
+    "text": "The central problem is wasted work."
+  },
+  {
+    "id": "n0000045",
+    "kind": "claim",
+    "text": "Ordinary lambda calculus is compact but leaves open what to do when a variable is unused or appears multiple times."
+  },
+  {
+    "id": "n0000046",
+    "kind": "claim",
+    "text": "The mechanics section introduces connections."
+  },
+  {
+    "id": "n0000047",
+    "kind": "definition",
+    "text": "Interaction nets model lambda terms as wiring."
+  },
+  {
+    "id": "n0000048",
+    "kind": "definition",
+    "text": "A lambda node has a binding port for the parameter and a body port for the expression."
+  },
+  {
+    "id": "n0000049",
+    "kind": "claim",
+    "text": "Variable distribution determines the logic of the wiring."
+  },
+  {
+    "id": "n0000050",
+    "kind": "claim",
+    "text": "The delta symbol denotes Δ."
+  },
+  {
+    "id": "n0000051",
+    "kind": "claim",
+    "text": "A delta represents the cost of crossing a scope."
+  },
+  {
+    "id": "n0000052",
+    "kind": "claim",
+    "text": "When a variable moves from one lambda into another, its depth increases."
+  },
+  {
+    "id": "n0000053",
+    "kind": "claim",
+    "text": "Deltas let the interaction net locate variables without scanning the code."
+  },
+  {
+    "id": "n0000054",
+    "kind": "procedure",
+    "text": "When an application node meets a lambda abstraction, the two nodes interact."
+  },
+  {
+    "id": "n0000055",
+    "kind": "procedure",
+    "text": "The lambda node’s binding port determines whether to replicate the variable or erase it."
+  },
+  {
+    "id": "n0000056",
+    "kind": "definition",
+    "text": "A redex is a subexpression that can be simplified immediately."
+  },
+  {
+    "id": "n0000057",
+    "kind": "example",
+    "text": "A function positioned next to its argument is a redex."
+  },
+  {
+    "id": "n0000058",
+    "kind": "definition",
+    "text": "A reduction is one simplification step."
+  },
+  {
+    "id": "n0000059",
+    "kind": "definition",
+    "text": "A term or net is in normal form when no remaining part can fire."
+  },
+  {
+    "id": "n0000060",
+    "kind": "definition",
+    "text": "Normalizing means reaching normal form through some sequence of steps."
+  },
+  {
+    "id": "n0000061",
+    "kind": "claim",
+    "text": "The substitution view describes lambda reduction by replacing variables with arguments."
+  },
+  {
+    "id": "n0000063",
+    "kind": "claim",
+    "text": "The substitution rule conceals two important edge cases that motivate the paper."
+  },
+  {
+    "id": "n0000064",
+    "kind": "topic",
+    "text": "Erasure is one edge case of substitution."
+  },
+  {
+    "id": "n0000065",
+    "kind": "claim",
+    "text": "If the body t never mentions x, the argument u disappears."
+  }
+]

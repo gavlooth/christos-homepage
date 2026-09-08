@@ -1,0 +1,18 @@
+{
+  "depth": 1,
+  "batch": 42,
+  "items": [
+    {
+      "recordId": "teach-generated-ba9aec413f702a90",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A principal-to-principal active pair is an interaction in which two authenticated entities, called principals, actively communicate or coordinate directly with each other.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

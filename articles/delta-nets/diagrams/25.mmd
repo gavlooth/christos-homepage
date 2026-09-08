@@ -1,0 +1,12 @@
+flowchart TB
+                  root0((root))
+                  lam0@{ shape: triangle, label: "λ" }
+                  var0@{ shape: rect, label: "2nd aux · variable" }
+                  body0@{ shape: rect, label: "1st aux · body" }
+                  use0@{ shape: rect, label: "x" }
+                  root0 -->|principal · parent| lam0
+                  lam0 --- var0
+                  lam0 --- body0
+                  body0 ~~~ var0
+                  body0 --- use0
+                  var0 --- use0

@@ -1,0 +1,7 @@
+flowchart TB
+                  res2@{ shape: rect, label: "result · 1st" }
+                  arg2@{ shape: rect, label: "argument · 2nd" }
+                  body2@{ shape: rect, label: "body · 1st" }
+                  var2@{ shape: rect, label: "variable · 2nd" }
+                  res2 -->|1st ↔ 1st| body2
+                  arg2 -->|2nd ↔ 2nd| var2

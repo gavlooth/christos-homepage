@@ -1,0 +1,25 @@
+{
+  "depth": 0,
+  "batch": 16,
+  "items": [
+    {
+      "recordId": "teach-n0000784",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Deleting a node that has no mark can reveal a connection that remains in the graph.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "That surviving connection must then be terminated by an eraser.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

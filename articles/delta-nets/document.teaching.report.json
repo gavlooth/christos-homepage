@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "teaching-document-report/v1",
+  "recordCount": 911,
+  "sourceRecordCount": 790,
+  "mappedSourceRecordCount": 790,
+  "denseRecordCount": 155,
+  "expandedDenseRecordCount": 155,
+  "generatedPrerequisiteCount": 121,
+  "teachingUnitCount": 1101,
+  "sectionCount": 99,
+  "sourceWordCount": 8558,
+  "outputWordCount": 18989,
+  "denseParagraphCount": 0,
+  "expectedCitationLabels": [],
+  "missingCitationLabels": [],
+  "pendingRecordCount": 0,
+  "accepted": true
+}

@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000327",
+    "kind": "source",
+    "text": "The rules feel less abstract when one small program stays on screen the whole way. Start with the closed linear term (λx.x)(λy.y). Each bound variable occurs once, so this is a ΔL example: fans only—no eraser, no replicator."
+  },
+  {
+    "id": "n0000328",
+    "kind": "source",
+    "text": "λ-calculus view"
+  },
+  {
+    "id": "n0000329",
+    "kind": "source",
+    "text": "(λx.x)(λy.y) →β λy.y"
+  },
+  {
+    "id": "n0000330",
+    "kind": "source",
+    "text": "Canonical ΔL net — orange link is the active pair"
+  },
+  {
+    "id": "n0000331",
+    "kind": "source",
+    "text": "flowchart TB\nrootI((root))\nresI@{ shape: rect, label: \"result\" }\nappI@{ shape: triangle, label: \"app\" }\nargI@{ shape: rect, label: \"argument\" }\nlamx@{ shape: triangle, label: \"λx\" }\nlamy@{ shape: triangle, label: \"λy\" }\nrootI --- resI\nresI --- appI\nappI -->|\"principal ↔ principal\"| lamx\nappI --- argI\nargI --- lamy"
+  },
+  {
+    "id": "n0000332",
+    "kind": "source",
+    "text": "After one fan annihilation"
+  },
+  {
+    "id": "n0000333",
+    "kind": "source",
+    "text": "flowchart TB\nrootR((root))\nlamy2@{ shape: triangle, label: \"λy\" }\nrootR --> lamy2"
+  },
+  {
+    "id": "n0000334",
+    "kind": "source",
+    "text": "How to read the wiring. The downward @-fan’s first auxiliary port is the application result (the root reaches it); its principal port leads to the function; its second auxiliary port leads to the argument. The upward λ-fan’s first auxiliary port is its body and its second auxiliary port is its bound variable. Since the body and variable ports of λx.x are already joined, annihilating the two principal ports connects the root directly to λy.y."
+  },
+  {
+    "id": "n0000335",
+    "kind": "source",
+    "text": "ordinary wire\nactive principal-port connection\nwire exposed after annihilation"
+  },
+  {
+    "id": "n0000336",
+    "kind": "topic",
+    "text": "### 5.7 The δ in λx.x x is where Δ-Net levels enter"
+  },
+  {
+    "id": "n0000337",
+    "kind": "source",
+    "text": "The [Katharos diagram for λx.x x](https://zicklag.katharos.group/_astro/lam-x-xx.excalidraw.394327a5_ZJMpfg.webp) is useful because the extra structure is visible: γ nodes carry λ/application shape, and the δ node splits one bound input x into two uses. That image uses symmetric interaction combinators, not Δ-Net notation itself. The map below is conceptual: each γ role becomes a Δ-Net fan; the binary δ becomes a two-port replicator R."
+  },
+  {
+    "id": "n0000338",
+    "kind": "source",
+    "text": "The same sharing is exercised by a redex"
+  },
+  {
+    "id": "n0000339",
+    "kind": "source",
+    "text": "(λx.x x)(λy.y) →β (λy.y)(λy.y) →β λy.y"
+  },
+  {
+    "id": "n0000340",
+    "kind": "source",
+    "text": "Canonical [λx.x x]₀ — ports, not sides"
+  },
+  {
+    "id": "n0000341",
+    "kind": "source",
+    "text": "flowchart TB\nroot7((root))\nlam7@{ shape: triangle, label: \"λ\" }\nvar7@{ shape: rect, label: \"2nd aux · variable\" }\nbody7@{ shape: rect, label: \"1st aux · body\" }\nR7@{ shape: trapezoid, label: \"R · ℓ = 1\" }\napp7@{ shape: triangle, label: \"app\" }\nres7@{ shape: rect, label: \"result\" }\nfun7@{ shape: rect, label: \"function x₀\" }\narg7@{ shape: rect, label: \"argument x₁\" }\nroot7 -->|parent| lam7\nlam7 --- var7\nlam7 --- body7\nbody7 ~~~ var7\nbody7 --- res7\nres7 --- app7\nvar7 --- R7\nR7 --- fun7\nR7 --- arg7\nfun7 ---|function| app7\narg7 --- app7\nclass app7 orient-left"
+  },
+  {
+    "id": "n0000342",
+    "kind": "source",
+    "text": "What the numbers mean in this exact term. The application hangs from the λ body port: its first auxiliary is the result. One replicator auxiliary meets the application’s argument port; the other meets its function (principal) port. The outer term has level 0. The body application is also level 0; the application rule puts the argument occurrence at level 1, while the function occurrence stays at level 0. The replicator belongs to the surrounding abstraction, so it has level 0 + 1 = 1. Therefore its function-use port stores d0 = 0 − 1 = −1, and its argument-use port stores d1 = 1 − 1 = 0."
+  },
+  {
+    "id": "n0000343",
+    "kind": "source",
+    "text": "A level delta is not a copy count, and it is not a source-level variable value. The two-port replicator already says “one bound value, two consumers.” Level and per-port deltas only record the relative sharing context at each consumer. When replicators later commute through structure, those deltas adjust the levels of replicas leaving through their ports. That bookkeeping is how Δ-Nets express the sharing a δ would introduce—without separate scope-delimiter agents."
+  },
+  {
+    "id": "n0000344",
+    "kind": "topic",
+    "text": "### 5.8 Let right nesting expose a deeper delta vector"
+  },
+  {
+    "id": "n0000345",
+    "kind": "source",
+    "text": "The previous term has only one application, so its two use sites differ by a single level. A clearer closed term is λx. x (x (x x)). The parentheses matter: each successive occurrence on the right sits inside another application’s argument, and every argument edge adds one to the term level."
+  },
+  {
+    "id": "n0000346",
+    "kind": "source",
+    "text": "Source-level effect"
+  },
+  {
+    "id": "n0000347",
+    "kind": "source",
+    "text": "(λx. x (x (x x))) N →β N (N (N N))"
+  },
+  {
+    "id": "n0000348",
+    "kind": "source",
+    "text": "[λx. x (x (x x))]₀ — each @ result is a body/parent; each R auxiliary is a use"
+  },
+  {
+    "id": "n0000349",
+    "kind": "source",
+    "text": "flowchart TB\nroot8((root))\nlam8@{ shape: triangle, label: \"λ\" }\nvar8@{ shape: rect, label: \"2nd aux · variable\" }\nbody8@{ shape: rect, label: \"1st aux · body\" }\nR8@{ shape: trapezoid, label: \"R · ℓ = 1\" }\na0@{ shape: triangle, label: \"app0\" }\nr0@{ shape: rect, label: \"result\" }\ng0@{ shape: rect, label: \"argument\" }\na1@{ shape: triangle, label: \"app1\" }\nr1@{ shape: rect, label: \"result\" }\ng1@{ shape: rect, label: \"argument\" }\na2@{ shape: triangle, label: \"app2\" }\nr2@{ shape: rect, label: \"result\" }\ng2@{ shape: rect, label: \"argument x₃\" }\nroot8 -->|parent| lam8\nlam8 --- var8\nlam8 --- body8\nbody8 ~~~ var8\nbody8 --- r0\nr0 --- a0\nvar8 --- R8\nR8 ---|function| a0\na0 --- g0\ng0 --- r1\nr1 --- a1\nR8 ---|function| a1\na1 --- g1\ng1 --- r2\nr2 --- a2\nR8 ---|function| a2\na2 --- g2\nclass a0,a1,a2 orient-right"
+  },
+  {
+    "id": "n0000350",
+    "kind": "source",
+    "text": "Why the vector grows. The outer application hangs from the λ body port. Each inner application hangs from the argument port of the application above it. The four replicator auxiliaries meet the three function ports and the deepest argument port. The abstraction is at level 0, so its replicator is at level 1. The four bound-variable endpoints are at levels 0, 1, 2, 3. Applying di = li − lR yields ⟨−1, 0, +1, +2⟩."
+  },
+  {
+    "id": "n0000351",
+    "kind": "source",
+    "text": "Occurrence | Position in the term | Endpoint level | Stored delta | |"
+  },
+  {
+    "id": "n0000352",
+    "kind": "source",
+    "text": "x₀ | Function of the outer application. | 0 | 0 − 1 = −1 | |"
+  },
+  {
+    "id": "n0000353",
+    "kind": "source",
+    "text": "x₁ | Function inside the first argument. | 1 | 1 − 1 = 0 | |"
+  },
+  {
+    "id": "n0000354",
+    "kind": "source",
+    "text": "x₂ | Function inside the second argument. | 2 | 2 − 1 = +1 | |"
+  },
+  {
+    "id": "n0000355",
+    "kind": "source",
+    "text": "x₃ | Argument of the deepest application. | 3 | 3 − 1 = +2 | |"
+  },
+  {
+    "id": "n0000356",
+    "kind": "source",
+    "text": "Apply this abstraction to a term N and the replicator stands for four consumers of that one argument. When later interactions move sharing through the nested applications, exits through the four ports adjust an arriving replica’s level by −1, 0, +1, or +2. The numbers keep track of where each use belongs. They still do not say how many copies to make."
+  },
+  {
+    "id": "n0000357",
+    "kind": "source",
+    "text": "06 Beyond core interaction"
+  },
+  {
+    "id": "n0000359",
+    "kind": "topic",
+    "text": "## Reduction needs housekeeping and a schedule."
+  },
+  {
+    "id": "n0000360",
+    "kind": "source",
+    "text": "The full algorithm is more than the interaction core. It adds canonicalization—cleanup rewrites that restore the special term-like net shape—and, for the nonlinear systems, a global leftmost-outermost schedule."
+  },
+  {
+    "id": "n0000361",
+    "kind": "topic",
+    "text": "### 6.1 Canonical and proper are different states"
+  },
+  {
+    "id": "n0000362",
+    "kind": "source",
+    "text": "Translation produces a canonical net: the standard shape the reverse translation knows how to read. After zero or more core interactions you have a proper net—any intermediate shape reachable during reduction. Canonicalization is the cleanup that walks a proper net back to canonical form."
+  },
+  {
+    "id": "n0000363",
+    "kind": "source",
+    "text": "State | Meaning in the paper | Why a reader should care | |"
+  },
+  {
+    "id": "n0000364",
+    "kind": "source",
+    "text": "Canonical | Directly produced by the φ translation and in the special normal shape the back-translation expects. | It is the stable, term-like representation. | |"
+  },
+  {
+    "id": "n0000365",
+    "kind": "source",
+    "text": "Proper | Reachable from a canonical net by zero or more Δ interactions. | It is the broader space where reduction does its work. | |"
+  },
+  {
+    "id": "n0000366",
+    "kind": "topic",
+    "text": "### 6.2 Erasure needs a root-reachability sweep"
+  },
+  {
+    "id": "n0000367",
+    "kind": "source",
+    "text": "In ΔA and ΔK, an eraser can leave disconnected subnets—smaller graph regions—behind. Erasure canonicalization gathers that unreachable material in one reachability sweep:"
+  },
+  {
+    "id": "n0000368",
+    "kind": "source",
+    "text": "A"
+  },
+  {
+    "id": "n0000369",
+    "kind": "topic",
+    "text": "### Mark from the root"
+  },
+  {
+    "id": "n0000370",
+    "kind": "source",
+    "text": "Walk parent–child wires from the root and mark every node you reach."
+  },
+  {
+    "id": "n0000371",
+    "kind": "source",
+    "text": "B"
+  },
+  {
+    "id": "n0000372",
+    "kind": "topic",
+    "text": "### Discard what was not marked"
+  },
+  {
+    "id": "n0000373",
+    "kind": "source",
+    "text": "Delete the unmarked nodes. Wires that still touch them end in erasers instead."
+  },
+  {
+    "id": "n0000374",
+    "kind": "source",
+    "text": "C"
+  },
+  {
+    "id": "n0000375",
+    "kind": "topic",
+    "text": "### Choose the space/time trade-off"
+  },
+  {
+    "id": "n0000376",
+    "kind": "source",
+    "text": "Run the sweep at the end, or earlier to save space. When memory matters most, the paper recommends it after every application of an abstraction that ignores its argument."
+  },
+  {
+    "id": "n0000377",
+    "kind": "source",
+    "text": "1 · Proper net with a detached island"
+  },
+  {
+    "id": "n0000378",
+    "kind": "source",
+    "text": "flowchart TB\nrootS((root))\nkeep[\"reachable subnet\"]\nisland[\"unmarked island\"]\nrootS --> keep"
+  },
+  {
+    "id": "n0000379",
+    "kind": "source",
+    "text": "2–3 · Mark, then delete unmarked"
+  },
+  {
+    "id": "n0000380",
+    "kind": "source",
+    "text": "flowchart TB\nrootC((root))\nkeep2[\"reachable subnet\"]\nEcap[\"E · exposed wires\"]\nrootC --> keep2\nkeep2 -.-> Ecap"
+  },
+  {
+    "id": "n0000381",
+    "kind": "source",
+    "text": "This is a global cleanup pass, not a principal-port interaction. The sweep begins at the distinguished root, marks the graph material reachable through the parent–child wiring, and deletes everything else. Where deleting an unmarked node exposes a connection that remains in the net, that connection is terminated by E. The schematic follows the erasure canonicalization described in [Section 4 of the paper](https://arxiv.org/html/2505.20314v4#S4)."
+  },
+  {
+    "id": "n0000382",
+    "kind": "topic",
+    "text": "### 6.3 Sharing needs replicator cleanup"
+  },
+  {
+    "id": "n0000383",
+    "kind": "source",
+    "text": "In ΔI and ΔK, interactions can build trees made only of replicators. A merge rule collapses consecutive replicators once a local level test shows they are unpaired. Pairing information stays intact; the tree gets shorter."
+  },
+  {
+    "id": "n0000384",
+    "kind": "source",
+    "text": "Δ"
+  },
+  {
+    "id": "n0000385",
+    "kind": "topic",
+    "text": "### The local merge test"
+  },
+  {
+    "id": "n0000386",
+    "kind": "source",
+    "text": "For consecutive replicators A and B joined through a port with delta d, B is known unpaired when 0 ≤ lB − lA ≤ d. In the paper’s reading, B cannot interact before A is annihilated—and since A is unpaired, that never happens. The inequality is a safety proof, not a performance hint."
+  },
+  {
+    "id": "n0000387",
+    "kind": "source",
+    "text": "Before: two-agent replicator tree"
+  },
+  {
+    "id": "n0000388",
+    "kind": "source",
+    "text": "flowchart TB\nrootM((root))\nA[\"A · unpaired · ℓ = 2\"]\nlive[\"endpoint ℓ = 2\"]\nB[\"B · ℓ = 4\"]\nb1[\"endpoint ℓ = 3\"]\nb2[\"endpoint ℓ = 6\"]\nrootM --> A\nA -->|d = 0| live\nA -->|d = 3| B\nB --> b1\nB --> b2"
+  },
+  {
+    "id": "n0000389",
+    "kind": "source",
+    "text": "After: one equivalent replicator"
+  },
+  {
+    "id": "n0000390",
+    "kind": "source",
+    "text": "flowchart TB\nrootN((root))\nAm[\"A merged · ℓ = 2\"]\ne0[\"ℓ = 2 · d = 0\"]\ne1[\"ℓ = 3 · d = +1\"]\ne2[\"ℓ = 6 · d = +4\"]\nrootN --> Am\nAm --> e0\nAm --> e1\nAm --> e2"
+  },
+  {
+    "id": "n0000391",
+    "kind": "source",
+    "text": "The inequality establishes safety; endpoint levels determine the new numbers. Here A is known unpaired, and its connecting port has d = 3. Since 0 ≤ lB − lA = 2 ≤ 3, B is also known unpaired and the consecutive agents may merge. The surviving replicator keeps level 2; the external endpoint levels remain 2, 3, 6, so the new deltas are ⟨0, +1, +4⟩."
+  }
+]

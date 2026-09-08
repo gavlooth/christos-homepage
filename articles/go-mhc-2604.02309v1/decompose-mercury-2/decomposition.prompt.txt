@@ -1,0 +1,211 @@
+You perform phase-two cognitive decompression on a knowledge graph. Return JSON only:
+{"items":[{"parentId":"...","splits":[{"text":"small source-faithful idea","densityScore":0.0}],"expansions":[{"type":"definition|mechanism|context|interpretation|example","text":"small standalone explanatory idea","densityScore":0.0}]}]}
+
+Rules:
+- Split only independently meaningful ideas already compressed in the parent.
+- Expansions explain prerequisites, mechanism, or interpretation that make the parent easier to understand. They are model-derived knowledge, not source claims.
+- Keep each returned text one small standalone idea.
+- Do not repeat the parent or produce prose summaries.
+- Return an item only when it improves cognitive decompression.
+
+DENSE NODES:
+[
+  {
+    "id": "n0000003",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "meta-viewport: width=device-width, initial-scale=1, shrink-to-fit=no title: go-mHC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices",
+    "sourceUnitIds": [
+      "u000003"
+    ]
+  },
+  {
+    "id": "n0000013",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Existing exact methods scale factorially with the number of streams d, while Kronecker-factorized approaches are efficient but have limited expressivity.",
+    "sourceUnitIds": [
+      "u000011"
+    ]
+  },
+  {
+    "id": "n0000021",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "The performance and stability of modern machine learning models increasingly depend on the geometric structure of their matrix parameterizations; traditional constraints such as symmetry or orthogonality have been foundational, while recent work leverages manifold theory to map unconstrained spaces onto constrained geometries like the Birkhoff polytope, which enforces doubly stochastic constraints but faces a trade-off between exactness and scalability.",
+    "sourceUnitIds": [
+      "u000013"
+    ]
+  },
+  {
+    "id": "n0000027",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Figure 1 illustrates spectral comparison showing go-mHC approximates the Birkhoff polytope within epsilon(s) error using d(d‑1)/2 parameters; mHC‑lite provides full coverage but requires d! parameters; KromHC is restricted to B₂ and disallows cycles >2. The parameterization maps skew‑symmetric X to orthogonal Q via the Cayley Transform, then projects to doubly stochastic B via block‑wise Frobenius norm. Hyper‑Connections ℋ_res is integrated into the residual stream as x_{l+1}=ℋ_l^{res} x_l + Layer F(x_l), where the doubly stochastic constraint ensures training stability and improved gradient flow.",
+    "sourceUnitIds": [
+      "u000017"
+    ]
+  },
+  {
+    "id": "n0000034",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "KromHC employs Kronecker products of small doubly stochastic matrices to achieve exact constraints with O(d²) complexity, but at the cost of severely reduced expressivity.",
+    "sourceUnitIds": [
+      "u000019"
+    ]
+  },
+  {
+    "id": "n0000035",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "The proposed solution is based on the algebraic theory of generalized orthostochastic matrices (Gutkin 2013; Nechita et al. 2023; Korzekwa et al. 2018; Shahbeigi et al. 2021).",
+    "sourceUnitIds": [
+      "u000020"
+    ]
+  },
+  {
+    "id": "n0000036",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "The framework learns doubly stochastic matrices while balancing efficiency and expressivity, exposing a hyperparameter s that allows tunability across these attributes.",
+    "sourceUnitIds": [
+      "u000020"
+    ]
+  },
+  {
+    "id": "n0000040",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "We specifically contribute analytics and explorations that indicate that our method:",
+    "sourceUnitIds": [
+      "u000022"
+    ]
+  },
+  {
+    "id": "n0000049",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "The method can be used simultaneously with KromHC to allow for larger Kronecker factors by mitigating the super‑exponential scaling introduced in mHC‑lite.",
+    "sourceUnitIds": [
+      "u000028"
+    ]
+  },
+  {
+    "id": "n0000057",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "HC can theoretically enable models to learn depth and width connections, dynamically rearrange layer connectivity and potentially adds a new avenue for scaling.",
+    "sourceUnitIds": [
+      "u000032"
+    ]
+  },
+  {
+    "id": "n0000058",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Later works have expanded on HC by splitting the feature dimension into independent sub‑streams and applying HC to vision and graph neural networks.",
+    "sourceUnitIds": [
+      "u000032"
+    ]
+  },
+  {
+    "id": "n0000059",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "The unconstrained dynamic connectivity of residual blocks in HC removes the explicit guarantee of the identity property, introducing the risk of gradient instability after repeated applications of the mixing terms.",
+    "sourceUnitIds": [
+      "u000033"
+    ]
+  },
+  {
+    "id": "n0000061",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Subsequent works investigate constraining this connectivity to a manifold that bounds gradient updates through the spectral norm in order to address this instability.",
+    "sourceUnitIds": [
+      "u000033"
+    ]
+  },
+  {
+    "id": "n0000063",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Manifold‑Constrained Hyper‑Connections (mHC) constrain the dynamic residual matrices to a manifold to improve training stability while still allowing for dynamic connections.",
+    "sourceUnitIds": [
+      "u000035"
+    ]
+  },
+  {
+    "id": "n0000064",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "mHC primarily changes the definition of ℋ_l^res such that it converges to the Birkhoff polytope B_d, the closed set of doubly stochastic matrices.",
+    "sourceUnitIds": [
+      "u000035"
+    ]
+  },
+  {
+    "id": "n0000071",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "mHC‑lite attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of d! permutation matrices.",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "n0000075",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "KromHC sacrifices expressivity and complete coverage of B_d by using tensor products to train residual connections on a much smaller set of exactly double‑stochastic matrices, with a cost of O(d² C).",
+    "sourceUnitIds": [
+      "u000039"
+    ]
+  },
+  {
+    "id": "n0000084",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Nechita et al. proved that the set of generalized s‑orthostochastic matrices is contained in B_d and spans all of B_d as s → ∞.",
+    "sourceUnitIds": [
+      "u000043"
+    ]
+  },
+  {
+    "id": "n0000085",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "Other works have investigated further properties of the spectral span of the Birkhoff polytope and the geometry of s‑orthostochastic matrices in the quantum setting.",
+    "sourceUnitIds": [
+      "u000043"
+    ]
+  },
+  {
+    "id": "n0000087",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "To our knowledge, we are the first to apply this construction in a machine learning setting and, more specifically, to learned residual stream routing in deep networks.",
+    "sourceUnitIds": [
+      "u000043"
+    ]
+  },
+  {
+    "id": "n0000116",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The geometry of the orthostochastic set is a concave cycloid that meets the permutation vertices of B_d but does not occupy the interior when d>2",
+    "sourceUnitIds": [
+      "u000058"
+    ]
+  },
+  {
+    "id": "n0000252",
+    "kind": "claim",
+    "densityScore": 1,
+    "text": "go‑mHC offers a practical middle‑ground FLOP complexity for scaling residual streams, avoiding the super‑exponential cost of mHC‑lite and the iterative overhead of mHC SK iterations; nominal constants are S = 20, i_k = 2, and s ∈ {1,2}. See Appendix B.6 for full estimates.",
+    "sourceUnitIds": [
+      "u000095"
+    ]
+  }
+]

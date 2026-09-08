@@ -1,0 +1,957 @@
+{
+  "nodes": [
+    {
+      "kind": "statement",
+      "text": "The method scales as O(d^3) in FLOP complexity and parameter count, surpassing the super‑exponential scaling of mHC‑lite and KromHC’s component factors.",
+      "sourceUnitIds": [
+        "u000024"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "O(d^3)",
+        "mHC-lite",
+        "KromHC"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000024"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The method requires no custom CUDA kernels, relying only on batched linear solves and tensor contractions.",
+      "sourceUnitIds": [
+        "u000025"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "CUDA kernels",
+        "batched linear solves",
+        "tensor contractions"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The method achieves exact double stochasticity by construction, with no iterations and no approximation gap.",
+      "sourceUnitIds": [
+        "u000026"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "double stochasticity"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The method includes a hyperparameter s that interpolates between the orthostochastic boundary (s=1) and the dense interior of the Birkhoff polytope (s→∞).",
+      "sourceUnitIds": [
+        "u000027"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "hyperparameter s",
+        "orthostochastic boundary",
+        "Birkhoff polytope"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The method provides a potential avenue for scaling Hyper‑Connections with tractable complexity while maintaining significant expressivity.",
+      "sourceUnitIds": [
+        "u000028"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Hyper‑Connections",
+        "expressivity"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The method can be used simultaneously with KromHC to allow for larger Kronecker factors by mitigating the super‑exponential scaling introduced in mHC‑lite.",
+      "sourceUnitIds": [
+        "u000028"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "KromHC",
+        "Kronecker factors",
+        "mHC‑lite"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "2 Related Work",
+      "sourceUnitIds": [
+        "u000029"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Residual connections and their generalizations.",
+      "sourceUnitIds": [
+        "u000030"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "He et al. introduced skip connections that enable gradient flow via identity shortcuts in ResNets.",
+      "sourceUnitIds": [
+        "u000031"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "He et al.",
+        "skip connections",
+        "ResNets"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Skip connections are a key component in the design of large language models (LLMs) owing to their stability and scalability.",
+      "sourceUnitIds": [
+        "u000031"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "large language models",
+        "LLMs"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "DenseNet, FractalNet, and subsequent works explored richer connectivity patterns passing intermediate features across networks.",
+      "sourceUnitIds": [
+        "u000031"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "DenseNet",
+        "FractalNet"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Various works have explored novel ways of increasing the effective size of the residual stream, such as ResiDual and AltUp.",
+      "sourceUnitIds": [
+        "u000031"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "ResiDual",
+        "AltUp"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Hyper‑Connections (HC) introduced the first learnable, multi‑stream generalization of residual streams allowing for dynamic mixing matrices.",
+      "sourceUnitIds": [
+        "u000032"
+      ],
+      "defines": [
+        "Hyper‑Connections"
+      ],
+      "requires": [],
+      "mentions": [
+        "dynamic mixing matrices"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "HC can theoretically enable models to learn depth and width connections, dynamically rearrange layer connectivity and potentially adds a new avenue for scaling.",
+      "sourceUnitIds": [
+        "u000032"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "depth connections",
+        "width connections",
+        "scaling"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Later works have expanded on HC by splitting the feature dimension into independent sub‑streams and applying HC to vision and graph neural networks.",
+      "sourceUnitIds": [
+        "u000032"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "vision",
+        "graph neural networks"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The unconstrained dynamic connectivity of residual blocks in HC removes the explicit guarantee of the identity property, introducing the risk of gradient instability after repeated applications of the mixing terms.",
+      "sourceUnitIds": [
+        "u000033"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "gradient instability",
+        "mixing terms"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "This instability impacts deep networks and restricts scalability due to vanishing and exploding gradients.",
+      "sourceUnitIds": [
+        "u000033"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "vanishing gradients",
+        "exploding gradients"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Subsequent works investigate constraining this connectivity to a manifold that bounds gradient updates through the spectral norm in order to address this instability.",
+      "sourceUnitIds": [
+        "u000033"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "manifold",
+        "spectral norm"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Manifold‑Constrained Hyper‑Connections.",
+      "sourceUnitIds": [
+        "u000034"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Manifold‑Constrained Hyper‑Connections (mHC) constrain the dynamic residual matrices to a manifold to improve training stability while still allowing for dynamic connections.",
+      "sourceUnitIds": [
+        "u000035"
+      ],
+      "defines": [
+        "Manifold‑Constrained Hyper‑Connections",
+        "mHC"
+      ],
+      "requires": [],
+      "mentions": [
+        "training stability",
+        "dynamic connections"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "mHC primarily changes the definition of ℋ_l^res such that it converges to the Birkhoff polytope B_d, the closed set of doubly stochastic matrices.",
+      "sourceUnitIds": [
+        "u000035"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "ℋ_l^res",
+        "Birkhoff polytope",
+        "B_d"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "B_d denotes the closed set of doubly stochastic matrices, defined as positive matrices with the property M^T J_d = M J_d = J_d.",
+      "sourceUnitIds": [
+        "u000036"
+      ],
+      "defines": [
+        "B_d"
+      ],
+      "requires": [],
+      "mentions": [
+        "doubly stochastic matrices",
+        "M",
+        "J_d"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000036"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "J_d denotes the d×d ones matrix.",
+      "sourceUnitIds": [
+        "u000037"
+      ],
+      "defines": [
+        "J_d"
+      ],
+      "requires": [],
+      "mentions": [
+        "ones matrix"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "mHC attempts to enforce the doubly stochastic constraint after weight updates using the Sinkhorn‑Knopp (SK) algorithm.",
+      "sourceUnitIds": [
+        "u000038"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Sinkhorn‑Knopp",
+        "SK algorithm"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Implementing the SK kernel requires careful kernel‑level optimization for efficiency.",
+      "sourceUnitIds": [
+        "u000038"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "kernel‑level optimization"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Finite SK iterations introduce an approximation gap that accumulates with network depth.",
+      "sourceUnitIds": [
+        "u000038"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "approximation gap",
+        "network depth"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "mHC‑lite attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of d! permutation matrices.",
+      "sourceUnitIds": [
+        "u000039"
+      ],
+      "defines": [
+        "mHC‑lite"
+      ],
+      "requires": [],
+      "mentions": [
+        "Birkhoff–von Neumann theorem",
+        "permutation matrices"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "mHC‑lite has a computational cost of O(d C · d!).",
+      "sourceUnitIds": [
+        "u000039"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "computational cost",
+        "O(d C · d!)"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000039"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "mHC‑lite works well for small d, however, it is not tenable in the limit of scaling d > 8.",
+      "sourceUnitIds": [
+        "u000039"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "small d",
+        "d > 8"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "KromHC sacrifices expressivity and complete coverage of B_d by using tensor products to train residual connections on a much smaller set of exactly double‑stochastic matrices, with a cost of O(d² C).",
+      "sourceUnitIds": [
+        "u000039"
+      ],
+      "defines": [
+        "KromHC"
+      ],
+      "requires": [],
+      "mentions": [
+        "tensor products",
+        "double‑stochastic matrices",
+        "O(d² C)"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000039"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Cayley transforms in neural networks.",
+      "sourceUnitIds": [
+        "u000040"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "The Cayley transform has been used to parameterize orthogonal matrices in recurrent networks.",
+      "sourceUnitIds": [
+        "u000041"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Cayley transform",
+        "orthogonal matrices",
+        "recurrent networks"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Comparisons with the matrix exponential show similar quality and better stability at lower FLOP cost.",
+      "sourceUnitIds": [
+        "u000041"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "matrix exponential",
+        "FLOP cost"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Iterative Cayley‑based optimization outperforms matrix exponential approaches for Stiefel manifold problems.",
+      "sourceUnitIds": [
+        "u000041"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "Stiefel manifold"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Doubly Stochastic & Orthostochastic matrices.",
+      "sourceUnitIds": [
+        "u000042"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Multiple works have investigated the use of doubly stochastic matrices in neural network parameterization.",
+      "sourceUnitIds": [
+        "u000043"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "doubly stochastic matrices",
+        "neural network parameterization"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Gutkin introduced generalized orthostochastic matrices.",
+      "sourceUnitIds": [
+        "u000043"
+      ],
+      "defines": [
+        "generalized orthostochastic matrices"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Nechita et al. proved that the set of generalized s‑orthostochastic matrices is contained in B_d and spans all of B_d as s → ∞.",
+      "sourceUnitIds": [
+        "u000043"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "s‑orthostochastic matrices",
+        "B_d",
+        "s → ∞"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "Other works have investigated further properties of the spectral span of the Birkhoff polytope and the geometry of s‑orthostochastic matrices in the quantum setting.",
+      "sourceUnitIds": [
+        "u000043"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "spectral span",
+        "Birkhoff polytope",
+        "quantum setting"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "These theoretical foundations underlie our choice of parameterization.",
+      "sourceUnitIds": [
+        "u000043"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "theoretical foundations",
+        "parameterization"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "To our knowledge, we are the first to apply this construction in a machine learning setting and, more specifically, to learned residual stream routing in deep networks.",
+      "sourceUnitIds": [
+        "u000043"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "residual stream routing",
+        "deep networks"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "go‑mhC: Generalized Orthostochastic Manifold‑Constrained Hyper‑Connections",
+      "sourceUnitIds": [
+        "u000044"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "3.1 Hyper‑Connections",
+      "sourceUnitIds": [
+        "u000045"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "statement",
+      "text": "A Hyper‑Connection block processes a d‑stream state x_l ∈ ℝ^{d×B×L×D} with a recursion relation that includes a residual block ℱ.",
+      "sourceUnitIds": [
+        "u000046"
+      ],
+      "defines": [
+        "Hyper‑Connection block",
+        "x_l"
+      ],
+      "requires": [],
+      "mentions": [
+        "residual block",
+        "ℱ"
+      ],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": null,
+      "sourceUnitIds": [
+        "u000047"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": null,
+      "gapType": null,
+      "origin": "source"
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 0,
+      "relation": "supports",
+      "reason": "Equation demonstrates O(d^3) scaling"
+    },
+    {
+      "from": 13,
+      "to": 20,
+      "relation": "enables",
+      "reason": "HC concept underlies mHC"
+    },
+    {
+      "from": 20,
+      "to": 21,
+      "relation": "defines",
+      "reason": "mHC redefines ℋ_l^res"
+    },
+    {
+      "from": 21,
+      "to": 22,
+      "relation": "defines",
+      "reason": "ℋ_l^res converges to B_d"
+    },
+    {
+      "from": 23,
+      "to": 22,
+      "relation": "supports",
+      "reason": "Equation specifies property of B_d"
+    },
+    {
+      "from": 24,
+      "to": 22,
+      "relation": "defines",
+      "reason": "J_d defined as ones matrix"
+    },
+    {
+      "from": 13,
+      "to": 47,
+      "relation": "enables",
+      "reason": "HC definition underlies Hyper‑Connection block"
+    },
+    {
+      "from": 48,
+      "to": 47,
+      "relation": "supports",
+      "reason": "Equation specifies recursion"
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "relation": "enables",
+      "reason": "HC enables depth/width connections"
+    },
+    {
+      "from": 13,
+      "to": 15,
+      "relation": "enables",
+      "reason": "HC applied to vision and GNNs"
+    },
+    {
+      "from": 16,
+      "to": 18,
+      "relation": "contrasts",
+      "reason": "Unconstrained connectivity contrasted with manifold constraint"
+    },
+    {
+      "from": 20,
+      "to": 28,
+      "relation": "contrasts",
+      "reason": "mHC versus mHC‑lite"
+    },
+    {
+      "from": 20,
+      "to": 32,
+      "relation": "contrasts",
+      "reason": "mHC versus KromHC"
+    },
+    {
+      "from": 28,
+      "to": 30,
+      "relation": "supports",
+      "reason": "Cost expression validates claim"
+    },
+    {
+      "from": 32,
+      "to": 33,
+      "relation": "supports",
+      "reason": "Cost expression validates claim"
+    }
+  ],
+  "evidenceFrames": [
+    {
+      "claim": 0,
+      "evidence": [
+        1
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 21,
+      "evidence": [
+        22
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 47,
+      "evidence": [
+        48
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 28,
+      "evidence": [
+        30
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 32,
+      "evidence": [
+        33
+      ],
+      "warrantGap": null,
+      "limitations": []
+    }
+  ]
+}

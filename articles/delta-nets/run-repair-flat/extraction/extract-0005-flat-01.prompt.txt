@@ -1,0 +1,251 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0005-flat-01",
+  "context": [
+    "Δ-Nets",
+    "Reduction needs housekeeping and a schedule."
+  ],
+  "units": [
+    {
+      "id": "u000318",
+      "kind": "heading",
+      "text": "## Reduction needs housekeeping and a schedule."
+    },
+    {
+      "id": "u000319",
+      "kind": "prose",
+      "text": "The full algorithm is more than the interaction core. It adds canonicalization—cleanup rewrites that restore the special term-like net shape—and, for the nonlinear systems, a global leftmost-outermost schedule."
+    },
+    {
+      "id": "u000320",
+      "kind": "heading",
+      "text": "### 6.1 Canonical and proper are different states"
+    },
+    {
+      "id": "u000321",
+      "kind": "prose",
+      "text": "Translation produces a canonical net: the standard shape the reverse translation knows how to read. After zero or more core interactions you have a proper net—any intermediate shape reachable during reduction. Canonicalization is the cleanup that walks a proper net back to canonical form."
+    },
+    {
+      "id": "u000322",
+      "kind": "prose",
+      "text": "State | Meaning in the paper | Why a reader should care | |"
+    },
+    {
+      "id": "u000323",
+      "kind": "prose",
+      "text": "Canonical | Directly produced by the φ translation and in the special normal shape the back-translation expects. | It is the stable, term-like representation. | |"
+    },
+    {
+      "id": "u000324",
+      "kind": "prose",
+      "text": "Proper | Reachable from a canonical net by zero or more Δ interactions. | It is the broader space where reduction does its work. | |"
+    },
+    {
+      "id": "u000325",
+      "kind": "heading",
+      "text": "### 6.2 Erasure needs a root-reachability sweep"
+    },
+    {
+      "id": "u000326",
+      "kind": "prose",
+      "text": "In ΔA and ΔK, an eraser can leave disconnected subnets—smaller graph regions—behind. Erasure canonicalization gathers that unreachable material in one reachability sweep:"
+    },
+    {
+      "id": "u000327",
+      "kind": "prose",
+      "text": "A"
+    },
+    {
+      "id": "u000328",
+      "kind": "heading",
+      "text": "### Mark from the root"
+    },
+    {
+      "id": "u000329",
+      "kind": "prose",
+      "text": "Walk parent–child wires from the root and mark every node you reach."
+    },
+    {
+      "id": "u000330",
+      "kind": "prose",
+      "text": "B"
+    },
+    {
+      "id": "u000331",
+      "kind": "heading",
+      "text": "### Discard what was not marked"
+    }
+  ]
+}

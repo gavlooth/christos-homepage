@@ -1,0 +1,1505 @@
+{
+  "nodes": [
+    {
+      "kind": "definition",
+      "text": "A λ-term is a program made from variables, abstractions, and applications.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000398"
+      ],
+      "defines": [
+        "lambda-term"
+      ],
+      "requires": [],
+      "mentions": [
+        "variable",
+        "abstraction",
+        "application"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "In λx.t, the abstraction binds x in body t.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000398"
+      ],
+      "defines": [
+        "variable-binding"
+      ],
+      "requires": [
+        "lambda-term"
+      ],
+      "mentions": [
+        "abstraction"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "In t u, t is the function and u is its argument.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000398"
+      ],
+      "defines": [
+        "function-application"
+      ],
+      "requires": [
+        "lambda-term"
+      ],
+      "mentions": [
+        "function",
+        "argument"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "β-redex and β-reduction",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000399"
+      ],
+      "defines": [
+        "beta-redex",
+        "beta-reduction"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A β-redex is a function applied to an argument in the form (λx.t)u.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000400"
+      ],
+      "defines": [
+        "beta-redex"
+      ],
+      "requires": [
+        "lambda-term",
+        "function-application"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "β-reduction substitutes u for the bound occurrences of x in t.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000400"
+      ],
+      "defines": [
+        "beta-reduction"
+      ],
+      "requires": [
+        "beta-redex",
+        "variable-binding"
+      ],
+      "mentions": [
+        "substitution"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Normal form and normalizing",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000401"
+      ],
+      "defines": [
+        "normal-form",
+        "normalizing"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A normal form has no reducible pattern remaining.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000402"
+      ],
+      "defines": [
+        "normal-form"
+      ],
+      "requires": [
+        "reduction"
+      ],
+      "mentions": [
+        "reducible-pattern"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A term or net is normalizing if at least one reduction sequence eventually reaches normal form.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000402"
+      ],
+      "defines": [
+        "normalizing"
+      ],
+      "requires": [
+        "normal-form",
+        "reduction-sequence"
+      ],
+      "mentions": [
+        "term",
+        "net"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "A normalizing term or net does not have to reach normal form in every system or along every reduction sequence.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000402"
+      ],
+      "defines": [],
+      "requires": [
+        "normalizing"
+      ],
+      "mentions": [
+        "reduction-system",
+        "reduction-sequence"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Interaction system",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000403"
+      ],
+      "defines": [
+        "interaction-system"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "An interaction system is a graph-rewriting system consisting of agent types and interaction rules.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000404"
+      ],
+      "defines": [
+        "interaction-system"
+      ],
+      "requires": [
+        "graph-rewriting"
+      ],
+      "mentions": [
+        "agent-type",
+        "interaction-rule"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "An interaction rule applies only when two agents meet at their principal ports.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000404"
+      ],
+      "defines": [],
+      "requires": [
+        "principal-port",
+        "agent"
+      ],
+      "mentions": [
+        "interaction-rule"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Agent and port",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000405"
+      ],
+      "defines": [
+        "agent",
+        "port"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "An agent is a small node in a net.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000406"
+      ],
+      "defines": [
+        "agent"
+      ],
+      "requires": [
+        "net"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A port is a connection socket on an agent.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000406"
+      ],
+      "defines": [
+        "port"
+      ],
+      "requires": [
+        "agent"
+      ],
+      "mentions": [
+        "connection"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "Each agent has one principal port and zero or more auxiliary ports.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000406"
+      ],
+      "defines": [
+        "principal-port",
+        "auxiliary-port"
+      ],
+      "requires": [
+        "agent",
+        "port"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Active pair",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000407"
+      ],
+      "defines": [
+        "active-pair"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "An active pair consists of two agents connected through their principal ports.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000408"
+      ],
+      "defines": [
+        "active-pair"
+      ],
+      "requires": [
+        "agent",
+        "principal-port"
+      ],
+      "mentions": [
+        "connection"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "An active pair is exactly the local configuration rewritten by an interaction rule.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000408"
+      ],
+      "defines": [],
+      "requires": [
+        "active-pair",
+        "interaction-rule"
+      ],
+      "mentions": [
+        "graph-rewriting"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "One-step diamond",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000409"
+      ],
+      "defines": [
+        "one-step-diamond"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A one-step diamond occurs when two different single interactions from the same net can be joined after one additional interaction on each result.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000410"
+      ],
+      "defines": [
+        "one-step-diamond"
+      ],
+      "requires": [
+        "interaction",
+        "net"
+      ],
+      "mentions": [
+        "reduction-path"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Every edge of a one-step diamond represents exactly one interaction step.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000410"
+      ],
+      "defines": [],
+      "requires": [
+        "one-step-diamond"
+      ],
+      "mentions": [
+        "interaction-step"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Perfect confluence",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000411"
+      ],
+      "defines": [
+        "perfect-confluence"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "Perfect confluence is the paper's name for the one-step diamond property of the interaction-system core.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000412"
+      ],
+      "defines": [
+        "perfect-confluence"
+      ],
+      "requires": [
+        "one-step-diamond",
+        "interaction-system"
+      ],
+      "mentions": [
+        "interaction-system-core"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Perfect confluence means that competing local interaction steps agree immediately.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000412"
+      ],
+      "defines": [],
+      "requires": [
+        "perfect-confluence"
+      ],
+      "mentions": [
+        "local-interaction"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Church–Rosser confluence",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000413"
+      ],
+      "defines": [
+        "church-rosser-confluence"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "Church–Rosser confluence is the common-result property for reduction paths.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000414"
+      ],
+      "defines": [
+        "church-rosser-confluence"
+      ],
+      "requires": [
+        "reduction-path"
+      ],
+      "mentions": [
+        "common-result"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Church–Rosser confluence says that divergent valid reductions can be joined again, without requiring a one-step join.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000414"
+      ],
+      "defines": [],
+      "requires": [
+        "church-rosser-confluence"
+      ],
+      "mentions": [
+        "reduction"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Canonical Δ-Net",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000415"
+      ],
+      "defines": [
+        "canonical-delta-net"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A canonical Δ-Net is produced by translating a term to a net.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000416"
+      ],
+      "defines": [
+        "canonical-delta-net"
+      ],
+      "requires": [
+        "term-to-net-translation"
+      ],
+      "mentions": [
+        "lambda-term",
+        "net"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "A canonical Δ-Net uses the special representation expected by the translation back to a λ-term.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000416"
+      ],
+      "defines": [],
+      "requires": [
+        "canonical-delta-net",
+        "net-to-term-translation"
+      ],
+      "mentions": [
+        "lambda-term"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Canonicalization",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000417"
+      ],
+      "defines": [
+        "canonicalization"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "Canonicalization is a cleanup rewrite that returns a proper intermediate net to canonical, term-like form.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000418"
+      ],
+      "defines": [
+        "canonicalization"
+      ],
+      "requires": [
+        "proper-delta-net",
+        "canonical-delta-net"
+      ],
+      "mentions": [
+        "cleanup-rewrite"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Canonicalization is not a core principal-port interaction.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000418"
+      ],
+      "defines": [],
+      "requires": [
+        "canonicalization",
+        "principal-port-interaction"
+      ],
+      "mentions": [
+        "core-interaction"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Commutation",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000419"
+      ],
+      "defines": [
+        "commutation"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "Commutation is an interaction between distinct non-eraser agents.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000420"
+      ],
+      "defines": [
+        "commutation"
+      ],
+      "requires": [
+        "interaction",
+        "agent"
+      ],
+      "mentions": [
+        "eraser-agent"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "In commutation, each agent travels through the other and may be copied according to the other agent's arity.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000420"
+      ],
+      "defines": [],
+      "requires": [
+        "commutation",
+        "arity"
+      ],
+      "mentions": [
+        "copying"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Fan",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000421"
+      ],
+      "defines": [
+        "fan"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A fan is a structural agent with two auxiliary ports.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000422"
+      ],
+      "defines": [
+        "fan"
+      ],
+      "requires": [
+        "agent",
+        "auxiliary-port"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "In a rooted net, a fan can encode either an application or an abstraction.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000422"
+      ],
+      "defines": [],
+      "requires": [
+        "fan",
+        "rooted-net"
+      ],
+      "mentions": [
+        "application",
+        "abstraction"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Fan annihilation expresses β-reduction.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000422"
+      ],
+      "defines": [],
+      "requires": [
+        "fan",
+        "beta-reduction"
+      ],
+      "mentions": [
+        "fan-annihilation"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Level and delta",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000423"
+      ],
+      "defines": [
+        "level",
+        "delta"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "In a canonical λ encoding, entering an application's argument adds one level.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000424"
+      ],
+      "defines": [
+        "level"
+      ],
+      "requires": [
+        "canonical-lambda-encoding",
+        "application"
+      ],
+      "mentions": [
+        "argument"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "Entering an application's function or an abstraction body does not add a level.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000424"
+      ],
+      "defines": [],
+      "requires": [
+        "level",
+        "application",
+        "abstraction"
+      ],
+      "mentions": [
+        "function",
+        "body"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A replicator port's delta equals the bound-variable occurrence level minus the replicator level.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000424"
+      ],
+      "defines": [
+        "replicator-delta"
+      ],
+      "requires": [
+        "replicator",
+        "level",
+        "variable-binding"
+      ],
+      "mentions": [
+        "bound-variable-occurrence"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Proper Δ-Net",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000425"
+      ],
+      "defines": [
+        "proper-delta-net"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A proper Δ-Net is reachable from a canonical Δ-Net through zero or more core Δ interactions.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000426"
+      ],
+      "defines": [
+        "proper-delta-net"
+      ],
+      "requires": [
+        "canonical-delta-net",
+        "delta-interaction"
+      ],
+      "mentions": [
+        "reachability"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "A proper Δ-Net may contain noncanonical intermediate shapes.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000426"
+      ],
+      "defines": [],
+      "requires": [
+        "proper-delta-net"
+      ],
+      "mentions": [
+        "noncanonical-shape"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Replicator",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000427"
+      ],
+      "defines": [
+        "replicator"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A replicator is a variable-arity agent used for sharing.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000428"
+      ],
+      "defines": [
+        "replicator"
+      ],
+      "requires": [
+        "agent",
+        "sharing"
+      ],
+      "mentions": [
+        "variable-arity"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A replicator has a level and an integer delta for each auxiliary port.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000428"
+      ],
+      "defines": [
+        "replicator-level",
+        "replicator-delta"
+      ],
+      "requires": [
+        "replicator",
+        "level",
+        "delta",
+        "auxiliary-port"
+      ],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Sharing scope",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000429"
+      ],
+      "defines": [
+        "sharing-scope"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "definition",
+      "text": "A sharing scope is the region controlled by one duplication context.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000430"
+      ],
+      "defines": [
+        "sharing-scope"
+      ],
+      "requires": [
+        "duplication-context"
+      ],
+      "mentions": [
+        "region"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Older interaction-net approaches often marked sharing-scope boundaries with separate delimiter agents.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000430"
+      ],
+      "defines": [],
+      "requires": [
+        "sharing-scope",
+        "agent"
+      ],
+      "mentions": [
+        "interaction-net",
+        "delimiter-agent"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Leftmost-outermost",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000431"
+      ],
+      "defines": [
+        "leftmost-outermost"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "procedure",
+      "text": "Leftmost-outermost reduction first chooses a reducible pattern that is not nested inside another reducible pattern.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000432"
+      ],
+      "defines": [
+        "leftmost-outermost"
+      ],
+      "requires": [
+        "reducible-pattern",
+        "nesting"
+      ],
+      "mentions": [
+        "reduction-priority"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "procedure",
+      "text": "After choosing an outermost pattern, leftmost-outermost reduction chooses the leftmost such pattern in the term-like reading of the net.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000432"
+      ],
+      "defines": [],
+      "requires": [
+        "leftmost-outermost",
+        "term-like-reading"
+      ],
+      "mentions": [
+        "net"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "Primary source",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000433"
+      ],
+      "defines": [
+        "primary-source"
+      ],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "The primary source is Daniel Augusto Rizzi Salvadori's paper “Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction,” arXiv:2505.20314v4, dated 22 July 2026.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000434"
+      ],
+      "defines": [
+        "primary-source"
+      ],
+      "requires": [],
+      "mentions": [
+        "delta-nets",
+        "optimal-parallel-lambda-reduction",
+        "arxiv"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "The HTML version of the primary source is available on arXiv.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000435"
+      ],
+      "defines": [],
+      "requires": [
+        "primary-source"
+      ],
+      "mentions": [
+        "arxiv-html"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "The arXiv abstract and downloadable formats are available online.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000436"
+      ],
+      "defines": [],
+      "requires": [
+        "primary-source"
+      ],
+      "mentions": [
+        "arxiv-abstract"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "This edition is an independently structured teaching summary of the paper's abstract and Sections 1–5.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000437"
+      ],
+      "defines": [],
+      "requires": [
+        "primary-source"
+      ],
+      "mentions": [
+        "teaching-summary"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "The diagrams and wording in this edition are original explanatory material rather than reproductions of the author's figures.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000437"
+      ],
+      "defines": [],
+      "requires": [
+        "teaching-summary"
+      ],
+      "mentions": [
+        "diagrams",
+        "explanatory-material"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "“Δ-Nets, decoded” is a single-file companion for slower technical reading.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000438"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [
+        "delta-nets"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    },
+    {
+      "kind": "claim",
+      "text": "The source paper is arXiv:2505.20314v4.",
+      "need": "",
+      "gapType": null,
+      "sourceUnitIds": [
+        "u000439"
+      ],
+      "defines": [
+        "source-paper"
+      ],
+      "requires": [],
+      "mentions": [
+        "arxiv"
+      ],
+      "fills": [],
+      "origin": "source",
+      "chunkId": "c0006"
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 0,
+      "relation": "elaborates",
+      "reason": "Variable binding is part of the λ-term definition."
+    },
+    {
+      "from": 2,
+      "to": 0,
+      "relation": "elaborates",
+      "reason": "Function application is part of the λ-term definition."
+    },
+    {
+      "from": 0,
+      "to": 4,
+      "relation": "enables",
+      "reason": "β-redexes are λ-term applications."
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "relation": "enables",
+      "reason": "β-reduction operates on β-redexes."
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "relation": "enables",
+      "reason": "Normalizing is defined using normal form."
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "relation": "elaborates",
+      "reason": "The prose defines the interaction system named by the heading."
+    },
+    {
+      "from": 12,
+      "to": 18,
+      "relation": "enables",
+      "reason": "Principal ports are needed to identify active pairs."
+    },
+    {
+      "from": 15,
+      "to": 18,
+      "relation": "enables",
+      "reason": "Agents and ports constitute an active pair."
+    },
+    {
+      "from": 18,
+      "to": 19,
+      "relation": "enables",
+      "reason": "An active pair is the configuration rewritten by an interaction rule."
+    },
+    {
+      "from": 21,
+      "to": 22,
+      "relation": "elaborates",
+      "reason": "The second node states the joining behavior of the diamond."
+    },
+    {
+      "from": 22,
+      "to": 24,
+      "relation": "enables",
+      "reason": "Perfect confluence is defined through the one-step diamond property."
+    },
+    {
+      "from": 26,
+      "to": 27,
+      "relation": "elaborates",
+      "reason": "The claim explains the common-result property."
+    },
+    {
+      "from": 29,
+      "to": 30,
+      "relation": "elaborates",
+      "reason": "The prose defines canonical Δ-Nets."
+    },
+    {
+      "from": 32,
+      "to": 33,
+      "relation": "elaborates",
+      "reason": "The prose defines canonicalization."
+    },
+    {
+      "from": 35,
+      "to": 36,
+      "relation": "elaborates",
+      "reason": "The claim describes commutation behavior."
+    },
+    {
+      "from": 38,
+      "to": 39,
+      "relation": "elaborates",
+      "reason": "The claim describes how fans encode terms."
+    },
+    {
+      "from": 38,
+      "to": 40,
+      "relation": "enables",
+      "reason": "Fan structure is involved in fan annihilation."
+    },
+    {
+      "from": 42,
+      "to": 43,
+      "relation": "elaborates",
+      "reason": "The level rules distinguish application paths."
+    },
+    {
+      "from": 45,
+      "to": 46,
+      "relation": "elaborates",
+      "reason": "The delta formula depends on levels and variable occurrences."
+    },
+    {
+      "from": 48,
+      "to": 49,
+      "relation": "elaborates",
+      "reason": "The qualification describes possible proper-net shapes."
+    },
+    {
+      "from": 51,
+      "to": 52,
+      "relation": "elaborates",
+      "reason": "The second replicator statement gives its stored metadata."
+    },
+    {
+      "from": 54,
+      "to": 55,
+      "relation": "elaborates",
+      "reason": "The historical note describes how sharing boundaries were marked."
+    },
+    {
+      "from": 57,
+      "to": 58,
+      "relation": "precedes",
+      "reason": "The outermost selection occurs before the leftmost tie-breaker."
+    },
+    {
+      "from": 61,
+      "to": 62,
+      "relation": "elaborates",
+      "reason": "The qualification explains the nature of the edition."
+    },
+    {
+      "from": 62,
+      "to": 63,
+      "relation": "elaborates",
+      "reason": "The title describes the edition's purpose."
+    }
+  ],
+  "evidenceFrames": [
+    {
+      "claim": 0,
+      "evidence": [
+        0
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 11,
+      "evidence": [
+        11
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 24,
+      "evidence": [
+        24
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 27,
+      "evidence": [
+        27
+      ],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 61,
+      "evidence": [
+        61
+      ],
+      "warrantGap": null,
+      "limitations": [
+        62
+      ]
+    }
+  ]
+}

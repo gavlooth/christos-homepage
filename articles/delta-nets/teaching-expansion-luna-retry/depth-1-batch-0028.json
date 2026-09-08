@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 28,
+  "items": [
+    {
+      "recordId": "teach-generated-a30f779c977b703e",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "To use something means to apply it for a particular purpose or task.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-d39d6e6c1ee43e23",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A parameter port is a named input or connection point through which a component receives a parameter value from another part of a system.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

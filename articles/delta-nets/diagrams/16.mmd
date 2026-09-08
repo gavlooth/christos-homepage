@@ -1,0 +1,22 @@
+flowchart TB
+                  d0["d₀"]
+                  d1["d₁"]
+                  d2["d₂"]
+                  H0@{ shape: trapezoid, label: "H · ℓ = 7" }
+                  H1@{ shape: trapezoid, label: "H · ℓ = 10" }
+                  H2@{ shape: trapezoid, label: "H · ℓ = 6" }
+                  Rc1@{ shape: trapezoid, label: "R¹ · ℓ = 2" }
+                  Rc0@{ shape: trapezoid, label: "R⁰ · ℓ = 2" }
+                  e1["e₁"]
+                  e0["e₀"]
+                  d0 ---|principal| H0
+                  d1 ---|principal| H1
+                  d2 ---|principal| H2
+                  H0 --- Rc1
+                  H0 --- Rc0
+                  H1 --- Rc1
+                  H1 --- Rc0
+                  H2 --- Rc1
+                  H2 --- Rc0
+                  Rc1 ---|principal| e1
+                  Rc0 ---|principal| e0

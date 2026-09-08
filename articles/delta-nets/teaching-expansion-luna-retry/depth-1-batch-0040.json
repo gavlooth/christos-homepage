@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 40,
+  "items": [
+    {
+      "recordId": "teach-generated-af60024515740198",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An unpaired port is a connection point on a node or component that does not currently have a matching port connected to it.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-988a1eebc1c47c87",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A one-port unpaired replicator is a replicator node with exactly one port, where that port has no matching connection to another node.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

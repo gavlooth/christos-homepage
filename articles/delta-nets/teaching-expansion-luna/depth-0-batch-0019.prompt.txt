@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001100",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The prescribed nonlinear-system schedule selects an outermost reducible pattern and then the leftmost candidate.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001101",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A reducible pair may run early when it will eventually reach leftmost-outermost position unchanged.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001102",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The full algorithm translates a term with φ, reduces through proper nets, normalizes and canonicalizes with Ω, then reads back with φ⁻¹.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001103",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Leftmost-outermost reduction avoids evaluating subnets that will later be erased.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001104",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Replicators represent shared use in the graph, avoiding repeated evaluation solely because an expression has multiple consumers.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001105",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Perfect confluence permits disjoint active pairs to choose and apply local interaction rules independently.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001106",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "In ΔL, every proper net is canonical and n beta-reductions correspond to n interactions in any order.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001107",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "ΔA requires erasure canonicalization; ΔI requires replicator merging; ΔK requires erasure, merge, and decay canonicalizations.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

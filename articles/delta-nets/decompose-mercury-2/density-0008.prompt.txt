@@ -1,0 +1,253 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000456",
+    "kind": "claim",
+    "text": "Active pair"
+  },
+  {
+    "id": "n0000457",
+    "kind": "definition",
+    "text": "An active pair consists of two agents connected through their principal ports."
+  },
+  {
+    "id": "n0000458",
+    "kind": "definition",
+    "text": "An active pair is exactly the local configuration rewritten by an interaction rule."
+  },
+  {
+    "id": "n0000459",
+    "kind": "claim",
+    "text": "One-step diamond"
+  },
+  {
+    "id": "n0000460",
+    "kind": "definition",
+    "text": "A one-step diamond occurs when two different single interactions from the same net can be joined after one additional interaction on each result."
+  },
+  {
+    "id": "n0000461",
+    "kind": "claim",
+    "text": "Every edge of a one-step diamond represents exactly one interaction step."
+  },
+  {
+    "id": "n0000462",
+    "kind": "claim",
+    "text": "Perfect confluence"
+  },
+  {
+    "id": "n0000463",
+    "kind": "definition",
+    "text": "Perfect confluence is the paper's name for the one-step diamond property of the interaction-system core."
+  },
+  {
+    "id": "n0000464",
+    "kind": "claim",
+    "text": "Perfect confluence means that competing local interaction steps agree immediately."
+  },
+  {
+    "id": "n0000465",
+    "kind": "claim",
+    "text": "Church–Rosser confluence"
+  },
+  {
+    "id": "n0000466",
+    "kind": "definition",
+    "text": "Church–Rosser confluence is the common-result property for reduction paths."
+  },
+  {
+    "id": "n0000467",
+    "kind": "claim",
+    "text": "Church–Rosser confluence says that divergent valid reductions can be joined again, without requiring a one-step join."
+  },
+  {
+    "id": "n0000468",
+    "kind": "claim",
+    "text": "Canonical Δ-Net"
+  },
+  {
+    "id": "n0000469",
+    "kind": "definition",
+    "text": "A canonical Δ-Net is produced by translating a term to a net."
+  },
+  {
+    "id": "n0000470",
+    "kind": "claim",
+    "text": "A canonical Δ-Net uses the special representation expected by the translation back to a λ-term."
+  },
+  {
+    "id": "n0000471",
+    "kind": "claim",
+    "text": "Canonicalization"
+  },
+  {
+    "id": "n0000472",
+    "kind": "definition",
+    "text": "Canonicalization is a cleanup rewrite that returns a proper intermediate net to canonical, term-like form."
+  },
+  {
+    "id": "n0000473",
+    "kind": "claim",
+    "text": "Canonicalization is not a core principal-port interaction."
+  },
+  {
+    "id": "n0000474",
+    "kind": "claim",
+    "text": "Commutation"
+  },
+  {
+    "id": "n0000475",
+    "kind": "definition",
+    "text": "Commutation is an interaction between distinct non-eraser agents."
+  },
+  {
+    "id": "n0000476",
+    "kind": "claim",
+    "text": "In commutation, each agent travels through the other and may be copied according to the other agent's arity."
+  },
+  {
+    "id": "n0000477",
+    "kind": "claim",
+    "text": "Fan"
+  },
+  {
+    "id": "n0000478",
+    "kind": "definition",
+    "text": "A fan is a structural agent with two auxiliary ports."
+  },
+  {
+    "id": "n0000479",
+    "kind": "claim",
+    "text": "In a rooted net, a fan can encode either an application or an abstraction."
+  },
+  {
+    "id": "n0000480",
+    "kind": "claim",
+    "text": "Fan annihilation expresses β-reduction."
+  },
+  {
+    "id": "n0000481",
+    "kind": "claim",
+    "text": "Level and delta"
+  },
+  {
+    "id": "n0000482",
+    "kind": "definition",
+    "text": "In a canonical λ encoding, entering an application's argument adds one level."
+  },
+  {
+    "id": "n0000483",
+    "kind": "definition",
+    "text": "Entering an application's function or an abstraction body does not add a level."
+  },
+  {
+    "id": "n0000484",
+    "kind": "definition",
+    "text": "A replicator port's delta equals the bound-variable occurrence level minus the replicator level."
+  },
+  {
+    "id": "n0000485",
+    "kind": "claim",
+    "text": "Proper Δ-Net"
+  },
+  {
+    "id": "n0000486",
+    "kind": "definition",
+    "text": "A proper Δ-Net is reachable from a canonical Δ-Net through zero or more core Δ interactions."
+  },
+  {
+    "id": "n0000487",
+    "kind": "claim",
+    "text": "A proper Δ-Net may contain noncanonical intermediate shapes."
+  },
+  {
+    "id": "n0000488",
+    "kind": "claim",
+    "text": "Replicator"
+  },
+  {
+    "id": "n0000489",
+    "kind": "definition",
+    "text": "A replicator is a variable-arity agent used for sharing."
+  },
+  {
+    "id": "n0000490",
+    "kind": "definition",
+    "text": "A replicator has a level and an integer delta for each auxiliary port."
+  },
+  {
+    "id": "n0000491",
+    "kind": "claim",
+    "text": "Sharing scope"
+  },
+  {
+    "id": "n0000492",
+    "kind": "definition",
+    "text": "A sharing scope is the region controlled by one duplication context."
+  },
+  {
+    "id": "n0000493",
+    "kind": "claim",
+    "text": "Older interaction-net approaches often marked sharing-scope boundaries with separate delimiter agents."
+  },
+  {
+    "id": "n0000494",
+    "kind": "claim",
+    "text": "Leftmost-outermost"
+  },
+  {
+    "id": "n0000495",
+    "kind": "procedure",
+    "text": "Leftmost-outermost reduction first chooses a reducible pattern that is not nested inside another reducible pattern."
+  },
+  {
+    "id": "n0000496",
+    "kind": "procedure",
+    "text": "After choosing an outermost pattern, leftmost-outermost reduction chooses the leftmost such pattern in the term-like reading of the net."
+  },
+  {
+    "id": "n0000497",
+    "kind": "claim",
+    "text": "Primary source"
+  },
+  {
+    "id": "n0000498",
+    "kind": "claim",
+    "text": "The primary source is Daniel Augusto Rizzi Salvadori's paper “Δ-Nets: Interaction-Based System for Optimal Parallel λ-Reduction,” arXiv:2505.20314v4, dated 22 July 2026."
+  },
+  {
+    "id": "n0000499",
+    "kind": "claim",
+    "text": "The HTML version of the primary source is available on arXiv."
+  },
+  {
+    "id": "n0000500",
+    "kind": "claim",
+    "text": "The arXiv abstract and downloadable formats are available online."
+  },
+  {
+    "id": "n0000501",
+    "kind": "claim",
+    "text": "This edition is an independently structured teaching summary of the paper's abstract and Sections 1–5."
+  },
+  {
+    "id": "n0000502",
+    "kind": "claim",
+    "text": "The diagrams and wording in this edition are original explanatory material rather than reproductions of the author's figures."
+  },
+  {
+    "id": "n0000503",
+    "kind": "claim",
+    "text": "“Δ-Nets, decoded” is a single-file companion for slower technical reading."
+  },
+  {
+    "id": "n0000504",
+    "kind": "claim",
+    "text": "The source paper is arXiv:2505.20314v4."
+  }
+]

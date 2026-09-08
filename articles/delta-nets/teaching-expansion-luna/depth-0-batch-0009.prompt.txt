@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0000799",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Core interactions may move the net into the broader space of proper nets.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000800",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The subsystem’s interaction order and canonicalizations are collected by Ω.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000801",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The net is read back by φ−1 only after it is normal and canonical.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000805",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "If a λL term normalizes in n β-reductions, its ΔL encoding normalizes in n interactions regardless of order.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000806",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000807",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The nonlinear systems require canonicalization and a global schedule for the whole-algorithm claim.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000808",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The paper claims Church–Rosser confluence and optimality for those systems.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000809",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Church–Rosser means divergent paths can be continued to a common result.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

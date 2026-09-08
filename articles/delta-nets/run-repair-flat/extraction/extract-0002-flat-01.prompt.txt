@@ -1,0 +1,247 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0002-flat-01",
+  "context": [
+    "Δ-Nets",
+    "Stop treating a program as a tree.",
+    "Apply its local rule"
+  ],
+  "units": [
+    {
+      "id": "u000097",
+      "kind": "prose",
+      "text": "The pair either disappears or passes through the other, reconnecting only nearby wires. That single application is one interaction step."
+    },
+    {
+      "id": "u000098",
+      "kind": "prose",
+      "text": "03"
+    },
+    {
+      "id": "u000099",
+      "kind": "heading",
+      "text": "### Do independent work together"
+    },
+    {
+      "id": "u000100",
+      "kind": "prose",
+      "text": "Each agent has one principal port, so two distinct active pairs never share an agent. They can fire at the same time and pick their local rules independently."
+    },
+    {
+      "id": "u000101",
+      "kind": "heading",
+      "text": "### 2.3 “Perfect confluence” is the parallelism enabler"
+    },
+    {
+      "id": "u000102",
+      "kind": "prose",
+      "text": "Confluence asks whether different valid reduction choices can disagree. The one-step diamond property is a strong “no”: if a net N has two possible single steps, either choice leads to a net that meets the other after exactly one more interaction."
+    },
+    {
+      "id": "u000103",
+      "kind": "prose",
+      "text": "The one-step diamond"
+    },
+    {
+      "id": "u000104",
+      "kind": "prose",
+      "text": "flowchart TB\nN((N))\nN1((N₁))\nN2((N₂))\nM((M))\nN -->|one interaction| N1\nN -->|one interaction| N2\nN1 -->|one interaction| M\nN2 -->|one interaction| M"
+    },
+    {
+      "id": "u000105",
+      "kind": "prose",
+      "text": "How to read the diamond. Starting at N, choose either available step. The paths meet at M. Every arrow shows exactly one local interaction."
+    },
+    {
+      "id": "u000106",
+      "kind": "prose",
+      "text": "The paper calls this perfect confluence. Each active pair owns the only principal port of each of its two agents, so distinct active pairs use distinct agents. Their rewrites commute: left-then-right and right-then-left leave the same nearby wiring."
+    },
+    {
+      "id": "u000107",
+      "kind": "prose",
+      "text": "◇"
+    },
+    {
+      "id": "u000108",
+      "kind": "heading",
+      "text": "### Agreement and termination are separate questions"
+    },
+    {
+      "id": "u000109",
+      "kind": "prose",
+      "text": "The diamond says competing local steps agree. Termination is separate: some nets can reduce forever. The paper’s claim is narrower: when a core interaction order normalizes, every normalizing order reaches the same result in the same number of interactions."
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "depth": 0,
+  "batch": 5,
+  "items": [
+    {
+      "recordId": "teach-n0000730",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A higher-level replica is a copy of a net component positioned at a higher level in the hierarchy.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Each higher-level replica adds the exit-port delta to its current level.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000735",
+      "units": [
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A calculus is a formal system whose terms can be translated into Δ-Nets.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The translation is bijective: each term maps to one canonical Δ-Net, and each canonical Δ-Net maps back to one term.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000738",
+      "units": [
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Translation converts a term into a net representation.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Translation builds a larger net inductively by translating the term's subterms and combining those translated subnets.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000742",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A free variable is a variable occurrence that is not bound by an abstraction within the term being considered.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Free variables become named interface nodes during translation.",
+          "requires": [
+            "free variable"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The name on the interface node identifies which free variable the translated net exposes.",
+          "requires": [
+            "free variable",
+            "interface node"
+          ],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000743",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "An interface is a set of connection points through which a component connects to surrounding structure.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The fragment interface allows a translated subterm to plug into its parent.",
+          "requires": [
+            "interface"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The parent translation uses the fragment's exposed interface to connect that translated subterm into the larger net.",
+          "requires": [
+            "fragment interface"
+          ],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000744",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A canonical net is the standard net representation associated with a term.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "A free variable remains a named node at the canonical net interface.",
+          "requires": [
+            "free variable",
+            "canonical net interface"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "Thus, the canonical net preserves the free variable's identity at its boundary instead of hiding it as an unnamed internal node.",
+          "requires": [
+            "free variable",
+            "canonical net interface"
+          ],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000746",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A bound use is an occurrence of a variable governed by an owning abstraction.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "A single bound use connects directly to its owning abstraction.",
+          "requires": [
+            "bound use",
+            "abstraction"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The direct connection is the representation used when the abstraction has exactly one bound use.",
+          "requires": [
+            "bound use",
+            "abstraction"
+          ],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000747",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A replicator is a net node that distributes one connection to multiple uses.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Several bound uses connect through a replicator.",
+          "requires": [
+            "bound use",
+            "replicator"
+          ],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "The replicator represents the shared connection from the owning abstraction to multiple bound uses.",
+          "requires": [
+            "bound use",
+            "replicator",
+            "abstraction"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

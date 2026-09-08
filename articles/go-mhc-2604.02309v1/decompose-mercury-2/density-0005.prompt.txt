@@ -1,0 +1,168 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000232",
+    "kind": "claim",
+    "text": "KromHC relies on factorization of d; best‑case parameter count is analyzed when d is a power of 2."
+  },
+  {
+    "id": "n0000233",
+    "kind": "claim",
+    "text": "Table 1 provides total parameter counts for each method."
+  },
+  {
+    "id": "n0000234",
+    "kind": "claim",
+    "text": "Parameter count for mHC is (dC+1)d² + 2d²C + 2d + 3."
+  },
+  {
+    "id": "n0000235",
+    "kind": "claim",
+    "text": "Parameter count for go‑mHC (ss) is (dC+1)·ds(ds‑1)/2 + 2d²C + 2d + 3."
+  },
+  {
+    "id": "n0000236",
+    "kind": "claim",
+    "text": "Parameter count for mHC‑lite is (dC+1)d! + 2d²C + 2d + 3."
+  },
+  {
+    "id": "n0000237",
+    "kind": "claim",
+    "text": "Parameter count for KromHC is (dC+1) Σ_{k=1}^{K} (i_k)! + 2d²C + 2d + 3."
+  },
+  {
+    "id": "n0000238",
+    "kind": "claim",
+    "text": "KromHC and go‑mHC are complementary methods that can be used simultaneously."
+  },
+  {
+    "id": "n0000239",
+    "kind": "claim",
+    "text": "Using both methods enables learning tensor products of generalized orthostochastic matrices."
+  },
+  {
+    "id": "n0000240",
+    "kind": "claim",
+    "text": "KromHC can regain expressivity with larger product sizes at quadratic cost instead of factorial."
+  },
+  {
+    "id": "n0000241",
+    "kind": "claim",
+    "text": "Quadratic cost is O((dC+1)·∑_{k=1}^{K} ½ s i_k (s i_k‑1))."
+  },
+  {
+    "id": "n0000242",
+    "kind": "claim",
+    "text": "Expressivity scales as O(s² i_k²·log_{i_k}d) instead of O(i_k!·log_{i_k}d)."
+  },
+  {
+    "id": "n0000243",
+    "kind": "claim",
+    "text": "4.3 FLOP Complexity"
+  },
+  {
+    "id": "n0000244",
+    "kind": "claim",
+    "text": "In unconstrained Hyper-Connections, the FLOP overhead is approximately 0.15% increase during a forward pass in a 7B parameter model."
+  },
+  {
+    "id": "n0000245",
+    "kind": "claim",
+    "text": "Projecting onto a manifold incurs additional FLOP complexity due to the manifold M."
+  },
+  {
+    "id": "n0000246",
+    "kind": "claim",
+    "text": "In manifold-constrained Hyper-Connections (mHC), the FLOP overhead is about 8% increase for a 27B model, even after custom kernels and infrastructure improvements."
+  },
+  {
+    "id": "n0000247",
+    "kind": "claim",
+    "text": "KromHC and mHC-lite show significant speed‑ups because they remove iterative updates."
+  },
+  {
+    "id": "n0000248",
+    "kind": "claim",
+    "text": "For d = 16, go‑mHC is 22 orders of magnitude slower than KromHC."
+  },
+  {
+    "id": "n0000249",
+    "kind": "claim",
+    "text": "For d = 16, go‑mHC is 16 orders of magnitude slower than mHC‑lite."
+  },
+  {
+    "id": "n0000250",
+    "kind": "claim",
+    "text": "go‑mHC has roughly the same order of magnitude in FLOP complexity as mHC with Sinkhorn‑Knopp iterations because O(d) ≈ O(S)."
+  },
+  {
+    "id": "n0000251",
+    "kind": "claim",
+    "text": "Model performance improvements generally outweigh computational cost, but scaling residual streams eventually hits a practical limit; go‑mHC aims to provide a middle‑ground balance between FLOP cost and expressivity."
+  },
+  {
+    "id": "n0000252",
+    "kind": "claim",
+    "text": "go‑mHC offers a practical middle‑ground FLOP complexity for scaling residual streams, avoiding the super‑exponential cost of mHC‑lite and the iterative overhead of mHC SK iterations; nominal constants are S = 20, i_k = 2, and s ∈ {1,2}. See Appendix B.6 for full estimates."
+  },
+  {
+    "id": "n0000253",
+    "kind": "claim",
+    "text": "mHC FLOP complexity per layer is O(C·S·d²)."
+  },
+  {
+    "id": "n0000254",
+    "kind": "claim",
+    "text": "go‑mHC (ss) FLOP complexity per layer is O(C·s³·d³)."
+  },
+  {
+    "id": "n0000255",
+    "kind": "claim",
+    "text": "mHC‑lite FLOP complexity per layer is O(C·d²·d!)."
+  },
+  {
+    "id": "n0000256",
+    "kind": "claim",
+    "text": "KromHC FLOP complexity per layer is O(C·log_{i_k}(d)·i_k²·(i_k!)+C·d²)."
+  },
+  {
+    "id": "n0000257",
+    "kind": "definition",
+    "text": "Section 5 Convergence."
+  },
+  {
+    "id": "n0000258",
+    "kind": "claim",
+    "text": "Convergence of go‑mHC is governed by the geometry of the loss landscape introduced by manifold M and gradient stability; go‑mHC is expected to have learnable gradients, be convergent, and fully connected (able to reach any target matrix). See Appendix B.7 for proofs."
+  },
+  {
+    "id": "n0000259",
+    "kind": "claim",
+    "text": "Not all matrix parameterizations are learnable and fully connected; mHC‑lite may suffer from vanishing gradients, making it difficult to relearn an n‑stream transform after convergence. See Appendix B.10."
+  },
+  {
+    "id": "n0000260",
+    "kind": "definition",
+    "text": "Section 5.1 Synthetic Stream Mixing Performance."
+  },
+  {
+    "id": "n0000261",
+    "kind": "claim",
+    "text": "A synthetic toy‑model experiment generates ground‑truth doubly stochastic matrices T_i and dense activations X_j in the residual stream, then computes noisy targets Y_{i,j}=T_i X_j + ξ to evaluate reconstruction capability."
+  },
+  {
+    "id": "n0000265",
+    "kind": "source",
+    "text": "[Artifact storage: ~/.omp/agent/sessions/-code-refine/2026-08-27T06-37-15-375Z_01a041ef-e2ef-7000-add7-e3bcd8126883/75.read.log (496.0KB). Use artifact://75:N-M to page, artifact://75:raw:N-M for verbatim chunks, and the artifact file path for search/copy workflows.]"
+  },
+  {
+    "id": "n0000266",
+    "kind": "source",
+    "text": "[Showing lines 1-271 of 1161 (149.7KB limit). Use :272 to continue]"
+  }
+]

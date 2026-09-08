@@ -1,0 +1,242 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0004-flat-04",
+  "context": [
+    "Δ-Nets",
+    "Compile a λ-term into one rooted net.",
+    "“Context” here is not a runtime closure"
+  ],
+  "units": [
+    {
+      "id": "u000285",
+      "kind": "prose",
+      "text": "That is where Chapter 4’s numbers came from: a replicator at level 2 wired to an occurrence at level 5 stores delta +3. During reduction, that +3 is the local adjustment whenever another replicator exits through the port. Section [5.8](#deep-deltas) works the full calculation for four occurrences of one bound variable."
+    },
+    {
+      "id": "u000286",
+      "kind": "heading",
+      "text": "### 5.6 Follow a β-redex from term, to net, to term"
+    },
+    {
+      "id": "u000287",
+      "kind": "prose",
+      "text": "The rules feel less abstract when one small program stays on screen the whole way. Start with the closed linear term (λx.x)(λy.y). Each bound variable occurs once, so this is a ΔL example: fans only—no eraser, no replicator."
+    },
+    {
+      "id": "u000288",
+      "kind": "prose",
+      "text": "λ-calculus view"
+    },
+    {
+      "id": "u000289",
+      "kind": "prose",
+      "text": "(λx.x)(λy.y) →β λy.y"
+    },
+    {
+      "id": "u000290",
+      "kind": "prose",
+      "text": "Canonical ΔL net — orange link is the active pair"
+    },
+    {
+      "id": "u000291",
+      "kind": "prose",
+      "text": "flowchart TB\nrootI((root))\nresI@{ shape: rect, label: \"result\" }\nappI@{ shape: triangle, label: \"app\" }\nargI@{ shape: rect, label: \"argument\" }\nlamx@{ shape: triangle, label: \"λx\" }\nlamy@{ shape: triangle, label: \"λy\" }\nrootI --- resI\nresI --- appI\nappI -->|\"principal ↔ principal\"| lamx\nappI --- argI\nargI --- lamy"
+    },
+    {
+      "id": "u000292",
+      "kind": "prose",
+      "text": "After one fan annihilation"
+    },
+    {
+      "id": "u000293",
+      "kind": "prose",
+      "text": "flowchart TB\nrootR((root))\nlamy2@{ shape: triangle, label: \"λy\" }\nrootR --> lamy2"
+    },
+    {
+      "id": "u000294",
+      "kind": "prose",
+      "text": "How to read the wiring. The downward @-fan’s first auxiliary port is the application result (the root reaches it); its principal port leads to the function; its second auxiliary port leads to the argument. The upward λ-fan’s first auxiliary port is its body and its second auxiliary port is its bound variable. Since the body and variable ports of λx.x are already joined, annihilating the two principal ports connects the root directly to λy.y."
+    },
+    {
+      "id": "u000295",
+      "kind": "prose",
+      "text": "ordinary wire\nactive principal-port connection\nwire exposed after annihilation"
+    },
+    {
+      "id": "u000296",
+      "kind": "heading",
+      "text": "### 5.7 The δ in λx.x x is where Δ-Net levels enter"
+    }
+  ]
+}

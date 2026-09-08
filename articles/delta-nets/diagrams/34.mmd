@@ -1,0 +1,22 @@
+flowchart TB
+                    root7((root))
+                    lam7@{ shape: triangle, label: "λ" }
+                    var7@{ shape: rect, label: "2nd aux · variable" }
+                    body7@{ shape: rect, label: "1st aux · body" }
+                    R7@{ shape: trapezoid, label: "R · ℓ = 1" }
+                    app7@{ shape: triangle, label: "app" }
+                    res7@{ shape: rect, label: "result" }
+                    fun7@{ shape: rect, label: "function x₀" }
+                    arg7@{ shape: rect, label: "argument x₁" }
+                    root7 -->|parent| lam7
+                    lam7 --- var7
+                    lam7 --- body7
+                    body7 ~~~ var7
+                    body7 --- res7
+                    res7 --- app7
+                    var7 --- R7
+                    R7 --- fun7
+                    R7 --- arg7
+                    fun7 ---|function| app7
+                    arg7 --- app7
+                    class app7 orient-left

@@ -1,0 +1,658 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001",
+  "context": [],
+  "units": [
+    {
+      "id": "u000001",
+      "kind": "prose",
+      "text": "[Skip to the guide](#guide)"
+    },
+    {
+      "id": "u000002",
+      "kind": "prose",
+      "text": "[Christos Chatzifountas](/)"
+    },
+    {
+      "id": "u000003",
+      "kind": "prose",
+      "text": "[About](/#about)\n[Work](/#work)\n[Notebook](/notes/)\n[Contact](/#contact)"
+    },
+    {
+      "id": "u000004",
+      "kind": "prose",
+      "text": "Reader-first technical explainer"
+    },
+    {
+      "id": "u000005",
+      "kind": "heading",
+      "text": "# Δ-Nets"
+    },
+    {
+      "id": "u000006",
+      "kind": "prose",
+      "text": "A slower walk through an interaction-based proposal for optimal parallel λ-reduction—diagrams first, notation second."
+    },
+    {
+      "id": "u000007",
+      "kind": "prose",
+      "text": "Based on Daniel Augusto Rizzi Salvadori’s paper\narXiv:2505.20314v4\n[Read the formal source ↗](https://arxiv.org/html/2505.20314v4)"
+    },
+    {
+      "id": "u000008",
+      "kind": "prose",
+      "text": "Reading size"
+    },
+    {
+      "id": "u000009",
+      "kind": "prose",
+      "text": "A\nA+\nA++"
+    },
+    {
+      "id": "u000010",
+      "kind": "prose",
+      "text": "Appearance"
+    },
+    {
+      "id": "u000011",
+      "kind": "prose",
+      "text": "☾\nDark mode"
+    },
+    {
+      "id": "u000012",
+      "kind": "prose",
+      "text": "In this guide"
+    },
+    {
+      "id": "u000013",
+      "kind": "prose",
+      "text": "- [00 How to read this](#orientation)"
+    },
+    {
+      "id": "u000014",
+      "kind": "prose",
+      "text": "- [01 The problem to solve](#problem)"
+    },
+    {
+      "id": "u000015",
+      "kind": "prose",
+      "text": "- [02 From terms to interactions](#shift)"
+    },
+    {
+      "id": "u000016",
+      "kind": "prose",
+      "text": "- [03 The three-agent core](#agents)"
+    },
+    {
+      "id": "u000017",
+      "kind": "prose",
+      "text": "- [04 When agents meet](#meetings)"
+    },
+    {
+      "id": "u000018",
+      "kind": "prose",
+      "text": "- [05 Encoding a λ-term](#compile)"
+    },
+    {
+      "id": "u000019",
+      "kind": "prose",
+      "text": "- [05a Trace a λ-term](#lambda-trace)"
+    },
+    {
+      "id": "u000020",
+      "kind": "prose",
+      "text": "- [06 Reduction discipline](#discipline)"
+    },
+    {
+      "id": "u000021",
+      "kind": "prose",
+      "text": "- [07 What the proposal claims](#guarantees)"
+    },
+    {
+      "id": "u000022",
+      "kind": "prose",
+      "text": "- [08 Glossary & source](#glossary)"
+    },
+    {
+      "id": "u000023",
+      "kind": "prose",
+      "text": "Scope. This guide rearranges the paper’s argument for learning and uses original diagrams. The paper remains the authority for definitions and proofs."
+    },
+    {
+      "id": "u000024",
+      "kind": "heading",
+      "text": "## Read this before the notation"
+    },
+    {
+      "id": "u000025",
+      "kind": "prose",
+      "text": "Δ-Nets is a proposed graph-rewriting model. Instead of walking a syntax tree, you turn a program into a graph of tiny nodes and wires, then repeatedly replace small matching pieces of that graph. The aim is optimal parallel reduction: do not spend effort on work that will later be thrown away, and do each necessary reduction once even when an expression is used in several places."
+    },
+    {
+      "id": "u000026",
+      "kind": "heading",
+      "text": "### The core idea"
+    },
+    {
+      "id": "u000027",
+      "kind": "prose",
+      "text": "Build the program as a net of very small agents. Let local pairs interact on their own. Put sharing in the graph itself, not in a side table of copies."
+    },
+    {
+      "id": "u000028",
+      "kind": "heading",
+      "text": "### The important caveat"
+    },
+    {
+      "id": "u000029",
+      "kind": "prose",
+      "text": "“Optimal” and the confluence guarantees here are the paper’s claims, argued in the linked source. This guide teaches the design. The definitions and proofs stay with the paper."
+    },
+    {
+      "id": "u000030",
+      "kind": "heading",
+      "text": "### Six ideas you need before Chapter 1"
+    },
+    {
+      "id": "u000031",
+      "kind": "heading",
+      "text": "#### λ-term"
+    },
+    {
+      "id": "u000032",
+      "kind": "prose",
+      "text": "A tiny functional program. λx.t is a function with parameter x and body t. t u means “apply t to u.”"
+    },
+    {
+      "id": "u000033",
+      "kind": "heading",
+      "text": "#### Bound vs. free"
+    },
+    {
+      "id": "u000034",
+      "kind": "prose",
+      "text": "An occurrence of x is bound when a surrounding λx owns it. It is free when no surrounding abstraction does—like a name that still comes from outside the term."
+    },
+    {
+      "id": "u000035",
+      "kind": "heading",
+      "text": "#### Levels & Δ"
+    },
+    {
+      "id": "u000036",
+      "kind": "prose",
+      "text": "Levels track nested abstractions. Each level shift adds a cost (a \"delta\") when a variable travels through a lambda. This is how we keep track of scopes without global lookups."
+    },
+    {
+      "id": "u000037",
+      "kind": "prose",
+      "text": "01 Motivation"
+    },
+    {
+      "id": "u000038",
+      "kind": "heading",
+      "text": "## The problem is wasted work."
+    },
+    {
+      "id": "u000039",
+      "kind": "prose",
+      "text": "Ordinary λ-calculus is wonderfully compact. The familiar story—“replace a variable with an argument”—hides a cost question: what should happen when the variable is unused, or when it appears many times?"
+    },
+    {
+      "id": "u000040",
+      "kind": "prose",
+      "text": "03 Mechanics"
+    },
+    {
+      "id": "u000041",
+      "kind": "heading",
+      "text": "## The anatomy of a connection"
+    },
+    {
+      "id": "u000042",
+      "kind": "prose",
+      "text": "In interaction nets, we model λ-terms as wiring. The λ-node has a binding port (for the parameter) and a body port (for the expression). The logic depends on how variables are distributed."
+    },
+    {
+      "id": "u000043",
+      "kind": "prose",
+      "text": "Δ"
+    },
+    {
+      "id": "u000044",
+      "kind": "heading",
+      "text": "### The \"Why\" of Deltas"
+    },
+    {
+      "id": "u000045",
+      "kind": "prose",
+      "text": "Deltas are not just numbers; they are the cost of crossing a scope. When a variable moves out of one lambda and into another, it gains depth. Deltas ensure that the interaction net \"knows\" where its variables live without ever scanning the code."
+    },
+    {
+      "id": "u000046",
+      "kind": "heading",
+      "text": "### How connections resolve"
+    },
+    {
+      "id": "u000047",
+      "kind": "prose",
+      "text": "When an application node (the @) meets a λ-abstraction, they interact. The λ-node's binding port determines if it needs to replicate the variable (using a Replicator node) or erase it (if it doesn't appear in the body)."
+    },
+    {
+      "id": "u000048",
+      "kind": "heading",
+      "text": "#### Redex and reduction"
+    },
+    {
+      "id": "u000049",
+      "kind": "prose",
+      "text": "A redex is a place you can simplify right now—here, a function already sitting next to its argument. A reduction is one such step."
+    },
+    {
+      "id": "u000050",
+      "kind": "heading",
+      "text": "#### Normal form"
+    },
+    {
+      "id": "u000051",
+      "kind": "prose",
+      "text": "A term or net is in normal form when nothing left can fire. Normalizing means some sequence of steps gets you there."
+    },
+    {
+      "id": "u000052",
+      "kind": "prose",
+      "text": "The substitution view"
+    },
+    {
+      "id": "u000053",
+      "kind": "prose",
+      "text": "(λx. t) u → t[x := u]"
+    },
+    {
+      "id": "u000054",
+      "kind": "prose",
+      "text": "That one sentence hides two very different edge cases. They are where the paper begins."
+    },
+    {
+      "id": "u000055",
+      "kind": "prose",
+      "text": "Erasure"
+    },
+    {
+      "id": "u000056",
+      "kind": "heading",
+      "text": "### Work that gets discarded"
+    },
+    {
+      "id": "u000057",
+      "kind": "prose",
+      "text": "If t never mentions x, the argument u vanishes. Any work you already did inside u was wasted."
+    },
+    {
+      "id": "u000058",
+      "kind": "prose",
+      "text": "Sharing"
+    },
+    {
+      "id": "u000059",
+      "kind": "heading",
+      "text": "### Work that gets duplicated"
+    },
+    {
+      "id": "u000060",
+      "kind": "prose",
+      "text": "If x occurs more than once, naive substitution copies u. If u still contains redexes, you may redo the same necessary work in every copy."
+    },
+    {
+      "id": "u000061",
+      "kind": "heading",
+      "text": "### 1.2 The four familiar fragments of the λ-calculus"
+    },
+    {
+      "id": "u000062",
+      "kind": "prose",
+      "text": "The paper frames the issue with a simple grid of variable-use rules. A bound variable is an occurrence owned by a surrounding λ—the x in λx.x, for example. Start from the linear calculus, where every bound variable appears exactly once. Then allow omission, repetition, or both."
+    },
+    {
+      "id": "u000063",
+      "kind": "heading",
+      "text": "#### λL — linear"
+    },
+    {
+      "id": "u000064",
+      "kind": "prose",
+      "text": "Each bound variable appears exactly once."
+    },
+    {
+      "id": "u000065",
+      "kind": "prose",
+      "text": "→"
+    },
+    {
+      "id": "u000066",
+      "kind": "heading",
+      "text": "#### λA — affine"
+    },
+    {
+      "id": "u000067",
+      "kind": "prose",
+      "text": "It appears once, or not at all. Erasure is allowed."
+    },
+    {
+      "id": "u000068",
+      "kind": "heading",
+      "text": "#### λI — relevant"
+    },
+    {
+      "id": "u000069",
+      "kind": "prose",
+      "text": "It appears at least once. Sharing is allowed."
+    },
+    {
+      "id": "u000070",
+      "kind": "prose",
+      "text": "↘"
+    },
+    {
+      "id": "u000071",
+      "kind": "heading",
+      "text": "#### λK — full"
+    },
+    {
+      "id": "u000072",
+      "kind": "prose",
+      "text": "Any number of appearances. Both erasure and sharing are allowed."
+    },
+    {
+      "id": "u000073",
+      "kind": "prose",
+      "text": "The paper names ΔL, ΔA, ΔI, and ΔK as corresponding Δ-Net subsystems."
+    },
+    {
+      "id": "u000074",
+      "kind": "heading",
+      "text": "### 1.3 Why choosing a clever order is not enough"
+    },
+    {
+      "id": "u000075",
+      "kind": "prose",
+      "text": "A reduction order says which redex to simplify next. For erasure, normal order—outermost application before its argument—can avoid reducing something a function is about to throw away. Sharing is harder. The paper follows Lévy: some shared terms have no ordinary sequential order that avoids every duplicated reduction."
+    },
+    {
+      "id": "u000076",
+      "kind": "prose",
+      "text": "↯"
+    },
+    {
+      "id": "u000077",
+      "kind": "heading",
+      "text": "### The design target"
+    },
+    {
+      "id": "u000078",
+      "kind": "prose",
+      "text": "Put sharing in the graph. Reduce a shared subgraph once, then let every use see the result."
+    },
+    {
+      "id": "u000079",
+      "kind": "prose",
+      "text": "02 Model shift"
+    },
+    {
+      "id": "u000080",
+      "kind": "heading",
+      "text": "## Stop treating a program as a tree."
+    },
+    {
+      "id": "u000081",
+      "kind": "prose",
+      "text": "The paper leaves the sequential substitution machine behind and moves to an interaction system: a graph whose tiny local rewrites can happen independently. First, pin down what “local” and “independent” mean here."
+    },
+    {
+      "id": "u000082",
+      "kind": "heading",
+      "text": "### 2.1 Graphs make sharing visible"
+    },
+    {
+      "id": "u000083",
+      "kind": "prose",
+      "text": "A syntax tree treats every occurrence as its own copy. A graph can let several uses point at one shared subgraph—a connected piece of the larger graph. That is the essential move: compute the shared piece once, then reuse it."
+    },
+    {
+      "id": "u000084",
+      "kind": "prose",
+      "text": "Textual substitution"
+    },
+    {
+      "id": "u000085",
+      "kind": "prose",
+      "text": "flowchart TB\nu1[use] --> a1[argument]\nu1 --> w1[work]\nu2[use] --> a2[argument]\nu2 --> w2[work]"
+    },
+    {
+      "id": "u000086",
+      "kind": "prose",
+      "text": "Graph representation"
+    },
+    {
+      "id": "u000087",
+      "kind": "prose",
+      "text": "flowchart TB\nu3[use] --> share[share]\nu4[use] --> share\nshare --> arg[one argument]"
+    },
+    {
+      "id": "u000088",
+      "kind": "prose",
+      "text": "Why a net at all? A graph can keep one identity for many uses. Δ-Nets is one local way to manage that identity while the graph rewrites."
+    },
+    {
+      "id": "u000089",
+      "kind": "heading",
+      "text": "### 2.2 Interaction systems, in one minute"
+    },
+    {
+      "id": "u000090",
+      "kind": "prose",
+      "text": "An interaction system has agents and interaction rules. An agent is a small node with sockets called ports. One socket is special—the principal port—and that is what can start a rewrite. The rest are auxiliary ports; they carry the surrounding wiring through the rewrite."
+    },
+    {
+      "id": "u000091",
+      "kind": "prose",
+      "text": "When two agents meet principal-to-principal, they form an active pair. A rule rewrites that pattern by reconnecting only the wires attached right there. The pair and those nearby wires are the rule’s entire input."
+    },
+    {
+      "id": "u000092",
+      "kind": "prose",
+      "text": "01"
+    },
+    {
+      "id": "u000093",
+      "kind": "heading",
+      "text": "### Find an active pair"
+    },
+    {
+      "id": "u000094",
+      "kind": "prose",
+      "text": "Only a principal-to-principal wire counts. Each local decision stays sharply bounded."
+    },
+    {
+      "id": "u000095",
+      "kind": "prose",
+      "text": "02"
+    },
+    {
+      "id": "u000096",
+      "kind": "heading",
+      "text": "### Apply its local rule"
+    }
+  ]
+}

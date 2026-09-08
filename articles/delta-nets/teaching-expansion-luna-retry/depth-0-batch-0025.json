@@ -1,0 +1,44 @@
+{
+  "depth": 0,
+  "batch": 25,
+  "items": [
+    {
+      "recordId": "teach-n0001044",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A replicator level identifies the sharing context in which that replicator operates.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "When a replica leaves through an auxiliary port, the port’s delta changes the replica’s level according to that port’s adjustment.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001045",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "ΔL, ΔA, ΔI, and ΔK are four variants with different permitted agent sets.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "ΔL permits fans only; ΔA adds erasers; ΔI adds replicators; and ΔK permits all three agents: fans, erasers, and replicators.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

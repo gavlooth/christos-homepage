@@ -1,0 +1,32 @@
+{
+  "depth": 0,
+  "batch": 30,
+  "items": [
+    {
+      "recordId": "teach-n0001101",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A reducible pair is a pair of expressions to which a reduction rule can be applied.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "Such a pair may be reduced early, before it would normally be selected for evaluation.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "limitation",
+          "basis": "source",
+          "text": "Early reduction is valid only if the pair will eventually be the leftmost outermost reducible expression—the first eligible expression encountered from the left, excluding expressions nested inside another candidate—and will remain unchanged until that point.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

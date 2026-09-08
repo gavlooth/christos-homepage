@@ -1,0 +1,44 @@
+{
+  "depth": 0,
+  "batch": 3,
+  "items": [
+    {
+      "recordId": "teach-n0000696",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A parent and a child are orientation labels assigned to the two ends of a wire; they describe the wire's direction relative to the root of the structure.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "intuition",
+          "basis": "source",
+          "text": "The labels do not describe different kinds of wire; they indicate which endpoint is closer to the root and which endpoint is farther from it.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0000697",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A canonical net starts with a fan-in replicator that has no paired counterpart, so the replicator is called unpaired.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "In an unpaired fan-in replicator, the auxiliary ports are oriented as parents and the principal port is oriented as a child.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

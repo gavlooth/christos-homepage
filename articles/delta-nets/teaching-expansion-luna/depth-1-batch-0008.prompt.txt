@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-generated-4fede931d330df5e",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "annihilation",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-e4dc860f89307587",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "well-formed lambda translation",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-dbc180a389e526e6",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "replica",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-fc39155b2ba342e3",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "port delta",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-8650ff183d0a118b",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "global schedule",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-3b9bd475b11ed6e9",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "optimality",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-e1c021b92c2eb4c2",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "sharing context",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  },
+  {
+    "recordId": "teach-generated-473d8b3af3720864",
+    "chapter": "Unscoped",
+    "kind": "model_prerequisite",
+    "sourceAnchor": "variable-arity replicator",
+    "minimumTeachingUnits": 1,
+    "requires": []
+  }
+]

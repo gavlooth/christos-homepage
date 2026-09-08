@@ -1,0 +1,373 @@
+You improve a knowledge graph by injecting useful, explicitly model-derived information. Return JSON only:
+{"items":[{"targetId":"...","injections":[{"type":"definition|mechanism|context|warrant|transition|interpretation|example|citation_needed|uncertainty","text":"one small standalone idea","densityScore":0.0,"relation":"fills|elaborates|enables|supports","reason":"brief graph-flow reason"}]}]}
+
+Rules:
+- Fill a gap only when the injected text directly answers its stated need. Keep the original gap node; do not erase it.
+- For a node, inject only information that materially improves understanding, causal flow, warrant, context, or a missing prerequisite.
+- Mark uncertain, unsupported, or citation-dependent material with type uncertainty or citation_needed.
+- Injection text is model-derived, not source-grounded. Do not claim it appeared in the source.
+- Use one small idea per injection and return no item where no useful addition exists.
+
+TARGETS:
+[
+  {
+    "id": "split-000099",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "The port delta equals the occurrence level minus the replicator level.",
+    "sourceUnitIds": [
+      "u000281"
+    ]
+  },
+  {
+    "id": "split-000100",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "A level delta is not a copy count.",
+    "sourceUnitIds": [
+      "u000303"
+    ]
+  },
+  {
+    "id": "split-000101",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "A level delta is not a source-level variable value.",
+    "sourceUnitIds": [
+      "u000303"
+    ]
+  },
+  {
+    "id": "split-000102",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "A two-port replicator already records two consumers of one bound value.",
+    "sourceUnitIds": [
+      "u000303"
+    ]
+  },
+  {
+    "id": "split-000103",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Levels and deltas record relative sharing contexts at consumer sites.",
+    "sourceUnitIds": [
+      "u000303"
+    ]
+  },
+  {
+    "id": "split-000104",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "Commuting replicators use deltas to adjust replica levels.",
+    "sourceUnitIds": [
+      "u000303"
+    ]
+  },
+  {
+    "id": "split-000105",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Erasure canonicalization is a global cleanup pass rather than a principal-port interaction.",
+    "sourceUnitIds": [
+      "u000340"
+    ]
+  },
+  {
+    "id": "split-000106",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "The sweep starts at the distinguished root and marks reachable material.",
+    "sourceUnitIds": [
+      "u000340"
+    ]
+  },
+  {
+    "id": "split-000107",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Unmarked graph material is deleted.",
+    "sourceUnitIds": [
+      "u000340"
+    ]
+  },
+  {
+    "id": "split-000108",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Deleting an unmarked node can expose a surviving connection that must be terminated by an eraser.",
+    "sourceUnitIds": [
+      "u000340"
+    ]
+  },
+  {
+    "id": "split-000109",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "For consecutive replicators A and B, the condition is 0 ≤ lB − lA ≤ d.",
+    "sourceUnitIds": [
+      "u000345"
+    ]
+  },
+  {
+    "id": "split-000110",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.77,
+    "text": "The condition proves that B is unpaired when A is known unpaired.",
+    "sourceUnitIds": [
+      "u000345"
+    ]
+  },
+  {
+    "id": "split-000111",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "The proof says B cannot interact before A is annihilated.",
+    "sourceUnitIds": [
+      "u000345"
+    ]
+  },
+  {
+    "id": "split-000112",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The inequality is a safety proof rather than a performance heuristic.",
+    "sourceUnitIds": [
+      "u000345"
+    ]
+  },
+  {
+    "id": "split-000113",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "ΔK removes auxiliary ports of unpaired replicators that lead directly to erasers.",
+    "sourceUnitIds": [
+      "u000351"
+    ]
+  },
+  {
+    "id": "split-000114",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.77,
+    "text": "A remaining one-port zero-delta replicator collapses to a wire.",
+    "sourceUnitIds": [
+      "u000351"
+    ]
+  },
+  {
+    "id": "split-000115",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.68,
+    "text": "Core interaction rules are locally confluent.",
+    "sourceUnitIds": [
+      "u000358"
+    ]
+  },
+  {
+    "id": "split-000116",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Canonicalization can modify ports outside principal-to-principal pairs.",
+    "sourceUnitIds": [
+      "u000358"
+    ]
+  },
+  {
+    "id": "split-000117",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "A schedule is therefore required for canonicalization.",
+    "sourceUnitIds": [
+      "u000358"
+    ]
+  },
+  {
+    "id": "split-000118",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "Leftmost-outermost chooses an outermost reducible pattern and then the leftmost candidate.",
+    "sourceUnitIds": [
+      "u000358"
+    ]
+  },
+  {
+    "id": "split-000119",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "The schedule is used for ΔA, ΔI, and ΔK so cleanup runs early and merges precede later commutations.",
+    "sourceUnitIds": [
+      "u000358"
+    ]
+  },
+  {
+    "id": "split-000120",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.72,
+    "text": "The bijection φ creates the initial canonical net.",
+    "sourceUnitIds": [
+      "u000367"
+    ]
+  },
+  {
+    "id": "split-000121",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "Core interactions may move the net into the broader space of proper nets.",
+    "sourceUnitIds": [
+      "u000367"
+    ]
+  },
+  {
+    "id": "split-000122",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "The subsystem’s interaction order and canonicalizations are collected by Ω.",
+    "sourceUnitIds": [
+      "u000367"
+    ]
+  },
+  {
+    "id": "split-000123",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.82,
+    "text": "The net is read back by φ−1 only after it is normal and canonical.",
+    "sourceUnitIds": [
+      "u000367"
+    ]
+  },
+  {
+    "id": "split-000124",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "ΔL has fan annihilation as its only interaction.",
+    "sourceUnitIds": [
+      "u000378"
+    ]
+  },
+  {
+    "id": "split-000125",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "Every proper ΔL net is already canonical.",
+    "sourceUnitIds": [
+      "u000378"
+    ]
+  },
+  {
+    "id": "split-000126",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.84,
+    "text": "If a λL term normalizes in n β-reductions, its ΔL encoding normalizes in n interactions regardless of order.",
+    "sourceUnitIds": [
+      "u000378"
+    ]
+  },
+  {
+    "id": "split-000127",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "ΔA, ΔI, and ΔK add canonicalization for erasure and sharing structure.",
+    "sourceUnitIds": [
+      "u000378"
+    ]
+  },
+  {
+    "id": "split-000128",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "The nonlinear systems require canonicalization and a global schedule for the whole-algorithm claim.",
+    "sourceUnitIds": [
+      "u000387"
+    ]
+  },
+  {
+    "id": "split-000129",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.76,
+    "text": "The paper claims Church–Rosser confluence and optimality for those systems.",
+    "sourceUnitIds": [
+      "u000387"
+    ]
+  },
+  {
+    "id": "split-000130",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "Church–Rosser means divergent paths can be continued to a common result.",
+    "sourceUnitIds": [
+      "u000387"
+    ]
+  },
+  {
+    "id": "split-000131",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.74,
+    "text": "Church–Rosser does not require the paths to agree after one step.",
+    "sourceUnitIds": [
+      "u000387"
+    ]
+  },
+  {
+    "id": "split-000132",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.8,
+    "text": "Δ-Nets encode each sharing context in a variable-arity replicator.",
+    "sourceUnitIds": [
+      "u000393"
+    ]
+  },
+  {
+    "id": "split-000133",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.78,
+    "text": "Reduction combines local interactions with limited global scheduling discipline.",
+    "sourceUnitIds": [
+      "u000393"
+    ]
+  },
+  {
+    "id": "split-000134",
+    "targetType": "node",
+    "kind": "claim",
+    "densityScore": 0.7,
+    "text": "The discipline is intended to prevent avoidable work.",
+    "sourceUnitIds": [
+      "u000393"
+    ]
+  }
+]

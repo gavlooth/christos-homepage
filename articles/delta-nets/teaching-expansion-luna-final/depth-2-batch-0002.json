@@ -1,0 +1,18 @@
+{
+  "depth": 2,
+  "batch": 2,
+  "items": [
+    {
+      "recordId": "teach-generated-f2c70ca67a0eb742",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A canonical net is a standardized network representation that captures the essential structure of a system while omitting irrelevant variation, making the system easier to describe, compare, or analyze.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

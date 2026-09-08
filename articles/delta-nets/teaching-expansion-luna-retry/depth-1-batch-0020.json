@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 20,
+  "items": [
+    {
+      "recordId": "teach-generated-55d5815d764e39b6",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A semantic port index is an index that identifies a connection point by the meaning or type of information it carries, rather than only by its physical position or numeric identifier.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-db95a1b9878fd934",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "Matching semantic port indices are identifiers that refer to equivalent or compatible information-carrying connection points, allowing corresponding ports to be paired or connected.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

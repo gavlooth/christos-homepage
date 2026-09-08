@@ -1,0 +1,251 @@
+Extract the knowledge graph for this source chunk.
+
+OUTPUT CONTRACT:
+Return one JSON value matching this JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceUnitIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mentions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "need": {
+            "type": "string"
+          },
+          "gapType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "source",
+              "gap"
+            ]
+          }
+        },
+        "required": [
+          "kind",
+          "text",
+          "sourceUnitIds",
+          "defines",
+          "requires",
+          "mentions",
+          "fills",
+          "need",
+          "gapType",
+          "origin"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "enables",
+              "supports",
+              "elaborates",
+              "exemplifies",
+              "contrasts",
+              "part_of",
+              "precedes",
+              "defines",
+              "fills"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "relation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidenceFrames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "warrantGap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "required": [
+          "claim",
+          "evidence",
+          "warrantGap",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "nodes",
+    "edges",
+    "evidenceFrames"
+  ],
+  "additionalProperties": false
+}
+
+SOURCE CHUNK:
+{
+  "chunkId": "c0001-flat-06",
+  "context": [
+    "Δ-Nets",
+    "Stop treating a program as a tree."
+  ],
+  "units": [
+    {
+      "id": "u000081",
+      "kind": "prose",
+      "text": "The paper leaves the sequential substitution machine behind and moves to an interaction system: a graph whose tiny local rewrites can happen independently. First, pin down what “local” and “independent” mean here."
+    },
+    {
+      "id": "u000082",
+      "kind": "heading",
+      "text": "### 2.1 Graphs make sharing visible"
+    },
+    {
+      "id": "u000083",
+      "kind": "prose",
+      "text": "A syntax tree treats every occurrence as its own copy. A graph can let several uses point at one shared subgraph—a connected piece of the larger graph. That is the essential move: compute the shared piece once, then reuse it."
+    },
+    {
+      "id": "u000084",
+      "kind": "prose",
+      "text": "Textual substitution"
+    },
+    {
+      "id": "u000085",
+      "kind": "prose",
+      "text": "flowchart TB\nu1[use] --> a1[argument]\nu1 --> w1[work]\nu2[use] --> a2[argument]\nu2 --> w2[work]"
+    },
+    {
+      "id": "u000086",
+      "kind": "prose",
+      "text": "Graph representation"
+    },
+    {
+      "id": "u000087",
+      "kind": "prose",
+      "text": "flowchart TB\nu3[use] --> share[share]\nu4[use] --> share\nshare --> arg[one argument]"
+    },
+    {
+      "id": "u000088",
+      "kind": "prose",
+      "text": "Why a net at all? A graph can keep one identity for many uses. Δ-Nets is one local way to manage that identity while the graph rewrites."
+    },
+    {
+      "id": "u000089",
+      "kind": "heading",
+      "text": "### 2.2 Interaction systems, in one minute"
+    },
+    {
+      "id": "u000090",
+      "kind": "prose",
+      "text": "An interaction system has agents and interaction rules. An agent is a small node with sockets called ports. One socket is special—the principal port—and that is what can start a rewrite. The rest are auxiliary ports; they carry the surrounding wiring through the rewrite."
+    },
+    {
+      "id": "u000091",
+      "kind": "prose",
+      "text": "When two agents meet principal-to-principal, they form an active pair. A rule rewrites that pattern by reconnecting only the wires attached right there. The pair and those nearby wires are the rule’s entire input."
+    },
+    {
+      "id": "u000092",
+      "kind": "prose",
+      "text": "01"
+    },
+    {
+      "id": "u000093",
+      "kind": "heading",
+      "text": "### Find an active pair"
+    },
+    {
+      "id": "u000094",
+      "kind": "prose",
+      "text": "Only a principal-to-principal wire counts. Each local decision stays sharply bounded."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001070",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "An abstraction fan connects its first auxiliary port to the body and its second auxiliary port to the bound variable.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001071",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "An unused bound variable connects the abstraction's variable port to an eraser in ΔA and ΔK.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

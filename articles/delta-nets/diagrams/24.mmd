@@ -1,0 +1,6 @@
+flowchart TB
+                  inX((fragment input))
+                  endp["wire endpoint · ℓᵢ"]
+                  Rx2@{ shape: trapezoid, label: "Rₓ" }
+                  inX --> endp
+                  endp -->|one aux port| Rx2

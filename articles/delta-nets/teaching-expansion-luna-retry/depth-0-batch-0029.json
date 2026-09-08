@@ -1,0 +1,44 @@
+{
+  "depth": 0,
+  "batch": 29,
+  "items": [
+    {
+      "recordId": "teach-n0001060",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "In different-level replicator commutation, each replica H has auxiliary ports identified by labels such as j.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "statement",
+          "basis": "source",
+          "text": "For every H replica, its auxiliary port j connects to the port with the same label on Rʲ.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-n0001061",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "source",
+          "text": "A port delta is an integer that specifies a local adjustment to a replica’s level at a particular port.",
+          "requires": [],
+          "citationRequired": false
+        },
+        {
+          "role": "mechanism",
+          "basis": "source",
+          "text": "The port delta is applied to every higher-level replica that exits through that port.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

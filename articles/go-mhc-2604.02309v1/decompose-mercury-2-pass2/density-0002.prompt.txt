@@ -1,0 +1,328 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000068",
+    "kind": "claim",
+    "text": "mHC attempts to enforce the doubly stochastic constraint after weight updates using the Sinkhorn‑Knopp (SK) algorithm."
+  },
+  {
+    "id": "n0000069",
+    "kind": "claim",
+    "text": "Implementing the SK kernel requires careful kernel‑level optimization for efficiency."
+  },
+  {
+    "id": "n0000070",
+    "kind": "claim",
+    "text": "Finite SK iterations introduce an approximation gap that accumulates with network depth."
+  },
+  {
+    "id": "n0000071",
+    "kind": "claim",
+    "text": "mHC‑lite attempts to circumvent the approximation gap and customized kernel by making use of the Birkhoff–von Neumann theorem to define the learned connections as a convex combination of d! permutation matrices."
+  },
+  {
+    "id": "n0000072",
+    "kind": "claim",
+    "text": "mHC‑lite has a computational cost of O(d C · d!)."
+  },
+  {
+    "id": "n0000074",
+    "kind": "claim",
+    "text": "mHC‑lite works well for small d, however, it is not tenable in the limit of scaling d > 8."
+  },
+  {
+    "id": "n0000075",
+    "kind": "claim",
+    "text": "KromHC sacrifices expressivity and complete coverage of B_d by using tensor products to train residual connections on a much smaller set of exactly double‑stochastic matrices, with a cost of O(d² C)."
+  },
+  {
+    "id": "n0000077",
+    "kind": "claim",
+    "text": "Cayley transforms in neural networks."
+  },
+  {
+    "id": "n0000078",
+    "kind": "claim",
+    "text": "The Cayley transform has been used to parameterize orthogonal matrices in recurrent networks."
+  },
+  {
+    "id": "n0000079",
+    "kind": "claim",
+    "text": "Comparisons with the matrix exponential show similar quality and better stability at lower FLOP cost."
+  },
+  {
+    "id": "n0000080",
+    "kind": "claim",
+    "text": "Iterative Cayley‑based optimization outperforms matrix exponential approaches for Stiefel manifold problems."
+  },
+  {
+    "id": "n0000081",
+    "kind": "claim",
+    "text": "Doubly Stochastic & Orthostochastic matrices."
+  },
+  {
+    "id": "n0000082",
+    "kind": "claim",
+    "text": "Multiple works have investigated the use of doubly stochastic matrices in neural network parameterization."
+  },
+  {
+    "id": "n0000083",
+    "kind": "claim",
+    "text": "Gutkin introduced generalized orthostochastic matrices."
+  },
+  {
+    "id": "n0000084",
+    "kind": "claim",
+    "text": "Nechita et al. proved that the set of generalized s‑orthostochastic matrices is contained in B_d and spans all of B_d as s → ∞."
+  },
+  {
+    "id": "n0000085",
+    "kind": "claim",
+    "text": "Other works have investigated further properties of the spectral span of the Birkhoff polytope and the geometry of s‑orthostochastic matrices in the quantum setting."
+  },
+  {
+    "id": "n0000086",
+    "kind": "claim",
+    "text": "These theoretical foundations underlie our choice of parameterization."
+  },
+  {
+    "id": "n0000087",
+    "kind": "claim",
+    "text": "To our knowledge, we are the first to apply this construction in a machine learning setting and, more specifically, to learned residual stream routing in deep networks."
+  },
+  {
+    "id": "n0000088",
+    "kind": "claim",
+    "text": "go‑mhC: Generalized Orthostochastic Manifold‑Constrained Hyper‑Connections"
+  },
+  {
+    "id": "n0000089",
+    "kind": "claim",
+    "text": "3.1 Hyper‑Connections"
+  },
+  {
+    "id": "n0000090",
+    "kind": "claim",
+    "text": "A Hyper‑Connection block processes a d‑stream state x_l ∈ ℝ^{d×B×L×D} with a recursion relation that includes a residual block ℱ."
+  },
+  {
+    "id": "n0000092",
+    "kind": "evidence",
+    "text": "|  | <!-- MathML: <math alttext=\"\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\,\\mathcal{F}\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\,\\mathbf{x}_{l},\\,\\mathbf{W}_{l}\\right),\" class=\"ltx_Math\" display=\"block\" id=\"S3.E1.m1\" intent=\":literal\"><semantics><mrow><mrow><msub><mi>𝐱</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>res</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐱</mi><mi>l</mi></msub></mrow><mo>+</mo><mrow><msup><mrow><mo stretchy=\"false\">(</mo><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>post</mtext></msubsup><mo stretchy=\"false\">)</mo></mrow><mo>⊤</mo></msup><mo lspace=\"0em\" rspace=\"0em\">​</mo><mpadded style=\"width:0.648em;\" width=\"0.648em\"><mi class=\"ltx_font_mathcaligraphic\">ℱ</mi></mpadded><mo lspace=\"0em\" rspace=\"0em\">​</mo><mrow><mo>(</mo><mrow><msubsup><mi class=\"ltx_font_mathcaligraphic\">ℋ</mi><mi>l</mi><mtext>pre</mtext></msubsup><mo lspace=\"0em\" rspace=\"0em\">​</mo><msub><mi>𝐱</mi><mi>l</mi></msub></mrow><mo>,</mo><msub><mi>𝐖</mi><mi>l</mi></msub><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow><annotation encoding=\"application/x-tex\">\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\,\\mathcal{F}\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\,\\mathbf{x}_{l},\\,\\mathbf{W}_{l}\\right),</annotation></semantics></math> --> 𝐱l+1=ℋlres​𝐱l+(ℋlpost)⊤​ℱ​(ℋlpre​𝐱l,𝐖l),\\mathbf{x}_{l+1}=\\mathcal{H}_{l}^{\\text{res}}\\\\,\\mathbf{x}_{l}+(\\mathcal{H}_{l}^{\\text{post}})^{\\top}\\\\,\\mathcal{F}\\\\!\\left(\\mathcal{H}_{l}^{\\text{pre}}\\\\,\\mathbf{x}_{l},\\\\,\\mathbf{W}_{l}\\right), |  | (1) |\n| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --- |"
+  },
+  {
+    "id": "n0000093",
+    "kind": "definition",
+    "text": "ℋlres is a d‑by‑d real matrix representing residual streams."
+  },
+  {
+    "id": "n0000094",
+    "kind": "definition",
+    "text": "ℋlpre is a 1‑by‑d real matrix that aggregates streams into the branch input."
+  },
+  {
+    "id": "n0000095",
+    "kind": "definition",
+    "text": "ℋlpost is a 1‑by‑d real matrix that distributes branch output back to streams."
+  },
+  {
+    "id": "n0000096",
+    "kind": "definition",
+    "text": "x0 denotes d repetitions of the initial input."
+  },
+  {
+    "id": "n0000097",
+    "kind": "claim",
+    "text": "When ℋlres, ℋlpre, ℋlpost all equal the matrix [1], the model reduces to a single‑stream residual connection."
+  },
+  {
+    "id": "n0000098",
+    "kind": "definition",
+    "text": "The network learns parameters (αls, Wls, bls) for each stream type s∈{pre,post,res} to allow dynamic topology."
+  },
+  {
+    "id": "n0000099",
+    "kind": "definition",
+    "text": "𝒫 is the Sinkhorn‑Knopp projection operator applied via 20 iterations."
+  },
+  {
+    "id": "n0000100",
+    "kind": "definition",
+    "text": "A matrix B in 𝖡d is orthostochastic when there exists an orthogonal Q such that each entry B_ij equals Q_ij squared."
+  },
+  {
+    "id": "n0000101",
+    "kind": "claim",
+    "text": "For dimension n≥3, orthostochastic matrices form a proper non‑convex subset of 𝖡d."
+  },
+  {
+    "id": "n0000102",
+    "kind": "definition",
+    "text": "Q, an orthogonal matrix of size ds, can be seen as a d×d block matrix where each block Q_ij is s×s."
+  },
+  {
+    "id": "n0000103",
+    "kind": "definition",
+    "text": "Φ_{d,s}(Q)_{ij} equals the average squared Frobenius norm of block Q_ij, i.e., (1/s) Σ_{k,l}(Q_ij)_{kl}^2."
+  },
+  {
+    "id": "n0000109",
+    "kind": "definition",
+    "text": "𝒫go maps learned parameters (αlres,Wlres,blres) to a d×d mixing matrix using generalized orthostochastic matrices."
+  },
+  {
+    "id": "n0000110",
+    "kind": "topic",
+    "text": "### 3.2 Generalized Orthostochastic Matrices"
+  },
+  {
+    "id": "n0000111",
+    "kind": "claim",
+    "text": "Φ_{d,s}(Q) ∈ B_d for all Q ∈ Q(ds) and s"
+  },
+  {
+    "id": "n0000112",
+    "kind": "claim",
+    "text": "The set {Φ_{d,s}(Q): Q ∈ Q(ds)} converges to B_d as s→∞"
+  },
+  {
+    "id": "n0000113",
+    "kind": "claim",
+    "text": "Parameter s determines the rank of the block-wise Frobenius projection"
+  },
+  {
+    "id": "n0000114",
+    "kind": "claim",
+    "text": "Larger s provides a more faithful representation of the polytope interior"
+  },
+  {
+    "id": "n0000115",
+    "kind": "claim",
+    "text": "At s=1 we recover the orthostochastic set by definition"
+  },
+  {
+    "id": "n0000116",
+    "kind": "claim",
+    "text": "The geometry of the orthostochastic set is a concave cycloid that meets the permutation vertices of B_d but does not occupy the interior when d>2"
+  },
+  {
+    "id": "n0000117",
+    "kind": "claim",
+    "text": "Theorem 2.8 guarantees convergence to the full polytope B_d as s→∞ with monotonically increasing volume"
+  },
+  {
+    "id": "n0000118",
+    "kind": "claim",
+    "text": "We choose s=2 as the default variant of go-mHC"
+  },
+  {
+    "id": "n0000119",
+    "kind": "claim",
+    "text": "We show comparisons with s=1 and s=3"
+  },
+  {
+    "id": "n0000120",
+    "kind": "claim",
+    "text": "Implications of s on geometry are discussed in appendix D"
+  },
+  {
+    "id": "n0000121",
+    "kind": "claim",
+    "text": "Figure 2 illustrates the Karpelevič region – the spectrum of stochastic matrices – for B_d with d=2 to d=5"
+  },
+  {
+    "id": "n0000122",
+    "kind": "claim",
+    "text": "The black circle corresponds to the unit disc and red points are eigenvalues of permutation matrices"
+  },
+  {
+    "id": "n0000123",
+    "kind": "claim",
+    "text": "The affine space of doubly stochastic matrices is strictly contained within the volume of the blue region, except for B_2 where the space is a line"
+  },
+  {
+    "id": "n0000124",
+    "kind": "claim",
+    "text": "The spectrum of B_d is the union of the spectrum of B_{d-1} and the polygon with d sides inscribed on the unit disc"
+  },
+  {
+    "id": "n0000125",
+    "kind": "claim",
+    "text": "3.3 Learning the s-Orthostochastic Manifold"
+  },
+  {
+    "id": "n0000130",
+    "kind": "claim",
+    "text": "skew maps vectors of size ds(ds-1)/2 to ds×ds skew-symmetric matrix A_l (A_l^T = -A_l)"
+  },
+  {
+    "id": "n0000131",
+    "kind": "claim",
+    "text": "Equation [8] uses Cayley transform to map A_l to special orthogonal matrix Q_l (Q_l^T Q_l = I)"
+  },
+  {
+    "id": "n0000132",
+    "kind": "claim",
+    "text": "Φ_{d,s} from equation [6] maps Q_l to exactly doubly stochastic matrix H_l^res ∈ B_d (equation [9])"
+  },
+  {
+    "id": "n0000134",
+    "kind": "claim",
+    "text": "Cayley transform generates matrices with det(Q_l)=+1"
+  },
+  {
+    "id": "n0000135",
+    "kind": "claim",
+    "text": "This is sufficient for full coverage because orthostochastic transform takes the Frobenius norm squared of block matrices and removes information about reflections, keeping only positive determinant solutions"
+  },
+  {
+    "id": "n0000136",
+    "kind": "claim",
+    "text": "Advantageous due to path-connectedness of the special orthogonal group, the group of all pure rotations in ℝ^d"
+  },
+  {
+    "id": "n0000137",
+    "kind": "claim",
+    "text": "See appendix B.7 for proofs"
+  },
+  {
+    "id": "n0000138",
+    "kind": "claim",
+    "text": "Cayley transform maps learned parameters onto Q_l, bypassing need for softmax activation"
+  },
+  {
+    "id": "n0000139",
+    "kind": "claim",
+    "text": "Cayley transform is norm-preserving, ensuring numerical stability without additional normalization"
+  },
+  {
+    "id": "n0000140",
+    "kind": "claim",
+    "text": "Replacing softmax with Cayley transform may accelerate convergence by avoiding saturation regions of exponential function (section 5)"
+  },
+  {
+    "id": "n0000141",
+    "kind": "claim",
+    "text": "Mitigates vanishing gradients (appendix B.10) and maintains well-conditioned Jacobian"
+  },
+  {
+    "id": "n0000142",
+    "kind": "claim",
+    "text": "Vanishing gradients trade-off how close mixing matrices near polytope boundary can be learned and ability to unlearn them and return to barycenter"
+  },
+  {
+    "id": "n0000143",
+    "kind": "claim",
+    "text": "Xie et al. (2026) use Amax Gain Magnitude (AGM) to quantify worst-case amplification for residual hyper-connection product H_{l→L}^{res} = ∏_{i=1}^{L-l} H_{L-i}^{res}"
+  },
+  {
+    "id": "n0000144",
+    "kind": "source",
+    "text": "We write out our full projection, replacing equation [5](#S3.E5 \"Equation 5 ‣ 3.1 Hyper-Connections ‣ 3 go-mHC: Generalized Orthostochastic Manifold-Constrained Hyper-Connections ‣ go-mHC: Direct Parameterization of Manifold-ConstrainedHyper-Connections via Generalized Orthostochastic Matrices\"), below:"
+  }
+]

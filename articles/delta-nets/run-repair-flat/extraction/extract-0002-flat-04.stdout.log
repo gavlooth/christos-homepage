@@ -1,0 +1,513 @@
+{
+  "nodes": [
+    {
+      "kind": "definition",
+      "text": "An integer level identifies a replicator's sharing context.",
+      "sourceUnitIds": ["u000136"],
+      "defines": ["replicator level"],
+      "requires": [],
+      "mentions": ["sharing context"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Each auxiliary port has an integer delta.",
+      "sourceUnitIds": ["u000136"],
+      "defines": ["port delta"],
+      "requires": ["auxiliary port"],
+      "mentions": ["integer delta"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "procedure",
+      "text": "When a replica exits through a port, its new level equals its current level plus that port's delta.",
+      "sourceUnitIds": ["u000136"],
+      "defines": [],
+      "requires": ["replicator level", "port delta"],
+      "mentions": ["replica"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Four systems arise from the same agent pieces.",
+      "sourceUnitIds": ["u000137"],
+      "defines": ["Δ-Nets system taxonomy"],
+      "requires": [],
+      "mentions": ["agents"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "context",
+      "text": "The taxonomy compares systems by permitted agents and the corresponding term fragment.",
+      "sourceUnitIds": ["u000138"],
+      "defines": [],
+      "requires": ["Δ-Nets system taxonomy"],
+      "mentions": ["agents", "term fragment"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "ΔL permits fans and corresponds to the linear fragment, where each resource is used exactly once.",
+      "sourceUnitIds": ["u000139"],
+      "defines": ["ΔL"],
+      "requires": ["fan", "linear fragment"],
+      "mentions": ["exactly one use"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "ΔA permits fans and erasers and corresponds to the affine fragment, where a use may be absent.",
+      "sourceUnitIds": ["u000140"],
+      "defines": ["ΔA"],
+      "requires": ["fan", "eraser", "affine fragment"],
+      "mentions": ["optional use"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "ΔI permits fans and replicators and corresponds to the relevant fragment, where a use may repeat.",
+      "sourceUnitIds": ["u000141"],
+      "defines": ["ΔI"],
+      "requires": ["fan", "replicator", "relevant fragment"],
+      "mentions": ["repeated use"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "ΔK permits fans, erasers, and replicators and corresponds to the full fragment, where absence and repetition are both allowed.",
+      "sourceUnitIds": ["u000142"],
+      "defines": ["ΔK"],
+      "requires": ["fan", "eraser", "replicator", "full fragment"],
+      "mentions": ["optional use", "repeated use"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Linear usage means exactly one bound use.",
+      "sourceUnitIds": ["u000143"],
+      "defines": ["linear usage"],
+      "requires": ["bound use"],
+      "mentions": ["ΔL"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Affine usage means at most one bound use.",
+      "sourceUnitIds": ["u000143"],
+      "defines": ["affine usage"],
+      "requires": ["bound use"],
+      "mentions": ["ΔA"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Relevant usage means at least one bound use.",
+      "sourceUnitIds": ["u000143"],
+      "defines": ["relevant usage"],
+      "requires": ["bound use"],
+      "mentions": ["ΔI"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Full usage permits any number of bound uses.",
+      "sourceUnitIds": ["u000143"],
+      "defines": ["full usage"],
+      "requires": ["bound use"],
+      "mentions": ["ΔK"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Fans provide structure, erasers provide omission, and replicators provide sharing.",
+      "sourceUnitIds": ["u000143"],
+      "defines": [],
+      "requires": ["fan", "eraser", "replicator"],
+      "mentions": ["structure", "omission", "sharing"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "heading",
+      "text": "Equality is applied locally in implementations.",
+      "sourceUnitIds": ["u000144"],
+      "defines": ["replicator equality"],
+      "requires": [],
+      "mentions": ["local equality"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Equal replicators must have the same level, arity, and delta on every port.",
+      "sourceUnitIds": ["u000145"],
+      "defines": ["replicator equality"],
+      "requires": ["replicator level", "arity", "port delta"],
+      "mentions": ["equal replicators"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "In well-formed nets produced by the paper's lambda-term translation, active replicators at the same level are already equal.",
+      "sourceUnitIds": ["u000145"],
+      "defines": [],
+      "requires": ["well-formed net", "active replicator", "replicator level"],
+      "mentions": ["lambda-term translation"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "For those translated nets, an implementation may compare only levels when checking active replicator equality.",
+      "sourceUnitIds": ["u000145"],
+      "defines": [],
+      "requires": ["replicator equality"],
+      "mentions": ["implementation"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "limitation",
+      "text": "Hand-built nets cannot use the level-only equality shortcut.",
+      "sourceUnitIds": ["u000145"],
+      "defines": [],
+      "requires": ["replicator equality"],
+      "mentions": ["hand-built nets"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "question",
+      "text": "The source asks for the meanings of fan-in and fan-out in this setting.",
+      "sourceUnitIds": ["u000146"],
+      "defines": [],
+      "requires": [],
+      "mentions": ["fan-in", "fan-out"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Parent and child are directional labels assigned to the two ends of a wire.",
+      "sourceUnitIds": ["u000147"],
+      "defines": ["parent", "child"],
+      "requires": ["wire"],
+      "mentions": ["direction label"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "In a rooted net, a parent points toward the root and a child points away from the root.",
+      "sourceUnitIds": ["u000147"],
+      "defines": ["parent", "child"],
+      "requires": ["rooted net"],
+      "mentions": ["root"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "These parent and child labels describe orientation rather than family relationships.",
+      "sourceUnitIds": ["u000147"],
+      "defines": [],
+      "requires": ["parent", "child"],
+      "mentions": ["wire orientation"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Canonical nets begin with unpaired fan-in replicators.",
+      "sourceUnitIds": ["u000147"],
+      "defines": ["fan-in replicator"],
+      "requires": ["canonical net", "replicator"],
+      "mentions": ["unpaired replicator"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "In canonical nets, auxiliary ports are parents and the principal port is a child.",
+      "sourceUnitIds": ["u000147"],
+      "defines": [],
+      "requires": ["canonical net", "parent", "child"],
+      "mentions": ["auxiliary port", "principal port"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Reduction can create fan-outs and reverse the initial orientation.",
+      "sourceUnitIds": ["u000147"],
+      "defines": ["fan-out"],
+      "requires": ["reduction", "fan-in"],
+      "mentions": ["orientation"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "A fan-out is paired upstream with at least one fan-in.",
+      "sourceUnitIds": ["u000147"],
+      "defines": [],
+      "requires": ["fan-out", "fan-in"],
+      "mentions": ["upstream pairing"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "A fan-in does not necessarily have a partner.",
+      "sourceUnitIds": ["u000147"],
+      "defines": [],
+      "requires": ["fan-in"],
+      "mentions": ["pairing"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Levels and deltas support local reasoning about fan-in and fan-out pairing.",
+      "sourceUnitIds": ["u000147"],
+      "defines": [],
+      "requires": ["replicator level", "port delta", "fan-in", "fan-out"],
+      "mentions": ["local reasoning", "pairing"],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    }
+  ],
+  "edges": [
+    {
+      "from": 0,
+      "to": 2,
+      "relation": "enables"
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "relation": "enables"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "relation": "elaborates"
+    },
+    {
+      "from": 4,
+      "to": 6,
+      "relation": "elaborates"
+    },
+    {
+      "from": 4,
+      "to": 7,
+      "relation": "elaborates"
+    },
+    {
+      "from": 4,
+      "to": 8,
+      "relation": "elaborates"
+    },
+    {
+      "from": 5,
+      "to": 9,
+      "relation": "elaborates"
+    },
+    {
+      "from": 6,
+      "to": 10,
+      "relation": "elaborates"
+    },
+    {
+      "from": 7,
+      "to": 11,
+      "relation": "elaborates"
+    },
+    {
+      "from": 8,
+      "to": 12,
+      "relation": "elaborates"
+    },
+    {
+      "from": 15,
+      "to": 16,
+      "relation": "elaborates"
+    },
+    {
+      "from": 16,
+      "to": 17,
+      "relation": "enables"
+    },
+    {
+      "from": 16,
+      "to": 18,
+      "relation": "enables"
+    },
+    {
+      "from": 16,
+      "to": 19,
+      "relation": "contrasts"
+    },
+    {
+      "from": 20,
+      "to": 21,
+      "relation": "elaborates"
+    },
+    {
+      "from": 21,
+      "to": 22,
+      "relation": "elaborates"
+    },
+    {
+      "from": 21,
+      "to": 23,
+      "relation": "elaborates"
+    },
+    {
+      "from": 23,
+      "to": 24,
+      "relation": "elaborates"
+    },
+    {
+      "from": 23,
+      "to": 25,
+      "relation": "elaborates"
+    },
+    {
+      "from": 24,
+      "to": 26,
+      "relation": "enables"
+    },
+    {
+      "from": 0,
+      "to": 27,
+      "relation": "enables"
+    },
+    {
+      "from": 1,
+      "to": 27,
+      "relation": "enables"
+    },
+    {
+      "from": 27,
+      "to": 28,
+      "relation": "enables"
+    }
+  ],
+  "evidenceFrames": [
+    {
+      "claim": 5,
+      "evidence": [5],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 6,
+      "evidence": [6],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 7,
+      "evidence": [7],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 8,
+      "evidence": [8],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 17,
+      "evidence": [18],
+      "warrantGap": null,
+      "limitations": [19]
+    },
+    {
+      "claim": 23,
+      "evidence": [24, 25],
+      "warrantGap": null,
+      "limitations": []
+    },
+    {
+      "claim": 27,
+      "evidence": [27, 28],
+      "warrantGap": null,
+      "limitations": []
+    }
+  ]
+}

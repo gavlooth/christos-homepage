@@ -1,0 +1,20 @@
+{
+  "depth": 1,
+  "batch": 18,
+  "items": [
+    {
+      "recordId": "teach-generated-e4dc860f89307587",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A well-formed lambda translation represents an expression using the grammar of lambda calculus, with variables, variable-binding abstractions, and function applications arranged in syntactically valid combinations.",
+          "requires": [
+            "lambda calculus"
+          ],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}

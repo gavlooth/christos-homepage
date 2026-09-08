@@ -1,0 +1,343 @@
+{
+  "nodes": [
+    {
+      "kind": "claim",
+      "text": "In unconstrained Hyper-Connections, the FLOP overhead is approximately 0.15% increase during a forward pass in a 7B parameter model.",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Projecting onto a manifold incurs additional FLOP complexity due to the manifold M.",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "In manifold-constrained Hyper-Connections (mHC), the FLOP overhead is about 8% increase for a 27B model, even after custom kernels and infrastructure improvements.",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC and mHC-lite show significant speed‑ups because they remove iterative updates.",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "For d = 16, go‑mHC is 22 orders of magnitude slower than KromHC.",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "For d = 16, go‑mHC is 16 orders of magnitude slower than mHC‑lite.",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "go‑mHC has roughly the same order of magnitude in FLOP complexity as mHC with Sinkhorn‑Knopp iterations because O(d) ≈ O(S).",
+      "sourceUnitIds": [
+        "u000093"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Model performance improvements generally outweigh computational cost, but scaling residual streams eventually hits a practical limit; go‑mHC aims to provide a middle‑ground balance between FLOP cost and expressivity.",
+      "sourceUnitIds": [
+        "u000094"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "go‑mHC offers a practical middle‑ground FLOP complexity for scaling residual streams, avoiding the super‑exponential cost of mHC‑lite and the iterative overhead of mHC SK iterations; nominal constants are S = 20, i_k = 2, and s ∈ {1,2}. See Appendix B.6 for full estimates.",
+      "sourceUnitIds": [
+        "u000095"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "mHC FLOP complexity per layer is O(C·S·d²).",
+      "sourceUnitIds": [
+        "u000096"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "go‑mHC (ss) FLOP complexity per layer is O(C·s³·d³).",
+      "sourceUnitIds": [
+        "u000096"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "mHC‑lite FLOP complexity per layer is O(C·d²·d!).",
+      "sourceUnitIds": [
+        "u000096"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "KromHC FLOP complexity per layer is O(C·log_{i_k}(d)·i_k²·(i_k!)+C·d²).",
+      "sourceUnitIds": [
+        "u000096"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Section 5 Convergence.",
+      "sourceUnitIds": [
+        "u000097"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Convergence of go‑mHC is governed by the geometry of the loss landscape introduced by manifold M and gradient stability; go‑mHC is expected to have learnable gradients, be convergent, and fully connected (able to reach any target matrix). See Appendix B.7 for proofs.",
+      "sourceUnitIds": [
+        "u000098"
+      ],
+      "defines": [],
+      "requires": [
+        "Section 5 Convergence"
+      ],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "Not all matrix parameterizations are learnable and fully connected; mHC‑lite may suffer from vanishing gradients, making it difficult to relearn an n‑stream transform after convergence. See Appendix B.10.",
+      "sourceUnitIds": [
+        "u000099"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "definition",
+      "text": "Section 5.1 Synthetic Stream Mixing Performance.",
+      "sourceUnitIds": [
+        "u000100"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "claim",
+      "text": "A synthetic toy‑model experiment generates ground‑truth doubly stochastic matrices T_i and dense activations X_j in the residual stream, then computes noisy targets Y_{i,j}=T_i X_j + ξ to evaluate reconstruction capability.",
+      "sourceUnitIds": [
+        "u000101"
+      ],
+      "defines": [],
+      "requires": [
+        "Section 5.1 Synthetic Stream Mixing Performance"
+      ],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "equation",
+      "text": "Y_{i,j}=T_i X_j + ξ",
+      "sourceUnitIds": [
+        "u000102"
+      ],
+      "defines": [],
+      "requires": [
+        "Synthetic toy‑model experiment"
+      ],
+      "mentions": [],
+      "fills": [],
+      "need": "",
+      "gapType": null,
+      "origin": "source"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000103"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "artifact storage metadata",
+      "gapType": "metadata",
+      "origin": "gap"
+    },
+    {
+      "kind": "gap",
+      "text": null,
+      "sourceUnitIds": [
+        "u000104"
+      ],
+      "defines": [],
+      "requires": [],
+      "mentions": [],
+      "fills": [],
+      "need": "pagination metadata",
+      "gapType": "metadata",
+      "origin": "gap"
+    }
+  ],
+  "edges": [
+    {
+      "from": 13,
+      "to": 14,
+      "relation": "part_of",
+      "reason": "Heading introduces the convergence discussion"
+    },
+    {
+      "from": 16,
+      "to": 17,
+      "relation": "part_of",
+      "reason": "Heading introduces the synthetic stream mixing performance experiment"
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "relation": "supports",
+      "reason": "Middle‑ground claim references mHC FLOP complexity"
+    },
+    {
+      "from": 8,
+      "to": 10,
+      "relation": "supports",
+      "reason": "Middle‑ground claim references go‑mHC FLOP complexity"
+    },
+    {
+      "from": 8,
+      "to": 11,
+      "relation": "supports",
+      "reason": "Middle‑ground claim references mHC‑lite FLOP complexity"
+    },
+    {
+      "from": 8,
+      "to": 12,
+      "relation": "supports",
+      "reason": "Middle‑ground claim references KromHC FLOP complexity"
+    }
+  ],
+  "evidenceFrames": []
+}

@@ -1,0 +1,248 @@
+You assess semantic information density for knowledge-graph nodes. Return JSON only:
+{"scores":[{"id":"node id","score":0.0,"reasons":["brief reason"]}]}
+
+Score 0 means one simple standalone idea. Score 1 means several ideas, prerequisites, causal steps, notation, evidence, or qualifications are compressed together. Score semantic compression, not raw word count.
+
+NODES:
+[
+  {
+    "id": "n0000001",
+    "kind": "claim",
+    "text": "URL: https://arxiv.org/html/2604.02309v1 Content-Type: text/html Method: native"
+  },
+  {
+    "id": "n0000003",
+    "kind": "claim",
+    "text": "meta-viewport: width=device-width, initial-scale=1, shrink-to-fit=no title: go-mHC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices"
+  },
+  {
+    "id": "n0000004",
+    "kind": "claim",
+    "text": "arXiv is now an independent nonprofit"
+  },
+  {
+    "id": "n0000005",
+    "kind": "claim",
+    "text": "Back to arXiv"
+  },
+  {
+    "id": "n0000006",
+    "kind": "claim",
+    "text": "License: arXiv.org perpetual non-exclusive license"
+  },
+  {
+    "id": "n0000007",
+    "kind": "claim",
+    "text": "arXiv:2604.02309v1 [cs.LG] 02 Apr 2026"
+  },
+  {
+    "id": "n0000008",
+    "kind": "definition",
+    "text": "go-mHC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices"
+  },
+  {
+    "id": "n0000009",
+    "kind": "claim",
+    "text": "Torque Dandachi, Independent, San Francisco, USA; correspondence hi@itstorque.com; Sophia Diggs-Galligan, Independent, San Francisco, USA"
+  },
+  {
+    "id": "n0000010",
+    "kind": "claim",
+    "text": "Abstract"
+  },
+  {
+    "id": "n0000011",
+    "kind": "claim",
+    "text": "Doubly stochastic matrices enable learned mixing across residual streams."
+  },
+  {
+    "id": "n0000012",
+    "kind": "claim",
+    "text": "Parameterizing the Birkhoff polytope exactly and efficiently remains an open challenge."
+  },
+  {
+    "id": "n0000013",
+    "kind": "claim",
+    "text": "Existing exact methods scale factorially with the number of streams d, while Kronecker-factorized approaches are efficient but have limited expressivity."
+  },
+  {
+    "id": "n0000014",
+    "kind": "claim",
+    "text": "We introduce a novel exact parameterization based on generalized orthostochastic matrices, scaling as O(d³) and exposing a hyperparameter s that interpolates between a computationally efficient boundary and the fully expressive Birkhoff polytope."
+  },
+  {
+    "id": "n0000015",
+    "kind": "claim",
+    "text": "Our method composes naturally with Kronecker-factorized methods, substantially recovering expressivity at similar FLOP costs."
+  },
+  {
+    "id": "n0000016",
+    "kind": "claim",
+    "text": "Spectral analysis indicates that go-mHC fills the Birkhoff polytope far more completely than Kronecker-factorized baselines."
+  },
+  {
+    "id": "n0000017",
+    "kind": "claim",
+    "text": "On synthetic stream-mixing tasks, go-mHC achieves the minimum theoretical loss while converging up to 10× faster."
+  },
+  {
+    "id": "n0000018",
+    "kind": "claim",
+    "text": "We validate our approach in a 30M parameter GPT-style language model."
+  },
+  {
+    "id": "n0000019",
+    "kind": "claim",
+    "text": "The expressivity, efficiency, and exactness of go-mHC offer a practical avenue for scaling d as a new dimension of model capacity."
+  },
+  {
+    "id": "n0000020",
+    "kind": "claim",
+    "text": "1 Introduction"
+  },
+  {
+    "id": "n0000021",
+    "kind": "claim",
+    "text": "The performance and stability of modern machine learning models increasingly depend on the geometric structure of their matrix parameterizations; traditional constraints such as symmetry or orthogonality have been foundational, while recent work leverages manifold theory to map unconstrained spaces onto constrained geometries like the Birkhoff polytope, which enforces doubly stochastic constraints but faces a trade-off between exactness and scalability."
+  },
+  {
+    "id": "n0000022",
+    "kind": "claim",
+    "text": "Constraining attention patterns to doubly stochastic matrices improves accuracy in vision and language models and interprets learned parameters as probability trajectories."
+  },
+  {
+    "id": "n0000023",
+    "kind": "claim",
+    "text": "Sinkhorn Attention provides memory-efficient implementations due to its ability to mix internal representations and smooth optimization landscape."
+  },
+  {
+    "id": "n0000024",
+    "kind": "claim",
+    "text": "Residual connections are crucial for stabilizing training of deep neural networks and are a building block of modern large language models."
+  },
+  {
+    "id": "n0000025",
+    "kind": "claim",
+    "text": "Dynamic generalizations of residual streams increase topological complexity by increasing the number of streams d while preserving the identity mapping property."
+  },
+  {
+    "id": "n0000026",
+    "kind": "claim",
+    "text": "Figure 1: Spectral analysis and architectural integration of go-mHC."
+  },
+  {
+    "id": "n0000027",
+    "kind": "claim",
+    "text": "Figure 1 illustrates spectral comparison showing go-mHC approximates the Birkhoff polytope within epsilon(s) error using d(d‑1)/2 parameters; mHC‑lite provides full coverage but requires d! parameters; KromHC is restricted to B₂ and disallows cycles >2. The parameterization maps skew‑symmetric X to orthogonal Q via the Cayley Transform, then projects to doubly stochastic B via block‑wise Frobenius norm. Hyper‑Connections ℋ_res is integrated into the residual stream as x_{l+1}=ℋ_l^{res} x_l + Layer F(x_l), where the doubly stochastic constraint ensures training stability and improved gradient flow."
+  },
+  {
+    "id": "n0000028",
+    "kind": "claim",
+    "text": "Manifold‑Constrained Hyper‑Connections (mHC) shows that constraining residual connections to the interior of the Birkhoff polytope significantly improves training stability and scalability."
+  },
+  {
+    "id": "n0000029",
+    "kind": "claim",
+    "text": "Dynamic generalizations reveal a new scaling dimension: the number of residual streams d."
+  },
+  {
+    "id": "n0000030",
+    "kind": "claim",
+    "text": "Follow‑up works have adopted mHC as the default backbone due to its superior modeling capabilities."
+  },
+  {
+    "id": "n0000031",
+    "kind": "claim",
+    "text": "Exact parameterizations have been introduced to prevent error accumulation across layers (Yang and Gao 2026; Zhou et al. 2026)."
+  },
+  {
+    "id": "n0000032",
+    "kind": "claim",
+    "text": "mHC‑lite uses the Birkhoff–von Neumann theorem to parameterize ℋ_res as a convex combination of all d! permutation matrices."
+  },
+  {
+    "id": "n0000033",
+    "kind": "claim",
+    "text": "The parameter count O(d·d!) explodes super‑exponentially; for d=8, 8! = 40 320 permutations are required, making this approach memory‑prohibitive without sampling approximations."
+  },
+  {
+    "id": "n0000034",
+    "kind": "claim",
+    "text": "KromHC employs Kronecker products of small doubly stochastic matrices to achieve exact constraints with O(d²) complexity, but at the cost of severely reduced expressivity."
+  },
+  {
+    "id": "n0000035",
+    "kind": "claim",
+    "text": "The proposed solution is based on the algebraic theory of generalized orthostochastic matrices (Gutkin 2013; Nechita et al. 2023; Korzekwa et al. 2018; Shahbeigi et al. 2021)."
+  },
+  {
+    "id": "n0000036",
+    "kind": "claim",
+    "text": "The framework learns doubly stochastic matrices while balancing efficiency and expressivity, exposing a hyperparameter s that allows tunability across these attributes."
+  },
+  {
+    "id": "n0000037",
+    "kind": "claim",
+    "text": "This approach opens possibilities for further exploration and new scaling approaches for Hyper‑Connections."
+  },
+  {
+    "id": "n0000038",
+    "kind": "claim",
+    "text": "The go‑mHC construction can be applied broadly to parametrize and learn the interior of the Birkhoff polytope, beyond the mHC example."
+  },
+  {
+    "id": "n0000039",
+    "kind": "claim",
+    "text": "The parameterization is evaluated on a synthetic data task mixing d residual streams and a 30 M‑parameter GPT‑style language model."
+  },
+  {
+    "id": "n0000040",
+    "kind": "claim",
+    "text": "We specifically contribute analytics and explorations that indicate that our method:"
+  },
+  {
+    "id": "n0000041",
+    "kind": "claim",
+    "text": "Our method achieves faster convergence and better reachability than parametrizations invoking the Birkhoff von‑Neumann theorem, such as mHC‑lite and KromHC."
+  },
+  {
+    "id": "n0000042",
+    "kind": "source",
+    "text": "---"
+  },
+  {
+    "id": "n0000043",
+    "kind": "claim",
+    "text": "The method scales as O(d^3) in FLOP complexity and parameter count, surpassing the super‑exponential scaling of mHC‑lite and KromHC’s component factors."
+  },
+  {
+    "id": "n0000045",
+    "kind": "claim",
+    "text": "The method requires no custom CUDA kernels, relying only on batched linear solves and tensor contractions."
+  },
+  {
+    "id": "n0000046",
+    "kind": "claim",
+    "text": "The method achieves exact double stochasticity by construction, with no iterations and no approximation gap."
+  },
+  {
+    "id": "n0000047",
+    "kind": "claim",
+    "text": "The method includes a hyperparameter s that interpolates between the orthostochastic boundary (s=1) and the dense interior of the Birkhoff polytope (s→∞)."
+  },
+  {
+    "id": "n0000048",
+    "kind": "claim",
+    "text": "The method provides a potential avenue for scaling Hyper‑Connections with tractable complexity while maintaining significant expressivity."
+  },
+  {
+    "id": "n0000049",
+    "kind": "claim",
+    "text": "The method can be used simultaneously with KromHC to allow for larger Kronecker factors by mitigating the super‑exponential scaling introduced in mHC‑lite."
+  },
+  {
+    "id": "n0000050",
+    "kind": "claim",
+    "text": "2 Related Work"
+  }
+]

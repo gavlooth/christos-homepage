@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0000811",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Δ-Nets encode each sharing context in a variable-arity replicator.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0000812",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Reduction combines local interactions with limited global scheduling discipline.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001027",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Applying a lambda abstraction to an argument replaces x in t with u: (λx. t) u → t[x := u].",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001030",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Two uses can share one intermediate share component.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001032",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "An interaction step either removes an active pair or lets it pass through while reconnecting nearby wires.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001033",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Distinct active pairs never share an agent because each agent has one principal port.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001034",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Perfect confluence gives a one-step diamond: two possible steps from N reach a common net after one more interaction each.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001035",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Distinct active-pair rewrites commute because they use distinct agents and leave the same nearby wiring in either order.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

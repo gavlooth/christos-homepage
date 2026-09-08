@@ -1,0 +1,70 @@
+Return JSON only: {"items":[{"recordId":"...","units":[{"role":"statement|definition|mechanism|prerequisite|intuition|derivation|example|limitation|evidence_interpretation","basis":"source|common_knowledge","text":"focused plain-prose teaching unit","requires":["undefined prerequisite"],"citationRequired":false}]}]}.
+
+Expand every record for a technically literate beginner. Source records require at least minimumTeachingUnits source-basis units that jointly preserve every claim, qualification, citation label, and condition in sourceAnchor. Add common-knowledge units when useful. Generated prerequisite records must define their concept and list only prerequisites still needed by the reader. One conceptual move and at most three sentences per unit. Common textbook definitions need no citation; measurements, source-specific results, attribution, disputed claims, and numerical facts require citationRequired true. Return exactly one item per recordId.
+
+[
+  {
+    "recordId": "teach-n0001092",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "When deleting unreachable material leaves an exposed connection in the net, that connection is terminated by an eraser.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001093",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "The erasure sweep may run at the end or earlier to save space; the paper recommends sweeping after applications of abstractions that ignore their arguments when memory matters most.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001094",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "In ΔI and ΔK, consecutive replicators can merge when a local level test proves the later replicator is unpaired.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001095",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "For consecutive replicators A and B joined through delta d, B is known unpaired when 0 ≤ lB − lA ≤ d.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001096",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Replicator merging preserves external endpoint levels while recomputing deltas relative to the surviving replicator's level.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001097",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "In ΔK, unpaired replicator ports leading directly to erasers can be removed.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001098",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "A remaining one-port unpaired replicator with delta zero collapses to a wire.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  },
+  {
+    "recordId": "teach-n0001099",
+    "chapter": "Unscoped",
+    "kind": "claim",
+    "sourceAnchor": "Canonicalization needs a schedule because it can touch ports that are not principal-to-principal active pairs.",
+    "minimumTeachingUnits": 2,
+    "requires": []
+  }
+]

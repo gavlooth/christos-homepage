@@ -1,0 +1,12 @@
+{
+  "chunkChars": 24000,
+  "concurrency": 4,
+  "retries": 0,
+  "timeoutSeconds": 180,
+  "model": "openrouter/inception/mercury-2",
+  "thinking": "",
+  "serviceTier": "",
+  "inputPath": "/home/christos/code/refine/articles/delta-nets/source.md",
+  "outputPath": "/home/christos/code/refine/articles/delta-nets/graph.json",
+  "runDirectory": "/home/christos/code/refine/articles/delta-nets/run-mercury-2"
+}

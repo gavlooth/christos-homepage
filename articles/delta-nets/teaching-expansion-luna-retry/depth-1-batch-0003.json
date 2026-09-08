@@ -1,0 +1,30 @@
+{
+  "depth": 1,
+  "batch": 3,
+  "items": [
+    {
+      "recordId": "teach-generated-078c051d252ead9c",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A net is a connected system of nodes and links that represents relationships, communication paths, or interactions among its parts.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    },
+    {
+      "recordId": "teach-generated-d442be1e167f0dba",
+      "units": [
+        {
+          "role": "definition",
+          "basis": "common_knowledge",
+          "text": "A rewrite is a new version of existing text, code, or other content that preserves or changes its meaning while expressing it differently.",
+          "requires": [],
+          "citationRequired": false
+        }
+      ]
+    }
+  ]
+}
