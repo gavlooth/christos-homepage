@@ -1658,395 +1658,419 @@ These times and performance measures quantify distinct physical properties and c
 
 ## Part III --- Crystals and defects
 
-A periodic crystal, defined by an atomic structure that repeats in space, generally supports electronic states that extend throughout the lattice. A vacancy, which is a missing atom at a normally occupied lattice site, can nevertheless trap an electron in a spatially localized state. Different defect classes can produce multiple physically inequivalent types of localized electronic states.
+This part starts from an ideal repeating geometry. After that geometry is precise, one altered site provides a controlled departure from the repeating pattern.
 
 ------------------------------------------------------------------------
 
 ## Chapter 5 --- Translational symmetry and defect localization in a crystal
 
-A crystal is invariant under specific spatial translations. Starting from one atom and moving by a fixed distance to the next identical atom reproduces the same local arrangement throughout an ideal crystal. An additional electron may occupy any of these equivalent atomic sites.
-
-Changing one atom or leaving one lattice site vacant modifies the crystal only near that location.
-
-These two situations have different electronic consequences. In a perfect crystal, an electron generally occupies a state distributed over all equivalent sites. A local modification can instead confine an electronic state near the altered site. The following minimal model describes both extended and localized states.
+What does it mean for an atomic arrangement to repeat?
 
 ### One-dimensional translational symmetry
 
-Choose an atom as the origin and translate by a fixed distance $a$ to the next identical atom. Repeated translations generate the positions
+Consider an ideal, infinite row of identical atoms, equally spaced by a distance $a>0$.
+
+Choose one atom as the origin. Translating the *whole row* by the spacing $a$ moves every atom to the position previously occupied by its neighbor, so the translated row coincides with the original row. Repeating this translation in either direction gives the positions
 
 $$\ldots,\; -2a,\; -a,\; 0,\; a,\; 2a,\; \ldots$$
 
-These are the translations that leave the ideal crystal unchanged. This discrete set of translation points is a lattice.
+These positions form the one-dimensional lattice $a\mathbb{Z}$. Here $\mathbb{Z}$ is the set of all integers, and $a$, measured in metres, is the lattice constant. The lattice is the set of translations that reproduce the ideal pattern, not a list of individual atoms with extra internal structure.
 
-![A two-panel schematic separates lattice translation points from the repeated two-atom motif attached to each point.](defects-to-topological-qubits/lattice-unit-cell.svg){decoding="async" height="720" loading="eager" width="1400"}
+The atoms attached to one lattice point form a *motif*, the small arrangement repeated at every lattice point. For example, a two-atom motif places two atoms in each repeated unit, so the translation spacing can differ from the nearest atom-to-atom spacing.
 
-*A lattice specifies translations that reproduce a pattern. A motif specifies the atoms repeated at each lattice point. This is a two-dimensional schematic.*
+![A two-panel schematic separates lattice translation points from the repeated two-atom motif attached to each point. The motif identifies the atoms repeated at each translation point; equal spacing alone does not specify the crystal.](defects-to-topological-qubits/lattice-unit-cell.svg){alt="A two-panel schematic separates lattice translation points from the repeated two-atom motif attached to each point." decoding="async" height="720" loading="eager" width="1400"}
 
-In one dimension, the lattice is defined as the set $a\mathbb{Z}$, where $a>0$ is fixed and $\mathbb{Z}$ is the set of integers.
+The figure is a two-dimensional schematic of this distinction; our present chain uses the one-dimensional set $a\mathbb{Z}$. In higher dimensions there are two or three independent translation vectors, and the lattice is again the set of translations that leave the ideal pattern invariant.
 
-The distance $a$, measured in metres, is the one-dimensional lattice constant. Crystals in two or three dimensions can have two or three independent translation vectors. In every dimension, the lattice is the set of translations that leave the ideal pattern invariant.
+The translation property belongs to the geometry. Later sections can place a physical model on this same fixed set of sites.
 
-Two crystals can therefore have the same lattice but different motifs. The lattice specifies the allowed translations, whereas the motif specifies the atoms associated with each lattice point. Crystals with the same spacing $a$ are not necessarily the same physical structure.
+### Site states in a one-electron model
+
+Now place one electron on the chain and associate one localized orbital $|n\rangle$ with each lattice point, where the integer $n$ labels the site. "Localized" means that this orbital is concentrated around one site: if the electron is in $|n\rangle$, a position measurement in this site description finds it at $n$, rather than assigning equal weight to the entire row.
+
+Assume these site orbitals are orthonormal:
+
+$$\langle m|n\rangle=\delta_{mn}.$$
+
+They form a basis, so a general one-electron state can be written as $|\psi\rangle=\sum_n c_n|n\rangle$. In this basis, $|c_n|^2=|\langle n|\psi\rangle|^2$ is the probability of finding the electron at site $n$; for a normalized state, the probabilities sum to one. A localized basis vector is therefore a useful position description.
+
+This is a one-electron model with one orbital per site and static nuclei. It omits the additional electrons and orbitals, spin, and lattice motion present in a real crystal. Those omissions delimit what the later calculation can claim; they do not alter the meaning of the site probabilities within this model.
 
 ### Nearest-neighbor hopping
 
-Associate one localized orbital $|n\rangle$ with each lattice point. The integer $n$ labels the site on which the electron is localized. Assume that these orbitals form an orthonormal basis:
+To let the electron spread, retain only coupling between neighboring orbitals. The parameter $t>0$ is an energy scale, measured in joules or electronvolts, and the off-diagonal matrix element is chosen as $\langle n+1|H_0|n\rangle=-t$ (with its Hermitian conjugate in the reverse direction). Thus $t$ is not a dimensionless probability that the electron jumps during a time step. It measures the energetic coupling that mixes the two site states; the resulting time-dependent amplitudes and probabilities come from the Hamiltonian evolution.
 
-$$\langle m|n\rangle=\delta_{mn},$$
+For an exactly solvable finite version, take $N$ sites and impose periodic boundary conditions: site $N$ is identified with site $0$. This makes a ring with no ends, so every site has two nearest neighbors. The Hamiltonian is
 
-where the Kronecker delta $\delta_{mn}$ equals 1 when $m=n$ and 0 otherwise. As introduced in Chapter 1, the inner product between a bra and a ket is a number.
+$$H_0=-t\sum_{n=0}^{N-1}\bigl(|n\rangle\langle n+1|+|n+1\rangle\langle n|\bigr),$$
 
-The electron can move between neighboring orbitals. The hopping parameter $t>0$, measured in joules or electronvolts, sets the energy scale associated with this motion.
-
-Consider $N$ sites with periodic boundary conditions, meaning that site $N$ is identified with site $0$. This assumption removes physical ends from the chain.
-
-Each site then has two nearest neighbors. The model includes only processes in which the electron moves from a site to one of these neighbors and the corresponding reverse process.
-
-The Hamiltonian, or energy operator, containing these nearest-neighbor hopping terms is
-
-$$H_0=-t\sum_{n=0}^{N-1}\bigl(|n\rangle\langle n+1|+|n+1\rangle\langle
-n|\bigr),$$
-
-with the indices wrapping around according to the periodic boundary conditions. The overall minus sign is a convention. With this convention, the lowest-energy state is the state whose amplitude varies most slowly across the lattice.
-
-A site state is not an eigenstate of $H_0$, because the Hamiltonian mixes neighboring orbitals. If $t=0$, each site state is an eigenstate and no propagation occurs.
-
-A model formulated in terms of localized orbitals and hopping between nearby sites is called a tight-binding model. Tight binding is an approximation organized around the limit of weak coupling between localized orbitals; it is not an alternative fundamental law [\[R067\]](#ref-R067 "[R067] J. C. Slater and G. F. Koster, “Simplified LCAO Method for the
+where the indices wrap around the ring. This nearest-neighbor form is useful because it keeps the local geometry visible while still allowing an exact calculation of the extended modes. It is the one-orbital tight-binding approximation: a model organized around weak coupling between localized orbitals, not an alternative fundamental law [\[R067\]](#ref-R067 "[R067] J. C. Slater and G. F. Koster, “Simplified LCAO Method for the
 Periodic Potential Problem,” Physical Review 94, 1498–1524 (1954). DOI: 10.1103/PhysRev.94.1498 .").
+
+If $t=0$, the coupling vanishes. Every $|n\rangle$ is then an energy eigenstate and there is no propagation between sites. For nonzero $t$, $H_0|n\rangle$ contains neighboring site states, so a single site state is not an eigenstate of $H_0$. This is the point at which the distinction between a localized basis state and an energy eigenstate becomes physically relevant.
 
 ### Energy band of the uniform chain
 
-Because every site is equivalent under translation, consider a state whose phase changes by the same factor at each lattice step:
+Because every site has the same coupling, try a state whose amplitude has the same phase factor from one site to the next:
 
 $$|k\rangle=\frac{1}{\sqrt{N}}\sum_{n=0}^{N-1}e^{ikna}|n\rangle.$$
 
-The quantity $k$ is a wavevector measured in inverse metres. Consequently, $ka$ is dimensionless and represents the phase change per lattice step. This wavevector is unrelated to a point on the two-level Bloch sphere discussed in earlier chapters.
+Here $k$, measured in inverse metres, is the lattice wavevector. The product $ka$ is the dimensionless phase change per lattice step.
 
-Periodic boundary conditions require the phase to return to its original value after $N$ steps:
+On the ring, the amplitude must return to its starting phase after $N$ steps:
 
 $$e^{ikNa}=1.$$
 
-This condition restricts the wavevector to $k=2\pi m/(Na)$, where $m$ is an integer. Applying the Hamiltonian to the state gives one phase factor from each of the two neighboring sites:
+Consequently $k=2\pi m/(Na)$ for integer $m$. The finite ring has $N$ allowed wavevectors, and the corresponding $|k\rangle$ states are orthogonal.
+
+Applying the two hopping terms gives one phase factor from each neighbor:
 
 $$H_0|k\rangle=-t\bigl(e^{ika}+e^{-ika}\bigr)|k\rangle=-2t\cos(ka)|k\rangle.$$
 
-The energy dispersion relation, which specifies the energy as a function of wavevector, is therefore
+The dispersion relation is therefore
 
 $$E(k)=-2t\cos(ka).$$
 
-A complete set of distinct wavevectors can be chosen in the interval $-\pi/a<k\leq\pi/a$. Over this interval, the cosine ranges from $-1$ to $1$, so the allowed energies occupy the interval $[-2t,2t]$.
+Because $E(k)$ depends on $\cos(ka)$, the distinct states with wavevectors $k$ and $-k$ can have the same energy. They remain orthogonal even when that energy is degenerate. With the minus sign chosen in $H_0$, the smallest value, $E=-2t$, occurs at $k=0$: the lowest-energy pattern varies most slowly from site to site.
 
-This continuous interval is one energy band. Its width is $4t$, which has units of energy.
+A complete set of distinct wavevectors can be chosen with $-\pi/a<k\leq\pi/a$. On a finite ring, the $N$ energies (counting degeneracies) lie in the interval $[-2t,2t]$. As the ring grows, these allowed values become arbitrarily fine. The genuinely infinite chain has a continuous wavevector and energy spectrum over this band; it is not merely a shorthand for a dense finite set. The infinite-chain band has total width $4t$.
 
-Translation symmetry therefore does not select one energy. Instead, it permits a range of energies labeled by the wavevector $k$.
-
-The state $|k\rangle$ is extended over the entire chain. The probability at each site is
+Each $|k\rangle$ state in this eigenbasis is extended. Its amplitude at every site has magnitude $1/\sqrt{N}$, so its site probability is
 
 $$\bigl|1/\sqrt{N}\bigr|^2=1/N.$$
 
-This result does not describe a classical particle following an orbit from site to site. It describes a stationary wavefunction with nonzero support on every site.
-
-Doubling the number of sites halves the probability assigned to each site. If translation symmetry is removed, classification of the states by $k$ is no longer required.
+This is a stationary wave spread evenly around the ring, not a particle traveling an orbit from site to site. A prepared superposition of many $|k\rangle$ states can instead make a localized wavepacket; having a uniform eigenbasis does not mean every prepared state is extended. Once the defect below breaks translation symmetry, $k$ is no longer an exact label for the eigenstates.
 
 ### A single-site defect
 
-Modify the on-site energy of site $0$ by an amount $U$, which also has units of energy:
+Alter only the on-site energy at site $0$ by an amount $U$, also measured in energy units:
 
 $$H=H_0+U|0\rangle\langle0|.$$
 
-A defect is defined here as a departure from the ideal lattice. The term $U|0\rangle\langle0|$ is the simplest such modification because it changes one scalar on-site energy at one site.
+In this model, "defect" means this one changed scalar on-site energy. It is not a missing atom: a real vacancy could also change neighboring positions, orbitals, and couplings. Those vacancy effects belong to Chapter 6 and later sections.
 
-For an infinite chain, consider a reflection-symmetric state with amplitudes
+For the bound-state calculation, change from the finite ring to an infinite chain. This removes the ring boundary, so a decaying tail cannot wrap around and meet itself. Seek a reflection-symmetric state centered at the altered site:
 
 $$\psi_n=\langle n|\psi\rangle=A\lambda^{|n|},\qquad |\lambda|<1.$$
 
-The constant $A$ is fixed by normalization. The condition $|\lambda|<1$ ensures that the amplitude decreases with distance from the defect.
+The condition $|\lambda|<1$ makes the two-sided geometric tail square-summable. Normalization then determines $|A|$; it is not an arbitrary overall probability.
 
-Away from the defect, the eigenvalue equation contains only the two nearest-neighbor hopping terms. For $n\geq
-1$,
+For a site away from the defect, say $n\geq1$, only the two hopping terms act. The eigenvalue equation is
 
 $$E\,A\lambda^n=-t\bigl(A\lambda^{n-1}+A\lambda^{n+1}\bigr),$$
 
-which implies
+and division by the nonzero tail amplitude gives
 
 $$E=-t\bigl(\lambda+\lambda^{-1}\bigr).$$
 
-At site $0$, the additional energy $U$ contributes, and both neighboring amplitudes equal $A\lambda$. The eigenvalue equation is therefore
+At site $0$, the on-site shift contributes $U A$, while both neighboring amplitudes equal $A\lambda$. The equation there is
 
 $$E=U-2t\lambda.$$
 
-Equating the two expressions for $E$ gives
+Equating the two expressions for $E$ gives the defect condition
 
 $$U=t\bigl(\lambda-\lambda^{-1}\bigr).$$
 
-Multiplication by $\lambda$ produces a quadratic equation. Exactly one of its two roots has magnitude below 1. The magnitude of this root and the corresponding bound-state energy are
+For every nonzero $U$, the resulting quadratic has exactly one root with magnitude below one. Its magnitude and the corresponding defect energy are
 
 $$|\lambda|=\frac{\sqrt{U^2+4t^2}-|U|}{2t},
 \qquad
 E_{\mathrm d}=\operatorname{sgn}(U)\sqrt{U^2+4t^2}.$$
 
-The quantity $E_{\mathrm d}$ is the defect-state energy. The sign function $\operatorname{sgn}(U)$ equals $+1$ for positive $U$ and $-1$ for negative $U$.
+Take first an attractive shift, $U<0$. Then $E_{\mathrm d} < -2t$, below the clean-chain band, and the root is positive. The amplitudes have the same sign on both sides of site $0$.
 
-It follows that $|E_{\mathrm
-d}|>2t$, so the defect-state energy lies outside the clean chain's band. For $U<0$, the state lies below the band, and its amplitudes have the same sign at every site. For $U>0$, the state lies above the band, and the signs of its amplitudes alternate between neighboring sites.
+For a repulsive shift, $U>0$, $E_{\mathrm d} > 2t$, above the band, and the root is negative. The factor $\lambda^{|n|}$ then alternates sign from one site to the next while its magnitude decays.
 
-Thus, a single altered site in an infinite chain binds a normalizable state with an energy unavailable to the traveling-wave states of $H_0$.
+The excluded case $U=0$ is the clean chain again. The defect equation then gives the non-decaying possibilities $|\lambda|=1$, so there is no normalizable defect-localized state. Thus a nonzero change at one site creates one bound state outside the single clean-chain band.
 
-The exponentially decreasing envelope can be written as $e^{-|n|a/\xi}$. This expression defines the localization length $\xi$, the characteristic length scale over which the amplitude decreases:
+The envelope can be written as $e^{-|n|a/\xi}$. The localization length $\xi$ is specifically the *amplitude* e-folding length: moving a distance $\xi$ farther from the defect multiplies the envelope by $e^{-1}$.
 
 $$\xi=-\frac{a}{\ln|\lambda|}
 =\frac{a}{\operatorname{arsinh}(|U|/2t)}.$$
 
-Both $a$ and $\xi$ have units of length. The arguments of the logarithm and the inverse hyperbolic sine must be dimensionless. In particular, an energy cannot appear inside a logarithm unless it is divided by another energy.
-
-As an explicit example, set $U=-t$. Then
+For example, if $U=-t$, then
 
 $$E_{\mathrm d}=-\sqrt{5}\,t,\qquad
 |\lambda|=\frac{\sqrt{5}-1}{2}\approx0.618,
 \qquad
 \xi\approx2.08a.$$
 
-Normalization gives
+In this example normalization follows by summing the central probability and the two geometric tails:
 
-$$|A|^2=\frac{1-|\lambda|^2}{1+|\lambda|^2}=\frac{1}{\sqrt{5}}.$$
+$$|A|^2\left(1+2\sum_{n=1}^{\infty}|\lambda|^{2n}\right)=1,
+\qquad
+|A|^2=\frac{1-|\lambda|^2}{1+|\lambda|^2}=\frac{1}{\sqrt{5}}.$$
 
-In this model, approximately $0.447$ of the total probability is located at the defect site. The remaining probability forms exponentially decreasing tails.
+Therefore about $0.447$ of the total probability is on the altered site, and the two tails contain the remaining probability. The sum is exactly one. \[Theory\] These values follow from this chosen one-dimensional Hamiltonian; they are not predictions for diamond, sapphire, or another real host.
 
-The total probability remains exactly 1. \[Theory\] These numerical results follow from the chosen one-dimensional Hamiltonian; they are not predictions for diamond, sapphire, or any other real host material.
-
-If $U=0$, then $|\lambda|=1$, and the amplitude does not decay. If the condition $|\lambda|<1$ is omitted on an infinite chain, the proposed state is not normalizable. On a finite ring, the tail wraps around the periodic boundary. The probability can remain concentrated near site $0$, but the resulting state is not the infinite-chain bound state derived above.
+The exponential expression above is an exact infinite-chain solution, not an exact finite-ring solution. On a finite ring, a state concentrated near site $0$ has a tail that eventually wraps around the periodic boundary and can overlap itself. The ring approximation approaches the infinite-chain state only when the ring is much longer than the localization length.
 
 ### Evanescent states outside the energy band
 
-For a clean chain, the energy satisfies $E=-2t\cos(ka)$. If $|E|\leq 2t$, a real wavevector $k$ exists, and the factor $e^{ikna}$ has constant magnitude. Such a state propagates through the chain. If $|E|>2t$, no real value of $k$ satisfies the dispersion relation.
+The clean-chain dispersion explains why the defect level cannot lie inside the band. If $|E|\leq2t$, there is a real $k$ satisfying $E=-2t\cos(ka)$. The factor $e^{ikna}$ then has constant magnitude, so the corresponding clean-chain solution is extended rather than decaying. At the band edges, $k=0$ or $k=\pi/a$ gives a constant or alternating extended pattern; these are not evanescent tails.
 
-For an energy below the band, write $k=i\kappa$, where $\kappa>0$ has units of inverse length. Then
+For $|E|>2t$, no real wavevector satisfies the dispersion relation. Below the band, write $k=i\kappa$ with inverse length $\kappa>0$. On the right side of the defect, for $n\geq0$, the clean-chain factor becomes
 
 $$e^{ikna}=e^{-\kappa na}.$$
 
-The absence of a real wavevector therefore produces an exponential, or evanescent, tail. The defect does not act as an infinitely hard barrier. Instead, it produces a state at an energy for which the host has no traveling channel.
+This is an evanescent tail: its amplitude decreases as one moves rightward from the defect. A matching left-hand tail decreases as one moves leftward, producing the two-sided localized state used above. The defect is not a hard wall; it supports a level at an energy where the uniform host has no real-$k$ extended solution.
 
-This bound state is localized, but it is not an in-gap state because the chain has only one energy band.
-
-The additional level lies outside that band rather than in an interval between two bands. A model with such an internal interval is introduced below.
-
-If the condition $|E|>2t$ is removed, a real wavevector already exists and an exponential ansatz is not required.
-
-### Bloch waves in a periodic potential
-
-The preceding chain is a discrete model. A real crystal is a continuous medium with a spatially periodic potential:
-
-$$V(\mathbf r+\mathbf R)=V(\mathbf r)$$
-
-for every lattice translation $\mathbf
-R$. Bloch's theorem states that an energy eigenfunction in such a periodic potential can be written as
-
-$$\psi_{n\mathbf k}(\mathbf r)=e^{i\mathbf k\cdot\mathbf r}u_{n\mathbf
-k}(\mathbf r),$$
-
-where $\mathbf r$ is position, $\mathbf k$ is the crystal wavevector, and $n$ is the band index. The cell-periodic function $u_{n\mathbf k}$ satisfies $u_{n\mathbf k}(\mathbf r+\mathbf R)=u_{n\mathbf
-k}(\mathbf r)$ [\[R066\]](#ref-R066 "[R066] F. Bloch, “Über die Quantenmechanik der Elektronen in
-Kristallgittern,” Zeitschrift für Physik 52, 555–600 (1929). DOI: 10.1007/BF01339455 ."). The dot product $\mathbf k\cdot\mathbf r$ is dimensionless.
-
-An eigenfunction of this form is called a Bloch wave. The terminology refers to Felix Bloch, who formulated the crystal-wave theorem in 1929. It is distinct from the Bloch sphere used to represent two-level quantum states.
-
-A Bloch wave consists of a plane-wave phase factor multiplied by a function that repeats within every unit cell.
-
-The tight-binding state $|k\rangle$ is the corresponding discrete construction. Other approximations begin with nearly free electrons rather than localized orbitals. Tight-binding and nearly-free-electron descriptions are approximations organized around different physical limits, not competing fundamental laws.
-
-Periodicity of $V$ therefore does not require the eigenfunction to be a plane wave alone. It requires a plane-wave factor multiplied by a cell-periodic function. If $V$ is not periodic, Bloch's theorem does not apply.
-
-Linear combinations of Bloch waves can form wave packets localized near individual cells. Such localized orbitals are sometimes called Wannier functions.
-
-The possibility of choosing Wannier functions that decay exponentially contains additional information about the band. The elementary chain considered here has no obstruction to such a choice [\[R068\]](#ref-R068 "[R068] W. Kohn, “Analytic Properties of Bloch Waves and Wannier
-Functions,” Physical Review 115, 809–821 (1959). DOI: 10.1103/PhysRev.115.809 ."). A defect-bound state is nevertheless a different object because the defect breaks translation symmetry and fixes the envelope near a particular site.
+To obtain an interval between two bands, we next change the repeated unit.
 
 ### Formation of an energy gap
 
-The one-orbital chain has one continuous band and no internal energy interval without states.
+#### What geometry creates two bands? {#gap-repeated-two-site-model}
 
-A minimal lattice with such an interval contains two inequivalent sites, $A$ and $B$, in each repeated unit. Assign on-site energies $+\Delta$ and $-\Delta$, where $\Delta$ has units of energy, and connect nearest neighbors using the same hopping parameter $t$.
+The model so far has one orbital per repeated unit and one band. Keep the nearest-site spacing $a$, but now group two sites, $A$ and $B$, into each repeated unit. The two-site cell has period $b=2a$.
 
-In the ordered basis $(A,B)$, the Hamiltonian at wavevector $k$ is the two-by-two matrix
+#### What makes the two sites inequivalent? {#gap-site-inequivalence}
+
+Give the two sites on-site energies $+\Delta$ and $-\Delta$, where $\Delta$ is measured in energy units. They can represent different atoms or different local environments; when $\Delta\neq0$, translation by one site is no longer a symmetry. Keep every nearest-neighbor hop the same positive magnitude $t>0$, so the new feature is the alternating site energy rather than alternating hopping.
+
+#### Why do we need two amplitudes per cell? {#gap-two-amplitudes-matrix}
+
+For a fixed crystal wavevector, an eigenstate must specify an amplitude on every $A$ site and an amplitude on every $B$ site. The cell-to-cell phase is set by the cell translation $b$, so the state in one cell is represented by the two-component vector $(A_k,B_k)$, rather than one number.
+
+The diagonal entries of the matrix record the two on-site energies. The two nearest-neighbor paths couple the $A$ and $B$ amplitudes: one path lies within the cell and the other crosses the cell boundary, contributing the phase $e^{\pm ikb}$. In the ordered basis $(A,B)$, this gives
 
 $$H(k)=
 \begin{pmatrix}
-\Delta & -t(1+e^{-ika})\\
--t(1+e^{ika}) & -\Delta
+\Delta & -t(1+e^{-ikb})\\
+-t(1+e^{ikb}) & -\Delta
 \end{pmatrix}.$$
 
-Solving this two-dimensional eigenvalue problem gives
+The appearance of two amplitudes is the reason a two-by-two eigenvalue problem is needed: one equation gives the energy balance on an $A$ site and the other gives the balance on a $B$ site. Setting the determinant of $H(k)-E I$ to zero gives
 
-$$E_{\pm}(k)=\pm\sqrt{\Delta^2+4t^2\cos^2(ka/2)}.$$
+$$E_{\pm}(k)=\pm\sqrt{\Delta^2+4t^2\cos^2(kb/2)}.$$
 
-When $\Delta\neq 0$, the upper and lower bands do not meet. Their minimum separation occurs at the edge of the $k$ interval and is
+#### What is the spectral gap? {#gap-energy-before-filling}
+
+As in the one-site chain, choose an interval containing each distinct wavevector once. The cell period is now $b$, so use $-\pi/b<k\le\pi/b$. At its boundary, the cosine term vanishes: the lower branch reaches $-|\Delta|$ and the upper branch reaches $+|\Delta|$. Their minimum separation is
 
 $$E_{\mathrm g}=2|\Delta|.$$
 
-The empty energy interval between the bands is the band gap. The quantity $E_{\mathrm g}$ has units of energy. A gap is an interval containing no traveling host state; it is not a physical void in the crystal.
+This energy gap is defined by the spectrum: it is an interval with no traveling host state, not a physical void in the crystal. If $\Delta=0$, the two branches touch, $E_{\mathrm g}=0$, and there is no internal interval in which a level can be separated from both bands.
 
-Thus, two inequivalent sites per repeating unit, with $\Delta\neq 0$, divide the spectrum into two bands separated by a forbidden interval. If $\Delta=0$, the bands touch and $E_{\mathrm g}=0$.
+#### When may the branches be called valence and conduction bands? {#gap-filling-assumption}
 
-At zero temperature, electrons fill the lower band. This band is called the valence band, and its upper edge is denoted $E_{\mathrm v}$.
+The labels require an occupation assumption in addition to the spectral gap. For the noninteracting spinless example at zero temperature with one electron per two-site cell, the lower band is filled and the upper band is empty. Let $E_{\mathrm v}$ be the upper edge of that occupied lower band and $E_{\mathrm c}$ the lower edge of the empty upper band. Under this filling, the same gap is written
 
-The next available band is the conduction band, whose lower edge is denoted $E_{\mathrm c}$. The band gap is then $E_{\mathrm g}=E_{\mathrm
-c}-E_{\mathrm v}>0$.
+$$E_{\mathrm g}=E_{\mathrm c}-E_{\mathrm v}>0.$$
 
 ### Localized states within a band gap
 
-A defect can be introduced by changing an atom, removing an atom, or adding a local orbital. In the atomic limit $t=0$, a defect orbital with on-site energy $E_{\mathrm d}$ between $-|\Delta|$ and $+|\Delta|$ is perfectly localized. Restoring the hopping terms produces spatial tails.
+#### How does a defect level enter the gap? {#in-gap-level-from-decoupled-limit}
 
-If the full eigenvalue remains between the two band continua, the host has no real traveling Bloch wave at that energy, so these tails decay. This is the gapped analogue of the bound state derived for the one-band chain.
+First turn off hopping, $t=0$. Every site is then independent. If a defect orbital has energy $E_{\mathrm d}$ between $-|\Delta|$ and $+|\Delta|$, its amplitude can remain entirely on the defect: it is perfectly localized in this decoupled limit. Restoring hopping lets the defect amplitude leak into neighboring host sites, creating spatial tails.
 
-A decaying, normalizable state whose energy lies within the gap is a localized in-gap state. Most of its probability is concentrated in a bounded spatial region, and its energy lies where the perfect host cannot support a traveling wave.
+Those tails do not automatically become traveling waves. If the full defect eigenvalue remains between the two host band continua, the perfect host has no propagating solution at that energy. The recurrence relation outside the defect therefore selects a decaying, rather than oscillatory, solution. The resulting state is the gapped analogue of the one-band bound state: its energy is in the spectrum's forbidden interval and its wavefunction decays away from the defect.
 
-By contrast, an extended state occupies a number of unit cells that increases with the sample size.
+#### What do the edge separations establish? {#edge-separation-versus-localization}
 
-Define the energy separations from the valence- and conduction-band edges by
+Measure the energy separation from each band edge:
 
 $$\delta_{\mathrm v}=E_{\mathrm d}-E_{\mathrm v},\qquad
 \delta_{\mathrm c}=E_{\mathrm c}-E_{\mathrm d}.$$
 
-For a one-electron level to lie in the gap, both quantities must be positive. A larger $E_{\mathrm g}$ allows, but does not guarantee, larger isolation margins.
+For an in-gap one-electron level, both quantities must be positive. These inequalities establish *spectral isolation*: the energy is separated from the valence and conduction continua. They do not, by themselves, establish a short spatial envelope.
 
-Stronger coupling between the defect and the host can shift or broaden the defect level. If the level lies inside a band, it becomes a resonance rather than a truly bound state.
+#### How is spatial localization checked? {#spatial-localization-check}
 
-A band gap therefore provides an allowed energy interval for defect levels but does not ensure that any such level exists. A weakly bound state near a band edge can extend across many unit cells.
+Localization means that a normalizable eigenstate has most of its probability in a bounded region, rather than occupying a number of cells that grows with sample size. A level very close to an edge can have a long decay length and spread over many cells. A level farther from both edges often has a shorter decay length, but the wavefunction or spatial density must still be calculated.
 
-A level farther from both band edges is often more tightly localized around the altered site. Levels near and far from a band edge are commonly described as "shallow" and "deep," respectively.
+#### What if defect-host coupling moves the level into a band? {#in-gap-resonance-coupling}
 
-Here, "deep" refers to the energy position within the gap, not to a physical depth below a surface.
+Stronger defect-host coupling can shift a nominal defect level into a band. Once it overlaps a continuum, it is generically a resonance: it mixes with extended host states and is not a normalizable bound eigenstate. A larger $E_{\mathrm g}$ permits larger edge separations, but guarantees neither spectral isolation nor localization.
 
-A wide-gap host is useful because it provides a larger possible energy interval in which a defect level can remain separated from both band continua. \[Theory\] A wide band gap does not by itself create a suitable defect, guarantee a spin, or produce a qubit.
+#### What do "shallow" and "deep" mean here? {#shallow-deep-defect-levels}
 
-It only makes energetic isolation more plausible. Candidate defects must still be evaluated according to charge-state stability, wavefunctions, lattice relaxation, optical transitions, and coupling to noise [\[R069\]](#ref-R069 "[R069] C. G. Van de Walle and J. Neugebauer, “First-principles
-calculations for defects and impurities: Applications to III-nitrides,”
-Journal of Applied Physics 95, 3851–3879 (2004)."); [\[R070\]](#ref-R070 "[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G.
-Kresse, A. Janotti, and C. G. Van de Walle, “First-principles
-calculations for point defects in solids,” Reviews of Modern Physics 86,
-253–305 (2014). DOI: 10.1103/RevModPhys.8"); [\[R071\]](#ref-R071 "[R071] J. R. Weber, W. F. Koehl, J. B. Varley, A. Janotti, B. B.
-Buckley, C. G. Van de Walle, and D. D. Awschalom, “Quantum computing
-with defects,” Proceedings of the National Academy of Sciences 107,
-8513–8518 (2010).").
+A level close to either band edge is called *shallow*. Because its energy is only weakly separated from the continuum, its envelope may extend over many cells and it can be sensitive to band carriers. A level far from both edges is called *deep*; here "deep" describes its energy position inside the gap, not its geometric depth below a surface. Neither word alone guarantees a useful defect: charge stability, wavefunction character, and environmental coupling still matter.
+
+#### What advantage does a wide-gap host actually provide? {#wide-gap-not-qubit}
+
+A wide-gap host offers a larger interval in which a defect level can remain separated from both continua. \[Theory\] That is an opportunity for isolation, not a defect-generation mechanism. A wide gap does not by itself create a defect, guarantee a spin, or produce a qubit. Candidate defects must still be judged by charge-state stability, wavefunctions, lattice relaxation, optical transitions, and coupling to noise [\[R069\]](#ref-R069 "[R069] C. G. Van de Walle and J. Neugebauer, “First-principles calculations for defects and impurities: Applications to III-nitrides,” Journal of Applied Physics 95, 3851–3879 (2004)."); [\[R070\]](#ref-R070 "[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G. Kresse, A. Janotti, and C. G. Van de Walle, “First-principles calculations for point defects in solids,” Reviews of Modern Physics 86, 253–305 (2014). DOI: 10.1103/RevModPhys.8"); [\[R071\]](#ref-R071 "[R071] J. R. Weber, W. F. Koehl, J. B. Varley, A. Janotti, B. B. Buckley, C. G. Van de Walle, and D. D. Awschalom, “Quantum computing with defects,” Proceedings of the National Academy of Sciences 107, 8513–8518 (2010).").
+
+### Bloch waves in a periodic potential
+
+#### What does periodicity guarantee? {#bloch-theorem-claim}
+
+For an ideal crystal, use a one-electron model with a spatially periodic potential,
+
+$$V(\mathbf r+\mathbf R)=V(\mathbf r)$$
+
+for every lattice translation $\mathbf R$. For the ideal periodic one-electron Hamiltonian, Bloch's theorem says that its energy eigenstates can be chosen as a basis of functions of the form
+
+$$\psi_{n\mathbf k}(\mathbf r)=e^{i\mathbf k\cdot\mathbf r}u_{n\mathbf k}(\mathbf r),$$
+
+where $\mathbf k$ is the crystal wavevector, $n$ is the band index, and the cell-periodic factor repeats in every cell:
+
+$$u_{n\mathbf k}(\mathbf r+\mathbf R)=u_{n\mathbf k}(\mathbf r).$$
+
+Such an eigenfunction is a Bloch wave, named for Felix Bloch's 1929 crystal-wave theorem and unrelated to a point on the two-level Bloch sphere [\[R066\]](#ref-R066 "[R066] F. Bloch, “Über die Quantenmechanik der Elektronen in Kristallgittern,” Zeitschrift für Physik 52, 555–600 (1929). DOI: 10.1007/BF01339455 ."). The theorem does not say that every arbitrary eigenfunction must individually be written in one unique Bloch form: degeneracies permit other linear combinations, and a defect breaks the translation symmetry. The claim is that an eigenbasis adapted to the ideal periodic symmetry exists.
+
+#### How does the chain approximate this statement? {#tight-binding-bloch-bridge}
+
+The tight-binding state $|k\rangle$ is the discrete counterpart of a Bloch wave: its site amplitudes acquire a fixed phase from cell to cell. A nearly-free-electron description starts from the opposite limit, in which electrons are nearly free and the periodic potential is treated as a perturbation. These are approximations organized around different limits, not competing laws. Periodicity is the condition behind the plane-wave-times-cell-periodic form; without periodicity, Bloch's theorem does not apply.
+
+#### How are Wannier functions different from defect-bound states? {#wannier-versus-defect-bound}
+
+Superpositions of Bloch waves across a band can form orbitals localized near individual cells, sometimes called Wannier functions. Whether exponentially decaying Wannier functions exist carries further information about the band; the elementary chain here has no obstruction [\[R068\]](#ref-R068 "[R068] W. Kohn, “Analytic Properties of Bloch Waves and Wannier Functions,” Physical Review 115, 809–821 (1959). DOI: 10.1103/PhysRev.115.809 ."). A Wannier orbital is a chosen representation of states in a translation-invariant band: translating it produces an equivalent orbital in every cell. A defect-bound state instead requires broken translation symmetry to pin its envelope near one particular site. Its localization is a property of the physical eigenstate created by the defect, not merely a change of basis within a perfect band.
 
 ### Nuclear vibrations and phonons
 
-Nuclei fluctuate around their equilibrium positions. For sufficiently small displacements, their collective normal modes can be approximated as harmonic oscillators.
+#### What was frozen in the electronic chain? {#nuclear-motion-collective-mode}
 
-A phonon is a quantum of a normal mode of lattice vibration.
+The nuclei were held at fixed equilibrium positions. In a real crystal, allow small displacements about those positions. Neighboring nuclei are coupled, so a normal mode is not one atom moving independently: it is a collective pattern in which many nuclei oscillate with a definite relative phase and polarization. In the harmonic approximation, each such collective mode behaves like an oscillator.
 
-A phonon mode is labeled by a wavevector $\mathbf q$ and a branch index $\nu$. Its angular frequency is $\omega_{\mathbf q\nu}$, measured in radians per second, and its energy is
+#### How does a collective mode become a phonon? {#oscillator-energy-quantization}
 
-$$E_{\mathrm{phonon}}=\hbar\omega_{\mathbf q\nu}\bigl(n_{\mathbf
-q\nu}+\tfrac12\bigr),$$
+Quantizing one mode with angular frequency $\omega$ gives allowed total oscillator energies
 
-where $n_{\mathbf q\nu}$ is a nonnegative integer and $\hbar$ has units of joule-seconds.
+$$E_n=\hbar\omega\bigl(n+\tfrac12\bigr),\qquad n=0,1,2,\ldots.$$
 
-Electronic energies depend on nuclear positions, so a defect electron couples to phonons. Electron-phonon coupling can produce optical sidebands, shift energy levels, dephase a quantum superposition, and enable nonradiative transitions through the emission of several phonons.
+The $\tfrac12\hbar\omega$ term is the zero-point energy. Increasing $n$ by one adds exactly one quantum of energy, $\hbar\omega$. That added quantum is one phonon; a phonon is not the entire oscillator energy, and it is not only the zero-point motion.
 
-\[Theory\] Quantitative nonradiative transition rates require potential-energy surfaces, vibrational modes, and electron-phonon matrix elements. A band diagram alone does not provide this information [\[R072\]](#ref-R072 "[R072] A. Alkauskas, Q. Yan, and C. G. Van de Walle,
-“First-principles theory of nonradiative carrier capture via multiphonon
-emission,” Physical Review B 90, 075202 (2014). DOI: 10.1103/PhysRevB.90.075202 .").
+#### When are wavevector and branch labels needed? {#phonon-labels-q-branch}
 
-Treating the lattice as static is therefore a model assumption rather than an exact description of a laboratory crystal. If electronic energies were independent of nuclear positions, the electron would not couple to phonons.
+In a crystal there are many collective modes. Once we need to distinguish them, label a mode by wavevector $\mathbf q$ and branch index $\nu$; $\nu$ distinguishes different polarization/frequency families at the same $\mathbf q$. Its angular frequency is $\omega_{\mathbf q\nu}$, measured in radians per second, and the total energy in that oscillator is
 
-Cooling reduces the thermal population of phonons. It does not eliminate the quantum motion of the nuclei or fix them at mathematical points.
+$$E_{\mathrm{phonon}}=\hbar\omega_{\mathbf q\nu}\bigl(n_{\mathbf q\nu}+\tfrac12\bigr),$$
+
+with nonnegative integer occupation $n_{\mathbf q\nu}$ and $\hbar$ in joule-seconds. When an interaction creates or removes one excitation, the corresponding energy change is one phonon quantum, $\hbar\omega_{\mathbf q\nu}$.
+
+#### How can phonons affect a defect electron? {#electron-phonon-effects}
+
+Electronic energies depend on nuclear positions, so a defect electron couples to these modes. One optical transition can appear alongside *sidebands*: additional absorption or emission lines displaced by phonon energies because the transition creates or removes vibrational quanta.
+
+The same coupling can shift a defect level as the nuclei fluctuate and can dephase a superposition by making its phase depend on the vibrational environment.
+
+A *nonradiative transition* changes the electronic state without emitting a photon. Multiphonon emission can carry away the required energy, providing one route for such transitions.
+
+\[Theory\] Quantitative rates require potential-energy surfaces, vibrational modes, and electron-phonon matrix elements; no band diagram supplies those data [\[R072\]](#ref-R072 "[R072] A. Alkauskas, Q. Yan, and C. G. Van de Walle, “First-principles theory of nonradiative carrier capture via multiphonon emission,” Physical Review B 90, 075202 (2014). DOI: 10.1103/PhysRevB.90.075202 .").
+
+Static nuclei are therefore a model assumption, not a property of laboratory crystals. Cooling lowers phonon occupation, but it does not fix the nuclei at mathematical points.
 
 ### Additional physics in real crystals
 
-The tight-binding chain contains one electron, one orbital per site, static nuclei, nearest-neighbor hopping, and an adjustable scalar $U$. A laboratory sample also contains many electrons and nuclei, surfaces, strain, impurities, isotopes, electric fields, and finite-temperature effects. The simplified model demonstrates a mechanism rather than predicting the properties of a material.
+The chain isolates one mechanism: propagation through a repeated lattice plus an energy outside the host continuum can produce an exponentially decaying state. Its assumptions are deliberately narrow---one electron, one orbital per site, static nuclei, nearest-neighbor hopping, and one scalar $U$. A real sample also contains many electrons and nuclei, three-dimensional bonding, surfaces, strain, impurities, isotopes, fields, and finite temperature. The chain is a simplified electronic-structure model, not a prediction of any particular material's defect properties.
 
-A realistic calculation generally begins from specified nuclear species and positions and approximates the electronic structure using a method such as density-functional theory, often within a periodically repeated supercell. Calculations of charged defects require careful electrostatic finite-size corrections.
+#### How is a real-material defect calculation built? {#real-material-calculation-sequence}
 
-The atomic coordinates must be allowed to relax. Errors in the calculated band gap can place defect levels at incorrect energies.
+1.  **Specify the structure.** Choose the nuclear species and their equilibrium positions, then introduce the defect whose local electronic and geometric effects will be studied.
 
-Reviews by Van de Walle and Neugebauer and by Freysoldt and collaborators explain why defect formation energies, charge corrections, chemical potentials, and transition levels require more detailed treatment than identifying a level in a schematic band diagram [\[R069\]](#ref-R069 "[R069] C. G. Van de Walle and J. Neugebauer, “First-principles
-calculations for defects and impurities: Applications to III-nitrides,”
-Journal of Applied Physics 95, 3851–3879 (2004)."); [\[R070\]](#ref-R070 "[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G.
-Kresse, A. Janotti, and C. G. Van de Walle, “First-principles
-calculations for point defects in solids,” Reviews of Modern Physics 86,
-253–305 (2014). DOI: 10.1103/RevModPhys.8").
+2.  **Represent an isolated defect.** Place that structure in a periodically repeated supercell. The repetition makes the calculation tractable, but periodic images can interact, so the supercell size must be checked.
 
-Several distinct quantities are commonly called defect energies, and they must not be treated as interchangeable:
+3.  **Approximate the electronic structure.** Use an electronic-structure method, for example density-functional theory, to calculate the electronic states for the chosen nuclei. This is an approximation, not a direct measurement.
 
-- A single-particle orbital energy labels an orbital in an approximate independent-particle calculation.
+4.  **Relax the nuclei.** Allow the coordinates to respond to the defect so forces and local bonding reach the geometry relevant to that charge state.
 
-- A thermodynamic charge-transition level is obtained from total-energy differences between relaxed charge states. It identifies the electron chemical potential at which the stable defect charge changes.
+5.  **Correct charged-cell artifacts.** For a charged defect, account for the artificial electrostatic interaction between repeated charged cells and the compensating background with finite-size corrections.
 
-- A vertical optical transition occurs faster than nuclear rearrangement, so it connects states at approximately fixed nuclear geometry.
+Only after this sequence can one interpret candidate energies and wavefunctions. Approximate methods can misestimate the host band gap, which may move calculated defect levels relative to the band edges. The calculation therefore needs convergence checks, an appropriate treatment of charge, and comparison with measurements or better methods where the level placement matters. Reviews by Van de Walle and Neugebauer and by Freysoldt and collaborators give the fuller treatment of formation energies, charge corrections, chemical potentials, and transition levels [\[R069\]](#ref-R069 "[R069] C. G. Van de Walle and J. Neugebauer, “First-principles calculations for defects and impurities: Applications to III-nitrides,” Journal of Applied Physics 95, 3851–3879 (2004)."); [\[R070\]](#ref-R070 "[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G. Kresse, A. Janotti, and C. G. Van de Walle, “First-principles calculations for point defects in solids,” Reviews of Modern Physics 86, 253–305 (2014). DOI: 10.1103/RevModPhys.8").
 
-- A zero-phonon optical transition connects vibrational ground levels. Phonon-assisted transitions produce sidebands.
+#### Which "defect energy" is being discussed? {#energy-taxonomy}
 
-- A spin excitation can occur within one electronic configuration and can have a much lower energy than an optical transition.
+The phrase "defect energy" can refer to physically different quantities. Keep the following questions separate.
 
-These energies need not be equal. Kohn--Sham eigenvalues are useful computational quantities, but most are not automatically the measurable quasiparticle energies for electron addition or removal [\[R069\]](#ref-R069 "[R069] C. G. Van de Walle and J. Neugebauer, “First-principles
-calculations for defects and impurities: Applications to III-nitrides,”
-Journal of Applied Physics 95, 3851–3879 (2004)."); [\[R070\]](#ref-R070 "[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G.
-Kresse, A. Janotti, and C. G. Van de Walle, “First-principles
-calculations for point defects in solids,” Reviews of Modern Physics 86,
-253–305 (2014). DOI: 10.1103/RevModPhys.8"). Electron correlation can also make a many-electron defect state qualitatively more complex than a description based on one electron in one orbital.
+- **Single-particle orbital energy:** In an approximate independent-particle calculation, this labels one orbital. It is useful for organizing a spectrum, but it is not automatically an experimentally measurable addition or removal energy.
 
-\[Experiment\] Spectroscopy can detect absorption or emission lines, phonon sidebands, ionization thresholds, and spin resonances. These measurements constrain models of a defect, but assigning a microscopic structure generally requires a combination of experiment and electronic-structure calculations. \[Theory\] Systematic searches for solid-state spin defects therefore apply several criteria simultaneously: a suitable host, a stable charge state and spin, defect levels separated from host bands, controllable transitions, and tolerable environmental coupling [\[R071\]](#ref-R071 "[R071] J. R. Weber, W. F. Koehl, J. B. Varley, A. Janotti, B. B.
-Buckley, C. G. Van de Walle, and D. D. Awschalom, “Quantum computing
-with defects,” Proceedings of the National Academy of Sciences 107,
-8513–8518 (2010).").
+- **Thermodynamic charge-transition level:** This comes from total-energy differences between relaxed charge states. It marks the electron chemical potential---the energy cost for exchanging an electron with a reservoir---at which two charge states have equal formation energy, so changing that chemical potential changes which charge state is stable. It is not simply the energy of an electron in a frozen orbital.
 
-A wide-gap material provides three limited advantages. First, it offers a larger energy interval in which defect levels can remain far from both band edges.
+- **Vertical optical transition:** An optical event is fast compared with nuclear rearrangement, so it connects electronic states at nearly fixed nuclear geometry. Its energy need not equal a relaxed charge-transition level.
 
-Second, visible or near-infrared transitions between defect states can occur without necessarily exciting carriers across the host band gap. Third, thermal exchange with the bands can be reduced when the relevant activation energy is large compared with $k_{\mathrm B}T$, where $k_{\mathrm B}$ is Boltzmann's constant and $T$ is absolute temperature.
+- **Zero-phonon optical transition:** This connects vibrational ground levels on the relevant electronic potential-energy surfaces. Phonon-assisted sidebands appear alongside it when vibrational quanta participate.
 
-None of these outcomes follows automatically from a wide band gap. The actual defect-level positions, optical selection rules, and nonradiative pathways determine the physical behavior.
+- **Spin excitation:** This changes the spin state within one electronic configuration. It can be far below an optical transition, because no change of electronic charge or orbital configuration is required.
+
+These quantities need not coincide. In density-functional theory, the Kohn--Sham construction replaces the interacting electrons with an auxiliary one-electron problem chosen to reproduce their density. Most eigenvalues of that auxiliary problem are not automatically measurable electron-addition or removal energies [\[R069\]](#ref-R069); [\[R070\]](#ref-R070).
+
+Interactions between electrons can also make the defect\'s many-electron state qualitatively different from a description based on one electron in one orbital.
+
+#### How are these quantities connected to evidence? {#experiment-theory-joint-evidence}
+
+\[Experiment\] Spectroscopy can detect absorption and emission lines, phonon sidebands, ionization thresholds, and spin resonances. Assigning a microscopic structure to one of those signals requires experiment together with electronic-structure calculation. \[Theory\] A systematic defect search therefore asks several questions jointly: Is the host suitable? Is the charge and spin stable? Are relevant levels separated from the bands? Can transitions be controlled? Is environmental coupling tolerable? No single calculated energy answers all of them [\[R071\]](#ref-R071 "[R071] J. R. Weber, W. F. Koehl, J. B. Varley, A. Janotti, B. B. Buckley, C. G. Van de Walle, and D. D. Awschalom, “Quantum computing with defects,” Proceedings of the National Academy of Sciences 107, 8513–8518 (2010).").
+
+#### What can a wide gap help with? {#wide-gap-three-benefits}
+
+A wide gap can provide more room to keep defect levels away from both band edges. This helps spectral isolation, but it does not place the level for us.
+
+It can also allow transitions between two defect states to fall in the visible or near-infrared without requiring a transition across the full host gap. Whether such a transition is allowed and useful depends on the states and selection rules.
+
+Finally, if the activation energy for exchanging carriers with the bands is large compared with $k_{\mathrm B}T$, thermal exchange with those bands can be suppressed. This benefit competes with phonon-assisted and other nonradiative pathways; level positions, selection rules, and environmental coupling decide the outcome.
 
 ### Common conceptual errors
 
-- Drawing a line inside a band gap does not establish the existence of a localized state. Such a line in a schematic is only a hypothesis.
+#### Does a line in a gap prove localization? {#error-gap-line-not-state}
 
-  Localization must be demonstrated using a wavefunction, an inverse participation measure, a spatial charge or spin density, or experimentally supported modeling. A state close to a band edge may be highly extended.
+No. A line drawn inside a gap is a hypothesis about an energy, not evidence that a localized state exists. Localization requires the associated wavefunction or spatial density to be calculated, or a model supported by experiment. A near-edge state may be highly extended, and a state that looks localized in a finite supercell may be an artifact of the repeated images or the imposed boundary conditions.
 
-  A computed localized state can also be an artifact of a finite supercell.
+#### Does a wide host gap trap an electron? {#error-wide-gap-traps}
 
-- A wide host band gap does not imply that every defect electron is trapped. A defect may produce no gap state, a shallow state adjacent to a band, or a resonance within a band.
+No. The defect may contribute no gap state at all. It may produce a shallow state, a resonance embedded in a band, or an energetically undesired charge state. The host gap supplies an available interval; the defect potential and charge physics determine what actually appears there.
 
-  The defect may also favor an undesired charge state. The gap permits possible defect levels but does not guarantee them.
+#### Is the chain useless as an electronic-structure model? {#error-chain-model-status}
 
-- The toy chain is not a complete electronic-structure model. Its parameters $t$ and $U$, together with its single basis orbital, omit three-dimensional bonding, multiple orbitals, spin, Coulomb repulsion, screening, spin-orbit coupling, and nuclear relaxation.
+No. It is a deliberately simplified electronic-structure model. Its parameters $t$ and $U$, and its single basis orbital, omit three-dimensional bonding, multiple orbitals, spin, Coulomb repulsion, screening, spin-orbit coupling, and nuclear relaxation. Fitting it afterward does not make it predictive of a specific material. Its value is that it isolates, transparently, how propagation plus a forbidden energy can give exponential decay.
 
-  Fitting a simplified model after observing a result does not make the model predictive. Its value is that it isolates the relation among propagation, forbidden energies, and exponential decay.
+#### Is one in-gap orbital already a qubit? {#error-one-orbital-qubit}
 
-- One in-gap orbital is not sufficient to define a qubit. A qubit requires two controllable states, initialization, coherent gates, readout, and acceptable leakage and noise.
+No. A qubit needs two controllable states, initialization, gates, readout, and acceptable leakage and noise. The orbital may be empty, doubly occupied, unstable, optically dark, or strongly phonon-coupled. The operational definition from Chapter 3 still applies.
 
-  The orbital may be empty, doubly occupied, chemically unstable, optically dark, or strongly coupled to phonons. The operational definition introduced in Chapter 3 still applies.
+#### Are localization and isolation the same? {#error-localization-isolation}
 
-- Spatial localization does not imply complete isolation from the environment.
+No. Localization describes where the wavefunction is concentrated in space. Isolation describes separation in energy or weakness of unwanted couplings. A localized state can still couple through electric fields, strain, phonons, photons, nuclear spins, or weak interactions with other defects. Those couplings may be useful controls or sources of noise, depending on the application.
 
-  A localized state can still couple through electric fields, magnetic fields, strain, phonons, photons, nuclear spins, and exponentially small or dipolar interactions with other defects. Depending on the intended application, these couplings can be useful or harmful.
+#### Are Bloch waves and Bloch-sphere points the same? {#error-bloch-terminology}
 
-- A Bloch wave is not a point on the Bloch sphere. A Bloch wave is a crystal eigenstate labeled by $\mathbf
-  k$.
+No. A Bloch wave is a crystal eigenstate labeled by crystal wavevector $\mathbf k$. A point on the Bloch sphere represents a state in a two-level quantum state space. The shared name does not make the concepts interchangeable.
 
-  The Bloch sphere represents the state space of a two-level system. These two concepts do not share the same geometry.
-
-A localized defect orbital is a microscopic electronic state. A spin associated with that defect becomes a physical qubit only after control and readout have been demonstrated.
-
-Such a state is not an encoded qubit, an emergent quasiparticle, or an instance of topological order. The periodic boundary conditions used in the calculation are a mathematical convenience and do not imply physical protection.
+A localized defect orbital is a microscopic electronic state. A defect spin becomes a physical qubit only after control and readout are demonstrated. Such a state is neither an encoded qubit, an emergent quasiparticle, nor topological order. Periodic boundary conditions are a calculational convenience, not physical protection.
 
 ### Verification exercises
 
-- **Nearest-neighbor dispersion.** Let $|k\rangle$ denote a Bloch state with wavevector $k$, $H_0$ the nearest-neighbor hopping Hamiltonian, $t$ the hopping amplitude, and $a$ the lattice spacing. Each hop multiplies the state amplitude by the phase factor of the neighboring site, $e^{\pm ika}$. Summing the contributions from the two neighboring sites gives $$-t(e^{ika}+e^{-ika})=-2t\cos(ka).$$ Therefore, $$H_0|k\rangle=-2t\cos(ka)|k\rangle.$$
+Use these short checks to reconstruct the chapter's reasoning rather than memorize isolated labels.
 
-- **Normalizability of the defect-state ansatz.** In the defect ansatz, $\lambda$ controls the change in amplitude between successive sites. The condition $|\lambda|<1$ ensures exponential spatial decay away from the defect. If this condition is removed, the amplitudes no longer decay, so the candidate state is not a normalizable bound state on the infinite chain. A normalizable bound state has finite total probability and remains spatially localized.
+#### Can you recover the uniform-chain dispersion? {#exercise-nearest-neighbor-dispersion}
 
-- **Position of the defect energy.** Let $E_{\mathrm d}$ denote the defect-state energy and $U$ the defect potential. The energy is $$E_{\mathrm d}=\operatorname{sgn}(U)\sqrt{U^2+4t^2},$$ where $\operatorname{sgn}(U)$ is the sign of $U$. For any nonzero $U$, $$\sqrt{U^2+4t^2}>2t.$$ It follows that $|E_{\mathrm
-  d}|>2t$ whenever $U\neq
-  0$.
+Each hop contributes a neighboring phase factor $e^{\pm ika}$. Adding the two directions gives
 
-- **Vanishing gap in the two-site cell.** In the two-site unit-cell model, $\Delta$ controls the separation of the two bands. If $\Delta=0$, the two bands touch and the band gap $E_{\mathrm g}$, defined as the forbidden energy interval between them, becomes $E_{\mathrm g}=0$. Consequently, there is no internal energy window in which an in-gap level can occur.
+$$-t(e^{ika}+e^{-ika})=-2t\cos(ka).$$
 
-- **Implication of a wide host gap.** The host gap is the forbidden energy interval between the allowed bands of the defect-free lattice. A wider host gap guarantees only a larger possible energy window. It does not guarantee a defect level, localization, a stable charge state, a spin, an optical transition, or a qubit.
+Therefore
 
-- **Limitations of a band diagram.** A band diagram represents energy-level positions but does not provide a complete description of a defect, even when those positions are correct. It omits wavefunctions, occupations, many-electron multiplets, lattice relaxation, transition matrix elements, and environmental couplings. Many-electron multiplets are sets of states produced by interactions among multiple electrons; transition matrix elements determine the strengths of transitions between states; and environmental couplings describe interactions between the defect and its surroundings.
+$$H_0|k\rangle=-2t\cos(ka)|k\rangle.$$
 
-The preceding analysis has established a lattice, a band of allowed energies, a forbidden energy window, a state that can lie within that window, and the terminology for the lattice's vibrations. The next section examines concrete point defects, including substitutions and vacancies, together with the additional physical complications they introduce.
+Check the endpoints of the cosine: they give the band edges $-2t$ and $+2t$ in the infinite-chain limit.
+
+#### Why must the defect ansatz decay? {#exercise-defect-normalizability}
+
+In the localized-defect ansatz, $\lambda$ is the amplitude multiplier from one site to the next away from the defect. The condition $|\lambda|<1$ makes the tail decrease geometrically, so the infinite sum of probability weights can converge. If $|\lambda|\ge1$, the candidate has no finite total probability on the infinite chain and is not a localized eigenstate.
+
+#### Where does the one-site defect energy lie? {#exercise-defect-energy-position}
+
+For nonzero $U$, the defect energy is
+
+$$E_{\mathrm d}=\operatorname{sgn}(U)\sqrt{U^2+4t^2},$$
+
+and
+
+$$\sqrt{U^2+4t^2}>2t.$$
+
+Thus $|E_{\mathrm d}|>2t$ whenever $U\neq0$. The $U=0$ case is excluded because it restores the uniform chain rather than producing a defect.
+
+#### What happens when the two site types become equivalent? {#exercise-two-site-gap}
+
+Set $\Delta=0$ in the two-site-cell dispersion. The two branches touch at the edge of the $k$ interval, so $E_{\mathrm g}=0$. There is then no internal interval for a level that is separated from both bands.
+
+#### What is the precise implication of widening a host gap? {#exercise-wide-gap-implication}
+
+A wider host gap gives a larger possible energy window and can make positive edge separations easier to maintain. It does not supply a defect level, prove localization, stabilize a charge or spin, provide an optical transition, or make a qubit. Each of those claims needs its own wavefunction, energy, transition, and control evidence.
+
+#### What cannot a band diagram tell you? {#exercise-band-diagram-limits}
+
+Even correct level positions do not by themselves provide wavefunctions, occupations, many-electron multiplets, lattice relaxation, transition matrix elements, or environmental couplings. Those missing pieces are why a real-material assignment combines calculation with measurements.
+
+A localized orbital does not yet tell us whether a defect carries a spin. Chapter 6 examines that question for concrete atomic defects.
 
 ### Sources
 
