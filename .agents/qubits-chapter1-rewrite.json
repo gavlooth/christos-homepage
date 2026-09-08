@@ -1,0 +1,314 @@
+{
+  "scope": "Chapter1 only; rest of canonical source preserved byte-for-byte",
+  "source_sha256": "2900eb731843cd26c88037e81c2d80e227eb64880767d530fc6867e5a170573f",
+  "prior_audit_source_sha256": "704021172f8c15bd25222428bd0ef59bb0b3bf47130e224854cc0aac3f61d203",
+  "audit_status": "Prior sentence scores remain historical assessments of the previous source, not fresh ratings of rewritten Chapter1.",
+  "default_agent_findings": [
+    {
+      "fragment": "foundations.html",
+      "scope": "Chapter opening through sequential measurements; boundary before overall-and-relative-phase unchanged.",
+      "context_read": [
+        "Entire immutable original.html",
+        "All 58 saved sentence assessments for the owned sections, s000056–s000113",
+        "personal-review.json"
+      ],
+      "substantive_decisions": [
+        {
+          "topic": "Experimental starting point",
+          "assessments": [
+            "s000057",
+            "s000058",
+            "s000060"
+          ],
+          "decision": "State the classical randomly oriented magnetic-moment assumption explicitly, describe two observed branches rather than exact point-like spots, and frame the target as outcome probabilities over repeated preparations rather than prediction of each individual arrival. Defer detailed hardware qualifications to the existing later section."
+        },
+        {
+          "topic": "State before probability rule",
+          "assessments": [
+            "s000061",
+            "s000065",
+            "s000070",
+            "s000074",
+            "s000075",
+            "s000076",
+            "s000077"
+          ],
+          "decision": "Introduce the effective internal two-state degree of freedom, pure normalized vectors in C², and a fixed orthonormal z basis before identifying the complex coordinates as amplitudes. Place the explicit Born conversion after normalization. Distinguish the state-and-measurement assignment of amplitudes from the Born assignment of probabilities. Identify normalized columns as representatives of pure states, with common unit-modulus factors physically equivalent."
+        },
+        {
+          "topic": "Mathematical audience and notation",
+          "assessments": [
+            "s000062",
+            "s000063",
+            "s000064",
+            "s000071",
+            "s000073",
+            "s000083",
+            "s000084",
+            "s000086",
+            "s000087"
+          ],
+          "decision": "Retain all existing displayed complex-number algebra as required, but present it as a notation convention rather than remedial instruction. Remove the typographical justification for columns and the elementary list of vector-space operations. Introduce ket/bra notation through its role in measurement amplitudes. Scope the Hilbert-space statement to the finite-dimensional complex space, where completeness is automatic."
+        },
+        {
+          "topic": "Basis and physical meaning",
+          "assessments": [
+            "s000078",
+            "s000080",
+            "s000082",
+            "s000088",
+            "s000089",
+            "s000093",
+            "s000094"
+          ],
+          "decision": "Explain spin as the internal angular momentum tracked by this model, distinguish it from motion through the apparatus, and connect the z basis to preparations with certain outcomes. Identify the relation between perpendicular measurement bases as a physical model assumption. Establish orthonormality before using overlaps, and give the overlap its operational Born-rule meaning before the sequential calculations."
+        },
+        {
+          "topic": "Interference",
+          "assessments": [
+            "s000066",
+            "s000067",
+            "s000068",
+            "s000069"
+          ],
+          "decision": "Preview interference only as contributions to one outcome. Develop it concretely after the preserved x-basis orthogonality calculation: the two z-basis terms of x− contribute equal and opposite amplitudes to the same x+ output. Describe coherence through the retained relative sign and absence of a distinguishing record. Explicitly separate this addition from adding probabilities of mutually exclusive recorded outputs. No arbitrary sum of amplitudes across the two z outputs is licensed."
+        },
+        {
+          "topic": "Ideal filtering and conditional ensembles",
+          "assessments": [
+            "s000090",
+            "s000091",
+            "s000097",
+            "s000098",
+            "s000099",
+            "s000103",
+            "s000104",
+            "s000105",
+            "s000106",
+            "s000112",
+            "s000113"
+          ],
+          "decision": "Separate blocking/postselection from the state-update assumption, then name the ideal projective model. State the absence of intervening spin evolution. Distinguish a filter's survival probability from the unit-normalized state conditional on survival. Express 50/25/25 as expected counts and specify that the final one-half probabilities condition on passing the middle filter."
+        },
+        {
+          "topic": "Interpretive limits",
+          "assessments": [
+            "s000109",
+            "s000110",
+            "s000111"
+          ],
+          "decision": "Replace the premature eigenstate label with certain and uncertain measurement outcomes. Limit the conclusion to the failure of reading a pre-existing value while leaving the initial certain z value undisturbed. State explicitly that this sequence does not exclude models in which measurements disturb pre-existing values."
+        }
+      ],
+      "assessment_qualifications": [
+        {
+          "assessments": [
+            "s000067"
+          ],
+          "finding": "The assessment correctly notes the equal-magnitude condition for exact cancellation, but the original existential wording ‘can cancel’ is not false. The rewrite supplies the condition through a concrete calculation rather than treating this as a mathematical error."
+        },
+        {
+          "assessments": [
+            "s000071",
+            "s000072",
+            "s000074",
+            "s000079",
+            "s000094",
+            "s000101"
+          ],
+          "finding": "Several rigor deductions identify assumptions already recoverable from the displayed coordinate vectors or neighboring normalization statement. These are not independent errors in the displayed mathematics. The rewrite makes the shared orthonormal-basis convention explicit once instead of padding each calculation with the same qualification."
+        },
+        {
+          "assessments": [
+            "s000076",
+            "s000077"
+          ],
+          "finding": "The original normalized-column convention is immediately followed by phase-equivalence, so it should not be read as wholly ignoring rays. The real improvement is the explicit pure-state restriction and distinction between physical state and normalized representative."
+        },
+        {
+          "assessments": [
+            "s000078",
+            "s000089"
+          ],
+          "finding": "Output positions are valid operational outcome labels, and ‘component along an axis’ is not itself an incorrect use of angular momentum. These passages need a bridge to the spin model, not a premature stack of operator/eigenvalue definitions. The operator formulation remains in the later half."
+        },
+        {
+          "assessments": [
+            "s000088",
+            "s000090",
+            "s000091",
+            "s000097",
+            "s000098",
+            "s000104",
+            "s000109"
+          ],
+          "finding": "The original section already begins with an idealization, and the later laboratory section explains imperfections. Repeated local rigor deductions for lacking apparatus caveats overstate how much was missing in context. One explicit shared projective-filter assumption and one no-intervening-evolution assumption are sufficient here."
+        },
+        {
+          "assessments": [
+            "s000106"
+          ],
+          "finding": "The high rigor score overlooks that a probability does not literally count how many atoms survive. The rewrite uses expected fraction and conditional state, then handles observed counts and fluctuations separately."
+        },
+        {
+          "assessments": [
+            "s000110",
+            "s000111"
+          ],
+          "finding": "The eigenstate vocabulary genuinely precedes its formal introduction. The pre-existing-value critique also identifies a real interpretive risk, although ‘merely reveal’ admits a narrower nondisturbing-readout reading. The rewrite makes that narrow conclusion explicit rather than asserting a hidden-variable no-go result."
+        }
+      ],
+      "preservation_approach": "Edited prose around the existing displayed-math blocks and retained the fragment's heading IDs and opening/closing wrappers. No source-list or navigation elements occur in this owned fragment; the later fragment retains ownership of them. No repository files or original.html were edited.",
+      "validation": "No validation commands, builds, tests, linters, formatters, or reports were run, as requested. Parent performs integration and preservation verification."
+    },
+    {
+      "fragment": "extensions.html",
+      "scope": "overall-and-relative-phase through chapter end; source list and navigation intentionally unchanged",
+      "method": "Read the full original chapter, all assessments for the owned explanatory sections, and personal-review.json. Rewrote prose through anchored text edits without HTML parser serialization. No repository edits or validation commands were run; parent owns integration and verification.",
+      "substantive_choices": [
+        {
+          "sections": [
+            "overall-and-relative-phase"
+          ],
+          "assessment_ids": [
+            "s000115",
+            "s000116",
+            "s000121"
+          ],
+          "choice": "Define a ray by all nonzero complex scalar multiples, then distinguish its normalized representatives. Explain relative phase only for nonzero amplitudes in a fixed basis and connect it to additions and cancellations in an actual x-basis overlap. Say a fixed-basis distribution generally fails to determine a pure state, allowing deterministic endpoint exceptions."
+        },
+        {
+          "sections": [
+            "the-born-rule-and-projection"
+          ],
+          "assessment_ids": [
+            "s000122",
+            "s000125",
+            "s000131",
+            "s000132"
+          ],
+          "choice": "State normalized input, normalized orthogonal complete outcome basis, and rank-one scope before Born overlaps. Explain passing probability before conditional state. Require nonzero outcome probability explicitly. Treat higher-rank projection as an additional ideal state-update assumption, and introduce an unrecorded-outcome ensemble before naming the density operator."
+        },
+        {
+          "sections": [
+            "operators-and-observables"
+          ],
+          "assessment_ids": [
+            "s000138",
+            "s000142",
+            "s000146",
+            "s000149",
+            "s000152",
+            "s000154"
+          ],
+          "choice": "Motivate an observable by numerical output readings and define its action on outcome components before the Hermitian label. Scope the spectral picture to ideal projective measurements. Introduce the physical scale of reduced Planck's constant before spin operators. Distinguish operator composition from a conditional measurement sequence. Infer absence of simultaneous certainty for this Pauli pair, not a universal hidden-value prohibition. Separate distribution mean from finite-sample estimate."
+        },
+        {
+          "sections": [
+            "unitary-time-evolution"
+          ],
+          "assessment_ids": [
+            "s000158",
+            "s000164",
+            "s000172"
+          ],
+          "choice": "Explain closed-system evolution operationally, including prescribed classical fields. Present the Hamiltonian as the energy operator and its relation to time evolution as the governing law. Correct the units discussion to compare operators rather than call vector-valued equation sides energies. State explicitly that amplitudes change phase while their squared magnitudes remain fixed. Omit the remedial matrix-exponential power-series explanation."
+        },
+        {
+          "sections": [
+            "physical-implementation-of-the-1922-experiment"
+          ],
+          "assessment_ids": [
+            "s000174",
+            "s000175",
+            "s000180",
+            "s000185",
+            "s000189",
+            "s000191"
+          ],
+          "choice": "Separate the original collecting-plate experiment from the sequential ideal-filter extension. Identify the retained silver degree of freedom as electronic angular momentum and qualify omitted nuclear structure. Explain state-dependent spatial paths and failure of factorization before naming entanglement; do not claim every input becomes entangled. Distinguish unitary path separation from conditional output selection and explicitly avoid deriving individual outcomes from that account. Explain that realistic device models must change even though the Born rule remains applicable. Acknowledge that the already-described filters do provide preparation/readout examples."
+        },
+        {
+          "sections": [
+            "common-conceptual-errors",
+            "self-assessment"
+          ],
+          "assessment_ids": [
+            "s000195",
+            "s000203",
+            "s000204",
+            "s000209",
+            "s000213",
+            "s000215",
+            "s000219"
+          ],
+          "choice": "Distinguish passive coordinate changes from rotating a measurement; remove unsupported 'most operators' language; specify what a numerical simulation computes. Turn self-assessment headings into direct questions with scoped answers. Explain Hermiticity positively through spectral data rather than claiming meters intrinsically cannot display complex numbers. State that some, not all, joint pure states fail to factor."
+        }
+      ],
+      "rejected_or_recalibrated_critiques": [
+        {
+          "assessment_ids": [
+            "s000136",
+            "s000137"
+          ],
+          "reason": "The conditional sentence spans a display and the next paragraph in the actual source. Sentence-extraction fragmentation is not a mathematical defect. Rephrased the transition for continuous reading, not because the original Hermitian definition was false."
+        },
+        {
+          "assessment_ids": [
+            "s000144"
+          ],
+          "reason": "The critique says z/x kets were not defined in the excerpt. They are explicitly defined in earlier chapter sections. No repeated basis-definition lecture was added."
+        },
+        {
+          "assessment_ids": [
+            "s000146"
+          ],
+          "reason": "Spin and angular momentum are introduced in the preceding foundations section; the critique overlooks that context. Reduced Planck's constant did need a physical introduction here."
+        },
+        {
+          "assessment_ids": [
+            "s000196",
+            "s000209",
+            "s000210"
+          ],
+          "reason": "Readability criticisms about undefined phase, eigenvalues, Hamiltonian, or bra-ket notation overlook prior development, especially in recap sections. Retained established vocabulary while fixing real scope problems. Removed the unnecessary new 'interference fringes' reference in favor of the actual magnet example."
+        },
+        {
+          "assessment_ids": [
+            "s000206"
+          ],
+          "reason": "The assessment rationale claims the source list omits control, but control is visibly included. More importantly, blanket wording about absent initialization/readout overlooks the preparation and measurement procedures already taught; revised the physical-model versus device distinction accordingly."
+        },
+        {
+          "assessment_ids": [
+            "s000219"
+          ],
+          "reason": "The favorable rigor score is too generous to a transition that can imply all two-atom states resist factorization. The rewrite explicitly distinguishes product and nonfactorizable pure states."
+        }
+      ],
+      "preservation": {
+        "approach": "All existing display equations and inline math were retained in place or copied verbatim within replacement prose; no new equations were added. IDs, wrappers, source list, citation markup, and navigation were not edited.",
+        "independent_integrity_validation": "Deferred to parent as assigned."
+      }
+    }
+  ],
+  "parent_review": "Read both complete fragments in context; checked Born attribution, coherent interference, normalization, finite-dimensional scope, rays, nonzero conditional probabilities, observable versus instrument distinction, hidden-value inference limits, phase dynamics and physical apparatus assumptions.",
+  "preservation": {
+    "display_equations": 40,
+    "heading_ids": 12,
+    "sources_navigation_unchanged": true,
+    "chapter_math_nodes": 155
+  },
+  "verification": {
+    "export_math": 8354,
+    "figures": 10,
+    "render_errors": 0,
+    "pdf_pages": 745,
+    "pdf_bytes": 11549374,
+    "export_seconds": 488.54,
+    "build": "passed",
+    "desktop_mobile": "Visually inspected desktop foundations and mobile evolution;155 rendered chapter math nodes,0 errors, no document-width overflow at1365px or390px.",
+    "pdf": "Born passage visually inspected on page5; phase correction found on page12.",
+    "numerical_max_phase_probability_error": 4.440892098500626e-16
+  }
+}

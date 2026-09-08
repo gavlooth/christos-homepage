@@ -81,29 +81,27 @@ A beam of atoms can produce two separate spots on a detector. This part develops
 
 ## Chapter 1 --- Discrete outcomes in the Stern--Gerlach experiment
 
-In the Stern--Gerlach experiment, a beam of silver atoms travels through a magnetic field that varies with position. A classical magnetic needle could tilt by any angle in such a field, so the atoms would land in a continuous smear. The detector instead records atoms in exactly two spots.
+In the Stern--Gerlach experiment, a beam of silver atoms travels through a magnetic field that varies with position. The field deflects the atoms according to their magnetic properties. If those properties behaved like randomly oriented classical magnetic needles, the deflections would span a continuous range. The observed beam instead separates into two branches.
 
-Otto Stern and Walther Gerlach recorded those two spots in 1922. The question is what rule predicts which spot each atom reaches.
+Otto Stern and Walther Gerlach observed this splitting in 1922. We will idealize it as a measurement with two possible outcomes, each identified by the branch an atom follows. Repeating the experiment with the same preparation gives a fraction of atoms in each branch. The quantum model predicts the probabilities governing those fractions.
 
 ### Complex amplitudes and interference
 
-The Born rule attaches a complex amplitude to each quantum outcome and converts it to a probability through its squared magnitude, generalizing the classical assignment of nonnegative numbers summing to one.
+Choose the magnet\'s measurement axis as the $z$ axis and label its two outputs $z+$ and $z-$. We model the internal degree of freedom responsible for this choice of output in $\mathbb C^2$. This leaves the atom\'s position and its other internal degrees of freedom outside the model.
 
-A complex number has the form
+We begin with preparations represented by a single normalized vector, called pure states. Fix an orthonormal basis associated with the two $z$ outputs. The vector\'s complex coordinates in this basis are called probability amplitudes. Their relation to observed frequencies is the physical rule we need to specify.
+
+For complex conjugation and squared magnitude, we use the notation
 
 $$z = a + ib,$$
 
-where $a$ and $b$ are real numbers, and $i^2=-1$. The complex conjugate of $z$ is $z^*=a-ib$. The squared magnitude of $z$ is
+with real $a$ and $b$, $i^2=-1$, and conjugate $z^*=a-ib$. The squared magnitude of this number $z$ is
 
 $$|z|^2 = z^* z = a^2 + b^2.$$
 
-A squared magnitude is never negative, so it can serve as a probability.
+The squared magnitude is nonnegative; normalization will make the squared magnitudes of the two coordinates sum to one. These are both requirements for assigning probabilities to two exhaustive outcomes.
 
-Amplitudes combine before probabilities are computed. Two amplitudes with opposite phases can cancel to zero while each squared magnitude stays nonzero. That cancellation is called interference.
-
-Since the squared magnitude is taken after amplitudes combine, the analysis must add amplitudes first and convert to probabilities last.
-
-Denote the two amplitudes by $\alpha$ and $\beta$, and arrange them as a column vector:
+Write the amplitudes for the two outputs as $\alpha$ and $\beta$. In Dirac notation the state vector is written as a ket:
 
 $$|\psi\rangle
 =
@@ -112,19 +110,21 @@ $$|\psi\rangle
 \beta
 \end{pmatrix}.$$
 
-This column is called a ket. A ket lists the amplitudes of a quantum state relative to a fixed set of reference states, called a basis. The column layout keeps the state visually distinct from the operators and measurements that act on it.
-
-The normalization condition requires the squared magnitudes of the two amplitudes to sum to one:
+Here the ket is displayed as a column in the fixed orthonormal basis. Its entries are the amplitudes for $z+$ and $z-$, in that order. Normalization requires
 
 $$|\alpha|^2+|\beta|^2=1.$$
 
-The atom must produce one of the two outcomes, so the two Born probabilities add to one.
+The Born rule assigns probability $|\alpha|^2$ to the first output and $|\beta|^2$ to the second. The state and the chosen measurement supply the amplitudes; the Born rule converts them to probabilities. Normalization makes these probabilities sum to one, as required for the ideal measurement in which every atom gives one of the two outcomes.
 
-Throughout this chapter, a state is a normalized column vector. Two columns differing only by a complex factor of magnitude one describe the same physical state, because such a factor cancels out of every Born probability.
+A normalized column is a representative of a pure physical state. Two columns differing only by a common complex factor of magnitude one describe the same state, because this factor cancels from every Born probability.
+
+The complex coordinates contain information beyond the two probabilities for this particular magnet. In a measurement along a different axis, contributions from the coordinates can cancel when forming the amplitude for a single output. This cancellation is an example of interference. We will see it explicitly after introducing the second measurement basis.
 
 ### Basis states and superposition
 
-Label the two observed positions as "along the magnet, up" and "along the magnet, down":
+The internal angular momentum tracked by this two-state model is called spin. It is an internal property, distinct from the angular momentum of the atom\'s motion through the apparatus. A spin component is the angular momentum measured along a chosen axis. The magnet with measurement axis $z$ distinguishes the two possible values of that component.
+
+The basis vectors represent preparations that give the corresponding output with certainty:
 
 $$|z+\rangle
 =
@@ -134,33 +134,35 @@ $$|z+\rangle
 =
 \begin{pmatrix} 0 \\ 1 \end{pmatrix}.$$
 
-The state of an atom can then be written as
+In this basis the general pure-state vector is
 
 $$|\psi\rangle = \alpha |z+\rangle + \beta |z-\rangle.$$
 
-This expression is a superposition in the $z$ basis: a weighted sum of the two reference states. The weights are the amplitudes that predict the probabilities of a $z$-basis measurement. A superposition lists those predictive weights; it does not claim the atom points in two classical directions at once.
+This expansion is a superposition in the $z$ basis. Its coefficients give the amplitudes for a $z$-basis measurement, whose probabilities we have just specified. Spin is being described by a vector in a complex state space; these coefficients are not two simultaneous classical directions of the atom.
 
-Transposing the column and complex-conjugating each entry gives the dual row vector, called a bra:
+To compute amplitudes for other measurements, we need inner products. The conjugate transpose of a ket is written as a bra:
 
 $$\langle\psi| = \begin{pmatrix} \alpha^* & \beta^* \end{pmatrix}.$$
 
-A bra times a ket gives a single complex number, the inner product, written $\langle\phi|\psi\rangle$. For the atom,
+The product of a bra with a ket is the inner product $\langle\phi|\psi\rangle$. If the first vector is a normalized basis state for a measurement outcome and the second is the prepared state, this inner product is the amplitude for that outcome. Its squared magnitude is the Born probability. In particular, normalization becomes
 
 $$\langle\psi|\psi\rangle = |\alpha|^2 + |\beta|^2 = 1.$$
 
-A vector space equipped with an inner product is called a Hilbert space. This chapter uses three operations from that structure: adding vectors, multiplying them by complex numbers, and forming inner products between them.
+With its standard inner product, this finite-dimensional complex vector space is a Hilbert space; completeness is automatic in finite dimension. The state vectors use its linear structure, and the measurement probabilities use its inner product.
 
 ### Sequential measurements along perpendicular axes
 
-An idealized Stern--Gerlach magnet measures one component of the atom\'s spin. Spin is the atom\'s intrinsic angular momentum, and a spin component is its projection along a chosen axis. Placing a blocker in one output beam keeps only atoms that gave the other outcome; keeping a subensemble conditional on a stated outcome is called postselection. Here postselection prepares a fresh state by measurement.
+An ideal Stern--Gerlach filter separates the two outputs of a spin-component measurement and blocks one of them. Keeping only atoms from the other output is called postselection.
 
-A perpendicular magnet measures a different spin component. Denote its outcomes by $x+$ and $x-$, and define
+We assume that each retained atom has the basis state associated with its output. This is the state-update rule for an ideal projective measurement with one-dimensional output subspaces. A repeated measurement along the same axis therefore gives the same outcome with certainty. Throughout the sequence below, we also assume that the spin state does not evolve between magnets.
+
+Now rotate the measurement axis from $z$ to the perpendicular $x$ axis. The new magnet measures a different spin component. Label its outputs $x+$ and $x-$. In the two-state spin model, we choose their basis vectors as
 
 $$|x+\rangle = \frac{|z+\rangle + |z-\rangle}{\sqrt{2}},
 \qquad
 |x-\rangle = \frac{|z+\rangle - |z-\rangle}{\sqrt{2}}.$$
 
-The minus sign is what makes the two new states orthogonal, meaning their inner product is zero:
+This relation between the two bases is part of the physical model for perpendicular spin measurements. Both vectors have unit norm, and their inner product vanishes:
 
 $$\langle x+|x-\rangle
 =
@@ -171,13 +173,17 @@ $$\langle x+|x-\rangle
 =
 0.$$
 
-In step 1, an initially unselected ensemble of atoms passes through a $z$-oriented magnet. The $z-$ output is blocked, and the $z+$ output is retained. Every surviving atom is then in the state
+The vanishing inner product has a direct measurement meaning. For an atom prepared in $|x-\rangle$, the two $z$-basis terms contribute equal and opposite amplitudes to the same $x+$ outcome. They cancel, so that outcome has probability zero. Such cancellation is destructive interference.
+
+The two terms retain the relative sign fixed by the preparation, with no record distinguishing the alternatives. They form a coherent superposition. We add their contributions to a single outcome\'s amplitude before taking its squared magnitude. By contrast, distinct recorded outcomes are mutually exclusive, so their probabilities add. Adding the two amplitudes for the separate outputs of a $z$ measurement would not give the probability of detecting an atom in either output.
+
+In step 1, pass a beam of atoms through a $z$-oriented magnet. Block the $z-$ output and retain the $z+$ output. Under the ideal measurement assumption, each survivor is prepared in
 
 $$|\psi_1\rangle = |z+\rangle.$$
 
-Sending these survivors through a second $z$-oriented magnet directs every one of them to its $z+$ output. The transition amplitude is $1$, so the probability is $1$: the first magnet\'s preparation is repeatable.
+A second $z$-oriented magnet would send every survivor to its $z+$ output. The inner product of the prepared state with that output state is $1$, so the probability is $1$.
 
-In step 2, the next magnet is oriented perpendicular to the first, and only the $x+$ output is retained. The transition amplitude is
+In step 2, instead send the survivors through a perpendicular magnet and retain only its $x+$ output. The amplitude for passing this filter, often called a transition amplitude, is
 
 $$\langle x+|z+\rangle
 =
@@ -186,17 +192,17 @@ $$\langle x+|z+\rangle
 =
 \frac{1}{\sqrt{2}}.$$
 
-The Born rule therefore gives
+The Born rule gives the passing probability conditional on the preparation:
 
 $$P(x+\mid z+) = \Bigl|\frac{1}{\sqrt{2}}\Bigr|^2 = \frac12.$$
 
-About half the atoms survive this filter. Conditioning on survival, each remaining atom has left the state $z+$ and entered
+The expected surviving fraction is one half. Each retained atom, initially prepared in $z+$, now has the normalized state
 
 $$|\psi_2\rangle = |x+\rangle = \frac{|z+\rangle + |z-\rangle}{\sqrt{2}}.$$
 
-The passing probability and the state after passing answer different questions. The first counts how many atoms survive; the second, properly normalized, describes the survivors.
+The probability describes the expected fraction passing the filter. The normalized state describes an atom conditional on having passed. Its norm is one even though only half the incoming atoms are expected to survive.
 
-In step 3, the $z$ component is measured again. The relevant amplitudes are
+In step 3, measure the $z$ component of these survivors and count both outputs. The amplitudes are
 
 $$\langle z+|x+\rangle = \frac{1}{\sqrt{2}},
 \qquad
@@ -206,13 +212,13 @@ so
 
 $$P(z+\mid x+) = P(z-\mid x+) = \frac12.$$
 
-The perpendicular measurement erases the certainty established in step 1. Each atom emerging from the second magnet is in an eigenstate of the $x$ measurement, and such a state predicts a spread of outcomes for a subsequent $z$ measurement. The middle magnet therefore prepares a new eigenstate whose statistics split evenly; it does not merely reveal a value the atom carried all along.
+After selection at the second magnet, the retained state gives a certain $x$ result but two equally probable $z$ results. The intervening filter has changed the preparation. This rules out a description in which the middle apparatus merely reads a pre-existing value while leaving the initially certain $z$ value intact. The sequence alone does not rule out models in which measurement disturbs pre-existing values.
 
-Starting from 100 atoms prepared in $z+$, about 50 reach the $x+$ output, and about 25 land in each final $z$ output. Small samples fluctuate around these averages; the conditional probabilities of one half at each stage stay fixed.
+Starting from 100 atoms already prepared in $z+$, the expected count at the retained $x+$ output is 50. The expected counts at the two final $z$ outputs are 25 each. These final counts are relative to the initial 100 atoms; the final probabilities of one half are conditional on passing the middle filter. Repeated runs fluctuate around the expected counts even when the ideal probabilities remain fixed.
 
 ### Overall and relative phase
 
-Multiplying an entire ket by $e^{i\gamma}$, where $\gamma$ is real, leaves every probability unchanged:
+The two probabilities for a fixed magnet orientation generally do not specify the whole pure state. To see what information matters, first multiply both amplitudes by the same factor $e^{i\gamma}$, with $\gamma$ real. This changes their common phase. For any normalized measurement ket, the probability remains
 
 $$\bigl|\langle a|e^{i\gamma}\psi\rangle\bigr|^2
 =
@@ -220,61 +226,67 @@ $$\bigl|\langle a|e^{i\gamma}\psi\rangle\bigr|^2
 =
 \bigl|\langle a|\psi\rangle\bigr|^2.$$
 
-Hence $|\psi\rangle$ and $e^{i\gamma}|\psi\rangle$ describe the same physical preparation. The family of vectors differing only by such a shared factor is called a ray, and shifting a whole ket along its ray changes no prediction.
+Thus $|\psi\rangle$ and $e^{i\gamma}|\psi\rangle$ represent the same pure state. The common factor is an *overall phase*. Mathematically, a ray consists of all nonzero complex scalar multiples of a nonzero vector. Its normalized representatives differ only by an overall phase.
 
-The phase difference between terms inside one superposition is a relative phase. It sets how the terms interfere. The two states
+Changing one amplitude\'s phase while holding the other fixed can change a measurement probability. With the basis vectors fixed, the phase difference between two nonzero amplitudes is their *relative phase*. The previously defined states provide an example:
 
 $$\frac{|z+\rangle + |z-\rangle}{\sqrt{2}} = |x+\rangle,
 \qquad
 \frac{|z+\rangle - |z-\rangle}{\sqrt{2}} = |x-\rangle$$
 
-predict identical statistics for a $z$-basis measurement yet opposite certain outcomes for an $x$-basis measurement. Their relative phase accounts for the difference, and the rotated magnet records it.
+Both states give equal probabilities for the two $z$-basis outcomes. Their second amplitudes differ by a minus sign, so the relative phases differ by half a turn. An $x$-basis measurement distinguishes them with certainty: the first state gives the plus outcome, and the second gives the minus outcome. In computing each overlap, the two contributions add or cancel according to this relative phase.
 
 ### The Born rule and projection
 
-Consider a measurement whose outcomes $\{|a_j\rangle\}$ are pairwise orthogonal, which makes distinct outcomes mutually exclusive, and jointly exhaustive, which covers every possible outcome. The Born rule gives the probability of outcome $j$ as
+The filters can now be described for any finite-dimensional pure-state system. Consider an ideal projective measurement with a normalized ket for each outcome. These kets $\{|a_j\rangle\}$ form an orthonormal basis: each has norm one, distinct kets are orthogonal, and together they span the state space. The outcomes therefore form a complete set for this measurement. For a normalized input ket, the Born rule gives the probability of outcome $j$ as
 
 $$P(j) = \bigl|\langle a_j|\psi\rangle\bigr|^2.$$
 
-Born proposed this probabilistic reading of the wavefunction in 1926. Modern notation attaches a projector to each outcome,
+Born proposed the probabilistic interpretation of the wavefunction in 1926. To describe what a filter retains, we also need the component along the selected outcome ket. The orthogonal projector onto that one-dimensional subspace is
 
 $$\Pi_j = |a_j\rangle\langle a_j|.$$
 
-A projector keeps the component of a state lying in a chosen subspace and discards the rest. With that operator the Born probability reads
+Acting on the input ket, this projector retains its component along the selected ket and removes the orthogonal component. The squared norm of the retained component is the probability of passing the filter. Equivalently,
 
 $$P(j) = \langle\psi|\Pi_j|\psi\rangle.$$
 
-Projecting twice gives the same result as projecting once, a property called idempotence, and each projector equals its own adjoint, which is Hermiticity. For a complete measurement the projectors add up to the identity:
+These orthogonal projectors are self-adjoint and idempotent. Completeness of the outcome basis gives
 
 $$\sum_j \Pi_j = I.$$
 
-Summing to the identity is what makes the probabilities sum to one. When the measurement yields outcome $j$, the idealized state afterward is $|a_j\rangle$, or more generally the normalized projection
+Multiplying this identity on the left by the input bra and on the right by its normalized ket shows that the probabilities sum to one.
+
+Now condition on the observed outcome $j$, assuming it has nonzero probability. The ideal filter prepares the state represented by $|a_j\rangle$. Applying the projector and normalizing gives the same state, up to overall phase:
 
 $$|\psi_j\rangle
 =
 \frac{\Pi_j|\psi\rangle}{\sqrt{\langle\psi|\Pi_j|\psi\rangle}}.$$
 
-When the outcome goes unrecorded, the ensemble of possible post-measurement kets needs a broader description: the density operator.
+The denominator is the norm of the projected ket. A zero-probability outcome has no conditional state defined by this formula.
+
+An outcome may instead correspond to a subspace of dimension greater than one. For a complete family of mutually orthogonal subspaces, use their orthogonal projectors in the same probability formula. The normalized-projection update then specifies an ideal measurement that preserves the component within the selected subspace; this assumption is part of the measurement model.
+
+If a measurement occurs but its outcome is not retained, subsequent predictions must average over the possible conditional states with their outcome probabilities. In general, no single ket describes that ensemble. A density operator, introduced later, will represent this statistical mixture.
 
 ### Operators and observables
 
-An operator maps kets to kets linearly, meaning superpositions pass through it term by term:
+A filter labels an output channel. To describe a measured quantity, we must also assign a numerical reading to each channel. Define an operator that multiplies each outcome component by its assigned reading. Its action on superpositions satisfies
 
 $$A\bigl(c_1|u\rangle + c_2|v\rangle\bigr)
 =
 c_1 A|u\rangle + c_2 A|v\rangle.$$
 
-In a finite basis an operator becomes a matrix. Its adjoint $A^\dagger$ is the transpose with every entry complex-conjugated. If
+In the orthonormal basis used here, the adjoint $A^\dagger$ is represented by the conjugate transpose. Assigning real readings to mutually orthogonal outcome subspaces gives an operator satisfying
 
 $$A = A^\dagger,$$
 
-the operator is Hermitian. This chapter represents each measurable quantity by a Hermitian operator. Its possible readings, the eigenvalues, are real numbers, and eigenstates belonging to different readings stand orthogonal. An eigenstate obeys
+This is the Hermitian condition. In the ideal projective model, such an operator represents an *observable*, a quantity measured with those numerical outcomes. The spectral theorem supplies its real eigenvalues and a complete orthonormal eigenbasis. For a ket in an outcome eigenspace,
 
 $$A|a_j\rangle = a_j |a_j\rangle.$$
 
-The ket $|a_j\rangle$ is an eigenstate of $A$, and the number $a_j$ is the reading that outcome reports.
+The normalized ket $|a_j\rangle$ is called an eigenstate of $A$. Preparing this state makes the reading $a_j$ certain. If several basis kets have the same eigenvalue, that reading corresponds to their whole eigenspace. This observable description is the ideal projective measurement model used in this chapter; more general measurement procedures require a broader description.
 
-For the two-state atom, define the Pauli matrices
+For the two-output magnets, first assign the dimensionless readings plus one and minus one to their respective outputs. In the fixed z basis, the resulting operators are the Pauli matrices
 
 $$\sigma_z
 =
@@ -284,41 +296,41 @@ $$\sigma_z
 =
 \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.$$
 
-Both matrices equal their adjoints. Multiplying them out gives
+Both are Hermitian. Their eigenstates are exactly the states prepared by the corresponding filters:
 
 $$\sigma_z |z\pm\rangle = \pm |z\pm\rangle,
 \qquad
 \sigma_x |x\pm\rangle = \pm |x\pm\rangle.$$
 
-The Pauli matrices carry no units. For an ideal spin-$1/2$ atom the physical angular-momentum components are scaled versions of these matrices:
+The Pauli matrices carry no units. To express the angular momentum measured in an ideal spin-$1/2$ model, multiply by half the reduced Planck constant, denoted by h-bar. This universal constant sets the quantum scale of angular momentum. The physical component operators are
 
 $$S_z = \frac{\hbar}{2}\sigma_z,
 \qquad
 S_x = \frac{\hbar}{2}\sigma_x,$$
 
-so an $S_z$ measurement returns $+\hbar/2$ or $-\hbar/2$, measured in joule-seconds. The labels $z+$ and $z-$ denote these two eigenstates.
+An $S_z$ measurement therefore returns $+\hbar/2$ or $-\hbar/2$, in joule-seconds. The labels $z+$ and $z-$ denote the eigenstates for these respective readings.
 
-The two Pauli matrices do not commute:
+The two magnet orientations do not admit a common eigenbasis. Their Pauli operators do not commute:
 
 $$[\sigma_z,\sigma_x] \equiv \sigma_z\sigma_x - \sigma_x\sigma_z \ne 0.$$
 
-The commutator $[A,B]$ subtracts the two orders of applying $A$ and $B$: first $B$ then $A$, minus the reverse. Because $\sigma_z$ and $\sigma_x$ have nonzero commutator, they share no common eigenbasis. The three-magnet sequence shows that order dependence in the laboratory: the middle magnet changes what the final magnet reports.
+The commutator $[A,B]$ compares the compositions of $A$ and $B$, with $B$ applied before $A$ in the first product. For Hermitian operators, a common orthonormal eigenbasis exists exactly when they commute. For the particular pair $\sigma_z$ and $\sigma_x$, the displayed eigenstates show more: there is no common eigenvector.
 
-Each atom therefore does not carry a fixed pair of labels, one for $z$ and one for $x$; the mathematics provides no joint eigenstate for such a pair of labels.
+Consequently, no ket predicts both a certain $z$ outcome and a certain $x$ outcome. The intermediate filter in the three-magnet sequence replaces one such certainty with the other. A measurement includes this conditional state change; composing observable matrices alone does not describe the filtering procedure. Neither noncommutation nor that sequence by itself rules out every model with pre-existing values. The sequence rules out a readout that leaves the original certainty undisturbed.
 
-The expectation value of $A$ in the state $|\psi\rangle$ is
+Repeated measurements on identically prepared atoms yield a distribution of readings. Its mean, called the expectation value of $A$ in the normalized state $|\psi\rangle$, is
 
 $$\langle A\rangle_\psi = \langle\psi|A|\psi\rangle = \sum_j a_j P(j).$$
 
-An expectation value averages the readings over many repetitions of the same preparation. That average can fall between the allowed single-shot readings.
+A finite sample average estimates this mean. The mean need not be an allowed outcome of a single measurement.
 
-For $|x+\rangle$, measuring $\sigma_z$ returns $+1$ half the time and $-1$ half the time, so the average is $0$, which no single run ever reports.
+For $|x+\rangle$, a measurement of $\sigma_z$ has readings $+1$ and $-1$, each with probability one half. Its expectation is $0$, although an individual run never reports zero.
 
-Writing $q = \langle\psi|A|\psi\rangle$ with $A = A^\dagger$ gives $q^* = q$, so the average predicted for a Hermitian observable is always a real number.
+Hermiticity also guarantees reality directly: if $q = \langle\psi|A|\psi\rangle$ and $A = A^\dagger$, then $q^* = q$.
 
 ### Unitary time evolution
 
-Between measurements an isolated system evolves while preserving every inner product. Evolution of that kind is represented by a unitary matrix $U$, defined by
+A prepared atom can evolve before reaching the next filter. Suppose the tracked system is closed over that interval: interactions with untracked degrees of freedom can be neglected, while any prescribed applied field is included in its dynamics. Quantum mechanics models this evolution by a unitary operator $U$:
 
 $$U^\dagger U = U U^\dagger = I.$$
 
@@ -331,98 +343,98 @@ $$\langle\psi'|\psi'\rangle
 =
 \langle\psi|\psi\rangle.$$
 
-Norms stay fixed under such evolution.
+The evolved ket remains normalized, so it still gives a complete probability distribution for any subsequent ideal measurement. Unitarity preserves inner products between any two evolving states as well.
 
-The operator that generates this motion is the energy operator $H$, called the Hamiltonian. Its action appears in Schrödinger's equation,
+To determine the evolution, specify the system\'s energy operator $H$, called its Hamiltonian. It is Hermitian, with energy eigenvalues measured in joules. The law connecting this operator to the changing state is Schrödinger's equation:
 
 $$i\hbar \frac{d}{dt}|\psi(t)\rangle = H|\psi(t)\rangle.$$
 
-Time $t$ runs in seconds and $\hbar$ carries joule-seconds, so both sides report energies:
+With time $t$ in seconds and $\hbar$ in joule-seconds, the differential operator on the left has the same energy units as the Hamiltonian:
 
 $$[\hbar\, d/dt] = (\mathrm{J\,s})(1/\mathrm{s}) = \mathrm{J} = [H].$$
 
-For a Hamiltonian $H$ that does not depend on time, the solution is the exponential
+When the Hamiltonian $H$ is constant in time, the initial-value solution is
 
 $$|\psi(t)\rangle = U(t)\,|\psi(0)\rangle,
 \qquad
 U(t) = e^{-iHt/\hbar}.$$
 
-The exponential means its power series. The combination $Ht/\hbar$ is dimensionless, and Hermiticity of $H$ makes $U(t)$ unitary.
+The exponent contains the dimensionless combination $Ht/\hbar$. Since $H$ is Hermitian, $U(t)$ is unitary.
 
-As a concrete example, consider
+Consider an energy splitting between the two z-basis states, described by
 
 $$H = \frac{\hbar\omega}{2}\sigma_z,$$
 
-where $\omega$ is an angular frequency in radians per second. An atom starting in $|x+\rangle$ then evolves as
+Here $\omega$ is an angular frequency, measured in radians per second. The two basis states acquire phases at opposite rates because their energies have opposite signs in this choice of energy reference. Starting with the state $|x+\rangle$ gives
 
 $$|\psi(t)\rangle
 =
 \frac{e^{-i\omega t/2}|z+\rangle + e^{+i\omega
 t/2}|z-\rangle}{\sqrt{2}}.$$
 
-The two $z$-basis probabilities stay at one half each while the relative phase winds with time. A later $x$-basis measurement is sensitive to that winding:
+Both amplitudes change with time through their phase factors. Their squared magnitudes remain one half, so the $z$-basis probabilities stay fixed. To detect the changing relative phase, measure in the $x$ basis. The overlap adds the two phase-dependent contributions, giving
 
 $$P(x+;t) = \bigl|\langle x+|\psi(t)\rangle\bigr|^2 = \cos^2\bigl(\omega
 t/2\bigr).$$
 
-Amplitudes in the original basis show no change over time, while the rotated-basis probabilities oscillate. Probabilities for one basis alone leave out the phase that the amplitudes still carry.
+Thus the probability of the plus output oscillates as the delay before measurement changes. The unchanged probabilities in the energy basis conceal a changing pure state. A measurement sensitive to the relative phase reveals that evolution.
 
 ### Physical implementation of the 1922 experiment
 
-The operators above stand in for pieces of laboratory hardware: a source emitting neutral silver atoms, a magnet whose field varies across the beam, two diverging flight paths, and detectors with finite resolution. Treating the flight path classically while keeping the spin quantum gives the deflecting force
+The original apparatus sent neutral silver atoms from a heated source through a narrow beam into an inhomogeneous magnetic field. The outgoing atoms left a deposit on a collecting plate. Their positions revealed two separated branches. The sequential filters used above are an idealized extension of that experiment.
+
+The separation arises because an atom\'s internal magnetic state affects the force exerted by the field. In an approximation that treats each resolved branch as a classical trajectory, the dipole interaction energy gives
 
 $$\mathbf F \approx \boldsymbol\nabla(\boldsymbol\mu\cdot\mathbf B),$$
 
-where $\boldsymbol\mu$ is the magnetic moment, measured in joules per tesla, and $\mathbf B$ is the magnetic field, measured in tesla. The gradient contributes units of inverse metres, so the right-hand side has units of newtons. The internal magnetic state of the atom thereby produces a measurable change in its trajectory.
+The magnetic moment $\boldsymbol\mu$ describes the atom\'s coupling to the magnetic field and has units of joules per tesla. The field $\mathbf B$ is measured in tesla. Their scalar product is an energy; its spatial gradient has units of newtons. The two internal components experience different forces and can therefore reach distinguishable positions.
 
-Stern and Gerlach published in 1922, three years before electron spin was proposed. The spin language used in classrooms was attached to the experiment afterward.
+Stern and Gerlach published their result in 1922, three years before electron spin was proposed. The spin account is a later explanation of the observed splitting.
 
-Within the full atomic structure, the relevant degree of freedom behaves as a two-dimensional angular-momentum subspace for ground-state silver. The atom\'s remaining coordinates, the magnet, and the flight paths live in a far larger state space that the two-component ket leaves out.
+In the modern account, ground-state silver has electronic angular-momentum quantum number one half. The two allowed projections along the magnet axis supply the basis states of our two-dimensional model. This reduction neglects nuclear-spin structure and other atomic degrees of freedom when describing the resolved branches. The atom\'s position must be included as well if we want to explain how those branches form.
 
-Calling the apparatus a "spin-1/2 measurement" is shorthand for that restriction to one degree of freedom. The ignored coordinates remain present; the model simply tracks the one that decides between the two spots.
+The magnetic field directs the two internal basis components into different spatial paths. When both components are initially present coherently, the resulting joint state generally cannot be written as an internal ket times a spatial ket: each internal component is associated with its own path. This failure to factor is called entanglement and will be developed in the next chapter. An input containing just one of the internal basis components need not become entangled in this ideal model.
 
-The single projection in the idealized analysis bundles two physical steps. First the magnet entangles the atom\'s internal state with its flight path through ordinary unitary evolution of the combined system.
+The separation of paths can be described by unitary evolution of the internal and spatial degrees of freedom together. A blocker then transmits one path, or a detector registers an arrival. Conditional on a selected output, the ideal spin-state update is the projection described earlier. This is an operational model of preparation and readout; it does not derive the occurrence of an individual detector outcome from unitary evolution.
 
-Then a detector records, or a blocker selects, one of the paths. Real hardware adds imperfect preparation, overlapping beams, misaligned fields, lost atoms, and noisy counters.
+Real beams have finite width, and real devices can lose atoms or misidentify an output. Field misalignment changes which component is measured. Such effects require changes to the preparation, evolution, or detector model before its predictions are compared with counts. The Born rule remains the probability rule, but the ideal two-channel formulas alone need not describe the imperfect apparatus.
 
-Those imperfections shift the recorded counts. The rule converting amplitudes to probabilities stays the same.
-
-A two-component ket therefore describes one degree of freedom inside an effective model. That description alone provides no initialization, readout, or protection scheme, so it is not yet a usable computer bit.
+The two-component ket therefore captures a selected part of the atom\'s behavior. The filters already illustrate ways to prepare and read that part. To use it for quantum computation, one must also implement controlled operations and keep unwanted interactions sufficiently small over the required sequence. Those physical capabilities are additional information beyond the dimension of the state space.
 
 ### Common conceptual errors
 
-- Probabilities come from the squared magnitude $|c|^2 = c^*c$. Direct squaring of a complex amplitude can return a negative or complex number, which no probability can equal.
+- For an outcome amplitude computed from a normalized state and a normalized measurement ket, use the squared magnitude $|c|^2 = c^*c$. Squaring the complex amplitude itself can give a negative or nonreal number.
 
-- The column $(\alpha,\beta)^T$ belongs to a stated basis. Changing the reference measurement changes the entries, so the numbers have meaning only alongside the basis that produced them.
+- The column $(\alpha,\beta)^T$ gives coordinates in the fixed z basis. Choosing another coordinate basis generally changes the entries without changing the physical state. Rotating a measuring magnet changes the measurement; the state can still be expressed in the original basis.
 
-- Overall phase leaves every prediction unchanged; relative phase shifts interference fringes. Confusing the shared factor with the internal phase difference misidentifies which quantities an experiment can resolve.
+- Equal probabilities in one basis do not establish equality of pure states. The two x-basis states have equal z-basis probabilities and are nevertheless distinguished by an x-oriented magnet. Overall phase is the freedom that leaves every measurement probability unchanged.
 
-- An expectation value averages many identically prepared runs. That average can fall between the allowed readings, so it can take values that no single run reports.
+- An expectation value is a distribution\'s mean, estimated by repeated measurements. It need not be one of the values an individual measurement can report.
 
-- Postselection includes a projection that discards the blocked outcomes. Unitary evolution of the atom alone cannot produce that discarding; the larger atom--magnet evolution stays unitary before the detector condition is applied.
+- In the ideal filter model, postselection conditions on an output of nonzero probability and normalizes the corresponding projection. A unitary operator on the internal state alone cannot perform this selective removal. Unitary separation of the spatial paths is an earlier, distinct part of the procedure.
 
-- Hermitian operators label measurable quantities in this framework; unitary operators preserve inner products during evolution. A Pauli matrix happens to satisfy both definitions, while most operators satisfy neither.
+- A Hermitian observable specifies the readings and outcome subspaces of an ideal projective measurement. A unitary operator specifies closed-system evolution. The Pauli matrices satisfy both algebraic conditions, so an operator\'s physical role must be stated along with its matrix.
 
-- Numerically multiplying these matrices reproduces the predicted statistics. That computation implements the mathematics without reproducing the silver atom itself.
+- A numerical simulation can propagate the specified ket and evaluate Born probabilities for the chosen measurement. Computing these predictions does not reproduce the physical atom or its interaction with a detector.
 
-- Two levels alone provide no initialization, control, readout, or protection. Those capabilities need further physical mechanisms developed in later chapters.
+- A two-dimensional state space does not specify how a device is operated. Preparation, control, readout, and suppression of unwanted interactions each require a physical implementation.
 
 ### Self-assessment
 
-- **Specification of a pure-state experiment:** A normalized ket, taken up to an overall phase, carries the predictions. Each measurement reports one of its eigenvalues with the Born probability, and the Hamiltonian advances the ket between measurements.
+- **What specifies a pure-state experiment?** Give a normalized initial ket, with overall phase irrelevant. Specify the Hamiltonian for each closed-system evolution interval. For each ideal projective measurement, give the outcome projectors and their numerical readings. State which outcomes, if any, are retained for subsequent steps.
 
-- **Conversion of an amplitude into a probability:** The amplitude for outcome $j$ is $\langle a_j|\psi\rangle$. Its squared magnitude gives the probability: $P(j) = |\langle
+- **How is an outcome probability computed?** For outcome $j$ in an orthonormal measurement basis, the amplitude is $\langle a_j|\psi\rangle$. For the normalized input state, its squared magnitude gives $P(j) = |\langle
   a_j|\psi\rangle|^2$.
 
-- **Normalization in the $z$ basis:** The condition $|\alpha|^2 + |\beta|^2 = 1$ holds because the atom must land in one of the two $z$-basis outcomes.
+- **Why normalize in the $z$ basis?** The condition $|\alpha|^2 + |\beta|^2 = 1$ makes the probabilities of the two complete $z$-basis outcomes sum to one. It describes the ideal two-outcome measurement, without an additional loss channel.
 
-- **Failure of a non-Hermitian measurement operator:** A non-Hermitian $A$ can have complex eigenvalues that no meter could report, and its eigenstates for different readings can overlap, so distinct outcomes would fail to exclude each other.
+- **Why require a Hermitian observable?** An ideal projective observable assigns real readings to mutually orthogonal, complete outcome subspaces. An operator $A$ constructed from those spectral data is Hermitian. A non-Hermitian operator cannot have both a real spectrum and a complete orthonormal eigenbasis, so it cannot represent an observable in this model.
 
-- **Difference between unitary evolution and postselection:** Unitary evolution keeps every inner product fixed. Keeping one measurement output projects onto the corresponding subspace and renormalizes the survivor.
+- **How does evolution differ from postselection?** Closed-system unitary evolution preserves all inner products. An ideal filter instead selects an output. Conditional on that output having nonzero probability, the normalized projection describes the atoms retained for the next operation.
 
-- **Outcomes after the sequence $z+$, then $x+$, then $z$:** The final measurement gives $z+$ and $z-$ with probability one half each. A magnet that only read out a prior $x$ value while keeping $z+$ intact would send every survivor back to $z+$, contrary to what the three-magnet sequence records.
+- **What follows the sequence $z+$, then $x+$, then $z$?** Prepare the first state and retain the plus output of the perpendicular filter. Among those survivors, the final outcomes $z+$ and $z-$ each have probability one half. If the intermediate $x$ measurement left the prepared $z+$ state unchanged, the final result would instead be certainly $z+$. The sequence demonstrates the change in preparation caused by this filter.
 
-The chapter leaves three tools in place: a normalized ket for the state, the Born rule for measurement probabilities, and unitary evolution generated by the Hamiltonian between measurements. A pair of atoms comes next, where the joint amplitudes resist separation into one list per atom.
+We can now follow a pure state through closed-system evolution and predict the outcomes of ideal filters, including the conditional state passed to the next step. The next chapter applies this framework to two atoms. Some joint pure states factor into one ket for each atom; others do not. Understanding the latter requires keeping the joint amplitudes together.
 
 ### Sources
 

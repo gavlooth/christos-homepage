@@ -85,3 +85,17 @@ Signature: openai-codex/gpt-6-astra
 - Next action: if authorized, correct context handling and calibrate on a small personally reviewed batch before continuing. Full scoring remains paused. Required `jj describe` follows immediately; no push.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-08 — Chapter 1 rewritten from contextual assessments
+
+- Objective/scope: user authorized default agents and selected Chapter1 first. Rewrote the entire chapter using the saved assessments as fallible guidance, with parent-owned personal review and integration. No other manuscript chapter changed.
+- Changes: state coordinates precede the Born rule; normalized amplitudes supply probabilities; interference is explained through contributions to one outcome. Clarified finite-dimensional Hilbert space, ideal filters and conditional counts, rays, normalized complete measurement bases, nonzero-probability projection, projective observable scope, and the limits of sequential-measurement arguments. Corrected the false claim that amplitudes stay unchanged during phase evolution. Distinguished original silver apparatus from its ideal sequential-filter model.
+- Coverage: 100% of the selected Chapter1 rewrite and reading exports. Two default agents owned disjoint fragments. Main read both complete outputs and checked their combined conceptual sequence and technical assumptions. This does not constitute another independent numerical readability audit or reader acceptance.
+- Preservation: 40 displayed equations and 12 heading IDs retained exactly; Sources list/navigation unchanged; source outside Chapter1 preserved byte-for-byte. Chapter math nodes increased139→155 through inline notation changes/additions; no new displayed derivations. No nested paragraphs introduced.
+- Commands/evidence: `npm run notes:export:qubits` passed in488.54s with8,354 math nodes,10 figures,0 errors; PDF745 A4 pages,11,549,374 bytes. `npm run build` passed. Verified source/output manifest hashes and public HTML byte identity. Numerical filter probabilities were0.5 to floating-point precision; phase-oscillation probability agreed with cos² law within4.45e-16.
+- Surface verification: inspected actual desktop foundations and390px mobile evolution in Chromium; all155 chapter math nodes rendered without errors, no page-width overflow. Extracted PDF text with `pdftotext -f 1 -l 16 -layout`, located corrected Born statement on page5 and phase statement on page12; rasterized and visually inspected page5 with `pdftoppm`.
+- Artifacts: canonical HTML, regenerated Markdown/PDF/manifest and public copies; `.agents/qubits-chapter1-rewrite.json` archives both writers' decisions and parent verification. The saved sentence audit remains a historical snapshot of the previous source, not an assessment of this rewrite. Current source SHA-256 is `2900eb731843cd26c88037e81c2d80e227eb64880767d530fc6867e5a170573f`.
+- Cleanup: archived decisions, removed temporary rewrite fragments, closed preview browser and stopped HTTP server. No new tests, exporter changes, or workflow-documentation changes needed. Previous paused-audit staging remains intact.
+- Next action: user reads Chapter1 before extending the rewrite. Other chapters and unfinished audit remain out of scope. No blockers or running preview processes; nothing pushed. Required `jj describe` follows immediately.
+
+Signature: openai-codex/gpt-6-astra
