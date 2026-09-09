@@ -1,19 +1,19 @@
 {
   "source": "notes/pages/defects-to-topological-qubits.html",
-  "sha256": "2900eb731843cd26c88037e81c2d80e227eb64880767d530fc6867e5a170573f",
+  "sha256": "a7028b5037aab555c47fae9bfab35fe0aa4e62e1bc382c53e55615fe874aefc3",
   "figures": 10,
   "equations": 8354,
   "inputs": {
-    "assets/defects-to-topological-qubits/defect-taxonomy.svg": "226436c24c983321f676d9dae0bd845300976ec47049666e298756ea7075e14a",
     "assets/defects-to-topological-qubits/commanded-versus-realized-defects.svg": "e3f51862a39ef2a6700df99ad4d5a860a2eae18409f6832a9b4d9418df2ad782",
+    "assets/defects-to-topological-qubits/host-defect-comparison.svg": "2d62c16d54cc050fd64686b1ea182980a031eae0c2d11d80da1f9259a36ea10b",
+    "assets/defects-to-topological-qubits/target-placement-interaction.svg": "dd32b01764820b9abd4147520243fb7422788dddd54b6ab114465ec98a759aa5",
     "assets/defects-to-topological-qubits/lattice-unit-cell.svg": "f8aad96ff6462a431ba844c821b35968f65e5fa968a800def2efde65cdf2c7a4",
     "assets/defects-to-topological-qubits/nv-center-geometry.svg": "4547cb212c25f72fad5fe0230ca326a4961d113261bece4be27bf123ea88fd2f",
-    "assets/defects-to-topological-qubits/target-placement-interaction.svg": "dd32b01764820b9abd4147520243fb7422788dddd54b6ab114465ec98a759aa5",
-    "assets/defects-to-topological-qubits/host-defect-comparison.svg": "2d62c16d54cc050fd64686b1ea182980a031eae0c2d11d80da1f9259a36ea10b"
+    "assets/defects-to-topological-qubits/defect-taxonomy.svg": "226436c24c983321f676d9dae0bd845300976ec47049666e298756ea7075e14a"
   },
   "outputs": {
-    "assets/defects-to-topological-qubits.md": "81e353a1a696311628f285a450ea9982f2466ea1d0a1dec2dd3e687b478e4f42",
-    "assets/defects-to-topological-qubits.pdf": "580b06756807f6658c195fa4274821077b033462c84e2c45cd8d3fe180c8d459",
+    "assets/defects-to-topological-qubits.md": "ab920dd6dc08c62fdd42ba931e4e99dba4c52b9d64848e850d0958d8efaadc78",
+    "assets/defects-to-topological-qubits.pdf": "d61bfb06f7a2fe685556ae35d4ec3b87234d7b57992e17cda4bf17024ede4a96",
     "assets/defects-to-topological-qubits/assessment-diagram-1.svg": "42b21f6171707ec65e2b99ae7286c0b198d522ebea1ea0b550eff310a025dc7b",
     "assets/defects-to-topological-qubits/assessment-diagram-2.svg": "6b9de46ea43374ebc9d1d830f29455925498aef54171c67a3731cddccb6fe7a1",
     "assets/defects-to-topological-qubits/assessment-diagram-3.svg": "17903d8993bc432aeb7052792e93dd9712bbc90795dbc577c8a2c900c3180743",

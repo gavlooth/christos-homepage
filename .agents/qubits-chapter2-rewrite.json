@@ -1,0 +1,165 @@
+{
+  "scope": "Chapter2 only; Chapter1 and remaining canonical source preserved byte-for-byte during integration",
+  "source_sha256": "a7028b5037aab555c47fae9bfab35fe0aa4e62e1bc382c53e55615fe874aefc3",
+  "assessment_input": {
+    "records": 222,
+    "scored_records": 222,
+    "limitation": "Historical score records guide the rewrite but were independently contextualized because their calibration was previously found inconsistent."
+  },
+  "default_agent_findings": [
+    {
+      "fragment": "correlations.html",
+      "status": "rewritten",
+      "technical_corrections": [
+        {
+          "assessments": [
+            "s000221",
+            "s000222"
+          ],
+          "correction": "Fair-coin joint probabilities now explicitly require independent tosses. Arbitrary joint distributions require a preparation permitting correlations as well as bias. The perfect rigor score for s000221 relied on an unstated assumption."
+        },
+        {
+          "assessments": [
+            "s000225",
+            "s000231",
+            "s000234",
+            "s000235",
+            "s000240"
+          ],
+          "correction": "Scoped amplitude-vector descriptions to pure states, distinguished amplitudes from squared-magnitude probabilities, and described basis kets as vectors yielding particular outcomes. Tensor-product coefficients multiply only for products of local vectors; label concatenation is notation, not the intrinsic construction."
+        },
+        {
+          "assessments": [
+            "s000246",
+            "s000247",
+            "s000258",
+            "s000259"
+          ],
+          "correction": "Local-operator action is stated on tensor factors rather than as an unrestricted claim about remote physical states. Product-state factorization implies independence for all separate measurement bases; independence in one basis leaves potentially nonfactorizing phases undetermined."
+        },
+        {
+          "assessments": [
+            "s000273",
+            "s000274",
+            "s000280",
+            "s000281"
+          ],
+          "correction": "Preserved the Bell coefficient contradiction and connected Schmidt decomposition to singular-value decomposition. Distinguished invariant Schmidt rank from the number of terms in an arbitrary expansion. Entanglement is compatible with prior interaction. The later no-signalling statement is conditional on no ongoing interaction and averaging over all outcomes of a local operation; selected conditional ensembles require a nonzero-probability outcome and a communicated selection record."
+        },
+        {
+          "assessments": [
+            "s000282",
+            "s000285",
+            "s000286",
+            "s000292",
+            "s000315"
+          ],
+          "correction": "Separated the randomized ensemble of the whole pair from the local description of an atom in a known pure Bell pair. A remote partner alone does not make a state mixed. Equal density operators imply equal measurements on the specified system, without identifying preparation histories, external records, or joint-system predictions."
+        },
+        {
+          "assessments": [
+            "s000299",
+            "s000303",
+            "s000304"
+          ],
+          "correction": "Scoped projector probabilities to projective measurements, included Hermiticity and completeness, removed the unsupported compactness superlative, and explained positivity, reality, and normalization without pretending the density-operator conditions are logically independent."
+        },
+        {
+          "assessments": [
+            "s000306",
+            "s000308",
+            "s000313",
+            "s000318",
+            "s000320",
+            "s000321",
+            "s000322"
+          ],
+          "correction": "Partial tracing now explicitly restricts predictions without measuring or changing either atom. Explained vanishing partner traces, maximal mixedness through equal probabilities in every orthonormal basis, and uniqueness through agreement with all local observables. Stated that product operators span the joint operator space."
+        }
+      ],
+      "contextual_score_judgments_rejected": [
+        {
+          "assessments": [
+            "s000224",
+            "s000232"
+          ],
+          "judgment": "The four labels and their basis are established by the surrounding setup and displayed list; sentence-local requests to enumerate or re-specify them would add repetition."
+        },
+        {
+          "assessments": [
+            "s000238",
+            "s000265",
+            "s000298"
+          ],
+          "judgment": "Did not add separate normalization or probability-axiom equations wherever coefficients occur. Normalized prepared vectors and classical probabilities supply these conventions; the Bell contradiction does not even require normalized candidate factors."
+        },
+        {
+          "assessments": [
+            "s000252",
+            "s000274"
+          ],
+          "judgment": "References to the Chapter 1 transverse state and the immediately preceding four-equation argument are legitimate contextual dependencies, not undefined terminology requiring repeated derivations. The Schmidt transition was improved using the mathematical audience's familiarity with singular values."
+        },
+        {
+          "assessments": [
+            "s000275",
+            "s000288",
+            "s000316"
+          ],
+          "judgment": "Finite-dimensional scope and the measurement formalism are established at section level. Their absence from each individual sentence does not justify repeated caveats or new definitions."
+        }
+      ],
+      "preservation_method": "Edited prose paragraphs in place; retained headings, wrappers, IDs, and existing math spans without reserializing HTML. Added no TeX expressions.",
+      "validation": "No validation commands run, as assigned. Exact preservation, integration, calculation checks, export, PDF, and visual verification remain with the parent."
+    },
+    {
+      "fragment": "open-systems.html",
+      "status": "rewritten",
+      "decisions": [
+        "Connected phase-independent marginals to phase-sensitive joint statistics, explaining that suitably chosen separate local measurements plus comparison of records suffice.",
+        "Defined separability through probabilistic preparation of product density operators; stated Bell locality factorization and setting-independence assumptions. Distinguished failure of one inequality from separability and scoped Werner-type local models to all local projective measurements.",
+        "Explained purity through eigenvalues and ensemble nonuniqueness through two explicit preparation procedures. Restricted indistinguishability to measurements on the atom alone without external records or partner access.",
+        "Introduced populations and coherences by their measurement roles and basis dependence. Motivated the Kraus map as unrecorded random identity/phase-flip operations, then explained complete positivity and trace preservation separately.",
+        "Stated normalized pure environment, initially product state, closed joint unitary evolution, and population-preserving interaction assumptions. Derived overlap factors through partial tracing and distinguished off-diagonal entries from their multiplicative coherence factors.",
+        "Separated overlap magnitude from phase, noted proportional environment kets preserve coherence magnitude, and connected real nonnegative overlaps to the existing dephasing channel. Explained possible coherence return and preserved the distinction between reduced-state dynamics and measurement foundations.",
+        "Expanded tomography assumptions, local versus joint reconstruction, leakage, detection bias, and the Bell experiment's two named loopholes. Explained T1, T2, and T2-star as protocol-dependent decay summaries rather than universal replacements for lambda.",
+        "Qualified relaxation/dephasing coexistence and replaced categorical claims about environments and classical simulation hardware. Updated conceptual checks without changing their equations. Sources and navigation were left untouched."
+      ],
+      "assessment_pitfalls": [
+        "s000359 is an extraction fragment of a grammatical sentence spanning the display; retained its construction rather than repairing a nonexistent sentence defect.",
+        "Flags demanding local redefinitions of Bell states, density operators, partial trace, purity, adjoints, or citation conventions were not followed mechanically: the chapter has already established them.",
+        "s000325's favorable assessment overlooked the common one-half coefficient; preserved both required TeX terms and supplied their coefficient in prose.",
+        "s000379 needed the distinction between the coherence entry and the environment-overlap multiplier. s000380's wording also wrongly suggested that identical environment states make the system basis states themselves indistinguishable; distinguishability is that of the environmental records.",
+        "s000377's assessment called the resulting joint state entangled unconditionally; it remains a product when the environment kets are proportional.",
+        "s000417 required an explicit reduced-state mechanism with assumptions, while s000422's universal claim about real channels needed qualification.",
+        "Several high-scoring coin-preparation statements used 'no environment involved' too literally. Replaced this with absence of a required subsequent coherence-loss process.",
+        "s000438's assessment explanation contains incorrect intermediate arithmetic despite the original displayed purity result being correct; retained the exact result and equations."
+      ],
+      "verification": "No validation commands were run, as assigned. Exact-preservation, integration, calculations, and surface verification are reserved for the parent."
+    }
+  ],
+  "parent_review": "Read both complete fragments and integrated critical transitions. Confirmed amplitude/probability distinction, factorization versus one-basis correlation, Schmidt rank, density-operator scope, reduced-state no-signalling/conditioning, Bell-test assumptions, ensemble ambiguity, CPTP dephasing, environment-overlap decoherence, and tomography limits.",
+  "preservation": {
+    "math_nodes": 217,
+    "display_equations": 39,
+    "ids": 16,
+    "citation_links": 17,
+    "structural_nodes_preserved": true
+  },
+  "verification": {
+    "export_math": 8354,
+    "figures": 10,
+    "render_errors": 0,
+    "pdf_pages": 747,
+    "pdf_bytes": 11572282,
+    "export_seconds": 498.58,
+    "build": "passed",
+    "desktop_mobile": "Visually inspected desktop partial-trace section and 390px dephasing section;217 rendered Chapter2 math nodes,0 MathJax errors,no document overflow. One long display equation remains internally horizontally scrollable at390px (428px content within 353px card), preserving all notation without page overflow.",
+    "pdf": "Extracted revised Chapter2 text from pages15–35 and visually inspected page24 (purity, populations/coherences, dephasing opening).",
+    "numerical_invariants": {
+      "dephasing_purity_lambda_half": 0.625,
+      "bell_reduced_state": "I/2",
+      "bell_local_purity": 0.5
+    }
+  }
+}

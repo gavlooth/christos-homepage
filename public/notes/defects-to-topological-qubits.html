@@ -534,85 +534,81 @@ Press (2010). DOI: <a href="https://doi.org/10.1017/CBO9780511976667">10.1017/CB
 </section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#chapter-2-nonfactorizable-states-of-two-two-level-systems">Chapter 2
 — Nonfactorizable states of two two-level systems →</a></nav></article><article aria-labelledby="chapter-2-nonfactorizable-states-of-two-two-level-systems" class="book-chapter"><h2 id="chapter-2-nonfactorizable-states-of-two-two-level-systems">Chapter 2
 — Nonfactorizable states of two two-level systems</h2><div class="chapter-intro" data-math-section="">
-<p>For two classical coins, each coin can land heads or tails, giving
-four joint outcomes: HH, HT, TH, and TT.</p>
-<p>For two fair coins, each joint outcome has probability <span class="math inline">\(1/4\)</span>. For loaded coins, the four
-probabilities can have any nonnegative values whose sum is one.</p>
-<p>The quantum analogue uses two silver atoms of the kind Chapter 1 analyzed, each with two possible readings. The pair again carries four joint labels. A quantum state assigns one complex amplitude to each label. The new feature is that the four joint amplitudes need not split into one pair belonging to the first atom and another pair belonging to the second.</p>
-<p>No crystal enters yet. The system is two atoms, four joint labels, and four amplitudes that need not factor.</p>
+<p>Recording two coin tosses gives an ordered pair of results. With H for heads and T for tails, the four possibilities are HH, HT, TH, and TT.</p>
+<p>If the coins are fair and tossed independently, each joint outcome has probability <span class="math inline">\(1/4\)</span>. More generally, a preparation allowing both biased and correlated results can realize any four nonnegative joint probabilities that sum to one.</p>
+<p>Now replace the coins with two silver atoms of the kind studied in Chapter 1, each modeled by its two spin readings. The atoms are distinguished by where they are prepared or measured, so each joint reading still has an ordered pair of labels. We first consider preparations described by a single state vector, called pure states. In a fixed joint basis, this vector has four complex coordinates: the joint amplitudes.</p>
+<p>The central question is whether the joint vector can be assembled from one state vector for each atom. Answering it will lead from tensor products to entanglement, then to a description that predicts measurements on either atom alone.</p>
 </div><section class="topic" data-math-section=""><h3 id="joint-basis-and-tensor-product-dimension">Joint basis and
 tensor-product dimension</h3>
-<p>Call the atoms <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Each gives the two answers met in Chapter 1, relabeled <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> in place of <span class="math inline">\(z+\)</span> and <span class="math inline">\(z-\)</span>. A ket names a quantum state or a basis label. The pair has four joint basis kets:</p>
+<p>Label the atoms <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. For each atom, write <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> for the Chapter 1 outcomes <span class="math inline">\(z+\)</span> and <span class="math inline">\(z-\)</span>. A ket denotes a vector in the state space. Choosing the two corresponding basis vectors for each atom gives four basis vectors for the pair:</p>
 <p><span class="math display">\[
 |00\rangle,\quad |01\rangle,\quad |10\rangle,\quad |11\rangle.
 \]</span></p>
-<p>The first digit refers to <span class="math inline">\(A\)</span>, and
-the second refers to <span class="math inline">\(B\)</span>. Thus, <span class="math inline">\(|01\rangle\)</span> denotes the outcome in which
-<span class="math inline">\(A\)</span> has value 0 and <span class="math inline">\(B\)</span> has value 1.</p>
-<p>A state of the pair lists four complex amplitudes, one per joint label, with squared magnitudes summing to one. Relative phases between these amplitudes shift the probabilities of later measurements, the same way the minus sign between <span class="math inline">\(z+\)</span> and <span class="math inline">\(z-\)</span> decided the transverse-magnet statistics in Chapter 1.</p>
-<p>The tensor product combines states of two systems. When <span class="math inline">\(A\)</span> is in <span class="math inline">\(\alpha|0\rangle+\beta|1\rangle\)</span> and <span class="math inline">\(B\)</span> is in <span class="math inline">\(|0\rangle\)</span>, the joint state is</p>
+<p>Read the first digit as the label for <span class="math inline">\(A\)</span> and the second as the label for <span class="math inline">\(B\)</span>. For example, <span class="math inline">\(|01\rangle\)</span> is the joint basis state that yields 0 on <span class="math inline">\(A\)</span> and 1 on <span class="math inline">\(B\)</span> with certainty when measured in these bases.</p>
+<p>A normalized pure state is a linear combination of these four vectors. Each coefficient is a complex amplitude; its squared magnitude is the probability of the corresponding joint reading, and these four probabilities sum to one. The amplitudes also carry relative phases, which affect measurements in other bases. Chapter 1 already exhibited this effect: changing the sign between the <span class="math inline">\(z+\)</span> and <span class="math inline">\(z-\)</span> contributions changed the transverse-magnet statistics.</p>
+<p>To construct the joint state space, pair each basis vector of one atom with each basis vector of the other and extend bilinearly. This construction is the tensor product. For instance, preparing <span class="math inline">\(A\)</span> in <span class="math inline">\(\alpha|0\rangle+\beta|1\rangle\)</span> and <span class="math inline">\(B\)</span> in <span class="math inline">\(|0\rangle\)</span> gives</p>
 <p><span class="math display">\[
 (\alpha|0\rangle+\beta|1\rangle)\otimes|0\rangle
 =\alpha|00\rangle+\beta|10\rangle.
 \]</span></p>
-<p>The symbol <span class="math inline">\(\otimes\)</span> is the tensor product. Acting on states, it concatenates the labels of the two systems and multiplies their amplitudes; that action is the definition used here. The same symbol also combines operators.</p>
-<p>If <span class="math inline">\(A\)</span> has <span class="math inline">\(d_A\)</span> independent basis states and <span class="math inline">\(B\)</span> has <span class="math inline">\(d_B\)</span>, then the pair has <span class="math inline">\(d_A d_B\)</span> joint basis states. Two two-state systems therefore give the four labels above.</p>
-<p>A three-state system joined to a four-state system gives twelve joint basis states, since dimensions multiply.</p>
-<p>An operator is a linear transformation of states. An operator that touches only <span class="math inline">\(A\)</span> appears on the joint system as <span class="math inline">\(M_A\otimes I_B\)</span>, where <span class="math inline">\(M_A\)</span> is the original operator and the identity <span class="math inline">\(I_B\)</span> leaves <span class="math inline">\(B\)</span> unchanged. The joint operator <span class="math inline">\(M_A\otimes I_B\)</span> therefore acts on <span class="math inline">\(A\)</span> while leaving <span class="math inline">\(B\)</span> unchanged.</p>
-<p>Each joint label names a pair of answers, one from each atom, not an additional state of a single atom.</p>
+<p>The tensor-product symbol <span class="math inline">\(\otimes\)</span> keeps track of the two factors. In the basis notation used here, their labels are written side by side. For a product of two local vectors, bilinearity makes each joint coefficient the product of the corresponding single-atom coefficients. Tensor products of operators will specify how an operation on one factor acts within the joint space.</p>
+<p>There is one joint basis vector for each pair of local basis vectors. If the state space of <span class="math inline">\(A\)</span> has dimension <span class="math inline">\(d_A\)</span> and that of <span class="math inline">\(B\)</span> has dimension <span class="math inline">\(d_B\)</span>, their tensor product therefore has dimension <span class="math inline">\(d_A d_B\)</span>. For the two atoms, this count gives the four basis vectors listed above.</p>
+<p>The same counting works for larger systems: pairing a three-state system with a four-state system produces twelve joint basis vectors.</p>
+<p>An operator on the state space of <span class="math inline">\(A\)</span> extends to the joint space as <span class="math inline">\(M_A\otimes I_B\)</span>. Here <span class="math inline">\(M_A\)</span> acts on the first factor, while <span class="math inline">\(I_B\)</span> is the identity on the state space of <span class="math inline">\(B\)</span>. Thus <span class="math inline">\(M_A\otimes I_B\)</span> transforms the <span class="math inline">\(A\)</span> factor of each product-basis vector and retains its <span class="math inline">\(B\)</span> factor; linearity specifies its action on a general joint vector.</p>
+<p>The four-dimensional space describes the pair. Each atom still has only two basis states; the extra joint coordinates allow us to describe relations between their readings.</p>
 </section><section class="topic" data-math-section=""><h3 id="product-states">Product states</h3>
-<p>Some joint states split into two independent single-atom states. For example,</p>
+<p>The tensor product of two single-atom vectors gives the simplest kind of pure joint state. Preparing each atom in its 0 basis state gives</p>
 <p><span class="math display">\[
 |0\rangle_A\otimes|0\rangle_B = |00\rangle.
 \]</span></p>
-<p>Here <span class="math inline">\(A\)</span> answers 0 and <span class="math inline">\(B\)</span> answers 0 with certainty, and specifying one atom's state says nothing new about the other.</p>
-<p>Let both atoms instead occupy the transverse-basis state met in Chapter 1,</p>
+<p>In this preparation, measuring <span class="math inline">\(A\)</span> gives 0 with certainty, as does measuring <span class="math inline">\(B\)</span>. The two single-atom vectors together specify the entire joint state.</p>
+<p>A product can also contain uncertainty in each reading. Prepare each atom in the equal superposition corresponding to the transverse-basis state from Chapter 1:</p>
 <p><span class="math display">\[
 |+\rangle = \frac{|0\rangle+|1\rangle}{\sqrt{2}}.
 \]</span></p>
-<p>Their joint state is then</p>
+<p>Expanding the tensor product of these two preparations gives</p>
 <p><span class="math display">\[
 |+\rangle_A\otimes|+\rangle_B
 = \frac{|00\rangle+|01\rangle+|10\rangle+|11\rangle}{2}.
 \]</span></p>
-<p>All four joint amplitudes are equal, so measuring both atoms returns each joint outcome with probability one quarter. The two readings are independent: each pair probability equals the product of the two single-atom probabilities.</p>
-<p>A joint state of the form of one ket for <span class="math inline">\(A\)</span> tensored with one ket for <span class="math inline">\(B\)</span> is called a product state. The test is factorization into two local kets.</p>
-<p>Calling a pair a product state therefore asserts that the joint amplitudes factor. Uncorrelated outcomes in one measurement basis are weaker evidence: the test is factorization of the joint amplitudes.</p>
+<p>Each joint amplitude is one half. Squaring its magnitude gives probability one quarter for each pair of 0/1 readings. Each individual reading has probability one half, so the joint probabilities equal the products of the individual probabilities: the readings are independent.</p>
+<p>A pure joint state is a product state when it can be written as one ket for <span class="math inline">\(A\)</span> tensored with one ket for <span class="math inline">\(B\)</span>. In any product basis, its coefficient array factors into a column of amplitudes for the first atom and a row of amplitudes for the second.</p>
+<p>This amplitude factorization makes the outcomes independent for every choice of separate measurement bases. Independence in just one basis does not establish factorization: those probabilities reveal only squared magnitudes, so relative phases can still prevent the joint vector from being a product. We must therefore test the amplitudes themselves.</p>
 </section><section class="topic" data-math-section=""><h3 id="entangled-pure-states">Entangled pure states</h3>
-<p>Consider the state</p>
+<p>A simple state that fails this test is the equal superposition of the two matching joint basis states:</p>
 <p><span class="math display">\[
 |\Phi^+\rangle_{AB}
 =\frac{|0\rangle_A|0\rangle_B+|1\rangle_A|1\rangle_B}{\sqrt{2}}
 =\frac{|00\rangle+|11\rangle}{\sqrt{2}}.
 \]</span></p>
-<p>This is a Bell state. Its two joint basis states are orthogonal, so the superposition is normalized:</p>
+<p>This particular superposition is called a Bell state. Its two basis vectors are orthogonal, so the squared norm is the sum of the two squared amplitude magnitudes:</p>
 <p><span class="math display">\[
 \langle\Phi^+|\Phi^+\rangle=\frac{1+1}{2}=1.
 \]</span></p>
-<p>Measuring both atoms in the <span class="math inline">\(\{|0\rangle,|1\rangle\}\)</span> basis returns only 00 or 11, each with probability <span class="math inline">\(1/2\)</span>. The two answers always agree.</p>
-<p>Suppose, to test factorization, that the state were a product,</p>
+<p>When both atoms are measured in the <span class="math inline">\(\{|0\rangle,|1\rangle\}\)</span> basis, the only possible results are 00 and 11, each with probability <span class="math inline">\(1/2\)</span>. Either atom's result is uncertain, but the two recorded results agree on every trial.</p>
+<p>To determine whether this pure state factors, suppose there were two single-atom vectors with complex coefficients such that</p>
 <p><span class="math display">\[
 |\Phi^+\rangle=(a|0\rangle+b|1\rangle)_A\otimes(c|0\rangle+d|1\rangle)_B.
 \]</span></p>
-<p>Expanding the product gives amplitudes <span class="math inline">\(ac\)</span>, <span class="math inline">\(ad\)</span>, <span class="math inline">\(bc\)</span>, and <span class="math inline">\(bd\)</span> for <span class="math inline">\(|00\rangle\)</span>, <span class="math inline">\(|01\rangle\)</span>, <span class="math inline">\(|10\rangle\)</span>, and <span class="math inline">\(|11\rangle\)</span>. Matching the Bell state would require</p>
+<p>Bilinearity gives the four product amplitudes <span class="math inline">\(ac\)</span>, <span class="math inline">\(ad\)</span>, <span class="math inline">\(bc\)</span>, and <span class="math inline">\(bd\)</span>, corresponding respectively to <span class="math inline">\(|00\rangle\)</span>, <span class="math inline">\(|01\rangle\)</span>, <span class="math inline">\(|10\rangle\)</span>, and <span class="math inline">\(|11\rangle\)</span>. Equality with the Bell vector requires equality of each coefficient:</p>
 <p><span class="math display">\[
 ac=\frac{1}{\sqrt2},\qquad ad=0,\qquad bc=0,\qquad bd=\frac{1}{\sqrt2}.
 \]</span></p>
-<p>The first equation forces <span class="math inline">\(a\)</span> and <span class="math inline">\(c\)</span> to be nonzero. Then <span class="math inline">\(ad=0\)</span> forces <span class="math inline">\(d=0\)</span>, which contradicts <span class="math inline">\(bd\)</span> equaling <span class="math inline">\(1/\sqrt2\)</span>. No choice of <span class="math inline">\(a,b,c,d\)</span> satisfies all four equations at once.</p>
-<p>A pure joint state that resists factorization is called entangled. Entanglement describes the joint amplitudes: the four numbers cannot be split into independent lists for the two atoms. That structural fact calls for no signal passing between the atoms.</p>
-<p>The Schmidt decomposition generalizes this four-equation test. Every pure state of a pair can be written as</p>
+<p>Since the first product is nonzero, both <span class="math inline">\(a\)</span> and <span class="math inline">\(c\)</span> must be nonzero. The condition <span class="math inline">\(ad=0\)</span> then implies <span class="math inline">\(d=0\)</span>. But this makes <span class="math inline">\(bd\)</span> zero, contradicting its required value <span class="math inline">\(1/\sqrt2\)</span>. Thus no complex coefficients <span class="math inline">\(a,b,c,d\)</span> can produce the proposed factorization.</p>
+<p>A pure joint state is entangled when it has no product factorization. The Bell state is therefore entangled: its joint amplitudes cannot be supplied by two separate pure-state vectors. This statement classifies the prepared state and makes no claim about its history; an earlier interaction may have created the entanglement. Whether one laboratory can influence the other's measurement statistics is a separate question, answered below using local state descriptions.</p>
+<p>For larger coefficient arrays, singular-value decomposition provides a systematic factorization test. Applied to the amplitude array of a normalized pure state of two finite-dimensional systems, it gives the Schmidt decomposition:</p>
 <p><span class="math display">\[
 |\Psi\rangle_{AB}=\sum_{k=1}^{r}s_k|u_k\rangle_A|v_k\rangle_B,
 \]</span></p>
-<p>The Schmidt coefficients <span class="math inline">\(s_k\)</span> are nonnegative numbers with <span class="math inline">\(\sum_k s_k^2=1\)</span>, and the local states <span class="math inline">\(\{|u_k\rangle_A\}\)</span> and <span class="math inline">\(\{|v_k\rangle_B\}\)</span> form orthonormal lists: distinct entries are orthogonal and each entry has unit norm.</p>
-<p>The count <span class="math inline">\(r\)</span> of nonzero Schmidt coefficients is the Schmidt rank. Rank 1 marks a product state; higher rank marks an entangled one.</p>
-<p>For the Bell pair, <span class="math inline">\(r=2\)</span> and <span class="math inline">\(s_1=s_2=1/\sqrt2\)</span>.</p>
-<p>Dropping the orthonormality requirement lets many states appear as sums of product terms. Those longer sums carry no factorization claim; the Schmidt rank remains the test.</p>
+<p>The singular values become the Schmidt coefficients <span class="math inline">\(s_k\)</span>. They are nonnegative and satisfy <span class="math inline">\(\sum_k s_k^2=1\)</span> because the joint vector is normalized. The corresponding local vectors <span class="math inline">\(\{|u_k\rangle_A\}\)</span> and <span class="math inline">\(\{|v_k\rangle_B\}\)</span> are orthonormal within each system, so the displayed sum pairs orthogonal alternatives on the two sides.</p>
+<p>The number <span class="math inline">\(r\)</span> of nonzero coefficients is the Schmidt rank. With rank 1, the sum contains a single product vector. Rank greater than 1 means that no such factorization exists, so the pure state is entangled.</p>
+<p>The Bell vector is already in Schmidt form: <span class="math inline">\(r=2\)</span>, with equal coefficients <span class="math inline">\(s_1=s_2=1/\sqrt2\)</span>.</p>
+<p>Counting terms in an arbitrary expansion would not give this test. Even a product state can be expanded into several product-basis terms, as the equal-superposition example showed. The Schmidt rank counts nonzero singular values and is unchanged by a change of local bases.</p>
 </section><section class="topic" data-math-section=""><h3 id="density-operators-for-pure-and-mixed-states">Density operators
 for pure and mixed states</h3>
-<p>A ket describes the pair completely when the preparation is known to be exactly <span class="math inline">\(|\Phi^+\rangle\)</span>. Often the preparation itself involves classical uncertainty that no single ket captures.</p>
-<p>A fair coin may decide between preparing <span class="math inline">\(|00\rangle\)</span> or <span class="math inline">\(|11\rangle\)</span>. Or the experimenter may hold only atom <span class="math inline">\(A\)</span> while its partner sits in another laboratory. A single ket covers neither situation.</p>
-<p>The density operator fills this gap. In a chosen basis it is a square matrix of complex numbers. For a pure state <span class="math inline">\(|\psi\rangle\)</span> it is the outer product <span class="math inline">\(|\psi\rangle\langle\psi|\)</span>, the operator formed by pairing the ket with its bra. For the Bell pair,</p>
+<p>So far, each preparation has been specified by a pure-state vector, such as <span class="math inline">\(|\Phi^+\rangle\)</span>. We now need a description that also predicts measurements when a preparation is randomized or when only part of a joint system is accessible.</p>
+<p>For a randomized preparation, a fair coin can select either <span class="math inline">\(|00\rangle\)</span> or <span class="math inline">\(|11\rangle\)</span>, with the coin result withheld. A different situation arises when a known Bell pair is prepared but measurements are restricted to atom <span class="math inline">\(A\)</span>. The random ensemble has no single ket for the pair; the Bell pair does have a joint ket, but its accessible atom has no pure-state ket of its own. Merely placing a partner in another laboratory would not cause this difficulty if the joint state were a product.</p>
+<p>Both situations can be described using a density operator, which organizes the probabilities of measurements on the specified system. Start with a normalized pure state <span class="math inline">\(|\psi\rangle\)</span>: its density operator is the outer product <span class="math inline">\(|\psi\rangle\langle\psi|\)</span>, the orthogonal projector onto the line spanned by that vector. Expanding the outer product for the Bell pair gives</p>
 <p><span class="math display">\[
 \rho_{AB}=|\Phi^+\rangle\langle\Phi^+|
 =\frac12\left(
@@ -620,131 +616,117 @@ for pure and mixed states</h3>
 +|11\rangle\langle00|+|11\rangle\langle11|
 \right).
 \]</span></p>
-<p>Once a basis is fixed the density operator is often called a density matrix. One mathematical object then covers three situations: a definite ket, a classical distribution over kets, and the description of one atom whose partner is ignored.</p>
-<p>Three requirements single out the valid density operators <span class="math inline">\(\rho\)</span>:</p>
+<p>Representing a density operator in a chosen basis gives its density matrix. The same formalism accommodates pure states, randomized preparations, and states of subsystems. These uses do not identify the underlying preparation histories. Equal density operators give equal measurement predictions on the system they describe; a preparation record or access to a partner can provide additional information.</p>
+<p>In the finite-dimensional state spaces considered here, a valid density operator <span class="math inline">\(\rho\)</span> has the following properties:</p>
 <ul>
-<li><p>It is Hermitian, meaning that it equals its adjoint: <span class="math inline">\(\rho^\dagger=\rho\)</span>.</p></li>
-<li><p>It is positive semidefinite, meaning that <span class="math inline">\(\langle\chi|\rho|\chi\rangle\ge0\)</span> for
-every <span class="math inline">\(|\chi\rangle\)</span>.</p></li>
-<li><p>It has unit trace: <span class="math inline">\(\operatorname{Tr}\rho=1\)</span>. The trace is the
-sum of the diagonal matrix entries in any basis.</p></li>
+<li><p>Hermiticity: <span class="math inline">\(\rho^\dagger=\rho\)</span>, where the adjoint is represented by the conjugate transpose.</p></li>
+<li><p>Positive semidefiniteness: <span class="math inline">\(\langle\chi|\rho|\chi\rangle\ge0\)</span> for every vector <span class="math inline">\(|\chi\rangle\)</span>.</p></li>
+<li><p>Normalization: <span class="math inline">\(\operatorname{Tr}\rho=1\)</span>, with the trace equal to the sum of the diagonal entries in any basis.</p></li>
 </ul>
-<p>A preparation that emits <span class="math inline">\(|\psi_k\rangle\)</span> with classical probability <span class="math inline">\(p_k\)</span> corresponds to</p>
+<p>For an ensemble that prepares normalized vectors <span class="math inline">\(|\psi_k\rangle\)</span> with classical probabilities <span class="math inline">\(p_k\)</span>, average the pure-state projectors with those probabilities as weights:</p>
 <p><span class="math display">\[
 \rho=\sum_k p_k|\psi_k\rangle\langle\psi_k|.
 \]</span></p>
-<p>A yes-or-no outcome <span class="math inline">\(m\)</span> is represented by a projector <span class="math inline">\(P_m\)</span>, an operator with <span class="math inline">\(P_m^2=P_m\)</span>. The probability of the outcome <span class="math inline">\(m\)</span> is</p>
+<p>To obtain a measurement prediction, consider an outcome <span class="math inline">\(m\)</span> of a projective measurement. It corresponds to an orthogonal projector <span class="math inline">\(P_m\)</span>, a Hermitian operator satisfying <span class="math inline">\(P_m^2=P_m\)</span>; the projectors for all outcomes sum to the identity. The probability of recording <span class="math inline">\(m\)</span> is</p>
 <p><span class="math display">\[
 \Pr(m)=\operatorname{Tr}(\rho P_m).
 \]</span></p>
-<p>A density operator built from a single ket has rank 1 and satisfies <span class="math inline">\(\rho^2=\rho\)</span>, equivalently <span class="math inline">\(\operatorname{Tr}(\rho^2)=1\)</span>. The Bell pair, taken as a complete two-atom system, obeys</p>
+<p>For a pure state, the density operator has rank 1 and obeys <span class="math inline">\(\rho^2=\rho\)</span>. Among valid density operators, this is equivalent to <span class="math inline">\(\operatorname{Tr}(\rho^2)=1\)</span>. A density operator that is not pure is called mixed. The full Bell pair remains pure in this description:</p>
 <p><span class="math display">\[
 \operatorname{Tr}(\rho_{AB}^2)=1.
 \]</span></p>
-<p>The density operator is the most compact table that keeps every probability prediction when a ket falls short. Each requirement earns its place: dropping Hermiticity admits complex probabilities, dropping positivity admits negative ones, and dropping unit trace breaks normalization.</p>
+<p>The trace formula reduces to the squared-amplitude rule for a pure state and to the average of that rule for a randomized preparation. Hermiticity ensures real expectation values, positivity ensures nonnegative outcome probabilities, and unit trace makes the probabilities of a complete measurement sum to one. Positivity of the quadratic form for every complex vector already implies Hermiticity; the listed properties need not be logically independent.</p>
 </section><section class="topic" data-math-section=""><h3 id="partial-trace-and-reduced-states">Partial trace and reduced
 states</h3>
-<p>Suppose only <span class="math inline">\(A\)</span> is accessible. Every prediction for measurements on <span class="math inline">\(A\)</span> alone follows from a reduced density operator that sums over the basis states of <span class="math inline">\(B\)</span>:</p>
+<p>Now restrict measurements to atom <span class="math inline">\(A\)</span> of the Bell pair. We want an operator on <span class="math inline">\(A\)</span>'s two-dimensional state space that retains all predictions for those measurements. It is obtained from the joint density operator by summing its diagonal blocks over an orthonormal basis of <span class="math inline">\(B\)</span>:</p>
 <p><span class="math display">\[
 \rho_A=\operatorname{Tr}_B(\rho_{AB})
 =\sum_{b=0}^{1}{}_B\langle b|\rho_{AB}|b\rangle_B.
 \]</span></p>
-<p>This operation is the partial trace over <span class="math inline">\(B\)</span>. It describes the statistics of the first atom when the outcomes of <span class="math inline">\(B\)</span> are discarded, without any physical action on <span class="math inline">\(B\)</span>.</p>
-<p>For basis operators, the partial trace satisfies</p>
+<p>This sum is the partial trace over <span class="math inline">\(B\)</span>, and its result is the reduced density operator of the first atom. It restricts the description to measurements that use no result from <span class="math inline">\(B\)</span>. Taking the partial trace requires no measurement or physical action on <span class="math inline">\(B\)</span> and changes neither atom.</p>
+<p>To evaluate the sum, apply it term by term to the joint density operator. Each product-basis outer product reduces according to</p>
 <p><span class="math display">\[
 \operatorname{Tr}_B\left(|a b\rangle\langle a' b'|\right)
 =\langle b'|b\rangle\,|a\rangle\langle a'|
 =\delta_{b'b}|a\rangle\langle a'|,
 \]</span></p>
-<p>where the Kronecker delta <span class="math inline">\(\delta_{b'b}\)</span> equals 1 when <span class="math inline">\(b'=b\)</span> and 0 otherwise. The cross terms
-in the Bell-state density operator contain <span class="math inline">\(|0\rangle_B\langle1|\)</span> or <span class="math inline">\(|1\rangle_B\langle0|\)</span>. Because these basis
-states are orthogonal, the cross terms vanish under the partial trace.
-The remaining terms give</p>
+<p>The factor <span class="math inline">\(\delta_{b'b}\)</span> is 1 if <span class="math inline">\(b'=b\)</span> and 0 otherwise, by orthonormality. In the Bell-state expansion, the two cross terms have partner factors <span class="math inline">\(|0\rangle_B\langle1|\)</span> and <span class="math inline">\(|1\rangle_B\langle0|\)</span>, whose traces are zero. They therefore contribute nothing to the reduced operator. The two diagonal terms each have a partner factor of trace one, giving</p>
 <p><span class="math display">\[
 \rho_A=\frac12\left(|0\rangle\langle0|+|1\rangle\langle1|\right)
 =\frac{I_A}{2},
 \]</span></p>
-<p>where <span class="math inline">\(I_A\)</span> is the identity
-operator on <span class="math inline">\(A\)</span>, represented by the
-two-by-two matrix with ones on the diagonal and zeros elsewhere.</p>
-<p>The pair as a whole is pure, while either atom alone is maximally mixed for a two-state system:</p>
+<p>Here <span class="math inline">\(I_A\)</span> denotes the identity on the state space of <span class="math inline">\(A\)</span>. Its matrix is the two-by-two identity, so the reduced density matrix has diagonal entries one half and zero off-diagonal entries.</p>
+<p>Because this operator is proportional to the identity, either atom gives equally likely outcomes in every orthonormal measurement basis. This state is called maximally mixed. The trace of its square differs from the pure-state value of one:</p>
 <p><span class="math display">\[
 \operatorname{Tr}(\rho_A^2)=\operatorname{Tr}\left(\frac{I_A}{4}\right)=\frac12.
 \]</span></p>
-<p>Global purity therefore coexists with local mixedness. The local mixture records no forgotten local ket: no ket of the subsystem alone reproduces these statistics.</p>
-<p>Every measurement on <span class="math inline">\(A\)</span> alone is predicted by <span class="math inline">\(\rho_A\)</span>. An observable touching only <span class="math inline">\(A\)</span> extends to the pair as <span class="math inline">\(M_A\otimes I_B\)</span>, with statistical average</p>
+<p>The joint Bell state is pure even though each reduced state is mixed. No single vector for either atom reproduces all its local statistics. A classical fifty-fifty preparation can reproduce this reduced density operator, but it does not reproduce the full Bell pair and its joint measurement predictions.</p>
+<p>The reduced-state construction works for arbitrary joint states, not only for the Bell example. For measurements on <span class="math inline">\(A\)</span>, the operator <span class="math inline">\(\rho_A\)</span> must reproduce every local expectation value. A measured quantity on <span class="math inline">\(A\)</span> is represented by a Hermitian operator, called an observable. Its extension to the joint space is <span class="math inline">\(M_A\otimes I_B\)</span>, and its average over repeated preparations is</p>
 <p><span class="math display">\[
 \langle M_A\rangle=\operatorname{Tr}\!\left[\rho_{AB}(M_A\otimes
 I_B)\right].
 \]</span></p>
-<p>The reduced density operator <span class="math inline">\(\rho_A\)</span> is the unique operator that
-reproduces every such expectation value:</p>
+<p>The defining operational property of <span class="math inline">\(\rho_A\)</span> is that the same average can be calculated entirely within the first atom's state space:</p>
 <p><span class="math display">\[
 \operatorname{Tr}(\rho_A M_A)
 =\operatorname{Tr}\!\left[\rho_{AB}(M_A\otimes I_B)\right].
 \]</span></p>
-<p>On a product operator the partial trace collapses to</p>
+<p>For computation, it is useful to express the partial trace directly on a tensor product of operators:</p>
 <p><span class="math display">\[
 \operatorname{Tr}_B(X_A\otimes Y_B)=X_A\operatorname{Tr}(Y_B).
 \]</span></p>
-<p>Linearity extends this rule from product operators to every joint operator.</p>
-<p>An operator fitted to one local measurement outcome generally misses the others. The partial trace is the single operator consistent with the joint state across all local measurements.</p>
+<p>Product operators span the joint operator space, so linearity extends this identity to any joint density operator. Requiring agreement for every local observable determines the reduced density operator uniquely; a single measurement basis generally does not supply enough information.</p>
+<p>This also gives the operational limit on communication through entanglement. Once the atoms no longer interact, an operation confined to the partner, averaged over all its possible outcomes, leaves the first atom's reduced state unchanged. Local measurements therefore cannot reveal which operation the partner chose. Selecting trials by a particular partner outcome can change the conditional statistics, but requires an outcome of nonzero probability and a communicated record of which trials to keep.</p>
 </section><section class="topic" data-math-section=""><h3 id="relative-phase-accessible-only-through-joint-measurements">Relative
 phase accessible only through joint measurements</h3>
-<p>Consider the Bell state with an additional relative phase:</p>
+<p>The reduced state can lose all dependence on a phase that still affects the pair's joint statistics. To see this, vary the relative phase of the Bell pair:</p>
 <p><span class="math display">\[
 |\Phi_\theta\rangle=\frac{|00\rangle+e^{i\theta}|11\rangle}{\sqrt2},
 \]</span></p>
-<p>Here <span class="math inline">\(\theta\)</span> is the relative phase between the two joint terms. The joint density operator carries cross terms <span class="math inline">\(e^{-i\theta}|00\rangle\langle11|\)</span> and <span class="math inline">\(e^{i\theta}|11\rangle\langle00|\)</span>, and both vanish under <span class="math inline">\(\operatorname{Tr}_B\)</span>. The reduced state is therefore <span class="math inline">\(\rho_A=I/2\)</span> for every <span class="math inline">\(\theta\)</span>.</p>
-<p>Joint measurements on the pair resolve this phase; measurements on <span class="math inline">\(A\)</span> alone cannot. The phase information stays in the correlations between the atoms.</p>
-<p>Relative phases of a pair therefore need not surface in either subsystem.</p>
+<p>Here <span class="math inline">\(\theta\)</span> is the relative phase between the two joint terms. Expanding the joint density operator gives one half times each of the cross terms <span class="math inline">\(e^{-i\theta}|00\rangle\langle11|\)</span> and <span class="math inline">\(e^{i\theta}|11\rangle\langle00|\)</span>. Both vanish under <span class="math inline">\(\operatorname{Tr}_B\)</span> because their partner-state factors are orthogonal. The reduced state is therefore <span class="math inline">\(\rho_A=I/2\)</span> for every <span class="math inline">\(\theta\)</span>.</p>
+<p>Suitable measurements on the pair can determine this phase from repeated trials; measurements on <span class="math inline">\(A\)</span> alone cannot. By symmetry, the other atom's reduced state is also independent of the phase. The relevant joint statistics can be obtained by measuring the atoms separately in chosen bases and comparing their recorded outcomes.</p>
+<p>Thus a phase can affect correlations without affecting either atom's individual outcome probabilities. Simply measuring both atoms in the original basis will miss it; the measurement bases must also be chosen to reveal interference.</p>
 </section><section class="topic" data-math-section=""><h3 id="correlation-is-not-sufficient-to-establish-entanglement">Correlation
 is not sufficient to establish entanglement</h3>
-<p>Consider the density operator</p>
+<p>Joint statistics contain more information than local statistics, but even perfect correlation can arise from a randomized preparation of product states. Consider</p>
 <p><span class="math display">\[
 \rho_{\mathrm{cc}}=\frac12|00\rangle\langle00|+\frac12|11\rangle\langle11|.
 \]</span></p>
-<p>Measuring both atoms in the <span class="math inline">\(0/1\)</span> basis returns matching answers every time, exactly as <span class="math inline">\(|\Phi^+\rangle\)</span> does. Yet this state is a classical fifty-fifty mixture of two product states.</p>
-<p>A mixed bipartite state is separable if it can be written as</p>
+<p>Measuring both atoms in the <span class="math inline">\(0/1\)</span> basis returns matching answers every time, exactly as <span class="math inline">\(|\Phi^+\rangle\)</span> does. This density operator can be prepared by a fair coin that selects either the product state with both atoms at 0 or the product state with both at 1.</p>
+<p>More generally, one can randomly select a pair of local density operators and prepare their product. Any two-part state that admits such a preparation is called separable. Its density operator has the form</p>
 <p><span class="math display">\[
 \rho_{AB}=\sum_k p_k\,\rho_A^{(k)}\otimes\rho_B^{(k)},
 \qquad p_k\ge0,\quad \sum_kp_k=1.
 \]</span></p>
-<p>The superscript <span class="math inline">\((k)\)</span> labels a
-possible component and is not an exponent. The state <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> is explicitly
-separable. A mixed state for which no such decomposition exists is
-entangled.</p>
-<p>Matching outcomes in one basis therefore cannot certify entanglement. The Bell pair and <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> agree across every <span class="math inline">\(0/1\)</span> measurement and part ways in a transverse basis.</p>
-<p>Sharper tests rotate through several measurement settings. Bell inequalities ask whether the correlations across those settings admit an explanation in terms of shared pre-existing randomness <a class="citation" href="#ref-R042" title="[R042] A. Einstein, B. Podolsky, and N. Rosen, “Can
+<p>The superscript <span class="math inline">\((k)\)</span> labels a component of the mixture. Each factor in a tensor product is a valid density operator for its own atom, and the weights are classical probabilities. The displayed decomposition of <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> proves that it is separable. A two-part state with no separable decomposition is entangled.</p>
+<p>The Bell pair and <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> have the same joint probabilities in the <span class="math inline">\(0/1\)</span> basis. If both atoms are measured in the transverse plus/minus basis introduced earlier, the Bell pair still gives matching answers, whereas the mixture gives all four pairs of answers equally often. This distinguishes these two candidate states; matching outcomes in the original basis alone cannot establish entanglement.</p>
+<p>Bell tests compare correlations across several independently chosen local measurement settings. A local hidden-variable model attributes the correlations to shared random information distributed before those choices. Conditional on that information, each atom's outcome probabilities depend only on its own measurement setting, and the joint probabilities factor. The shared information is assumed statistically independent of the setting choices. Bell inequalities bound correlations allowed by such models <a class="citation" href="#ref-R042" title="[R042] A. Einstein, B. Podolsky, and N. Rosen, “Can
 Quantum-Mechanical Description of Physical Reality Be Considered
 Complete?”, Physical Review 47, 777–780 (1935).">[R042]</a>;
 <a class="citation" href="#ref-R043" title="[R043] J. S. Bell, “On the Einstein Podolsky Rosen Paradox,” Physics
 Physique Fizika 1, 195–200 (1964). DOI: 10.1103/PhysicsPhysiqueFizika.1.195 .">[R043]</a>; <a class="citation" href="#ref-R044" title="[R044] R. F. Werner, “Quantum states with Einstein-Podolsky-Rosen
 correlations admitting a hidden-variable model,” Physical Review A 40,
-4277–4281 (1989). DOI: 10.1103/PhysRevA.40.4277 .">[R044]</a>. [Theory] Some entangled mixed states do not violate a
-given Bell inequality. Entanglement and Bell nonlocality are therefore
-distinct properties <a class="citation" href="#ref-R044" title="[R044] R. F. Werner, “Quantum states with Einstein-Podolsky-Rosen
+4277–4281 (1989). DOI: 10.1103/PhysRevA.40.4277 .">[R044]</a>. [Theory] A violation excludes these local models under the test's assumptions and certifies entanglement within quantum theory. Failure to violate one inequality does not establish separability. Some entangled mixed states even admit local hidden-variable models for every choice of local projective measurement. Entanglement therefore need not yield Bell nonlocality in that measurement scenario <a class="citation" href="#ref-R044" title="[R044] R. F. Werner, “Quantum states with Einstein-Podolsky-Rosen
 correlations admitting a hidden-variable model,” Physical Review A 40,
 4277–4281 (1989). DOI: 10.1103/PhysRevA.40.4277 .">[R044]</a>.</p>
 </section><section class="topic" data-math-section=""><h3 id="purity-as-a-measure-of-mixedness">Purity as a measure of
 mixedness</h3>
-<p>Purity, the dimensionless number <span class="math inline">\(\operatorname{Tr}(\rho^2)\)</span>, runs for a <span class="math inline">\(d\)</span>-state system from <span class="math inline">\(1/d\)</span> for the maximally mixed state <span class="math inline">\(I/d\)</span> up to 1 for a pure state.</p>
-<p>For a mixed state in a finite-dimensional state space,</p>
+<p>Purity measures how concentrated the eigenvalues of a density operator are. It is the dimensionless number <span class="math inline">\(\operatorname{Tr}(\rho^2)\)</span>, the sum of their squares. In a state space of dimension <span class="math inline">\(d\)</span>, its minimum is <span class="math inline">\(1/d\)</span>, attained by the maximally mixed state <span class="math inline">\(I/d\)</span>. Its maximum is 1, attained exactly by pure states.</p>
+<p>Every mixed state in a finite-dimensional state space therefore satisfies</p>
 <p><span class="math display">\[
 \operatorname{Tr}(\rho^2)&lt;1.
 \]</span></p>
-<p>A mixed density operator generally admits many ensemble decompositions into prepared kets. For one two-state atom,</p>
+<p>Purity classifies the density operator without identifying its preparation history. Different probability distributions over pure states, called ensemble decompositions, can give the same mixed density operator. For one two-state atom,</p>
 <p><span class="math display">\[
 \frac{I}{2}
 =\frac12|0\rangle\langle0|+\frac12|1\rangle\langle1|
 =\frac12|+\rangle\langle+|+\frac12|-\rangle\langle-|,
 \]</span></p>
 <p>where <span class="math inline">\(|\pm\rangle=(|0\rangle\pm|1\rangle)/\sqrt2\)</span>.
-The density operator, rather than any preferred ensemble interpretation,
-contains the operational measurement predictions.</p>
-<p>Measuring <span class="math inline">\(\rho\)</span> leaves open which local pure states were actually prepared.</p>
+The first decomposition describes a fair choice between the two original basis states; the second describes a fair choice between the two transverse basis states. With the choice record unavailable, these preparations give the same probabilities for every measurement on the atom alone.</p>
+<p>Even complete knowledge of <span class="math inline">\(\rho\)</span> cannot distinguish these preparation procedures. A retained classical record or access to a correlated partner can supply additional information. In particular, a mixed reduced state of an entangled pair does not imply that the atom was prepared in some unknown local ket.</p>
 </section><section class="topic" data-math-section=""><h3 id="populations-and-coherences">Populations and coherences</h3>
-<p>Consider one atom in the state</p>
+<p>To study how interference changes, return to one atom in the state</p>
 <p><span class="math display">\[
 |+\rangle=\frac{|0\rangle+|1\rangle}{\sqrt2},
 \qquad
@@ -754,11 +736,11 @@ contains the operational measurement predictions.</p>
 1&amp;1
 \end{pmatrix}.
 \]</span></p>
-<p>The matrix uses the ordered basis <span class="math inline">\((|0\rangle,|1\rangle)\)</span>. Its diagonal entries, the populations, are the probabilities of reading 0 and 1 in this basis.</p>
-<p>Its off-diagonal entries, the coherences, carry the relative phase that lets the two basis contributions interfere.</p>
-<p>Contact with an uncontrolled subsystem can shrink the coherences while leaving the populations fixed. The calculation below tracks that process.</p>
+<p>The matrix uses the ordered basis <span class="math inline">\((|0\rangle,|1\rangle)\)</span>. Its diagonal entries give the probabilities of reading 0 and 1 in this basis. These probabilities are called populations.</p>
+<p>The off-diagonal entries contribute to probabilities when a measurement combines the two basis states, as in the transverse measurement. They are called coherences: their magnitudes and complex phases determine the phase-sensitive contributions to those probabilities. Populations and coherences always refer to a chosen basis.</p>
+<p>An interaction can reduce these coherences even when it leaves the populations fixed. We first describe this effect directly as a map on the atom's density operator, then derive it from an interaction with an unobserved partner.</p>
 </section><section class="topic" data-math-section=""><h3 id="a-dephasing-channel">A dephasing channel</h3>
-<p>Consider noise that preserves populations and shrinks only coherences. The parameter <span class="math inline">\(\lambda\)</span>, with <span class="math inline">\(0\le\lambda\le1\)</span>, records the surviving fraction of each coherence. One model of that noise is</p>
+<p>Consider a noise model that preserves populations in the chosen basis and multiplies both coherences by a real parameter <span class="math inline">\(\lambda\)</span>, with <span class="math inline">\(0\le\lambda\le1\)</span>. One way to produce this effect is to apply either the identity or a phase flip at random, without retaining the choice. The resulting map is</p>
 <p><span class="math display">\[
 \mathcal E_\lambda(\rho)
 :=K_0\rho K_0^\dagger+K_1\rho K_1^\dagger,
@@ -775,30 +757,30 @@ K_1=\sqrt{\frac{1-\lambda}{2}}\,Z,
 Z=|0\rangle\langle0|-|1\rangle\langle1|
 =\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}
 \]</span></p>
-<p>is the phase-flip operator met in Chapter 1. The Kraus operators <span class="math inline">\(K_0\)</span> and <span class="math inline">\(K_1\)</span> satisfy</p>
+<p>is the phase-flip operator met in Chapter 1. The weighted operators <span class="math inline">\(K_0\)</span> and <span class="math inline">\(K_1\)</span> are called Kraus operators. Their squared scalar prefactors give the probabilities of the two operations, and they satisfy</p>
 <p><span class="math display">\[
 K_0^\dagger K_0+K_1^\dagger K_1=I,
 \]</span></p>
-<p>so total probability stays normalized. A trace-preserving map built by sandwiching <span class="math inline">\(\rho\)</span> between Kraus operators and summing the pieces is a quantum channel <a class="citation" href="#ref-R045" title="[R045] K. Kraus, “General state changes in quantum theory,” Annals of
+<p>so the map preserves the trace of <span class="math inline">\(\rho\)</span> and hence total probability. The sum of operator products above is a Kraus representation of a quantum channel <a class="citation" href="#ref-R045" title="[R045] K. Kraus, “General state changes in quantum theory,” Annals of
 Physics 64, 311–335 (1971). DOI: 10.1016/0003-4916(71)90108-4 .">[R045]</a>.</p>
-<p>Validity as a channel means complete positivity plus trace preservation. Complete positivity keeps the evolution legal when the system forms part of a larger entangled state; trace preservation keeps total probability at one when unobserved degrees of freedom drop out. Evaluating the channel means forming each sandwich term and adding them.</p>
-<p>This channel describes pure dephasing: populations stay fixed while phase coherence shrinks.</p>
-<p>For a general input state</p>
+<p>A quantum channel is a linear map that is completely positive and trace-preserving. Complete positivity requires the map to preserve positivity even when applied to one part of an arbitrary larger system, with the other part unchanged. This matters when the input is entangled with a partner. A Kraus representation guarantees complete positivity; the displayed completeness relation guarantees trace preservation.</p>
+<p>The population-preserving noise described here is called pure dephasing. We can check its action by multiplying the matrices in the two Kraus terms and adding the results.</p>
+<p>Write a general input density operator as</p>
 <p><span class="math display">\[
 \rho=\begin{pmatrix}a&amp;c\\c^*&amp;b\end{pmatrix},
 \qquad a+b=1,
 \]</span></p>
-<p>with real populations <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> and complex coherence <span class="math inline">\(c\)</span>, direct multiplication gives</p>
+<p>Here the populations <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are nonnegative, and the coherence <span class="math inline">\(c\)</span> is complex. As required for any density operator, the matrix is positive semidefinite; in this case the squared magnitude of the coherence cannot exceed the product of the populations. Direct multiplication gives</p>
 <p><span class="math display">\[
 \mathcal E_\lambda(\rho)
 =\begin{pmatrix}a&amp;\lambda c\\\lambda c^*&amp;b\end{pmatrix}.
 \]</span></p>
-<p>Populations pass through unchanged while each coherence picks up the factor <span class="math inline">\(\lambda\)</span>. On <span class="math inline">\(|+\rangle\)</span> the channel returns</p>
+<p>The populations remain unchanged and each coherence is multiplied by <span class="math inline">\(\lambda\)</span>. Applying the channel to the density operator of <span class="math inline">\(|+\rangle\)</span> gives</p>
 <p><span class="math display">\[
 \rho_+'=\frac12
 \begin{pmatrix}1&amp;\lambda\\\lambda&amp;1\end{pmatrix}.
 \]</span></p>
-<p>The purity of the output is</p>
+<p>Squaring this matrix and summing its diagonal entries gives the output purity:</p>
 <p><span class="math display">\[
 \operatorname{Tr}[(\rho_+')^2]=\frac{1+\lambda^2}{2}.
 \]</span></p>
@@ -808,22 +790,20 @@ Physics 64, 311–335 (1971). DOI: 10.1016/0003-4916(71)90108-4 .">[R045]</a>.</
 \qquad
 \operatorname{Tr}[(\rho_+')^2]=\frac58.
 \]</span></p>
-<p>Energy relaxation acts on populations instead: it moves population between levels, usually by exchanging energy, while coherences shrink only as a consequence. A long-lived excited population therefore says nothing by itself about surviving phase coherence.</p>
+<p>If the two basis states are energy levels, energy relaxation changes their populations toward equilibrium through energy exchange with the surroundings. Such relaxation can also reduce coherence, as in the usual model of excited-state decay. Pure dephasing isolates coherence loss without population transfer; physical devices can exhibit both processes. A long-lived excited population alone does not establish a long coherence lifetime.</p>
 </section><section class="topic" data-math-section=""><h3 id="environmental-transfer-of-phase-information">Environmental
 transfer of phase information</h3>
-<p>A microscopic model shows where the coherence goes. Let the environment start in <span class="math inline">\(|e\rangle\)</span>, and let the joint evolution act as</p>
+<p>The unobserved partner can be a collection of surrounding systems, such as nearby atoms or a radiation field. We call it the environment. Assume that the atom and environment initially have a product state, with the environment in the normalized pure state <span class="math inline">\(|e\rangle\)</span>. Treat the combination as closed, so that it evolves unitarily. Choose an interaction that leaves each system basis state unchanged while allowing the environment to respond differently to the two alternatives:</p>
 <p><span class="math display">\[
 |0\rangle|e\rangle\longmapsto |0\rangle|e_0\rangle,
 \qquad
 |1\rangle|e\rangle\longmapsto |1\rangle|e_1\rangle.
 \]</span></p>
-<p>An initial product <span class="math inline">\(|+\rangle|e\rangle\)</span> then becomes</p>
+<p>The two resulting environment kets are normalized, but need not be orthogonal. By linearity, an initial product <span class="math inline">\(|+\rangle|e\rangle\)</span> becomes</p>
 <p><span class="math display">\[
 |\Psi\rangle_{SE}=\frac{|0\rangle|e_0\rangle+|1\rangle|e_1\rangle}{\sqrt2},
 \]</span></p>
-<p>where <span class="math inline">\(S\)</span> denotes the system and
-<span class="math inline">\(E\)</span> denotes the environment. Taking
-the partial trace over <span class="math inline">\(E\)</span> gives</p>
+<p>Here <span class="math inline">\(S\)</span> denotes the system and <span class="math inline">\(E\)</span> the environment. To predict measurements on the system alone, expand the joint density operator and take the partial trace over <span class="math inline">\(E\)</span>. Each environment outer product contributes the inner product of its bra and ket. The normalized diagonal terms contribute 1, while the cross terms contribute the two overlaps:</p>
 <p><span class="math display">\[
 \rho_S=\frac12
 \begin{pmatrix}
@@ -831,57 +811,48 @@ the partial trace over <span class="math inline">\(E\)</span> gives</p>
 \langle e_0|e_1\rangle&amp;1
 \end{pmatrix}.
 \]</span></p>
-<p>The surviving system coherence equals the overlap of the two environment states. Identical environment states <span class="math inline">\(|e_0\rangle\)</span> and <span class="math inline">\(|e_1\rangle\)</span> leave the system basis states indistinguishable, so the coherence survives intact. Orthogonal environment states keep a perfectly distinguishable record of which basis state occurred, so the local coherence vanishes.</p>
-<p>Decoherence names that transfer: uncontrolled interactions move phase information into unmonitored environmental degrees of freedom. It is a dynamical process acting on states, not a third state category alongside pure and mixed states.</p>
-<p>Decoherence often leaves a mixed reduced state, but classically randomized preparations produce mixed states with no environment involved. A mixed state therefore does not by itself diagnose decoherence.</p>
-<p>[Theory] Environment-induced entanglement followed by partial tracing
-provides the standard open-system account of decoherence <a class="citation" href="#ref-R046" title="[R046] W. H. Zurek, “Decoherence, einselection, and the quantum
+<p>The upper off-diagonal entry is the initial coherence, one half, multiplied by the environment-state overlap; the lower entry is its complex conjugate. Identical kets <span class="math inline">\(|e_0\rangle\)</span> and <span class="math inline">\(|e_1\rangle\)</span> give an overlap of 1 and leave the system coherence unchanged. Orthogonal environment kets give zero overlap and hence zero local coherence. In that case the environment carries a perfectly distinguishable record of the two system basis alternatives, even if nobody reads it.</p>
+<p>For intermediate overlaps, the coherence magnitude is reduced by the magnitude of the overlap, while its argument shifts the system's relative phase. Environment kets differing only by an overall phase preserve the coherence magnitude. A real, nonnegative overlap reproduces the dephasing factor of the preceding channel. This is the reduced-state mechanism of environment-induced decoherence in this model.</p>
+<p>Decoherence describes a change in interference during evolution. Pure and mixed classify states at a given time. A mixed state alone does not establish that decoherence occurred: classical randomization at preparation can produce mixedness without a subsequent coherence-loss process.</p>
+<p>[Theory] A system that interacts with an environment is called an open system. Modeling the joint evolution and then using its reduced state for local predictions gives the standard open-system account of decoherence <a class="citation" href="#ref-R046" title="[R046] W. H. Zurek, “Decoherence, einselection, and the quantum
 origins of the classical,” Reviews of Modern Physics 75, 715–775 (2003).
 DOI: 10.1103/RevModPhys.75.715 ;
 arXiv: quant-ph/0105127 .">[R046]</a>; <a class="citation" href="#ref-R047" title="[R047] M. Schlosshauer, “Decoherence, the measurement problem, and
 interpretations of quantum mechanics,” Reviews of Modern Physics 76,
 1267–1305 (2005). DOI: 10.1103/RevModPhys.76.1267 ;
 arXiv: quant-ph/0312059 .">[R047]</a>.
-The combined system-and-environment state may remain pure and evolve
-unitarily throughout the process.</p>
-<p>This account needs no collapse postulate: system and environment evolve unitarily throughout, and the entanglement between them suppresses interference seen in the reduced system alone.</p>
-<p>That explains the dynamics of the reduced state. Wider questions about the interpretation of measurement remain open and are not settled by this calculation.</p>
+In the pure, initially uncorrelated model above, the combined state remains pure throughout its unitary evolution. If the two environment kets are not proportional, the resulting joint state is entangled.</p>
+<p>The interaction changes the joint state; taking a partial trace merely calculates its local predictions. It performs no physical action on either system. Loss of local interference follows here from the environment overlaps, without assuming that the joint superposition collapses to one of its terms.</p>
+<p>This calculation explains the reduced state's coherence loss under the stated assumptions. It does not explain why an individual measurement has one recorded outcome or settle the interpretation of quantum measurement. Nor does it require the overlap to decrease forever: a finite environment can allow coherence to return.</p>
 </section><section class="topic" data-math-section=""><h3 id="experimental-state-reconstruction-and-limitations">Experimental
 state reconstruction and limitations</h3>
-<p>Theory writes down <span class="math inline">\(\rho\)</span> directly. A laboratory produces detector clicks, voltages, fluorescence counts, and a documented preparation procedure.</p>
-<p>Inferring the density operator from that raw data takes measurements in several bases plus statistical analysis. That reconstruction procedure is quantum-state tomography, and its output is an estimate conditional on detector calibration and on a model of the apparatus.</p>
-<p>Repeatability of the preparation is likewise an experimental assumption. Slow drift lets successive trials differ.</p>
-<p>Leakage moves population into states outside the assumed two-dimensional space and invalidates that truncation. Selection rules and detector inefficiency further bias the apparent ensemble.</p>
-<p>The density-operator formalism still applies, but the choice of state space and noise model needs experimental justification in each setup.</p>
-<p>[Experiment] Bell tests using separated solid-state electron spins
-have observed correlations incompatible with a local-realist model while
-closing major detection and locality loopholes under the stated
-experimental assumptions <a class="citation" href="#ref-R048" title="[R048] B. Hensen et al., “Loophole-free Bell inequality violation
+<p>The calculations above start from a specified density operator <span class="math inline">\(\rho\)</span>. In the laboratory, the starting point is a preparation procedure and records such as detector clicks, voltages, or counts of emitted light.</p>
+<p>To estimate an unknown density operator, one repeats the preparation and measures enough different settings to determine all its independent entries. This procedure is quantum-state tomography. For a single two-state atom, measurements along three independent spin directions suffice in the ideal calibrated model. Statistical analysis then produces an estimate with uncertainty, conditional on the detector calibration and the apparatus model. Local tomography determines reduced states; reconstructing the pair also requires joint correlations.</p>
+<p>Pooling trials assumes a reproducible preparation. If the apparatus drifts slowly, successive trials can sample different states, and the pooled estimate may conceal that variation.</p>
+<p>Population can also enter levels outside the assumed two-dimensional space, an effect called leakage. A two-level density operator is then incomplete as a description of all trials. Restrictions on allowed transitions, known as selection rules, can limit which states the apparatus prepares or detects. Missed detections can bias the recorded sample if their likelihood depends on the state or setting and this dependence is not accounted for.</p>
+<p>The density-operator framework accommodates these effects by using an appropriate state space and measurement model. Tomography estimates a state within that model; it does not independently validate every modeling assumption or recover a unique preparation history.</p>
+<p>[Experiment] A Bell test with electron spins in separated solid-state devices observed correlations that violated a Bell inequality. Its design addressed two major ways that a local explanation can evade a test: unrepresentative detected samples, called the detection loophole, and communication between the sites during a trial, called the locality loophole. The result remains conditional on the stated experimental assumptions <a class="citation" href="#ref-R048" title="[R048] B. Hensen et al., “Loophole-free Bell inequality violation
 using electron spins separated by 1.3 kilometres,” Nature 526, 682–686
 (2015). DOI: 10.1038/nature15759 ;
-arXiv: 1508.05949 .">[R048]</a>. This constitutes substantially stronger
-evidence than observing matching <span class="math inline">\(0/1\)</span> outcomes. It does not imply that
-every correlated density operator is entangled.</p>
-<p>Laboratories infer decoherence from fading interference or decaying off-diagonal coherence, summarized by fitted time constants. The parameter <span class="math inline">\(\lambda\)</span> above belongs to the channel model; it is not a universal constant of nature.</p>
-<p>Its value shifts with elapsed time, pulse sequence, temperature, noise spectrum, and correlations with previous runs. Relaxation and dephasing measurements replace this single parameter with the distinct times <span class="math inline">\(T_1\)</span>, <span class="math inline">\(T_2\)</span>, and <span class="math inline">\(T_2^*\)</span>.</p>
+arXiv: 1508.05949 .">[R048]</a>. Unlike matching <span class="math inline">\(0/1\)</span> outcomes, the observed violation excludes the relevant local hidden-variable models. It does not make correlation alone a criterion for entanglement.</p>
+<p>To study decoherence, laboratories measure how interference changes as the delay between preparation and readout increases. A decay model may summarize the observations with a fitted time constant. The parameter <span class="math inline">\(\lambda\)</span> in our channel is an effective coherence factor for a specified experiment, rather than a universal constant.</p>
+<p>That factor can depend on the delay, the applied control pulses, and the strength and frequency content of environmental fluctuations. Experiments commonly report a population-relaxation time <span class="math inline">\(T_1\)</span> and a coherence-decay time <span class="math inline">\(T_2\)</span>, often measured using pulses that refocus slowly varying phase shifts. The free-evolution decay time <span class="math inline">\(T_2^*\)</span> includes the spread of phase shifts across trials or members of an ensemble. These are protocol-dependent summaries of decay, not three universal replacements for the channel parameter; a single time constant may be inadequate when the decay is not exponential.</p>
 </section><section class="topic" data-math-section=""><h3 id="common-conceptual-errors-1">Common conceptual errors</h3>
 <ul>
-<li><p>“Not a product state” and “mixed state” classify different things. The Bell state is a pure entangled state of a pair. The single-system state <span class="math inline">\(I/2\)</span> is mixed, and with no partner specified there is no pair on which entanglement could be defined.</p></li>
-<li><p>Matching outcomes in one basis leave entanglement undecided. The separable state <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> shows perfect <span class="math inline">\(0/1\)</span> correlation. The test is whether the full density operator admits a separable decomposition; one matching histogram is insufficient.</p></li>
-<li><p>A mixed reduced state can arise with no imprecise preparation. Either subsystem of a pure Bell pair is mixed, and ignoring the partner is enough to produce that mixture.</p></li>
-<li><p>Some mixed states involve no decoherence. Preparing <span class="math inline">\(|0\rangle\)</span> or <span class="math inline">\(|1\rangle\)</span> by a fair coin gives <span class="math inline">\(I/2\)</span> with no environment involved.</p></li>
-<li><p>Decoherence in the open-system description runs on unitary system-environment evolution whose entanglement suppresses local interference <a class="citation" href="#ref-R046" title="[R046] W. H. Zurek, “Decoherence, einselection, and the quantum
+<li><p>Purity concerns the state of the specified system; entanglement concerns its division into parts. A Bell pair is pure and entangled. The single-atom operator <span class="math inline">\(I/2\)</span> is mixed, but by itself specifies no partner or joint state whose entanglement could be assessed.</p></li>
+<li><p>Matching outcomes in one basis leave entanglement undecided. The separable state <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> has perfect <span class="math inline">\(0/1\)</span> correlation. Entanglement requires the full joint state to have no separable decomposition; one matching outcome distribution cannot establish this.</p></li>
+<li><p>A mixed reduced state can accompany an exactly prepared pure Bell pair. Taking the partial trace gives the correct mixed description of either atom alone. Ignoring the partner changes the information used for predictions, without physically changing either atom.</p></li>
+<li><p>Mixedness need not result from decoherence. A fair coin selecting preparation of <span class="math inline">\(|0\rangle\)</span> or <span class="math inline">\(|1\rangle\)</span> gives <span class="math inline">\(I/2\)</span> when the coin record is unavailable, without requiring a coherence-loss process after preparation.</p></li>
+<li><p>In the population-preserving model above, an initially pure environment evolves differently for the two system basis alternatives. The resulting overlap multiplies the system's off-diagonal entry when local predictions are calculated. A smaller overlap magnitude therefore means less local interference, even though the joint state remains pure <a class="citation" href="#ref-R046" title="[R046] W. H. Zurek, “Decoherence, einselection, and the quantum
 origins of the classical,” Reviews of Modern Physics 75, 715–775 (2003).
 DOI: 10.1103/RevModPhys.75.715 ;
 arXiv: quant-ph/0105127 .">[R046]</a>; <a class="citation" href="#ref-R047" title="[R047] M. Schlosshauer, “Decoherence, the measurement problem, and
 interpretations of quantum mechanics,” Reviews of Modern Physics 76,
 1267–1305 (2005). DOI: 10.1103/RevModPhys.76.1267 ;
-arXiv: quant-ph/0312059 .">[R047]</a>. This account explains reduced-state
-dynamics but does not, by itself, resolve every interpretation of
-quantum measurement.</p></li>
-<li><p>Dephasing and relaxation act differently. Pure dephasing holds populations fixed while shrinking off-diagonal terms. Relaxation moves population, usually by exchanging energy. Real channels combine both effects.</p></li>
-<li><p>An ensemble decomposition of a mixed state is ambiguous. The operator <span class="math inline">\(I/2\)</span> reads equally as a 50–50 mixture of <span class="math inline">\(|0\rangle\)</span> and <span class="math inline">\(|1\rangle\)</span> or of <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span>, so the operator alone cannot identify which preparation occurred.</p></li>
-<li><p>A computer simulation of a Bell pair evaluates the mathematics of entanglement on hardware that contains no entangled atoms.</p></li>
+arXiv: quant-ph/0312059 .">[R047]</a>. This reduced-state explanation neither requires a physical operation of “tracing out” the environment nor resolves the measurement problem.</p></li>
+<li><p>Pure dephasing preserves populations in its chosen basis while reducing coherences. Energy relaxation changes level populations through energy exchange and can also reduce coherence. Ideal models can isolate pure dephasing or relaxation; physical devices may combine them.</p></li>
+<li><p>A density operator does not uniquely specify an ensemble preparation. The operator <span class="math inline">\(I/2\)</span> is both a 50–50 mixture of <span class="math inline">\(|0\rangle\)</span> and <span class="math inline">\(|1\rangle\)</span> and a 50–50 mixture of <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span>. Measurements on the atom alone cannot distinguish these procedures, although an external preparation record can.</p></li>
+<li><p>A classical computer simulation calculates the amplitudes and measurement statistics of a Bell pair. Storing those numbers does not itself prepare the simulated entangled pair in the computer's hardware.</p></li>
 </ul>
 </section><section class="topic" data-math-section=""><h3 id="concept-checks">Concept checks</h3>
 <ul>
@@ -891,29 +862,28 @@ system whose subsystems have dimensions 3 and 4.</p>
 multiply.</p></li>
 <li><p><strong>Problem:</strong> Demonstrate that <span class="math inline">\(|\Phi^+\rangle\)</span> is not a product
 state.</p>
-<p><strong>Solution:</strong> Matching the four amplitudes would require
+<p><strong>Solution:</strong> Use the candidate product parametrization from the entangled-pure-states section. Matching its four amplitudes to the Bell state would require
 <span class="math inline">\(ac=1/\sqrt2\)</span>, <span class="math inline">\(ad=0\)</span>, <span class="math inline">\(bc=0\)</span>, and <span class="math inline">\(bd=1/\sqrt2\)</span>. The first condition implies
 <span class="math inline">\(a,c\neq0\)</span>, so <span class="math inline">\(d=0\)</span>, after which <span class="math inline">\(bd\)</span> cannot equal <span class="math inline">\(1/\sqrt2\)</span>.</p></li>
 <li><p><strong>Problem:</strong> Identify the error in interpreting
 matching <span class="math inline">\(0/1\)</span> outcomes as sufficient
 evidence of entanglement.</p>
-<p><strong>Solution:</strong> The separable mixture <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> produces the same
-matching bars. The test for entanglement is the absence of any separable decomposition of the full state; correlation in one plot cannot establish that.</p></li>
+<p><strong>Solution:</strong> The separable mixture <span class="math inline">\(\rho_{\mathrm{cc}}\)</span> produces exactly the same joint outcome probabilities in that basis.
+Those data therefore cannot distinguish it from the Bell pair. Establishing entanglement requires evidence incompatible with every separable state, not merely a correlated outcome distribution.</p></li>
 <li><p><strong>Problem:</strong> Explain why tracing out one subsystem
 of <span class="math inline">\(|\Phi^+\rangle\)</span> removes the cross
 terms.</p>
-<p><strong>Solution:</strong> Those terms contain orthogonal
-partner-state factors, so the partial trace produces <span class="math inline">\(\langle1|0\rangle=0\)</span>.</p></li>
+<p><strong>Solution:</strong> Each cross term has different, orthogonal basis kets on the partner subsystem. The partial trace multiplies the remaining system operator by their inner product, <span class="math inline">\(\langle1|0\rangle=0\)</span>, or its conjugate. This removes the term from the reduced operator without changing the joint state.</p></li>
 <li><p><strong>Problem:</strong> Show that applying <span class="math inline">\(\mathcal
-E_{1/2}\)</span> to <span class="math inline">\(|+\rangle\)</span> gives
+E_{1/2}\)</span> to the density operator of <span class="math inline">\(|+\rangle\)</span> gives
 a state with purity <span class="math inline">\(5/8\)</span>.</p>
 <p><strong>Solution:</strong> The output is <span class="math inline">\(\begin{pmatrix}1/2&amp;1/4\\1/4&amp;1/2\end{pmatrix}\)</span>,
 and <span class="math inline">\(\operatorname{Tr}[(\rho_+')^2]=(1+(1/2)^2)/2=5/8\)</span>.</p></li>
 <li><p><strong>Problem:</strong> Identify the error in describing every
 mixed state as decohered.</p>
-<p><strong>Solution:</strong> A coin-flip preparation of <span class="math inline">\(|0\rangle\)</span> or <span class="math inline">\(|1\rangle\)</span> already produces <span class="math inline">\(I/2\)</span>, with no environment involved.</p></li>
+<p><strong>Solution:</strong> A fair coin selecting preparation of <span class="math inline">\(|0\rangle\)</span> or <span class="math inline">\(|1\rangle\)</span> gives <span class="math inline">\(I/2\)</span> when the selection record is ignored. No subsequent loss of coherence is needed to obtain that mixed density operator.</p></li>
 </ul>
-<p>The chapter leaves a working bipartite toolkit: joint states with factorizable or entangled amplitudes, the reduced state that predicts single-subsystem measurements, and the channel picture in which relative-phase information drains into unobserved degrees of freedom.</p>
+<p>We can now distinguish factorization of a pure joint state from separability of a mixed one, and calculate the reduced state that predicts measurements on either part. The dephasing example adds a dynamical use of the same tools: joint evolution can reduce local interference through correlations with an unobserved environment. Chapter 3 turns to the experimental operations used to prepare, control, and measure a two-state system.</p>
 </section><section class="topic" data-math-section=""><h3 id="sources-1">Sources</h3>
 <ul>
 <li><p><a class="citation" href="#ref-R042" title="[R042] A. Einstein, B. Podolsky, and N. Rosen, “Can
