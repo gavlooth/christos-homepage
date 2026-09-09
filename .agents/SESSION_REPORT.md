@@ -235,3 +235,13 @@ Signature: openai-codex/gpt-6-astra
 - No manuscript/generated output changed by validation. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Held-out clarity-reader test confirms broader detection
+
+- Correction to previous validation claim: the frozen spectral-selectivity test was a regression test, not independent validation, because that exact terminology appears in the role’s standing prompt.
+- Held-out method: supplied only the original Born-rule paragraph from revision `1a9af1e7`; did not name its defect, provide assessments, or permit repository/prior-context access. The role guidance does not name Born rule, amplitude, outcome, normalization, or probability simplex.
+- Result: Gemini clarity-reader returned `needs_bridge` in1m40s. It independently identified the false agency (“Born rule attaches amplitude”), absent normalization, undefined outcome/amplitude referents, and unsupported “generalization” claim. These match the parent’s prior technical/readability assessment of the same sentence.
+- Process hardening: repair-goal instructions now require the smallest bridge necessary for the stated reader and prohibit demanding full formalism/new jargon unless indispensable. Held-out staging was removed after review.
+- Conclusion: role now has one prompted regression success and one held-out success. This supports use as a pre-author detector, not a quantified claim of sensitivity or specificity. No manuscript/generated output changed. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
