@@ -245,3 +245,12 @@ Signature: openai-codex/gpt-6-astra
 - Conclusion: role now has one prompted regression success and one held-out success. This supports use as a pre-author detector, not a quantified claim of sensitivity or specificity. No manuscript/generated output changed. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Full-context held-out clarity test confirms context sensitivity
+
+- Correction: isolated Born-rule held-out test did not test the role’s requirement to credit nearby definitions. Ran a replacement held-out evaluation on the complete frozen original Chapter1 from revision `1a9af1e7`, without assessments, defect hints or repository context.
+- Result: 92 paragraphs reviewed: 91 `clear`, one `needs_bridge`. The sole flag was the original Born-rule sentence. It asked what an outcome/amplitude is, rejected the false claim that the Born rule assigns amplitudes, and identified absent normalization/generalization bridges.
+- Context-sensitive evidence: later paragraphs on complex numbers, amplitudes, kets, normalization, phase and conceptual errors were marked clear with explicit in-chapter evidence references—for example, ket explanation cites the established two amplitudes; global-phase explanation cites prior interference treatment; conceptual errors cite squared-magnitude definitions. Early self-contained paragraphs use a narrative-context rationale rather than prior-reference evidence.
+- Conclusion: this is a valid held-out full-context test of both target failure detection and prior-context crediting. It remains one chapter/test, not a measured generalization rate. Temporary validation data was removed. No manuscript/generated output changed. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
