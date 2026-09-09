@@ -196,3 +196,12 @@ Signature: openai-codex/gpt-6-astra
 - Recommendation: Chapter3 is the controlled Gemini author trial. Reader feedback should decide whether Gemini3.7 Flash High remains the author for Chapter4 onward; retain parent preservation checks because the first draft violated an explicit invariant once. No push requested. Required `jj describe` follows immediately.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Chapter 3 initialization terminology repaired
+
+- Trigger: post-completion review correctly identified that the rewritten initialization list still named optical pumping and reservoir-assisted loading without explaining their mechanisms, reproducing the low-readability issue associated with historical assessment s000533.
+- Change: replaced the compressed list with sequential mechanism clauses. Optical pumping is now described as selective excitation/decay accumulating a target state; reservoir-assisted loading as transfer from a nearby reservoir into an energetically selected state; conditional-pulse and active-reset alternatives remain explicit.
+- Verification: regenerated all reading editions with `npm run notes:export:qubits` in445.55s: 8,366 equations,10 figures,zero errors, PDF747 pages/11,577,452 bytes. `npm run build` passed. Six manifest output hashes and canonical/public HTML byte identity verified. Inspected the repaired desktop reader surface in Chromium; the explanation is visible, no rendering issue. Preview tab/server were closed/stopped.
+- Current source SHA-256: `805b31879a8cb5e5359fa59ddda5f18d31846872b9ec060b775cd5e03d9db413`. No change to math, citations, IDs or other chapters. No push requested. Required `jj describe` follows immediately.
+
+Signature: openai-codex/gpt-6-astra

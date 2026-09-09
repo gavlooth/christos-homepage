@@ -1132,7 +1132,7 @@ Nature Photonics 12, 516–527 (2018). DOI: 10.1038/s41566-018-0232-2 .").
 
 ### Operational requirements for a qubit
 
-Preparing a specified initial state with known reliability takes an explicit physical process. Waiting for relaxation toward the ground state is one route; optical pumping, reservoir-assisted loading, measurement plus a conditional pulse, and active reset are others.
+Preparing a specified initial state with known reliability takes an explicit physical process. Waiting for relaxation toward the ground state is one route. Optical pumping uses selective excitation and decay to accumulate population in a target state. Reservoir-assisted loading transfers a particle from a nearby reservoir into an energetically selected state. One can also measure, then apply a conditional pulse, or drive an active reset sequence.
 
 An ideal computational-basis measurement is represented by the projectors
 
