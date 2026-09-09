@@ -112,3 +112,15 @@ Signature: openai-codex/gpt-6-astra
 - Recommendation: reader review of Chapter2 is the decisive next validation; if accepted, proceed one chapter at a time with the same contextual-assessment workflow. No push was requested for this Chapter2 change. Required `jj describe` follows immediately.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Subscription-cost decision for future prose authors
+
+- Objective: user asked whether Gemini’s arena-leading model is a cheaper author alternative and requested relative subscription costs.
+- Official US subscription prices checked: Google AI Plus $4.99/month (2× Gemini access; includes access to Gemini3.1 Pro), Google AI Pro $19.99/month (4× access; expanded Gemini3.1 Pro), Google AI Ultra $99.99/month (20× access). Claude Pro is $20/month or $200/year ($16.67/month equivalent); Claude Max starts at $100/month. ChatGPT Plus is $20/month; Pro is $100/month for5× or $200/month for20× the Plus usage.
+- Decision/recommendation: for a low-cost interactive pilot, Google AI Plus is one quarter of the $20 Pro/Plus tier and exposes Gemini3.1 Pro, but its listed quota is only 2× and no chapter-scale output allowance is published. For sustained chapter rewrites, Google AI Pro is the relevant Gemini tier and costs effectively the same as ChatGPT Plus/Claude Pro. Pricing alone does not establish prose quality; the arena result must be tested with the project’s prompts and a full chapter.
+- Constraint: consumer subscriptions are interactive-product entitlements, not API credit and not an automatic route for this harness’s `task` agents. Any automated author-agent integration needs a separately configured provider/API route; account-usage caps can change.
+- Sources: Google AI plans <https://one.google.com/intl/en_us/about/google-ai-plans/>; Claude pricing <https://claude.com/pricing>; ChatGPT Plus <https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus>; ChatGPT Pro tiers <https://help.openai.com/en/articles/9793128-what-is-chatgpt-pro>.
+- Verification: opened each provider’s current official pricing surface in Chromium, extracted visible US plan prices/features, then closed the browser. No repository source or generated reading edition changed.
+- Next action: if user chooses Gemini, run one controlled Chapter3 author trial with a fixed prompt and independent technical review before reconfiguring the chapter workflow. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
