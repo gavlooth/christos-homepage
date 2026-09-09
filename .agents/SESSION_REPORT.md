@@ -205,3 +205,13 @@ Signature: openai-codex/gpt-6-astra
 - Current source SHA-256: `805b31879a8cb5e5359fa59ddda5f18d31846872b9ec060b775cd5e03d9db413`. No change to math, citations, IDs or other chapters. No push requested. Required `jj describe` follows immediately.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Added Gemini clarity-reader stage and repaired Chapter 3 transition bridge
+
+- Trigger: user identified a repeated author-review failure. The phrase “spectral selectivity” named five undefined dependencies—selected transition, drive, level structure and drive bandwidth—rather than explaining the actual physical action.
+- Workflow change: created user-level custom `clarity-reader` agent at `~/.omp/agent/agents/clarity-reader.md` with `modelRoles.clarity: google-antigravity/gemini-3.7-flash:high`. It is read-only and produces paragraph-level JSON findings before author edits. Required review questions are referents, action/state change, minimum mechanism, definition dependency, compression and model scope. It explicitly catches “what is selected/from what to what/what acts/why does it matter?” failures. Generic task remains Muse; author remains Gemini.
+- Chapter repair: replaced terminology compression with a bridge: the qubit uses two selected energy states; an oscillating electromagnetic field (“drive”) moves the system between them; other states permit unintended moves; the field must act much more strongly on the selected pair. Existing following paragraph continues to name this third-level error leakage. The prior initialization-mechanism repair remains.
+- Verification: regenerated in500.42s (`npm run notes:export:qubits`): 8,366 equations,10 figures,zero errors; PDF747 pages/11,581,137 bytes. `npm run build` passed. Six output hashes/canonical-public identity verified. Chromium screenshot confirmed the bridge reads as continuous prose in the chapter intro; preview closed/stopped.
+- Current source SHA-256: `4b3cbc15215bcd8247cca1886b1275e6c3ad757d146f8280141d6da5632f182b`. No math, citations, IDs or other chapter changed. No push requested. Required `jj describe` follows immediately.
+
+Signature: openai-codex/gpt-6-astra
