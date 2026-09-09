@@ -929,11 +929,11 @@ How can a controllable two-level system store quantum information? These chapter
 
 A quantum-control experiment requires three distinct operations: preparation, unitary control, and measurement.
 
-Preparation produces a known input state. Control applies a calibrated, time-dependent Hamiltonian to that state; the resulting transformation is unitary, represented by a matrix $U$ satisfying $U^\dagger U=I$. Measurement couples the final state to a detector and assigns a classical result to the detector output.
+Preparation produces a known input state. For an isolated system, control applies a calibrated, time-dependent Hamiltonian to that state; the resulting transformation is unitary, represented by a matrix $U$ satisfying $U^\dagger U=I$. Measurement couples the final state to a detector and assigns a classical result to the detector output.
 
 Controlling such a system requires spectral selectivity: the drive addresses the selected transition while leaving nearby transitions largely untouched. That selectivity requirement follows from the level structure and the drive bandwidth, developed in the pulse section below.
 
-Every such experiment contends with two failure modes. A drive can populate a third level outside the selected pair, a process called leakage. A detector can also fire on an event unrelated to the prepared state, producing an incorrect assignment.
+Experiments contend with two prominent failure modes. A drive can populate a third level outside the selected pair, a process called leakage. A detector can also fire on an event unrelated to the prepared state, producing an incorrect assignment.
 
 ### State preparation, phase control, and measurement
 
@@ -941,13 +941,13 @@ This chapter keeps the state labels of Chapter 1. The system is a spin-$1/2$ par
 
 The spin state with Pauli-$Z$ eigenvalue $+1$ is denoted by $|0\rangle$, and the state with eigenvalue $-1$ is denoted by $|1\rangle$.
 
-Some laboratories swap the two labels. The swap is a convention that leaves all predictions unchanged.
+Some laboratories swap the two labels. Provided all observables, state preparations, and measurement bases are relabeled consistently, this swap is a convention that leaves all predictions unchanged.
 
 $$|0\rangle=\begin{pmatrix}1\\0\end{pmatrix},
 \qquad
 |1\rangle=\begin{pmatrix}0\\1\end{pmatrix}.$$
 
-Consider a phase-sensitive experiment consisting of five operations. First, prepare $|0\rangle$. Second, rotate the state through $+\pi/2$ about the $y$-axis. Third, allow a phase $\phi$ to accumulate; this operation is a rotation about the $z$-axis. Fourth, rotate the state through $-\pi/2$ about the $y$-axis. Finally, measure in the computational basis $\{|0\rangle,|1\rangle\}$.
+Consider a phase-sensitive experiment consisting of five operations. First, prepare $|0\rangle$. Second, rotate the state through $+\pi/2$ about the $y$-axis. Third, allow a phase $\phi$ to accumulate during an interval of free evolution under the static magnetic field; this operation is a rotation about the $z$-axis. Fourth, rotate the state through $-\pi/2$ about the $y$-axis. Finally, measure in the computational basis $\{|0\rangle,|1\rangle\}$.
 
 A rotation through an angle $\vartheta$ about axis $j$, where $j$ is $x$, $y$, or $z$, is represented by
 
@@ -967,7 +967,7 @@ e^{-i\phi/2}&0\\
 0&e^{i\phi/2}
 \end{pmatrix}.$$
 
-The half-angles in these matrices are characteristic of spin-$1/2$ rotations: a full turn of the drive advances the state by half that angle. Applying the first pulse gives
+The appearance of the half-angle $\vartheta/2$ in these matrices is characteristic of two-component spin-$1/2$ representations and the double cover of spatial rotations: when a control field rotates the physical Bloch vector through an angle $\vartheta$, the unitary operator acts on the state vector through $\vartheta/2$. A full $2\pi$ rotation of the Bloch vector multiplies the ket by $-1$, changing its sign but leaving its ray in projective Hilbert space---and thus all measurement probabilities---unchanged; only a $4\pi$ rotation restores the ket itself. Applying the first pulse gives
 
 $$R_y(\pi/2)|0\rangle
 =\frac{|0\rangle+|1\rangle}{\sqrt{2}}.$$
@@ -1019,21 +1019,21 @@ $$|\psi\rangle=\alpha|0\rangle+\beta|1\rangle,$$
 
 where the complex amplitudes $\alpha$ and $\beta$ satisfy the normalization condition $|\alpha|^2+|\beta|^2=1$. A computational-basis measurement returns 0 with probability $|\alpha|^2$ and 1 with probability $|\beta|^2$.
 
-A shared global phase has no observable effect: $|\psi\rangle$ and $e^{i\chi}|\psi\rangle$ describe the same pure state for any real $\chi$. The relative phase between $\alpha$ and $\beta$ is the quantity the five-step interferometer converts into populations.
+A shared global phase has no observable effect: $|\psi\rangle$ and $e^{i\chi}|\psi\rangle$ describe the same ray and the same pure physical state for any real $\chi$. The relative phase between $\alpha$ and $\beta$ is the quantity the five-step interferometer converts into populations.
 
-Normalization removes one real parameter from the four contained in two complex amplitudes, and the unobservable global phase removes a second. The two survivors serve as the polar angle $\theta$, with $0\leq\theta\leq\pi$, and the azimuthal angle $\varphi$, with $0\leq\varphi<2\pi$:
+Normalization removes one real parameter from the four contained in two complex amplitudes, and quotienting by the unobservable global phase removes a second. The two remaining parameters parameterize the state as the polar angle $\theta$, with $0\leq\theta\leq\pi$, and the azimuthal angle $\varphi$, with $0\leq\varphi<2\pi$:
 
 $$|\psi(\theta,\varphi)\rangle
 =\cos(\theta/2)|0\rangle
 +e^{i\varphi}\sin(\theta/2)|1\rangle.$$
 
-These two angles locate a point on a sphere. The link to measurable averages runs through the Pauli operators,
+These two angles locate a point on a sphere. At the coordinate singularities $\theta=0$ and $\theta=\pi$, the azimuthal angle $\varphi$ is redundant. The link to measurable expectation values runs through the Pauli operators,
 
 $$X=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
 Y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
 Z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
 
-These matrices repeat $\sigma_x,\sigma_y,\sigma_z$ from Chapter 1, joined by the identity $I$ that leaves every state unchanged. For a state $|\psi\rangle$ the expectation value of $A$, the statistical average over repeated measurements, is $\langle
+These matrices repeat $\sigma_x,\sigma_y,\sigma_z$ from Chapter 1, joined by the identity $I$ that leaves every state unchanged. For a normalized state $|\psi\rangle$ and any Hermitian observable $A$, the expectation value, representing the statistical average over repeated measurements, is $\langle
 A\rangle=\langle\psi|A|\psi\rangle$. The three Pauli averages form the vector
 
 $$\mathbf r=(\langle X\rangle,\langle Y\rangle,\langle Z\rangle).$$
@@ -1054,14 +1054,14 @@ This sphere is the Bloch sphere. A density operator $\rho$, covering both pure a
 $$\rho=\frac{1}{2}\left(I+\mathbf r\cdot\boldsymbol\sigma\right),$$
 
 where $\boldsymbol\sigma=(X,Y,Z)$ and the dot product denotes $r_x X+r_y Y+r_z
-Z$. Pure states satisfy $|\mathbf
+Z$. For $\rho$ to be a valid positive semidefinite density operator of unit trace, the real Bloch vector must satisfy $|\mathbf r|\leq 1$. Pure states satisfy $|\mathbf
 r|=1$ and therefore lie on the surface.
 
 Statistical mixtures with no single state vector satisfy $|\mathbf
 r|<1$ and fill the interior. The maximally mixed state $I/2$ sits at the center.
 
 Laboratory noise shifts the direction of a Bloch vector and can also shrink its length. Once the $|\mathbf
-r|=1$ condition is relaxed, the shortened state lies inside the sphere but remains a valid two-level state.
+r|=1$ condition is relaxed, the shortened state lies inside the sphere but remains a valid two-level state provided $|\mathbf r|\leq 1$.
 
 For any unit vector $\mathbf
 n=(n_x,n_y,n_z)$, define
@@ -1100,7 +1100,7 @@ A box labeled $H$ records only that target. Laboratories synthesize $H$ with mic
 
 ### Time-dependent pulse implementation
 
-A control Hamiltonian connects the target gate to its time-dependent implementation. Suppose a resonant drive produces
+A control Hamiltonian connects the target gate to its time-dependent implementation. In laboratory hardware, transitions are driven by applying an oscillating field. When transformed into a reference frame rotating at the drive frequency, and under the rotating-wave approximation where counter-rotating terms average to zero, a resonant drive produces the effective Hamiltonian
 
 $$\widehat H_{\mathrm d}
 =\frac{\hbar\Omega}{2}
@@ -1145,7 +1145,7 @@ A projector selects the component of a state belonging to one measurement outcom
 $$P(m)=\operatorname{Tr}(M_m\rho),
 \qquad m\in\{0,1\}.$$
 
-The trace $\operatorname{Tr}$ sums the diagonal elements of a matrix. Real instruments produce photons, currents, voltages, or charge-sensor traces instead of an abstract variable $m$, and a classifier maps that analog record to the classical value 0 or 1.
+The trace $\operatorname{Tr}$ sums the diagonal elements of a matrix. Physical measurement instruments, by contrast, do not directly yield mathematical projectors or abstract indices $m$. Real instruments produce continuous, noisy analog signals---such as photons, currents, voltages, or charge-sensor traces---and a classifier maps that analog record to the classical value 0 or 1. Finite instrument fidelity and classifier thresholds introduce readout errors that distinguish physical detection from the ideal projective model.
 
 \[Experiment\] Energy-selective tunneling has been used to map a single electron's spin state to a charge transition detectable by a nearby sensor [\[R053\]](#ref-R053 "[R053] J. M. Elzerman, R. Hanson, L. H. Willems van Beveren, B.
 Witkamp, L. M. K. Vandersypen, and L. P. Kouwenhoven, “Single-Shot
@@ -1162,19 +1162,19 @@ The complete operational loop is therefore:
 
 - Calibrate pulse amplitude, phase, frequency, and duration to implement target gates.
 
-- Allow the intended single-system, two-system, or sensing energy to act.
+- Allow the intended single-system, two-system, or sensing interaction Hamiltonian to act for a calibrated duration.
 
 - Rotate the desired measurement observable into the basis readable by the instrument.
 
-- Acquire a classical record and assign an outcome.
+- Acquire an analog record and classify it into an assigned outcome.
 
 - Reset and repeat the experiment while verifying that the calibration has not drifted.
 
 A single result is a classical bit. Repeated results provide estimates of quantum probabilities. A measurement does not directly output the system's wavefunction.
 
-A pair of levels together with this operational loop constitutes a qubit. The term expresses an operational claim rather than merely identifying a doublet in a spectrum. DiVincenzo organized this claim into a widely used checklist: the states must be distinguishable, one of them must be preparable, a useful set of coherent operations must be available, and the result must be readable. For computation, errors must also remain low, leakage into other levels must be limited, recalibration must be possible, and more than one qubit must be coupled [\[R050\]](#ref-R050 "[R050] D. P. DiVincenzo, “The Physical Implementation of Quantum
+A pair of levels together with this operational loop constitutes a qubit. The term expresses an operational claim rather than merely identifying a doublet in a spectrum. DiVincenzo organized the general requirements for physical quantum computation into five criteria: a scalable physical system with well-characterized qubits, the ability to initialize the state of the qubits to a simple fiducial state, long relevant decoherence times, a universal set of quantum gates, and a qubit-specific measurement capability [\[R050\]](#ref-R050 "[R050] D. P. DiVincenzo, “The Physical Implementation of Quantum
 Computation,” Fortschritte der Physik 48, 771–783 (2000). DOI: 10.1002/1521-3978(200009)48:9/113.0.CO;2-E ;
-arXiv: quant-ph/0002077 .").
+arXiv: quant-ph/0002077 ."). Our single-qubit operational loop recasts the single-subsystem core of those requirements.
 
 If isolation or readout is absent, the system still has two levels, but it does not satisfy these operational requirements for a qubit.
 
@@ -1208,7 +1208,7 @@ $$\widehat H_0=-\frac{\hbar\omega_0}{2}Z,$$
 
 where $\omega_0$ is the angular transition frequency in radians per second. A resonant field drives transitions between the two levels.
 
-In an actual solid, spin--orbit coupling, hyperfine interactions, charge motion, strain, and higher-energy levels modify this idealized model. Specific defects fix these terms, with their values tabulated in the defect chapters.
+In an actual solid, spin--orbit coupling, hyperfine interactions, charge motion, strain, and higher-energy levels modify this idealized model. While a specific defect sets the point-group symmetry and nominal electronic structure, the effective Hamiltonian parameters also depend on the host crystal environment, applied static and oscillating fields, local strain, and operating temperature.
 
 \[Proposal\] Electron spins confined in quantum dots were proposed as physical qubits with controlled exchange interactions [\[R051\]](#ref-R051 "[R051] D. Loss and D. P. DiVincenzo, “Quantum Computation with
 Quantum Dots,” Physical Review A 57, 120–126 (1998). DOI: 10.1103/PhysRevA.57.120 ."). \[Experiment\] Subsequent experiments demonstrated ingredients including single-spin readout and coherent single-spin rotations [\[R052\]](#ref-R052 "[R052] F. H. L. Koppens, C. Buizert, K. J. Tielrooij, I. T. Vink, K.
@@ -1231,7 +1231,7 @@ Whether a particular defect serves as a useful qubit depends on its charge state
 
 - **Interpreting the Bloch sphere as ordinary physical space.** For a spin in a magnetic field the Bloch axes can align with physical spin components. For a superconducting circuit, a charge configuration, an orbital doublet, or a cluster encoding they are abstract coordinates fixed by the chosen basis, with no necessary direction in laboratory space.
 
-- **Reading a probability amplitude off a single shot.** One computational-basis measurement returns 0 or 1. Estimating $\alpha$, $\beta$, or a Bloch vector takes many identically prepared trials across several bases. Drift between trials can leave the reconstruction describing no state the experiment held steadily.
+- **Reading a probability amplitude off a single shot.** One computational-basis measurement returns 0 or 1 without determining state amplitudes. Reconstructing the state through quantum tomography takes many identically prepared trials across several bases, and estimating the probability amplitudes $\alpha$ and $\beta$ further requires fixing a global-phase convention. Drift between trials can leave the reconstruction describing no state the experiment held steadily.
 
 - **Equating relative phase with population.** The orthogonal states $(|0\rangle+|1\rangle)/\sqrt{2}$ and $(|0\rangle-|1\rangle)/\sqrt{2}$ both give 50--50 $Z$-basis statistics. Only an analyzer rotation such as the closing pulse of the five-step sequence makes their difference visible.
 
@@ -1252,7 +1252,7 @@ Whether a particular defect serves as a useful qubit depends on its charge state
 
 - **Counting devices that store $0_L$ and $1_L$:** The two distributed patterns $0_L$ and $1_L$ define one encoded bit. The term "encoded" identifies a selected two-dimensional subspace rather than the number of physical devices.
 
-- **Information obtained from one computational-basis measurement:** A single shot returns 0 or 1 without fixing $\alpha$ and $\beta$. Estimating the amplitudes takes many identically prepared runs, usually across more than one basis.
+- **Information obtained from one computational-basis measurement:** A single shot returns 0 or 1 without fixing $\alpha$ and $\beta$. Estimating the state takes many identically prepared runs across several bases, and determining the amplitudes requires adopting a global-phase convention.
 
 A two-level system earns the name qubit once preparation, control, and measurement each meet specified performance. Assigning times and error rates to those operations is the task of the relaxation and dephasing analysis.
 

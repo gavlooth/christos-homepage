@@ -1,0 +1,130 @@
+{
+  "scope": "Chapter3 only; Chapters1–2 and4+ source preserved byte-for-byte during integration",
+  "source_sha256": "bbcd768e7a6fcee8164f4d1ef02a806147499279efe031892dd20d77338e3764",
+  "author_model": "google-antigravity/gemini-3.7-flash:high",
+  "assessment_input": {
+    "records": 156,
+    "scored_records": 156,
+    "limitation": "Historical scores used as fallible prompts; full draft was reviewed in context."
+  },
+  "author_findings": {
+    "target": "/tmp/qubit-ch3-rewrite-d68o_gux/rewritten.html",
+    "summary": "Full publication-ready replacement chapter for Chapter 3 with contextual integration of sentence assessments, rigorous preservation of all invariants, and targeted technical corrections.",
+    "major_corrections": [
+      {
+        "topic": "Spinor half angles and rotation conventions",
+        "assessment_id": "s000468",
+        "flag": "misleading half-angle interpretation",
+        "resolution": "Replaced the misleading statement that 'a full turn of the drive advances the state by half that angle' with the correct physical and geometric explanation: when a control field rotates the Bloch vector through angle ϑ, the unitary operator acts on the two-component spinor through ϑ/2; a 2π rotation of the Bloch vector multiplies the ket by -1, leaving its ray in projective Hilbert space (and all observable probabilities) unchanged, while only a 4π rotation restores the ket itself."
+      },
+      {
+        "topic": "Rotating-frame and resonant-drive approximation scope",
+        "assessment_id": "s000522",
+        "flag": "implicit_frame_and_approximation",
+        "resolution": "Explicitly stated the laboratory mechanism (applying an oscillating transverse control field) and the physical approximations (transforming to the rotating frame at drive frequency and applying the rotating-wave approximation to drop counter-rotating terms) before introducing the effective drive Hamiltonian \\(\\widehat H_{\\mathrm d}\\)."
+      },
+      {
+        "topic": "Ideal projectors versus physical instruments and classifiers",
+        "assessment_ids": [
+          "s000535",
+          "s000538"
+        ],
+        "flags": [
+          "informal measurement language",
+          "experimental jargon"
+        ],
+        "resolution": "Sharpened the conceptual boundary between the mathematical projection postulate (projectors M_0, M_1 and the Born rule) and laboratory detection chains (continuous, noisy analog records mapped by classifiers or discriminator thresholds to binary outcomes with finite readout fidelity)."
+      },
+      {
+        "topic": "DiVincenzo criteria attribution and local operational summary",
+        "assessment_id": "s000554",
+        "flag": "incomplete_checklist, attribution_imprecision",
+        "resolution": "Accurately cited DiVincenzo's five criteria for physical implementation of quantum computation [R050] (scalable physical system with well-characterized qubits, fiducial state initialization, long decoherence times, universal gate set, and qubit-specific measurement) and recast the single-qubit operational loop as the local single-subsystem operational core of those requirements, rather than mischaracterizing an incomplete list as the DiVincenzo checklist."
+      },
+      {
+        "topic": "Solid-state Hamiltonian parameters and defect determination",
+        "assessment_id": "s000575",
+        "flag": "overstates_defect_determination",
+        "resolution": "Corrected the overstatement that 'specific defects fix these terms'; clarified that while a crystallographic defect sets symmetry and nominal electronic structure, the effective Hamiltonian parameters depend on host crystal environment, applied static and oscillating fields, local strain, and temperature."
+      },
+      {
+        "topic": "Quantum state tomography and global-phase convention",
+        "assessment_ids": [
+          "s000592",
+          "s000600"
+        ],
+        "flags": [
+          "global_phase_unqualified"
+        ],
+        "resolution": "Clarified that single-shot measurements cannot reveal state amplitudes, that tomographic reconstruction of density matrices or Bloch vectors requires multi-basis measurements across complementary observables, and that determining complex amplitudes α and β specifically requires adopting an unobservable global-phase convention."
+      },
+      {
+        "topic": "Closed-system condition for unitary control",
+        "assessment_id": "s000446",
+        "flag": "missing_closed_system_condition",
+        "resolution": "Explicitly qualified that time evolution governed by a control Hamiltonian generates a unitary operator U under isolated/closed-system dynamics."
+      }
+    ],
+    "assessments_rejected_in_context": [
+      {
+        "assessment_ids": [
+          "s000482",
+          "s000484"
+        ],
+        "flag": "external_empirical_claim_not_verifiable_from_text",
+        "reason": "Rejected the assessment's candidate defect that citations to external experimental demonstrations (Koppens et al. 2006 [R052] and Elzerman et al. 2004 [R053]) cannot be verified solely from the text. Citing peer-reviewed experimental literature to substantiate concrete physical implementations of coherent control and single-shot readout is appropriate scientific practice."
+      },
+      {
+        "assessment_id": "s000454",
+        "flag": "specialist_physics_vocabulary",
+        "reason": "Rejected the recommendation to provide elementary re-definitions for 'spin-1/2 particle'. Chapter 1 already established spin-1/2 systems, Stern-Gerlach apparatuses, and Pauli matrices; re-explaining basic spin terminology would be redundant for the target mathematics PhD audience."
+      },
+      {
+        "assessment_ids": [
+          "s000478",
+          "s000479",
+          "s000480"
+        ],
+        "flag": "informal_language",
+        "reason": "Rejected the critique of 'interferometer', 'splits', and 'recombines' as informal jargon. The Ramsey interferometer analogy is mathematically precise and pedagogically central for mapping relative phase differences into measurable computational-basis populations."
+      },
+      {
+        "assessment_id": "s000490",
+        "flag": "coordinate_nonuniqueness_at_poles",
+        "reason": "Rejected treating spherical polar coordinate redundancy at θ ∈ {0, π} as a mathematical flaw requiring an alternate coordinate system. Clarified that the azimuthal angle φ is redundant at the poles while retaining the standard Bloch sphere angles."
+      },
+      {
+        "assessment_id": "s000570",
+        "flag": "overgeneralization",
+        "reason": "Rejected the critique that listing orbital states, phonons, nearby spins, and wiring constitutes overgeneralization. In solid-state systems, these degrees of freedom constitute the typical physical bath and auxiliary Hilbert space outside the computational doublet."
+      }
+    ]
+  },
+  "parent_review": {
+    "accepted": "Corrected half-angle/spinor interpretation, rotating-frame and RWA scope, projector/instrument distinction, DiVincenzo attribution, defect/environment parameter scope, tomography global-phase convention and operational-loop wording.",
+    "preservation_fix": "Author initially replaced original inline spin-1/2 notation. Parent restored it before integration; all original math expressions now occur in order."
+  },
+  "preservation": {
+    "original_math_in_order": 158,
+    "added_inline_math": 12,
+    "display_equations": 26,
+    "ids": 11,
+    "citation_links": 20,
+    "structural_nodes_preserved": true
+  },
+  "verification": {
+    "export_math": 8366,
+    "figures": 10,
+    "render_errors": 0,
+    "pdf_pages": 747,
+    "pdf_bytes": 11577084,
+    "export_seconds": 446.33,
+    "build": "passed",
+    "desktop_mobile": "Visually inspected desktop pulse implementation and 390px operational requirements. 170 Chapter3 MathJax nodes; zero errors and no document-width overflow.",
+    "pdf": "Extracted pages28–48; found rotating-wave and DiVincenzo passages. Rasterized and visually inspected page35.",
+    "numerical_invariants": {
+      "ramsey_probability_law_checked_at_phases": 17,
+      "two_pi_spinor_rotation": "-I"
+    }
+  }
+}

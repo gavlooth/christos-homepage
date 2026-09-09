@@ -937,16 +937,16 @@ quantum information</h2><div class="chapter-intro" data-math-section="">
 system</h2><div class="chapter-intro" data-math-section="">
 <p>A quantum-control experiment requires three distinct operations:
 preparation, unitary control, and measurement.</p>
-<p>Preparation produces a known input state. Control applies a calibrated, time-dependent Hamiltonian to that state; the resulting transformation is unitary, represented by a matrix <span class="math inline">\(U\)</span> satisfying <span class="math inline">\(U^\dagger U=I\)</span>. Measurement couples the final state to a detector and assigns a classical result to the detector output.</p>
+<p>Preparation produces a known input state. For an isolated system, control applies a calibrated, time-dependent Hamiltonian to that state; the resulting transformation is unitary, represented by a matrix <span class="math inline">\(U\)</span> satisfying <span class="math inline">\(U^\dagger U=I\)</span>. Measurement couples the final state to a detector and assigns a classical result to the detector output.</p>
 <p>Controlling such a system requires spectral selectivity: the drive addresses the selected transition while leaving nearby transitions largely untouched. That selectivity requirement follows from the level structure and the drive bandwidth, developed in the pulse section below.</p>
-<p>Every such experiment contends with two failure modes. A drive can populate a third level outside the selected pair, a process called leakage. A detector can also fire on an event unrelated to the prepared state, producing an incorrect assignment.</p>
+<p>Experiments contend with two prominent failure modes. A drive can populate a third level outside the selected pair, a process called leakage. A detector can also fire on an event unrelated to the prepared state, producing an incorrect assignment.</p>
 </div><section class="topic" data-math-section=""><h3 id="state-preparation-phase-control-and-measurement">State
 preparation, phase control, and measurement</h3>
 <p>This chapter keeps the state labels of Chapter 1. The system is a spin-<span class="math inline">\(1/2\)</span> particle in a magnetic field pointing along the <span class="math inline">\(z\)</span>-axis.</p>
 <p>The spin state with Pauli-<span class="math inline">\(Z\)</span>
 eigenvalue <span class="math inline">\(+1\)</span> is denoted by <span class="math inline">\(|0\rangle\)</span>, and the state with eigenvalue
 <span class="math inline">\(-1\)</span> is denoted by <span class="math inline">\(|1\rangle\)</span>.</p>
-<p>Some laboratories swap the two labels. The swap is a convention that leaves all predictions unchanged.</p>
+<p>Some laboratories swap the two labels. Provided all observables, state preparations, and measurement bases are relabeled consistently, this swap is a convention that leaves all predictions unchanged.</p>
 <p><span class="math display">\[
 |0\rangle=\begin{pmatrix}1\\0\end{pmatrix},
 \qquad
@@ -956,7 +956,7 @@ eigenvalue <span class="math inline">\(+1\)</span> is denoted by <span class="ma
 First, prepare <span class="math inline">\(|0\rangle\)</span>. Second,
 rotate the state through <span class="math inline">\(+\pi/2\)</span>
 about the <span class="math inline">\(y\)</span>-axis. Third, allow a
-phase <span class="math inline">\(\phi\)</span> to accumulate; this
+phase <span class="math inline">\(\phi\)</span> to accumulate during an interval of free evolution under the static magnetic field; this
 operation is a rotation about the <span class="math inline">\(z\)</span>-axis. Fourth, rotate the state through
 <span class="math inline">\(-\pi/2\)</span> about the <span class="math inline">\(y\)</span>-axis. Finally, measure in the
 computational basis <span class="math inline">\(\{|0\rangle,|1\rangle\}\)</span>.</p>
@@ -981,7 +981,7 @@ e^{-i\phi/2}&amp;0\\
 0&amp;e^{i\phi/2}
 \end{pmatrix}.
 \]</span></p>
-<p>The half-angles in these matrices are characteristic of spin-<span class="math inline">\(1/2\)</span> rotations: a full turn of the drive advances the state by half that angle. Applying the first pulse gives</p>
+<p>The appearance of the half-angle <span class="math inline">\(\vartheta/2\)</span> in these matrices is characteristic of two-component spin-<span class="math inline">\(1/2\)</span> representations and the double cover of spatial rotations: when a control field rotates the physical Bloch vector through an angle <span class="math inline">\(\vartheta\)</span>, the unitary operator acts on the state vector through <span class="math inline">\(\vartheta/2\)</span>. A full <span class="math inline">\(2\pi\)</span> rotation of the Bloch vector multiplies the ket by <span class="math inline">\(-1\)</span>, changing its sign but leaving its ray in projective Hilbert space—and thus all measurement probabilities—unchanged; only a <span class="math inline">\(4\pi\)</span> rotation restores the ket itself. Applying the first pulse gives</p>
 <p><span class="math display">\[
 R_y(\pi/2)|0\rangle
 =\frac{|0\rangle+|1\rangle}{\sqrt{2}}.
@@ -1035,20 +1035,20 @@ as</p>
 <p>where the complex amplitudes <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> satisfy the normalization condition
 <span class="math inline">\(|\alpha|^2+|\beta|^2=1\)</span>. A
 computational-basis measurement returns 0 with probability <span class="math inline">\(|\alpha|^2\)</span> and 1 with probability <span class="math inline">\(|\beta|^2\)</span>.</p>
-<p>A shared global phase has no observable effect: <span class="math inline">\(|\psi\rangle\)</span> and <span class="math inline">\(e^{i\chi}|\psi\rangle\)</span> describe the same pure state for any real <span class="math inline">\(\chi\)</span>. The relative phase between <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> is the quantity the five-step interferometer converts into populations.</p>
-<p>Normalization removes one real parameter from the four contained in two complex amplitudes, and the unobservable global phase removes a second. The two survivors serve as the polar angle <span class="math inline">\(\theta\)</span>, with <span class="math inline">\(0\leq\theta\leq\pi\)</span>, and the azimuthal angle <span class="math inline">\(\varphi\)</span>, with <span class="math inline">\(0\leq\varphi&lt;2\pi\)</span>:</p>
+<p>A shared global phase has no observable effect: <span class="math inline">\(|\psi\rangle\)</span> and <span class="math inline">\(e^{i\chi}|\psi\rangle\)</span> describe the same ray and the same pure physical state for any real <span class="math inline">\(\chi\)</span>. The relative phase between <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> is the quantity the five-step interferometer converts into populations.</p>
+<p>Normalization removes one real parameter from the four contained in two complex amplitudes, and quotienting by the unobservable global phase removes a second. The two remaining parameters parameterize the state as the polar angle <span class="math inline">\(\theta\)</span>, with <span class="math inline">\(0\leq\theta\leq\pi\)</span>, and the azimuthal angle <span class="math inline">\(\varphi\)</span>, with <span class="math inline">\(0\leq\varphi&lt;2\pi\)</span>:</p>
 <p><span class="math display">\[
 |\psi(\theta,\varphi)\rangle
 =\cos(\theta/2)|0\rangle
 +e^{i\varphi}\sin(\theta/2)|1\rangle.
 \]</span></p>
-<p>These two angles locate a point on a sphere. The link to measurable averages runs through the Pauli operators,</p>
+<p>These two angles locate a point on a sphere. At the coordinate singularities <span class="math inline">\(\theta=0\)</span> and <span class="math inline">\(\theta=\pi\)</span>, the azimuthal angle <span class="math inline">\(\varphi\)</span> is redundant. The link to measurable expectation values runs through the Pauli operators,</p>
 <p><span class="math display">\[
 X=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
 Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\qquad
 Z=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
 \]</span></p>
-<p>These matrices repeat <span class="math inline">\(\sigma_x,\sigma_y,\sigma_z\)</span> from Chapter 1, joined by the identity <span class="math inline">\(I\)</span> that leaves every state unchanged. For a state <span class="math inline">\(|\psi\rangle\)</span> the expectation value of <span class="math inline">\(A\)</span>, the statistical average over repeated measurements, is <span class="math inline">\(\langle
+<p>These matrices repeat <span class="math inline">\(\sigma_x,\sigma_y,\sigma_z\)</span> from Chapter 1, joined by the identity <span class="math inline">\(I\)</span> that leaves every state unchanged. For a normalized state <span class="math inline">\(|\psi\rangle\)</span> and any Hermitian observable <span class="math inline">\(A\)</span>, the expectation value, representing the statistical average over repeated measurements, is <span class="math inline">\(\langle
 A\rangle=\langle\psi|A|\psi\rangle\)</span>. The three Pauli averages form the vector</p>
 <p><span class="math display">\[
 \mathbf r=(\langle X\rangle,\langle Y\rangle,\langle Z\rangle).
@@ -1067,12 +1067,12 @@ A\rangle=\langle\psi|A|\psi\rangle\)</span>. The three Pauli averages form the v
 \]</span></p>
 <p>where <span class="math inline">\(\boldsymbol\sigma=(X,Y,Z)\)</span>
 and the dot product denotes <span class="math inline">\(r_x X+r_y Y+r_z
-Z\)</span>. Pure states satisfy <span class="math inline">\(|\mathbf
+Z\)</span>. For <span class="math inline">\(\rho\)</span> to be a valid positive semidefinite density operator of unit trace, the real Bloch vector must satisfy <span class="math inline">\(|\mathbf r|\leq 1\)</span>. Pure states satisfy <span class="math inline">\(|\mathbf
 r|=1\)</span> and therefore lie on the surface.</p>
 <p>Statistical mixtures with no single state vector satisfy <span class="math inline">\(|\mathbf
 r|&lt;1\)</span> and fill the interior. The maximally mixed state <span class="math inline">\(I/2\)</span> sits at the center.</p>
 <p>Laboratory noise shifts the direction of a Bloch vector and can also shrink its length. Once the <span class="math inline">\(|\mathbf
-r|=1\)</span> condition is relaxed, the shortened state lies inside the sphere but remains a valid two-level state.</p>
+r|=1\)</span> condition is relaxed, the shortened state lies inside the sphere but remains a valid two-level state provided <span class="math inline">\(|\mathbf r|\leq 1\)</span>.</p>
 <p>For any unit vector <span class="math inline">\(\mathbf
 n=(n_x,n_y,n_z)\)</span>, define</p>
 <p><span class="math display">\[
@@ -1109,7 +1109,7 @@ H=\frac{1}{\sqrt{2}}
 <p>A box labeled <span class="math inline">\(H\)</span> records only that target. Laboratories synthesize <span class="math inline">\(H\)</span> with microwaves, optical fields, voltages, exchange couplings, frame updates, or combinations of these.</p>
 </section><section class="topic" data-math-section=""><h3 id="time-dependent-pulse-implementation">Time-dependent pulse
 implementation</h3>
-<p>A control Hamiltonian connects the target gate to its time-dependent implementation. Suppose a resonant drive produces</p>
+<p>A control Hamiltonian connects the target gate to its time-dependent implementation. In laboratory hardware, transitions are driven by applying an oscillating field. When transformed into a reference frame rotating at the drive frequency, and under the rotating-wave approximation where counter-rotating terms average to zero, a resonant drive produces the effective Hamiltonian</p>
 <p><span class="math display">\[
 \widehat H_{\mathrm d}
 =\frac{\hbar\Omega}{2}
@@ -1157,7 +1157,7 @@ M_1=|1\rangle\langle1|.
 P(m)=\operatorname{Tr}(M_m\rho),
 \qquad m\in\{0,1\}.
 \]</span></p>
-<p>The trace <span class="math inline">\(\operatorname{Tr}\)</span> sums the diagonal elements of a matrix. Real instruments produce photons, currents, voltages, or charge-sensor traces instead of an abstract variable <span class="math inline">\(m\)</span>, and a classifier maps that analog record to the classical value 0 or 1.</p>
+<p>The trace <span class="math inline">\(\operatorname{Tr}\)</span> sums the diagonal elements of a matrix. Physical measurement instruments, by contrast, do not directly yield mathematical projectors or abstract indices <span class="math inline">\(m\)</span>. Real instruments produce continuous, noisy analog signals—such as photons, currents, voltages, or charge-sensor traces—and a classifier maps that analog record to the classical value 0 or 1. Finite instrument fidelity and classifier thresholds introduce readout errors that distinguish physical detection from the ideal projective model.</p>
 <p>[Experiment] Energy-selective tunneling has been used to map a single
 electron’s spin state to a charge transition detectable by a nearby
 sensor <a class="citation" href="#ref-R053" title="[R053] J. M. Elzerman, R. Hanson, L. H. Willems van Beveren, B.
@@ -1177,11 +1177,10 @@ conditions under which the two states remain isolated.</p></li>
 preparation error.</p></li>
 <li><p>Calibrate pulse amplitude, phase, frequency, and duration to
 implement target gates.</p></li>
-<li><p>Allow the intended single-system, two-system, or sensing energy
-to act.</p></li>
+<li><p>Allow the intended single-system, two-system, or sensing interaction Hamiltonian to act for a calibrated duration.</p></li>
 <li><p>Rotate the desired measurement observable into the basis readable
 by the instrument.</p></li>
-<li><p>Acquire a classical record and assign an outcome.</p></li>
+<li><p>Acquire an analog record and classify it into an assigned outcome.</p></li>
 <li><p>Reset and repeat the experiment while verifying that the
 calibration has not drifted.</p></li>
 </ul>
@@ -1190,15 +1189,9 @@ estimates of quantum probabilities. A measurement does not directly
 output the system’s wavefunction.</p>
 <p>A pair of levels together with this operational loop constitutes a
 qubit. The term expresses an operational claim rather than merely
-identifying a doublet in a spectrum. DiVincenzo organized this claim
-into a widely used checklist: the states must be distinguishable, one of
-them must be preparable, a useful set of coherent operations must be
-available, and the result must be readable. For computation, errors must
-also remain low, leakage into other levels must be limited,
-recalibration must be possible, and more than one qubit must be coupled
-<a class="citation" href="#ref-R050" title="[R050] D. P. DiVincenzo, “The Physical Implementation of Quantum
+identifying a doublet in a spectrum. DiVincenzo organized the general requirements for physical quantum computation into five criteria: a scalable physical system with well-characterized qubits, the ability to initialize the state of the qubits to a simple fiducial state, long relevant decoherence times, a universal set of quantum gates, and a qubit-specific measurement capability <a class="citation" href="#ref-R050" title="[R050] D. P. DiVincenzo, “The Physical Implementation of Quantum
 Computation,” Fortschritte der Physik 48, 771–783 (2000). DOI: 10.1002/1521-3978(200009)48:9/113.0.CO;2-E ;
-arXiv: quant-ph/0002077 .">[R050]</a>.</p>
+arXiv: quant-ph/0002077 .">[R050]</a>. Our single-qubit operational loop recasts the single-subsystem core of those requirements.</p>
 <p>If isolation or readout is absent, the system still has two levels,
 but it does not satisfy these operational requirements for a qubit.</p>
 </section><section class="topic" data-math-section=""><h3 id="encoded-information-distributed-across-multiple-devices">Encoded
@@ -1245,7 +1238,7 @@ static magnetic field, the Hamiltonian is often written as</p>
 <p>where <span class="math inline">\(\omega_0\)</span> is the angular
 transition frequency in radians per second. A resonant field drives
 transitions between the two levels.</p>
-<p>In an actual solid, spin–orbit coupling, hyperfine interactions, charge motion, strain, and higher-energy levels modify this idealized model. Specific defects fix these terms, with their values tabulated in the defect chapters.</p>
+<p>In an actual solid, spin–orbit coupling, hyperfine interactions, charge motion, strain, and higher-energy levels modify this idealized model. While a specific defect sets the point-group symmetry and nominal electronic structure, the effective Hamiltonian parameters also depend on the host crystal environment, applied static and oscillating fields, local strain, and operating temperature.</p>
 <p>[Proposal] Electron spins confined in quantum dots were proposed as
 physical qubits with controlled exchange interactions <a class="citation" href="#ref-R051" title="[R051] D. Loss and D. P. DiVincenzo, “Quantum Computation with
 Quantum Dots,” Physical Review A 57, 120–126 (1998). DOI: 10.1103/PhysRevA.57.120 .">[R051]</a>.
@@ -1272,7 +1265,7 @@ experimental errors</h3>
 <ul>
 <li><p><strong>Identifying any two levels as a qubit.</strong> A transition can be too weak to drive, too broad to address selectively, or spectrally overlapping its neighbors. Control pulses can leak into a third state. The two-level approximation holds only across stated ranges of energy, drive strength, temperature, and time.</p></li>
 <li><p><strong>Interpreting the Bloch sphere as ordinary physical space.</strong> For a spin in a magnetic field the Bloch axes can align with physical spin components. For a superconducting circuit, a charge configuration, an orbital doublet, or a cluster encoding they are abstract coordinates fixed by the chosen basis, with no necessary direction in laboratory space.</p></li>
-<li><p><strong>Reading a probability amplitude off a single shot.</strong> One computational-basis measurement returns 0 or 1. Estimating <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, or a Bloch vector takes many identically prepared trials across several bases. Drift between trials can leave the reconstruction describing no state the experiment held steadily.</p></li>
+<li><p><strong>Reading a probability amplitude off a single shot.</strong> One computational-basis measurement returns 0 or 1 without determining state amplitudes. Reconstructing the state through quantum tomography takes many identically prepared trials across several bases, and estimating the probability amplitudes <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> further requires fixing a global-phase convention. Drift between trials can leave the reconstruction describing no state the experiment held steadily.</p></li>
 <li><p><strong>Equating relative phase with population.</strong> The orthogonal states <span class="math inline">\((|0\rangle+|1\rangle)/\sqrt{2}\)</span> and <span class="math inline">\((|0\rangle-|1\rangle)/\sqrt{2}\)</span> both give 50–50 <span class="math inline">\(Z\)</span>-basis statistics. Only an analyzer rotation such as the closing pulse of the five-step sequence makes their difference visible.</p></li>
 <li><p><strong>Equating a gate with its control waveform.</strong> The symbol <span class="math inline">\(R_x(\pi/2)\)</span> names an ideal transformation. The laboratory applies a finite-duration pulse while unwanted Hamiltonian terms continue to act, so calibration, leakage, drift, and noise set how closely the implementation approaches the symbol.</p></li>
 <li><p><strong>Equating an encoded bit with one physical doublet.</strong> Several qubits can hold one encoded bit with no new particle involved. Active detection of selected errors without a protective energy gap is a property of the implementation and code structure.</p></li>
@@ -1292,7 +1285,7 @@ Applying the Born rule to the first amplitude gives <span class="math inline">\(
 patterns <span class="math inline">\(0_L\)</span> and <span class="math inline">\(1_L\)</span> define one encoded bit. The term
 “encoded” identifies a selected two-dimensional subspace rather than the
 number of physical devices.</p></li>
-<li><p><strong>Information obtained from one computational-basis measurement:</strong> A single shot returns 0 or 1 without fixing <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. Estimating the amplitudes takes many identically prepared runs, usually across more than one basis.</p></li>
+<li><p><strong>Information obtained from one computational-basis measurement:</strong> A single shot returns 0 or 1 without fixing <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. Estimating the state takes many identically prepared runs across several bases, and determining the amplitudes requires adopting a global-phase convention.</p></li>
 </ul>
 <p>A two-level system earns the name qubit once preparation, control, and measurement each meet specified performance. Assigning times and error rates to those operations is the task of the relaxation and dephasing analysis.</p>
 </section><section class="topic" data-math-section=""><h3 id="sources-2">Sources</h3>
