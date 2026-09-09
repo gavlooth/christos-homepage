@@ -215,3 +215,12 @@ Signature: openai-codex/gpt-6-astra
 - Current source SHA-256: `4b3cbc15215bcd8247cca1886b1275e6c3ad757d146f8280141d6da5632f182b`. No math, citations, IDs or other chapter changed. No push requested. Required `jj describe` follows immediately.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Chapter 3 control bridge corrected to state resonance
+
+- Correction: prior bridge inaccurately said the applied field “acts more strongly on the selected pair.” The field is not pair-specific. Its relevant mechanism is tuning near the frequency associated with the selected pair’s energy difference; sufficiently mismatched transitions respond weakly for a drive that is not too strong.
+- Change: replaced the inaccurate final sentence with an explicit resonance sequence: selected energy pair → drive moves between them → frequency set by their energy difference → other state pairs have other differences → substantially mismatched transitions respond weakly → imperfect suppression can still cause leakage.
+- Verification: `npm run notes:export:qubits` passed in475.36s with8,366 equations,10 figures andzero errors; PDF747 pages/11,577,658 bytes. `npm run build` passed. Six manifest outputs/canonical-public HTML verified by SHA-256. Chromium screenshot confirmed the full explanatory bridge. Preview closed/stopped.
+- Current source SHA-256: `aca782f7a7aeb12af14ab30148b4f890d5ae17481ea0092e85825b4c2464c94f`. No math, citations, IDs or other chapter changed. No push requested. Required `jj describe` follows immediately.
+
+Signature: openai-codex/gpt-6-astra

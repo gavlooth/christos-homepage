@@ -931,7 +931,7 @@ A quantum-control experiment requires three distinct operations: preparation, un
 
 Preparation produces a known input state. For an isolated system, control applies a calibrated, time-dependent Hamiltonian to that state; the resulting transformation is unitary, represented by a matrix $U$ satisfying $U^\dagger U=I$. Measurement couples the final state to a detector and assigns a classical result to the detector output.
 
-The qubit uses a selected pair of energy states. To move the system from one state of that pair to the other, an experimenter applies an oscillating electromagnetic field, called a drive. The device can have other energy states. The same drive can accidentally move the system between one of those states and a qubit state. It must therefore act much more strongly on the selected pair than on the other possible pairs.
+The qubit uses a selected pair of energy states. To move the system from one state of that pair to the other, an experimenter applies an oscillating electromagnetic field, called a drive. The field is tuned to the frequency associated with the energy difference between the selected states. The device can have other energy states, with other energy differences between them. Provided the drive is not too strong, transitions with a substantially different frequency respond much less strongly. The same drive can nevertheless accidentally move the system between one of those states and a qubit state.
 
 Experiments contend with two prominent failure modes. A drive can populate a third level outside the selected pair, a process called leakage. A detector can also fire on an event unrelated to the prepared state, producing an incorrect assignment.
 
