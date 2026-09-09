@@ -224,3 +224,14 @@ Signature: openai-codex/gpt-6-astra
 - Current source SHA-256: `aca782f7a7aeb12af14ab30148b4f890d5ae17481ea0092e85825b4c2464c94f`. No math, citations, IDs or other chapter changed. No push requested. Required `jj describe` follows immediately.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Gemini clarity-reader blind validation passed
+
+- Objective: verify that the newly added clarity-reader detects the exact undefined-bridge failure independently, rather than merely existing as an untested role.
+- Method: extracted frozen pre-repair Chapter3 from revision `eac33059`, supplied no score file and did not identify the defective paragraph, then dispatched the Gemini clarity-reader over all99 prose paragraphs.
+- Result: one blocking `needs_bridge` finding and98 `clear` records. The sole issue was the original spectral-selectivity paragraph. Its independent questions matched the user’s: what is spectral selectivity; what acts; what selected transition is meant and between which states; why a nominal two-level system has nearby transitions; what level structure and drive bandwidth mean. It requested the resonance bridge ultimately applied.
+- Process hardening: agent had created unnecessary temporary helper scripts despite its one-file contract. Added an explicit prohibition on helper scripts, extracted copies and any output other than the required JSON. Validation staging was removed after inspection.
+- Conclusion: the role detects this class of defect. Future workflow is clarity-reader scan → author rewrite informed by ranked findings → parent physics/preservation review → export/render. A full pass took23m03s for99 paragraphs; reserve it for complete chapter drafts, not single-sentence edits.
+- No manuscript/generated output changed by validation. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
