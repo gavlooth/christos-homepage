@@ -145,3 +145,13 @@ Signature: openai-codex/gpt-6-astra
 - Next action: user can subscribe to Google AI Plus, check exact model availability, then run one interactive full-chapter prompt. Upgrade to Pro only if the Plus cap interrupts the pilot. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Native OMP Gemini CLI route confirmed
+
+- Objective: determine whether a Gemini consumer subscription can route through OMP, rather than requiring a tmux bridge to Gemini CLI.
+- Evidence: OMP documentation supports `google-gemini-cli` as an OAuth-backed provider reached through `/login google-gemini-cli`; its model configuration supports the `google-gemini-cli` transport. `omp models find gemini` confirmed catalogued native API routes `google/gemini-3.7-flash` and `google/gemini-3.8-flash` (1M context,66K max output, high thinking) plus equivalent OpenRouter routes.
+- Current state: `omp models find google-gemini-cli` returned no matching configured models because no Gemini CLI OAuth login is present in this session. Therefore exact post-login model IDs, subscription entitlement and quotas are unverified.
+- Decision: after purchasing/using the Google subscription, authenticate natively with `/login google-gemini-cli`, run `omp models find gemini`, and select the exact current Flash High successor if exposed. Native OMP routing retains structured tools, results, artifact paths, and cancellation. Use a tmux bridge only if the native logged-in provider omits the required model; terminal bridging is fragile and loses structured agent/tool integration.
+- Next action: user authentication is required and must be performed interactively. Then run a one-chapter trial before persistent role changes. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
