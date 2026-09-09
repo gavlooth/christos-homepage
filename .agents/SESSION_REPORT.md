@@ -135,3 +135,13 @@ Signature: openai-codex/gpt-6-astra
 - Next action: if user approves, configure a Gemini Flash High author and compare an unmodified Chapter3 rewrite against its source using the Chapter1/2 preservation and reader-review protocol. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Subscription versus API clarification for Gemini author trials
+
+- User question: can a Gemini subscription supply cheaper access to Gemini3.7 Flash High?
+- Answer: yes for manual interactive drafting if the model picker on the purchased account explicitly exposes that model; Google AI Plus at$4.99/month is25% of the$20 Pro/Plus subscriptions. At the user-supplied Flash High API rate ($0.75/$3.75 per million tokens), its monthly list price equals approximately1.11 million-input-plus-one-million-output API pairs; Google AI Pro/$19.99 and Claude/ChatGPT Pro/Plus $20 equal about4.44 such pairs.
+- Important unknown: Google’s public US plans page explicitly advertises Gemini3.1 Pro access (Plus “more,” Pro “expanded”) and relative quota2×/4×, but does not publish an entitlement or cap for the exact `gemini-3.7-flash-high` API/arena model. Do not purchase on the assumption that it is included or that its web-app quota matches API throughput. Confirm the exact model name and available long-context quota in the consumer model picker before relying on it.
+- Decision: subscription is economically attractive for a manually driven Chapter3 trial; API billing remains required for automated harness agents. Avoid using a consumer account through automation or credential sharing; it does not grant an API key/usage pool.
+- Next action: user can subscribe to Google AI Plus, check exact model availability, then run one interactive full-chapter prompt. Upgrade to Pro only if the Plus cap interrupts the pilot. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
