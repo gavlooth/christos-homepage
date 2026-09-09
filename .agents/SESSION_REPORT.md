@@ -173,3 +173,13 @@ Signature: openai-codex/gpt-6-astra
 - Impact: subsequent default `task` agents use the subscription-backed Gemini3.7 Flash High author model. No repository source or generated edition changed. The configuration can be reverted by restoring the prior task value if the Chapter3 trial fails. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Dedicated Gemini author agent replaces task-role override
+
+- User correctly identified the prior configuration error: `task` is OMP’s generic worker role and must remain the Muse contributor model.
+- Restored `modelRoles.task` to `openrouter/meta/muse-spark-1.3-contributor:high`. Added `modelRoles.author: google-antigravity/gemini-3.7-flash:high`.
+- Created user-level custom OMP agent `~/.omp/agent/agents/author.md`, with `model: "@author"`, high thinking, direct source/edit tooling, and technical-manuscript instructions: assess scores in context, preserve named invariants, avoid prose formulas and unsupported claims, and do not delegate.
+- OMP documentation confirms role-backed custom agents use arbitrary `modelRoles.<role>` aliases in agent frontmatter and are dispatched by agent name. Future chapter author tasks must specify `agent: "author"`; generic `task` calls continue using Muse.
+- Verification: read OMP custom-agent discovery/model-routing contract; `omp config get modelRoles` confirmed both the restored task selector and new author selector. No repository source or generated edition changed. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
