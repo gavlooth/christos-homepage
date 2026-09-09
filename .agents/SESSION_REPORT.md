@@ -164,3 +164,12 @@ Signature: openai-codex/gpt-6-astra
 - Verification: `omp models find gemini` completed successfully in1.86s and listed the new provider/model routes. No repository source or generated output changed. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Default author task role set to Gemini Flash High
+
+- User requested persistent author-role configuration. Global OMP `modelRoles` was updated through `omp config set`.
+- Change: only `modelRoles.task` moved from `openrouter/meta/muse-spark-1.3-contributor:high` to `google-antigravity/gemini-3.7-flash:high`. Advisor, smol, slow, designer, commit, tiny, unpack and default roles were preserved verbatim.
+- Verification: `omp config get modelRoles` returned the complete stored role record with the new task value. The initial dotted-key attempt (`modelRoles.task`) was rejected as an unknown setting and made no change; whole-record update is the supported setting syntax.
+- Impact: subsequent default `task` agents use the subscription-backed Gemini3.7 Flash High author model. No repository source or generated edition changed. The configuration can be reverted by restoring the prior task value if the Chapter3 trial fails. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
