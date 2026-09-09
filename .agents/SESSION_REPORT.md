@@ -155,3 +155,12 @@ Signature: openai-codex/gpt-6-astra
 - Next action: user authentication is required and must be performed interactively. Then run a one-chapter trial before persistent role changes. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — Gemini subscription route now available
+
+- User completed OMP Google login. Fresh `omp models find gemini` confirms a subscription/OAuth-backed `google-antigravity` provider with `gemini-3.7-flash` and `gemini-3.8-flash`, each 1M context and66K maximum output; both accept high-thinking selection. This resolves the earlier model-entitlement uncertainty.
+- Native author selector for the planned trial: `google-antigravity/gemini-3.7-flash:high`; use `google-antigravity/gemini-3.8-flash:high` only after an equivalent controlled quality check. The native Google API and OpenRouter routes remain separately available and billed as APIs.
+- Decision: use `google-antigravity`, not a tmux bridge, for the first Gemini Chapter3 author test. It retains structured tools and artifacts. Do not change persistent model roles until the trial is requested and accepted.
+- Verification: `omp models find gemini` completed successfully in1.86s and listed the new provider/model routes. No repository source or generated output changed. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
