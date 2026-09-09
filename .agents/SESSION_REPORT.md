@@ -124,3 +124,14 @@ Signature: openai-codex/gpt-6-astra
 - Next action: if user chooses Gemini, run one controlled Chapter3 author trial with a fixed prompt and independent technical review before reconfiguring the chapter workflow. Required `jj describe` follows immediately; no push requested.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-09 — API-pricing correction for prose-author choice
+
+- Correction: the preceding subscription comparison answered a different question. User supplied current Arena API-price data, which is the relevant economic comparison for an automated chapter-author agent.
+- User-supplied leaderboard: Claude Fable5 score1504 ($10/$50 per million input/output tokens,5,480 votes); Claude Opus4.6 High1500 ($5/$25,12,678); Gemini3.7 Flash High1496 ($0.75/$3.75, preliminary1,203); Gemini3.8 Flash High1495 ($0.75/$3.75, preliminary1,086); Gemini3 Pro1483 ($2/$12,6,236).
+- Decision: test Gemini3.7 Flash High, or3.8 Flash High when available, as the chapter author. At equal one-million input plus one-million output volumes it costs$4.50, versus$14 for Gemini3 Pro,$30 for Opus4.6 and$60 for Fable5: 6.67× cheaper than Opus4.6 and13.33× cheaper than Fable5. Gemini3 Pro is2.67× input /3.2× output more expensive than Flash High, while still less expensive than Opus.
+- Risk: Flash High ranks are preliminary and their confidence intervals are wider than Opus’s, so the leaderboard does not prove stable superiority or human-readable technical exposition. Run a controlled one-chapter trial with the exact existing author prompt, preservation checks, and independent review before choosing it for the remaining book. Use a stronger model only for disputed technical passages, not as the default author.
+- Constraint unchanged: subscription entitlement and API access are separate; harness integration needs a configured Gemini API/provider route.
+- Next action: if user approves, configure a Gemini Flash High author and compare an unmodified Chapter3 rewrite against its source using the Chapter1/2 preservation and reader-review protocol. Required `jj describe` follows immediately; no push requested.
+
+Signature: openai-codex/gpt-6-astra
