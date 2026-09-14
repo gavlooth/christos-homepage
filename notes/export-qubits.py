@@ -104,7 +104,9 @@ def main(slug=SLUG, required_phrases=('Assessment I','Assessment II','Assessment
             if isinstance(value,list): return [restore(item) for item in value]
             return value
         ast = restore(ast)
-        md = subprocess.check_output(['pandoc','-f','json','-t','markdown','--wrap=none'],input=json.dumps(ast).encode()).decode()
+        # Force grid tables: wide prose/math cells do not survive pandoc's
+        # simple/pipe table roundtrip (a newline inside inline math breaks the row).
+        md = subprocess.check_output(['pandoc','-f','json','-t','markdown-simple_tables-multiline_tables-pipe_tables','--wrap=none'],input=json.dumps(ast).encode()).decode()
         assert 'QBITEXPORTMATH' not in md
         roundtrip = json.loads(subprocess.check_output(['pandoc','-f','markdown','-t','json'],input=md.encode()))
         def count_nodes(value,kind):
