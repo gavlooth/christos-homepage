@@ -92,7 +92,7 @@ Otto Stern and Walther Gerlach observed this splitting in 1922. We will idealize
 
 Choose the magnet\'s measurement axis as the $z$ axis and label its two outputs $z+$ and $z-$. We model the internal degree of freedom responsible for this choice of output in $\mathbb C^2$. This leaves the atom\'s position and its other internal degrees of freedom outside the model.
 
-We begin with preparations represented by a single normalized vector, called pure states. Fix an orthonormal basis associated with the two $z$ outputs. The vector\'s complex coordinates in this basis are called probability amplitudes. Their relation to observed frequencies is the physical rule we need to specify.
+We start with the simplest kind of preparation, one described by a single vector of length one. Such a preparation is called a *pure state*. To write the vector down we need coordinates, so we fix a reference pair of directions --- one for each $z$ output --- called an orthonormal basis. The state then has two coordinates in that basis, both complex numbers, called *probability amplitudes*. What remains is to say how these amplitudes relate to what the detector actually counts.
 
 For complex conjugation and squared magnitude, we use the notation
 
@@ -102,7 +102,7 @@ with real $a$ and $b$, $i^2=-1$, and conjugate $z^*=a-ib$. The squared magnitude
 
 $$|z|^2 = z^* z = a^2 + b^2.$$
 
-The squared magnitude is nonnegative; normalization will make the squared magnitudes of the two coordinates sum to one. These are both requirements for assigning probabilities to two exhaustive outcomes.
+The squared magnitude is nonnegative, and normalization will make the two coordinates\' squared magnitudes sum to one. These are the two things any probabilities must satisfy here: no probability is negative, and --- since a measurement always gives one of just two results --- the two probabilities add up to one.
 
 Write the amplitudes for the two outputs as $\alpha$ and $\beta$. In Dirac notation the state vector is written as a ket:
 
@@ -119,7 +119,7 @@ $$|\alpha|^2+|\beta|^2=1.$$
 
 The Born rule assigns probability $|\alpha|^2$ to the first output and $|\beta|^2$ to the second. The state and the chosen measurement supply the amplitudes; the Born rule converts them to probabilities. Normalization makes these probabilities sum to one, as required for the ideal measurement in which every atom gives one of the two outcomes.
 
-A normalized column is a representative of a pure physical state. Two columns differing only by a common complex factor of magnitude one describe the same state, because this factor cancels from every Born probability.
+So a length-one column stands for a pure physical state. One caveat: multiplying the whole column by a complex number of size one --- an overall phase --- gives a different-looking column but the same physical state, because that factor cancels out of every Born probability. Overall phase carries no measurable information.
 
 The complex coordinates contain information beyond the two probabilities for this particular magnet. In a measurement along a different axis, contributions from the coordinates can cancel when forming the amplitude for a single output. This cancellation is an example of interference. We will see it explicitly after introducing the second measurement basis.
 
@@ -151,13 +151,13 @@ The product of a bra with a ket is the inner product $\langle\phi|\psi\rangle$. 
 
 $$\langle\psi|\psi\rangle = |\alpha|^2 + |\beta|^2 = 1.$$
 
-With its standard inner product, this finite-dimensional complex vector space is a Hilbert space; completeness is automatic in finite dimension. The state vectors use its linear structure, and the measurement probabilities use its inner product.
+A complex vector space carrying an inner product like this is called a Hilbert space; here it is just $\mathbb C^2$, so none of the subtleties of infinite dimensions arise. Two of its features do all the work from here on: states are vectors (we add and scale them), and probabilities come from inner products.
 
 ### Sequential measurements along perpendicular axes
 
 An ideal Stern--Gerlach filter separates the two outputs of a spin-component measurement and blocks one of them. Keeping only atoms from the other output is called postselection.
 
-We assume that each retained atom has the basis state associated with its output. This is the state-update rule for an ideal projective measurement with one-dimensional output subspaces. A repeated measurement along the same axis therefore gives the same outcome with certainty. Throughout the sequence below, we also assume that the spin state does not evolve between magnets.
+We assume that each atom the filter keeps is left in the basis state matching its output. In other words, the measurement does not just report a result; it also resets the atom to the state for that result. (This is the idealized rule for a clean measurement; the general version comes later.) One consequence: measuring the same axis a second time returns the same output every time. We also assume the spin does not change on its own between magnets.
 
 Now rotate the measurement axis from $z$ to the perpendicular $x$ axis. The new magnet measures a different spin component. Label its outputs $x+$ and $x-$. In the two-state spin model, we choose their basis vectors as
 
@@ -178,7 +178,7 @@ $$\langle x+|x-\rangle
 
 The vanishing inner product has a direct measurement meaning. For an atom prepared in $|x-\rangle$, the two $z$-basis terms contribute equal and opposite amplitudes to the same $x+$ outcome. They cancel, so that outcome has probability zero. Such cancellation is destructive interference.
 
-The two terms retain the relative sign fixed by the preparation, with no record distinguishing the alternatives. They form a coherent superposition. We add their contributions to a single outcome\'s amplitude before taking its squared magnitude. By contrast, distinct recorded outcomes are mutually exclusive, so their probabilities add. Adding the two amplitudes for the separate outputs of a $z$ measurement would not give the probability of detecting an atom in either output.
+Because nothing records which of the two $z$ terms an atom \"took,\" the terms stay linked, keeping the relative sign fixed by the preparation. Together they form a *coherent superposition*. When both terms feed the same outcome, we add their amplitudes first and square the total --- and that is where interference comes from. This is different from two *separate* outcomes, which are competing alternatives: for those we add probabilities, not amplitudes. Adding the amplitudes of the two distinct $z$ outputs would give a meaningless number, not the chance of detecting the atom in one output or the other.
 
 In step 1, pass a beam of atoms through a $z$-oriented magnet. Block the $z-$ output and retain the $z+$ output. Under the ideal measurement assumption, each survivor is prepared in
 
@@ -229,7 +229,7 @@ $$\bigl|\langle a|e^{i\gamma}\psi\rangle\bigr|^2
 =
 \bigl|\langle a|\psi\rangle\bigr|^2.$$
 
-Thus $|\psi\rangle$ and $e^{i\gamma}|\psi\rangle$ represent the same pure state. The common factor is an *overall phase*. Mathematically, a ray consists of all nonzero complex scalar multiples of a nonzero vector. Its normalized representatives differ only by an overall phase.
+So $|\psi\rangle$ and $e^{i\gamma}|\psi\rangle$ are the same pure state, and this shared factor is the *overall phase*. The physical state is really the whole family of vectors that differ only by such a factor --- this family is called a *ray* --- and any length-one member of it represents the state equally well.
 
 Changing one amplitude\'s phase while holding the other fixed can change a measurement probability. With the basis vectors fixed, the phase difference between two nonzero amplitudes is their *relative phase*. The previously defined states provide an example:
 
@@ -253,7 +253,7 @@ Acting on the input ket, this projector retains its component along the selected
 
 $$P(j) = \langle\psi|\Pi_j|\psi\rangle.$$
 
-These orthogonal projectors are self-adjoint and idempotent. Completeness of the outcome basis gives
+Each such projector is self-adjoint (equal to its own conjugate transpose) and idempotent --- applying it twice does nothing beyond applying it once, $\Pi_j^2=\Pi_j$. Because the outcomes form a complete set, the projectors add up to the identity:
 
 $$\sum_j \Pi_j = I.$$
 
@@ -319,7 +319,7 @@ The two magnet orientations do not admit a common eigenbasis. Their Pauli operat
 
 $$[\sigma_z,\sigma_x] \equiv \sigma_z\sigma_x - \sigma_x\sigma_z \ne 0.$$
 
-The commutator $[A,B]$ compares the compositions of $A$ and $B$, with $B$ applied before $A$ in the first product. For Hermitian operators, a common orthonormal eigenbasis exists exactly when they commute. For the particular pair $\sigma_z$ and $\sigma_x$, the displayed eigenstates show more: there is no common eigenvector.
+The bracket $[A,B]$ is the *commutator*: it measures whether the order of applying the two operators matters (in the first product, $B$ acts before $A$). When it is zero the operators commute. A standard result says two Hermitian operators commute exactly when they share one orthonormal eigenbasis. Here $\sigma_z$ and $\sigma_x$ do not commute --- and the eigenstates written above show something stronger: the two share no eigenvector at all.
 
 Consequently, no ket predicts both a certain $z$ outcome and a certain $x$ outcome. The intermediate filter in the three-magnet sequence replaces one such certainty with the other. A measurement includes this conditional state change; composing observable matrices alone does not describe the filtering procedure. Neither noncommutation nor that sequence by itself rules out every model with pre-existing values. The sequence rules out a readout that leaves the original certainty undisturbed.
 
@@ -490,7 +490,7 @@ Read the first digit as the label for $A$ and the second as the label for $B$. F
 
 A normalized pure state is a linear combination of these four vectors. Each coefficient is a complex amplitude; its squared magnitude is the probability of the corresponding joint reading, and these four probabilities sum to one. The amplitudes also carry relative phases, which affect measurements in other bases. Chapter 1 already exhibited this effect: changing the sign between the $z+$ and $z-$ contributions changed the transverse-magnet statistics.
 
-To construct the joint state space, pair each basis vector of one atom with each basis vector of the other and extend bilinearly. This construction is the tensor product. For instance, preparing $A$ in $\alpha|0\rangle+\beta|1\rangle$ and $B$ in $|0\rangle$ gives
+To build the joint state space, pair each basis vector of one atom with each basis vector of the other, and extend the rule so that it stays linear in each atom separately --- a property called bilinearity. The result is the *tensor product*. For instance, preparing $A$ in $\alpha|0\rangle+\beta|1\rangle$ and $B$ in $|0\rangle$ gives
 
 $$(\alpha|0\rangle+\beta|1\rangle)\otimes|0\rangle
 =\alpha|00\rangle+\beta|10\rangle.$$
@@ -554,13 +554,13 @@ Since the first product is nonzero, both $a$ and $c$ must be nonzero. The condit
 
 A pure joint state is entangled when it has no product factorization. The Bell state is therefore entangled: its joint amplitudes cannot be supplied by two separate pure-state vectors. This statement classifies the prepared state and makes no claim about its history; an earlier interaction may have created the entanglement. Whether one laboratory can influence the other\'s measurement statistics is a separate question, answered below using local state descriptions.
 
-For larger coefficient arrays, singular-value decomposition provides a systematic factorization test. Applied to the amplitude array of a normalized pure state of two finite-dimensional systems, it gives the Schmidt decomposition:
+The hand check above works for two atoms; for larger systems we want a test that does not depend on solving equations by hand. Linear algebra supplies one. Every matrix has a standard factored form, its *singular-value decomposition* (SVD); applied to the array of joint amplitudes of a pure state, it yields the *Schmidt decomposition*:
 
 $$|\Psi\rangle_{AB}=\sum_{k=1}^{r}s_k|u_k\rangle_A|v_k\rangle_B,$$
 
-The singular values become the Schmidt coefficients $s_k$. They are nonnegative and satisfy $\sum_k s_k^2=1$ because the joint vector is normalized. The corresponding local vectors $\{|u_k\rangle_A\}$ and $\{|v_k\rangle_B\}$ are orthonormal within each system, so the displayed sum pairs orthogonal alternatives on the two sides.
+The nonnegative numbers $s_k$ are the *Schmidt coefficients* (the singular values); they satisfy $\sum_k s_k^2=1$ because the joint vector has length one. The accompanying local vectors $\{|u_k\rangle_A\}$ and $\{|v_k\rangle_B\}$ are orthonormal within each atom, so the sum pairs one clean alternative on the left with one on the right.
 
-The number $r$ of nonzero coefficients is the Schmidt rank. With rank 1, the sum contains a single product vector. Rank greater than 1 means that no such factorization exists, so the pure state is entangled.
+The single number that settles entanglement is the count of nonzero coefficients, called the *Schmidt rank* $r$. Rank 1 means the sum collapses to one product vector --- the state factors. Rank 2 or more means no factorization exists, so the state is entangled.
 
 The Bell vector is already in Schmidt form: $r=2$, with equal coefficients $s_1=s_2=1/\sqrt2$.
 
@@ -681,12 +681,16 @@ The superscript $(k)$ labels a component of the mixture. Each factor in a tensor
 
 The Bell pair and $\rho_{\mathrm{cc}}$ have the same joint probabilities in the $0/1$ basis. If both atoms are measured in the transverse plus/minus basis introduced earlier, the Bell pair still gives matching answers, whereas the mixture gives all four pairs of answers equally often. This distinguishes these two candidate states; matching outcomes in the original basis alone cannot establish entanglement.
 
-Bell tests compare correlations across several independently chosen local measurement settings. A local hidden-variable model attributes the correlations to shared random information distributed before those choices. Conditional on that information, each atom\'s outcome probabilities depend only on its own measurement setting, and the joint probabilities factor. The shared information is assumed statistically independent of the setting choices. Bell inequalities bound correlations allowed by such models [\[R042\]](#ref-R042 "[R042] A. Einstein, B. Podolsky, and N. Rosen, “Can
+Bell tests compare correlations across several independently chosen local measurement settings. A local hidden-variable model attributes the correlations to shared random information distributed before those choices. Conditional on that information, each atom\'s outcome probabilities depend only on its own measurement setting, and the joint probabilities factor. The shared information is assumed statistically independent of the setting choices.
+
+Bell inequalities bound correlations allowed by such models [\[R042\]](#ref-R042 "[R042] A. Einstein, B. Podolsky, and N. Rosen, “Can
 Quantum-Mechanical Description of Physical Reality Be Considered
 Complete?”, Physical Review 47, 777–780 (1935)."); [\[R043\]](#ref-R043 "[R043] J. S. Bell, “On the Einstein Podolsky Rosen Paradox,” Physics
 Physique Fizika 1, 195–200 (1964). DOI: 10.1103/PhysicsPhysiqueFizika.1.195 ."); [\[R044\]](#ref-R044 "[R044] R. F. Werner, “Quantum states with Einstein-Podolsky-Rosen
 correlations admitting a hidden-variable model,” Physical Review A 40,
-4277–4281 (1989). DOI: 10.1103/PhysRevA.40.4277 ."). \[Theory\] A violation excludes these local models under the test\'s assumptions and certifies entanglement within quantum theory. Failure to violate one inequality does not establish separability. Some entangled mixed states even admit local hidden-variable models for every choice of local projective measurement. Entanglement therefore need not yield Bell nonlocality in that measurement scenario [\[R044\]](#ref-R044 "[R044] R. F. Werner, “Quantum states with Einstein-Podolsky-Rosen
+4277–4281 (1989). DOI: 10.1103/PhysRevA.40.4277 ."). \[Theory\] A violation excludes these local models under the test\'s assumptions and certifies entanglement within quantum theory.
+
+Failure to violate one inequality does not establish separability. Some entangled mixed states even admit local hidden-variable models for every choice of local projective measurement. Entanglement therefore need not yield Bell nonlocality in that measurement scenario [\[R044\]](#ref-R044 "[R044] R. F. Werner, “Quantum states with Einstein-Podolsky-Rosen
 correlations admitting a hidden-variable model,” Physical Review A 40,
 4277–4281 (1989). DOI: 10.1103/PhysRevA.40.4277 .").
 
@@ -980,7 +984,7 @@ e^{-i\phi/2}&0\\
 0&e^{i\phi/2}
 \end{pmatrix}.$$
 
-The appearance of the half-angle $\vartheta/2$ in these matrices is characteristic of two-component spin-$1/2$ representations and the double cover of spatial rotations: when a control field rotates the physical Bloch vector through an angle $\vartheta$, the unitary operator acts on the state vector through $\vartheta/2$. A full $2\pi$ rotation of the Bloch vector multiplies the ket by $-1$, changing its sign but leaving its ray in projective Hilbert space---and thus all measurement probabilities---unchanged; only a $4\pi$ rotation restores the ket itself. Applying the first pulse gives
+Why the half-angle $\vartheta/2$? Rotating the physical Bloch vector by an angle $\vartheta$ turns the state vector by only half as much, $\vartheta/2$ --- the two-to-one relation between spin rotations and spatial rotations, known as the double cover. One striking consequence: a full $2\pi$ turn of the Bloch vector does not bring the ket back but multiplies it by $-1$. That sign is an overall phase (Chapter 1), invisible to every measurement, so the physical state is unchanged; only a $4\pi$ turn restores the ket itself. Applying the first pulse gives
 
 $$R_y(\pi/2)|0\rangle
 =\frac{|0\rangle+|1\rangle}{\sqrt{2}}.$$
@@ -1113,7 +1117,7 @@ A box labeled $H$ records only that target. Laboratories synthesize $H$ with mic
 
 ### Time-dependent pulse implementation
 
-A control Hamiltonian connects the target gate to its time-dependent implementation. In laboratory hardware, transitions are driven by applying an oscillating field. When transformed into a reference frame rotating at the drive frequency, and under the rotating-wave approximation where counter-rotating terms average to zero, a resonant drive produces the effective Hamiltonian
+A control Hamiltonian connects the target gate to its time-dependent implementation. In hardware, a transition is driven by an oscillating field. Two standard simplifications make its effect easy to write down. First, view the dynamics in a frame that rotates with the drive, which factors out the fast oscillation. Second, drop the leftover fast-oscillating (counter-rotating) terms, which average to nearly zero --- the rotating-wave approximation. On resonance, what remains is the constant effective Hamiltonian
 
 $$\widehat H_{\mathrm d}
 =\frac{\hbar\Omega}{2}
@@ -15404,44 +15408,6 @@ Obstacles differ along two independent axes, and the ranking below keeps them se
 
 **Reach leverage**, scored from 1 for a localized cost to 5 for a failure that blocks the central claim, records how many later requirements fail if the obstacle stands.
 
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| Rank        | Obstacle                                         | Evidence proximity                                                                      | Leverage    | Basis for ranking                                                                |
-+=============+==================================================+=========================================================================================+=============+==================================================================================+
-| 1           | Generate the required high-order terms           | strong theory; architecture-specific implementation is a proposal                       | 5           | Without the stabilizer/plaquette algebra, there is no target phase               |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 2           | Retain a usable topological gap                  | rigorous stability theory starts from an already gapped target; defect value unmeasured | 5           | Every noise, preparation, and thermal inequality is paid from this one scale     |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 3           | Scale yield and calibration                      | direct component evidence; no phase-scale array                                         | 5           | Per-site and per-link imperfections compound with system size                    |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 4           | Place the right defects at the right coordinates | direct fabrication evidence                                                             | 5           | Position controls coupling, graph, cluster spectrum, and disorder                |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 5           | Make interactions coherent and strong enough     | direct pair-level evidence                                                              | 5           | $J \lesssim \hbar\Gamma$ kills coherent Hamiltonian engineering                  |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 6           | Control disorder                                 | direct evidence for inhomogeneity sources                                               | 4           | Disorder perturbs denominators and effective terms                               |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 7           | Realize the right interaction graph              | microscopic interactions known; graph conversion is a proposal                          | 4           | Extra long-range and angular couplings are Hamiltonian terms                     |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 8           | Survive finite temperature                       | strong theory; thermalization rates platform-dependent                                  | 4--5        | Existential for passive memory, but can be deferred for a proof-of-principle     |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 9           | Prepare the phase before it decoheres            | strong adiabatic theory; no integrated demonstration                                    | 4           | A small minimum gap can make a formally valid Hamiltonian unreachable            |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-| 10          | Initialize, address, drive, and read the array   | direct small-register evidence; array extrapolation uncertain                           | 3--4        | Severe, but global protocols and improved interfaces offer more workaround space |
-+-------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+-------------+----------------------------------------------------------------------------------+
-
-**Detailed treatment: two criteria for ranking obstacles**
-
-##### Two criteria for ranking obstacles {#two-criteria-for-ranking-obstacles-expanded}
-
-The two axes from the main text work as follows. Evidence proximity distinguishes a measurement in a relevant array from a component demonstration, an idealized-model derivation, or a proposal without direct demonstration. Reach leverage distinguishes a costly workaround from the failure of an inequality on which the rest of the proposal depends.
-
-A low rank marks an obstacle whose solution would matter only after a higher-ranked obstacle is cleared. Control and readout sit last for that reason: they admit partial workarounds, while a missing plaquette algebra leaves no phase to control. The ordering is a decision order for experiments, not a measure of difficulty.
-
-**Ranking of ten obstacles**
-
-##### Ranking of ten obstacles
-
-The ranking below assesses only the defect-cluster route to an analog, emergent, gapped topological Hamiltonian: a phase produced by a continuously acting many-body Hamiltonian and diagnosed by its excitations, not defect qubits in general. "Direct" marks evidence for the relevant ingredient in isolation; no cited experiment integrates all ingredients in one array.
-
 +--------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+------------------+---------------------------------------------------------------------------------------------------------+
 | Rank         | Obstacle                                         | Evidence proximity                                                                      | Leverage         | Basis for ranking                                                                                       |
 +=============:+==================================================+=========================================================================================+:================:+=========================================================================================================+
@@ -15465,6 +15431,20 @@ The ranking below assesses only the defect-cluster route to an analog, emergent,
 +--------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+------------------+---------------------------------------------------------------------------------------------------------+
 | 10           | Initialize, address, drive, and read the array   | direct small-register evidence; array extrapolation uncertain                           | 3--4             | Severe, but global protocols and improved interfaces offer more workaround space than missing terms do. |
 +--------------+--------------------------------------------------+-----------------------------------------------------------------------------------------+------------------+---------------------------------------------------------------------------------------------------------+
+
+**Detailed treatment: two criteria for ranking obstacles**
+
+##### Two criteria for ranking obstacles {#two-criteria-for-ranking-obstacles-expanded}
+
+The two axes from the main text work as follows. Evidence proximity distinguishes a measurement in a relevant array from a component demonstration, an idealized-model derivation, or a proposal without direct demonstration. Reach leverage distinguishes a costly workaround from the failure of an inequality on which the rest of the proposal depends.
+
+A low rank marks an obstacle whose solution would matter only after a higher-ranked obstacle is cleared. Control and readout sit last for that reason: they admit partial workarounds, while a missing plaquette algebra leaves no phase to control. The ordering is a decision order for experiments, not a measure of difficulty.
+
+**Ranking of ten obstacles**
+
+##### Ranking of ten obstacles
+
+This ranking assesses only the defect-cluster route to an analog, emergent, gapped topological Hamiltonian: a phase produced by a continuously acting many-body Hamiltonian and diagnosed by its excitations, not defect qubits in general. "Direct" marks evidence for the relevant ingredient in isolation; no cited experiment integrates all ingredients in one array.
 
 Ranks 3--7 are close. A host material with mediator-enhanced coupling could lower the ranking of interaction strength while introducing additional control or loss problems.
 
@@ -16426,11 +16406,7 @@ The evidence available through 2026 is asymmetric.
   codes,” New Journal of Physics 11, 043029 (2009). DOI: 10.1088/1367-2630/11/4/043029 ;
   arXiv: 0810.1983 .").
 
-- \[Proposal\] Mapping a particular manufacturable defect-cluster Hamiltonian to a clean non-Abelian string-net model remains a proposal.
-
 - \[Numerics\] Small-model numerical calculations can validate a specified effective Hamiltonian, but they cannot determine fabrication distributions or decoherence parameters that have not been measured.
-
-- \[Speculation\] Extrapolating present defect components to a scalable, passively protected Fibonacci-like material is scientifically coherent but remains unsupported as an integrated hardware claim.
 
 The resulting negative assessment is not that the proposal is impossible. It is that the central conjunction of requirements has no demonstrated margin. The strongest experimental results establish lower-level components of the dependency structure, whereas the proposed topologically protected phase depends on the complete structure.
 
@@ -18185,8 +18161,6 @@ The minimum theoretical success criteria are $R_4>1$, $\epsilon_{\rm spec}<0.1$,
 
 The project should stop or be redesigned if any of the following conditions occurs:
 
-- no isolated cluster doublet survives realistic hyperfine and geometric disorder;
-
 - suppressing leakage requires $u/(\Delta_C/h)$ to be so small that $K_4$ falls below the relevant linewidths;
 
 - lower-weight noncommuting terms remain larger than $K_4$ after all physically allowed calibration;
@@ -18494,30 +18468,6 @@ topo}/h=1\,\mathrm{MHz}$ implies $T<4.8\,\mu\mathrm K$, while $\Delta_{\rm topo}
 
 ### Confidence Assessment
 
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Proposition                                                | Confidence           | Explanation                                                                                                                                                                   |
-+============================================================+======================+===============================================================================================================================================================================+
-| Defect clusters can form encoded two-dimensional subspaces | Medium               | Few-spin encoding is established theory, and the ideal NV triangle is solvable. However, the specified symmetric cluster array has not been demonstrated.                     |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Dense interacting defect arrays are manufacturable         | Low                  | Placement, conversion, charge, orientation, and coherent yield have not been combined at the required repeated nanometre geometry.                                            |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Effective many-body interactions can be engineered         | Low                  | Gadget theory permits such interactions, but in this platform the desired term is suppressed by perturbative energy denominators.                                             |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Toric-code-like phases are plausible                       | Medium               | These phases require simpler Abelian stabilizer data than Fibonacci order. A passive defect realization has not been demonstrated.                                            |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Non-Abelian phases are plausible                           | Low                  | No derived defect Hamiltonian, gap, or phase diagram supports such a phase here.                                                                                              |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Doubled-Fibonacci phase is physically realistic            | Low                  | The ideal target is established, but no supported microscopic defect derivation produces its branching and recoupling projectors.                                             |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Passive topological protection improves coherence          | Low                  | The conditional theory is valid, but this architecture has neither a demonstrated passive topological gap nor evidence that thermal and leakage errors remain below that gap. |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Diamond is superior to competing platforms                 | Low                  | Diamond leads in several single-defect capabilities but not in every system-level metric.                                                                                     |
-+------------------------------------------------------------+----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-**Detailed treatment: confidence assessment**
-
-#### Confidence assessment {#confidence-assessment-expanded}
-
 +------------------------------------------------------------+----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Proposition                                                | Confidence           | Explanation                                                                                                                                                                                                                  |
 +============================================================+======================+==============================================================================================================================================================================================================================+
@@ -18547,6 +18497,10 @@ topo}/h=1\,\mathrm{MHz}$ implies $T<4.8\,\mu\mathrm K$, while $\Delta_{\rm topo}
 +------------------------------------------------------------+----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Diamond is superior to competing platforms                 | Low                  | Diamond leads in several single-defect capabilities but not in every system-level metric. Fabrication and coupling requirements may favor another host or a hybrid platform.                                                 |
 +------------------------------------------------------------+----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+**Detailed treatment: confidence assessment**
+
+#### Confidence assessment {#confidence-assessment-expanded}
 
 The following five classifications specify the evidential status of each claim:
 
