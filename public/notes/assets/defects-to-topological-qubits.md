@@ -88,7 +88,7 @@ Another important concept is **entanglement**. When two particles become entangl
 
 ### Measurement and Collapse {#foundations-measurement}
 
-A **measurement** in quantum mechanics gives one result out of a fixed set of possible results, such as one of the two spots in the Stern--Gerlach experiment described below. The state does not say which result a single run will give; it gives the probability of each result. After an ideal measurement, the state is updated to the one that matches the result, so repeating the same measurement straight away gives the same result again. This update is called *collapse*. The theory uses it reliably to predict what we will see, but physicists still disagree about what it means physically: whether something in the system itself changes, or only our description of it. This open question is called the *measurement problem*.
+A **measurement** in quantum mechanics gives one result out of a fixed set of possible results, such as one of the two spots in the Stern--Gerlach experiment described below. The state does not say which result a single run will give; it gives the probability of each result. In the idealized model of measurement, the state is then updated to the one that matches the result, so repeating the same measurement straight away gives the same result again. This update is called *collapse*.
 
 ------------------------------------------------------------------------
 

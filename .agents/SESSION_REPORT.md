@@ -276,5 +276,6 @@ Signature: openai-codex/gpt-6-astra
 - Coverage: 100% of diff hunks; checked by a subagent audit plus grep of the built outputs.
 - Commands: npm run notes:export:qubits (768-page PDF), npm run build; reran both after the Bell reduced-state fix. Verified the merged passages via grep of source+public HTML and pdftotext of both PDFs (identical sha256 568bc16d…, matching qubits-exports.json); "appears as a mixture" absent everywhere.
 - Follow-up (user review): rewrote Foundations "Superposition" and "Measurement and Collapse" paragraphs in plain language — removed "multiple states at once" and vague collapse/observer wording; kept formulas out of the intro (user: heavy math early "clamps" the document). Re-exported; verified in HTML + both PDFs.
+- Follow-up 2: measurement paragraph now ends at naming collapse; repeatability qualified as the idealized model; measurement-problem debate deferred to later chapters. Re-exported; verified HTML + both PDFs.
 - Open: the expanded prose repeats nearby text in places, and some of it is loose (e.g. "rules inspired by Fibonacci sequences"). It needs an editorial pass. defects.declamped.md and notes/pages/defects.md are still untracked scratch inputs.
 Signature: claude-opus (omp)
