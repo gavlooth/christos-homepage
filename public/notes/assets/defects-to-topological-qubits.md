@@ -80,7 +80,7 @@ Quantum mechanics is a fundamental theory in physics that describes the behavior
 
 ### Superposition {#foundations-superposition}
 
-One key idea in quantum mechanics is **superposition**. This means that a quantum system can exist in multiple states at once until it is measured. For example, an electron can be in a combination of different energy levels simultaneously. Only when we observe or measure the system does it "collapse" into a specific state. This superposition principle is fundamental to quantum behavior and distinguishes it from classical physics.
+One key idea in quantum mechanics is **superposition**. A quantum state can be a combination of simpler states, such as the states belonging to the possible results of a measurement. The combination is itself one well-defined state, not several ordinary states present at once. It tells us how likely each result is when we measure. For example, an electron's state can combine two energy levels; measuring its energy gives one level or the other, with probabilities set by the combination. Because the parts of a combination can reinforce or cancel one another, superposition behaves differently from ordinary uncertainty about a hidden value.
 
 ### Entanglement {#foundations-entanglement}
 
@@ -88,7 +88,7 @@ Another important concept is **entanglement**. When two particles become entangl
 
 ### Measurement and Collapse {#foundations-measurement}
 
-The act of **measurement** in quantum mechanics is special. When we measure a quantum system, the superposition of states "collapses" into a single, definite state. This process is not fully understood and is a subject of ongoing research and interpretation. The measurement problem raises questions about how and why this collapse occurs, and what role the observer plays in the process.
+A **measurement** in quantum mechanics gives one result out of a fixed set of possible results, such as one of the two spots in the Stern--Gerlach experiment described below. The state does not say which result a single run will give; it gives the probability of each result. After an ideal measurement, the state is updated to the one that matches the result, so repeating the same measurement straight away gives the same result again. This update is called *collapse*. The theory uses it reliably to predict what we will see, but physicists still disagree about what it means physically: whether something in the system itself changes, or only our description of it. This open question is called the *measurement problem*.
 
 ------------------------------------------------------------------------
 
