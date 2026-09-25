@@ -268,3 +268,12 @@ Signature: openai-codex/gpt-6-astra
 - Unresolved: literature citations were not independently verified; historical detector locations and exact pre-audit corpus revision remain unestablished. No implementation or deployment requested. Required `jj describe` follows immediately; no push.
 
 Signature: openai-codex/gpt-6-astra
+
+## 2026-09-25 — Merge defects.declamped.md into qubits reader
+- Objective: apply declamped (expanded-prose) edits to the canonical source notes/pages/defects-to-topological-qubits.html; regenerate exports.
+- Changes: 11 declamped hunks merged: Foundations intro, Ch1 orientation list, pure-state list, interference, complex coefficients, postselection/Hermitian/Pauli/device bullets, joint-vector question, Bell-state density-operator block, Fibonacci string-net list. Exports (md/pdf/manifest) and public/ rebuilt.
+- Deliberate deviations: Bell "why phase is lost" text now says only the one-qubit reduced state is mixed (joint state stays pure); removed "clamped" wording; entanglement rewritten as correlations with no signalling (the source said "instantly influences"); Bell cross-term sentence corrected to e^{-iθ}|00⟩⟨11| and e^{iθ}|11⟩⟨00|; original Bell equation kept.
+- Coverage: 100% of diff hunks; checked by a subagent audit plus grep of the built outputs.
+- Commands: npm run notes:export:qubits (768-page PDF), npm run build; reran both after the Bell reduced-state fix. Verified the merged passages via grep of source+public HTML and pdftotext of both PDFs (identical sha256 568bc16d…, matching qubits-exports.json); "appears as a mixture" absent everywhere.
+- Open: the expanded prose repeats nearby text in places, and some of it is loose (e.g. "rules inspired by Fibonacci sequences"). It needs an editorial pass. defects.declamped.md and notes/pages/defects.md are still untracked scratch inputs.
+Signature: claude-opus (omp)

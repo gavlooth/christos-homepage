@@ -74,6 +74,26 @@ The quantity $(J_{\mathrm{eff}}/h)T_2$ counts interaction-frequency cycles durin
 
 ## Part I --- Foundations of quantum mechanics
 
+### Foundations of Quantum Mechanics {#foundations-overview}
+
+Quantum mechanics is a fundamental theory in physics that describes the behavior of particles at very small scales, such as atoms and subatomic particles. To understand what makes quantum systems behave differently from classical ones, it helps to explore some core concepts step by step.
+
+### Superposition {#foundations-superposition}
+
+One key idea in quantum mechanics is **superposition**. This means that a quantum system can exist in multiple states at once until it is measured. For example, an electron can be in a combination of different energy levels simultaneously. Only when we observe or measure the system does it "collapse" into a specific state. This superposition principle is fundamental to quantum behavior and distinguishes it from classical physics.
+
+### Entanglement {#foundations-entanglement}
+
+Another important concept is **entanglement**. When two particles become entangled, their joint state cannot be written as a separate state for each particle, and their measurement outcomes are correlated in ways no independent description of the particles can reproduce, no matter how far apart they are. These correlations have been experimentally confirmed, although they cannot be used to send signals. Entanglement shows that the properties of particles are not independent but can be interconnected in ways that defy classical intuition.
+
+### Measurement and Collapse {#foundations-measurement}
+
+The act of **measurement** in quantum mechanics is special. When we measure a quantum system, the superposition of states "collapses" into a single, definite state. This process is not fully understood and is a subject of ongoing research and interpretation. The measurement problem raises questions about how and why this collapse occurs, and what role the observer plays in the process.
+
+------------------------------------------------------------------------
+
+By breaking down these core concepts---superposition, entanglement, and measurement---we can better understand the foundational principles of quantum mechanics. Each concept builds on the previous ones, helping to explain why quantum systems behave in ways that defy classical intuition.
+
 A beam of atoms can produce two separate spots on a detector. This part develops the quantum description needed to predict that result and understand experiments with individual atoms.
 
 **In the arc:** Toolkit, before the arc: the quantum mechanics every later part relies on.
@@ -86,13 +106,33 @@ In the Stern--Gerlach experiment, a beam of silver atoms travels through a magne
 
 Otto Stern and Walther Gerlach observed this splitting in 1922. We will idealize it as a measurement with two possible outcomes, each identified by the branch an atom follows. Repeating the experiment with the same preparation gives a fraction of atoms in each branch. The quantum model predicts the probabilities governing those fractions.
 
-**Assumes:** complex numbers, vectors, and matrices; no prior quantum mechanics. **Introduces:** the state ket, the Born rule, superposition, overall versus relative phase, projective measurement, observables, and unitary evolution. **Used later in:** every chapter --- this is the working vocabulary for a single qubit, developed further in Chapter 3.
+**Assumes:** familiarity with basic mathematical concepts such as complex numbers, vectors, and matrices; no prior knowledge of quantum mechanics is required.\
+**Introduces:** several fundamental quantum concepts, explained step-by-step:
+
+- The *state ket* (denoted as $|\psi\rangle$) represents the quantum state of a system.
+- The *Born rule* provides the link between this state and the probabilities of measurement outcomes.
+- *Superposition* describes how a quantum state can be a combination of multiple basic states.
+- *Overall phase* is a global factor in the state that does not affect measurement results, while *relative phase* differences between components influence interference effects.
+- *Projective measurement* is the process of obtaining a specific outcome from a measurement, collapsing the state accordingly.
+- *Observables* are physical quantities that can be measured, represented mathematically by operators.
+- *Unitary evolution* describes how quantum states change over time in a deterministic and reversible way, preserving probabilities.
+
+**Used later in:** every chapter --- this forms the core vocabulary for understanding a single qubit, which will be developed further in Chapter 3.
 
 ### Complex amplitudes and interference
 
 Choose the magnet\'s measurement axis as the $z$ axis and label its two outputs $z+$ and $z-$. We model the internal degree of freedom responsible for this choice of output in $\mathbb C^2$. This leaves the atom\'s position and its other internal degrees of freedom outside the model.
 
-We start with the simplest kind of preparation, one described by a single vector of length one. Such a preparation is called a *pure state*. To write the vector down we need coordinates, so we fix a reference pair of directions --- one for each $z$ output --- called an orthonormal basis. The state then has two coordinates in that basis, both complex numbers, called *probability amplitudes*. What remains is to say how these amplitudes relate to what the detector actually counts.
+We start with the simplest kind of preparation, one described by a single vector of length one. Such a preparation is called a *pure state*. To understand what this means, let\'s break down the key ideas involved:
+
+- **Pure state**: A state that can be fully described by a single vector in a mathematical space.
+- **Vector**: An object with both magnitude and direction, which in this context represents the state of a quantum system.
+- **Coordinates of the vector**: To specify a vector, we choose a reference frame or basis, which is a set of directions in the space. For simplicity, we often pick a pair of orthogonal directions, called an *orthonormal basis*.
+- **Basis**: A set of vectors that provides a reference frame for describing any state in the space. In our case, the basis consists of two directions, often labeled as the $z$-basis.
+- **Coordinates in the basis**: Once the basis is fixed, the vector representing the pure state can be expressed as two numbers, called *coordinates* or *components*. These are complex numbers, meaning they have both a real part and an imaginary part.
+- **Probability amplitudes**: The two complex numbers (coordinates) are called *probability amplitudes*. They encode the likelihood of different measurement outcomes when we observe the system.
+
+Now, how do these amplitudes relate to what the detector actually counts? The key is that the probability of a particular measurement outcome depends on the magnitude (or size) of these amplitudes, specifically their squared magnitudes. This connection between the amplitudes and measurement outcomes is fundamental in quantum mechanics.
 
 For complex conjugation and squared magnitude, we use the notation
 
@@ -121,7 +161,11 @@ The Born rule assigns probability $|\alpha|^2$ to the first output and $|\beta|^
 
 So a length-one column stands for a pure physical state. One caveat: multiplying the whole column by a complex number of size one --- an overall phase --- gives a different-looking column but the same physical state, because that factor cancels out of every Born probability. Overall phase carries no measurable information.
 
-The complex coordinates contain information beyond the two probabilities for this particular magnet. In a measurement along a different axis, contributions from the coordinates can cancel when forming the amplitude for a single output. This cancellation is an example of interference. We will see it explicitly after introducing the second measurement basis.
+The complex coordinates contain information beyond just the two probabilities for this particular magnet. To understand this, consider what happens when we measure along a different axis. In this case, the contributions from the complex coordinates---these are the complex amplitudes---combine in a way that can sometimes cancel each other out.
+
+This cancellation occurs because the total amplitude for a specific measurement outcome is formed by adding together these complex amplitudes from different possible states. When these contributions have opposite phases, they can interfere destructively, leading to a reduction or complete cancellation of the total amplitude.
+
+This phenomenon, where contributions from different complex amplitudes combine and sometimes cancel, is known as interference. We will see this effect more clearly once we introduce the second measurement basis.
 
 ### Basis states and superposition
 
@@ -141,7 +185,13 @@ In this basis the general pure-state vector is
 
 $$|\psi\rangle = \alpha |z+\rangle + \beta |z-\rangle.$$
 
-This expansion is a superposition in the $z$ basis. Its coefficients give the amplitudes for a $z$-basis measurement, whose probabilities we have just specified. Spin is being described by a vector in a complex state space; these coefficients are not two simultaneous classical directions of the atom.
+This expansion is a superposition in the $z$ basis. Its coefficients give the amplitudes for a $z$-basis measurement, whose probabilities we have just specified.
+
+To understand this better, let\'s clarify what these coefficients represent. In classical physics, directions are straightforward: an object points in a specific, real-space direction, like north or east. These are simple, real numbers indicating orientation.
+
+In quantum mechanics, however, the situation is more complex. The coefficients are not just directions; they are **complex amplitudes**. These are numbers with both a magnitude and a phase, written as complex numbers (e.g., $a+bi$). The **magnitude** of an amplitude relates to the likelihood (probability) of a particular measurement outcome, while the **phase** encodes additional information about the quantum state, such as interference effects.
+
+So, when we say the spin state is described by these coefficients, we mean it is represented by a vector in a **complex state space**. This is different from a simple vector pointing in a classical direction. Instead, these coefficients are **not** two simultaneous classical directions of the atom; they are complex numbers that encode probabilities and phases, which influence the outcomes of measurements in subtle ways.
 
 To compute amplitudes for other measurements, we need inner products. The conjugate transpose of a ket is written as a bra:
 
@@ -416,13 +466,21 @@ The two-component ket therefore captures a selected part of the atom\'s behavior
 
 - An expectation value is a distribution\'s mean, estimated by repeated measurements. It need not be one of the values an individual measurement can report.
 
-- In the ideal filter model, postselection conditions on an output of nonzero probability and normalizes the corresponding projection. A unitary operator on the internal state alone cannot perform this selective removal. Unitary separation of the spatial paths is an earlier, distinct part of the procedure.
+- In the ideal filter model, **postselection** involves choosing only those measurement outcomes that occur with a nonzero probability. When we perform a measurement, the system\'s state collapses to a specific outcome, which is represented mathematically by projecting the state onto a subspace associated with that outcome. To ensure the resulting state remains a valid quantum state, we need to **normalize** it---that is, adjust its amplitude so that its total probability sums to one. This process of normalization is essential after projection because the measurement can change the overall probability amplitude.
 
-- A Hermitian observable specifies the readings and outcome subspaces of an ideal projective measurement. A unitary operator specifies closed-system evolution. The Pauli matrices satisfy both algebraic conditions, so an operator\'s physical role must be stated along with its matrix.
+  It\'s important to understand that a **unitary operator**---which describes reversible, deterministic evolution of the quantum state---**cannot** perform this kind of selective process on its own. Unitary operators evolve the state without changing its total probability or selectively filtering outcomes; they cannot "pick out" a particular measurement result or discard others.
+
+  Additionally, the **separation of spatial paths**---which involves dividing the system into different routes---is a different step that occurs earlier in the process. This step is achieved through a **unitary operation** that separates the paths but does not involve measurement or postselection.
+
+- A Hermitian observable is a mathematical object that defines the possible measurement outcomes and the associated subspaces of a quantum system. In other words, it tells us what results we might observe when measuring the system and how those results are organized within the system\'s state space.
+
+  A unitary operator, on the other hand, describes how a quantum system evolves over time when it is isolated from its environment---this is called closed-system evolution. It transforms the system\'s state in a way that preserves probabilities and the overall structure of the state space.
+
+- The Pauli matrices are special examples that satisfy the algebraic properties of both Hermitian observables and unitary operators. Because they can serve as either measurement operators or as evolution operators, it is important to specify their physical role explicitly---whether they are being used to determine measurement outcomes or to describe how the system changes over time---along with their mathematical form.
 
 - A numerical simulation can propagate the specified ket and evaluate Born probabilities for the chosen measurement. Computing these predictions does not reproduce the physical atom or its interaction with a detector.
 
-- A two-dimensional state space does not specify how a device is operated. Preparation, control, readout, and suppression of unwanted interactions each require a physical implementation.
+- A two-dimensional state space describes the possible states a system can be in, but it does not specify how a device is operated. To actually perform measurements or manipulate the system, additional physical steps are needed. These include preparing the system in a specific initial state, controlling the device to perform the desired operation, reading out the results, and suppressing unwanted interactions. All of these steps involve physical implementation details that go beyond the abstract description of the state space.
 
 ### Self-assessment
 
@@ -476,7 +534,7 @@ If the coins are fair and tossed independently, each joint outcome has probabili
 
 Now replace the coins with two silver atoms of the kind studied in Chapter 1, each modeled by its two spin readings. The atoms are distinguished by where they are prepared or measured, so each joint reading still has an ordered pair of labels. We first consider preparations described by a single state vector, called pure states. In a fixed joint basis, this vector has four complex coordinates: the joint amplitudes.
 
-The central question is whether the joint vector can be assembled from one state vector for each atom. Answering it will lead from tensor products to entanglement, then to a description that predicts measurements on either atom alone.
+The central question is whether the joint vector, which describes the combined state of two atoms, can be constructed from individual state vectors---one for each atom. If it can, this means the atoms are in a simple, separable state, and the joint vector is just a tensor product of the two individual vectors. However, in many cases, the joint state cannot be written as such a simple product. Instead, it becomes an entangled state, which means the atoms are linked in a way that the state of one atom cannot be described independently of the other. Understanding whether the joint vector is a product or entangled is crucial because it influences how we predict measurement outcomes on each atom separately. Moving from tensor products to entanglement helps us develop a more complete description of the system, which is essential for accurately predicting measurement results on either atom alone.
 
 **Assumes:** Chapter 1 --- kets, the Born rule, superposition, and relative phase, now for one atom at a time. **Introduces:** the tensor product, product versus entangled states, the density operator, and the partial trace (the reduced state of one atom). **Used later in:** the noise and decoherence models of Chapter 4, the encoded-qubit subspaces from Chapter 11 on, and Appendix B.
 
@@ -657,6 +715,30 @@ This also gives the operational limit on communication through entanglement. Onc
 The reduced state can lose all dependence on a phase that still affects the pair\'s joint statistics. To see this, vary the relative phase of the Bell pair:
 
 $$|\Phi_\theta\rangle=\frac{|00\rangle+e^{i\theta}|11\rangle}{\sqrt2},$$
+
+**Understanding the Bell state with a relative phase**
+
+The state $|\Phi_\theta\rangle$ is a *Bell state*, a special kind of quantum entangled state involving two qubits. It is written as a superposition of two basis states: $|00\rangle$ and $|11\rangle$. The term $e^{i\theta}$ introduces a *relative phase* between these two components, which can affect the properties of the entangled state.
+
+**Joint density operator**
+
+To analyze this state more generally, we use the *joint density operator*, denoted as $\rho$. For a pure state $|\psi\rangle$, the density operator is $\rho = |\psi\rangle\langle\psi|$. For our Bell state, this becomes:
+
+$$\rho_\theta = |\Phi_\theta\rangle\langle\Phi_\theta|$$
+
+This operator contains all the information about the state, including both the probabilities of measurement outcomes and the *coherence* (phase relationships) between components.
+
+**Cross terms and phase information**
+
+When expanding $\rho_\theta$, we get terms like:
+
+$$\rho_\theta = \frac{1}{2}\left(|00\rangle\langle00| + e^{-i\theta}|00\rangle\langle11| + e^{i\theta}|11\rangle\langle00| + |11\rangle\langle11|\right)$$
+
+The *cross terms* $e^{-i\theta}|00\rangle\langle11|$ and $e^{i\theta}|11\rangle\langle00|$ encode the *phase information* $\theta$. These terms are crucial because they contain the *coherence* between the $|00\rangle$ and $|11\rangle$ components.
+
+**Why phase information can be lost**
+
+If we only look at parts of the system---say, just one qubit or ignore the off-diagonal (cross) terms---we lose the phase information. This loss means we cannot fully distinguish between different values of $\theta$, and the one-qubit reduced state is mixed, even though the joint Bell state remains pure and entangled. Understanding these cross terms helps clarify how entanglement and phase relationships are preserved or lost in quantum systems.
 
 Here $\theta$ is the relative phase between the two joint terms. Expanding the joint density operator gives one half times each of the cross terms $e^{-i\theta}|00\rangle\langle11|$ and $e^{i\theta}|11\rangle\langle00|$. Both vanish under $\operatorname{Tr}_B$ because their partner-state factors are orthogonal. The reduced state is therefore $\rho_A=I/2$ for every $\theta$.
 
@@ -10446,7 +10528,14 @@ A triangular lattice surrounds each vertex with six nearest neighbors. That coor
 in the triangular lattice quantum dimer model,” Physical Review Letters
 86, 1881–1884 (2001).").
 
-\[Theory\] That result does not show that triangular geometry implements the Fibonacci string net needed here.
+\[Theory\] That result does not show that triangular geometry directly implements the Fibonacci string net needed here. To understand this, let\'s break down the key concepts:
+
+- **Triangular geometry** refers to a lattice structure made up of equilateral triangles. In quantum models, this lattice provides a specific arrangement of sites and bonds that can influence the system\'s properties.
+- **Fibonacci string net** is a type of quantum state or model where the "strings" (or edges) follow rules inspired by Fibonacci sequences. These rules govern how strings can branch and fuse, creating a complex network with special computational properties.
+- **Fusion-tree edges** are the connections in the network that represent how these strings combine or split according to certain algebraic rules. These edges are crucial for encoding quantum information and performing computations.
+- **Lattice geometry and computational properties**: The shape and arrangement of the lattice (like the triangular pattern) affect how the strings and fusion rules are realized physically and how they can be used for quantum computation.
+
+In summary, while the triangular lattice provides a specific geometric framework, it does not automatically guarantee that the system will realize the Fibonacci string net, which has particular fusion rules and computational capabilities.
 
 Taken as a direct target, the triangular lattice turns every trivalent branching check into a six-way junction, whose resolution calls for internal fusion-tree edges.
 
