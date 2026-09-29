@@ -205,7 +205,7 @@ quantum mechanics</h2>
 <h3 id="foundations-superposition">Superposition</h3>
 <p>One key idea in quantum mechanics is <strong>superposition</strong>. A quantum state can be a combination of simpler states, such as the states belonging to the possible results of a measurement. The combination is itself one well-defined state, not several ordinary states present at once. It tells us how likely each result is when we measure. For example, an electron’s state can combine two energy levels; measuring its energy gives one level or the other, with probabilities set by the combination. Because the parts of a combination can reinforce or cancel one another, superposition behaves differently from ordinary uncertainty about a hidden value.</p>
 <h3 id="foundations-entanglement">Entanglement</h3>
-<p>Another important concept is <strong>entanglement</strong>. When two particles become entangled, their joint state cannot be written as a separate state for each particle, and their measurement outcomes are correlated in ways no independent description of the particles can reproduce, no matter how far apart they are. These correlations have been experimentally confirmed, although they cannot be used to send signals. Entanglement shows that the properties of particles are not independent but can be interconnected in ways that defy classical intuition.</p>
+<p>Another important concept is <strong>entanglement</strong>. When two particles become entangled, their joint state cannot be written as a separate state for each particle. Their measurement outcomes are then correlated more strongly than any independent description of the two particles allows, however far apart they are. These correlations have been confirmed experimentally, but they cannot be used to send signals.</p>
 <h3 id="foundations-measurement">Measurement and Collapse</h3>
 <p>A <strong>measurement</strong> in quantum mechanics gives one result out of a fixed set of possible results, such as one of the two spots in the Stern–Gerlach experiment described below. The state does not say which result a single run will give; it gives the probability of each result. In the idealized model of measurement, the state is then updated to the one that matches the result, so repeating the same measurement straight away gives the same result again. This update is called <em>collapse</em>.</p>
 <hr>
@@ -266,9 +266,7 @@ z = a + ib,
 \]</span></p>
 <p>The Born rule assigns probability <span class="math inline">\(|\alpha|^2\)</span> to the first output and <span class="math inline">\(|\beta|^2\)</span> to the second. The state and the chosen measurement supply the amplitudes; the Born rule converts them to probabilities. Normalization makes these probabilities sum to one, as required for the ideal measurement in which every atom gives one of the two outcomes.</p>
 <p>So a length-one column stands for a pure physical state. One caveat: multiplying the whole column by a complex number of size one — an overall phase — gives a different-looking column but the same physical state, because that factor cancels out of every Born probability. Overall phase carries no measurable information.</p>
-<p>The complex coordinates contain information beyond just the two probabilities for this particular magnet. To understand this, consider what happens when we measure along a different axis. In this case, the contributions from the complex coordinates—these are the complex amplitudes—combine in a way that can sometimes cancel each other out.</p>
-<p>This cancellation occurs because the total amplitude for a specific measurement outcome is formed by adding together these complex amplitudes from different possible states. When these contributions have opposite phases, they can interfere destructively, leading to a reduction or complete cancellation of the total amplitude.</p>
-<p>This phenomenon, where contributions from different complex amplitudes combine and sometimes cancel, is known as interference. We will see this effect more clearly once we introduce the second measurement basis.</p>
+<p>The complex coordinates carry more information than the two probabilities for this magnet. This shows up when we measure along a different axis. There, the total amplitude for an outcome is a sum of contributions from the two coordinates. Contributions with opposite signs can cancel, so the outcome's probability is reduced, possibly to zero. This cancellation is called <em>interference</em>. We will see it concretely once the second measurement basis is introduced.</p>
 </section><section class="topic" data-math-section=""><h3 id="basis-states-and-superposition">Basis states and
 superposition</h3>
 <p>The internal angular momentum tracked by this two-state model is called spin. It is an internal property, distinct from the angular momentum of the atom's motion through the apparatus. A spin component is the angular momentum measured along a chosen axis. The magnet with measurement axis <span class="math inline">\(z\)</span> distinguishes the two possible values of that component.</p>
@@ -287,9 +285,7 @@ superposition</h3>
 |\psi\rangle = \alpha |z+\rangle + \beta |z-\rangle.
 \]</span></p>
 <p>This expansion is a superposition in the <span class="math inline">\(z\)</span> basis. Its coefficients give the amplitudes for a <span class="math inline">\(z\)</span>-basis measurement, whose probabilities we have just specified.</p>
-<p>To understand this better, let's clarify what these coefficients represent. In classical physics, directions are straightforward: an object points in a specific, real-space direction, like north or east. These are simple, real numbers indicating orientation.</p>
-<p>In quantum mechanics, however, the situation is more complex. The coefficients are not just directions; they are <strong>complex amplitudes</strong>. These are numbers with both a magnitude and a phase, written as complex numbers (e.g., <span class="math inline">\(a+bi\)</span>). The <strong>magnitude</strong> of an amplitude relates to the likelihood (probability) of a particular measurement outcome, while the <strong>phase</strong> encodes additional information about the quantum state, such as interference effects.</p>
-<p>So, when we say the spin state is described by these coefficients, we mean it is represented by a vector in a <strong>complex state space</strong>. This is different from a simple vector pointing in a classical direction. Instead, these coefficients are <strong>not</strong> two simultaneous classical directions of the atom; they are complex numbers that encode probabilities and phases, which influence the outcomes of measurements in subtle ways.</p>
+<p>The coefficients are <strong>complex amplitudes</strong>, not directions in ordinary space. Each has a <strong>magnitude</strong> and a <strong>phase</strong>. The squared magnitude gives the probability of the corresponding outcome. The phase does not change that probability, but it controls interference when amplitudes are added. For example, if the first squared magnitude is 0.5 (just an example value), about half of many identically prepared atoms are found in the <span class="math inline">\(z+\)</span> output. The state is a vector in a <strong>complex state space</strong>, and the coefficients are not two classical directions the atom points along at once.</p>
 <p>To compute amplitudes for other measurements, we need inner products. The conjugate transpose of a ket is written as a bra:</p>
 <p><span class="math display">\[
 \langle\psi| = \begin{pmatrix} \alpha^* &amp; \beta^* \end{pmatrix}.
@@ -521,14 +517,13 @@ implementation of the 1922 experiment</h3>
 <li><p>The column <span class="math inline">\((\alpha,\beta)^T\)</span> gives coordinates in the fixed z basis. Choosing another coordinate basis generally changes the entries without changing the physical state. Rotating a measuring magnet changes the measurement; the state can still be expressed in the original basis.</p></li>
 <li><p>Equal probabilities in one basis do not establish equality of pure states. The two x-basis states have equal z-basis probabilities and are nevertheless distinguished by an x-oriented magnet. Overall phase is the freedom that leaves every measurement probability unchanged.</p></li>
 <li><p>An expectation value is a distribution's mean, estimated by repeated measurements. It need not be one of the values an individual measurement can report.</p></li>
-<li><p>In the ideal filter model, <strong>postselection</strong> involves choosing only those measurement outcomes that occur with a nonzero probability. When we perform a measurement, the system's state collapses to a specific outcome, which is represented mathematically by projecting the state onto a subspace associated with that outcome. To ensure the resulting state remains a valid quantum state, we need to <strong>normalize</strong> it—that is, adjust its amplitude so that its total probability sums to one. This process of normalization is essential after projection because the measurement can change the overall probability amplitude.</p>
-<p>It's important to understand that a <strong>unitary operator</strong>—which describes reversible, deterministic evolution of the quantum state—<strong>cannot</strong> perform this kind of selective process on its own. Unitary operators evolve the state without changing its total probability or selectively filtering outcomes; they cannot “pick out” a particular measurement result or discard others.</p>
-<p>Additionally, the <strong>separation of spatial paths</strong>—which involves dividing the system into different routes—is a different step that occurs earlier in the process. This step is achieved through a <strong>unitary operation</strong> that separates the paths but does not involve measurement or postselection.</p></li>
-<li><p>A Hermitian observable is a mathematical object that defines the possible measurement outcomes and the associated subspaces of a quantum system. In other words, it tells us what results we might observe when measuring the system and how those results are organized within the system's state space.</p>
-<p>A unitary operator, on the other hand, describes how a quantum system evolves over time when it is isolated from its environment—this is called closed-system evolution. It transforms the system's state in a way that preserves probabilities and the overall structure of the state space.</p></li>
-<li><p>The Pauli matrices are special examples that satisfy the algebraic properties of both Hermitian observables and unitary operators. Because they can serve as either measurement operators or as evolution operators, it is important to specify their physical role explicitly—whether they are being used to determine measurement outcomes or to describe how the system changes over time—along with their mathematical form.</p></li>
+<li><p><strong>Postselection</strong> keeps only runs with a chosen outcome, which must have nonzero probability. In the ideal model, the retained state is the projection onto that outcome's subspace, then <strong>normalized</strong> (rescaled to length one) so that its probabilities again sum to one.</p>
+<p>A <strong>unitary operator</strong> (reversible, deterministic evolution) cannot do this selecting by itself. It cannot pick out one result or discard the others.</p>
+<p>The <strong>separation of spatial paths</strong> comes earlier. It is a unitary step that splits the paths without any measurement or postselection.</p></li>
+<li><p>A Hermitian observable lists the possible readings and the outcome subspaces they belong to. A unitary operator describes closed-system evolution: it changes the state while preserving probabilities and inner products. The two play different roles.</p></li>
+<li><p>The Pauli matrices are both Hermitian and unitary, so they can act as an observable or as an evolution step. State which role is intended.</p></li>
 <li><p>A numerical simulation can propagate the specified ket and evaluate Born probabilities for the chosen measurement. Computing these predictions does not reproduce the physical atom or its interaction with a detector.</p></li>
-<li><p>A two-dimensional state space describes the possible states a system can be in, but it does not specify how a device is operated. To actually perform measurements or manipulate the system, additional physical steps are needed. These include preparing the system in a specific initial state, controlling the device to perform the desired operation, reading out the results, and suppressing unwanted interactions. All of these steps involve physical implementation details that go beyond the abstract description of the state space.</p></li>
+<li><p>A two-dimensional state space does not say how a device is operated. Preparation, control, readout, and suppression of unwanted interactions are physical implementation details beyond the state space.</p></li>
 </ul>
 </section><section class="topic" data-math-section=""><h3 id="self-assessment">Self-assessment</h3>
 <ul>
@@ -578,7 +573,7 @@ Press (2010). DOI: <a href="https://doi.org/10.1017/CBO9780511976667">10.1017/CB
 <p>Recording two coin tosses gives an ordered pair of results. With H for heads and T for tails, the four possibilities are HH, HT, TH, and TT.</p>
 <p>If the coins are fair and tossed independently, each joint outcome has probability <span class="math inline">\(1/4\)</span>. More generally, a preparation allowing both biased and correlated results can realize any four nonnegative joint probabilities that sum to one.</p>
 <p>Now replace the coins with two silver atoms of the kind studied in Chapter 1, each modeled by its two spin readings. The atoms are distinguished by where they are prepared or measured, so each joint reading still has an ordered pair of labels. We first consider preparations described by a single state vector, called pure states. In a fixed joint basis, this vector has four complex coordinates: the joint amplitudes.</p>
-<p>The central question is whether the joint vector, which describes the combined state of two atoms, can be constructed from individual state vectors—one for each atom. If it can, this means the atoms are in a simple, separable state, and the joint vector is just a tensor product of the two individual vectors. However, in many cases, the joint state cannot be written as such a simple product. Instead, it becomes an entangled state, which means the atoms are linked in a way that the state of one atom cannot be described independently of the other. Understanding whether the joint vector is a product or entangled is crucial because it influences how we predict measurement outcomes on each atom separately. Moving from tensor products to entanglement helps us develop a more complete description of the system, which is essential for accurately predicting measurement results on either atom alone.</p>
+<p>The central question is whether the joint vector can be built from one state vector per atom. If it can, the joint vector is a <em>product</em> (a tensor product) of the two single-atom vectors, and each atom has its own state. If it cannot, the state is <em>entangled</em>: the amplitudes of the pair cannot be split into a separate description of each atom. This distinction decides how we predict the measurement outcomes on each atom alone.</p>
 <p class="chapter-orientation"><strong>Assumes:</strong> Chapter 1 — kets, the Born rule, superposition, and relative phase, now for one atom at a time. <strong>Introduces:</strong> the tensor product, product versus entangled states, the density operator, and the partial trace (the reduced state of one atom). <strong>Used later in:</strong> the noise and decoherence models of Chapter 4, the encoded-qubit subspaces from Chapter 11 on, and Appendix B.</p>
 </div><section class="topic" data-math-section=""><h3 id="joint-basis-and-tensor-product-dimension">Joint basis and
 tensor-product dimension</h3>
@@ -724,30 +719,21 @@ I_B)\right].
 <p>This also gives the operational limit on communication through entanglement. Once the atoms no longer interact, an operation confined to the partner, averaged over all its possible outcomes, leaves the first atom's reduced state unchanged. Local measurements therefore cannot reveal which operation the partner chose. Selecting trials by a particular partner outcome can change the conditional statistics, but requires an outcome of nonzero probability and a communicated record of which trials to keep.</p>
 </section><section class="topic" data-math-section=""><h3 id="relative-phase-accessible-only-through-joint-measurements">Relative
 phase accessible only through joint measurements</h3>
-<p>The reduced state can lose all dependence on a phase that still affects the pair's joint statistics. To see this, vary the relative phase of the Bell pair:</p>
+<p>The reduced state of one atom can be independent of a phase that still affects the pair's joint statistics. To see this, add a relative phase to the Bell pair:</p>
 <p><span class="math display">\[
 |\Phi_\theta\rangle=\frac{|00\rangle+e^{i\theta}|11\rangle}{\sqrt2},
 \]</span></p>
-<p><strong>Understanding the Bell state with a relative phase</strong></p>
-<p>The state <span class="math inline">\(|\Phi_\theta\rangle\)</span> is a <em>Bell state</em>, a special kind of quantum entangled state involving two qubits. It is written as a superposition of two basis states: <span class="math inline">\(|00\rangle\)</span> and <span class="math inline">\(|11\rangle\)</span>. The term <span class="math inline">\(e^{i\theta}\)</span> introduces a <em>relative phase</em> between these two components, which can affect the properties of the entangled state.</p>
-<p><strong>Joint density operator</strong></p>
-<p>To analyze this state more generally, we use the <em>joint density operator</em>, denoted as <span class="math inline">\(\rho\)</span>. For a pure state <span class="math inline">\(|\psi\rangle\)</span>, the density operator is <span class="math inline">\(\rho = |\psi\rangle\langle\psi|\)</span>. For our Bell state, this becomes:</p>
+<p>Here <span class="math inline">\(\theta\)</span> is the relative phase between the two terms; it is a real number. For a pure state the density operator is the outer product of the ket with itself, so for this state</p>
 <p><span class="math display">\[
 \rho_\theta = |\Phi_\theta\rangle\langle\Phi_\theta|
 \]</span></p>
-<p>This operator contains all the information about the state, including both the probabilities of measurement outcomes and the <em>coherence</em> (phase relationships) between components.</p>
-<p><strong>Cross terms and phase information</strong></p>
-<p>When expanding <span class="math inline">\(\rho_\theta\)</span>, we get terms like:</p>
+<p>Expanding it gives</p>
 <p><span class="math display">\[
 \rho_\theta = \frac{1}{2}\left(|00\rangle\langle00| + e^{-i\theta}|00\rangle\langle11| + e^{i\theta}|11\rangle\langle00| + |11\rangle\langle11|\right)
 \]</span></p>
-<p>The <em>cross terms</em> <span class="math inline">\(e^{-i\theta}|00\rangle\langle11|\)</span> and <span class="math inline">\(e^{i\theta}|11\rangle\langle00|\)</span> encode the <em>phase information</em> <span class="math inline">\(\theta\)</span>. These terms are crucial because they contain the <em>coherence</em> between the <span class="math inline">\(|00\rangle\)</span> and <span class="math inline">\(|11\rangle\)</span> components.</p>
-<p><strong>Why phase information can be lost</strong></p>
-<p>If we only look at parts of the system—say, just one qubit or ignore the off-diagonal (cross) terms—we lose the phase information. This loss means we cannot fully distinguish between different values of <span class="math inline">\(\theta\)</span>, and the one-qubit reduced state is mixed, even though the joint Bell state remains pure and entangled. Understanding these cross terms helps clarify how entanglement and phase relationships are preserved or lost in quantum systems.</p>
-
-<p>Here <span class="math inline">\(\theta\)</span> is the relative phase between the two joint terms. Expanding the joint density operator gives one half times each of the cross terms <span class="math inline">\(e^{-i\theta}|00\rangle\langle11|\)</span> and <span class="math inline">\(e^{i\theta}|11\rangle\langle00|\)</span>. Both vanish under <span class="math inline">\(\operatorname{Tr}_B\)</span> because their partner-state factors are orthogonal. The reduced state is therefore <span class="math inline">\(\rho_A=I/2\)</span> for every <span class="math inline">\(\theta\)</span>.</p>
+<p>The two <em>cross terms</em> (the coherence between <span class="math inline">\(|00\rangle\)</span> and <span class="math inline">\(|11\rangle\)</span>) carry the phase <span class="math inline">\(\theta\)</span>. They are one half times <span class="math inline">\(e^{-i\theta}|00\rangle\langle11|\)</span> and <span class="math inline">\(e^{i\theta}|11\rangle\langle00|\)</span>. Both vanish under <span class="math inline">\(\operatorname{Tr}_B\)</span> because their partner-state factors are orthogonal. The reduced state is therefore <span class="math inline">\(\rho_A=I/2\)</span> for every <span class="math inline">\(\theta\)</span>.</p>
 <p>Suitable measurements on the pair can determine this phase from repeated trials; measurements on <span class="math inline">\(A\)</span> alone cannot. By symmetry, the other atom's reduced state is also independent of the phase. The relevant joint statistics can be obtained by measuring the atoms separately in chosen bases and comparing their recorded outcomes.</p>
-<p>Thus a phase can affect correlations without affecting either atom's individual outcome probabilities. Simply measuring both atoms in the original basis will miss it; the measurement bases must also be chosen to reveal interference.</p>
+<p>A phase can thus change the correlations without changing either atom's individual outcome probabilities. Measuring both atoms in the original basis will miss it; the measurement bases must also be chosen to reveal interference.</p>
 </section><section class="topic" data-math-section=""><h3 id="correlation-is-not-sufficient-to-establish-entanglement">Correlation
 is not sufficient to establish entanglement</h3>
 <p>Joint statistics contain more information than local statistics, but even perfect correlation can arise from a randomized preparation of product states. Consider</p>
@@ -1002,7 +988,7 @@ system</h2><div class="chapter-intro" data-math-section="">
 <p>A quantum-control experiment requires three distinct operations:
 preparation, unitary control, and measurement.</p>
 <p>Preparation produces a known input state. For an isolated system, control applies a calibrated, time-dependent Hamiltonian to that state; the resulting transformation is unitary, represented by a matrix <span class="math inline">\(U\)</span> satisfying <span class="math inline">\(U^\dagger U=I\)</span>. Measurement couples the final state to a detector and assigns a classical result to the detector output.</p>
-<p>The qubit uses a selected pair of energy states. To move the system from one state of that pair to the other, an experimenter applies an oscillating electromagnetic field, called a drive. The field is tuned to the frequency associated with the energy difference between the selected states. The device can have other energy states, with other energy differences between them. Provided the drive is not too strong, transitions with a substantially different frequency respond much less strongly. The same drive can nevertheless accidentally move the system between one of those states and a qubit state.</p>
+<p>The qubit uses a selected pair of energy states. To move the system between them, an experimenter applies an oscillating electromagnetic field, called a drive. The drive is tuned to the frequency that matches the energy difference of the selected pair. The device also has other energy states. Transitions involving them have different frequencies and, for a weak enough drive, respond much less. A strong or badly tuned drive can still move the system between one of those states and a qubit state.</p>
 <p>Experiments contend with two prominent failure modes. A drive can populate a third level outside the selected pair, a process called leakage. A detector can also fire on an event unrelated to the prepared state, producing an incorrect assignment.</p>
 <p class="chapter-orientation"><strong>Assumes:</strong> Chapter 1 — kets, Pauli operators, unitary evolution, and the Born rule. <strong>Introduces:</strong> the three laboratory operations (prepare, control, measure), the rotation operators <span class="math inline">\(R_j(\vartheta)\)</span>, the Ramsey interferometer sequence, the Bloch-sphere and Bloch-vector picture, gates versus the pulses that implement them, and the leakage and readout-error failure modes. <strong>Used later in:</strong> Chapter 4's coherence and fidelity measures, and every defect platform (Chapters 7–9) that drives a real spin.</p>
 </div><section class="topic" data-math-section=""><h3 id="state-preparation-phase-control-and-measurement">State
@@ -1222,7 +1208,7 @@ M_1=|1\rangle\langle1|.
 P(m)=\operatorname{Tr}(M_m\rho),
 \qquad m\in\{0,1\}.
 \]</span></p>
-<p>The trace <span class="math inline">\(\operatorname{Tr}\)</span> sums the diagonal elements of a matrix. Physical measurement instruments, by contrast, do not directly yield mathematical projectors or abstract indices <span class="math inline">\(m\)</span>. Real instruments produce continuous, noisy analog signals—such as photons, currents, voltages, or charge-sensor traces—and a classifier maps that analog record to the classical value 0 or 1. Finite instrument fidelity and classifier thresholds introduce readout errors that distinguish physical detection from the ideal projective model.</p>
+<p>The trace <span class="math inline">\(\operatorname{Tr}\)</span> sums the diagonal elements of a matrix. Physical measurement instruments, by contrast, do not directly yield mathematical projectors or abstract indices <span class="math inline">\(m\)</span>. Real instruments produce continuous, noisy analog signals, such as photon counts, currents, voltages, or charge-sensor traces. A classifier maps that record to the classical value 0 or 1. Finite instrument fidelity and classifier thresholds introduce readout errors, which the ideal projective model leaves out.</p>
 <p>[Experiment] Energy-selective tunneling has been used to map a single
 electron’s spin state to a charge transition detectable by a nearby
 sensor <a class="citation" href="#ref-R053" title="[R053] J. M. Elzerman, R. Hanson, L. H. Willems van Beveren, B.
@@ -1254,7 +1240,7 @@ estimates of quantum probabilities. A measurement does not directly
 output the system’s wavefunction.</p>
 <p>A pair of levels together with this operational loop constitutes a
 qubit. The term expresses an operational claim rather than merely
-identifying a doublet in a spectrum. DiVincenzo organized the general requirements for physical quantum computation into five criteria: a scalable physical system with well-characterized qubits, the ability to initialize the state of the qubits to a simple fiducial state, long relevant decoherence times, a universal set of quantum gates, and a qubit-specific measurement capability <a class="citation" href="#ref-R050" title="[R050] D. P. DiVincenzo, “The Physical Implementation of Quantum
+identifying a doublet (a pair of closely related levels) in a spectrum. DiVincenzo organized the general requirements for physical quantum computation into five criteria: a scalable physical system with well-characterized qubits, the ability to initialize the state of the qubits to a simple fiducial state, long relevant decoherence times, a universal set of quantum gates, and a qubit-specific measurement capability <a class="citation" href="#ref-R050" title="[R050] D. P. DiVincenzo, “The Physical Implementation of Quantum
 Computation,” Fortschritte der Physik 48, 771–783 (2000). DOI: 10.1002/1521-3978(200009)48:9/113.0.CO;2-E ;
 arXiv: quant-ph/0002077 .">[R050]</a>. Our single-qubit operational loop recasts the single-subsystem core of those requirements.</p>
 <p>If isolation or readout is absent, the system still has two levels,
@@ -1405,7 +1391,7 @@ arXiv: <a href="https://arxiv.org/abs/quant-ph/9604034">quant-ph/9604034</a>.</p
 relaxation</h3>
 <p>Denote the upper level by <span class="math inline">\(|1\rangle\)</span> and the lower level by <span class="math inline">\(|0\rangle\)</span>. The energy-relaxation protocol prepares <span class="math inline">\(|1\rangle\)</span>, waits a time <span class="math inline">\(t\)</span> in seconds, and measures whether the system is still in <span class="math inline">\(|1\rangle\)</span>.</p>
 <p>Repeated many times, the fraction of <span class="math inline">\(|1\rangle\)</span> outcomes estimates the excited-state population. A population is a probability, so it lies between 0 and 1. The analysis assumes a temperature low enough that the surroundings almost never re-excite the system, plus a constant decay rate: the surviving excited-state population then shrinks by the same factor in every equal time interval.</p>
-<p>Those assumptions give exponential decay. Let <span class="math inline">\(\rho_{11}\)</span> denote the excited-state population: the diagonal matrix element of the density operator from Chapter 2, the mathematical representation of a quantum state that accommodates statistical mixtures and quantum coherence together.</p>
+<p>Those assumptions give exponential decay. Let <span class="math inline">\(\rho_{11}\)</span> denote the excited-state population: the diagonal matrix element of the density operator from Chapter 2, the matrix that describes a quantum state, including statistical mixtures and coherence.</p>
 <p>The time constant of this population decay is <span class="math inline">\(T_1\)</span>. Operationally, <span class="math inline">\(T_1\)</span> is defined by that same protocol — prepare the excited state, wait, measure its population:</p>
 <p><span class="math display">\[
 \rho_{11}(t)=\rho_{11}(0)e^{-t/T_1}.
@@ -1431,7 +1417,7 @@ density-matrix element and is distinct from <span class="math inline">\(T_1\)</s
 \rho_{01}(t)=\rho_{01}(0)e^{-i\omega t}e^{-t/T_2}.
 \]</span></p>
 <p>A memoryless stochastic process is called Markovian. The term records an assumption of the model about noise with negligible memory; it does not classify the atom by itself, apart from its environment and experimental conditions.</p>
-<p>Energy relaxation feeds into the decay of <span class="math inline">\(\rho_{01}\)</span> because a population is the squared magnitude of an amplitude. If the excited-state population decays as <span class="math inline">\(e^{-t/T_1}\)</span>, the corresponding excited-state amplitude decays as <span class="math inline">\(e^{-t/(2T_1)}\)</span>. The coherence <span class="math inline">\(\rho_{01}\)</span> carries one factor of that amplitude, so energy relaxation alone multiplies <span class="math inline">\(\rho_{01}\)</span> by <span class="math inline">\(e^{-t/(2T_1)}\)</span>.</p>
+<p>Energy relaxation also contributes to the decay of <span class="math inline">\(\rho_{01}\)</span> because a population is the squared magnitude of an amplitude. If the excited-state population decays as <span class="math inline">\(e^{-t/T_1}\)</span>, the corresponding excited-state amplitude decays as <span class="math inline">\(e^{-t/(2T_1)}\)</span>. The coherence <span class="math inline">\(\rho_{01}\)</span> carries one factor of that amplitude, so energy relaxation alone multiplies <span class="math inline">\(\rho_{01}\)</span> by <span class="math inline">\(e^{-t/(2T_1)}\)</span>.</p>
 <p>Independent phase noise contributes a further factor <span class="math inline">\(e^{-t/T_\phi}\)</span>, where <span class="math inline">\(T_\phi\)</span> is the time constant of dephasing beyond what energy relaxation already causes. Multiplying the independent decay factors gives</p>
 <p><span class="math display">\[
 e^{-t/T_2}=e^{-t/(2T_1)}e^{-t/T_\phi},
@@ -1448,8 +1434,8 @@ from shot-to-shot detuning</h3>
 H=\frac{\hbar\Delta}{2}\sigma_z.
 \]</span></p>
 <p>Here <span class="math inline">\(H\)</span> is the energy operator, <span class="math inline">\(\hbar\)</span> Planck's reduced constant in joule-seconds, and <span class="math inline">\(\sigma_z\)</span> the Pauli <span class="math inline">\(z\)</span> operator, with eigenvalue <span class="math inline">\(+1\)</span> on <span class="math inline">\(|0\rangle\)</span> and <span class="math inline">\(-1\)</span> on <span class="math inline">\(|1\rangle\)</span>. A radian is dimensionless, so <span class="math inline">\(\Delta t\)</span> is a dimensionless phase.</p>
-<p>The pulse sequence comes from Ramsey's separated-field spectroscopy <a class="citation" href="#ref-R056" title="[R056] N. F. Ramsey, “A Molecular Beam Resonance Method with
-Separated Oscillating Fields,” Physical Review 78, 695–699 (1950). DOI: 10.1103/PhysRev.78.695 .">[R056]</a>, is</p>
+<p>The pulse sequence below comes from Ramsey's separated-field spectroscopy <a class="citation" href="#ref-R056" title="[R056] N. F. Ramsey, “A Molecular Beam Resonance Method with
+Separated Oscillating Fields,” Physical Review 78, 695–699 (1950). DOI: 10.1103/PhysRev.78.695 .">[R056]</a>:</p>
 <pre><code>|0&gt; -- pi/2 -- free evolution for t -- -pi/2 -- measure</code></pre>
 <p>The first pulse implements</p>
 <p><span class="math display">\[
@@ -1536,7 +1522,7 @@ arXiv: 0712.2225 .">[R059]</a>.</p>
 <p>A longer echo time therefore says the chosen pulse sequence rejects more of the noise relevant to that measurement. Whether the material itself became less noisy needs a comparison of matched protocols under matched conditions.</p>
 </section><section class="topic" data-math-section=""><h3 id="fidelity-between-quantum-states">Fidelity between quantum
 states</h3>
-<p>Saying an experiment succeeded does not say how closely its final state matches the target. The next four sections define four separate scores, each a dimensionless number in <span class="math inline">\([0,1]\)</span> but each comparing a different pair of objects; the common mistake is to quote one where another is meant. They are:</p>
+<p>Saying an experiment succeeded does not say how closely its final state matches the target. The next four sections define four separate scores. Each is a dimensionless number in <span class="math inline">\([0,1]\)</span> but each compares a different pair of objects, and a common mistake is to quote one where another is meant. They are:</p>
 <ul>
 <li><p><strong>State fidelity</strong> — how close an achieved <em>state</em> is to a target state (this section).</p></li>
 <li><p><strong>Average gate fidelity</strong> — how close an implemented <em>operation</em> is to a target unitary.</p></li>
@@ -1668,7 +1654,7 @@ characterization of leakage errors,” Physical Review A 97, 032306
 arXiv: 1704.03081 .">[R064]</a>.</p></li>
 <li><p><strong>A logical qubit outliving one physical qubit as fault tolerance.</strong> The physical and logical comparisons must use matched tasks. Fault tolerance means controlled scaling of logical error as code resources grow below a threshold, including the effects of operations and measurements. A single favorable lifetime can mark progress without demonstrating scalable error suppression; an encoded qubit can also be useful with entirely non-topological protection.</p></li>
 <li><p><strong>A single fitted time as a complete material characterization.</strong> The noise spectrum and the pulse-dependent filter jointly determine coherence decay. Sample preparation, nearby spins, charge motion, temperature, and the control sequence also affect the result. The protocol is reported with the fitted time.</p></li>
-<li><p><strong>Physical-qubit times as a full account of encoded information, or a long encoded lifetime as a diagnosis of a phase.</strong> <span class="math inline">\(T_1\)</span>, <span class="math inline">\(T_2\)</span>, <span class="math inline">\(T_2^*\)</span>, physical-gate fidelity, physical readout fidelity, and physical leakage characterize a physical qubit and its controls. An encoded qubit instead has logical observables, logical gates, logical leakage, and a logical lifetime. A digital circuit that emulates a code can show logical behavior without an emergent many-body phase. Passive robustness from an emergent topological phase belongs to the energy operator — gap, locality, system size, temperature, and perturbations together. No single coherence time establishes it.</p></li>
+<li><p><strong>Physical-qubit times as a full account of encoded information, or a long encoded lifetime as a diagnosis of a phase.</strong> <span class="math inline">\(T_1\)</span>, <span class="math inline">\(T_2\)</span>, <span class="math inline">\(T_2^*\)</span>, physical-gate fidelity, physical readout fidelity, and physical leakage characterize a physical qubit and its controls. An encoded qubit instead has logical observables, logical gates, logical leakage, and a logical lifetime. A digital circuit that emulates a code can show logical behavior without an emergent many-body phase. Passive robustness from an emergent topological phase is a property of the energy operator: its gap, locality, system size, temperature, and perturbations together. No single coherence time establishes it.</p></li>
 </ul>
 </section><section class="topic" data-math-section=""><h3 id="conceptual-checks-1">Conceptual checks</h3>
 <ul>
@@ -1691,7 +1677,7 @@ T_2\leq 2T_1.
 <li><p>Readout fidelity differs from the fidelity of the quantum state before measurement. Balanced readout fidelity averages the two classical probabilities of correctly assigning the prepared basis states. State fidelity compares density operators, which represent quantum states. Preparation errors and measurement errors are therefore calibrated separately.</p></li>
 <li><p>Suppose an encoded state — quantum information stored in a larger physical Hilbert space — survives for ten times the physical <span class="math inline">\(T_2^*\)</span>. That enhancement alone does not establish topological order, a many-body property of a topological phase. The improvement could come from echo, a decoherence-free subspace, active correction, postselection, or another encoding. Demonstrating topological order needs independent many-body evidence. Any reported logical lifetime also names the measured logical observable and the protocol used.</p></li>
 </ul>
-<p>These times and performance measures quantify distinct physical properties, so one cannot stand in for another. The next section examines how a crystal produces two levels to which these times can be assigned.</p>
+<p>These times and performance measures quantify distinct physical properties, so one cannot stand in for another. The next chapter examines how a crystal produces two levels to which these times can be assigned.</p>
 </section><section class="topic" data-math-section=""><h3 id="sources-3">Sources</h3>
 <ul>
 <li><p><a class="citation" href="#ref-R056" title="[R056] N. F. Ramsey, “A Molecular Beam Resonance Method with
@@ -1778,7 +1764,7 @@ point. The motif identifies the atoms repeated at each translation point; equal 
 <p>The figure is a two-dimensional schematic of this distinction; our present chain uses the one-dimensional set <span class="math inline">\(a\mathbb{Z}\)</span>. In higher dimensions two or three independent translation vectors play the same role, and the lattice again collects the translations leaving the ideal pattern invariant.</p>
 <p>The translation property belongs to the geometry. Later sections place a physical model on this same fixed set of sites.</p>
 </section><section class="topic" data-math-section=""><h3 id="site-states-in-a-one-electron-model">Site states in a one-electron model</h3>
-<p>Now place one electron on the chain with one localized orbital <span class="math inline">\(|n\rangle\)</span> at each lattice point, where the integer <span class="math inline">\(n\)</span> labels the site. “Localized” means the orbital concentrates around one site: an electron in <span class="math inline">\(|n\rangle\)</span> is found at <span class="math inline">\(n\)</span> by a position measurement in this site description, instead of spreading equal weight over the whole row.</p>
+<p>Now place one electron on the chain with one localized orbital (a one-electron spatial state, here concentrated on one atom) <span class="math inline">\(|n\rangle\)</span> at each lattice point, where the integer <span class="math inline">\(n\)</span> labels the site. “Localized” means the orbital concentrates around one site: an electron in <span class="math inline">\(|n\rangle\)</span> is found at <span class="math inline">\(n\)</span> by a position measurement in this site description, instead of spreading equal weight over the whole row.</p>
 <p>Assume these site orbitals are orthonormal:</p>
 <p><span class="math display">\[
 \langle m|n\rangle=\delta_{mn}.
@@ -1924,7 +1910,7 @@ E_{\mathrm g}=E_{\mathrm c}-E_{\mathrm v}&gt;0.
 <p class="group-orientation">Here the chapter reaches its point: a broken site can put an electron state inside the gap. The questions below build it up and then guard against the most common overstatement — that an energy sitting in the gap already proves the state is localized. They cover how the level enters the gap, what the edge separations do and do not establish, how localization is actually checked, when strong coupling dissolves the level into a band, the shallow/deep vocabulary, and what a wide gap really buys.</p>
 <h4 id="in-gap-level-from-decoupled-limit">How does a defect level enter the gap?</h4>
 <p>First turn off hopping, <span class="math inline">\(t=0\)</span>, so every site stands independent. A defect orbital with energy <span class="math inline">\(E_{\mathrm d}\)</span> between <span class="math inline">\(-|\Delta|\)</span> and <span class="math inline">\(+|\Delta|\)</span> then keeps its amplitude entirely on the defect: perfect localization in this decoupled limit. Restoring hopping lets the defect amplitude leak onto neighboring host sites, creating spatial tails.</p>
-<p>Those tails become traveling waves only when the host supports propagation at that energy. While the full defect eigenvalue stays between the two host band continua, the perfect host has no propagating solution there. The recurrence relation outside the defect then selects a decaying solution over an oscillatory one. The resulting state parallels the one-band bound state: its energy lies in the spectrum's forbidden interval and its wavefunction decays away from the defect.</p>
+<p>Those tails become traveling waves only if the host supports propagation at that energy. Between the two host bands, the perfect host has no propagating solution. The recurrence relation outside the defect then selects a decaying solution instead of an oscillating one. The result parallels the one-band bound state: its energy lies in the forbidden interval, and its wavefunction decays away from the defect.</p>
 <h4 id="edge-separation-versus-localization">What do the edge separations establish?</h4>
 <p>Measure the energy separation from each band edge:</p>
 <p><span class="math display">\[
@@ -1999,7 +1985,7 @@ E_{\mathrm{phonon}}=\hbar\omega_{\mathbf q\nu}\bigl(n_{\mathbf q\nu}+\tfrac12\bi
 <p>The phrase “defect energy” covers physically different quantities. Keep the following questions separate.</p>
 <ul>
 <li><p><strong>Single-particle orbital energy:</strong> In an approximate independent-particle calculation this labels one orbital. It organizes a spectrum without automatically giving an experimentally measurable addition or removal energy.</p></li>
-<li><p><strong>Thermodynamic charge-transition level:</strong> This comes from total-energy differences between relaxed charge states. It marks the electron chemical potential — the energy cost of exchanging an electron with a reservoir — at which two charge states share equal formation energy; moving that chemical potential changes which charge state is stable. It differs from the energy of an electron in a frozen orbital.</p></li>
+<li><p><strong>Thermodynamic charge-transition level:</strong> This comes from total-energy differences between relaxed charge states. It marks the electron chemical potential (the energy cost of exchanging an electron with a reservoir) at which two charge states have equal formation energy. Moving the chemical potential changes which charge state is stable. This differs from the energy of an electron in a frozen orbital.</p></li>
 <li><p><strong>Vertical optical transition:</strong> An optical event runs fast against nuclear rearrangement, connecting electronic states at nearly fixed nuclear geometry. Its energy can differ from a relaxed charge-transition level.</p></li>
 <li><p><strong>Zero-phonon optical transition:</strong> This connects vibrational ground levels on the relevant electronic potential-energy surfaces, with phonon-assisted sidebands alongside whenever vibrational quanta participate.</p></li>
 <li><p><strong>Spin excitation:</strong> This changes the spin state within one electronic configuration, possibly far below an optical transition since no charge or orbital change is required.</p></li>
@@ -2102,7 +2088,7 @@ emission,” Physical Review B 90, 075202 (2014). DOI: <a href="https://doi.org/
 6 — An empty lattice site does not imply a residual spin →</a></nav></article><article aria-labelledby="chapter-6-an-empty-lattice-site-does-not-imply-a-residual-spin" class="book-chapter"><h2 id="chapter-6-an-empty-lattice-site-does-not-imply-a-residual-spin">Chapter
 6 — An empty lattice site does not imply a residual spin</h2><div class="chapter-intro" data-math-section="">
 <p>Placing an atom of a different element on a site where a host atom would sit in a perfect crystal creates a substitutional defect. An empty lattice site next to that foreign atom allows the two to bind into one defect complex with shared electronic structure. Putting an extra atom into a gap between regular lattice sites creates an interstitial defect.</p>
-<p>Shifting atoms along an entire line of the crystal generates a dislocation, a separate geometric class from localized missing or added atoms. Sorting defects by this kind of geometry comes before asking which ones carry an unpaired spin or can serve as a qubit. A nitrogen atom sitting next to a missing carbon atom in diamond illustrates the next step, where charge, spin, strain, and surrounding nuclei become separately identifiable.</p>
+<p>Shifting atoms along an entire line of the crystal generates a dislocation. It is a separate geometric class from localized missing or added atoms. Sorting defects by geometry comes first. Only then do we ask which defects carry an unpaired spin or can serve as a qubit. A nitrogen atom next to a missing carbon atom in diamond illustrates that next step: charge, spin, strain, and surrounding nuclei become separately identifiable.</p>
 <p class="chapter-orientation"><strong>Assumes:</strong> the crystal lattice and in-gap defect levels of Chapter 5. <strong>Introduces:</strong> the structural-defect taxonomy (substitutional, vacancy, interstitial, dislocation), the nitrogen–vacancy complex, symmetry-adapted orbitals, the spin-triplet ground state and zero-field splitting, and the full effective spin Hamiltonian (crystal field, spin–orbit, Zeeman, hyperfine, strain). <strong>Used later in:</strong> the platform chapters (7–9) and every defect-spin model afterward. <strong>Watch:</strong> an empty site does not by itself imply an unpaired spin — geometry, charge, and occupancy are separate checks.</p></div><section class="topic" data-math-section=""><h3 id="classification-of-structural-defects">Classification of
 structural defects</h3>
 <p>A perfect crystal repeats the same atomic arrangement in every unit cell. Any local departure from that repetition counts as a structural defect, a phrase that names the altered atomic positions while leaving open the optical response, the spin state, and any use as a computational bit.</p>
@@ -2180,7 +2166,7 @@ fault.</figcaption>
 </figure>
 <p><em>A foreign atom on one lattice site and an empty lattice site are each localized to roughly one site, which is the defining character of a point defect. A dislocation perturbs atomic positions along an extended curve through the crystal, giving a line defect. A stacking fault changes the registry of atomic layers across an extended interface, giving a planar defect.</em></p>
 <p>Describing structural disorder therefore starts from the energies and spatial forms of the quantum states supported by the host crystal together with its defects.</p>
-<p>A point defect sometimes confines an electron to an orbital near the defect site with an energy level deep inside a wide forbidden energy range. Under other charge or chemical conditions the same kind of defect supports a weakly bound state whose wavefunction spreads into a nearby conduction or valence band. The defect electrons can also pair completely to give total spin zero. Another outcome is capture of an electron and a hole followed by emission of lattice vibrations, so the stored electronic energy leaves as heat rather than light.</p>
+<p>A point defect can behave in several ways. It can confine an electron to an orbital near the defect, with an energy level deep inside a wide forbidden energy range (the band gap). Under other charge or chemical conditions, the same kind of defect can support only a weakly bound state whose wavefunction spreads into a nearby conduction or valence band. Its electrons can also pair completely, giving total spin zero. Finally, it can capture an electron and a hole and emit lattice vibrations, so the energy leaves as heat rather than light.</p>
 <p>An extended defect alters nearby electronic behavior by localizing a moving electron or hole, by distorting bond lengths around a neighboring point defect, and by adding fluctuations to electrical or optical signals. Assigning the defect a dimension from its geometry selects the model used at the outset, while calculation or measurement remains necessary to establish how the defect behaves electronically <a class="citation" href="#ref-R070" title="[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G.
 Kresse, A. Janotti, and C. G. Van de Walle, “First-principles
 calculations for point defects in solids,” Reviews of Modern Physics 86,
@@ -2211,7 +2197,7 @@ substitutional nitrogen beside an empty carbon site, three neighboring
 carbons, and the nitrogen-vacancy axis.</figcaption>
 </figure>
 <p>An ideal NV center places a substitutional nitrogen atom next to a missing carbon atom. Three carbon neighbors point their unsatisfied bonds into that empty site around the line joining nitrogen to the vacancy. The projection records this neighborhood arrangement without representing bond lengths.</p>
-<p>Terms in the Hamiltonian respect the symmetries left intact by the defect, and an external or local perturbation that removes one of those symmetries allows a spectroscopic line to split. The remaining geometric pattern fixes which degeneracies can occur, while the size of an energy separation requires a separate calculation of matrix elements. When the three carbon atoms become inequivalent, the local pattern departs from <span class="math inline">\(C_{3v}\)</span>, and the degeneracies associated with that point group can split.</p>
+<p>Terms in the Hamiltonian respect the symmetries the defect keeps. A perturbation that removes one of those symmetries allows a spectroscopic line to split. The remaining geometry fixes which degeneracies (equal energies) can occur. The size of an energy separation needs a separate calculation of matrix elements. When the three carbon atoms become inequivalent, the local pattern departs from <span class="math inline">\(C_{3v}\)</span>, and the degeneracies associated with that point group can split.</p>
 </section><section class="topic" data-math-section=""><h3 id="symmetry-adapted-combinations-of-the-carbon-orbitals">Symmetry-adapted
 combinations of the carbon orbitals</h3>
 <p>Let <span class="math inline">\(|c_1\rangle\)</span>, <span class="math inline">\(|c_2\rangle\)</span>, and <span class="math inline">\(|c_3\rangle\)</span> denote the three carbon dangling-bond orbitals directed toward the vacancy. Weighting these directed orbitals by coefficients chosen from the local threefold geometry gives symmetry-adapted linear combinations, each labeled by how it changes under the point-group operations. For the threefold axis, they are</p>
@@ -2291,7 +2277,7 @@ arXiv: 1302.3288 .">[R074]</a>. [Experiment] The conversion follows from <span c
 \frac{hc}{\lambda}\approx\frac{1240\ \mathrm{eV\,nm}}{637\ \mathrm{nm}}
 \approx1.95\ \mathrm{eV}.
 \]</span></p>
-<p>Electrons excited by light can relax through intermediate singlet states with rates that depend on the starting spin level, so repeated optical cycling builds population preferentially in one spin level and makes the emitted fluorescence brightness report which spin level is occupied. This spin-selective pumping and readout, combined with preparation of the negative charge state, microwave rotation of the spin, and efficient collection of emitted photons, makes the measured optical and spin response usable as a laboratory qubit <a class="citation" href="#ref-R074" title="[R074] M. W. Doherty, N. B. Manson, P. Delaney, F. Jelezko, J. Wrachtrup, and L. C. L. Hollenberg, “The nitrogen-vacancy colour centre in diamond,” Physics Reports 528, 1–45 (2013). DOI: 10.1016/j.physrep.2013.02.001 ; arXiv: 1302.3288 .">[R074]</a>. [Experiment]</p>
+<p>Electrons excited by light can relax through intermediate singlet states, and the rates depend on the starting spin level. Repeated optical cycling therefore builds up population in one spin level. The fluorescence brightness also reports which spin level is occupied. Spin-selective pumping and readout, together with preparation of the negative charge state, microwave rotation of the spin, and efficient photon collection, make the optical and spin response usable as a laboratory qubit <a class="citation" href="#ref-R074" title="[R074] M. W. Doherty, N. B. Manson, P. Delaney, F. Jelezko, J. Wrachtrup, and L. C. L. Hollenberg, “The nitrogen-vacancy colour centre in diamond,” Physics Reports 528, 1–45 (2013). DOI: 10.1016/j.physrep.2013.02.001 ; arXiv: 1302.3288 .">[R074]</a>. [Experiment]</p>
 <p>The label for a nitrogen atom beside a missing carbon atom records the atomic arrangement. “NV<span class="math inline">\(^{-}\)</span>” adds the extra electron, and “<span class="math inline">\({}^{3}A_2\)</span>” labels the collective triplet ground configuration. The <span class="math inline">\(m_s=0,-1\)</span> pair then isolates two magnetic orientations that serve as a qubit when they can be initialized, rotated coherently, read out optically, and protected from the environment through the operation. These descriptions are related but are not synonymous. Two spectral levels therefore supply only a candidate computational subspace: without initialization, control, readout, and charge stability, the defect does not constitute an operational qubit.</p>
 </section><section class="topic" data-math-section=""><h3 id="defect-formation-energy">Defect formation energy</h3>
 <p>Evaluating the thermodynamic cost of a defect starts from two calculated total energies: the energy of a simulation cell that contains the defect and the energy of the matching cell of perfect crystal.</p>
@@ -2302,7 +2288,7 @@ E_f(D^q)=E_{\mathrm{tot}}(D^q)-E_{\mathrm{tot}}(\mathrm{bulk})
 -\sum_i n_i\mu_i+q(E_F+E_{\mathrm{VBM}})+E_{\mathrm{corr}}.
 \]</span></p>
 <p>Each quantity entering the expression is an energy, commonly expressed in electronvolts, with <span class="math inline">\(E_{\mathrm{tot}}(D^q)\)</span> giving the total energy of the simulation cell containing the defect and <span class="math inline">\(E_{\mathrm{tot}}(\mathrm{bulk})\)</span> giving the total energy of the perfect simulation cell.</p>
-<p>Atomic exchange enters through the integer <span class="math inline">\(n_i\)</span> for the number of atoms of species <span class="math inline">\(i\)</span> added to the cell and through <span class="math inline">\(\mu_i\)</span> for the energy cost of supplying one such atom, while electronic exchange enters through <span class="math inline">\(E_F\)</span> for the electron energy measured upward from the valence-band maximum and through <span class="math inline">\(E_{\mathrm{VBM}}\)</span> for the absolute energy of that maximum in the same reference as the total energies.</p>
+<p>Atomic exchange enters through the integer <span class="math inline">\(n_i\)</span> for the number of atoms of species <span class="math inline">\(i\)</span> added to the cell and through <span class="math inline">\(\mu_i\)</span> for the energy cost of supplying one such atom. Electronic exchange enters through <span class="math inline">\(E_F\)</span> for the electron energy measured upward from the valence-band maximum and through <span class="math inline">\(E_{\mathrm{VBM}}\)</span> for the absolute energy of that maximum in the same reference as the total energies.</p>
 <p>Finite size of the periodically repeated simulation cell introduces spurious electrostatic and elastic interactions, and <span class="math inline">\(E_{\mathrm{corr}}\)</span> adds the estimated removal of those artifacts.</p>
 <p>Publications write <span class="math inline">\(n_i\)</span> with different sign choices for atoms added or removed, so a calculation reports its choice directly <a class="citation" href="#ref-R070" title="[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G.
 Kresse, A. Janotti, and C. G. Van de Walle, “First-principles
@@ -2394,7 +2380,7 @@ individual solid-state spins,” Physical Review B 97, 094304 (2018).">[R078]</a
 <p>Static strain describes a frozen displacement of atoms around the defect. Phonons describe quantized oscillations of atoms around their equilibrium positions. Both interact with the defect through matching residual-symmetry channels. Deleting the operators <span class="math inline">\(b_k\)</span> from the model keeps the frozen-displacement energy and removes all transitions driven by the oscillations.</p>
 </section><section class="topic" data-math-section=""><h3 id="combined-effective-hamiltonian">Combined effective
 Hamiltonian</h3>
-<p>The contributions relevant to a defect-state family collect into the working Hamiltonian below, the operator that determines the modeled energies and dynamics.</p>
+<p>The contributions relevant to a defect-state family add up to the working Hamiltonian below. This operator determines the modeled energies and dynamics.</p>
 <p><span class="math display">\[
 H_{\mathrm{system}}=H_{\mathrm{CF}}+H_{\mathrm{SO}}+H_{\mathrm{SS}}+H_Z
 +H_{\mathrm{hf}}+H_Q+H_\varepsilon+H_{\mathrm{ph}}+H_{\mathrm{def-ph}}.
@@ -2402,8 +2388,8 @@ H_{\mathrm{system}}=H_{\mathrm{CF}}+H_{\mathrm{SO}}+H_{\mathrm{SS}}+H_Z
 <p>Residual symmetry decides which of these contributions act within a given defect-state family. The existence of this sum does not establish that the defect is a functional device.</p>
 <p>Not every term contributes in every defect-state family: residual symmetry can force a matrix element to vanish, and projection into a restricted state manifold can reduce an orbital operator to zero. An isotope may have <span class="math inline">\(I=0\)</span>, eliminating its nuclear-spin terms.</p>
 <p>Conversely, an interaction omitted from a simplified level diagram can dominate the experimentally observed linewidth.</p>
-<p>The analysis therefore begins with defect geometry and charge state. The orbital localized at the defect is solved first, and the interacting states of many electrons are built from those orbitals afterward.</p>
-<p>Only after those steps is the model projected into a selected spin or orbital manifold and restricted to the terms that act within it. Starting from a spin Hamiltonian and working backward treats that projection as given, while the preceding geometric, electronic, and many-body analysis is what justifies it.</p>
+<p>The analysis therefore begins with defect geometry and charge state. First solve for the orbitals localized at the defect. Then build the interacting many-electron states from those orbitals.</p>
+<p>Only then is the model projected into a selected spin or orbital manifold (a chosen set of states) and restricted to the terms that act within it. Starting from a spin Hamiltonian and working backward takes that projection as given. The geometric, electronic, and many-body analysis before it is what justifies it.</p>
 </section><section class="topic" data-math-section=""><h3 id="selection-rules-imposed-by-residual-symmetry">Selection rules
 imposed by residual symmetry</h3>
 <p>Consider an initial physical configuration <span class="math inline">\(|i\rangle\)</span> and a final physical configuration <span class="math inline">\(|f\rangle\)</span> that change under the remaining rotations and reflections of the defect according to the transformation rules <span class="math inline">\(\Gamma_i\)</span> and <span class="math inline">\(\Gamma_f\)</span>, with a perturbing physical quantity <span class="math inline">\(O\)</span> changing according to <span class="math inline">\(\Gamma_O\)</span>. A representation is the tabulated rule for such changes. The transition amplitude produced by <span class="math inline">\(O\)</span>, namely the matrix element <span class="math inline">\(\langle f|O|i\rangle\)</span>, can differ from zero only when the tensor product</p>
@@ -2471,7 +2457,7 @@ hc/\lambda\approx 1240/637\approx 1.95\ \mathrm{eV}.
 <li><p>Static strain denotes a time-independent deformation, and phonons denote quantized dynamical modes, with coupling to the defect proceeding through related residual-symmetry channels.</p></li>
 <li><p>A spin doublet functions as a qubit after experimental work establishes preparation in a known spin state, rotation of that spin with preserved phase, measurement that distinguishes the two spin projections, stabilization of the surrounding charge configuration during those steps, and confinement of evolution to the two chosen levels with phase memory extending across gate durations.</p></li>
 </ul>
-<p>Characterizing a lattice vacancy together with its neighbors gives the relaxed atomic positions and the wavefunctions trapped at the defect, and counting the electrons in those wavefunctions fixes the total spin while the size of crystal-field, spin–orbit, spin–spin, hyperfine, strain, and phonon couplings sets the splitting and mixing of the resulting levels. Deciding whether a center in diamond meets the operational requirements for a qubit calls for testing those level structures against initialization, control, readout, and stability.</p>
+<p>Characterizing a lattice vacancy together with its neighbors gives the relaxed atomic positions and the wavefunctions trapped at the defect, and counting the electrons in those wavefunctions fixes the total spin while the size of crystal-field, spin–orbit, spin–spin, hyperfine, strain, and phonon couplings sets the splitting and mixing of the resulting levels. Deciding whether a center in diamond meets the operational requirements for a qubit means testing those level structures against initialization, control, readout, and stability.</p>
 </section><section class="topic" data-math-section=""><h3 id="sources-5">Sources</h3>
 <ul>
 <li><p><a class="citation" href="#ref-R070" title="[R070] C. Freysoldt, B. Grabowski, T. Hickel, J. Neugebauer, G.
@@ -2578,7 +2564,7 @@ Wrachtrup, and L. C. L. Hollenberg, “The nitrogen-vacancy colour centre
 in diamond,” Physics Reports 528, 1–45 (2013). DOI: 10.1016/j.physrep.2013.02.001 ;
 arXiv: 1302.3288 .">[R074]</a>.</p>
 <p>Reference to the qubit uses NV<span class="math inline">\(^-\)</span> because the geometric label “NV” leaves the electron number unspecified. The charge state belongs in the physical specification.</p>
-<p>The same specificity applies to the group-IV defects discussed below. The established spin–photon charge states are SiV<span class="math inline">\(^-\)</span>, GeV<span class="math inline">\(^-\)</span>, and SnV<span class="math inline">\(^-\)</span>, alongside PbV<span class="math inline">\(^-\)</span>, which is at a less mature stage of study.</p>
+<p>The same specificity applies to the group-IV defects discussed below. (SiV, GeV, and SnV are the silicon-, germanium-, and tin-vacancy centers.) The established spin–photon charge states are SiV<span class="math inline">\(^-\)</span>, GeV<span class="math inline">\(^-\)</span>, and SnV<span class="math inline">\(^-\)</span>, alongside PbV<span class="math inline">\(^-\)</span>, which is at a less mature stage of study.</p>
 <p>Neutral SiV<span class="math inline">\(^0\)</span> forms a separate spin-triplet system with <span class="math inline">\(S=1\)</span> and emits on an optical line near 946 nm. Single-center qubit operation with neutral GeV and neutral SnV has a smaller published evidence base.</p>
 <p>Charge-state stabilization sets a fabrication and operating condition for devices using these centers <a class="citation" href="#ref-R082" title="[R082] C. Bradac, W. Gao, J. Forneris, M. E. Trusheim, and I.
 Aharonovich, “Quantum nanophotonics with group IV defects in diamond,”
@@ -2591,7 +2577,7 @@ centers</h3>
 <p>The impurity with an empty site on either side along the axis gives the split-vacancy structure. Its midpoint acts as an inversion center, so reflecting every atom through that point reproduces the same atomic arrangement.</p>
 <p>Rotations about the defect axis, combined with that inversion, leave the split-vacancy geometry approximately unchanged, and this set of operations carries the label <span class="math inline">\(D_{3d}\)</span>. A point group names the collection of such localized symmetry operations. The NV defect has one distinguished axis without such a midpoint mapping and carries the label <span class="math inline">\(C_{3v}\)</span>.</p>
 <p>Inversion symmetry makes the optical transition energy insensitive to a uniform electric field at linear order. Separate split-vacancy defects therefore show a narrower spread of optical frequencies, and that suppressed linear Stark shift follows directly from the geometry.</p>
-<p>The useful negative charge state, <span class="math inline">\(M\)</span>V<span class="math inline">\(^-\)</span>, has effective electronic spin <span class="math inline">\(S=1/2\)</span> inside ground and excited manifolds in which several orbital states share the same energy before spin–orbit and related interactions act. The coupling between electron spin and orbital motion splits each manifold, and heavier impurity atoms generally give a larger splitting. At a given cryogenic temperature, a larger splitting weakens some transitions that need phonons to carry away the energy difference. The same large splitting shifts direct microwave spin transitions to frequencies or selection rules that require mixing by strain or by the orientation of the magnetic field <a class="citation" href="#ref-R082" title="[R082] C. Bradac, W. Gao, J. Forneris, M. E. Trusheim, and I.
+<p>The useful negative charge state, <span class="math inline">\(M\)</span>V<span class="math inline">\(^-\)</span>, has effective electronic spin <span class="math inline">\(S=1/2\)</span> inside ground and excited manifolds in which several orbital states share the same energy before spin–orbit and related interactions act. The coupling between electron spin and orbital motion (spin–orbit coupling) splits each manifold, and heavier impurity atoms generally give a larger splitting. At a given cryogenic temperature, a larger splitting weakens transitions that need phonons to carry away the energy difference. The same large splitting moves direct microwave spin transitions to frequencies or selection rules that need mixing by strain or by the orientation of the magnetic field <a class="citation" href="#ref-R082" title="[R082] C. Bradac, W. Gao, J. Forneris, M. E. Trusheim, and I.
 Aharonovich, “Quantum nanophotonics with group IV defects in diamond,”
 Nature Communications 10, 5625 (2019). DOI: 10.1038/s41467-019-13332-w .">[R082]</a>.</p>
 <p>Inversion symmetry accounts for the stability of the optical line against first-order shifts from electric fields, not for straightforward spin control. Without inversion symmetry, first-order electric-field shifts return. Even with inversion symmetry retained, strain, higher-order field dependence, nearby charges, and fabrication damage still move the levels; a Stark shift is a change in an energy level or transition frequency caused by an electric field.</p>
@@ -2657,7 +2643,7 @@ crystallographic orientations and their experimental conditions</h3>
 <p>Defects formed by a group-IV atom centered between two vacancies possess inversion symmetry, and that symmetry sets distinct requirements for optical excitation and spin control.</p>
 <p>SiV<span class="math inline">\(^-\)</span> responds to laser light tuned to its optical resonance, which pumps population into a chosen spin state and produces fluorescence for readout. The excited state decays back to the starting spin state across many cycles, with only a small probability of leakage per cycle.</p>
 <p>The SiV spin rotates under a microwave magnetic field or under a pair of laser fields detuned from an excited state that together drive the spin transition. The optical line stays protected from first-order shifts by the inversion symmetry, so separate emitters radiate photons at closely matched frequencies.</p>
-<p>Near 4 K the crystal lattice carries enough vibrational energy to move electrons between the two low-energy orbital branches that lie only tens of gigahertz apart, and each such hop randomizes the spin phase. Cooling the diamond to about 100 mK freezes out those resonant lattice vibrations, which allowed one bulk-device experiment to reach <span class="math inline">\(T_2=13\)</span> ms, <span class="math inline">\(T_1&gt;1\)</span> s, and 89% single-shot spin readout <a class="citation" href="#ref-R083" title="[R083] D. D. Sukachev et al., “Silicon-vacancy spin qubit in diamond:
+<p>Near 4 K the lattice carries enough vibrational energy to move electrons between the two low-energy orbital branches, which lie only tens of gigahertz apart. Each such hop randomizes the spin phase. Cooling the diamond to about 100 mK freezes out those resonant lattice vibrations. One bulk-device experiment then reached <span class="math inline">\(T_2=13\)</span> ms, <span class="math inline">\(T_1&gt;1\)</span> s, and 89% single-shot spin readout <a class="citation" href="#ref-R083" title="[R083] D. D. Sukachev et al., “Silicon-vacancy spin qubit in diamond:
 a quantum memory exceeding 10 ms with single-shot state readout,”
 Physical Review Letters 119, 223602 (2017). DOI: 10.1103/PhysRevLett.119.223602 ;
 arXiv: 1708.08852 .">[R083]</a>.</p>
@@ -2679,7 +2665,7 @@ X 14, 031036 (2024). DOI: 10.1103/PhysRevX.14.031036 .">[R085]</a>. The notation
 <p>PbV<span class="math inline">\(^-\)</span> optical emission has been assigned to a configuration in which a lead atom sits between two missing carbon sites, a geometry called the lead-vacancy split-vacancy family, and this configuration shows large spin–orbit splittings <a class="citation" href="#ref-R082" title="[R082] C. Bradac, W. Gao, J. Forneris, M. E. Trusheim, and I.
 Aharonovich, “Quantum nanophotonics with group IV defects in diamond,”
 Nature Communications 10, 5625 (2019). DOI: 10.1038/s41467-019-13332-w .">[R082]</a>.</p>
-<p>Coherent spin initialization, gate operations, readout, and pairwise coupling for the lead-vacancy system remain at an earlier stage of demonstration than the corresponding operations for NV<span class="math inline">\(^-\)</span>, SiV<span class="math inline">\(^-\)</span>, GeV<span class="math inline">\(^-\)</span>, and SnV<span class="math inline">\(^-\)</span>, and its larger spin–orbit splitting can strengthen thermal isolation while requiring higher-frequency microwave access.</p>
+<p>Coherent spin initialization, gate operations, readout, and pairwise coupling for the lead-vacancy system remain at an earlier stage of demonstration than the corresponding operations for NV<span class="math inline">\(^-\)</span>, SiV<span class="math inline">\(^-\)</span>, GeV<span class="math inline">\(^-\)</span>, and SnV<span class="math inline">\(^-\)</span>. Its larger spin–orbit splitting can strengthen thermal isolation, but it requires higher-frequency microwave access.</p>
 <p>[Proposal] PbV<span class="math inline">\(^-\)</span> remains a candidate for experimental evaluation, with directly deployable qubit operation still to be demonstrated.</p>
 <p>Optical contrast, phonon isolation, and microwave accessibility combine differently in each group-IV center, so a quoted <span class="math inline">\(T_2\)</span> value is tied to its temperature and pulse sequence because altered conditions constitute a distinct measurement.</p>
 </section><section class="topic" data-math-section=""><h3 id="tabulated-properties-and-associated-experimental-conditions">Tabulated
@@ -2784,7 +2770,7 @@ spin qubit in diamond with a superconducting waveguide,” Physical Review
 X 14, 031036 (2024). DOI: 10.1103/PhysRevX.14.031036 .">[R085]</a>. Selection
 rules specify which transitions are allowed or suppressed by the
 symmetries and matrix elements of the system.</p>
-<p>Packing centers close together activates additional physical processes beyond those seen for a single isolated center. Accumulated lattice damage from implantation degrades the crystal environment, overlapping optical lines complicate frequency-resolved addressing, spatial variation of the driving field produces position-dependent rotation angles, magnetic coupling between neighboring spins provides both a controllable interaction and fluctuating background fields, and confinement in a thin photonic membrane increases coupling to surface charge and surface spins.</p>
+<p>Packing centers close together activates processes that a single isolated center does not show. Implantation damage accumulates and degrades the crystal. Overlapping optical lines complicate frequency-resolved addressing. Spatial variation of the driving field produces position-dependent rotation angles. Magnetic coupling between neighboring spins gives both a controllable interaction and fluctuating background fields. Confinement in a thin photonic membrane increases coupling to surface charge and surface spins.</p>
 <p>[Speculation] A defect that performs best in a pristine bulk sample may perform less well after the fabrication required for coupling and individual addressing. Measurements on fabricated ensembles and arrays are required to determine the actual performance ordering.</p>
 </section><section class="topic" data-math-section=""><h3 id="common-analytical-errors">Common analytical errors</h3>
 <ul>
@@ -2884,7 +2870,7 @@ Chromium and other defects in corundum →</a></nav></article><article aria-labe
 Chromium and other defects in corundum</h2><div class="chapter-intro" data-math-section="">
 <p>Ruby is a hard, transparent, red crystal of aluminum and oxygen in which a small fraction of aluminum atoms are replaced by chromium. Light absorption by those chromium atoms gives the crystal its red color.</p>
 <p>Sapphire is the same aluminum-oxygen crystal, called corundum, with different atoms replacing aluminum. The replacement species and its charge determine the absorption spectrum, so corundum appears colorless, blue, yellow, or another color.</p>
-<p>Gemological grading sorts these corundum crystals mainly by color. The technical question is whether the established impurities in corundum support initialization, coherent rotation, and readout of individual quantum systems, operations already demonstrated with a defect in diamond consisting of a nitrogen atom on a carbon site next to an empty carbon site, called a nitrogen-vacancy center.</p>
+<p>Gemological grading sorts these corundum crystals mainly by color. The technical question is whether the established impurities in corundum support initialization, coherent rotation, and readout of individual quantum systems. These operations are already demonstrated with the nitrogen-vacancy center in diamond (Chapter 7): a nitrogen atom on a carbon site next to an empty carbon site.</p>
 <p>The first operating laser used ruby, and early devices that amplify microwaves into a coherent beam through stimulated emission, called masers, also used ruby.</p>
 <p>Corundum in which titanium replaces aluminum, called titanium-doped sapphire, continues to serve in many laboratories as a light-amplifying crystal whose output wavelength is adjustable over a broad range. Impurities in corundum have supplied useful optical and microwave behavior for approximately sixty years.</p>
 <p>The central issue is why defects in diamond, rather than established impurities in corundum, are routinely initialized, coherently rotated, and read out as individual quantum systems.</p>
@@ -2896,9 +2882,9 @@ Chromium and other defects in corundum</h2><div class="chapter-intro" data-math-
 <p>Six oxygen ions surround each chromium ion in a slightly distorted octahedron, and this neighboring oxygen geometry sets the electronic energy levels of the chromium impurity.</p>
 <p>The distortion at the chromium site favors particular orientations of the spins of the three chromium electrons at zero applied magnetic field, and absorption of light lifts these electrons into higher-energy electronic states.</p>
 <p>Microwave fields drive transitions among the four lowest spin states of the chromium impurity. Optical pumping through its optical transitions supplied the population inversion for the first laser, and microwave-driven transitions between its electron-spin energy levels support electron spin resonance spectroscopy, abbreviated ESR.</p>
-<p>Ruby and sapphire share the same corundum host lattice and differ in the impurity species they contain. A crystal with many equivalent local coordination environments provides repeated copies of the same defect environment, and establishment of a register of individually identified and addressable qubits requires demonstration of single-site identification and control beyond that repetition.</p>
-<p>At chromium concentrations used in a ruby laser, the optical field in a laser spot and the microwave field of a resonator address a collection of nominally similar emitters or spins measured collectively, called an ensemble, containing many ions. At dilution sufficient for spatial isolation of individual ions, emitted photons or microwave absorption from one ion produce a signal that can fall below the experimental noise floor.</p>
-<p>Sapphire supports a microwave resonator with exceptionally low loss, meaning stored microwave energy decays slowly. Verification of a many-body phase calls for thermodynamic and correlation measurements, and verification of an individually controllable defect system calls for single-site initialization, manipulation, and readout, so assessment of corundum defects calls for the same operational criteria already satisfied by diamond defects.</p>
+<p>Ruby and sapphire share the same corundum host lattice and differ in the impurity species they contain. A crystal with many equivalent local environments provides repeated copies of the same defect. A register of individually addressable qubits needs more: single-site identification and control must be demonstrated.</p>
+<p>At the chromium concentrations used in a ruby laser, a laser spot or a resonator field addresses many ions at once. Such a collection of nominally similar emitters or spins, measured together, is called an ensemble. If the sample is diluted enough to isolate single ions, the signal from one ion can fall below the experimental noise floor.</p>
+<p>Sapphire supports a microwave resonator with exceptionally low loss, meaning stored microwave energy decays slowly. Verifying a many-body phase needs thermodynamic and correlation measurements. Verifying an individually controllable defect system needs single-site initialization, manipulation, and readout. Corundum defects must therefore meet the same operational criteria that diamond defects already satisfy.</p>
 </section><section class="topic" data-math-section=""><h3 id="ground-state-spin-structure-of-3">Ground-state spin
 structure of <span class="math inline">\(\text{Cr}^{3+}\)</span></h3>
 <p>A chromium ion that has lost three electrons keeps three electrons in its outer <span class="math inline">\(3d\)</span> shell. Exchange energy favors parallel alignment of the three electron spins, giving total spin 3/2 with four allowed spin projections:</p>
@@ -3088,7 +3074,7 @@ aluminum oxide (alpha-Al2O3) from first principles,” Physical Review
 Materials 9, 096202 (2025). DOI: 1">[R093]</a>; <a class="citation" href="#ref-R095" title="[R095] B. D. Evans and M. Stapelbroek, “Optical properties of the \(F^+\) center in crystalline Al2O3,”
 Physical Review B 18, 7089–7098 (1978).">[R095]</a>. The complete operational sequence required for a single-defect qubit has not been demonstrated.</p>
 <p>Oxygen vacancies form when irradiation knocks oxygen atoms out, when growth uses little oxygen, or when annealing drives oxygen out. Illumination shifts their charge state and lets them cluster together. Each of these handles adjusts how many vacancies sit in the crystal.</p>
-<p>Those vacancy-creation steps knock host atoms out of place and leave different atomic surroundings from site to site. Excitation with ultraviolet light at approximately 5–6 eV couples with higher loss in nanophotonic structures and with lower compatibility with biological samples and fiber optics, while visible or near-infrared excitation couples with lower loss and broader compatibility in those settings.</p>
+<p>Those vacancy-creation steps knock host atoms out of place and leave different atomic surroundings from site to site. These centers need ultraviolet excitation at approximately 5–6 eV. Ultraviolet light suffers higher loss in nanophotonic structures and is less compatible with biological samples and optical fibers. Visible or near-infrared excitation has lower loss and broader compatibility in those settings.</p>
 <p>Calling an oxygen vacancy a deep defect in a wide-band-gap material assigns its electronic level far from the band edges. That electronic assignment does not define a device architecture.</p>
 </section><section class="topic" data-math-section=""><h3 id="chromium-implantation-and-spatial-control">Chromium implantation
 and spatial control</h3>
@@ -3367,11 +3353,11 @@ made by ion implantation,” Journal of Applied Physics 88, 5142–5147
 <p>A macroscopic spin ensemble shares one microwave cavity photon through collective magnetic coupling, forming a distinct collective degree of freedom with one hybrid resonance. An individual physical spin, a coupled pair, and a collective ensemble mode become an encoded qubit, an emergent anyon, or a realization of topological order only with the additional encoding, braiding, or ground-state degeneracy specified for those phases, so existence alone does not establish them.</p>
 <p>The cavity anticrossing reported in 2025 shows hybridized spin–photon modes from collective magnetic coupling, which is evidence for a collective hybrid spin–photon system and not for a topological material.</p>
 </section><section class="topic" data-math-section=""><h3 id="common-analytical-errors-1">Common analytical errors</h3>
-<p>A long longitudinal relaxation time <span class="math inline">\(T_1\)</span>, which characterizes the decay of spin-state populations toward thermal equilibrium, must not be interpreted as a long transverse coherence time <span class="math inline">\(T_2\)</span>, which characterizes the loss of relative phase coherence. Populations persist in an excited state for seconds in systems where relative phase washes out much faster, so an array proposal needs direct phase measurements on the proposed defect species at the proposed density, temperature, and device geometry: Ramsey measurement of free-induction decay, spin-echo measurement that refocuses slow frequency wander, and error measurement of driven gates.</p>
+<p>A long longitudinal relaxation time <span class="math inline">\(T_1\)</span>, which characterizes the decay of spin-state populations toward thermal equilibrium, must not be interpreted as a long transverse coherence time <span class="math inline">\(T_2\)</span>, which characterizes the loss of relative phase coherence. Populations persist in an excited state for seconds in systems where relative phase washes out much faster. An array proposal therefore needs direct phase measurements on the proposed defect species, at the proposed density, temperature, and device geometry. These include Ramsey measurement of free-induction decay, spin-echo measurement that refocuses slow frequency wander, and error measurement of driven gates.</p>
 <p>When <span class="math inline">\(N\)</span> similar spins couple to one electromagnetic mode, the symmetric in-phase superposition forms a bright collective mode with coupling larger by approximately <span class="math inline">\(\sqrt N\)</span>, while the remaining orthogonal superpositions form dark modes with no direct coupling to that mode. Consequently, the measured collective coupling of 21 MHz cannot be assigned to a single spin. The ruby model placed average single-spin coupling in the hertz range <a class="citation" href="#ref-R089" title="[R089] Z. Velluire-Pellat, E. Maréchal, C. Feuillet-Palma, and N.
 Bergeal, “Spin-photon interaction between a ruby crystal and a
 high-critical-temperature superconducting microwave cavity,”
-Communications Physics 8, 236 (2025). DOI: 10.1038">[R089]</a>, and selection of one addressed ion remains unavailable alongside a spread of spin-transition frequencies across the ensemble, called inhomogeneous broadening.</p>
+Communications Physics 8, 236 (2025). DOI: 10.1038">[R089]</a>. Selecting one addressed ion also remains unavailable, and the ensemble shows a spread of spin-transition frequencies called inhomogeneous broadening.</p>
 <p>Optical color does not by itself establish spin readout. An absorption band shows electronic transitions that take up light, and luminescence shows that part of the excitation energy comes back out as light. Confirmation of a readout-capable emitter calls for separate tests: single-photon antibunching that identifies one individual emitter, spin-dependent change in optical signal, stable repeated optical cycling, photon indistinguishability, and stable charge state.</p>
 <p>Sapphire carries a large microwave quality factor <span class="math inline">\(Q\)</span>, defined as the ratio of stored resonator energy to the energy dissipated per cycle up to the conventional angular-frequency factor, and that low loss makes it an excellent resonator substrate. The same sensitivity makes unwanted paramagnetic impurities at parts-per-billion concentrations experimentally detectable <a class="citation" href="#ref-R090" title="[R090] W. G. Farr, D. L. Creedon, M. Goryachev, K. Benmessai, and M.
 E. Tobar, “Ultrasensitive microwave spectroscopy of paramagnetic
@@ -3487,7 +3473,7 @@ quality and array performance</h3>
 <p>An array asks for more. Defects of the required type must form at selected sites, individual spins must respond to control without adjacent spins responding too, each spin must give a measurable signal, and fabrication must leave the properties of neighboring defects intact.</p>
 <p>A long-lived memory in an unsuitable device geometry stays a memory result, and a patterned grid of optical emitters whose identities and spin properties are unknown stays a fabrication result. Either achievement matters, and neither substitutes for the other.</p>
 <p>The chapter therefore tracks two performance categories. Single-defect quality covers the initialization, coherent control, coherence, and readout of one spin. Array performance covers placing, distinguishing, coupling, tuning, and measuring many spins under one compatible set of conditions.</p>
-<p>Ten high-quality but isolated spins illustrate the distinction: as a collection of single spins they can be excellent, while as an array they are missing every collective requirement.</p>
+<p>Ten high-quality but isolated spins illustrate the distinction. As single spins they can be excellent. As an array they lack every collective requirement.</p>
 <p>The two performance categories can initially be represented as
 qualitative labels rather than numerical figures of merit:</p>
 <ul>
@@ -3525,7 +3511,7 @@ silicon carbide.</figcaption>
 </figure>
 <p><em>Ruby contains chromium substituted on an aluminum site within an
 oxygen coordination cage. The silicon-carbide divacancy consists of
-adjacent unoccupied sites, one on each sublattice.</em></p>
+adjacent unoccupied sites, one on the silicon sublattice and one on the carbon sublattice.</em></p>
 <p>The neutral divacancy has electronic spin <span class="math inline">\(S=1\)</span>, where <span class="math inline">\(S\)</span> is the total spin quantum number. The
 silicon vacancy commonly used in 4H-SiC has <span class="math inline">\(S=3/2\)</span>.</p>
 <p>Silicon carbide grows in several polytypes: crystal structures with the same chemical composition but different periodic stacking sequences. The common wafer polytype considered here is 4H-SiC, and different stacking sequences and inequivalent lattice sites give different optical and spin spectra.</p>
@@ -3559,7 +3545,7 @@ number, are approximately</p>
 \nu_\pm=D\pm\gamma_e B_z.
 \]</span></p>
 <p>The axial field moves the two transitions in opposite directions. A 2024 SiC-on-insulator experiment
-measured a PL6 center with <span class="math inline">\(D=1340.4\pm1.3\
+measured a PL6 center (one specific divacancy optical line) with <span class="math inline">\(D=1340.4\pm1.3\
 \mathrm{MHz}\)</span> and a field slope of <span class="math inline">\(2.82\pm0.02\
 \mathrm{MHz\,G^{-1}}\)</span>, while coherently controlling the
 implanted single spin at room temperature <a class="citation" href="#ref-R099" title="[R099] H. Hu, Y. Zhou, A. Yi, et al., “Room-temperature waveguide
@@ -4151,8 +4137,8 @@ systems</h2><div class="chapter-intro" data-math-section="">
 <hr/>
 </div></section><article aria-labelledby="chapter-10-interactions-between-two-defect-spins" class="book-chapter"><h2 id="chapter-10-interactions-between-two-defect-spins">Chapter 10 —
 Interactions between two defect spins</h2><div class="chapter-intro" data-math-section="">
-<p>Two magnetic moments held at separate positions interact through their magnetic fields, with no particles exchanged. The displacement vector joining them sets the geometry: both the distance and the orientation of the moments against that vector fix the strength and sign of the interaction, and for some orientations the interaction vanishes.</p>
-<p>Dipole–dipole coupling here means the energy of one magnetic moment sitting in the magnetic field generated by the other. This chapter computes that energy for two electron spins in a crystal and tests whether the resulting coupling can drive coherent evolution. A coupling frequency in megahertz settles nothing on its own; feasibility comes from comparing it with the relevant linewidths and decoherence rates.</p>
+<p>Two magnetic moments held at separate positions interact through their magnetic fields, with no particles exchanged. The displacement vector joining them sets the geometry. The distance, and the orientation of the moments relative to that vector, fix the strength and sign of the interaction. For some orientations the interaction vanishes.</p>
+<p>Dipole–dipole coupling here means the energy of one magnetic moment sitting in the magnetic field generated by the other. This chapter computes that energy for two electron spins in a crystal. It then tests whether the resulting coupling can drive coherent evolution. A coupling frequency in megahertz settles nothing on its own; feasibility comes from comparing it with the relevant linewidths and decoherence rates.</p>
 <p class="chapter-orientation"><strong>Assumes:</strong> spins and the Bloch picture (Chapter 3) and defect-spin structure (Chapter 6). <strong>Introduces:</strong> the magnetic dipole–dipole coupling and its distance/orientation dependence, direct exchange and superexchange, photon-, phonon-, and nuclear-mediated couplings, the electric dipole–dipole interaction, and an experimental NV-pair benchmark. <strong>Used later in:</strong> the three-spin encoding (Chapter 11) and every architecture chapter. <strong>Watch:</strong> a coupling in megahertz settles nothing on its own — it must be compared with the relevant linewidths and decoherence rates.</p></div><section class="topic" data-math-section=""><h3 id="magnetic-field-of-a-localized-moment">Magnetic field of a
 localized moment</h3>
 <p>A magnetic moment is a vector recording the strength and orientation of a magnetic source; the classical picture is a small current loop. Far from the source, every localized current distribution with the same moment produces the same leading-order field.</p>
@@ -4385,9 +4371,9 @@ not much larger than <span class="math inline">\(d\)</span>, the secular
 approximation stops being justified. Pulse sequences also leave relaxation, pulse errors, and some fluctuating couplings unremoved.</p>
 </section><section class="topic" data-math-section=""><h3 id="direct-exchange-from-overlapping-orbitals">Direct exchange from
 overlapping orbitals</h3>
-<p>When two localized electronic wavefunctions overlap, the indistinguishability of electrons contributes a further interaction. Electrons are
+<p>When two localized electronic wavefunctions overlap, a further interaction arises because electrons are indistinguishable. Electrons are
 fermions: the two-electron wavefunction changes sign when
-the particle labels are exchanged, so different spin configurations can
+the particle labels are exchanged. As a result, different spin configurations can
 carry different Coulomb energies.</p>
 <p>Let <span class="math inline">\(\phi_i(\mathbf x)\)</span> and <span class="math inline">\(\phi_j(\mathbf x)\)</span> denote localized
 orbitals. The exchange energy shift is associated with the Coulomb
@@ -4951,13 +4937,13 @@ to diamond nitrogen vacancy centers,” Physical Review B 110, 064428
 11 — Encoding a qubit in three spins subject to noise →</a></nav></article><article aria-labelledby="chapter-11-encoding-a-qubit-in-three-spins-subject-to-noise" class="book-chapter"><h2 id="chapter-11-encoding-a-qubit-in-three-spins-subject-to-noise">Chapter
 11 — Encoding a qubit in three spins subject to noise</h2><div class="chapter-intro" data-math-section="">
 <p>Three spin degrees of freedom can fluctuate independently. Environmental perturbations such as magnetic-field variations and temperature changes can flip one spin and destroy information stored in that physical spin.</p>
-<p>Strong interactions among the three spins reshape the spectrum. When the interaction energy makes most collective configurations costly, only two states remain at low energy; moving elsewhere requires excitation to a higher-energy state.</p>
-<p>The construction leaves the intrinsic noise of each physical spin unchanged. It defines an energy for the three-spin cluster and works within its two-dimensional low-energy subspace. The sections below identify that subspace, calculate the action of physical operators inside it, and assess the resulting protection and limits.</p>
+<p>Strong interactions among the three spins reshape the energy spectrum. They make most collective configurations costly. Only two states remain at low energy, and reaching any other state requires exciting the cluster to a higher energy.</p>
+<p>The construction leaves the intrinsic noise of each physical spin unchanged. It defines an energy for the three-spin cluster and works within its two-dimensional low-energy subspace. The sections below identify that subspace and calculate how physical operators act inside it. They then assess the resulting protection and its limits.</p>
 <p class="chapter-orientation"><strong>Assumes:</strong> density operators and noise channels (Chapter 2) and two-spin interactions (Chapter 10). <strong>Introduces:</strong> the low-energy doublet of three interacting spins, the encoded qubit and its leakage gap, projection of physical operators into the subspace, decoherence-free and noiseless-subsystem behavior, and exchange-only control. <strong>Used later in:</strong> the cluster architecture (Chapters 22, 24) and encoding-dependent noise (Chapter 30). <strong>Watch:</strong> encoding does not change each physical spin's noise; it changes which combinations of spins carry the information.</p></div><section class="topic" data-math-section=""><h3 id="spectrum-and-low-energy-states-of-three-spins">Spectrum and
 low-energy states of three spins</h3>
 <p>Take three physical spin-<span class="math inline">\(1/2\)</span> objects labeled <span class="math inline">\(1,2,3\)</span>. Along the applied-field direction each has two eigenstates, conventionally shown by up and down arrows, so their product basis contains eight states.</p>
 <p>The construction selects two of those states as the low-energy pair rather than assigning a separate logical state to every basis state.</p>
-<p>Call the interacting three-spin system a cluster. Several clusters can later be coupled weakly, with each cluster represented by an effective two-level system.</p>
+<p>Call the interacting three-spin system a cluster. Later, several clusters are coupled weakly, and each cluster is represented by an effective two-level system.</p>
 <p>Let <span class="math inline">\(\mathbf
 S_i=(S_i^x,S_i^y,S_i^z)\)</span> be the dimensionless spin operator at site <span class="math inline">\(i\)</span>, with <span class="math inline">\(S_i^z\)</span> eigenvalues <span class="math inline">\(\pm 1/2\)</span>. The cluster Hamiltonian assigns energy through antiferromagnetic Heisenberg exchange and a uniform longitudinal field:</p>
 <p><span class="math display">\[
@@ -4966,7 +4952,7 @@ S_{\mathrm{tot}}^z=\sum_{i=1}^3S_i^z.
 \]</span></p>
 <p>Heisenberg exchange is the rotationally invariant pair interaction <span class="math inline">\(\mathbf S_i\cdot\mathbf
 S_j\)</span>. Antiferromagnetic exchange has <span class="math inline">\(J&gt;0\)</span> and favors lower total spin; the field-coupling coefficient also has <span class="math inline">\(b&gt;0\)</span>. Both <span class="math inline">\(J\)</span> and <span class="math inline">\(b\)</span> are energies, so every term in <span class="math inline">\(H_C\)</span> has energy units. Experiments often quote the corresponding frequencies <span class="math inline">\(J/h\)</span> and <span class="math inline">\(b/h\)</span>, with <span class="math inline">\(h\)</span> Planck’s constant.</p>
-<p>The Hilbert space of three spin-<span class="math inline">\(1/2\)</span> objects decomposes into one
+<p>The Hilbert space (the state space) of three spin-<span class="math inline">\(1/2\)</span> objects decomposes into one
 total-spin <span class="math inline">\(S_{\mathrm{tot}}=3/2\)</span>
 quartet and two copies of a total-spin <span class="math inline">\(S_{\mathrm{tot}}=1/2\)</span> doublet. First
 restrict the system to total magnetization <span class="math inline">\(m=S_{\mathrm{tot}}^z=+1/2\)</span>. Two states in
@@ -5207,9 +5193,9 @@ distinguishability and absence of topological order</h3>
 <p>The logical operators therefore have support on three nearby spins, and the degeneracy is not set by the topology of a macroscopic surface. This construction is an encoding, not topological order.</p>
 <p>Topological order, when present, is a property of an entire many-body
 phase. Small local perturbations cannot read the encoded information or
-split the relevant degeneracy at first order, and the excitations
+split the relevant degeneracy at first order. The excitations
 carrying the information can be transported over a large lattice. Such
-excitations are later referred to as anyons.</p>
+excitations are later called anyons (Chapters 13–15).</p>
 <p>The present cluster is finite: its three physical spins are ordinary qubits, the pair selected by <span class="math inline">\(P\)</span> is one encoded qubit, and controlled evolution that reproduces a target model constitutes digital or analog emulation. Such a finite construction has no emergent many-body phase.</p>
 </section><section class="topic" data-math-section=""><h3 id="relation-to-color-center-experiments-and-proposals">Relation to
 color-center experiments and proposals</h3>
@@ -5280,7 +5266,7 @@ spins <span class="math inline">\(\rightarrow\)</span> static
 exchange-dominated isolated doublet <span class="math inline">\(\rightarrow\)</span> projected exchange-only
 qubit.” This conclusion is a search result, not a proof that no such
 paper exists. It identifies the missing element that a defect-cluster
-proposal must establish independently; semiconductor quantum-dot results
+proposal must establish independently. Semiconductor quantum-dot results
 cannot establish it.</p>
 </section><section class="topic" data-math-section=""><h3 id="common-conceptual-and-modeling-errors">Common conceptual and
 modeling errors</h3>
@@ -5548,7 +5534,7 @@ and protection mechanisms</h3>
 <p>A classical loop carries no entanglement, and its winding number computes nothing by itself. The chapter accordingly retires the loop model here and carries forward only its lesson — global labels resist local changes — recast in quantum operators below.</p>
 <p>A correspondence counts as a protection mechanism when every disturbance confined to a sufficiently small region leaves the global label fixed.</p>
 <p>Defeating that protection takes an extended process: local errors lining up into a chain, an excitation traveling a noncontractible path — one that cannot shrink to a point without crossing a hole — or a perturbation strong enough to close the gap and destroy the phase. Each costs effort that grows with the relevant distance — the chain length, the path length, the gap size.</p>
-<p>Harder does not mean impossible. Local errors accumulate over time; boundaries shorten the path an error must cross; thermal excitations wander; finite devices keep residual splitting between labels; correlated noise strikes non-locally; initialization and measurement fail on their own. Each mechanism below gets its own estimate — difficulty is a scaling argument, not a guarantee.</p>
+<p>Harder does not mean impossible. Local errors accumulate over time. Boundaries shorten the path an error must cross. Thermal excitations wander. Finite devices keep a residual splitting between labels. Correlated noise can act non-locally. Initialization and measurement fail on their own. Each mechanism gets its own estimate later: difficulty is a scaling argument, not a guarantee.</p>
 <p>A stable global label therefore shifts failure from a single local move to processes whose rates depend on path length, gap, boundaries, temperature, and control.</p>
 <pre class="text"><code>classical loop                         quantum many-body system
 --------------                         ------------------------
@@ -5594,7 +5580,7 @@ nonlocal loop operators</h3>
 <p>Here <span class="math inline">\(\mathcal H_q\)</span> holds the states of sector <span class="math inline">\(q\)</span>, and <span class="math inline">\(\oplus\)</span> is the direct sum of distinct subspaces.</p>
 <p>In lattice models a <strong>loop operator</strong> <span class="math inline">\(W(C)\)</span> acts along a closed path <span class="math inline">\(C\)</span>, and its measured value labels the sector.</p>
 <p>A short <strong>contractible</strong> loop — one that shrinks to a point — is typically built from local constraints. A loop winding around a hole or around a periodic direction of a torus admits no such shrinking, so its measured value reports on the whole system rather than any patch.</p>
-<p>Kitaev's toric-code model realizes this correspondence exactly: its noncontractible loop operators distinguish degenerate ground states
+<p>Kitaev's toric-code model (a lattice of spins with local checks, developed in Chapter 16) realizes this correspondence exactly: its noncontractible loop operators distinguish degenerate ground states
 <a class="citation" href="#ref-R030" title="[R030] Alexei Kitaev, “Fault-tolerant quantum computation by
 anyons,” Annals of Physics 303, 2–30 (2003). DOI: 10.1016/S0003-4916(02)00018-0 ;
 arXiv: quant-ph/9707021 .">[R030]</a>.</p>
@@ -5629,7 +5615,7 @@ system;</p></li>
 <li><p>nonlocal operators that distinguish or transform global
 sectors;</p></li>
 <li><p>excitations with a conserved type and, in appropriate phases,
-unusual exchange and fusion behavior;</p></li>
+unusual exchange and fusion behavior (fusion is what happens when two excitations are brought together; see Chapter 14);</p></li>
 <li><p>stability of the phase under sufficiently weak local
 perturbations that do not close the gap.</p></li>
 </ul>
@@ -5849,7 +5835,7 @@ history.</p>
 state to change. In the simplest case, a counterclockwise exchange leaves
 every amplitude unchanged, multiplying the whole state by <span class="math inline">\(+1\)</span>.</p>
 <p>This exchange law defines a <strong>boson</strong>. Photons are an
-example: two photons can occupy the same quantum state, consistent with a
+example. Two photons can occupy the same quantum state, which is consistent with a
 symmetric exchange factor.</p>
 <p>Ordinary label permutations admit exactly two exchange factors,
 <span class="math inline">\(+1\)</span> and <span class="math inline">\(-1\)</span>, discussed
@@ -6147,9 +6133,9 @@ the particle positions held fixed. The basis states <span class="math inline">\(
 states belonging to the same spatial configuration.</p>
 <p>One source of such multiplicity is the collective appearance of a
 pair viewed from far away. Two anyons of the same type can jointly look
-like no additional excitation or like one residual excitation, and a
-prepared pair can sit in a superposition of the two outcomes until a
-measurement of the pair selects one.</p>
+like no additional excitation or like one residual excitation. A
+prepared pair can be in a superposition of the two possibilities. A
+measurement of the pair then gives one outcome, with a probability set by the squared amplitude of that possibility.</p>
 <pre><code>a   a
  \ /
   |
@@ -6157,8 +6143,8 @@ measurement of the pair selects one.</p>
 <p>The question mark stands for the residual label. With the particle
 positions and the total residual label both fixed, the allowed residual
 outcomes span a <strong>fusion space</strong>.</p>
-<p>Combining particles already acts as a quantum operation: the system
-gains multiple states without any particle motion.</p>
+<p>Combining particles has a quantum consequence even without motion: the system
+has several distinct states at the same particle positions.</p>
 <p>This chapter needs only the existence of those multiple basis states,
 on which the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> act. The next chapter
 introduces the residual labels in full, with the tree diagrams that
@@ -6452,7 +6438,7 @@ and topological charge</h2><div class="chapter-intro" data-math-section="">
 <p>Consider two particles enclosed within a region whose interior an
 outside observer cannot resolve. Each external measurement then reports
 one coarse property: the type of source the region presents as a
-whole.</p>
+whole. We call this property the region's charge.</p>
 <p>Local rearrangements of the particles inside leave that external
 report unchanged. The region carries a label fixed by all such local
 rearrangements.</p>
@@ -6507,11 +6493,10 @@ independent ways to obtain the same externally visible total charge
 charge seen when the two particles are treated as one composite region;
 the quasiparticles persist, and no collision debris is implied.</p>
 <p>The plus sign in the fusion product lists alternative allowed totals.
-It records the set of possible measurement outcomes, not a statistical
-mixture already prepared in the system, and not a simultaneous
-realization of every listed result. A quantum state becomes a
-superposition of these alternatives only when the full experimental
-configuration supports coherence between them.</p>
+It records the set of possible measurement outcomes. It does not describe a statistical
+mixture already prepared in the system, and it does not mean that every listed result is
+realized at once. A measurement of the total charge gives one of the listed values. Which value, and with what probability,
+depends on how the state was prepared.</p>
 <p>A fusion product therefore lists allowed total charges while leaving
 the prepared superposition and its probability distribution to be
 specified separately.</p>
@@ -6727,7 +6712,7 @@ unreachable from that charge and the theory without duals in the sense
 used later.</p>
 </section><section class="topic" data-math-section=""><h3 id="associativity-and-dimension-counting">Associativity and
 dimension counting</h3>
-<p>Three charges can be grouped two ways — fuse the first pair first, or the last pair first — and both must describe the same space of states. Counting that space each way gives a consistency check on the fusion coefficients, before any phases or matrices enter. Written out, fixing the total charge <span class="math inline">\(d\)</span>, the left-associated (first-pair-first) fusion space decomposes as</p>
+<p>Three charges can be grouped two ways: fuse the first pair first, or fuse the last pair first. Both must describe the same space of states. Counting that space each way gives a consistency check on the fusion coefficients, before any phases or matrices enter. Written out, fixing the total charge <span class="math inline">\(d\)</span>, the left-associated (first-pair-first) fusion space decomposes as</p>
 <p><span class="math display">\[
 V_{abc}^{d}\cong
 \bigoplus_e V_{ab}^{e}\otimes V_{ec}^{d}.
@@ -7239,7 +7224,7 @@ A_3=B_2=1,
 \qquad
 B_3=A_2+B_2=2.
 \]</span></p>
-<p>Continuing through seven anyons gives:</p>
+<p>Continuing through seven anyons gives the following counts:</p>
 <div aria-label="Scrollable data table" class="table-scroll" role="region" tabindex="0"><table>
 <colgroup>
 <col style="width: 25%"/>
@@ -7297,7 +7282,7 @@ B_3=A_2+B_2=2.
 <p>The final column sums the dimensions of two distinct total-charge
 sectors, recording a direct sum rather than a single coherent
 computational space.</p>
-<p>A superselection rule forbids ordinary coherent superpositions
+<p>A superselection rule (a rule that no physical operation can create a superposition across certain sectors) forbids ordinary coherent superpositions
 between total charge <span class="math inline">\(1\)</span>
 and total charge <span class="math inline">\(\tau\)</span>
 states. Computation therefore fixes the total charge and works within
@@ -7442,7 +7427,7 @@ coherence between such sectors is generally unavailable as a
 computational degree of freedom.</p>
 </section><section class="topic" data-math-section=""><h3 id="braid-matrices-for-the-first-and-second-pairs">Braid matrices
 for the first and second pairs</h3>
-<p>The goal of this section is one concrete result: braiding the three anyons — a purely topological operation — acts on the encoded qubit as an ordinary <span class="math inline">\(2\times2\)</span> unitary, and the two neighboring braids do not commute. The recipe is the one built in Chapter 14: exchanging the adjacent pair is the diagonal <span class="math inline">\(R\)</span>-matrix, and exchanging the other pair is the same <span class="math inline">\(R\)</span> conjugated by the recoupling <span class="math inline">\(F\)</span>. Everything below is that recipe with the Fibonacci numbers filled in.</p>
+<p>The goal of this section is one concrete result. Braiding the three anyons, a purely topological operation, acts on the encoded qubit as an ordinary <span class="math inline">\(2\times2\)</span> unitary, and the two neighboring braids do not commute. The recipe is the one built in Chapter 14. Exchanging the adjacent pair is the diagonal <span class="math inline">\(R\)</span>-matrix, and exchanging the other pair is the same <span class="math inline">\(R\)</span> conjugated by the recoupling <span class="math inline">\(F\)</span>. Everything below is that recipe with the Fibonacci numbers filled in.</p>
 <p>Adopt the convention of Ref. <a class="citation" href="#ref-R135" title="[R135] S. Trebst, M. Troyer, Z. Wang, and A. W. W. Ludwig, “A
 short introduction to Fibonacci anyon models,” Progress of Theoretical
 Physics Supplement 176, 384–407 (2008). DOI: 10.1143/PTPS.176.384 ;
@@ -7871,7 +7856,7 @@ lattice models</h2><div class="chapter-intro" data-math-section="">
 16 — Local stabilizer checks and encoded information</h2><div class="chapter-intro" data-math-section="">
 <p>Take a square lattice whose opposite sides are identified. The resulting surface is a torus, and each edge carries one spin-<span class="math inline">\(1/2\)</span> that serves as a qubit.</p>
 <p>Each vertex and each face has its own binary-valued operator. We call these operators checks because their eigenvalues report whether the associated local constraint is satisfied.</p>
-<p>A check reports a local violation. The collection of check outcomes identifies where defects occur, while a separate global question asks whether the flipped edges form a loop winding around a noncontractible cycle of the torus.</p>
+<p>A check reports a local violation. The collection of check outcomes shows where excitations sit. A separate, global question is whether the flipped edges form a loop winding around the torus, a loop that cannot be shrunk to a point (a noncontractible cycle). Local checks cannot answer that question.</p>
 <p>Here “toric code” refers to this lattice model: qubits occupy edges, vertex and face checks are defined below, and the same checks specify either a Hamiltonian or a quantum code.</p>
 <p>A color-center spin is one physical qubit in a crystal. Assigning one
 defect to each drawn edge does not by itself produce the required checks
@@ -8304,7 +8289,7 @@ implementing a short digital braid.</p>
 <p>Eight defect spins assigned to the eight edges of a diagram remain
 eight defect spins unless the star interactions, plaquette interactions,
 and a many-body gap are shown to exist.</p>
-<p>Passive and active strategies can be combined, but they have different error models: passive energy penalties modify transition energies, while active correction obtains syndrome information at the cost of control, measurement, and decoding resources. Both architectures may be described as toric-code implementations only if the relevant physical realization is specified.</p>
+<p>Passive and active strategies can be combined, but they have different error models. Passive energy penalties modify transition energies. Active correction obtains syndrome information at the cost of control, measurement, and decoding resources. Either architecture counts as a toric-code implementation only if the physical realization is specified.</p>
 </section><section class="topic" data-math-section=""><h3 id="physical-requirements-for-laboratory-implementations">Physical
 requirements for laboratory implementations</h3>
 <p>The ideal square-lattice Hamiltonian uses weight-four Pauli products, where weight counts the qubits acted on nontrivially. Candidate hardware usually supplies one- or two-body interactions. Implementing the commuting-projector model therefore needs direct multiqubit terms, perturbative effective terms, extra constraints, or digital sequences, each with its own energy scales and control errors.</p>
@@ -8614,7 +8599,7 @@ DOI: 10.1146/annurev-conmatphys-03311">[R148]</a>.
 [Theory] The term “flux-free” specifies the plaquette eigenvalues; it
 does not imply a trivial excitation spectrum. The remaining spectrum can
 be gapless or topological.</p>
-<p>Chapter 16 built topology from explicit four-spin stabilizers. A defect array is more likely to offer pairwise exchange, dipolar, or mediated couplings. The honeycomb model shows that strictly local two-body spin interactions can still be enough: their collective effect produces flux sectors, fractionalized quasiparticles, and topological order. [Theory] This holds exactly for this special Hamiltonian. It does not imply that an arbitrary honeycomb-shaped array is topological, so such an array needs its own evidence before any topological claim follows <a class="citation" href="#ref-R017" title="[R017] A. Kitaev, “Anyons in an Exactly Solved Model and Beyond,”
+<p>Chapter 16 built topology from explicit four-spin stabilizers. A defect array is more likely to offer pairwise exchange, dipolar, or mediated couplings. The honeycomb model shows that strictly local two-body spin interactions can still be enough. Their collective effect produces flux sectors, fractionalized quasiparticles (excitations that carry only part of a spin's quantum numbers), and topological order. [Theory] This holds exactly for this special Hamiltonian. It does not imply that an arbitrary honeycomb-shaped array is topological. Such an array needs its own evidence before any topological claim follows <a class="citation" href="#ref-R017" title="[R017] A. Kitaev, “Anyons in an Exactly Solved Model and Beyond,”
 Annals of Physics 321, 2–111 (2006). DOI: 10.1016/j.aop.2005.10.005 ;
 arXiv: cond-mat/0506438 .">[R017]</a>; <a class="citation" href="#ref-R148" title="[R148] M. Hermanns, I. Kimchi, and J. Knolle, “Physics of the
 Kitaev Model: Fractionalization, Dynamic Correlations, and Material
@@ -8662,7 +8647,7 @@ H_K=i\sum_{\langle ij\rangle_\alpha}J_\alpha u_{ij}c_i c_j.
 <p>Every <span class="math inline">\(u_{ij}\)</span> commutes with this ideal Hamiltonian. With all the <span class="math inline">\(u_{ij}\)</span> signs fixed, <span class="math inline">\(H_K\)</span> is quadratic in the <span class="math inline">\(c\)</span> Majorana operators: a free-fermion hopping problem that diagonalizes directly.</p>
 <p>Multiplying the <span class="math inline">\(u_{ij}\)</span> variables around a plaquette reproduces <span class="math inline">\(W_p\)</span>, up to the fixed bond-orientation convention. Each <span class="math inline">\(u_{ij}\)</span> sign separately depends on the gauge choice; the product around the loop does not, and that product is the physical flux.</p>
 <p>Physical spins live on the lattice sites. The <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> Majorana operators act in an enlarged Hilbert space, and only states satisfying <span class="math inline">\(D_i=+1\)</span> at every site correspond to spin states. A fixed-<span class="math inline">\(u\)</span> solution computed before this projection still contains unphysical states. A flux eigenvalue is likewise a collective label of the many-body state.</p>
-<p>This machinery gives delocalized matter bands in an enlarged representation. These properties do not by themselves demonstrate a localized, independently controllable zero mode in a material, and they do not by themselves define an encoded qubit: a localized zero mode belongs to the gapped phase with vortices, after projection onto the physical subspace described below.</p>
+<p>This machinery gives delocalized matter bands in an enlarged representation. These bands do not by themselves demonstrate a localized, independently controllable zero mode in a material, and they do not define an encoded qubit. A localized zero mode belongs to the gapped phase with vortices, after projection onto the physical subspace described below.</p>
 <p>The representation separates two kinds of excitation:</p>
 <ul>
 <li><p>Fluxes, which change the loop eigenvalues.</p></li>
@@ -8916,7 +8901,7 @@ Fusion constraints in string-net models</h2><div class="chapter-intro" data-math
 <p>Picture a honeycomb lattice with every edge either blank or carrying one string type. Three edges meet at each vertex, so the lattice is trivalent. A local branching rule lists which triples of edge labels may meet at a vertex.</p>
 <p>In the rules used below, an allowed triple may mix two edges of one type with one of another, or use three edges of the same type. A vertex joining one string to two blank edges is forbidden.</p>
 <p>No single edge-label pattern is the physical state. The physical state is a quantum superposition of many legal patterns, each entering with its own amplitude. Local moves create a small closed loop, carry it across a vertex by recoupling the neighboring strings, and absorb it into the surrounding network.</p>
-<p>A Levin–Wen model is a lattice Hamiltonian built from three ingredients: a finite set of edge labels on a trivalent lattice, a branching rule for the triples meeting at each vertex, and a second local rule that inserts contractible loops and recouples them into the network. A contractible loop shrinks continuously to a point on the surface. The branching rule alone cannot produce a topological phase; the loop rule is also required.</p>
+<p>A Levin–Wen model is a lattice Hamiltonian built from three ingredients. The first is a finite set of edge labels on a trivalent lattice. The second is a branching rule for the triples meeting at each vertex. The third is a second local rule that inserts contractible loops and recouples them into the network. A contractible loop shrinks continuously to a point on the surface. The branching rule alone cannot produce a topological phase; the loop rule is also required.</p>
 <p class="chapter-orientation"><strong>Assumes:</strong> Fibonacci fusion (Chapter 15), the <span class="math inline">\(F\)</span>-move (Chapter 14), and the commuting-projector idea (Chapter 16). <strong>Introduces:</strong> string-net configurations on a trivalent lattice, branching rules, loop-weight factors and vertex projectors, the plaquette loop operator, and the doubled (non-chiral) topological order these produce. <strong>Used later in:</strong> the chirality chapter (19) and the defect-cluster target models (Chapters 24–26). <strong>Watch:</strong> the ground state is a <em>superposition</em> of all allowed edge patterns, not any single pattern; the loop rule, not the branching rule, is what makes it topological.</p>
 </div><section class="topic" data-math-section=""><h3 id="allowed-trivalent-vertex-label-combinations">Allowed
 trivalent-vertex label combinations</h3>
@@ -8971,7 +8956,7 @@ B^\tau=
 <p><span class="math display">\[
 \mathcal D^2=d_1^2+d_\tau^2=1+\varphi^2=\varphi+2.
 \]</span></p>
-<p>This operation inserts and fuses a loop according to the fusion algebra: the second tau loop splits into the vacuum and tau channels, so the empty and ring configurations mix. It is a correlated loop insertion followed by fusion, which a flip of six edge bits with fitted coefficients misses.</p>
+<p>This operation inserts and fuses a loop according to the fusion algebra. The second tau loop splits into the vacuum and tau channels, so the empty and ring configurations mix. It is a correlated loop insertion followed by fusion. A flip of six edge bits with fitted coefficients would miss this.</p>
 <p>Once any outward leg carries <span class="math inline">\(\tau\)</span>, further intermediate fusion channels open and the two-dimensional matrix no longer suffices. Moving between those channels uses an <span class="math inline">\(F\)</span>-move, a change of basis between different orders of fusion.</p>
 </section><section class="topic" data-math-section=""><h3 id="loop-weight-factors">Loop-weight factors</h3>
 <p>The empty network alone does not satisfy the plaquette rule. The plaquette operation averages over loop types, weighted by their quantum dimensions:</p>
@@ -9284,11 +9269,11 @@ arXiv: <a href="https://arxiv.org/abs/1001.0344">1001.0344</a>.</p></li>
 17 — Bond-directional interactions on the honeycomb lattice</a><a href="#chapter-19-chirality-and-reversed-chirality">Chapter 19 —
 Chirality and reversed chirality →</a></nav></article><article aria-labelledby="chapter-19-chirality-and-reversed-chirality" class="book-chapter"><h2 id="chapter-19-chirality-and-reversed-chirality">Chapter 19 —
 Chirality and reversed chirality</h2><div class="chapter-intro" data-math-section="">
-<p>A quasiparticle braid runs in a definite spatial orientation: an orientation-preserving motion keeps clockwise exchanges clockwise, while spatial reflection turns clockwise exchanges into counterclockwise ones. A braid and its mirror image are the two orientations of one exchange sequence, and keeping both gives two oppositely oriented sectors.</p>
+<p>A quasiparticle braid has a definite spatial orientation. A rotation or translation keeps clockwise exchanges clockwise. A spatial reflection turns them into counterclockwise exchanges. A braid and its mirror image are the two orientations of one exchange sequence. A theory that keeps both has two oppositely oriented sectors.</p>
 <p>Chapter 15 introduced one fusion rule, and Chapter 18 built a lattice Hamiltonian from it. The fusion rule alone leaves open whether the phase is chiral, reverse-chiral, or doubled.</p>
 <p class="chapter-orientation"><strong>Assumes:</strong> Fibonacci fusion and braiding (Chapter 15), the <span class="math inline">\(F\)</span>/<span class="math inline">\(R\)</span>-moves (Chapter 14), and the string-net Hamiltonian (Chapter 18). <strong>Introduces:</strong> braid orientation and its mirror (<span class="math inline">\(U\)</span> versus <span class="math inline">\(U^*\)</span>), chiral versus reverse-chiral versus doubled order, paired charge labels and the doubled theory's total quantum dimension, the chiral central charge and thermal Hall response, and the Drinfeld center. <strong>Used later in:</strong> the digital-emulation and architecture chapters (20, 24). <strong>Watch:</strong> "Fibonacci" names a family of theories; the fusion rule alone does not fix a phase's chirality.</p></div><section class="topic" data-math-section=""><h3 id="orientation-dependence-of-braiding">Orientation dependence of
 braiding</h3>
-<p>A braid is the spacetime trajectory traced out by exchanging quasiparticles. For non-Abelian quasiparticles, whose exchanges act noncommutatively on a degenerate fusion space, running the braid in one orientation transforms the fusion state by a unitary matrix <span class="math inline">\(U\)</span>, a transformation that preserves inner products and probabilities.</p>
+<p>A braid is the spacetime trajectory traced out by exchanging quasiparticles. For non-Abelian quasiparticles, whose exchanges act noncommutatively on a degenerate fusion space, running the braid in one orientation transforms the fusion state by a unitary matrix <span class="math inline">\(U\)</span>. A unitary matrix preserves inner products and probabilities.</p>
 <p>Reflection turns clockwise exchanges into counterclockwise ones. With consistent basis choices, the reflected braid acts as the complex-conjugate matrix <span class="math inline">\(U^*\)</span>.</p>
 <p>A topological medium is chiral when it realizes only one orientation of the braiding data, so that spatial reflection changes the braiding. Chirality is a physical property of the phase, not a naming convention.</p>
 <p>The chiral Fibonacci theory <span class="math inline">\(\mathcal F\)</span> takes one such orientation. Its nontrivial charge <span class="math inline">\(\tau\)</span> labels a superselection sector of quasiparticle excitations.</p>
@@ -14824,9 +14809,7 @@ events that produce the target defect. Usable-site yield additionally
 depends on the probabilities of obtaining the required charge state,
 readout performance, coherence, and geometric tolerance. These selection
 conditions may be correlated.</p></li>
-<li><p>A fabrication paper for this architecture must report
-three-dimensional final-position distributions, non-Gaussian tails and
-biases, the exact denominator used to define creation yield, charge and
+<li><p>A fabrication paper for this architecture must report the following: three-dimensional final-position distributions, non-Gaussian tails and biases, the exact denominator used to define creation yield, charge and
 spin acceptance criteria, missing and extra defects, the pair-coupling
 distribution, and the array-level yield under the stated processing
 conditions.</p></li>
@@ -15460,11 +15443,7 @@ from the excitation gap.</p></li>
 rather than only a similar low-energy spectrum.</p></li>
 </ul>
 <p>Consequently, no supported material value of <span class="math inline">\(\Delta_{\rm topo}\)</span> is available for
-insertion into the analysis. [Proposal] A defensible experimental and
-computational program would first measure small-cluster spectra and
-parameter distributions, fit a microscopic Hamiltonian without omitting
-unfavorable terms, compute the resulting phase diagram and gap with
-uncertainty propagation, and then compare progressively larger patches.
+insertion into the analysis. [Proposal] A defensible experimental and computational program has four steps. First, measure small-cluster spectra and parameter distributions. Second, fit a microscopic Hamiltonian without omitting unfavorable terms. Third, compute the resulting phase diagram and gap with uncertainty propagation. Fourth, compare progressively larger patches.
 Any reported gap should specify the host, defect species, charge state,
 geometry, field, strain, temperature, boundary conditions, and
 model-fitting procedure.</p>
@@ -19919,12 +19898,7 @@ afterward.</td>
 </tbody>
 </table></div>
 <p>Each invasive operation sits either before phase preparation or on
-the record as an explicit perturbation. Claiming nondestructive control
-inside the phase would take evidence that stages 4–6 neither close the
-local gap nor breed uncontrolled quasiparticles — emergent excitations
-of the interacting many-body system — and that stage 8 reads the
-intended encoded observable through an ancilla, an auxiliary quantum
-subsystem mediating the measurement, or an equivalent channel. No such
+the record as an explicit perturbation. Claiming nondestructive control inside the phase would take two pieces of evidence. First, stages 4–6 neither close the local gap nor breed uncontrolled quasiparticles (emergent excitations of the interacting many-body system). Second, stage 8 reads the intended encoded observable through an ancilla (an auxiliary quantum subsystem mediating the measurement) or an equivalent channel. No such
 evidence exists for this architecture yet.</p>
 </section><section class="topic" data-math-section=""><h3 id="experimentally-demonstrated-capabilities-and-remaining-integration-requirements">Experimentally
 demonstrated capabilities and remaining integration requirements</h3>
@@ -23088,7 +23062,7 @@ benchmark <a class="citation" href="#ref-R025" title="[R025] Sergey Bravyi, Davi
 “Schrieffer–Wolff transformation for quantum many-body systems,” Annals
 of Physics 326, 2793–2826 (2011).">[R025]</a>.</p>
 <p>Convergence tests increase the number of retained cluster states, tighten sparse-eigensolver residuals, compare calculations with and without each nominally small microscopic term, and verify that arbitrary phase choices within the doublet leave basis-invariant conclusions unchanged.</p>
-<p>Stop rule 2 rejects the cluster architecture when the doublet disappears under realistic disorder, when required controls project nearly to the identity while noise projects strongly onto Pauli operators, or when the exact two-cluster spectra cannot be reproduced within the predeclared effective-model error budget.</p>
+<p>Stop rule 2 rejects the cluster architecture in any of three cases. First, the doublet disappears under realistic disorder. Second, the required controls project nearly to the identity while noise projects strongly onto Pauli operators. Third, the exact two-cluster spectra cannot be reproduced within the predeclared effective-model error budget.</p>
 <p>A leftover counts as characterized when it is spectrally isolated, carries usable projected controls, shows tolerable projected noise, and reproduces exact coupled-cluster spectra through the effective model. An isolated-cell doublet alone meets none of these tests beyond the first.</p>
 </div></details></section><section aria-labelledby="three-to-six-cluster-plaquette-calculation" class="topic" data-math-section=""><h4 id="three-to-six-cluster-plaquette-calculation">Three-to-Six-Cluster Plaquette Calculation</h4>
 <p>This stage asks whether the microscopic couplings generate the required encoded operator. A Pauli string has <em>weight</em> equal to its number of nonidentity factors; <span class="math inline">\(Z\otimes I\otimes
@@ -24603,11 +24577,7 @@ number.</p>
 assumed cluster doublet. Falsifying the proposed many-body mechanism
 requires four such clusters (twelve defects).</p>
 <p><strong>15. Evidence required for a promising result.</strong></p>
-<p>A reproducible cluster doublet must be followed by a measured or
-microscopically validated many-body coefficient that dominates
-noncommuting residual terms, exceeds disorder and decoherence, remains
-stable under realistic position distributions, and produces the expected
-gap and nonlocal diagnostics.</p>
+<p>A reproducible cluster doublet must be followed by a measured or microscopically validated many-body coefficient. That coefficient must dominate noncommuting residual terms, exceed disorder and decoherence, and remain stable under realistic position distributions. It must also produce the expected gap and nonlocal diagnostics.</p>
 <details class="deep-dive"><summary>Detailed treatment: fifteen assessment questions</summary><div class="detail-body" data-math-section=""><h4 id="fifteen-assessment-questions-expanded">Fifteen assessment questions</h4>
 <ol type="1">
 <li><p><strong>Encoding one effective qubit in multiple
