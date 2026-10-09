@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fibonacci quasicrystals — Christos Chatzifountas</title>
-    <meta name="description" content="A mathematical route into Fibonacci tilings: irrational rotations, a dense orbit on a torus, and a clearly hypothetical diamond-based quantum architecture." />
+    <meta name="description" content="&quot;A mathematical route into Fibonacci tilings: irrational rotations, a dense orbit on a torus, and a clearly hypothetical diamond-based quantum architecture.&quot;" />
     <meta name="theme-color" content="#f7f4ee" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,14 +34,14 @@
         <p class="post-meta">3 August 2026</p>
         <div class="post-body">
 <p>A Fibonacci quasicrystal is a one-dimensional pattern with long-range order but no
-repeating unit cell. It is not random: every local choice follows a precise global
-rule. It is not periodic either: no finite block, slid along the line, reproduces
-the whole pattern.</p>
+translation period. Its finite patches recur, but no nonzero shift reproduces the
+entire infinite pattern. It is not random: one global rule determines every tile.</p>
 <p>The familiar construction is almost absurdly small:</p>
 <pre><code class="language-text">L → LS
 S → L
 </code></pre>
-<p>Start with <code>L</code> and apply the substitution everywhere at once:</p>
+<p>Here <code>L</code> and <code>S</code> denote long and short tiles. Apply both replacements to every
+letter at once, starting with <code>L</code>:</p>
 <pre><code class="language-text">L
 LS
 LSL
@@ -49,109 +49,315 @@ LSLLS
 LSLLSLSL
 …
 </code></pre>
-<p>Read <code>L</code> and <code>S</code> as long and short tiles. In the geometric version, give the short
-tile length 1 and the long tile length the golden ratio, <code>φ = (1 + √5) / 2 ≈ 1.618</code>.
-As the sequence grows, the ratio of long tiles to short tiles settles on that same
-number.</p>
+<p>Each word is a finite prefix of the one-sided infinite Fibonacci word, which extends
+to the right. In an arbitrary common length unit, give <code>S</code> length 1 and <code>L</code> length
+the golden ratio, <code>φ = (1 + √5) / 2 ≈ 1.618</code>. The symbol counts explain why this
+length ratio is natural; the count ratio does not depend on the chosen tile lengths.</p>
+<p>Let <code>ℓₖ</code> and <code>sₖ</code> count the <code>L</code> and <code>S</code> symbols after <code>k</code> substitutions. Generation
+0 is the single letter <code>L</code>. Each old <code>L</code> produces one <code>L</code> and one <code>S</code>, while each old
+<code>S</code> produces one <code>L</code>, so:</p>
+<pre><code class="language-text">(ℓ₀, s₀) = (1, 0)
+ℓₖ₊₁ = ℓₖ + sₖ
+sₖ₊₁ = ℓₖ
+</code></pre>
+<p>Define Fibonacci numbers by <code>F₀ = 0</code>, <code>F₁ = 1</code>, and
+<code>Fₙ₊₂ = Fₙ₊₁ + Fₙ</code>. The recurrences give <code>ℓₖ = Fₖ₊₁</code> and <code>sₖ = Fₖ</code>, so for <code>k ≥ 1</code></p>
+<pre><code class="language-text">ℓₖ / sₖ = Fₖ₊₁ / Fₖ  →  φ
+</code></pre>
+<p>The arrow means the ratios approach <code>φ</code> as <code>k</code> grows; a finite generation need not
+equal the limit. One way to check the limit is the exact solution
+<code>Fₖ = (φ^k − (−1/φ)^k) / √5</code>. A power with base <code>z</code> satisfies the recurrence when
+<code>z² = z + 1</code>, as both bases here do. Their difference divided by <code>√5</code> gives the
+stated initial values. Since <code>|−1/φ| &lt; 1 &lt; φ</code>, the second power becomes negligible, giving
+the ratio limit. Dividing each count by <code>ℓₖ + sₖ</code> then gives limiting tile fractions
+<code>φ/(φ + 1) = 1/φ</code> long and <code>1/(φ + 1) = 1/φ²</code> short. These are count frequencies,
+not fractions of the physical line&#39;s length.
+With the chosen lengths, the same <code>φ</code> also makes the substitution an inflation:
+<code>φ² = φ + 1</code>, so scaling an <code>S</code> by <code>φ</code> gives length <code>φ</code> (one <code>L</code>), while scaling
+an <code>L</code> gives length <code>φ²</code> (one <code>L</code> plus one <code>S</code>).</p>
 <h2>The small rule and the large order</h2>
-<p>There is no dice roll hiding in the substitution. Order shows up at every scale:
-recognisable patches recur, the long/short frequencies settle, and the pattern has
-sharp diffraction peaks. Yet it has no translation period.</p>
-<p>That middle ground is the point. A conventional crystal repeats. A random sequence
-has no exact organizing rule. The Fibonacci chain keeps coherence as it grows while
-denying us the one free gift of a periodic crystal: a unit cell you can stamp
-forever.</p>
+<p>The deterministic substitution produces order at every scale. Patches recur, and
+the tile frequencies approach fixed limits. In the ideal infinite Fibonacci chain,
+equally weighted boundary points have <a href="https://arxiv.org/html/2312.12825">sharp diffraction peaks</a>:
+the mathematical scattering intensity consists of point peaks, called Bragg peaks,
+with no continuous diffuse component. This does not mean the peak positions form an
+isolated, evenly spaced lattice. The statement concerns the ideal chain, not a
+measurement on a particular sample.</p>
+<p>A conventional crystal repeats by a translation. Here the tile choices come from
+a prescribed substitution, rather than independent random choices. The Fibonacci
+chain has no translation period and no finite unit cell that can be copied indefinitely.</p>
 <h2>An irrational step around a circle</h2>
-<p>There is a simple picture behind that refusal to repeat. Walk the integer orbit</p>
+<p>A useful way to describe non-repetition is to rotate around a unit circle. Write the
+phase after integer step <code>n</code> as</p>
 <pre><code class="language-text">e^(2πinα),    n ∈ ℤ
 </code></pre>
-<p>on the unit circle.</p>
-<p>If <code>α</code> is rational, you hit only finitely many points and then loop. If <code>α</code> is
-irrational, the orbit is <strong>dense</strong>: it comes arbitrarily close to every point on the
-circle, but it never lands exactly on a previous point. Equivalently, the sequence</p>
-<pre><code class="language-text">0, α, 2α, 3α, …  (mod 1)
-</code></pre>
-<p>eventually closes for rational <code>α</code>, and never closes for irrational <code>α</code>.</p>
-<p>For Fibonacci, take</p>
-<pre><code class="language-text">α = φ = (1 + √5) / 2 ≈ 1.618.
-</code></pre>
-<p>Only the fractional part matters in a rotation modulo 1, so the same walk is</p>
-<pre><code class="language-text">α = φ − 1 = 1 / φ ≈ 0.618.
-</code></pre>
-<p>Both are irrational. They differ by the integer 1, so after “mod 1” they describe
-the same rotation.</p>
+<p>Here <code>n</code> is an integer step index, <code>α</code> is the number of turns per step, <code>i</code> is the
+imaginary unit (<code>i² = −1</code>), and <code>ℤ</code> is the integers. The complex exponential places
+each phase on the circle. Equivalently, record the fractional parts
+<code>0, α, 2α, 3α, … (mod 1)</code>, where “mod 1” means that phases differing by an integer
+number of turns are identified.</p>
+<p>Two integer steps <code>n</code> and <code>m</code> land at the same phase exactly when
+<code>(n − m)α</code> is an integer. If <code>α = p/q</code> in lowest terms, the orbit repeats after
+<code>q</code> steps and visits finitely many phases. If <code>α</code> is irrational, no positive integer
+step returns it to its starting phase; moreover, the standard irrational-rotation
+result says the orbit is dense, meaning it comes arbitrarily close to every point
+on the circle.</p>
+<p>For the discrete rotation, choose <code>α = φ</code>. The identity <code>φ² = φ + 1</code> implies
+<code>φ − 1 = 1/φ</code>, so its fractional part is <code>1/φ ≈ 0.618</code>. Thus <code>φ</code> and <code>1/φ</code>
+describe the same integer-step rotation modulo 1. The particular tile coding below
+uses another increment, <code>β = 1/φ² ≈ 0.382</code>. Since <code>1/φ + 1/φ² = 1</code>, <code>β = 1 − α</code>
+for <code>α = 1/φ</code>: the coding advances in the reverse direction around the circle.
+It is related to, but is not the same numerical slope as, the preceding rotation.</p>
 <h2>The rule that turns the rotation into tiles</h2>
-<p>Here is the missing concrete step. Set <code>β = 1 / φ² ≈ 0.382</code> and start at <code>0</code> on a
-circle of circumference 1. Repeatedly advance by <code>β</code>, reducing modulo 1. Mark one
-point on the circle. On a step that crosses the mark, write <code>S</code>; otherwise write
-<code>L</code>.</p>
-<p>Without a picture, the same rule is</p>
-<pre><code class="language-text">aₙ = floor((n + 1)β) − floor(nβ),    n = 1, 2, 3, …
+<p>Fix the mark at phase 0 on a circle of circumference 1, and set
+<code>β = 1/φ²</code>. To match the indexing below, begin recording at phase <code>β</code>, not phase 0.
+For tile <code>n</code>, advance from phase <code>nβ</code> to <code>(n + 1)β</code>, reducing phases modulo 1.
+Write <code>S</code> if that interval crosses the marked point (equivalently, crosses an
+integer before reduction); otherwise write <code>L</code>.</p>
+<p>The same rule is expressed without a picture by the floor function. <code>⌊x⌋</code> is the
+greatest integer no larger than <code>x</code>; <code>aₙ</code> is the binary code for tile <code>n</code>:</p>
+<pre><code class="language-text">aₙ = ⌊(n + 1)β⌋ − ⌊nβ⌋,    n = 1, 2, 3, …
 
 aₙ = 0  →  L
 aₙ = 1  →  S
 </code></pre>
-<p>The subtraction asks a yes/no question: did the <code>n</code>th irrational step pass an
-integer? Equivalently, did the walk cross the mark? The output begins</p>
-<pre><code class="language-text">L S L L S L S L L S …
+<p>Because <code>0 &lt; β &lt; 1</code>, each difference is either 0 or 1. For example, using
+<code>β ≈ 0.382</code>, the first two intervals are:</p>
+<table>
+<thead>
+<tr>
+<th align="right"><code>n</code></th>
+<th align="right"><code>nβ</code></th>
+<th align="right"><code>(n + 1)β</code></th>
+<th align="right">floor difference</th>
+<th align="center">tile</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">1</td>
+<td align="right">0.382</td>
+<td align="right">0.764</td>
+<td align="right">0</td>
+<td align="center">L</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">0.764</td>
+<td align="right">1.146</td>
+<td align="right">1</td>
+<td align="center">S</td>
+</tr>
+</tbody></table>
+<p>The first interval does not cross an integer; the second does. Continuing gives
+<code>L S L L S L S L L S …</code>, the displayed Fibonacci prefix. The
+<a href="https://arxiv.org/pdf/2206.00995">standard rotation description of the Fibonacci word</a>
+identifies this entire one-sided word with the substitution limit, not just its first
+few letters. The index starts at 1, so the first recorded crossing test is from <code>β</code>
+to <code>2β</code>. Recording every step starting at 0 would add an initial <code>L</code> and shift this
+displayed convention.</p>
+<p>The word from this specific crossing rule is not periodic. To see why, let <code>N</code> be a
+positive prefix length and let <code>N_S(N)</code> count its short tiles. Summing the floor
+differences cancels the intermediate terms:</p>
+<pre><code class="language-text">N_S(N) = a₁ + … + a_N
+       = ⌊(N + 1)β⌋ − ⌊β⌋
+       = ⌊(N + 1)β⌋
+N_S(N) / N  →  β
 </code></pre>
-<p>which is the Fibonacci word above. An irrational step never returns to its starting
-phase, so the rule cannot settle into a repeating tile block. But it is not random:
-every tile is decided by the same rigid rotation.</p>
-<p>Treat the symbols as intervals of two lengths, or put a point at every tile boundary,
-and you already have a one-dimensional quasicrystal model. A quasiperiodic function
-can represent density, scattering strength, or occupancy on those points; the
-quasicrystal is the arrangement the rule specifies, not merely the graph of the
-function.</p>
+<p>The last equality uses <code>0 &lt; β &lt; 1</code>, so <code>⌊β⌋ = 0</code>; the limit follows because a
+floor differs from its argument by less than 1. A periodic word with <code>p</code> tiles per
+period and <code>r</code> short tiles in that period would have short-tile frequency <code>r/p</code>, a
+rational number. An eventually periodic word has the same rational limit, since a
+finite initial prefix does not change the limiting frequency. Here <code>β = 1/φ²</code> is
+irrational, so this word is neither periodic nor eventually periodic. This argument
+is specific to the crossing code. An irrational orbit alone does not guarantee that every possible
+symbolic observation is nonperiodic: a rule that labels every phase <code>L</code> would produce
+a constant word.</p>
+<p>Assigning lengths to the letters turns the word into a tiling; placing a point at
+each boundary gives a point-set model. One may then attach weights to those already
+defined positions—for example density, scattering strength, or occupancy—to model an observable.
+The weights describe a field on the arrangement; they do not define the arrangement.
+A quasiperiodic function can supply weights sampled at those positions. This does
+not identify the point set itself with a continuous quasiperiodic function.
+With equal boundary weights, the ideal point set has the diffraction property
+described above; arbitrary added weights need not preserve it. These are mathematical
+models, not reports about a particular physical sample.</p>
 <h2>Why the torus is the better picture</h2>
-<p>For a continuous real variable <code>x</code>, the single phase</p>
-<pre><code class="language-text">e^(2πiαx)
-</code></pre>
-<p>just covers the circle for any non-zero <code>α</code>. To see quasiperiodicity, keep two
-circular phases at once:</p>
+<p>For a continuous, dimensionless real parameter <code>x</code>, a single phase <code>e^(2πiαx)</code>
+with nonzero <code>α</code> travels around the circle and repeats after <code>1/|α|</code>. This is
+different from the integer-indexed orbit above: discrete rational increments visit
+only finitely many phases.</p>
+<p>To keep two phases with no common period, follow the continuous path</p>
 <pre><code class="language-text">x ↦ (e^(2πix), e^(2πiαx)).
 </code></pre>
-<p>That path lives on a two-dimensional torus — think of a doughnut surface, two
-independent angles. If <code>α</code> is rational, the path eventually closes into a loop. If
-<code>α</code> is irrational, it is dense on the torus and never closes.</p>
-<p>Now take any function that is periodic on that torus and restrict it to the path.
-What you observe in one dimension is a <strong>quasiperiodic function</strong>: built from
-periodic ingredients, yet with no period in the signal itself.</p>
-<p>That is the clean bridge to quasicrystals. The order is real — it comes from a
-periodic object in a higher-dimensional space — but the one-dimensional slice does
-not repeat, because its irrational orbit cannot return to its starting phase.</p>
-<h2>From Fibonacci counting to quantum information</h2>
-<p>The word <em>Fibonacci</em> also shows up in the theory of non-Abelian anyons. In the
-Fibonacci model, the nontrivial charge <code>τ</code> obeys the fusion rule</p>
-<pre><code class="language-text">τ × τ = 1 + τ.
+<p>Both coordinates are phases, and here <code>α</code> is any fixed irrational number. The pair
+lies on a two-dimensional torus, the product of two circles. A return after a nonzero
+parameter interval <code>T</code> would require both <code>T</code> and <code>αT</code> to be integers. No such <code>T</code>
+exists for irrational <code>α</code>. To see density, fix the first phase at <code>t</code>, with
+<code>0 ≤ t &lt; 1</code>, and take <code>x = m + t</code> for integer <code>m</code>. The second phase then follows
+the dense irrational rotation <code>αm + αt</code> modulo 1. Thus the continuous path comes
+arbitrarily close to every phase pair. For rational <code>α</code>, it instead closes after a
+finite interval. Unlike discrete samples, continuous frequencies cannot generally
+be replaced by their fractional parts without changing the path.</p>
+<p>A continuous function on this torus is periodic in each angle. Restricting such a
+function to the path produces a one-dimensional signal built from the two periodic
+phases. This is a common way to make a quasiperiodic function, though the result
+need not be nonperiodic: an observable can ignore one phase. For example, with
+<code>u = x mod 1</code> and <code>v = αx mod 1</code>,</p>
+<pre><code class="language-text">G(u, v) = cos(2πu)             →  g(x) = cos(2πx)
+H(u, v) = cos(2πu) + cos(2πv) →  h(x) = cos(2πx) + cos(2παx)
 </code></pre>
-<p>The plus sign is not ordinary addition. It lists the two allowed fusion outcomes.
-As you add more anyons, the number of compatible fusion histories grows as Fibonacci
-numbers: <code>1, 2, 3, 5, 8, …</code>. A constrained long/short tiling history has the same
-kind of counting structure, which is why people compare the two spaces.</p>
-<p>With three <code>τ</code> anyons whose total charge is <code>τ</code>, the first pair may fuse through one
-of two intermediate channels. Those two paths form a two-dimensional space and can
-serve as a logical qubit. Braiding non-Abelian anyons acts on such fusion-path
-states; the order of the braids matters.</p>
-<p>This is a mathematical correspondence and a research proposal. It is not evidence
-that a Fibonacci tiling by itself is a fault-tolerant quantum computer.</p>
+<p>Here <code>G</code> and <code>H</code> are torus functions, while <code>g</code> and <code>h</code> are their restrictions to
+the path. <code>g</code> is periodic with period 1. For <code>h</code>, note that <code>h(0) = 2</code>. A period
+<code>T</code> would require <code>h(T) = 2</code>; since each cosine is at most 1, both would have to
+equal 1. This forces <code>T</code> and <code>αT</code> to be integers, impossible for nonzero <code>T</code> when
+<code>α</code> is irrational. Thus <code>h</code> is nonperiodic. The orbit&#39;s density alone does not
+decide whether a particular observable repeats; that also depends on what the
+function measures.</p>
+<p>The higher-dimensional picture explains one source of quasiperiodic order: a
+periodic object in two phase coordinates can yield a nonrepeating one-dimensional
+observable along an irrational path. To construct a quasicrystal point set by
+projection, one selects lattice points inside an appropriate strip and projects
+them onto the line; merely intersecting a line with a lattice is not that construction.
+The Fibonacci tile rule above gives a direct one-dimensional construction.</p>
+<h2>From Fibonacci counting to quantum information</h2>
+<p>The name <em>Fibonacci</em> also appears in a model of non-Abelian anyons. Anyons are
+quasiparticles—collective excitations that behave like particles in a two-dimensional
+system—whose exchanges can act on a multi-state quantum space. “Non-Abelian” means
+that these exchange operations need not commute. In the Fibonacci model, the charge
+types are <code>1</code> (vacuum or trivial charge) and <code>τ</code> (nontrivial charge). These labels
+classify fusion behavior, not ordinary electric charge. Fusion combines anyons and
+asks for their resulting total charge. The relevant rules are</p>
+<pre><code class="language-text">1 × τ = τ
+τ × τ = 1 + τ
+</code></pre>
+<p>Here <code>×</code> means fusion of charge types, and <code>+</code> lists allowed alternative outcomes;
+it is not ordinary addition and does not specify probabilities. A fusion tree records
+which groups of anyons are combined first; a fusion path labels its intermediate
+charges consistently with the rules. We count paths in one chosen tree for anyons
+in the plane, with no extra degrees of freedom from handles or additional boundaries.
+The count depends on the number of <code>τ</code> anyons and their fixed total charge.</p>
+<p>For clarity, let <code>dₙ(1)</code> and <code>dₙ(τ)</code> count fusion paths for <code>n</code> identical <code>τ</code>
+anyons ending in total charge <code>1</code> or <code>τ</code>. Start with one anyon:
+<code>d₁(1) = 0</code>, <code>d₁(τ) = 1</code>. Adding one more <code>τ</code> and applying the rules gives</p>
+<pre><code class="language-text">dₙ₊₁(1) = dₙ(τ)
+dₙ₊₁(τ) = dₙ(1) + dₙ(τ)
+</code></pre>
+<p>Only a previous total <code>τ</code> can fuse with the added <code>τ</code> to give total <code>1</code>. Either
+previous total can give total <code>τ</code>. With <code>F₀ = 0</code>, <code>F₁ = 1</code>, and
+<code>Fₙ₊₂ = Fₙ₊₁ + Fₙ</code>, these counts are <code>dₙ(1) = Fₙ₋₁</code> and <code>dₙ(τ) = Fₙ</code>.
+For instance:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Number of <code>τ</code> anyons</th>
+<th align="right">Total <code>1</code> paths</th>
+<th align="right">Total <code>τ</code> paths</th>
+<th align="right">Combined paths</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">8</td>
+</tr>
+</tbody></table>
+<p>The combined sequence <code>1, 2, 3, 5, 8, …</code> sums different total-charge sectors; it is
+not the dimension of one fixed-charge space. In the fixed-<code>τ</code> sector, the sequence
+is <code>1, 1, 2, 3, 5, …</code>. These are basis-path counts, not a claim that every path is
+measured and recorded during computation.</p>
+<p>With three <code>τ</code> anyons and total charge fixed to <code>τ</code>, the first pair can fuse to <code>1</code>
+or to <code>τ</code>; either intermediate choice can then combine with the last <code>τ</code> to give
+total <code>τ</code>. These two fusion paths span a two-dimensional state space. Encoding
+quantum information in that selected two-dimensional subspace gives a logical qubit.
+Braiding means exchanging the anyons along paths without fusing them. It transforms
+the fusion-path states; because the transformations need not commute, changing the
+exchange order can change the operation. A two-dimensional space and braid operations
+alone do not establish protection or fault tolerance, which also requires handling
+faults in the physical operations without losing the encoded information.</p>
+<p>In the <a href="https://www.mdpi.com/2073-8994/14/9/1780">cited tiling proposal</a>, a history
+records the long/short tile type around a chosen position across successive
+inflation or deflation levels. Those entries describe different scales, not
+neighboring tiles in one chain. The allowed transitions are <code>L → L or S</code> and
+<code>S → L</code>: a short entry must be followed by a long one. At the level of these paths,
+identify <code>L</code> with cumulative charge <code>τ</code> and <code>S</code> with cumulative charge <code>1</code>.
+The transitions then match adding one <code>τ</code> anyon. For example, an <code>n</code>-entry history
+starting and ending with <code>L</code> matches a fusion path starting with one <code>τ</code> and ending
+with total <code>τ</code>, giving <code>Fₙ</code> paths under these endpoint conditions.</p>
+<p>This explains the constrained-history comparison without identifying fusion
+dimensions with all patches of the Fibonacci word. The proposal concerns a
+specified encoding between spaces; matching counts alone does not supply physical
+braid operations or make a tiling a fault-tolerant quantum computer.</p>
 <h2>A hypothetical diamond architecture</h2>
-<p>One possible hardware story uses diamond colour centres as addressable spin qubits
-in a two-dimensional network. In a <strong>hypothetical</strong> Fibonacci string-net architecture,
-selected spins would label the edges of a trivalent graph by <code>1</code> or <code>τ</code>. Local
-measurements would test fusion constraints at vertices and loop constraints around
-faces; logical information would live in global patterns across the network.</p>
-<p>Diamond platforms have demonstrated useful ingredients, including logical encoding
-and stabilizer measurements. A full Fibonacci Turaev–Viro code in diamond has not.
-It remains a proposed architecture that would combine diamond spin control with
-non-Abelian topological-code operations — not a present device.</p>
-<p>Keep the separation sharp. The irrational-orbit story and the Fibonacci tiling are
-clean mathematics. The diamond device is an interesting, explicitly hypothetical
-route for turning related quantum ideas into hardware.</p>
+<p>One possible hardware story uses diamond colour centres—crystal defects whose spins
+can encode qubits—in a two-dimensional network. This explicitly <strong>hypothetical</strong>
+architecture would realize a <a href="https://arxiv.org/html/2012.04610v1">Fibonacci string-net code</a>,
+also called a Fibonacci Turaev–Viro code. Each edge of a graph with three edges at
+every vertex would carry an encoded two-state degree of freedom labelled <code>1</code> or <code>τ</code>.
+A string-net state can superpose such labelled networks. The labels are basis-state
+labels in a spin encoding, not a claim that physical Fibonacci anyons already exist
+in diamond.</p>
+<p>The ideal vertex rule allows the unordered triples <code>(1,1,1)</code>, <code>(1,τ,τ)</code>, and
+<code>(τ,τ,τ)</code>; permutations are also allowed. <code>(1,1,τ)</code> is forbidden because two trivial
+charges fuse to <code>1</code>, not <code>τ</code>. A vertex measurement tests the allowed subspace; its
+passing outcome projects onto that subspace, while a failing outcome detects a
+constraint violation.</p>
+<p>These local label tests alone do not make the full code. For each face, a quantum
+projector forms a weighted combination of adding a closed <code>1</code> or <code>τ</code> loop and
+absorbing it into the surrounding edges using the model&#39;s fusion data. This operation
+can mix edge configurations coherently; it is not a classical comparison of labels.
+A code state must be left unchanged by each face projector as well as pass every
+vertex check. In the ideal mathematical model, these projectors commute; their
+shared passing subspace is the code space.</p>
+<p>The proposed logical information would be stored in global degrees of freedom that
+survive all those local checks. Which logical degrees of freedom exist depends on the
+network and its boundaries; “global patterns” alone does not determine a qubit count.
+A diamond implementation would additionally need state preparation, multi-spin
+checks, logical operations, and reliable syndrome readout: measurement outcomes
+identifying constraint violations. Those requirements are hypothetical assumptions,
+not capabilities established by the existence of addressable spins.</p>
+<p>The <a href="https://www.nature.com/articles/s41586-022-04819-6">cited 2022 diamond experiment</a>
+demonstrated a five-data-qubit stabilizer code. Such a code uses commuting multi-qubit
+checks to detect errors without reading the encoded logical state. The experiment
+used seven spins: five nearby carbon-13 nuclear-spin data qubits, a nitrogen-vacancy
+(NV) electron-spin measurement ancilla (an auxiliary qubit), and a nitrogen
+nuclear-spin flag that detects dangerous error propagation from the ancilla. It was
+not a Fibonacci Turaev–Viro code or the proposed two-dimensional colour-centre network.
+The experiment also reported that its logical fidelities—the measures of agreement
+with intended logical states—did not yet outperform the constituent physical qubits.
+These results demonstrate related diamond control and error-correction ingredients,
+not Fibonacci anyon operations or the architecture described here.</p>
+<p>The irrational-rotation and tiling arguments are mathematical constructions. The
+proposed diamond device remains hypothetical; the cited experiment supports narrower
+claims about a logical-qubit demonstration, not a completed diamond Fibonacci code.</p>
 <h2>Further reading</h2>
 <ul>
-<li>Marcelo Amaral, David Chester, Fang Fang, and Klee Irwin, <a href="https://www.mdpi.com/2073-8994/14/9/1780">“Exploiting Anyonic Behavior of Quasicrystals for Topological Quantum Computing”</a> (2022).</li>
-<li><a href="https://www.nature.com/articles/s41586-022-04819-6">“Fault-tolerant operation of a logical qubit in a diamond quantum processor”</a> (2022).</li>
+<li>Marcelo Amaral, David Chester, Fang Fang, and Klee Irwin, <a href="https://www.mdpi.com/2073-8994/14/9/1780">“Exploiting Anyonic Behavior of Quasicrystals for Topological Quantum Computing”</a> (2022). This is the proposal behind the mathematical tiling/anyon-space correspondence; it is not an experimental report of a diamond Fibonacci code.</li>
+<li><a href="https://www.nature.com/articles/s41586-022-04819-6">“Fault-tolerant operation of a logical qubit in a diamond quantum processor”</a> (2022). This reports the diamond logical-qubit and stabilizer-code experiment, which is distinct from the hypothetical Fibonacci Turaev–Viro architecture.</li>
 </ul>
 
         </div>

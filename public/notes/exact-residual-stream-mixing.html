@@ -32,79 +32,52 @@ KromHC</a></details><details class="nav-part"><summary>5. Interpret spectra and 
 as an expressivity surrogate</a><a href="#why-kronecker-products-have-a-spectral-limitation">Why
 Kronecker products have a spectral limitation</a><a href="#synthetic-reconstruction-experiment">Synthetic
 reconstruction experiment</a><a href="#what-is-theoretically-established-empirically-observed-and-still-uncertain">What is theoretically established, empirically observed, and still
-uncertain?</a><a href="#conclusion">Conclusion</a></details><details class="nav-part"><summary>6. Review the mathematics and test the construction</summary><a href="#unit-reference">Unit overview</a><a href="#mathematical-prerequisites">Mathematical prerequisites</a><a href="#exercises">Exercises</a><a href="#references">References</a></details></div></details><div class="reader-column"><header class="book-hero" id="exact-residual-stream-mixing-through-generalized-orthostochastic-matrices"><p class="eyebrow">Notebook / mHC</p><h1>Residual streams, exact mixing, and go-mHC</h1><p class="lede">Start with a concrete routing problem, build a mixer that meets its constraints, and separate what the algebra guarantees from what experiments must establish.</p><p class="edition">Six connected learning units · Complete technical material · Illustrated reading edition</p><span id="title-block-header"></span></header><section class="reading-guide" id="reading-guide"><p class="eyebrow">Start with the question you have</p><h2 id="reading-guide-title">A connected route through the ideas</h2><p>Read the six units in order for the full argument, or use the entry points below. Each unit begins with an explanation of the question it answers, then develops the original examples, derivations, and qualifications.</p><div class="route-list"><a href="#unit-route"><strong>1. Start with the routing problem</strong><span>Start this unit</span></a><a href="#unit-constraint"><strong>2. Understand the constraint and its limits</strong><span>Start this unit</span></a><a href="#unit-geometry"><strong>3. Build the mixer from orthogonal blocks</strong><span>Start this unit</span></a><a href="#unit-choice"><strong>4. Choose a representation and a cost</strong><span>Start this unit</span></a><a href="#unit-evidence"><strong>5. Interpret spectra and experimental evidence</strong><span>Start this unit</span></a><a href="#unit-reference"><strong>6. Review the mathematics and test the construction</strong><span>Start this unit</span></a></div><p class="reader-note">The reference sections can be opened when needed. Diagrams remain beside the explanations that use them; select “Enlarge diagram” for a closer view. Earlier section links still work.</p><div class="guide-tools"><button id="collapse-all" type="button">Hide detailed notes</button></div></section><details class="notation-guide"><summary>Keep the main distinctions in view</summary><div data-math-section=""><p>d counts residual streams; D counts features; s sets the internal block size. A is skew-symmetric, Q is orthogonal, and B is the final routing matrix. The batch-size B used in the original tensor-shape notation is a separate quantity from the mixer B.</p></div></details><main id="book-content"><article aria-labelledby="unit-route" class="book-chapter"><h2 id="unit-route">1. Start with the routing problem</h2><div class="learning-bridge" data-math-section=""><p>Think of a residual stream as a feature vector that survives from one
-layer to the next. With one stream, the familiar update keeps that
-vector and adds a learned correction. With several streams, there is a
-new decision to make <strong>before discussing the learned
-correction</strong>: which old streams contribute to each new
-stream?</p>
-<p>Fix one token in one batch item. Its state can be written as a matrix
-<span class="math inline">\(X\in\mathbb{R}^{d\times D}\)</span>: one row
-per stream and one column per feature. A residual mixer <span class="math inline">\(B\in\mathbb{R}^{d\times d}\)</span> acts on the
-left, so <span class="math inline">\(BX\)</span> mixes streams without
-changing the feature dimension. The same routing weights apply to every
-feature coordinate in this local calculation. The layer may compute
-different weights from different activations; this notation describes
-one realized mixer.</p>
-<p>There are two paths through a Hyper-Connection layer. The residual
-path mixes the existing streams directly. The learned branch first
-<strong>reads</strong> a combination of streams, applies the ordinary
-layer transformation, and then <strong>writes</strong> that result back
-to the streams. The two paths are added. Keeping these roles separate
-prevents a common mistake: the doubly stochastic constraint studied here
-belongs to the residual mixer, not automatically to every coefficient in
-the read–transform–write branch.</p>
-<p>For a first numerical picture, let a single feature have values <span class="math inline">\(x=(10,20,30)^\top\)</span>. The three-stream
-matrix in the worked example below produces <span class="math inline">\(Bx=(15,21,24)^\top\)</span>. The first output is
-<span class="math inline">\(0.6(10)+0.3(20)+0.1(30)=15\)</span>.
-Repeating that calculation for the other rows gives the other outputs.
-The sum remains <span class="math inline">\(60\)</span>, but the three
-values are redistributed. We will explain the two constraints
-responsible for this behavior in the next unit.</p>
-<p>This example is a <strong>generic valid routing matrix</strong>, not
-a claim that the particular matrix belongs to every go-mHC family. First
-understand what a mixer does; only then ask which mixers a
-parameterization can produce.</p>
-</div><figure><div class="diagram-scroll"><img alt="The constraint concerns the residual-routing box. The read–transform–write branch is separate and is added afterward." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-routing-paths.svg"/></div><figcaption>The constraint concerns the residual-routing box. The read–transform–write branch is separate and is added afterward.</figcaption></figure><section class="topic" data-math-section=""><h3 id="the-problem-how-should-residual-streams-mix">The problem: how
-should residual streams mix?</h3><p>Residual connections make deep networks trainable by providing a path
-through which information and gradients can move without passing
-exclusively through a sequence of nonlinear transformations. In its
-simplest form, a residual update is</p><p><span class="math display">\[
+uncertain?</a><a href="#conclusion">Conclusion</a></details><details class="nav-part"><summary>6. Review the mathematics and test the construction</summary><a href="#unit-reference">Unit overview</a><a href="#mathematical-prerequisites">Mathematical prerequisites</a><a href="#exercises">Exercises</a><a href="#references">References</a></details></div></details><div class="reader-column"><header class="book-hero" id="exact-residual-stream-mixing-through-generalized-orthostochastic-matrices"><p class="eyebrow">Notebook / mHC</p><h1>Residual streams, exact mixing, and go-mHC</h1><p class="lede">Start with a concrete routing problem, build a mixer that meets its constraints, and separate what the algebra guarantees from what experiments must establish.</p><p class="edition">Six connected learning units · Complete technical material · Illustrated reading edition</p><span id="title-block-header"></span></header><section class="reading-guide" id="reading-guide"><p class="eyebrow">Start with the question you have</p><h2 id="reading-guide-title">A connected route through the ideas</h2><p>Read the six units in order for the full argument, or choose an entry point below. Each unit explains the question it answers before developing the original examples, derivations, and qualifications.</p><div class="route-list"><a href="#unit-route"><strong>1. Start with the routing problem</strong><span>See what a residual mixer does and how it fits beside the learned branch.</span></a><a href="#unit-constraint"><strong>2. Understand the constraint and its limits</strong><span>Follow what row and column sums preserve—and what they do not.</span></a><a href="#unit-geometry"><strong>3. Build the mixer from orthogonal blocks</strong><span>Trace how the construction makes a nonnegative, doubly stochastic matrix.</span></a><a href="#unit-choice"><strong>4. Choose a representation and a cost</strong><span>Compare parameterizations, their expressive reach, and their computational costs.</span></a><a href="#unit-evidence"><strong>5. Interpret spectra and experimental evidence</strong><span>Separate fixed-matrix spectral behavior from network-wide stability claims and reported experiments.</span></a><a href="#unit-reference"><strong>6. Review the mathematics and test the construction</strong><span>Check prerequisites, work through exercises, and consult the references.</span></a></div><p class="reader-note">Open the reference sections when useful. Diagrams sit beside the explanations that use them; select “Enlarge diagram” to inspect one. Existing section links continue to work.</p><div class="guide-tools"><button id="collapse-all" type="button">Hide detailed notes</button></div></section><details class="notation-guide"><summary>Keep the main distinctions in view</summary><div data-math-section=""><p><span class="math inline">\(d\)</span> counts residual streams: paths carrying feature vectors between layers. <span class="math inline">\(D\)</span> is the number of features in each stream. <span class="math inline">\(s\)</span> is the positive integer side length of each square internal block used by the construction.</p><p>The real square matrix <span class="math inline">\(A\)</span> is skew-symmetric: its transpose is its negative, <span class="math inline">\(A^\top=-A\)</span>. The real square matrix <span class="math inline">\(Q\)</span> is orthogonal: <span class="math inline">\(Q^\top Q=I\)</span>, where <span class="math inline">\(I\)</span> is the identity matrix of the same size as <span class="math inline">\(Q\)</span>. Multiplying by <span class="math inline">\(Q\)</span> therefore preserves Euclidean vector lengths.</p><p>The final routing matrix <span class="math inline">\(B\)</span> has nonnegative entries, and every row and every column sums to one. A matrix with these properties is called <em>doubly stochastic</em>. For the residual-mixing step alone, each output stream is a weighted average of input streams. Row sums of one normalize those weights; column sums of one preserve the sum across streams, feature by feature. The separate learned layer transformation added afterward can change that sum. The <a href="#unit-constraint">constraint unit</a> explains these conservation laws.</p><p>The symbol <span class="math inline">\(B\)</span> can also denote batch size in the original tensor-shape notation. There it counts examples in a batch; here, as a matrix, <span class="math inline">\(B\)</span> denotes the mixer. The surrounding notation distinguishes the two uses.</p><p>“Exact” refers to satisfying the row and column constraints algebraically by construction. It does not mean that the mixer preserves every vector’s length, that finite-precision computation has zero error, or that optimization is guaranteed to find a useful mixer. Those algebraic constraints alone also do not establish stability of the full network. Its routing can depend on activations—the current layer’s feature values.</p><p>Exact constraints do not imply that a chosen block size can represent every doubly stochastic matrix. The comparison discussed later uses fixed small factors in a Kronecker product, a way to form a larger matrix from smaller ones. With unrestricted real orthogonal matrices, varying the internal block size permits arbitrarily close approximation of any doubly stochastic matrix. This does not establish exact coverage at a chosen size or nesting of the families at every successive size.</p><p>Separately, a finite Cayley parameterization—the map from <span class="math inline">\(A\)</span> to <span class="math inline">\(Q\)</span> used here—reaches only part of the real orthogonal matrices. Different orthogonal matrices can produce the same routing matrix, so missing one does not necessarily exclude its mixer. The <a href="#unit-geometry">geometry unit</a> explains the construction and these limits.</p></div></details><main id="book-content"><article aria-labelledby="unit-route" class="book-chapter">
+  <h2 id="unit-route">1. Start with the routing problem</h2>
+  <div class="learning-bridge" data-math-section="">
+    <p>A residual stream carries a feature vector from one layer to the next. With one stream, a residual layer keeps that vector and adds a learned correction. With several streams, the layer must also decide which old streams contribute to each new stream.</p>
+    <p>For one batch item and one token, collect the stream vectors into a matrix <span class="math inline">\(X\in\mathbb{R}^{d\times D}\)</span>. Its <span class="math inline">\(d\)</span> rows are streams; its <span class="math inline">\(D\)</span> columns are feature coordinates. A residual-routing matrix <span class="math inline">\(B\in\mathbb{R}^{d\times d}\)</span> multiplies on the left, so <span class="math inline">\(BX\)</span> forms weighted combinations of streams while leaving the feature-coordinate axis unchanged. In this local calculation, the same routing matrix acts on every feature coordinate. In a layer whose routing is activation-dependent, this is the matrix realized for the current activations.</p>
+    <p>A Hyper-Connection layer has two additive paths. The residual path directly routes the existing streams. The learned branch reads a combination of streams, applies the usual layer transformation, then writes its output back to the streams. The doubly stochastic constraint discussed here applies to the residual-routing matrix. It does not automatically constrain the read and write maps.</p>
+    <p>For a numerical preview, take one feature with stream values <span class="math inline">\(x=(10,20,30)^\top\)</span> and use the matrix in the worked example. It gives <span class="math inline">\(Bx=(15,21,24)^\top\)</span>: the first entry is <span class="math inline">\(0.6(10)+0.3(20)+0.1(30)=15\)</span>, and the other rows give <span class="math inline">\(21\)</span> and <span class="math inline">\(24\)</span>. The total remains <span class="math inline">\(60\)</span>, although each stream's value changes. The next unit explains which matrix constraints make that sum conservation hold.</p>
+    <p>This is a <strong>generic valid routing matrix</strong>, not a claim that every go-mHC parameterization can produce this particular matrix. The example first shows what a mixer does; representational reach is a separate question.</p>
+  </div>
+  <figure><div class="diagram-scroll"><img alt="The constraint concerns the residual-routing box. The read–transform–write branch is separate and is added afterward." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-routing-paths.svg"/></div><figcaption>The constraint concerns the residual-routing box. The read–transform–write branch is separate and is added afterward.</figcaption></figure>
+  <section class="topic" data-math-section="">
+    <h3 id="the-problem-how-should-residual-streams-mix">The problem: how should residual streams mix?</h3>
+    <p>A residual connection carries the layer input forward alongside a learned transformation. In its simplest form, the update is</p>
+    <p><span class="math display">\[
 x_{l+1}=x_l+\mathcal{F}(x_l,W_l),
-\]</span></p><p>where <span class="math inline">\(x_l\)</span> is the state at layer
-<span class="math inline">\(l\)</span>, <span class="math inline">\(\mathcal{F}\)</span> is a learned layer
-transformation, and <span class="math inline">\(W_l\)</span> denotes its
-parameters.</p><p>Hyper-Connections generalize this construction by maintaining several
-parallel residual streams rather than one. Let <span class="math inline">\(d\)</span> be the number of streams. A layer can
-then learn how to route information among those streams instead of using
-a fixed identity connection. This makes <span class="math inline">\(d\)</span> a possible capacity dimension,
-analogous in spirit to depth or width: increasing <span class="math inline">\(d\)</span> gives the model more pathways through
-which information may travel.</p><p>The central difficulty is that repeated unrestricted stream mixing
-can destabilize a network. If each layer applies an arbitrary mixing
-matrix, repeated products can amplify or attenuate components of the
-state and its gradients. Manifold-Constrained Hyper-Connections (mHC)
-address this by constraining the residual mixing matrix to be doubly
-stochastic [Xie et al., 2026].</p><p>The paper studied here proposes <strong>go-mHC</strong>, a direct
-parameterization of a family of exactly doubly stochastic matrices. Its
-purpose is to occupy a middle ground:</p><ul>
-<li>more expressive than highly structured Kronecker-factorized
-mixers;</li>
-<li>less expensive than parameterizing arbitrary doubly stochastic
-matrices through all permutation matrices;</li>
-<li>exact by construction, rather than only approximately satisfying the
-constraint after iterative normalization.</li>
-</ul><p>The construction rests on generalized orthostochastic matrices
-[Gutkin, 2013; Nechita et al., 2023].</p><hr/></section><section class="topic" data-math-section=""><h3 id="from-residual-connections-to-hyper-connections">From residual
-connections to Hyper-Connections</h3><p>A Hyper-Connection layer operates on a multi-stream state</p><p><span class="math display">\[
+\]</span></p>
+    <p>Here <span class="math inline">\(x_l\)</span> is the state at layer <span class="math inline">\(l\)</span>, <span class="math inline">\(\mathcal{F}\)</span> is the learned transformation, and <span class="math inline">\(W_l\)</span> denotes its parameters. The direct path means that information and gradients can pass across the layer without relying only on the transformation.</p>
+    <p>Hyper-Connections keep <span class="math inline">\(d\)</span> parallel residual streams. A larger <span class="math inline">\(d\)</span> gives the architecture more possible routes: for example, different streams can carry features that a later layer combines in different proportions. That is an opportunity for the model, not a guarantee of useful extra capacity. The learned routes and the task determine whether the additional paths help.</p>
+    <p>Unrestricted residual mixers can change the size of state components when layers are composed. A matrix may stretch some directions and shrink others. Backpropagation passes loss gradients through transposed layer Jacobians. A Jacobian is the derivative matrix that maps small input changes to output changes. These are possible sources of instability, not a claim that every unconstrained network has exploding or vanishing states or gradients.</p>
+    <p>Manifold-Constrained Hyper-Connections (mHC) target this concern by constraining the residual mixer to be doubly stochastic: its entries are nonnegative, and every row and column sums to one [Xie et al., 2026]. Finite iterative normalization can leave this constraint only approximately satisfied. The following guarantee assumes exact constraints.</p>
+    <p>Let <span class="math inline">\(C=B_k\cdots B_1\)</span> be a product of <span class="math inline">\(k\)</span> realized nonnegative doubly stochastic <span class="math inline">\(d\times d\)</span> residual matrices. Their product is also doubly stochastic. For one feature, let <span class="math inline">\(v=(v_1,\ldots,v_d)^\top\)</span> contain its real stream values, with Euclidean length <span class="math inline">\(\|v\|_2=\sqrt{\sum_{j=1}^d v_j^2}\)</span>. Each output is a weighted average. Its square is at most the weighted average of the squared inputs. Summing over output rows <span class="math inline">\(i\)</span> and using the unit column sums gives</p>
+    <p><span class="math display">\[
+\|Cv\|_2^2
+=\sum_{i=1}^d\left(\sum_{j=1}^d C_{ij}v_j\right)^2
+\leq\sum_{i=1}^d\sum_{j=1}^d C_{ij}v_j^2
+=\sum_{j=1}^d v_j^2
+=\|v\|_2^2.
+\]</span></p>
+    <p>The all-ones vector <span class="math inline">\(\mathbf{1}=(1,\ldots,1)^\top\)</span> satisfies <span class="math inline">\(C\mathbf{1}=\mathbf{1}\)</span>, so the bound is attained. The Euclidean operator norm, also called the largest singular value, is the largest ratio of output length to nonzero input length. It is therefore exactly one. This does not preserve every vector's length: differences between streams can shrink or, for <span class="math inline">\(d&gt;1\)</span>, even be erased. The proof treats the realized residual matrices as fixed. It does not bound the full layer Jacobian, which also includes derivatives of activation-dependent routes and of the learned branch.</p>
+    <p>The paper studied here proposes <strong>go-mHC</strong>, a direct parameterization of a family of exactly doubly stochastic matrices. Here, “exact” describes the mathematical construction, not error-free floating-point computation. Its design aims for a middle ground:</p>
+    <ul>
+      <li>more expressive than highly structured Kronecker-factorized mixers, which build a large matrix from smaller matrices by replacing each entry of one factor with that entry times another factor;</li>
+      <li>less expensive than parameterizing arbitrary doubly stochastic matrices using all permutation matrices;</li>
+      <li>exact by construction, rather than approximately satisfying the constraint after iterative normalization.</li>
+    </ul>
+    <p>The construction uses generalized orthostochastic matrices [Gutkin, 2013; Nechita et al., 2023]. In the real-valued construction used here, each routing entry comes from summing squared entries of a square block of a larger orthogonal matrix, then dividing by the block's side length. An orthogonal matrix is a square matrix whose rows are mutually perpendicular and of unit length, as are its columns.</p>
+    <hr/>
+  </section>
+  <section class="topic" data-math-section="">
+    <h3 id="from-residual-connections-to-hyper-connections">From residual connections to Hyper-Connections</h3>
+    <p>A Hyper-Connection layer acts on a four-axis state tensor</p>
+    <p><span class="math display">\[
 \mathbf{x}_l\in\mathbb{R}^{d\times B\times L\times D},
-\]</span></p><p>where, conventionally:</p><ul>
-<li><span class="math inline">\(d\)</span>: number of residual
-streams;</li>
-<li><span class="math inline">\(B\)</span>: batch size;</li>
-<li><span class="math inline">\(L\)</span>: sequence length;</li>
-<li><span class="math inline">\(D\)</span>: hidden-feature
-dimension.</li>
-</ul><p>The layer update is</p><p><span class="math display">\[
+\]</span></p>
+    <p>where <span class="math inline">\(d\)</span> is the number of streams, <span class="math inline">\(B\)</span> is batch size, <span class="math inline">\(L\)</span> is sequence length, and <span class="math inline">\(D\)</span> is hidden-feature dimension. This scalar batch-size <span class="math inline">\(B\)</span> is distinct from the routing matrix <span class="math inline">\(B\)</span> in the worked example. The update is</p>
+    <p><span class="math display">\[
 \mathbf{x}_{l+1}
 =
 \mathcal{H}_{l}^{\mathrm{res}}\mathbf{x}_{l}
@@ -115,19 +88,17 @@ dimension.</li>
 \mathbf{W}_l
 \right).
 \tag{1}
-\]</span></p><p>The three routing terms have distinct roles:</p><p><span class="math display">\[
-\mathcal{H}_{l}^{\mathrm{res}}\in\mathbb{R}^{d\times d}
-\]</span></p><p>mixes the residual streams directly,</p><p><span class="math display">\[
-\mathcal{H}_{l}^{\mathrm{pre}}\in\mathbb{R}^{1\times d}
-\]</span></p><p>aggregates streams before the layer transformation, and</p><p><span class="math display">\[
-\mathcal{H}_{l}^{\mathrm{post}}\in\mathbb{R}^{1\times d}
-\]</span></p><p>distributes the transformed branch output back across streams.</p><p>The ordinary single-stream residual architecture is recovered when
-<span class="math inline">\(d=1\)</span> and all three operators equal
-<span class="math inline">\([1]\)</span>.</p><p>The pre- and post-routing operators may be computed dynamically from
-normalized activations. The supplied formulation uses</p><p><span class="math display">\[
-\mathbf{x}'_l=\operatorname{RMSNorm}(\mathbf{x}_l),
+\]</span></p>
+    <p>Matrix multiplication here contracts the stream axis and leaves batch, token, and feature axes in place. The displayed route-map sizes suppress batch and token indices; activation-dependent maps can differ between batch-token slices. The residual map <span class="math inline">\(\mathcal{H}_{l}^{\mathrm{res}}\in\mathbb{R}^{d\times d}\)</span> combines the <span class="math inline">\(d\)</span> stream rows independently at each batch item, token, and feature coordinate. Its output therefore still has shape <span class="math inline">\(d\times B\times L\times D\)</span>.</p>
+    <p>The pre-map <span class="math inline">\(\mathcal{H}_{l}^{\mathrm{pre}}\in\mathbb{R}^{1\times d}\)</span> contracts those <span class="math inline">\(d\)</span> stream rows to one vector per batch item and token. The ordinary transformation <span class="math inline">\(\mathcal{F}\)</span>, with learned parameters <span class="math inline">\(\mathbf{W}_l\)</span>, acts on that single-stream tensor and returns shape <span class="math inline">\(1\times B\times L\times D\)</span>. This shape does not require independent token processing: an attention transformation, for example, can combine information across token positions. Finally, <span class="math inline">\((\mathcal{H}_{l}^{\mathrm{post}})^\top\)</span> has shape <span class="math inline">\(d\times1\)</span> and scales that output into contributions to all <span class="math inline">\(d\)</span> streams. The two terms on the right thus both have the state shape and can be added.</p>
+    <p>The three route maps have different jobs. <span class="math inline">\(\mathcal{H}_{l}^{\mathrm{res}}\)</span> mixes streams directly; <span class="math inline">\(\mathcal{H}_{l}^{\mathrm{pre}}\)</span> chooses what the transformation reads; <span class="math inline">\(\mathcal{H}_{l}^{\mathrm{post}}\)</span> chooses how its result is distributed. Only the residual map is the doubly stochastic mixer in this discussion.</p>
+    <p>When <span class="math inline">\(d=1\)</span> and all three maps equal the one-by-one identity <span class="math inline">\([1]\)</span>, the residual term is <span class="math inline">\(x_l\)</span>. The pre-map leaves the input unchanged, and the post-map returns the transformation unchanged. Equation (1) then reduces to <span class="math inline">\(x_{l+1}=x_l+\mathcal{F}(x_l,W_l)\)</span>, the usual residual update. This is an algebraic choice of operators in (1), not a claim that the sigmoid pre-route in (3) reaches one at finite input.</p>
+    <p>The pre- and post-routes may depend on the current activations. To describe their computation, suppress the batch and token indices and let <span class="math inline">\(X_l\in\mathbb{R}^{d\times D}\)</span> be one stream-feature slice. Flatten its entries into a row <span class="math inline">\(z_l\in\mathbb{R}^{1\times dD}\)</span> and apply RMS normalization. Its root-mean-square size is obtained by squaring the entries, averaging over the <span class="math inline">\(dD\)</span> coordinates, then taking the square root. RMSNorm uses this size to rescale the activations. The normalized row <span class="math inline">\(\mathbf{x}'_l\in\mathbb{R}^{1\times dD}\)</span> supplies the activation-dependent input for the route projections. The formulas are</p>
+    <p><span class="math display">\[
+\mathbf{x}'_l=\operatorname{RMSNorm}(z_l),
 \tag{2}
-\]</span></p><p><span class="math display">\[
+\]</span></p>
+    <p><span class="math display">\[
 \mathcal{H}_{l}^{\mathrm{pre}}
 =
 \sigma\!\left(
@@ -138,7 +109,8 @@ normalized activations. The supplied formulation uses</p><p><span class="math di
 \mathbf{b}_l^{\mathrm{pre}}
 \right),
 \tag{3}
-\]</span></p><p><span class="math display">\[
+\]</span></p>
+    <p><span class="math display">\[
 \mathcal{H}_{l}^{\mathrm{post}}
 =
 2\sigma\!\left(
@@ -149,450 +121,290 @@ normalized activations. The supplied formulation uses</p><p><span class="math di
 \mathbf{b}_l^{\mathrm{post}}
 \right).
 \tag{4}
-\]</span></p><p>The central question is how to define the residual-stream matrix
-<span class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\)</span>.</p><hr/></section><section class="topic" data-math-section=""><h3 id="a-worked-stream-mixing-example">A worked stream-mixing
-example</h3><p>Consider <span class="math inline">\(d=3\)</span> residual streams. A
-general doubly stochastic mixing matrix might be</p><p><span class="math display">\[
+\]</span></p>
+    <p>In (3)–(4), <span class="math inline">\(\sigma(t)=1/(1+e^{-t})\)</span> is the sigmoid for a real scalar input <span class="math inline">\(t\)</span>, applied coordinatewise to each projection. The learned scalars <span class="math inline">\(\alpha_l^{\mathrm{pre}}\)</span> and <span class="math inline">\(\alpha_l^{\mathrm{post}}\)</span> scale the activation-dependent contributions. The learned weight matrices <span class="math inline">\(\mathbf{W}_l^{\mathrm{pre}},\mathbf{W}_l^{\mathrm{post}}\)</span> have shape <span class="math inline">\(dD\times d\)</span>; the learned biases <span class="math inline">\(\mathbf{b}_l^{\mathrm{pre}},\mathbf{b}_l^{\mathrm{post}}\)</span> have shape <span class="math inline">\(1\times d\)</span>. Thus the products produce one length-<span class="math inline">\(d\)</span> route for each batch-token slice. For finite real projection values, the pre-route entries lie in <span class="math inline">\((0,1)\)</span>. Multiplying the post sigmoid by two puts its entries in <span class="math inline">\((0,2)\)</span>. These ranges describe the exact sigmoid mathematics; floating-point evaluation may round to an endpoint. Neither route is constrained to sum to one. The factor of two changes the post-route's range, without making it a probability distribution.</p>
+    <p>The remaining design question is how to construct <span class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\)</span> while enforcing the desired constraint.</p>
+    <hr/>
+  </section>
+  <section class="topic" data-math-section="">
+    <h3 id="a-worked-stream-mixing-example">A worked stream-mixing example</h3>
+    <p>Take <span class="math inline">\(d=3\)</span> streams and the following doubly stochastic routing matrix:</p>
+    <p><span class="math display">\[
 B=
 \begin{pmatrix}
 0.6 &amp; 0.3 &amp; 0.1\\
 0.2 &amp; 0.5 &amp; 0.3\\
 0.2 &amp; 0.2 &amp; 0.6
 \end{pmatrix}.
-\]</span></p><p>Every row and column sums to <span class="math inline">\(1\)</span>.
-If the current streams are <span class="math inline">\(x^{(1)},x^{(2)},x^{(3)}\)</span>, then the new
-first stream is</p><p><span class="math display">\[
-\widetilde{x}^{(1)}
-=
-0.6x^{(1)}
-+
-0.3x^{(2)}
-+
-0.1x^{(3)}.
-\]</span></p><p>Likewise,</p><p><span class="math display">\[
-\widetilde{x}^{(2)}
-=
-0.2x^{(1)}
-+
-0.5x^{(2)}
-+
-0.3x^{(3)}.
-\]</span></p><p>The matrix is neither the identity nor a deterministic permutation.
-It performs a soft redistribution of information while conserving total
-routing mass.</p><p>A permutation matrix instead gives hard routing. For example,</p><p><span class="math display">\[
+\]</span></p>
+    <p>Each row sums to one, so each output stream is a weighted average of the inputs. Each column also sums to one, so the total contribution assigned from each input stream is one. If the incoming stream vectors are <span class="math inline">\(x^{(1)},x^{(2)},x^{(3)}\)</span>, the first two outputs are</p>
+    <p><span class="math display">\[
+\begin{aligned}
+\widetilde{x}^{(1)}&amp;=0.6x^{(1)}+0.3x^{(2)}+0.1x^{(3)},\\
+\widetilde{x}^{(2)}&amp;=0.2x^{(1)}+0.5x^{(2)}+0.3x^{(3)}.
+\end{aligned}
+\]</span></p>
+    <p>The third output is <span class="math inline">\(\widetilde{x}^{(3)}=0.2x^{(1)}+0.2x^{(2)}+0.6x^{(3)}\)</span>. For the single-feature values <span class="math inline">\((10,20,30)^\top\)</span>, these three weighted sums are <span class="math inline">\((15,21,24)^\top\)</span>. Their sum is still <span class="math inline">\(60\)</span>: summing the outputs groups each input value with its column sum, which is one. The mixer redistributes values without changing this aggregate. This statement concerns the residual routing operation, not the extra learned branch added by the full layer.</p>
+    <p>A permutation matrix instead routes each input wholly to one output. For example,</p>
+    <p><span class="math display">\[
 P=
 \begin{pmatrix}
 0&amp;1&amp;0\\
 0&amp;0&amp;1\\
 1&amp;0&amp;0
 \end{pmatrix}
-\]</span></p><p>implements the cycle</p><p><span class="math display">\[
-1\to 3,\qquad 2\to 1,\qquad 3\to 2.
-\]</span></p><p>This example exposes a limitation of restrictive factorized
-constructions: a parameterization built only from <span class="math inline">\(2\times 2\)</span> real-spectrum factors may fail
-to express such a three-cycle. The cycle has nonreal cube roots of unity
-among its eigenvalues, whereas <span class="math inline">\(2\times
-2\)</span> doubly stochastic factors have only real nontrivial
-eigenvalues.</p><hr/></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-constraint">2. Understand the constraint and its limits →</a></nav></article><article aria-labelledby="unit-constraint" class="book-chapter"><h2 id="unit-constraint">2. Understand the constraint and its limits</h2><div class="learning-bridge" data-math-section=""><p>Two distinct conservation statements are hidden in the phrase “doubly
-stochastic.” A row sum of one says that each output is a weighted
-average of input streams. A column sum of one says that, across all
-outputs, each input contributes total weight one. Nonnegativity makes
-“weighted average” the right description rather than an arbitrary signed
-cancellation.</p>
-<p>The distinction is easiest to see with a counterexample. The
-matrix</p>
+\]</span></p>
+    <p>maps old stream 1 to new stream 3, old stream 2 to new stream 1, and old stream 3 to new stream 2. This is the cycle <span class="math inline">\(1\to3,\;2\to1,\;3\to2\)</span>; applying it three times returns every stream to its starting position. An eigenvalue is a scalar by which a matrix scales a corresponding nonzero, possibly complex, vector. The characteristic polynomial of this matrix is <span class="math inline">\(\lambda^3-1\)</span>, where <span class="math inline">\(\lambda\)</span> is the eigenvalue variable. Its roots are <span class="math inline">\(1,e^{2\pi i/3},e^{-2\pi i/3}\)</span>, where <span class="math inline">\(i^2=-1\)</span>. Two of these eigenvalues form a nonreal conjugate pair.</p>
+    <p>This spectrum illustrates a limitation of single Kronecker products of doubly stochastic <span class="math inline">\(2\times2\)</span> factors. Each factor has the form <span class="math inline">\(\begin{pmatrix}a&amp;1-a\\1-a&amp;a\end{pmatrix}\)</span>, with <span class="math inline">\(0\leq a\leq1\)</span>. It leaves <span class="math inline">\((1,1)^\top\)</span> unchanged and scales <span class="math inline">\((1,-1)^\top\)</span> by <span class="math inline">\(2a-1\)</span>, so its eigenvalues are <span class="math inline">\(1\)</span> and <span class="math inline">\(2a-1\)</span>, both real. Eigenvalues of a Kronecker product are products of factor eigenvalues, so a single such product has only real eigenvalues.</p>
+    <p>There is also a size issue: a product of <span class="math inline">\(r\)</span> binary factors has size <span class="math inline">\(2^r\times2^r\)</span>, for a positive integer factor count <span class="math inline">\(r\)</span>, never <span class="math inline">\(3\times3\)</span>. To isolate the spectral obstruction at a matching size, keep the same three-cycle and add a fourth stream that stays fixed:</p>
+    <p><span class="math display">\[
+\widehat{P}=
+\begin{pmatrix}
+0&amp;1&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0\\
+1&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;1
+\end{pmatrix}.
+\]</span></p>
+    <p>This four-stream permutation matrix <span class="math inline">\(\widehat{P}\)</span> has the three eigenvalues of <span class="math inline">\(P\)</span> plus another <span class="math inline">\(1\)</span>. Its nonreal pair prevents representation by a single Kronecker product of two doubly stochastic binary factors, despite their matching size. This limitation concerns that specific factorized form, not arbitrary doubly stochastic matrices, larger factors, or products of differently reindexed mixers across layers. Unit 5 develops the spectral argument further.</p>
+    <hr/>
+  </section>
+  <nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-constraint">2. Understand the constraint and its limits →</a></nav>
+</article>
+<article aria-labelledby="unit-constraint" class="book-chapter">
+<h2 id="unit-constraint">2. Understand the constraint and its limits</h2>
+<div class="learning-bridge" data-math-section="">
+<p>Let <span class="math inline">\(d\)</span> be the number of residual streams, and let <span class="math inline">\(B\in\mathbb{R}^{d\times d}\)</span> mix those streams. The entry <span class="math inline">\(B_{ij}\)</span> is the weight that input stream <span class="math inline">\(j\)</span> contributes to output stream <span class="math inline">\(i\)</span>. A matrix is <em>doubly stochastic</em> when its entries are nonnegative and every row and every column sums to one.</p>
+<p>The two sum conditions have different jobs. A row sum of one makes each output a convex combination of inputs: its weights are nonnegative and total one. A column sum of one says that each input's total weight across all outputs is one. Both conditions are needed for the conservation statements below.</p>
+<p>For example, the matrix</p>
 <p><span class="math display">\[
 B_{\mathrm{row}}=\begin{pmatrix}1&amp;0\\1&amp;0\end{pmatrix}
 \]</span></p>
-<p>has row sums one, yet sends <span class="math inline">\((2,10)^\top\)</span> to <span class="math inline">\((2,2)^\top\)</span>. Both outputs copy the first
-input; the second input disappears. Its column sums are <span class="math inline">\(2\)</span> and <span class="math inline">\(0\)</span>, so it is not doubly stochastic.
-Checking only the rows misses the problem.</p>
-<p>For a doubly stochastic mixer and any real feature vector <span class="math inline">\(x\)</span>,</p>
+<p>has row sums one, but its column sums are <span class="math inline">\(2\)</span> and <span class="math inline">\(0\)</span>. Applied to <span class="math inline">\((2,10)^\top\)</span>, it gives <span class="math inline">\((2,2)^\top\)</span>: both outputs copy the first input, and the second input contributes nothing. Thus row normalization alone does not conserve the total across streams.</p>
+<p>Write <span class="math inline">\(\mathbf 1_d\)</span> for the length-<span class="math inline">\(d\)</span> vector of ones and <span class="math inline">\(c\)</span> for any scalar. The row condition is <span class="math inline">\(B\mathbf 1_d=\mathbf 1_d\)</span>; the column condition is <span class="math inline">\(B^\top\mathbf 1_d=\mathbf 1_d\)</span>. Together, they imply for any real feature vector <span class="math inline">\(x\in\mathbb{R}^d\)</span>:</p>
 <p><span class="math display">\[
-\mathbf 1^\top Bx=\mathbf 1^\top x,
+\mathbf 1_d^\top Bx=\mathbf 1_d^\top x,
 \qquad
-B(c\mathbf 1)=c\mathbf 1.
+B(c\mathbf 1_d)=c\mathbf 1_d.
 \]</span></p>
-<p>The first identity preserves the sum across streams for that feature.
-The second preserves a feature that already has the same value in every
-stream. These are algebraic identities, so they do not require the
-feature values themselves to be nonnegative.</p>
-<h3 id="explanation-constraint-non-amplification-is-not-preservation-of-every-direction">Non-amplification
-is not preservation of every direction</h3>
-<p>Consider the averaging mixer</p>
+<p>The first identity uses the column condition: <span class="math inline">\(\mathbf 1_d^\top B=\mathbf 1_d^\top\)</span>, so the sum of the feature across streams is unchanged. The second uses the row condition: each row combines the same constant <span class="math inline">\(c\)</span> with weights totalling one. Neither identity requires the feature values themselves to be nonnegative.</p>
+<h3 id="explanation-constraint-non-amplification-is-not-preservation-of-every-direction">Non-amplification is not preservation of every direction</h3>
+<p>For two streams, complete averaging is the matrix</p>
 <p><span class="math display">\[
 J=\frac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}.
 \]</span></p>
-<p>It preserves <span class="math inline">\((1,1)^\top\)</span>, but
-sends <span class="math inline">\((1,-1)^\top\)</span> to zero. It is
-exactly doubly stochastic and still destroys the difference between the
-streams. Therefore the constraint does <strong>not</strong> promise that
-all information survives, or that gradients cannot vanish in any
-direction. It controls amplification by the realized residual-routing
-operator; it does not give a positive lower bound on every singular
-value.</p>
-<p>The norm statements below can also be read directly. Each output
-coordinate is an average, so <span class="math inline">\(\|Bx\|_\infty\leq\|x\|_\infty\)</span>. Column
-sums and the triangle inequality give <span class="math inline">\(\|Bx\|_1\leq\|x\|_1\)</span>. These bounds survive
-products of doubly stochastic mixers. They are useful guarantees, but
-they do not include the derivative of an activation-dependent mixer, the
-learned branch, normalization, or the entire network Jacobian.</p>
-<h3 id="explanation-constraint-what-exact-means-in-an-implementation">What “exact” means in an
-implementation</h3>
-<p>Exact-by-construction describes the real-arithmetic formula. A
-floating-point implementation still has rounding and linear-solve
-errors. Test row and column residuals numerically rather than expecting
-literal bitwise equality to one. The advantage is that there is no
-separate finite-iteration normalization error to trade against a
-stopping budget; ordinary numerical error still needs to be
-measured.</p>
-</div><figure><div class="diagram-scroll"><img alt="Read rows to calculate outputs; read columns to check total input contribution. Both checks are required." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-row-column-budgets.svg"/></div><figcaption>Read rows to calculate outputs; read columns to check total input contribution. Both checks are required.</figcaption></figure><section class="topic" data-math-section=""><h3 id="why-constrain-the-residual-mixer">Why constrain the residual
-mixer?</h3><p>With unconstrained Hyper-Connections, <span class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\)</span> can in
-principle be any learned matrix. This permits flexible routing but
-removes an explicit identity-like guarantee.</p><p>Repeated application yields a cumulative routing operator</p><p><span class="math display">\[
-\mathcal{H}_{l\to L}^{\mathrm{res}}
-=
-\prod_{i=1}^{L-l}
-\mathcal{H}_{L-i}^{\mathrm{res}}.
+<p>It leaves <span class="math inline">\((1,1)^\top\)</span> unchanged, but maps the contrast <span class="math inline">\((1,-1)^\top\)</span> to zero. This matrix is exactly doubly stochastic, yet it erases the difference between the two streams. More generally, <span class="math inline">\(J_d=\mathbf 1_d\mathbf 1_d^\top/d\)</span> averages all <span class="math inline">\(d\)</span> streams; for <span class="math inline">\(d\geq2\)</span>, it sends every vector <span class="math inline">\(v\in\mathbb{R}^d\)</span> with <span class="math inline">\(\mathbf 1_d^\top v=0\)</span> to zero. Thus a unit upper bound on amplification does not promise that every direction survives.</p>
+<p>A matrix's singular values describe its Euclidean stretching factors along a suitable set of mutually perpendicular input directions. The Euclidean operator norm <span class="math inline">\(\|B\|_2\)</span> is the largest singular value: it measures the greatest possible ratio of Euclidean lengths. The standard induced-norm inequality bounds it using <span class="math inline">\(\|B\|_1\)</span>, the maximum absolute column sum, and <span class="math inline">\(\|B\|_\infty\)</span>, the maximum absolute row sum:</p>
+<p><span class="math display">\[
+\|B\|_2\leq\sqrt{\|B\|_1\,\|B\|_\infty}=1.
+\]</span></p>
+<p>There is also a matching lower bound: <span class="math inline">\(B\mathbf 1_d=\mathbf 1_d\)</span> means the normalized all-ones vector is unchanged, so its Euclidean length ratio is one. Therefore <span class="math inline">\(\|B\|_2=1\)</span>. This says the largest singular value is one, not that every singular value is one; the averaging example above has zero singular values.</p>
+<p>For a vector <span class="math inline">\(x\)</span>, write <span class="math inline">\(\|x\|_\infty=\max_j|x_j|\)</span> for its largest entry magnitude and <span class="math inline">\(\|x\|_1=\sum_j|x_j|\)</span> for the sum of entry magnitudes. The induced <span class="math inline">\(\ell_\infty\)</span> norm measures the largest possible ratio <span class="math inline">\(\|Bx\|_\infty/\|x\|_\infty\)</span>, and the induced <span class="math inline">\(\ell_1\)</span> norm measures the largest ratio <span class="math inline">\(\|Bx\|_1/\|x\|_1\)</span>, over nonzero <span class="math inline">\(x\)</span>. Each output row is a convex combination, so no output magnitude exceeds the largest input magnitude: <span class="math inline">\(\|Bx\|_\infty\leq\|x\|_\infty\)</span>. For the <span class="math inline">\(\ell_1\)</span> bound, apply the triangle inequality and then use each column sum of one: <span class="math inline">\(\sum_i|(Bx)_i|\leq\sum_{i,j}B_{ij}|x_j|=\sum_j|x_j|\)</span>. Hence <span class="math inline">\(\|Bx\|_1\leq\|x\|_1\)</span>. These bounds concern the realized residual matrix and its products. They do not by themselves bound the full network Jacobian, which also includes the learned branch and any normalization or other transformations.</p>
+<h3 id="explanation-constraint-what-exact-means-in-an-implementation">What “exact” means in an implementation</h3>
+<p>Exact-by-construction means the real-arithmetic formula satisfies the constraints. A floating-point implementation still incurs rounding and, where applicable, linear-solve errors. Check row- and column-sum residuals numerically; do not expect bitwise equality to one.</p>
+<p>This construction avoids a separate finite-iteration normalization error that must be balanced against a stopping budget. It does not remove ordinary numerical error, which still needs to be measured.</p>
+</div>
+<figure><div class="diagram-scroll"><img alt="Read rows to calculate outputs; read columns to check total input contribution. Both checks are required." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-row-column-budgets.svg"/></div><figcaption>Read rows to calculate outputs; read columns to check total input contribution. Both checks are required.</figcaption></figure>
+<section class="topic" data-math-section="">
+<h3 id="why-constrain-the-residual-mixer">Why constrain the residual mixer?</h3>
+<p>In Hyper-Connections, <span class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\)</span> is the residual-stream mixing matrix at layer <span class="math inline">\(l\)</span>. Without a constraint, it can be any learned matrix. That allows flexible routing, but gives no explicit control over how repeated residual mixing scales a direction.</p>
+<p>To track this linear transport from layer <span class="math inline">\(l\)</span> to a deeper layer <span class="math inline">\(L\)</span>, define the cumulative residual operator</p>
+<p><span class="math display">\[
+P_{L\leftarrow l}
+:=
+\mathcal{H}_{L-1}^{\mathrm{res}}
+\mathcal{H}_{L-2}^{\mathrm{res}}
+\cdots
+\mathcal{H}_{l}^{\mathrm{res}}.
 \tag{5}
-\]</span></p><p>If the factors are unrestricted, this product can have directions
-that grow or shrink rapidly. Such amplification or contraction can
-contribute to exploding or vanishing gradients.</p><p>mHC constrains residual mixing toward the Birkhoff polytope using
-finite Sinkhorn–Knopp normalization. Sinkhorn normalization alternates
-row and column rescaling of a nonnegative matrix. The supplied
-formulation uses twenty iterations.</p><p>This gives two practical concerns:</p><ol type="1">
-<li>the iterative projection may require specialized implementation for
-efficiency;</li>
-<li>a finite number of iterations need not produce an exactly doubly
-stochastic matrix.</li>
-</ol><p>A small violation at each layer may compound across depth. Exact
-parameterizations seek to eliminate this particular source of
-accumulated constraint error.</p><hr/></section><section class="topic" data-math-section=""><h3 id="stability-and-cumulative-mixing">Stability and cumulative
-mixing</h3><p>For any nonnegative doubly stochastic matrix <span class="math inline">\(B\)</span>,</p><p><span class="math display">\[
-\max_i\sum_j|B_{ij}|=1,
+\]</span></p>
+<p>Here <span class="math inline">\(L\)</span> is the destination layer index, not the sequence length used earlier, and <span class="math inline">\(L&gt;l\)</span>. The rightmost matrix acts first. For two steps, <span class="math inline">\(P_{l+2\leftarrow l}=\mathcal{H}_{l+1}^{\mathrm{res}}\mathcal{H}_{l}^{\mathrm{res}}\)</span>: the first mixer acts on the incoming state, then the next acts on its output. Each mixer can change that state's direction, so successive amplification or contraction is measured along the resulting directions. These effects can compound and contribute to exploding or vanishing gradients. The largest individual gains need not multiply to the product's largest gain. This product describes residual transport with its layer matrices fixed along the trajectory; it is not, by itself, the full derivative of an activation-dependent layer or of the network.</p>
+<p>In particular, consider the residual-path map <span class="math inline">\(f(X)=B(X)X\)</span>, where routing <span class="math inline">\(B\)</span> depends on the activation matrix <span class="math inline">\(X\in\mathbb{R}^{d\times D}\)</span>, with <span class="math inline">\(D\)</span> features per stream. At a point where <span class="math inline">\(B\)</span> is differentiable, a perturbation <span class="math inline">\(\Delta\in\mathbb{R}^{d\times D}\)</span> changes both the state and the routing weights:</p>
+<p><span class="math display">\[
+Df_X[\Delta]
+=B(X)\Delta+\bigl(DB_X[\Delta]\bigr)X.
+\]</span></p>
+<p>Here <span class="math inline">\(Df_X[\Delta]\)</span> is the first-order change in the output, and <span class="math inline">\(DB_X[\Delta]\in\mathbb{R}^{d\times d}\)</span> is the corresponding first-order change in the routing matrix. For fixed or frozen routing, <span class="math inline">\(DB_X[\Delta]=0\)</span> and the second term vanishes. With activation-dependent routing, it need not vanish. A learned read–transform–write branch contributes its own derivatives as well. So the product is useful for reasoning about residual routing, but its norm is not a general gradient-stability theorem.</p>
+<p>mHC constrains residual mixing toward the Birkhoff polytope, the set <span class="math inline">\(\mathsf{B}_d\)</span> of nonnegative doubly stochastic <span class="math inline">\(d\times d\)</span> matrices, using finite Sinkhorn–Knopp normalization. A row-rescaling pass divides each row by its sum to make row sums one. A following column-rescaling pass does the same for columns. Each division requires a positive sum. Strictly positive starting entries are sufficient for the alternating passes to converge toward a doubly stochastic matrix in exact arithmetic; nonnegativity alone does not ensure convergence. Column scaling can disturb the row sums just set, so a finite number of passes need not satisfy both constraints. The formulation described here uses twenty iterations; that count is not a rule for every implementation.</p>
+<p>This method has two practical concerns:</p>
+<ol type="1">
+<li>the iterative projection may require specialized implementation for efficiency;</li>
+<li>a fixed finite iteration count need not produce an exactly doubly stochastic matrix, although some inputs can already satisfy both constraints exactly.</li>
+</ol>
+<p>A small row- or column-sum violation at each layer can compound in a deep product. Exact parameterizations aim to remove this particular source of accumulated constraint error; they do not remove other numerical or optimization effects.</p>
+<hr/></section>
+<section class="topic" data-math-section="">
+<h3 id="stability-and-cumulative-mixing">Stability and cumulative mixing</h3>
+<p>For a matrix <span class="math inline">\(B\)</span>, the induced <span class="math inline">\(\ell_\infty\)</span> norm is its maximum absolute row sum, and the induced <span class="math inline">\(\ell_1\)</span> norm is its maximum absolute column sum. For nonnegative doubly stochastic <span class="math inline">\(B\)</span>, both equal one:</p>
+<p><span class="math display">\[
+\|B\|_\infty=\max_i\sum_j|B_{ij}|=1,
 \qquad
-\max_j\sum_i|B_{ij}|=1.
-\]</span></p><p>These are the induced <span class="math inline">\(\ell_\infty\)</span> and <span class="math inline">\(\ell_1\)</span> operator norms. The paper
-describes forward and backward Amax Gain Magnitude quantities as</p><p><span class="math display">\[
+\|B\|_1=\max_j\sum_i|B_{ij}|=1.
+\]</span></p>
+<p>These norms describe the largest possible amplification measured in their respective vector norms, not a selected eigenvalue. The paper's forward and backward Amax Gain Magnitude (AGM) quantities apply those same maximum row- and column-sum calculations to the cumulative residual operator <span class="math inline">\(P_{L\leftarrow l}\)</span>:</p>
+<p><span class="math display">\[
 \operatorname{AGM}^{\mathrm{fwd}}
 \left(
-\mathcal{H}_{l\to L}^{\mathrm{res}}
+P_{L\leftarrow l}
 \right)
-=
-\max_i
-\sum_j
-\left|
-\left(
-\mathcal{H}_{l\to L}^{\mathrm{res}}
-\right)_{ij}
-\right|,
+:=
+\max_i\sum_j\left|\left(P_{L\leftarrow l}\right)_{ij}\right|,
 \tag{11}
-\]</span></p><p>and</p><p><span class="math display">\[
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
 \operatorname{AGM}^{\mathrm{bwd}}
 \left(
-\mathcal{H}_{l\to L}^{\mathrm{res}}
+P_{L\leftarrow l}
 \right)
-=
-\max_j
-\sum_i
-\left|
-\left(
-\mathcal{H}_{l\to L}^{\mathrm{res}}
-\right)_{ij}
-\right|.
+:=
+\max_j\sum_i\left|\left(P_{L\leftarrow l}\right)_{ij}\right|,
 \tag{12}
-\]</span></p><p>If each residual mixer belongs to <span class="math inline">\(\mathsf{B}_d\)</span>, then their product remains
-in <span class="math inline">\(\mathsf{B}_d\)</span>. Indeed, for doubly
-stochastic <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>,</p><p><span class="math display">\[
-(AB)\mathbf{1}
+\]</span></p>
+<p>Thus forward AGM is the induced <span class="math inline">\(\ell_\infty\)</span> norm, while backward AGM is the induced <span class="math inline">\(\ell_1\)</span> norm. For frozen residual transport, backpropagation uses <span class="math inline">\(P_{L\leftarrow l}^\top\)</span>; its maximum absolute row sum is the original operator's maximum absolute column sum. That is why the backward quantity uses columns.</p>
+<p>AGM values are not themselves spectral radii or Euclidean operator norms. Together they do bound the largest singular value through the induced-norm inequality above. They do not give a positive lower bound on every singular value, nor a stability guarantee for the complete nonlinear network.</p>
+<p>The reason exact residual products retain these values is closure under multiplication. Let <span class="math inline">\(A,B\in\mathsf{B}_d\)</span>. Since <span class="math inline">\(B\mathbf 1_d=\mathbf 1_d\)</span> and <span class="math inline">\(A\mathbf 1_d=\mathbf 1_d\)</span>,</p>
+<p><span class="math display">\[
+(AB)\mathbf{1}_d
 =
-A(B\mathbf{1})
+A(B\mathbf{1}_d)
 =
-A\mathbf{1}
+A\mathbf{1}_d
 =
-\mathbf{1},
-\]</span></p><p>and similarly,</p><p><span class="math display">\[
-(AB)^\top\mathbf{1}
+\mathbf{1}_d.
+\]</span></p>
+<p>For the column condition, use <span class="math inline">\((AB)^\top=B^\top A^\top\)</span> and the same two constraints:</p>
+<p><span class="math display">\[
+(AB)^\top\mathbf{1}_d
 =
-B^\top A^\top \mathbf{1}
+B^\top A^\top\mathbf{1}_d
 =
-B^\top\mathbf{1}
+B^\top\mathbf{1}_d
 =
-\mathbf{1}.
-\]</span></p><p>Nonnegativity is also preserved under matrix multiplication.</p><p>Therefore exact doubly stochastic mixing guarantees that the
-cumulative routing operator remains doubly stochastic at arbitrary
-depth. This explains why AGM does not distinguish exact methods such as
-go-mHC, mHC-lite, and KromHC: all satisfy the same relevant row- and
-column-sum property.</p><p>It does <strong>not</strong> prove that the methods have equal
-optimization behavior, equal representational capacity, or equal
-real-world training performance. For those comparisons, the paper turns
-to expressivity and convergence.</p><hr/></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-route">← 1. Start with the routing problem</a><a href="#unit-geometry">3. Build the mixer from orthogonal blocks →</a></nav></article><article aria-labelledby="unit-geometry" class="book-chapter"><h2 id="unit-geometry">3. Build the mixer from orthogonal blocks</h2><div class="learning-bridge" data-math-section=""><p>We now have a specification: produce a nonnegative matrix whose rows
-and columns sum to one. go-mHC meets that specification indirectly. It
-first builds an orthogonal matrix, whose rows and columns have known
-squared lengths, and then converts those squared lengths into
-nonnegative routing weights.</p>
-<p>The sizes matter. There are <span class="math inline">\(d\)</span>
-actual residual streams. The orthogonal construction uses <span class="math inline">\(ds\)</span> internal coordinates, grouped into
-<span class="math inline">\(d\)</span> blocks of <span class="math inline">\(s\)</span> coordinates. Those extra coordinates
-parameterize the mixer; they are not <span class="math inline">\(ds\)</span> residual streams carried through the
-network. After taking one normalized squared norm per block, the output
-is again a <span class="math inline">\(d\times d\)</span> matrix.</p>
-<h3 id="explanation-geometry-why-divide-a-block-energy-by-its-size">Why divide a block energy
-by its size?</h3>
-<p>For <span class="math inline">\(s=1\)</span>, every row of an
-orthogonal matrix has squared length one. For larger <span class="math inline">\(s\)</span>, a block row contains <span class="math inline">\(s\)</span> ordinary orthogonal rows, each
-contributing one unit of squared length. The total squared energy in the
-whole block row is therefore <span class="math inline">\(s\)</span>.
-Dividing its block energies by <span class="math inline">\(s\)</span>
-makes the corresponding routing row sum to one. The column argument is
-the same. The proof below formalizes precisely this accounting
-argument.</p>
-<p>Notice what is discarded by the final map. The orthogonal matrix
-contains signs and relationships between internal coordinates. The
-routing matrix retains only block energies. Many different orthogonal
-matrices can therefore produce the same mixer. Orthogonality of the
-internal matrix does <strong>not</strong> imply that the final mixer
-preserves vector length.</p>
-<h3 id="explanation-geometry-follow-one-parameter-all-the-way-to-a-mixer">Follow one
-parameter all the way to a mixer</h3>
-<p>Take <span class="math inline">\(d=2\)</span>, <span class="math inline">\(s=1\)</span>, and</p>
+\mathbf{1}_d.
+\]</span></p>
+<p>Each entry of <span class="math inline">\(AB\)</span> is a sum of products of nonnegative entries, so <span class="math inline">\(AB\)</span> is nonnegative as well. It follows that <span class="math inline">\(AB\in\mathsf{B}_d\)</span>. Applying this argument repeatedly shows that if every residual mixer is exactly doubly stochastic, their ordered cumulative product is too. Its maximum absolute row and column sums—and therefore both AGM values—are exactly one.</p>
+<p>This is why AGM does not distinguish exact residual-mixing methods such as go-mHC, mHC-lite, and KromHC: they share the row- and column-sum property relevant to these two quantities. Equal AGM does not mean equal dynamics or training stability. The methods can differ in spectra and singular values, in how their routing depends on activations and therefore affects the Jacobian, in their nonlinear branches, and in optimization. Equal AGM does not prove equal representational capacity or real-world training performance. For those comparisons, the paper turns to expressivity and convergence; the shared AGM values alone do not settle them.</p>
+<hr/></section>
+<nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-route">← 1. Start with the routing problem</a><a href="#unit-geometry">3. Build the mixer from orthogonal blocks →</a></nav>
+</article>
+<article aria-labelledby="unit-geometry" class="book-chapter"><h2 id="unit-geometry">3. Build the mixer from orthogonal blocks</h2><div class="learning-bridge" data-math-section=""><p>We need a nonnegative matrix whose rows and columns sum to one. go-mHC constructs such a mixer indirectly. It first makes a real orthogonal matrix: its rows, and separately its columns, have unit length and are mutually perpendicular. It then converts the squared energy in each block into a routing weight. Here “energy” means a dimensionless sum of squared matrix entries, not a physical energy.</p>
+<p>Let <span class="math inline">\(d\geq1\)</span> be the integer number of actual residual streams, and let <span class="math inline">\(s\geq1\)</span> be an integer internal block size. The construction uses <span class="math inline">\(ds\)</span> auxiliary coordinates. Its <span class="math inline">\(ds\times ds\)</span> orthogonal matrix is arranged as <span class="math inline">\(d\times d\)</span> blocks of size <span class="math inline">\(s\times s\)</span>. These coordinates parameterize a mixer; they are not extra streams carried through the network. The block-energy map returns one weight per block, hence a <span class="math inline">\(d\times d\)</span> mixer.</p>
+<h3 id="explanation-geometry-why-divide-a-block-energy-by-its-size">Why divide a block energy by its size?</h3>
+<p>When <span class="math inline">\(s=1\)</span>, an orthogonal row has squared length one, so its squared entries already sum to one. For larger <span class="math inline">\(s\)</span>, each block row contains <span class="math inline">\(s\)</span> rows of the larger orthogonal matrix. Orthogonality makes each of those rows have squared length one, so their combined squared energy is <span class="math inline">\(s\)</span>, not one. Dividing every block energy by <span class="math inline">\(s\)</span> therefore makes the routing row sum to one. The block-column argument gives the same normalization for columns; the proof below shows both identities explicitly.</p>
+<p>The final map discards information. The orthogonal matrix contains signs and relationships among internal coordinates, while the mixer retains only each block's total squared energy. Different orthogonal matrices can therefore yield the same mixer. Also, although the internal matrix preserves vector lengths, its block-energy image need not preserve the length of a stream vector; it is a nonnegative routing matrix, not an orthogonal transformation on the streams.</p>
+<h3 id="explanation-geometry-follow-one-parameter-all-the-way-to-a-mixer">Follow one parameter all the way to a mixer</h3>
+<p>Take <span class="math inline">\(d=2\)</span>, <span class="math inline">\(s=1\)</span>, and choose the real skew-symmetric matrix below. Skew-symmetric means <span class="math inline">\(A^\top=-A\)</span>: the diagonal is zero and opposite off-diagonal entries have opposite signs.</p>
 <p><span class="math display">\[
 A=\begin{pmatrix}0&amp;1/3\\-1/3&amp;0\end{pmatrix}.
 \]</span></p>
-<p>The Cayley transform gives</p>
+<p>Here <span class="math inline">\(I\)</span> is the <span class="math inline">\(2\times2\)</span> identity matrix. The inverse needed for the Cayley transform is</p>
+<p><span class="math display">\[
+(I+A)^{-1}=\frac{9}{10}\begin{pmatrix}1&amp;-1/3\\1/3&amp;1\end{pmatrix}.
+\]</span></p>
+<p>Multiplying by <span class="math inline">\(I-A\)</span> gives</p>
 <p><span class="math display">\[
 Q=(I-A)(I+A)^{-1}
 =\begin{pmatrix}0.8&amp;-0.6\\0.6&amp;0.8\end{pmatrix}.
 \]</span></p>
-<p>Each row has squared length <span class="math inline">\(0.8^2+0.6^2=1\)</span>, and their inner product is
-zero. Squaring the entries gives</p>
+<p>Each row has squared length <span class="math inline">\(0.8^2+0.6^2=1\)</span>, and the row inner product is <span class="math inline">\(0.8(0.6)+(-0.6)(0.8)=0\)</span>. Thus the rows are orthonormal. Since <span class="math inline">\(s=1\)</span>, the block-energy map simply squares each entry:</p>
 <p><span class="math display">\[
 B=\begin{pmatrix}0.64&amp;0.36\\0.36&amp;0.64\end{pmatrix}.
 \]</span></p>
-<p>For <span class="math inline">\(x=(2,10)^\top\)</span>, the mixed
-feature values are <span class="math inline">\((4.88,7.12)^\top\)</span>. Their sum is still
-<span class="math inline">\(12\)</span>. The negative entry of <span class="math inline">\(Q\)</span> causes no negative routing weight
-because the final map squares it. This is a complete small instance of
-the construction—not a numerical projection onto the constraint set.</p>
-<h3 id="explanation-geometry-the-cayley-chart-has-a-boundary">The Cayley chart has a
-boundary</h3>
-<p>A real skew-symmetric <span class="math inline">\(A\)</span> cannot
-make <span class="math inline">\(I+A\)</span> singular. If <span class="math inline">\((I+A)v=0\)</span>, multiplying by <span class="math inline">\(v^\top\)</span> gives <span class="math inline">\(\|v\|_2^2+v^\top Av=0\)</span>. Skew-symmetry
-makes the second term zero, so <span class="math inline">\(v=0\)</span>.</p>
-<p>Nevertheless, a finite Cayley parameterization does not cover every
-orthogonal matrix: its output cannot have eigenvalue <span class="math inline">\(-1\)</span>, because <span class="math inline">\(I+Q=2(I+A)^{-1}\)</span> is invertible. Thus the
-full family obtained by allowing <strong>all</strong> orthogonal
-matrices and the finite Cayley chart used to parameterize them must not
-be casually identified. Nor does connectedness of a parameter space
-prove that gradient descent reaches any desired target. The
-construction, the representable family, and the behavior of an optimizer
-are three separate questions.</p>
-</div><figure><div class="diagram-scroll"><img alt="Each map establishes a different property. The last map returns to d actual streams, regardless of the internal block size s." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-geometric-construction.svg"/></div><figcaption>Each map establishes a different property. The last map returns to d actual streams, regardless of the internal block size s.</figcaption></figure><section class="topic" data-math-section=""><h3 id="orthostochastic-matrices">Orthostochastic matrices</h3><p>A matrix <span class="math inline">\(B\in\mathsf{B}_d\)</span> is
-<strong>orthostochastic</strong> if there exists an orthogonal matrix
-<span class="math inline">\(Q\in\mathbb{R}^{d\times d}\)</span> such
-that</p><p><span class="math display">\[
+<p>For the input feature vector <span class="math inline">\(x=(2,10)^\top\)</span>, the outputs are <span class="math inline">\(0.64(2)+0.36(10)=4.88\)</span> and <span class="math inline">\(0.36(2)+0.64(10)=7.12\)</span>. Their sum remains <span class="math inline">\(12\)</span> because each column of <span class="math inline">\(B\)</span> sums to one. The negative entry of <span class="math inline">\(Q\)</span> creates no negative routing weight: squaring removes its sign. This example computes the constraint through the construction, rather than projecting a candidate matrix numerically onto the constraint set.</p>
+<h3 id="explanation-geometry-the-cayley-chart-has-a-boundary">The Cayley chart has a boundary</h3>
+<p>A real skew-symmetric matrix <span class="math inline">\(A\)</span> satisfies <span class="math inline">\(A^\top=-A\)</span>. Let <span class="math inline">\(I\)</span> be the identity of the same square size and <span class="math inline">\(v\)</span> a real column vector of the matching dimension. Then <span class="math inline">\(v^\top Av=0\)</span>, since this scalar equals its own negative after transposition. If <span class="math inline">\((I+A)v=0\)</span>, multiplying by <span class="math inline">\(v^\top\)</span> gives <span class="math inline">\(\|v\|_2^2+v^\top Av=0\)</span>, hence <span class="math inline">\(v=0\)</span>. Thus <span class="math inline">\(I+A\)</span> has no nonzero null vector and is invertible.</p>
+<p>The finite Cayley parameters describe a chart: a coordinate map covering part, but not all, of the orthogonal matrices. Its outputs have determinant <span class="math inline">\(+1\)</span>, because <span class="math inline">\(I-A=(I+A)^\top\)</span> gives <span class="math inline">\(\det Q=\det(I-A)/\det(I+A)=1\)</span>. They cannot have eigenvalue <span class="math inline">\(-1\)</span>, because rearranging the formula gives <span class="math inline">\(I+Q=2(I+A)^{-1}\)</span>, which is invertible.</p>
+<p>This restricts the orthogonal lifts, meaning auxiliary matrices <span class="math inline">\(Q\)</span> that produce a given mixer. It does not automatically restrict the mixers in the same way. The block map can send distinct lifts to the same mixer, so omitting one lift does not prove its mixer is unattainable by another lift. Flipping one row changes a lift's determinant sign without changing any squared block energy. Thus every unrestricted mixer has a determinant-<span class="math inline">\(+1\)</span> lift.</p>
+<p>For <span class="math inline">\(ds\geq2\)</span>, finite Cayley outputs are dense among determinant-<span class="math inline">\(+1\)</span> orthogonal matrices: every such matrix can be approximated arbitrarily closely. To see the mechanism, decompose it into two-dimensional rotations and fixed directions in an orthonormal basis. Any eigenvalues <span class="math inline">\(-1\)</span> occur in pairs and form rotation planes with angle <span class="math inline">\(\pi\)</span>. Perturb those angles away from <span class="math inline">\(\pi\)</span>. The resulting matrices remain orthogonal, approach the original matrix, and have no eigenvalue <span class="math inline">\(-1\)</span>. Each then has the finite parameter <span class="math inline">\(A=(I-Q)(I+Q)^{-1}\)</span>. Transposing this expression and using <span class="math inline">\(Q^\top=Q^{-1}\)</span> gives <span class="math inline">\(A^\top=-A\)</span>, so the parameter is skew-symmetric. Since block energies vary continuously with the entries of <span class="math inline">\(Q\)</span>, their mixers also approach the original mixer. For <span class="math inline">\(ds=1\)</span>, the only mixer is <span class="math inline">\([1]\)</span>, obtained with <span class="math inline">\(A=0\)</span>.</p>
+<p>This proves approximation, not exact coverage by finite Cayley parameters. Construction, representable mixer family, and optimizer behavior remain distinct questions. Connectedness of a parameter space alone does not show that gradient descent reaches a target.</p>
+</div><figure><div class="diagram-scroll"><img alt="Each map establishes a different property. The last map returns to d actual streams, regardless of the internal block size s." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-geometric-construction.svg"/></div><figcaption>Each map establishes a different property. The last map returns to d actual streams, regardless of the internal block size s.</figcaption></figure><section class="topic" data-math-section=""><h3 id="orthostochastic-matrices">Orthostochastic matrices</h3><p>A matrix <span class="math inline">\(B\in\mathsf{B}_d\)</span> is <strong>orthostochastic</strong> when it is obtained by squaring the entries of a real orthogonal matrix <span class="math inline">\(Q\in\mathbb{R}^{d\times d}\)</span>. With row and column indices <span class="math inline">\(1\leq i,j\leq d\)</span>, this means</p><p><span class="math display">\[
 B_{ij}=Q_{ij}^{\,2}.
 \tag{6}
-\]</span></p><p>Because squares are nonnegative, <span class="math inline">\(B_{ij}\geq 0\)</span>. Orthogonality gives</p><p><span class="math display">\[
+\]</span></p><p>Here <span class="math inline">\(\mathsf{B}_d\)</span> denotes the set of <span class="math inline">\(d\times d\)</span> doubly stochastic matrices. Squares are nonnegative, so <span class="math inline">\(B_{ij}\geq0\)</span>. The unit-length rows and columns of <span class="math inline">\(Q\)</span> give</p><p><span class="math display">\[
 \sum_j Q_{ij}^2=1
 \quad\text{and}\quad
 \sum_i Q_{ij}^2=1,
-\]</span></p><p>so the squared-entry matrix is doubly stochastic.</p><p>For <span class="math inline">\(d&gt;2\)</span>, the orthostochastic
-matrices form a proper, nonconvex subset of <span class="math inline">\(\mathsf{B}_d\)</span>. They include permutation
-matrices but do not generally fill the polytope interior.</p><p>This produces the central idea behind go-mHC:</p><ul>
-<li>ordinary orthostochastic matrices correspond to <span class="math inline">\(s=1\)</span>;</li>
-<li>a block generalization indexed by <span class="math inline">\(s\)</span> expands the representable family;</li>
-<li>as <span class="math inline">\(s\to\infty\)</span>, that family
-approaches the full Birkhoff polytope.</li>
-</ul><hr/></section><section class="topic" data-math-section=""><h3 id="generalized-orthostochastic-matrices">Generalized
-orthostochastic matrices</h3><figure><div class="diagram-scroll"><img alt="A block row contains two unit-length orthogonal rows. Its total squared energy is two; division by two gives one routing row." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-block-energy-map.svg"/></div><figcaption>A block row contains two unit-length orthogonal rows. Its total squared energy is two; division by two gives one routing row.</figcaption></figure><p>Let</p><p><span class="math display">\[
-Q\in\mathcal{Q}(ds)
-\]</span></p><p>be an orthogonal <span class="math inline">\(ds\times ds\)</span>
-matrix. Partition it into a <span class="math inline">\(d\times
-d\)</span> block matrix, with each block</p><p><span class="math display">\[
-Q_{ij}\in\mathbb{R}^{s\times s}.
-\]</span></p><p>Define the block-energy map</p><p><span class="math display">\[
+\]</span></p><p>so the squared-entry matrix has unit row and column sums. For <span class="math inline">\(d&gt;2\)</span>, orthostochastic matrices form a proper, nonconvex subset of <span class="math inline">\(\mathsf{B}_d\)</span>. They include permutation matrices, but do not fill the polytope's interior. For <span class="math inline">\(d=2\)</span>, by contrast, they fill the doubly stochastic segment. Every such mixer has diagonal entries <span class="math inline">\(t\)</span> and off-diagonal entries <span class="math inline">\(1-t\)</span>, with <span class="math inline">\(0\leq t\leq1\)</span>. An orthogonal lift has rows <span class="math inline">\((\sqrt t,-\sqrt{1-t})\)</span> and <span class="math inline">\((\sqrt{1-t},\sqrt t)\)</span>; squaring its entries gives that mixer.</p><p>The block construction generalizes this squared-entry idea. As the following definition shows, the block size controls the family of mixers available; it does not mean the resulting mixer ceases to be doubly stochastic.</p><hr/></section><section class="topic" data-math-section=""><h3 id="generalized-orthostochastic-matrices">Generalized orthostochastic matrices</h3><figure><div class="diagram-scroll"><img alt="A block row contains two unit-length orthogonal rows. Its total squared energy is two; division by two gives one routing row." loading="lazy" src="/notes/assets/exact-residual-stream-mixing/mhc-block-energy-map.svg"/></div><figcaption>A block row contains two unit-length orthogonal rows. Its total squared energy is two; division by two gives one routing row.</figcaption></figure><p>Let <span class="math inline">\(Q\in\mathcal{Q}(ds)\)</span> be an orthogonal <span class="math inline">\(ds\times ds\)</span> matrix; <span class="math inline">\(\mathcal{Q}(ds)=O(ds)\)</span> is the set of real orthogonal matrices of that size. Partition its rows and columns into <span class="math inline">\(d\)</span> consecutive groups of <span class="math inline">\(s\)</span>. The block at block-row <span class="math inline">\(i\)</span> and block-column <span class="math inline">\(j\)</span> is <span class="math inline">\(Q_{ij}\in\mathbb{R}^{s\times s}\)</span>.</p><p>For a real matrix <span class="math inline">\(M\)</span>, its Frobenius norm squared is the sum of squares of all its entries. The block-energy map assigns each block its squared Frobenius norm divided by <span class="math inline">\(s\)</span>. Here <span class="math inline">\(k,r\)</span> index the row and column within a block:</p><p><span class="math display">\[
 \Phi_{d,s}(Q)_{ij}
-=
+:=
 \frac{1}{s}\lVert Q_{ij}\rVert_F^2
-=
+:=
 \frac{1}{s}
-\sum_{k=1}^{s}
-\sum_{r=1}^{s}
-(Q_{ij})_{kr}^2.
+\sum_{k=1}^{s}\sum_{r=1}^{s}(Q_{ij})_{kr}^2.
 \tag{7}
-\]</span></p><p>Here <span class="math inline">\(\lVert\cdot\rVert_F\)</span> denotes
-the Frobenius norm:</p><p><span class="math display">\[
-\lVert M\rVert_F^2=\sum_{a,b}M_{ab}^2.
-\]</span></p><p>Thus <span class="math inline">\(\Phi_{d,s}(Q)_{ij}\)</span> is the
-normalized squared energy carried by block <span class="math inline">\(Q_{ij}\)</span>.</p><h4 id="proposition-phi_dsq-is-doubly-stochastic">Proposition: <span class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly stochastic</h4><p>For every orthogonal <span class="math inline">\(Q\in\mathcal{Q}(ds)\)</span>,</p><p><span class="math display">\[
-\Phi_{d,s}(Q)\in\mathsf{B}_d.
-\]</span></p><h5 id="proof-sketch">Proof sketch</h5><p>Fix a block row <span class="math inline">\(i\)</span>. Since <span class="math inline">\(Q\)</span> is orthogonal,</p><p><span class="math display">\[
+\]</span></p><p>Thus <span class="math inline">\(\Phi_{d,s}(Q)_{ij}\)</span> is the share, after normalization, of squared energy in block <span class="math inline">\(Q_{ij}\)</span>. The normalization is forced by orthogonality: each block row contains <span class="math inline">\(s\)</span> rows of unit squared length, for total energy <span class="math inline">\(s\)</span>.</p><h4 id="proposition-phi_dsq-is-doubly-stochastic">Proposition: <span class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly stochastic</h4><p>For every orthogonal <span class="math inline">\(Q\in\mathcal{Q}(ds)\)</span>, the block-energy matrix belongs to <span class="math inline">\(\mathsf{B}_d\)</span>.</p><h5 id="proof-sketch">Proof sketch</h5><p>Fix block row <span class="math inline">\(i\)</span>. Orthogonality of the rows, grouped into blocks, gives the following identity, where <span class="math inline">\(I_s\)</span> is the <span class="math inline">\(s\times s\)</span> identity matrix:</p><p><span class="math display">\[
 \sum_{j=1}^{d}Q_{ij}Q_{ij}^{\top}=I_s.
-\]</span></p><p>Taking traces gives</p><p><span class="math display">\[
+\]</span></p><p>Taking the trace (the sum of diagonal entries) turns each product's trace into a squared Frobenius norm, and the identity matrix's trace is its dimension:</p><p><span class="math display">\[
 \sum_{j=1}^{d}\lVert Q_{ij}\rVert_F^2
 =
 \operatorname{tr}(I_s)
-=
-s.
-\]</span></p><p>Therefore,</p><p><span class="math display">\[
+=s.
+\]</span></p><p>Now divide this block-row total by <span class="math inline">\(s\)</span>, exactly as in the definition of <span class="math inline">\(\Phi_{d,s}\)</span>:</p><p><span class="math display">\[
 \sum_{j=1}^{d}\Phi_{d,s}(Q)_{ij}
 =
-\frac{1}{s}
-\sum_{j=1}^{d}
-\lVert Q_{ij}\rVert_F^2
-=
-1.
-\]</span></p><p>The same argument applied to block columns gives</p><p><span class="math display">\[
-\sum_{i=1}^{d}\Phi_{d,s}(Q)_{ij}=1.
-\]</span></p><p>Finally, every entry is nonnegative because it is a squared norm.
-Hence <span class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly
-stochastic. <span class="math inline">\(\square\)</span></p><p>When <span class="math inline">\(s=1\)</span>, every block is a
-scalar and equation (7) becomes equation (6). Thus ordinary
-orthostochastic matrices are the <span class="math inline">\(s=1\)</span> case.</p><p>A result attributed to Nechita et al. [2023] states that the
-family</p><p><span class="math display">\[
-\left\{
-\Phi_{d,s}(Q):Q\in\mathcal{Q}(ds)
-\right\}
-\]</span></p><p>lies inside <span class="math inline">\(\mathsf{B}_d\)</span> for
-every <span class="math inline">\(s\)</span>, and approaches the full
-Birkhoff polytope as <span class="math inline">\(s\to\infty\)</span>.</p><p>This is an asymptotic coverage statement. It does
-<strong>not</strong> imply that every finite <span class="math inline">\(s\)</span> represents every doubly stochastic
-matrix.</p><hr/></section><section class="topic" data-math-section=""><h3 id="the-go-mhc-construction">The go-mHC construction</h3><p>go-mHC replaces iterative Sinkhorn projection with a direct sequence
-of maps.</p><p>First, learned parameters form a vector that is reshaped into a
-skew-symmetric matrix:</p><p><span class="math display">\[
-A_l
-=
-\operatorname{skew}
-\left(
-\alpha_l^{\mathrm{res}}
-\mathbf{x}'_l
-\mathbf{W}_l^{\mathrm{res}}
-+
-\mathbf{b}_l^{\mathrm{res}}
-\right),
+\frac{1}{s}\sum_{j=1}^{d}\lVert Q_{ij}\rVert_F^2
+=1.
+\]</span></p><p>For a block column, orthogonality of the columns gives <span class="math inline">\(\sum_i Q_{ij}^{\top}Q_{ij}=I_s\)</span>. Taking traces and dividing by <span class="math inline">\(s\)</span> gives <span class="math inline">\(\sum_i\Phi_{d,s}(Q)_{ij}=1\)</span>. Each entry is nonnegative because it is a squared norm. These row sums, column sums, and nonnegative entries establish double stochasticity. When <span class="math inline">\(s=1\)</span>, each block is a scalar, so equation (7) reduces to equation (6): ordinary orthostochastic matrices are precisely the <span class="math inline">\(s=1\)</span> case.</p><p>To state the asymptotic coverage result precisely, define the finite-size family</p><p><span class="math display">\[
+\mathcal O_{d,s}
+:=
+\{\Phi_{d,s}(Q):Q\in O(ds)\}.
+\]</span></p><p>Every such family lies inside <span class="math inline">\(\mathsf{B}_d\)</span>. Nechita, Ouyang, and Szczepanek (2023) establish arbitrary-accuracy coverage through <a href="https://arxiv.org/html/2310.03436v2#S2.Thmtheorem8">Theorem 2.8</a> and its <a href="https://arxiv.org/html/2310.03436v2#S4.Thmtheorem2">real-matrix extension in Section 4</a>. For the real orthogonal block family, this means</p><p><span class="math display">\[
+\overline{\bigcup_{s\geq1}\mathcal O_{d,s}}=\mathsf{B}_d.
+\]</span></p><p>The bar means closure: for every matrix in <span class="math inline">\(\mathsf{B}_d\)</span> and every positive tolerance, some block size and orthogonal matrix produce a mixer within that tolerance in Frobenius norm. This does not say that one finite <span class="math inline">\(s\)</span> represents every matrix exactly. Nor are these families asserted to grow monotonically at every successive block size.</p><p>They do nest when one size divides another. For a positive integer <span class="math inline">\(k\)</span>, replace each block by <span class="math inline">\(Q_{ij}\otimes I_k\)</span>. Here <span class="math inline">\(I_k\)</span> is the <span class="math inline">\(k\times k\)</span> identity; the Kronecker product <span class="math inline">\(\otimes\)</span> replaces each entry of <span class="math inline">\(Q_{ij}\)</span> with that entry times <span class="math inline">\(I_k\)</span>. The whole lift remains orthogonal. Each block's squared norm gains a factor <span class="math inline">\(k\)</span>, while the normalization becomes <span class="math inline">\(ks\)</span>, so the mixer is unchanged. In particular, every block size includes the ordinary <span class="math inline">\(s=1\)</span> family. Asymptotic density concerns the union of sizes, not exact coverage at fixed size or a guarantee about every neighboring pair.</p><hr/></section><section class="topic" data-math-section=""><h3 id="the-go-mhc-construction">The go-mHC construction</h3><p>go-mHC replaces repeated Sinkhorn row-and-column normalization with a direct map into a doubly stochastic family. It uses three stages: predict skew coordinates from the current activation, turn them into an orthogonal matrix, then take normalized block energies.</p><p>First, let <span class="math inline">\(l\)</span> index the layer and <span class="math inline">\(D\)</span> denote feature width. For one token, flatten the normalized activation <span class="math inline">\(\mathbf{x}'_l\)</span> from all <span class="math inline">\(d\)</span> streams into <span class="math inline">\(z_l\in\mathbb{R}^{1\times dD}\)</span>. This flattening only gives the activation a convenient row-vector shape. Set <span class="math inline">\(n=ds\)</span>, the dimension of the orthogonal lift, and <span class="math inline">\(m=n(n-1)/2=ds(ds-1)/2\)</span>, the number of independent entries in a real skew-symmetric <span class="math inline">\(n\times n\)</span> matrix. This counts skew coordinates, not the dimension of the final mixer family. The learned parameters are a weight matrix <span class="math inline">\(W_l^{\mathrm{res}}\in\mathbb{R}^{dD\times m}\)</span>, a bias row <span class="math inline">\(b_l^{\mathrm{res}}\in\mathbb{R}^{1\times m}\)</span>, and scalar scale <span class="math inline">\(\alpha_l^{\mathrm{res}}\)</span>. They predict the activation-dependent row <span class="math inline">\(p_l\in\mathbb{R}^{1\times m}\)</span> through the affine map used in <a href="https://arxiv.org/html/2604.02309v1#S3.SS3">go-mHC Section 3.3</a>:</p><p><span class="math display">\[
+p_l=\alpha_l^{\mathrm{res}}z_lW_l^{\mathrm{res}}+b_l^{\mathrm{res}}.
+\]</span></p><p>Choose a fixed ordering of the index pairs <span class="math inline">\(1\leq a&lt;b\leq n\)</span>. Let <span class="math inline">\(\kappa(a,b)\in\{1,\ldots,m\}\)</span> give each pair's position in that ordering. Place the <span class="math inline">\(m\)</span> entries of <span class="math inline">\(p_l\)</span> in the strict upper triangle, reflect them with a sign change into the lower triangle, and set the diagonal to zero:</p><p><span class="math display">\[
+(A_l)_{ab}=p_{l,\kappa(a,b)}\ (a&lt;b),\qquad
+(A_l)_{ba}=-(A_l)_{ab},\qquad
+(A_l)_{aa}=0.
 \tag{8}
-\]</span></p><p>where</p><p><span class="math display">\[
-A_l^\top=-A_l,
-\qquad
-A_l\in\mathbb{R}^{ds\times ds}.
-\]</span></p><p>The number of independent entries is</p><p><span class="math display">\[
-\frac{ds(ds-1)}{2}.
-\]</span></p><p>Second, go-mHC applies the Cayley transform:</p><p><span class="math display">\[
+\]</span></p><p>This is the independent-coordinate map <span class="math inline">\(A_l=\operatorname{skew}(p_l)\)</span>. It gives <span class="math inline">\(A_l^\top=-A_l\)</span> and <span class="math inline">\(A_l\in\mathbb{R}^{ds\times ds}\)</span> without redundant predicted entries. In this formulation, the skew matrix depends on the current activation through <span class="math inline">\(z_l\)</span> as well as on learned weights and bias. It is not just a fixed learned matrix.</p><p>Second, apply the Cayley transform, where <span class="math inline">\(I\)</span> denotes the <span class="math inline">\(n\times n\)</span> identity:</p><p><span class="math display">\[
 Q_l
-=
+:=
 (I-A_l)(I+A_l)^{-1}.
 \tag{9}
-\]</span></p><p>The output <span class="math inline">\(Q_l\)</span> is
-orthogonal.</p><p>Third, it maps block energies into stream-routing weights:</p><p><span class="math display">\[
-\mathcal{H}_l^{\mathrm{res}}
+\]</span></p><p>The inverse exists because <span class="math inline">\(A_l\)</span> is real and skew-symmetric. Indeed, for any real vector <span class="math inline">\(v\in\mathbb{R}^{n}\)</span>, expanding the squared norm and using <span class="math inline">\(v^\top A_lv=0\)</span> gives</p><p><span class="math display">\[
+\lVert(I-A_l)v\rVert_2^2
 =
+\lVert v\rVert_2^2+\lVert A_lv\rVert_2^2.
+\]</span></p>
+<p>If <span class="math inline">\((I-A_l)v=0\)</span>, this identity forces <span class="math inline">\(v=0\)</span>, so <span class="math inline">\(I-A_l\)</span> is nonsingular; the same reasoning applies to <span class="math inline">\(I+A_l\)</span>. Transposing equation (9) gives <span class="math inline">\(Q_l^\top=(I-A_l)^{-1}(I+A_l)\)</span>. The matrices <span class="math inline">\(I-A_l\)</span> and <span class="math inline">\(I+A_l\)</span> commute because both are polynomials in <span class="math inline">\(A_l\)</span>; their inverses also commute with these factors. Thus <span class="math inline">\(Q_l^\top=Q_l^{-1}\)</span> and hence <span class="math inline">\(Q_l^\top Q_l=I\)</span>.</p>
+<p>In implementation, inverse notation need not mean forming an explicit inverse. For the convention in equation (9), solve <span class="math inline">\((I+A_l)Q_l=I-A_l\)</span>, using the factors' commutation. The result is orthogonal in exact arithmetic; a numerical implementation still has ordinary floating-point solve error. Invertibility also makes the solution a smooth function of the entries of the real skew matrix.</p>
+<p>Third, take normalized block energies to obtain the residual-routing mixer <span class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\)</span>:</p><p><span class="math display">\[
+\mathcal{H}_l^{\mathrm{res}}
+:=
 \Phi_{d,s}(Q_l).
 \tag{10}
-\]</span></p><p>Because <span class="math inline">\(\Phi_{d,s}(Q_l)\in\mathsf{B}_d\)</span>, the
-resulting residual mixer is doubly stochastic exactly, for every valid
-parameter value.</p><p>The full path is therefore</p><p><span class="math display">\[
-\text{unconstrained learned parameters}
+\]</span></p><p>The block-energy result proves that <span class="math inline">\(\mathcal{H}_l^{\mathrm{res}}\in\mathsf{B}_d\)</span> for every valid parameter value in exact arithmetic. In sequence, unconstrained activation-dependent affine coordinates give a skew matrix, the Cayley map gives an orthogonal lift, and its block energies give a doubly stochastic residual mixer:</p><p><span class="math display">\[
+\text{activation and learned parameters}
 \longrightarrow
 A_l^\top=-A_l
 \longrightarrow
 Q_l^\top Q_l=I
 \longrightarrow
 \mathcal{H}_l^{\mathrm{res}}\in\mathsf{B}_d.
-\]</span></p><p>This differs fundamentally from iterative normalization:</p><ul>
-<li>Sinkhorn begins with a matrix and repeatedly corrects it toward the
-constraint;</li>
-<li>go-mHC parameterizes a matrix family that satisfies the constraint
-by construction.</li>
-</ul><hr/></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-constraint">← 2. Understand the constraint and its limits</a><a href="#unit-choice">4. Choose a representation and a cost →</a></nav></article><article aria-labelledby="unit-choice" class="book-chapter"><h2 id="unit-choice">4. Choose a representation and a cost</h2><div class="learning-bridge" data-math-section=""><p>Once several methods all meet the same row and column constraints,
-“which method is stable?” is too coarse a question. Compare three things
-separately: the set of routing matrices available, the cost of producing
-one of them, and the behavior of the optimization that chooses among
-them.</p>
-<p>mHC-lite starts from deterministic routings and blends them. A
-Kronecker construction builds a large routing pattern from smaller
-factors. go-mHC builds an internal orthogonal matrix and measures its
-block energies. These are different restrictions on the
-<strong>representation</strong> of a mixer, even when their outputs
-satisfy the same constraints.</p>
-<p>The factorial cost described below belongs to the parameterization
-that assigns a component to every permutation. The Birkhoff–von Neumann
-theorem itself does not require an implementation to enumerate all
-permutations in order to describe a particular target. It is the chosen
-learnable full enumeration that incurs that cost.</p>
-<p>Increasing <span class="math inline">\(s\)</span> enlarges the
-internal construction from <span class="math inline">\(ds\)</span>
-coordinates to a larger system. At <span class="math inline">\(d=4\)</span>, the skew generator has <span class="math inline">\(6\)</span>, <span class="math inline">\(28\)</span>, or <span class="math inline">\(66\)</span> independent entries for <span class="math inline">\(s=1,2,3\)</span>, respectively. This is a useful
-concrete scale before reading the complete parameter-count formulas.
-Those formulas also include the network that predicts the generator, so
-the generator count alone is not the layer’s total parameter count.</p>
-<p>Treat block size as a hypothesis to test, not a default quality
-score. A larger internal matrix may reduce representation error but
-costs more to construct and differentiate. Better geometric coverage
-does not guarantee that a fixed optimizer, initialization, and training
-budget will exploit it.</p>
-<p>The practical comparison should hold the task, stream count,
-precision, optimization budget, and hardware conditions fixed. Report
-constraint residuals and target-reconstruction error separately from
-elapsed time. A loss curve against optimization steps answers a
-different question from a loss curve against wall-clock time.</p>
-</div><section class="topic" data-math-section=""><h3 id="existing-exact-alternatives">Existing exact alternatives</h3><h4 id="mhc-lite-complete-coverage-at-factorial-cost">mHC-lite:
-complete coverage at factorial cost</h4><p>mHC-lite uses the Birkhoff–von Neumann representation. Because every
-doubly stochastic matrix is a convex combination of permutation
-matrices, mHC-lite can in principle cover the full Birkhoff
-polytope.</p><p>Its cost is the number of permutations:</p><p><span class="math display">\[
-d!.
-\]</span></p><p>The source reports a parameter cost on the order of</p><p><span class="math display">\[
+\]</span></p><p>This differs from iterative normalization. Sinkhorn starts with a candidate matrix and repeatedly rescales rows and columns toward the constraints; with a finite iteration count its result can retain a constraint error. go-mHC parameterizes a family whose outputs satisfy the constraints by construction, while restricting outputs to that family. The two methods thus differ both in how they enforce the constraints and in which matrices they can represent.</p><hr/></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-constraint">← 2. Understand the constraint and its limits</a><a href="#unit-choice">4. Choose a representation and a cost →</a></nav></article><article aria-labelledby="unit-choice" class="book-chapter"><h2 id="unit-choice">4. Choose a representation and a cost</h2><div class="learning-bridge" data-math-section=""><p>Once several methods all meet the same row and column constraints, “which method is stable?” is too coarse a question. Compare three things separately: the set of routing matrices each method can represent, the cost of constructing and applying one, and how readily optimization can find useful parameters. Exact row and column sums establish constraint satisfaction; they do not make two parameterizations equally expressive or equally cheap.</p>
+<p>mHC-lite mixes deterministic routings (permutation matrices); a Kronecker construction composes smaller matrices into a structured larger one; go-mHC maps an internal orthogonal matrix to stream weights by aggregating block energies. Each has different representational restrictions despite satisfying the same constraints.</p>
+<p>The factorial cost discussed below belongs to the learnable parameterization that assigns a component to every permutation. The Birkhoff–von Neumann theorem says every doubly stochastic matrix is some convex combination of permutation matrices; it does not require enumerating all permutations to prove or describe a particular target. Full enumeration is the implementation choice that incurs the factorial cost.</p>
+<p>The block size <span class="math inline">\(s\)</span> changes the size of go-mHC’s internal orthogonal matrix, from <span class="math inline">\(d\times d\)</span> when <span class="math inline">\(s=1\)</span> to <span class="math inline">\(ds\times ds\)</span>. For <span class="math inline">\(d=4\)</span>, its skew-symmetric generator has <span class="math inline">\(ds(ds-1)/2\)</span> independent coordinates: <span class="math inline">\(6\)</span>, <span class="math inline">\(28\)</span>, and <span class="math inline">\(66\)</span> for <span class="math inline">\(s=1,2,3\)</span>. These are output coordinates, not the whole layer’s trainable parameter count; the network that predicts them also has weights and biases.</p>
+<p>Treat <span class="math inline">\(s\)</span> as a design choice to assess, not as a default quality score. A larger internal matrix can broaden the reachable family, but it costs more to construct and differentiate. Broader geometric coverage does not ensure a fixed optimizer, initialization, and training budget will find a better solution.</p>
+<p>A fair practical comparison holds the task, stream count, precision, optimization budget, and hardware conditions fixed. Report constraint residuals and target-reconstruction error separately from elapsed time. A loss curve against optimization steps answers a different question from a loss curve against wall-clock time.</p>
+</div><section class="topic" data-math-section=""><h3 id="existing-exact-alternatives">Existing exact alternatives</h3><h4 id="mhc-lite-complete-coverage-at-factorial-cost">mHC-lite: complete coverage at factorial cost</h4><p>A permutation matrix <span class="math inline">\(P_\pi\)</span> has exactly one <span class="math inline">\(1\)</span> in each row and column, with zeros elsewhere; it routes each input stream to one output stream according to the permutation <span class="math inline">\(\pi\)</span>. The Birkhoff–von Neumann theorem states that any doubly stochastic <span class="math inline">\(d\times d\)</span> routing matrix <span class="math inline">\(B\)</span> can be written as</p><p><span class="math display">\[
+B=\sum_{\pi\in S_d} w_\pi P_\pi,
+\qquad w_\pi\geq 0,
+\qquad \sum_{\pi\in S_d}w_\pi=1.
+\]</span></p><p>Here <span class="math inline">\(S_d\)</span> denotes the set of all permutations of <span class="math inline">\(d\)</span> streams, and <span class="math inline">\(w_\pi\)</span> is the weight assigned to permutation <span class="math inline">\(\pi\)</span>. The weights form a convex mixture: each output routing matrix is an average of deterministic routings, with larger weights giving more influence to their corresponding permutations. Since every permutation is included, the set of such mixtures covers the entire Birkhoff polytope geometrically.</p><p>A full learnable enumeration allocates one coefficient for each of the</p><p><span class="math display">\[
+d!
+\]</span></p><p>permutations. <a href="https://arxiv.org/html/2601.05732v1#S3.SS2">mHC-lite’s softmax parameterization</a> predicts these coefficients from the activation. Softmax exponentiates its input scores, called logits, and divides each exponential by their sum. In exact arithmetic, finite logits give strictly positive coefficients. Every matrix entry is then positive because some included permutation has a one at that position. For <span class="math inline">\(d\geq2\)</span>, these outputs lie in the relative interior of the polytope—the interior within its row/column constraint space—and cannot exactly attain a boundary matrix with a zero entry. They can approach that boundary as logit differences grow without bound. Row and column sums remain exactly one in this algebraic model because every permutation has those sums and the coefficients sum to one; numerical implementations can have floating-point residuals.</p><p>The source reports input-dependent projection parameter cost on the order of</p><p><span class="math display">\[
 \mathcal{O}(dC\cdot d!),
-\]</span></p><p>where <span class="math inline">\(C\)</span> is a model-dependent
-feature or projection cost. This is exact and expressive, but factorial
-growth makes it unsuitable for large <span class="math inline">\(d\)</span>.</p><h4 id="kromhc-efficient-factorization-with-restricted-routing">KromHC: efficient factorization with restricted routing</h4><p>KromHC constructs a large mixer using Kronecker products of smaller
-doubly stochastic matrices. For matrices</p><p><span class="math display">\[
-A\in\mathbb{R}^{m\times n},
-\qquad
-B\in\mathbb{R}^{p\times q},
-\]</span></p><p>the Kronecker product <span class="math inline">\(A\otimes B\)</span>
-is an <span class="math inline">\(mp\times nq\)</span> block matrix
-whose <span class="math inline">\((i,j)\)</span>-th block is <span class="math inline">\(A_{ij}B\)</span>.</p><p>If the factors are doubly stochastic, their Kronecker product is also
-doubly stochastic. This gives exact constraint satisfaction with a
-highly structured parameterization.</p><p>The cost is lower, but the structure strongly limits which large
-mixing matrices can be represented. The paper’s key criticism is
-spectral: products of small factors need not acquire the rich complex
-spectral behavior available to general matrices in <span class="math inline">\(\mathsf{B}_d\)</span>.</p><p>go-mHC is intended to improve this trade-off: it is more expressive
-than a small-factor Kronecker construction while avoiding factorial
-enumeration.</p><hr/></section><section class="topic" data-math-section=""><h3 id="the-role-of-the-block-size-s">The role of the block size \(s\)</h3><p>The parameter <span class="math inline">\(s\)</span> controls the
-block size in the orthogonal matrix <span class="math inline">\(Q\)</span>.</p><ul>
-<li><strong><span class="math inline">\(s=1\)</span>:</strong> ordinary
-orthostochastic matrices;</li>
-<li><strong>larger <span class="math inline">\(s\)</span>:</strong> more
-orthogonal degrees of freedom before block energies are aggregated;</li>
-<li><strong><span class="math inline">\(s\to\infty\)</span>:</strong>
-asymptotic approach to the full Birkhoff polytope.</li>
-</ul><p>The paper uses <span class="math inline">\(s=2\)</span> as its
-principal default and compares it with <span class="math inline">\(s=1\)</span> and <span class="math inline">\(s=3\)</span>.</p><p>This produces a direct efficiency–expressivity dial.</p><h4 id="smaller-s">Smaller <span class="math inline">\(s\)</span></h4><p>Smaller <span class="math inline">\(s\)</span> gives fewer parameters
-and lower computation. At <span class="math inline">\(s=1\)</span>, a
-<span class="math inline">\(d\times d\)</span> skew-symmetric generator
-has only</p><p><span class="math display">\[
+\]</span></p><p>where <span class="math inline">\(C\)</span> is the feature width used by the projection (defined below; here it is the preceding chapter’s <span class="math inline">\(D\)</span>). Thus the theorem’s complete representation and a finite-softmax parameterization’s attainable outputs are not quite the same claim. Full enumeration is expressive but scales factorially in <span class="math inline">\(d\)</span>.</p><h4 id="kromhc-efficient-factorization-with-restricted-routing">KromHC: efficient factorization with restricted routing</h4><p>KromHC builds a large mixer as a Kronecker product of smaller doubly stochastic factors. For <span class="math inline">\(A\in\mathbb{R}^{m\times n}\)</span> and <span class="math inline">\(B\in\mathbb{R}^{p\times q}\)</span>, where the dimension pairs count rows and columns, <span class="math inline">\(A\otimes B\)</span> is an <span class="math inline">\(mp\times nq\)</span> block matrix. Its block in position <span class="math inline">\((i,j)\)</span> is <span class="math inline">\(A_{ij}B\)</span>, with <span class="math inline">\(A_{ij}\)</span> the entry in row <span class="math inline">\(i\)</span>, column <span class="math inline">\(j\)</span> of <span class="math inline">\(A\)</span>. If both factors are square and doubly stochastic, each row sum and column sum of their product factorizes into the product of the corresponding factor sums, hence is one; entries remain nonnegative. Exactness is preserved by this construction.</p><p>With several prescribed smaller factors, the product is not an arbitrary matrix in <span class="math inline">\(\mathsf{B}_d\)</span>. In particular, a <span class="math inline">\(2\times2\)</span> doubly stochastic factor has the symmetric form <span class="math inline">\(\begin{pmatrix}a&amp;1-a\\1-a&amp;a\end{pmatrix}\)</span>, where <span class="math inline">\(a\in[0,1]\)</span> is its first diagonal entry. Its real eigenvalues are <span class="math inline">\(1\)</span> and <span class="math inline">\(2a-1\)</span>. The eigenvalues of a Kronecker product are pairwise products of factor eigenvalues, so repeated products of these binary factors still have only real eigenvalues. For a dimension-compatible obstruction, consider a permutation of four streams that cycles three and leaves the fourth fixed. Its three-cycle contributes two nonreal cube roots of one, so no product of two binary doubly stochastic factors can equal that permutation. This restriction does not apply to every factorization with larger factors.</p><p>go-mHC avoids factorial enumeration and offers a different family of exact mixers. Its comparison with a particular KromHC construction must still name the factor sizes and representation being compared; “more expressive” is not a universal ranking of all possible factorized families.</p><hr/></section><section class="topic" data-math-section=""><h3 id="the-role-of-the-block-size-s">The role of the block size <span class="math inline">\(s\)</span></h3><p>The positive integer <span class="math inline">\(s\)</span> sets the dimension of each block in the orthogonal matrix <span class="math inline">\(Q\)</span>. The mixer has <span class="math inline">\(d\)</span> streams, each block of <span class="math inline">\(Q\)</span> is <span class="math inline">\(s\times s\)</span>, and the full orthogonal matrix therefore has dimension <span class="math inline">\(ds\times ds\)</span>. As in the preceding chapter, <span class="math inline">\(B_{ij}=\lVert Q_{ij}\rVert_F^2/s\)</span>: the routing weight <span class="math inline">\(B_{ij}\)</span> is the sum of squared entries in block <span class="math inline">\(Q_{ij}\)</span>, divided by <span class="math inline">\(s\)</span>. The squared Frobenius norm <span class="math inline">\(\lVert Q_{ij}\rVert_F^2\)</span> denotes that sum; the division makes row and column totals one rather than <span class="math inline">\(s\)</span>.</p><ul>
+<li><strong><span class="math inline">\(s=1\)</span>:</strong> blocks are scalars, giving ordinary orthostochastic matrices.</li>
+<li><strong>Finite larger <span class="math inline">\(s\)</span>:</strong> more orthogonal degrees of freedom contribute to each aggregated block energy and the generalized-orthostochastic family can cover more possibilities; this does not establish that every finite-size family contains the one at the next integer size.</li>
+<li><strong>As <span class="math inline">\(s\to\infty\)</span>:</strong> allowing different block sizes makes the union of these real block-energy families dense in the Birkhoff polytope: every target can be approximated arbitrarily closely at some sufficiently large size. This follows from <a href="https://arxiv.org/html/2310.03436v2#S2.Thmtheorem8">Nechita et al.’s Theorem 2.8</a> together with its real-matrix embedding in <a href="https://arxiv.org/html/2310.03436v2#S4.Thmtheorem2">Proposition 4.2</a>. It does not imply that any fixed finite <span class="math inline">\(s\)</span> covers the whole polytope.</li>
+</ul><p>There is a second finite-parameterization qualification: go-mHC obtains <span class="math inline">\(Q\)</span> through one Cayley chart, the finite skew-matrix coordinates used in the preceding chapter. That chart covers orthogonal matrices without eigenvalue <span class="math inline">\(-1\)</span>, not every orthogonal matrix. This is a limitation of the chosen coordinates for <span class="math inline">\(Q\)</span>; it should not be confused with a proof that every omitted <span class="math inline">\(Q\)</span> would yield a new mixer after block-energy aggregation.</p><p>The paper uses <span class="math inline">\(s=2\)</span> as its principal default and compares it with <span class="math inline">\(s=1\)</span> and <span class="math inline">\(s=3\)</span>.</p><h4 id="smaller-s">Smaller <span class="math inline">\(s\)</span></h4><p>Smaller <span class="math inline">\(s\)</span> reduces the generator size and its dense construction cost. A real skew-symmetric matrix of dimension <span class="math inline">\(n\)</span> has <span class="math inline">\(n(n-1)/2\)</span> independent entries, since its diagonal is zero and each off-diagonal pair is determined by one value. For <span class="math inline">\(s=1\)</span>, <span class="math inline">\(n=d\)</span>, so the generator has</p>
+<p><span class="math display">\[
 \frac{d(d-1)}{2}
-\]</span></p><p>independent parameters.</p><p>But <span class="math inline">\(s=1\)</span> is restricted to the
-orthostochastic subset. For <span class="math inline">\(d&gt;2\)</span>,
-this subset does not fill the interior of <span class="math inline">\(\mathsf{B}_d\)</span>.</p><h4 id="larger-s">Larger <span class="math inline">\(s\)</span></h4><p>Larger <span class="math inline">\(s\)</span> gives a broader family
-of generalized orthostochastic matrices. The source reports that
-increasing <span class="math inline">\(s\)</span> yields denser spectral
-coverage, with <span class="math inline">\(s=2\)</span> covering a
-larger region than <span class="math inline">\(s=1\)</span>.</p><p>The trade-off is that the orthogonal matrix has size <span class="math inline">\(ds\times ds\)</span>, so linear algebra on it
-becomes more expensive.</p><hr/></section><section class="topic" data-math-section=""><h3 id="complexity-trade-offs">Complexity trade-offs</h3><p>Let:</p><ul>
-<li><span class="math inline">\(d\)</span>: number of residual
-streams;</li>
-<li><span class="math inline">\(C\)</span>: a model-dependent channel or
-projection-cost factor;</li>
-<li><span class="math inline">\(s\)</span>: generalized-orthostochastic
-block size;</li>
-<li><span class="math inline">\(S\)</span>: number of Sinkhorn
-iterations;</li>
-<li><span class="math inline">\(i_k\)</span>: Kronecker factor
-size.</li>
-</ul><h4 id="parameter-counts">Parameter counts</h4><p>The source gives the following total parameter-count forms:</p><p><span class="math display">\[
+\]</span></p><p>independent coordinates. At <span class="math inline">\(d&gt;2\)</span>, squared entries of orthogonal matrices form only the orthostochastic subset and do not cover the whole interior of <span class="math inline">\(\mathsf{B}_d\)</span>.</p><h4 id="larger-s">Larger <span class="math inline">\(s\)</span></h4><p>The reported comparison that <span class="math inline">\(s=2\)</span> covers a denser or larger spectral region than <span class="math inline">\(s=1\)</span> comes from the paper’s toy-model spectral plots for <span class="math inline">\(d=3\)</span> and <span class="math inline">\(d=4\)</span> (<a href="https://arxiv.org/html/2604.02309v1#S4.F3">Figure 3</a> and <a href="https://arxiv.org/html/2604.02309v1#S4.F4">Figure 4</a>). It is not a finite-<span class="math inline">\(s\)</span> surjectivity theorem—a proof that every target matrix is reached. A spectral plot shows eigenvalues produced by tested matrices, not a proof of matrix-family containment or full polytope coverage. The observation supports trying a richer block size, but does not show that optimization will exploit it. Larger <span class="math inline">\(s\)</span> also makes the orthogonal matrix and its linear algebra more expensive.</p><hr/></section><section class="topic" data-math-section=""><h3 id="complexity-trade-offs">Complexity trade-offs</h3><p>For the counts below, <span class="math inline">\(d\)</span> is the number of streams and <span class="math inline">\(C=D\)</span> is the number of features per stream from the preceding chapter. The product <span class="math inline">\(dC\)</span> is the flattened activation width. The block size <span class="math inline">\(s\)</span> sets the go-mHC lift; <span class="math inline">\(S\)</span> is the number of Sinkhorn normalization rounds; and <span class="math inline">\(K\)</span> is the number of KromHC factors, with <span class="math inline">\(i_k\geq2\)</span> the integer stream dimension of factor <span class="math inline">\(k\)</span>. KromHC’s square factors must obey the fixed dimension condition <span class="math inline">\(d=\prod_{k=1}^{K}i_k\)</span>. For example, a product of <span class="math inline">\(K\)</span> binary factors requires <span class="math inline">\(d=2^K\)</span>.</p><h4 id="parameter-counts">Parameter counts</h4><p>These are trainable parameter totals for the stated input-dependent projections and common pre/post-routing maps, not the number of independent degrees of freedom of a doubly stochastic matrix. Let <span class="math inline">\(m=ds(ds-1)/2\)</span>, the number of independent skew-generator outputs for go-mHC, and let <span class="math inline">\(R\)</span> denote the number of dynamically predicted routing coordinates for a method: <span class="math inline">\(d^2\)</span> for mHC, <span class="math inline">\(m\)</span> for go-mHC, <span class="math inline">\(d!\)</span> for mHC-lite, and <span class="math inline">\(\sum_{k=1}^{K}i_k!\)</span> for KromHC. A dense affine predictor from the flattened <span class="math inline">\(dC\)</span>-wide activation to <span class="math inline">\(R\)</span> outputs has <span class="math inline">\(dCR\)</span> weights and <span class="math inline">\(R\)</span> biases, totaling <span class="math inline">\((dC+1)R\)</span>. Each pre/post predictor has <span class="math inline">\(d^2C\)</span> weights, <span class="math inline">\(d\)</span> biases, and one scalar gate. Together with the residual predictor’s scalar gate, these contribute <span class="math inline">\(2(d^2C+d+1)+1=2d^2C+2d+3\)</span>. Thus the go-mHC residual predictor alone has <span class="math inline">\(dCm+m+1\)</span> parameters. Under this accounting, <a href="https://arxiv.org/html/2604.02309v1#S4.T1">the source’s total counts</a> are</p><p><span class="math display">\[
 \text{mHC}
 =
 (dC+1)d^2+2d^2C+2d+3,
@@ -614,264 +426,54 @@ size.</li>
 (dC+1)\sum_{k=1}^{K}(i_k!)
 +
 2d^2C+2d+3.
-\]</span></p><p>For fixed <span class="math inline">\(s\)</span> and <span class="math inline">\(C\)</span>, the dominant go-mHC term is cubic in
-<span class="math inline">\(d\)</span>:</p><p><span class="math display">\[
-\mathcal{O}(d^3).
-\]</span></p><p>mHC-lite instead has factorial dependence on <span class="math inline">\(d\)</span>.</p><h4 id="flop-complexity">FLOP complexity</h4><p>The source gives per-layer asymptotic FLOP costs:</p><p><span class="math display">\[
-\text{mHC}
+\]</span></p><p>The routing-generator term for go-mHC counts predictor weights, not merely the <span class="math inline">\(m\)</span> output coordinates. With fixed <span class="math inline">\(s\)</span> and <span class="math inline">\(C\)</span>, the output count <span class="math inline">\(m=\Theta(s^2d^2)\)</span> and the dense input projection multiplies it by <span class="math inline">\(dC\)</span>, so this term grows as <span class="math inline">\(\Theta(s^2d^3C)\)</span>. The source’s looser <span class="math inline">\(\mathcal{O}(s^2d^3C)\)</span> description is consistent with this parameterization. This is cubic in stream count at fixed feature width and block size, while mHC-lite’s projection has factorial dependence. These counts do not claim that the routing matrices themselves have that many intrinsic degrees of freedom.</p><h4 id="flop-complexity">FLOP complexity</h4><p>Operation counts need a scope as well as a formula. The estimates here count scalar arithmetic for one example, with a dense projection from the flattened activation, dense matrix operations, and an explicitly materialized <span class="math inline">\(d\times d\)</span> mixer. They exclude the main stream transformation <span class="math inline">\(\mathcal{F}\)</span>, optimizer work, and memory movement; batch or token count multiplies per-example costs. Big-O suppresses constants and implementation details. Under this common routing-pipeline convention, the key operations are as follows.</p><p>For go-mHC, predicting <span class="math inline">\(m=ds(ds-1)/2\)</span> generator coordinates costs <span class="math inline">\(\mathcal{O}(dCm)\)</span>. A dense Cayley transform requires solving a linear system of dimension <span class="math inline">\(ds\)</span>, costing <span class="math inline">\(\mathcal{O}((ds)^3)\)</span>; this solve is not multiplied by feature width <span class="math inline">\(C\)</span>. Extracting all block energies costs <span class="math inline">\(\mathcal{O}(s^2d^2)\)</span>, and applying the resulting mixer to <span class="math inline">\(C\)</span> features costs <span class="math inline">\(\mathcal{O}(Cd^2)\)</span>. Thus a shape-based estimate is</p><p><span class="math display">\[
+\mathrm{cost}_{\rm go}
 =
-\mathcal{O}(CSd^2),
-\]</span></p><p><span class="math display">\[
-\text{go-mHC}(s)
-=
-\mathcal{O}(Cs^3d^3),
-\]</span></p><p><span class="math display">\[
-\text{mHC-lite}
-=
-\mathcal{O}(Cd^2d!),
-\]</span></p><p><span class="math display">\[
-\text{KromHC}
-=
-\mathcal{O}
-\left(
+\mathcal{O}\!\left(dCm+(ds)^3+s^2d^2+Cd^2\right).
+\]</span></p><p>At fixed <span class="math inline">\(s\)</span> and <span class="math inline">\(C\)</span>, the projection and Cayley solve are both cubic in <span class="math inline">\(d\)</span>. The source’s <a href="https://arxiv.org/html/2604.02309v1#S4.T2">Table 2</a> reports <span class="math inline">\(\mathcal{O}(Cs^3d^3)\)</span> for go-mHC. Its <a href="https://arxiv.org/html/2604.02309v1#A2.SS6">Appendix B.6</a> carries <span class="math inline">\(C\)</span> through the construction estimates, but that is not an unavoidable feature-width multiplier on one dense Cayley solve. These reported estimates are retained as source accounting, separately from the shape-based routing costs here.</p><p>For comparison, a dense dynamic mHC projection to <span class="math inline">\(d^2\)</span> coordinates costs <span class="math inline">\(\mathcal{O}(Cd^3)\)</span>; <span class="math inline">\(S\)</span> row/column normalization rounds cost <span class="math inline">\(\mathcal{O}(Sd^2)\)</span> on one <span class="math inline">\(d\times d\)</span> matrix; applying it adds <span class="math inline">\(\mathcal{O}(Cd^2)\)</span>. The source reports <span class="math inline">\(\mathcal{O}(CSd^2)\)</span>, but this is not the full analogous routing-pipeline cost: it omits the dense activation projection’s cubic term. Nor does normalizing one mixer require repeating normalization for each feature.</p><p>For mHC-lite, predicting all permutation coefficients costs <span class="math inline">\(\mathcal{O}(Cd\,d!)\)</span>. Forming their weighted sum costs <span class="math inline">\(\mathcal{O}(d^2d!)\)</span> if the permutation matrices are handled densely; a sparse or fused implementation can change this construction cost. Applying the final mixer adds <span class="math inline">\(\mathcal{O}(Cd^2)\)</span>. The source’s <span class="math inline">\(\mathcal{O}(Cd^2d!)\)</span> is a coarse estimate under its own accounting, not a decomposition of the activation projection, mixture construction, and routing application.</p><p>KromHC’s source estimate is</p><p><span class="math display">\[
+\mathcal{O}\!\left(
 C\log_{i_k}(d)i_k^2(i_k!)
 +
 Cd^2
 \right).
-\]</span></p><p>The principal comparison is therefore not “fast versus slow” in
-isolation.</p><ul>
-<li>mHC-lite gives broad exact coverage but grows factorially.</li>
-<li>KromHC is highly efficient but structurally restricted.</li>
-<li>mHC may have lower nominal polynomial order but requires iterative
-projection.</li>
-<li>go-mHC pays cubic dependence on <span class="math inline">\(d\)</span> to obtain an exact, direct, and more
-expressive constrained family.</li>
-</ul><p>For the source’s nominal illustrative setting,</p><p><span class="math display">\[
+\]</span></p><p>The logarithm expresses the number of equal-sized factors only when all factor sizes are the same <span class="math inline">\(i_k=i\geq2\)</span>, so <span class="math inline">\(K=\log_i d\)</span>. For a general fixed factorization <span class="math inline">\(d=\prod_{k=1}^{K}i_k\)</span>, the dense dynamic coefficient projection costs <span class="math inline">\(\mathcal{O}(Cd\sum_{k=1}^{K}i_k!)\)</span>, as follows from <a href="https://arxiv.org/html/2601.21579v1#S4.SS3">KromHC’s flattened-input predictor shapes</a>. Construction and application costs also depend on whether the mixer is materialized or applied as tensor factors. In the source’s Appendix B.6, the <span class="math inline">\(Cd^2\)</span>-scale term comes from its equal-factor product-construction estimate; it does not substitute for the dynamic projection term. Common pre/post predictors additionally cost <span class="math inline">\(\mathcal{O}(Cd^2)\)</span>, already of the order of the application term in the shape-based estimates above. A single factor of size <span class="math inline">\(d\)</span> loses the factorization advantage and returns to the factorial mixture scale.</p><p>The broad trade-off is therefore conditional, not simply “fast versus slow”:</p><ul>
+<li>mHC-lite has complete geometric mixture coverage but a factorial full-enumeration parameterization; a finite softmax output is strictly positive in its mixture weights.</li>
+<li>KromHC can be economical for a chosen factorization, with exact constraints but a correspondingly restricted matrix family.</li>
+<li>mHC uses a lower-order normalization step in the stated table but requires iterative projection; the dynamic projection cost must be included for a full comparison.</li>
+<li>go-mHC satisfies the constraints directly, with a dense-lift construction whose routing projection and Cayley solve have cubic stream-count scaling at fixed <span class="math inline">\(s,C\)</span>.</li>
+</ul><p>The source’s nominal illustrative settings are</p><p><span class="math display">\[
 S=20,
 \qquad
 i_k=2,
 \qquad
 s\in\{1,2\}.
-\]</span></p><p>These are configuration choices, not universal constants. Measured
-runtime also depends on memory traffic, batch size, tensor layout,
-linear-solve implementation, and hardware parallelism.</p><hr/></section><section class="topic" data-math-section=""><h3 id="combining-go-mhc-and-kromhc">Combining go-mHC and
-KromHC</h3><p>The paper presents go-mHC and KromHC as complementary rather than
-mutually exclusive.</p><p>A possible combined strategy is:</p><ol type="1">
-<li>use Kronecker factorization to represent a large stream-mixing
-structure efficiently;</li>
-<li>use generalized orthostochastic factors rather than only small
-conventional doubly stochastic factors;</li>
-<li>increase factor size <span class="math inline">\(i_k\)</span>
-without immediately paying a factorial <span class="math inline">\(i_k!\)</span> cost.</li>
-</ol><p>The reported intuition is that factorized structure controls
-large-scale computation, while go-mHC enlarges the local family of exact
-doubly stochastic transformations available inside each factor.</p><p>This does not eliminate the fundamental restrictions of
-factorization. It changes the trade-off by making each factor more
-expressive.</p><hr/></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-geometry">← 3. Build the mixer from orthogonal blocks</a><a href="#unit-evidence">5. Interpret spectra and experimental evidence →</a></nav></article><article aria-labelledby="unit-evidence" class="book-chapter"><h2 id="unit-evidence">5. Interpret spectra and experimental evidence</h2><div class="learning-bridge" data-math-section=""><p>An eigenvalue describes what a fixed linear mixer does to one mode
-under repeated application. An eigenvalue of one preserves the mode. A
-real eigenvalue with magnitude below one damps it; a negative one also
-alternates its sign. A nonreal conjugate pair describes a
-two-dimensional real subspace with rotational behavior. These statements
-concern repeated application of a fixed operator, not a complete
-nonlinear language model.</p>
-<p>The spectral obstruction in the discussion below can be made
-dimensionally explicit. To compare with a <span class="math inline">\(2\times2\)</span> Kronecker factorization, embed a
-three-cycle in four streams:</p>
-<p><span class="math display">\[
+\]</span></p><p>These are configuration choices, not universal constants. In particular, binary KromHC factors require <span class="math inline">\(d=2^K\)</span>. Real runtime also depends on memory traffic, batch size, tensor layout, linear-solve implementation, and hardware parallelism.</p><hr/></section><section class="topic" data-math-section=""><h3 id="combining-go-mhc-and-kromhc">Combining go-mHC and KromHC</h3><p><a href="https://arxiv.org/html/2604.02309v1#S4.SS2">The paper proposes combining go-mHC with KromHC</a> to make larger local factor dimensions affordable without enumerating their permutations. Fix a factorization <span class="math inline">\(d=\prod_{k=1}^{K}i_k\)</span> and form the full mixer as a Kronecker product. Each square <span class="math inline">\(i_k\times i_k\)</span> factor can be generated by a generalized-orthostochastic block-energy map with positive integer block size <span class="math inline">\(s_k\)</span>. Its orthogonal lift then has dimension <span class="math inline">\(i_ks_k\times i_ks_k\)</span>. Each factor is doubly stochastic, so their product remains exactly doubly stochastic in the algebraic model and has dimension <span class="math inline">\(d\times d\)</span>.</p><p>With the same flattened input and one scalar residual gate, the local generators predict <span class="math inline">\(\sum_{k=1}^{K}i_ks_k(i_ks_k-1)/2\)</span> coordinates instead of <span class="math inline">\(\sum_{k=1}^{K}i_k!\)</span> permutation coefficients. This replaces factorial coordinate growth with quadratic growth in each factor dimension at fixed block size; it is not a measured runtime advantage. It can make larger factors practical to investigate. At unchanged factor dimensions, however, replacing a full permutation mixture does not prove an enlarged local family: arbitrary nonnegative permutation weights already cover that local Birkhoff polytope.</p><p>The full mixer still has the global Kronecker restriction. With several smaller factors, it is a product-structured subset of <span class="math inline">\(\mathsf{B}_d\)</span>, not an arbitrary doubly stochastic matrix. Actual cost, attainable matrices, and optimization behavior depend on the chosen factor sizes, block sizes, and implementation; no universal expressivity or runtime improvement follows from the proposal alone.</p><hr/></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-geometry">← 3. Build the mixer from orthogonal blocks</a><a href="#unit-evidence">5. Interpret spectra and experimental evidence →</a></nav></article><article aria-labelledby="unit-evidence" class="book-chapter"><h2 id="unit-evidence">5. Interpret spectra and experimental evidence</h2><div class="learning-bridge" data-math-section=""><p>For a fixed real linear mixer <span class="math inline">\(B\)</span>, an eigenvector <span class="math inline">\(v\neq 0\)</span> is a nonzero, possibly complex vector preserved up to scaling: <span class="math inline">\(Bv=\lambda v\)</span>. The scalar <span class="math inline">\(\lambda\)</span> is its eigenvalue. This description applies directly to eigenvectors, not to every input vector.</p><p>Applying the same mixer <span class="math inline">\(n\)</span> times, for a positive integer <span class="math inline">\(n\)</span>, gives <span class="math inline">\(B^n v=\lambda^n v\)</span>. A positive real eigenvalue preserves the mode’s sign; <span class="math inline">\(\lambda=1\)</span> preserves it exactly. If <span class="math inline">\(|\lambda|&lt;1\)</span>, the mode decays, and <span class="math inline">\(\lambda=0\)</span> removes it after one application. A negative real eigenvalue also alternates the sign. A nonreal eigenvalue occurs with its conjugate for a real matrix. Together they describe rotation and scaling in suitable coordinates on a two-dimensional real invariant subspace. For an exact doubly stochastic mixer, eigenvalue magnitudes cannot exceed one. These are statements about iterating one fixed linear operator, not a complete nonlinear language model.</p><p>Here is a four-stream example that makes the obstruction for a particular Kronecker factorization explicit. Let <span class="math inline">\(C_4\)</span> cycle three streams and leave the fourth fixed:</p><p><span class="math display">\[
 C_4=\begin{pmatrix}
 0&amp;1&amp;0&amp;0\\
 0&amp;0&amp;1&amp;0\\
 1&amp;0&amp;0&amp;0\\
 0&amp;0&amp;0&amp;1
 \end{pmatrix}.
-\]</span></p>
-<p>This matrix cycles three streams and leaves the fourth fixed. Its
-eigenvalues are <span class="math inline">\(1,1,e^{2\pi i/3},e^{4\pi
-i/3}\)</span>. By contrast, a mixer of the form <span class="math inline">\(A\otimes B\)</span>, with two <span class="math inline">\(2\times2\)</span> doubly stochastic factors, has
-only real eigenvalues. That particular factorization cannot represent
-<span class="math inline">\(C_4\)</span>. This is an obstruction for the
-stated mixer family, not a theorem that any larger architecture using
-small factors can never perform cyclic computation.</p>
-<p>The synthetic experiment asks a different question: given inputs and
-outputs generated by a known matrix, can optimization learn the
-transformation? A useful interpretation separates three sources of loss:
-noise in the targets, a target outside the representable family, and
-failure of the optimizer to find a good point inside that family.
-Reaching a noise floor on a sampled task is evidence for that task; it
-does not prove every matrix is representable or every training problem
-is easy.</p>
-<p>Read the evidence in three layers. The nonnegativity and row/column
-identities are algebra. Spectral plots and reconstruction curves are
-measurements under a specified sampling and optimization procedure. A
-claim about better language models requires language-model results and
-an appropriate compute comparison. Keeping these layers separate makes
-the paper’s useful construction easier to assess without making it carry
-a stronger claim than the evidence supports.</p>
-</div><section class="topic" data-math-section=""><h3 id="spectral-reach-as-an-expressivity-surrogate">Spectral reach
-as an expressivity surrogate</h3><p>The full volume of the Birkhoff polytope is difficult to use directly
-as an expressivity measure. The paper therefore evaluates
-<strong>spectral reach</strong>: the set of eigenvalues obtainable from
-matrices produced by a given parameterization.</p><p>For a method <span class="math inline">\(\mathsf{M}\)</span> with map
-<span class="math inline">\(\mathcal{P}_{\mathsf{M}}\)</span>, the
-spectral reach concerns eigenvalues <span class="math inline">\(\lambda\in\mathbb{C}\)</span> such that</p><p><span class="math display">\[
+\]</span></p><p>The three-cycle contributes eigenvalues <span class="math inline">\(e^{2\pi i/3}\)</span> and <span class="math inline">\(e^{4\pi i/3}\)</span>, while the cycle and fixed stream each contribute an eigenvalue <span class="math inline">\(1\)</span>. A mixer <span class="math inline">\(A\otimes B\)</span> built from two <span class="math inline">\(2\times2\)</span> doubly stochastic factors has only real eigenvalues, so it cannot equal <span class="math inline">\(C_4\)</span>. This is a limit of that specified factorization, not a theorem that every architecture containing small factors is unable to compute a cycle.</p><p>The synthetic experiment asks a different question: if inputs and outputs come from a known routing map, can optimization learn that transformation? Its loss can reflect target noise, a target outside the selected representable family, or an optimizer that fails to find a good point within the family. Reaching a noise floor on sampled tasks is evidence about those tasks; it proves neither universal representability nor easy optimization.</p><p>Keep three kinds of evidence separate. Nonnegativity and row/column identities follow algebraically from the construction. Spectral plots and reconstruction curves are finite observations under specific sampling and optimization procedures. Claims about language-model quality require language-model measurements and a suitably matched compute comparison.</p></div><section class="topic" data-math-section=""><h3 id="spectral-reach-as-an-expressivity-surrogate">Spectral reach as an expressivity surrogate</h3><p>The Birkhoff polytope <span class="math inline">\(\mathsf{B}_d\)</span> is the set of all <span class="math inline">\(d\times d\)</span> doubly stochastic matrices. Measuring what fraction of this matrix set a parameterization can produce is difficult. The paper instead examines <strong>spectral reach</strong>: the union of the eigenvalues of all matrices the parameterization can produce.</p><p>For method <span class="math inline">\(\mathsf{M}\)</span>, let <span class="math inline">\(\mathcal{P}_{\mathsf{M}}\)</span> map its parameters to a residual mixer <span class="math inline">\(H^{\mathrm{res}}\)</span>. An eigenvalue <span class="math inline">\(\lambda\in\mathbb{C}\)</span> belongs to its spectral reach if some nonzero vector <span class="math inline">\(v\)</span> satisfies</p><p><span class="math display">\[
 H^{\mathrm{res}}v=\lambda v,
-\qquad
-v\neq 0,
-\qquad
-H^{\mathrm{res}}=\mathcal{P}_{\mathsf{M}}(\cdots).
+\qquad v\neq 0,
+\qquad H^{\mathrm{res}}=\mathcal{P}_{\mathsf{M}}(\cdots).
 \tag{13}
-\]</span></p><p>The relevant ambient region is the <strong>Karpelevič
-region</strong>: the set of complex eigenvalues attainable by stochastic
-matrices of a given dimension.</p><p>Because doubly stochastic matrices are stochastic, their eigenvalues
-must lie in this region. A method with broader spectral reach can
-realize a broader range of decay, persistence, oscillation, and cyclic
-behavior under repeated application.</p><p>This is a useful surrogate, but it has an important limitation:</p><blockquote>
-<p>Broad spectral coverage does not prove that every doubly stochastic
-matrix is representable.</p>
-</blockquote><p>Different matrices can share eigenvalues. Thus spectral reach is
-evidence about dynamic diversity, not a complete volume or coverage
-proof.</p><h4 id="reported-qualitative-findings">Reported qualitative
-findings</h4><p>For <span class="math inline">\(d=3\)</span>, the source reports
-that:</p><ul>
-<li><span class="math inline">\(s=1\)</span> covers a substantial
-spectral region, including the real interval <span class="math inline">\([-1,1]\)</span>, but leaves an error gap <span class="math inline">\(\epsilon(s=1)\)</span>;</li>
-<li><span class="math inline">\(s=2\)</span> covers a larger region with
-smaller reported gap,</li>
-</ul><p><span class="math display">\[
+\]</span></p><p>The ambient comparison is the <strong>Karpelevič region</strong>, the region of possible eigenvalues for row-stochastic matrices of a given dimension. Here “stochastic” means entrywise nonnegative with every row summing to one. A doubly stochastic matrix also has every column summing to one, so it is a restricted case of a row-stochastic matrix. Its eigenvalues must therefore lie within that ambient region; a method’s reachable points occupy only the subset allowed by its parameterization.</p><p>Eigenvalues help characterize what happens to modes under repeated application. They are not singular values and do not by themselves measure conditioning or gradient size. For example, <span class="math inline">\(\|B\|_2\)</span> denotes the largest singular value of <span class="math inline">\(B\)</span>; every exact doubly stochastic mixer has <span class="math inline">\(\|B\|_2=1\)</span>. Weighted averaging cannot increase Euclidean norm, while the all-ones vector is preserved. These give the upper bound and equality, respectively. A wider eigenvalue cloud consequently does not establish better conditioning, gradients, or optimizer performance. Nor does it establish that the method can produce every matrix: distinct matrices may share the same eigenvalues.</p><p>The plotted spectral reach is an optimized finite sample, not random draws from an initialization and not an exhaustive proof of coverage. Figures 3 and 4 illustrate <span class="math inline">\(d=3\)</span> and <span class="math inline">\(d=4\)</span>, respectively. <a href="https://arxiv.org/html/2604.02309v1#A1.SS5.SSS1">Appendix A.5.1</a> describes drawing <span class="math inline">\(N=10^5\)</span> complex target points <span class="math inline">\(e_i\)</span> in the square <span class="math inline">\(|\Re e_i|,|\Im e_i|\leq 1\)</span>. Here <span class="math inline">\(i\)</span> indexes targets, and <span class="math inline">\(\Re\)</span> and <span class="math inline">\(\Im\)</span> denote real and imaginary parts. Routing parameters are optimized to place an eigenvalue near each target; all eigenvalues of the resulting mixers enter the histogram. Conceptually, the search minimizes distance from <span class="math inline">\(e_i\)</span> to the candidate mixer’s eigenvalues. The resulting point cloud estimates what the search found; it does not identify the exact reachable set. Accessibility of an eigenvalue also does not mean every matrix having that eigenvalue is accessible.</p><h4 id="reported-qualitative-findings">Reported qualitative findings</h4><p>With those limits in mind, the paper reports these qualitative findings. For <span class="math inline">\(d=3\)</span>, block size <span class="math inline">\(s=1\)</span> covers substantial spectral area, including the real interval <span class="math inline">\([-1,1]\)</span>, but leaves a reported gap <span class="math inline">\(\epsilon(s=1)\)</span>. Here <span class="math inline">\(\epsilon(s)\)</span> labels the illustrated spectral gap, not a defined bound on matrix approximation error. At <span class="math inline">\(s=2\)</span>, the sampled region is larger and its reported gap is smaller:</p><p><span class="math display">\[
 \epsilon(s=2)&lt;\epsilon(s=1).
-\]</span></p><p>For <span class="math inline">\(d=4\)</span>, the reported comparison
-is:</p><ul>
-<li>finite-iteration mHC can contain points outside the desired doubly
-stochastic region;</li>
-<li>mHC-lite nearly fills the boundary-compatible region;</li>
-<li>KromHC occupies only a highly restricted slice;</li>
-<li>go-mHC with <span class="math inline">\(s=1\)</span> covers a
-sizable but incomplete region;</li>
-<li>go-mHC with <span class="math inline">\(s=2\)</span> fills a larger
-and denser region.</li>
-</ul><p>These are empirical spectral observations, not proofs of exact
-finite-<span class="math inline">\(s\)</span> polytope coverage.</p><hr/></section><section class="topic" data-math-section=""><h3 id="why-kronecker-products-have-a-spectral-limitation">Why
-Kronecker products have a spectral limitation</h3><p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have eigenvalues <span class="math inline">\(\lambda_A\)</span> and <span class="math inline">\(\lambda_B\)</span>, respectively. The eigenvalues
-of the Kronecker product <span class="math inline">\(A\otimes B\)</span>
-are pairwise products:</p><p><span class="math display">\[
-\lambda(A\otimes B)
-=
-\left\{
-\lambda_i(A)\lambda_j(B)
-\right\}_{i,j}.
-\]</span></p><p>For a <span class="math inline">\(2\times 2\)</span> doubly
-stochastic matrix, the spectrum has the form</p><p><span class="math display">\[
-\{1,\lambda\},
-\qquad
-\lambda\in[-1,1].
-\]</span></p><p>Thus if</p><p><span class="math display">\[
-\operatorname{spec}(A)=\{1,\lambda_A\},
-\qquad
-\operatorname{spec}(B)=\{1,\lambda_B\},
-\]</span></p><p>then</p><p><span class="math display">\[
-\operatorname{spec}(A\otimes B)
-=
-\{
-1,\lambda_A,\lambda_B,\lambda_A\lambda_B
-\}.
+\]</span></p><p>For <span class="math inline">\(d=4\)</span>, the reported comparison is that finite-iteration mHC can include points outside the desired doubly stochastic region; mHC-lite nearly fills the boundary-compatible region; KromHC occupies a highly restricted slice; and go-mHC with <span class="math inline">\(s=1\)</span> reaches a sizable but incomplete region, while <span class="math inline">\(s=2\)</span> reaches a larger, denser one. <a href="https://arxiv.org/html/2604.02309v1#S4.F4">Figure 4’s caption</a> says the mHC deviations are exaggerated using large-variance initial conditions. These are observations from the stated spectral search, not proofs of exact finite-<span class="math inline">\(s\)</span> coverage or a universal ranking of optimizers. The real-spectrum argument below concerns the selected binary-factor Kronecker construction; it should not be generalized to every possible larger-factor KromHC design.</p><hr/></section><section class="topic" data-math-section=""><h3 id="why-kronecker-products-have-a-spectral-limitation">Why Kronecker products have a spectral limitation</h3><p>The Kronecker product combines two square matrices into a block matrix. If <span class="math inline">\(A\)</span> has eigenvalues <span class="math inline">\(\lambda_i(A)\)</span> and <span class="math inline">\(B\)</span> has eigenvalues <span class="math inline">\(\lambda_j(B)\)</span>, indexed by <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, the eigenvalues of <span class="math inline">\(A\otimes B\)</span> are all pairwise products. The notation <span class="math inline">\(\operatorname{spec}\)</span> denotes the spectrum:</p><p><span class="math display">\[
+\operatorname{spec}(A\otimes B)=\{\lambda_i(A)\lambda_j(B)\}_{i,j}.
+\]</span></p><p>A <span class="math inline">\(2\times2\)</span> doubly stochastic matrix has the form <span class="math inline">\(\begin{pmatrix}a&amp;1-a\\1-a&amp;a\end{pmatrix}\)</span>, where <span class="math inline">\(0\leq a\leq1\)</span>. It preserves <span class="math inline">\((1,1)^\top\)</span> and scales <span class="math inline">\((1,-1)^\top\)</span> by <span class="math inline">\(2a-1\)</span>. Its spectrum is therefore <span class="math inline">\(\{1,\lambda\}\)</span>, with <span class="math inline">\(\lambda=2a-1\in[-1,1]\)</span>. If two such factors have spectra <span class="math inline">\(\{1,\lambda_A\}\)</span> and <span class="math inline">\(\{1,\lambda_B\}\)</span>, their Kronecker product has</p><p><span class="math display">\[
+\operatorname{spec}(A\otimes B)=\{1,\lambda_A,\lambda_B,\lambda_A\lambda_B\}.
 \tag{14}
-\]</span></p><p>All four values remain real and lie in <span class="math inline">\([-1,1]\)</span>.</p><p>This has a direct consequence: repeated Kronecker composition from
-<span class="math inline">\(2\times 2\)</span> doubly stochastic factors
-cannot generate genuinely complex eigenvalues. It therefore cannot
-represent dynamics that require nonreal eigenvalues, including directed
-cyclic behavior such as a three-cycle.</p><p>A three-cycle has eigenvalues</p><p><span class="math display">\[
-1,
-\qquad
-e^{2\pi i/3},
-\qquad
-e^{4\pi i/3}.
-\]</span></p><p>The latter two are nonreal. Hence a real-spectrum <span class="math inline">\(2\times 2\)</span>-factor construction cannot
-represent that cycle exactly.</p><p>The limitation is not merely aesthetic. In a recurrently applied
-mixing operator:</p><ul>
-<li>real eigenvalues correspond to non-oscillatory expansion,
-contraction, or sign reversal;</li>
-<li>complex eigenvalues permit rotational or cyclic components.</li>
-</ul><p>The paper interprets this as a distinction between diffusion-like
-mixing and directed, advective, or periodic routing behavior.</p><hr/></section><section class="topic" data-math-section=""><h3 id="synthetic-reconstruction-experiment">Synthetic
-reconstruction experiment</h3><p>The controlled experiment constructs:</p><ul>
-<li>ground-truth doubly stochastic matrices <span class="math inline">\(T_i\)</span>;</li>
-<li>dense residual-stream activations <span class="math inline">\(X_j\)</span>;</li>
-<li>noisy targets</li>
-</ul><p><span class="math display">\[
-Y_{i,j}=T_iX_j+\xi,
+\]</span></p><p>Every value is real and remains in <span class="math inline">\([-1,1]\)</span>. Repeating the construction with binary doubly stochastic factors continues to produce real eigenvalues. Such a construction cannot exactly represent a three-cycle, whose spectrum is <span class="math inline">\(\{1,e^{2\pi i/3},e^{4\pi i/3}\}\)</span>. Here <span class="math inline">\(i\)</span> is the imaginary unit; the last two values are nonreal. The four-stream embedding above makes the dimension-compatible comparison explicit.</p><p>The distinction is modal, not a blanket label for the entire mixer. Under repeated application, a positive real eigenvalue scales its eigenmode without changing its sign; a negative one alternates its sign, with magnitude controlled by <span class="math inline">\(|\lambda|\)</span>. A nonreal conjugate pair rotates and scales vectors in suitable coordinates on its real invariant plane. These complex modes can express oscillatory components, but they do not imply that the whole mixer is a literal stream cycle. “Diffusion-like” and “directed or advective” describe possible kinds of behavior, not a complete classification of every operator with a given spectrum.</p><hr/></section><section class="topic" data-math-section=""><h3 id="synthetic-reconstruction-experiment">Synthetic reconstruction experiment</h3><p>The synthetic task isolates stream routing from language modeling. Let <span class="math inline">\(d\)</span> be the number of streams and <span class="math inline">\(D\)</span> the feature width. Write a dense activation matrix as <span class="math inline">\(X\in\mathbb{R}^{d\times D}\)</span>: rows index streams and columns index features. A fixed target <span class="math inline">\(T\in\mathsf{B}_d\)</span> routes the streams, so <span class="math inline">\(TX\)</span> has the same shape as <span class="math inline">\(X\)</span>. The paper considers targets <span class="math inline">\(T_i\)</span> and activation samples <span class="math inline">\(X_j\)</span>, with <span class="math inline">\(i\)</span> indexing target maps and <span class="math inline">\(j\)</span> indexing inputs. Below, <span class="math inline">\(T=T_i\)</span> and <span class="math inline">\(X=X_j\)</span> denote one such pair. <a href="https://arxiv.org/html/2604.02309v1#A1.SS4">Appendix A.4</a> says the default targets are generated by Sinkhorn row/column normalization of matrices sampled entrywise from Uniform(0,1). This is a target-sampling procedure, not uniform sampling of the Birkhoff polytope.</p><p>Noise is added to form the observed output <span class="math inline">\(Y\in\mathbb{R}^{d\times D}\)</span>. Its noise matrix <span class="math inline">\(\eta\)</span> has the same shape, with each entry uniform on <span class="math inline">\([0,\epsilon]\)</span>, where <span class="math inline">\(\epsilon&gt;0\)</span> is the noise amplitude. This scalar is distinct from the earlier spectral-gap label <span class="math inline">\(\epsilon(s)\)</span>. For the population-loss derivation, assume the added noise is independent of the current input and prediction on a fresh example. Then</p><p><span class="math display">\[
+Y=TX+\eta.
 \tag{15}
-\]</span></p><p>where <span class="math inline">\(\xi\)</span> is noise.</p><p>A learned parameterization is evaluated by how well it reconstructs
-the transformation that generated <span class="math inline">\(Y_{i,j}\)</span>.</p><p>This is a useful design because the target transformation is known.
-Reconstruction error can therefore isolate whether the parameterization
-can reach and optimize toward the intended stream-mixing map.</p><p>The abstract reports that go-mHC reaches the minimum theoretical loss
-on synthetic stream-mixing tasks and converges up to <span class="math inline">\(10\times\)</span> faster than the compared
-parameterizations. This should be read as an experimental result under
-the source paper’s task construction and optimization configuration, not
-as a universal convergence theorem for all architectures and
-datasets.</p><p>The paper also reports validation in a GPT-style language model with
-approximately <span class="math inline">\(30\)</span> million
-parameters. A GPT-style model is an autoregressive Transformer that
-predicts each token from preceding context using causally masked
-self-attention.</p><hr/></section><section class="topic" data-math-section=""><h3 id="what-is-theoretically-established-empirically-observed-and-still-uncertain">What is theoretically established, empirically observed, and still
-uncertain?</h3><h4 id="theoretical-or-algebraic-facts">Theoretical or algebraic
-facts</h4><p>The following statements follow from the construction or stated
-mathematical results:</p><ol type="1">
-<li>If <span class="math inline">\(Q\)</span> is orthogonal, then <span class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly stochastic.</li>
-<li>At <span class="math inline">\(s=1\)</span>, generalized
-orthostochastic matrices reduce to ordinary orthostochastic
-matrices.</li>
-<li>Products of doubly stochastic matrices remain doubly
-stochastic.</li>
-<li>The generalized orthostochastic family is contained in <span class="math inline">\(\mathsf{B}_d\)</span>.</li>
-<li>The cited result of Nechita et al. states asymptotic approach to
-<span class="math inline">\(\mathsf{B}_d\)</span> as <span class="math inline">\(s\to\infty\)</span>.</li>
-<li>Kronecker-product eigenvalues are products of factor
-eigenvalues.</li>
-</ol><h4 id="experimental-observations-reported-by-the-source">Experimental
-observations reported by the source</h4><p>The following are reported results rather than consequences of the
-definitions:</p><ol type="1">
-<li>increasing <span class="math inline">\(s\)</span> improves observed
-spectral coverage;</li>
-<li><span class="math inline">\(s=2\)</span> has a smaller reported
-spectral gap than <span class="math inline">\(s=1\)</span> in the
-illustrated setting;</li>
-<li>go-mHC reaches the reported theoretical minimum on the synthetic
-task;</li>
-<li>go-mHC converges up to <span class="math inline">\(10\times\)</span>
-faster in the reported synthetic comparisons;</li>
-<li>the method was tested in a <span class="math inline">\(30\)</span>M-parameter GPT-style language
-model.</li>
-</ol><h4 id="four-important-open-or-incomplete-points">Four important open or
-incomplete points</h4><ol type="1">
-<li><p><strong>Finite-<span class="math inline">\(s\)</span> coverage
-bounds.</strong><br/>
-The source states that the generalized family approaches the full
-Birkhoff polytope as <span class="math inline">\(s\to\infty\)</span>,
-but the supplied material does not provide a practical bound on the
-approximation error <span class="math inline">\(\epsilon(s)\)</span> for
-finite <span class="math inline">\(d\)</span> and finite <span class="math inline">\(s\)</span>.</p></li>
-<li><p><strong>Convergence guarantees versus
-representability.</strong><br/>
-The paper refers to proofs concerning coverage, path connectedness, and
-gradient stability in an appendix. Those proofs are not included here.
-In particular, a claim that every admissible target can be reached must
-be interpreted carefully for fixed finite <span class="math inline">\(s\)</span>, because finite-<span class="math inline">\(s\)</span> generalized orthostochastic families
-can remain strict subsets of <span class="math inline">\(\mathsf{B}_d\)</span>.</p></li>
-<li><p><strong>Spectral reach is incomplete as an expressivity
-metric.</strong><br/>
-Spectral coverage can reveal important restrictions, especially the
-inability to represent cyclic modes, but it cannot establish full
-matrix-space coverage. Nonidentical matrices can have identical
-spectra.</p></li>
-<li><p><strong>Implementation-level and language-model evidence is
-incomplete in the supplied material.</strong><br/>
-The source states that no custom CUDA kernels are required and reports a
-<span class="math inline">\(30\)</span>M GPT-style validation, but the
-complete hyperparameters, measured language-model outcomes, hardware
-conditions, and reproducibility details are not available in the
-material presented here.</p></li>
-</ol><hr/></section><section class="topic" data-math-section=""><h3 id="conclusion">Conclusion</h3><p>go-mHC reframes constrained residual-stream mixing as a composition
-of geometric maps:</p><p><span class="math display">\[
+\]</span></p><p>The learned model predicts <span class="math inline">\(\widehat{Y}=B(X)X\)</span>, where the mixer <span class="math inline">\(B(X)\)</span> may depend on the activation matrix but is constrained to be doubly stochastic for each <span class="math inline">\(X\)</span>. Following the per-output normalization in <a href="https://arxiv.org/html/2604.02309v1#A2.SS1">Appendix B.1</a>, write the population mean squared error as</p><p><span class="math display">\[
+\mathcal{L}=\frac{\mathbb{E}\lVert\widehat{Y}-Y\rVert_F^2}{dD}.
+\]</span></p><p>Here <span class="math inline">\(\mathbb{E}\)</span> averages over inputs and fresh noise, and the squared Frobenius norm <span class="math inline">\(\lVert\cdot\rVert_F^2\)</span> sums the squares of all matrix entries. Dividing by <span class="math inline">\(dD\)</span> averages over scalar outputs. The routing matrices and their eigenvalues are dimensionless; noise amplitude has the same units as activations, and MSE has squared activation units.</p><p>This objective separates routing error from the noise floor. Write <span class="math inline">\(M(X)=B(X)-T\)</span> and <span class="math inline">\(R=M(X)X\)</span> for the routing error. Both mixers are column-stochastic, so <span class="math inline">\(\mathbf{1}_d^\top M(X)=0\)</span>. Here <span class="math inline">\(\mathbf{1}_d\)</span> and <span class="math inline">\(\mathbf{1}_D\)</span> are all-ones vectors of lengths <span class="math inline">\(d\)</span> and <span class="math inline">\(D\)</span>. Expanding gives <span class="math inline">\(\lVert R-\eta\rVert_F^2=\lVert R\rVert_F^2+\lVert\eta\rVert_F^2-2\sum_{a,b}R_{ab}\eta_{ab}\)</span>, where <span class="math inline">\(a\)</span> indexes rows and <span class="math inline">\(b\)</span> columns. The cross term vanishes even when routing depends on <span class="math inline">\(X\)</span>: independence gives <span class="math inline">\(\mathbb{E}[\eta\mid X]=\frac{\epsilon}{2}\mathbf{1}_d\mathbf{1}_D^\top\)</span>, while <span class="math inline">\(\mathbf{1}_d^\top R=0\)</span> makes the sum of routing errors zero for every input. Each noise entry has second moment <span class="math inline">\(\mathbb{E}[\eta_{ab}^2]=\frac{1}{\epsilon}\int_0^\epsilon z^2\,dz=\epsilon^2/3\)</span>, where <span class="math inline">\(z\)</span> is the integration variable. Therefore</p><p><span class="math display">\[
+\mathcal{L}=\frac{\mathbb{E}\lVert(B(X)-T)X\rVert_F^2}{dD}+\frac{\epsilon^2}{3}.
+\]</span></p><p>If the learner can represent and recover <span class="math inline">\(T\)</span>, the first term is zero and the minimum for this constrained predictor is <span class="math inline">\(\epsilon^2/3\)</span>. This is the noise’s second moment, not its variance <span class="math inline">\(\epsilon^2/12\)</span>: the noise has a positive common mean that a doubly stochastic routing map cannot add to every stream while preserving the stream sums. An unconstrained predictor with an additive bias need not share this floor. For the reported <span class="math inline">\(\epsilon=0.1\)</span>, <span class="math inline">\(\epsilon^2/3\approx3.33\times10^{-3}\)</span>; this is arithmetic from the loss formula, not a separate measured result. The population floor need not be an exact lower bound on a finite sample’s fitted training loss.</p><p><a href="https://arxiv.org/html/2604.02309v1#S5.F6">Figure 6</a> compares mHC-lite, KromHC, and go-mHC block sizes <span class="math inline">\(s=1,2,3\)</span> on a representative <span class="math inline">\(d=4\)</span> task. Its caption specifies learning rate <span class="math inline">\(10^{-3}\)</span>, a batch-size setting of 64, dataset size 100, and <span class="math inline">\(\epsilon=0.1\)</span>. The caption reports that mHC-lite and go-mHC with <span class="math inline">\(s\geq2\)</span> reach the theoretical floor, while go-mHC with <span class="math inline">\(s=1\)</span> reaches an intermediate loss and KromHC a higher loss. A larger <span class="math inline">\(s\)</span> does not guarantee lower loss for every target, initialization, or training budget.</p><p>The paper’s abstract reports that go-mHC reaches the minimum theoretical loss on synthetic stream-mixing tasks and converges up to <span class="math inline">\(10\times\)</span> faster than compared parameterizations. Figure 6 plots loss against optimization iterations. <a href="https://arxiv.org/html/2604.02309v1#A6.SS3">Appendix F.3</a> describes convergence in epochs, using arrival within 5% of each method’s own final converged loss. That is not a common-loss-threshold comparison: a restricted method can converge quickly to a worse final loss. These are optimization-progress comparisons, not evidence for a wall-clock or per-step speedup. The headline is conditional on the reported synthetic setups, not a general convergence guarantee.</p><p>The abstract also reports validation in an approximately 30-million-parameter GPT-style language model. Such a model predicts each next token from preceding context; causally masked self-attention prevents access to later tokens. This language-model demonstration is distinct from learning a known linear routing target.</p><hr/></section><section class="topic" data-math-section=""><h3 id="what-is-theoretically-established-empirically-observed-and-still-uncertain">What is theoretically established, empirically observed, and still uncertain?</h3><h4 id="theoretical-or-algebraic-facts">Theoretical or algebraic facts</h4><p>These claims follow from the construction or the mathematical results stated in the paper:</p><ol type="1"><li>If <span class="math inline">\(Q\)</span> is orthogonal, its block-energy map <span class="math inline">\(\Phi_{d,s}(Q)\)</span> is doubly stochastic. Orthogonality fixes each block row’s and column’s total squared energy at <span class="math inline">\(s\)</span>; the map divides by <span class="math inline">\(s\)</span>, and squared norms are nonnegative.</li><li>At <span class="math inline">\(s=1\)</span>, the blocks are scalars, so generalized orthostochastic matrices reduce to ordinary orthostochastic matrices.</li><li>Products of doubly stochastic matrices remain doubly stochastic: nonnegative entries are preserved, and multiplying by the all-ones vector on either side preserves the row and column sums.</li><li>The generalized orthostochastic family is contained in <span class="math inline">\(\mathsf{B}_d\)</span>. Nechita et al.’s <a href="https://arxiv.org/html/2310.03436v2#S2.Thmtheorem8">Theorem 2.8</a> proves density of the union over block sizes for the complex-unitary family; <a href="https://arxiv.org/html/2310.03436v2#S4.Thmtheorem2">Proposition 4.2</a> transfers approximation to real orthogonal blocks at doubled block size. Thus every doubly stochastic target can be approximated arbitrarily well when block size may grow. This does not prove full coverage at a fixed finite <span class="math inline">\(s\)</span>, nesting at consecutive block sizes, or optimizer convergence in a chosen Cayley chart.</li><li>Kronecker-product eigenvalues are pairwise products of factor eigenvalues, as shown above.</li></ol><h4 id="experimental-observations-reported-by-the-source">Experimental observations reported by the source</h4><p>These are reported measurements, not consequences of the definitions:</p><ol type="1"><li>In the sampled low-dimensional spectral searches, larger <span class="math inline">\(s\)</span> reaches a denser region; the illustrated <span class="math inline">\(s=2\)</span> setting has a smaller gap than <span class="math inline">\(s=1\)</span>.</li><li>The tested go-mHC configurations with <span class="math inline">\(s\geq2\)</span> reach the synthetic task’s stated noise floor, and the abstract reports up to <span class="math inline">\(10\times\)</span> faster convergence under its comparisons.</li><li>The paper reports a GPT-style language-model demonstration around the 30-million-parameter scale. It must be read with its dataset, backbone, parameter-count, and evaluation definitions below, not as a general model-quality result.</li></ol><h4 id="four-important-open-or-incomplete-points">Four important open or incomplete points</h4><ol type="1"><li><p><strong>Finite-<span class="math inline">\(s\)</span> coverage bounds.</strong><br/>The cited result gives arbitrarily accurate approximation when block size may grow, but no practical bound here on approximation error for fixed finite <span class="math inline">\(d\)</span> and <span class="math inline">\(s\)</span>. The observed eigenvalue gap is not itself a bound on distance to every matrix in the polytope.</p></li><li><p><strong>Representability and convergence are different questions.</strong><br/>The paper refers to appendix proofs about coverage, path connectedness, and gradient stability, but those proofs are not reproduced here. Even a representable target may be hard for a particular optimizer to find; conversely, successful optimization on sampled targets cannot prove all targets are representable. At fixed finite <span class="math inline">\(s\)</span>, the generalized family can remain a strict subset of <span class="math inline">\(\mathsf{B}_d\)</span>.</p></li><li><p><strong>Spectral reach is incomplete as an expressivity measure.</strong><br/>A spectrum can expose a restriction such as the missing complex modes of the selected binary-factor construction. But different matrices can have the same spectrum, so a spectral cloud cannot establish full matrix-space coverage or the ability to realize every routing map with those eigenvalues.</p></li><li><p><strong>Implementation and language-model evidence has limited scope.</strong><br/>The paper reports that its implementation requires no custom CUDA kernels. That is an implementation choice, not a mathematical guarantee of lower runtime. <a href="https://arxiv.org/html/2604.02309v1#S5.SS2">Section 5.2</a> and <a href="https://arxiv.org/html/2604.02309v1#A7.SS1">Appendix G.1</a> describe a six-layer, six-head decoder-only Transformer with feature width <span class="math inline">\(D=384\)</span>, trained on TinyStories. Section 5.2 also mentions character-level data. <a href="https://arxiv.org/html/2604.02309v1#A7.SS4">Table 9 in Appendix G.4</a> shows that exact total parameter counts vary across mixers and block sizes, so this is not an equal-total-parameter comparison. Figure 9 and Appendix G.2 report similar loss curves among the constrained variants and more stable gradients than unconstrained HC, not a clear language-model loss advantage for go-mHC. Appendix G.1 reports AdamW training for 20,000 iterations on a single RTX 4090 GPU. Its prose gives an effective batch size of 128 sequences, whereas Table 5 lists total batch size 32; that accounting needs clarification for reproduction. These small demonstrations do not establish billion-parameter scalability, a universal GPU speedup, or superior end-task generalization. Complete outcomes, hardware accounting, and reproducibility details are not reproduced in this chapter and remain necessary for independent assessment.</p></li></ol><hr/></section><section class="topic" data-math-section=""><h3 id="conclusion">Conclusion</h3><p>go-mHC turns learned parameters into a residual mixer through a sequence of geometric maps:</p><p><span class="math display">\[
 \text{learned parameters}
 \longrightarrow
 \text{skew-symmetric generator}
@@ -879,30 +481,7 @@ of geometric maps:</p><p><span class="math display">\[
 \text{orthogonal block matrix}
 \longrightarrow
 \text{doubly stochastic stream mixer}.
-\]</span></p><p>Its central advantage is exactness by construction. The block-energy
-map <span class="math inline">\(\Phi_{d,s}\)</span> converts an
-orthogonal matrix into a valid doubly stochastic routing matrix without
-iterative Sinkhorn normalization.</p><p>The parameter <span class="math inline">\(s\)</span> is the essential
-design variable. It interpolates between the restricted orthostochastic
-regime at <span class="math inline">\(s=1\)</span> and increasingly
-expressive generalized orthostochastic families as <span class="math inline">\(s\)</span> grows. This permits a controlled
-compromise between computational cost and reachable stream-routing
-behavior.</p><p>Relative to mHC-lite, go-mHC avoids factorial enumeration of
-permutation matrices. Relative to KromHC, it can represent a broader
-family of spectral and routing behaviors. Relative to finite-step
-Sinkhorn-based mHC, it provides an exact direct map, though its cubic
-dependence on stream count creates a separate computational cost.</p><p>The strongest conceptual lesson is that residual-stream capacity is
-not determined only by the number of streams. It is also determined by
-the geometry of the matrix family allowed to mix them.</p></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-choice">← 4. Choose a representation and a cost</a><a href="#unit-reference">6. Review the mathematics and test the construction →</a></nav></article><article aria-labelledby="unit-reference" class="book-chapter"><h2 id="unit-reference">6. Review the mathematics and test the construction</h2><div class="learning-bridge" data-math-section=""><p>The main route has used four mathematical ideas: weighted averages,
-orthogonal matrices, blockwise squared norms, and eigenmodes. The
-original prerequisites are collected here for a slower review, followed
-by the exercises and references. Open the part you need; there is no
-need to restart the whole article because one symbol is unfamiliar.</p>
-<h3 id="explanation-reference-a-small-numerical-audit">A small numerical audit</h3>
-<p>The following NumPy example implements the map with a linear solve
-rather than forming an explicit inverse. Rows of blocks are the output
-streams; columns of blocks are the input streams.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+\]</span></p><p>The block-energy map <span class="math inline">\(\Phi_{d,s}\)</span> converts an orthogonal matrix into a valid doubly stochastic routing matrix exactly, without iterative Sinkhorn normalization. Exactness of the constraints is an algebraic guarantee; it does not mean that the parameterization spans every matrix at finite <span class="math inline">\(s\)</span>.</p><p>The block size <span class="math inline">\(s\)</span> controls how much orthogonal structure is available before block energies are aggregated. At <span class="math inline">\(s=1\)</span>, the family is restricted to ordinary orthostochastic matrices. Allowing larger block sizes supplies more lifting degrees of freedom and permits arbitrarily accurate approximation across the generalized family, while making the internal construction more costly. This is a trade-off between reachable routing behavior and computation, not a proof of nesting at consecutive block sizes or a guarantee that every larger block improves a trained model.</p><p>Compared with mHC-lite, go-mHC avoids enumerating all <span class="math inline">\(d!\)</span> permutation matrices. Compared with the selected small-factor KromHC construction, it permits a broader family of spectral and routing behavior. Compared with finite-step Sinkhorn-based mHC, its map is exact directly, while its computation has a separate cubic dependence on stream count at fixed block size and feature width. The central lesson is that residual-stream capacity depends both on the number of streams and on the geometry of the matrix family permitted to mix them.</p></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-choice">← 4. Choose a representation and a cost</a><a href="#unit-reference">6. Review the mathematics and test the construction →</a></nav></article><article aria-labelledby="unit-reference" class="book-chapter"><h2 id="unit-reference">6. Review the mathematics and test the construction</h2><div class="learning-bridge" data-math-section=""><p>This reference unit revisits the mathematics behind stream mixing, then checks a small numerical case. We use <span class="math inline">\(d\)</span> for the number of streams and <span class="math inline">\(D\)</span> for the features in each stream. The construction also uses an integer block size <span class="math inline">\(s\geq1\)</span>, an internal dimension <span class="math inline">\(n=sd\)</span>, a routing matrix <span class="math inline">\(B\in\mathbb{R}^{d\times d}\)</span>, and an orthogonal matrix <span class="math inline">\(Q\in\mathbb{R}^{n\times n}\)</span>, divided into <span class="math inline">\(s\times s\)</span> blocks <span class="math inline">\(Q_{ij}\)</span>. Here <span class="math inline">\(i,j=1,\ldots,d\)</span> label output and input streams. For a real matrix <span class="math inline">\(M\)</span>, the squared Frobenius norm is <span class="math inline">\(\lVert M\rVert_F^2=\sum_{a,b}M_{ab}^2\)</span>, where <span class="math inline">\(a,b\)</span> index its rows and columns. The block-energy map is <span class="math inline">\(B=\Phi_{d,s}(Q)\)</span>, with <span class="math inline">\(B_{ij}=\lVert Q_{ij}\rVert_F^2/s\)</span>.</p><p>The audit below makes the Cayley-transform implementation concrete. The expandable review recalls stochastic matrices and orthogonality; the exercises then ask you to use those facts. Open the part you need without restarting earlier chapters.</p><h3 id="explanation-reference-a-small-numerical-audit">A small numerical audit</h3><p>The function takes a raw square matrix, extracts its skew-symmetric part <span class="math inline">\(A\)</span>, maps <span class="math inline">\(A\)</span> to an orthogonal <span class="math inline">\(Q\)</span>, then groups squared entries into <span class="math inline">\(B\)</span>. Here <span class="math inline">\(A^\top=-A\)</span>, <span class="math inline">\(Q\)</span>'s block rows are output streams, and its block columns are input streams. A linear solve computes the Cayley map without explicitly forming a matrix inverse. The example assumes positive integer <code>streams</code> and <code>block_size</code>, and finite real entries in <code>raw</code>; its shape check is not general input validation.</p><div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a aria-hidden="true" href="#cb1-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a aria-hidden="true" href="#cb1-2" tabindex="-1"></a></span>
 <span id="cb1-3"><a aria-hidden="true" href="#cb1-3" tabindex="-1"></a><span class="kw">def</span> residual_mixer(raw, streams, block_size):</span>
 <span id="cb1-4"><a aria-hidden="true" href="#cb1-4" tabindex="-1"></a>    n <span class="op">=</span> streams <span class="op">*</span> block_size</span>
@@ -923,113 +502,39 @@ streams; columns of blocks are the input streams.</p>
 <span id="cb1-19"><a aria-hidden="true" href="#cb1-19" tabindex="-1"></a><span class="cf">assert</span> np.allclose(B.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>), <span class="dv">1</span>)</span>
 <span id="cb1-20"><a aria-hidden="true" href="#cb1-20" tabindex="-1"></a><span class="cf">assert</span> np.allclose(B.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>), <span class="dv">1</span>)</span>
 <span id="cb1-21"><a aria-hidden="true" href="#cb1-21" tabindex="-1"></a><span class="cf">assert</span> np.allclose(B, [[<span class="fl">0.64</span>, <span class="fl">0.36</span>], [<span class="fl">0.36</span>, <span class="fl">0.64</span>]])</span>
-<span id="cb1-22"><a aria-hidden="true" href="#cb1-22" tabindex="-1"></a><span class="cf">assert</span> np.allclose(B <span class="op">@</span> [<span class="dv">2</span>, <span class="dv">10</span>], [<span class="fl">4.88</span>, <span class="fl">7.12</span>])</span></code></pre></div>
-<p>These checks test the construction, not training performance. A
-training implementation must also test differentiation through the
-solve, its chosen precision, and its initialization. In particular, at
-<span class="math inline">\(A=0\)</span>, the squared-entry map has zero
-first-order change: off-diagonal entries of <span class="math inline">\(Q\)</span> begin at zero and are squared, while
-the diagonal has no first-order skew perturbation. Identity
-initialization is therefore not automatically a useful initialization
-for learning the residual mixer.</p>
-</div><details class="deep-dive"><summary>Mathematical prerequisites</summary><div class="detail-body" data-math-section=""><section class="topic" data-math-section=""><h3 id="mathematical-prerequisites">Mathematical prerequisites</h3><h4 id="doubly-stochastic-matrices">Doubly stochastic matrices</h4><p>A square matrix <span class="math inline">\(B\in\mathbb{R}^{d\times
-d}\)</span> is <strong>doubly stochastic</strong> if:</p><ol type="1">
-<li><span class="math inline">\(B_{ij}\geq 0\)</span> for every <span class="math inline">\(i,j\)</span>;</li>
-<li>every row sums to one;</li>
-<li>every column sums to one.</li>
-</ol><p>Equivalently, if <span class="math inline">\(\mathbf{1}\in\mathbb{R}^d\)</span> is the all-ones
-vector, then</p><p><span class="math display">\[
-B\mathbf{1}=\mathbf{1},
-\qquad
-B^\top\mathbf{1}=\mathbf{1}.
-\]</span></p><p>The set of all <span class="math inline">\(d\times d\)</span> doubly
-stochastic matrices is the <strong>Birkhoff polytope</strong>,
-denoted</p><p><span class="math display">\[
-\mathsf{B}_d.
-\]</span></p><p>A doubly stochastic matrix may be interpreted as a conservative
-routing rule. Each output stream receives a nonnegative weighted
-combination of input streams, and each input stream distributes one unit
-of total mass across the outputs.</p><p>This does not mean every individual feature is preserved. Rather, it
-means the routing matrix cannot arbitrarily create or destroy total
-stream mass in the <span class="math inline">\(\ell_1\)</span>-style row
-and column senses.</p><h4 id="permutation-matrices-and-the-birkhoffvon-neumann-theorem">Permutation matrices and the Birkhoff–von Neumann theorem</h4><p>A <strong>permutation matrix</strong> has exactly one entry equal to
-<span class="math inline">\(1\)</span> in every row and every column,
-with all other entries equal to <span class="math inline">\(0\)</span>.
-It represents deterministic routing: each input stream is sent to
-exactly one output stream.</p><p>The Birkhoff–von Neumann theorem states:</p><blockquote>
-<p>Every doubly stochastic matrix is a convex combination of permutation
-matrices.</p>
-</blockquote><p>Thus any <span class="math inline">\(B\in\mathsf{B}_d\)</span> can be
-written as</p><p><span class="math display">\[
-B=\sum_{\pi\in S_d}w_\pi P_\pi,
-\qquad
-w_\pi\geq 0,
-\qquad
-\sum_{\pi\in S_d}w_\pi=1,
-\]</span></p><p>where <span class="math inline">\(S_d\)</span> is the set of all
-<span class="math inline">\(d!\)</span> permutations and <span class="math inline">\(P_\pi\)</span> is the associated permutation
-matrix.</p><p>This theorem gives an exact parameterization of <span class="math inline">\(\mathsf{B}_d\)</span>, but it creates a severe
-scaling problem: there are <span class="math inline">\(d!\)</span>
-permutation matrices. At <span class="math inline">\(d=8\)</span>,</p><p><span class="math display">\[
-8!=40{,}320.
-\]</span></p><p>A representation that assigns a learned component to every
-permutation therefore becomes impractical quickly.</p><h4 id="orthogonal-and-skew-symmetric-matrices">Orthogonal and
-skew-symmetric matrices</h4><p>A matrix <span class="math inline">\(Q\in\mathbb{R}^{n\times
-n}\)</span> is <strong>orthogonal</strong> when</p><p><span class="math display">\[
-Q^\top Q=I.
-\]</span></p><p>Orthogonal matrices preserve Euclidean length:</p><p><span class="math display">\[
-\lVert Qv\rVert_2=\lVert v\rVert_2.
-\]</span></p><p>A matrix <span class="math inline">\(A\)</span> is
-<strong>skew-symmetric</strong> when</p><p><span class="math display">\[
-A^\top=-A.
-\]</span></p><p>Its diagonal entries must be zero, and only the entries above one
-diagonal are independent. Thus an <span class="math inline">\(n\times
-n\)</span> skew-symmetric matrix has</p><p><span class="math display">\[
-\frac{n(n-1)}{2}
-\]</span></p><p>independent parameters.</p><p>The Cayley transform maps an appropriate skew-symmetric matrix into
-an orthogonal matrix:</p><p><span class="math display">\[
-Q=(I-A)(I+A)^{-1}.
-\]</span></p><p>For skew-symmetric <span class="math inline">\(A\)</span>, <span class="math inline">\(I+A\)</span> is invertible over the reals, and
-<span class="math inline">\(Q\)</span> is orthogonal. The transform
-parameterizes the special orthogonal component reachable without
-reflections, which is useful because that component is path
-connected.</p><hr/></section></div></details><section class="topic" data-math-section=""><h3 id="exercises">Exercises</h3><h4 id="exercise-1-verify-double-stochasticity">Exercise 1: Verify
-double stochasticity</h4><p>Let <span class="math inline">\(Q\in\mathbb{R}^{ds\times ds}\)</span>
-be orthogonal and partitioned into <span class="math inline">\(s\times
-s\)</span> blocks <span class="math inline">\(Q_{ij}\)</span>. Prove
-directly that</p><p><span class="math display">\[
-\Phi_{d,s}(Q)_{ij}
-=
-\frac{1}{s}\lVert Q_{ij}\rVert_F^2
-\]</span></p><p>has row sums equal to one.</p><p><strong>Hint.</strong> Use the block identity</p><p><span class="math display">\[
+<span id="cb1-22"><a aria-hidden="true" href="#cb1-22" tabindex="-1"></a><span class="cf">assert</span> np.allclose(B <span class="op">@</span> [<span class="dv">2</span>, <span class="dv">10</span>], [<span class="fl">4.88</span>, <span class="fl">7.12</span>])</span></code></pre></div><p>The solve line is right-sided: it computes <span class="math inline">\((I_n-A)(I_n+A)^{-1}\)</span>, where <span class="math inline">\(I_n\)</span> is the identity matrix. To see why the transpose trick works, <code>solve(M.T, R.T).T</code> returns a matrix <span class="math inline">\(X\)</span> satisfying <span class="math inline">\(XM=R\)</span>, hence <span class="math inline">\(X=RM^{-1}\)</span> for nonsingular <span class="math inline">\(M\)</span>. Here <span class="math inline">\(M=I_n+A\)</span> and <span class="math inline">\(R=I_n-A\)</span>. The two Cayley factors commute, as shown in the prerequisite review, so reversing their product order gives the same value.</p>
+<p>The reshape gives axes in the order output stream, output coordinate within its block, input stream, input coordinate within its block. Summing squared entries over axes <code>(1, 3)</code> therefore leaves one energy per output–input block. Dividing by <code>block_size</code> implements the factor <span class="math inline">\(1/s\)</span> in <span class="math inline">\(\Phi_{d,s}\)</span>.</p>
+<p>For this example, <span class="math inline">\(Q=\begin{pmatrix}0.8&amp;-0.6\\0.6&amp;0.8\end{pmatrix}\)</span>. With <span class="math inline">\(s=1\)</span>, block energies are entrywise squares, giving <span class="math inline">\(B=\begin{pmatrix}0.64&amp;0.36\\0.36&amp;0.64\end{pmatrix}\)</span>. Thus <span class="math inline">\(B(2,10)^\top=(4.88,7.12)^\top\)</span>: values are redistributed while their sum remains <span class="math inline">\(12\)</span>. The assertions check orthogonality, nonnegativity, both unit-sum conditions, and this action; they do not measure training performance. These identities are exact in real arithmetic. Floating-point solves and summation introduce numerical error, so <code>allclose</code> checks tolerance-based agreement for this case rather than proving exact identities for every input.</p>
+<p>A training implementation must separately check differentiation through the solve, numerical precision, and initialization. The identity case needs care. Fix a real skew-symmetric direction <span class="math inline">\(K\in\mathbb{R}^{n\times n}\)</span> and vary the real scalar <span class="math inline">\(t\)</span> through <span class="math inline">\(A=tK\)</span>. Expanding <span class="math inline">\((I_n+tK)^{-1}=I_n-tK+O(t^2)\)</span> gives <span class="math inline">\(Q(tK)=I_n-2tK+O(t^2)\)</span> as <span class="math inline">\(t\to0\)</span>. Here <span class="math inline">\(O(t^p)\)</span> denotes a remainder whose norm is bounded by a constant times <span class="math inline">\(|t|^p\)</span> near zero, with <span class="math inline">\(K\)</span> fixed.</p>
+<p>For off-diagonal blocks <span class="math inline">\(i\ne j\)</span>, squaring <span class="math inline">\(Q_{ij}(tK)=-2tK_{ij}+O(t^2)\)</span> gives <span class="math inline">\(B_{ij}(tK)=4t^2\lVert K_{ij}\rVert_F^2/s+O(t^3)\)</span>. Each diagonal block <span class="math inline">\(K_{ii}\)</span> is skew-symmetric, so its trace, the sum of its diagonal entries, is zero. Consequently <span class="math inline">\(B_{ii}(tK)=1-4t\,\operatorname{tr}(K_{ii})/s+O(t^2)=1+O(t^2)\)</span>. The derivative of the block-energy mixer with respect to all skew coordinates is therefore zero at <span class="math inline">\(A=0\)</span>, where <span class="math inline">\(B=I_d\)</span>. For a differentiable routing generator, a differentiable loss depending on its parameters only through this mixer supplies no first-order parameter gradient at that identity output. Identity initialization is thus not automatically useful for learning this map. This is a local fact, not a claim that optimization gradients vanish everywhere or a prescription for training initialization.</p></div><details class="deep-dive"><summary>Mathematical prerequisites</summary><div class="detail-body" data-math-section=""><section class="topic" data-math-section=""><h3 id="mathematical-prerequisites">Mathematical prerequisites</h3><h4 id="doubly-stochastic-matrices">Doubly stochastic matrices</h4><p>A square matrix <span class="math inline">\(B\in\mathbb{R}^{d\times d}\)</span> is <strong>doubly stochastic</strong> when its entries are nonnegative and every row and column sums to one. Let <span class="math inline">\(\mathbf{1}\in\mathbb{R}^d\)</span> be the all-ones vector. Together, entrywise nonnegativity and the two sum conditions can be written as</p><p><span class="math display">\[
+B\geq0,\qquad B\mathbf{1}=\mathbf{1},\qquad B^\top\mathbf{1}=\mathbf{1}.
+\]</span></p><p>The equalities alone do not guarantee nonnegativity, so they are equivalent to double stochasticity only with that condition included. The set of all such matrices is the <strong>Birkhoff polytope</strong>, denoted <span class="math inline">\(\mathsf{B}_d\)</span>. A polytope is a bounded set defined by finitely many linear inequalities and equalities.</p><p>As a routing rule, each row gives a nonnegative weighted average of the inputs. Each column distributes one unit of total input weight across outputs. For any real stream vector <span class="math inline">\(v\in\mathbb{R}^d\)</span>, the column-sum condition gives <span class="math inline">\(\mathbf{1}^\top Bv=\mathbf{1}^\top v\)</span>. It conserves the signed sum for all <span class="math inline">\(v\)</span>; when <span class="math inline">\(v\geq0\)</span> entrywise, this is also conservation of nonnegative mass and of <span class="math inline">\(\lVert v\rVert_1\)</span>. For signed activations, it does not generally preserve the <span class="math inline">\(\ell_1\)</span> norm. Separately, the row-sum condition <span class="math inline">\(B\mathbf{1}=\mathbf{1}\)</span> preserves the constant direction; neither condition makes the full map the identity or preserves every individual feature value.</p><h4 id="permutation-matrices-and-the-birkhoffvon-neumann-theorem">Permutation matrices and the Birkhoff–von Neumann theorem</h4><p>A <strong>permutation matrix</strong> has exactly one entry equal to <span class="math inline">\(1\)</span> in every row and every column, with all other entries <span class="math inline">\(0\)</span>. It represents deterministic routing: each input stream is sent to exactly one output stream, and each output receives exactly one input.</p><p>The Birkhoff–von Neumann theorem states that every doubly stochastic matrix is a convex combination of permutation matrices:</p><p><span class="math display">\[
+B=\sum_{\pi\in S_d}w_\pi P_\pi,\qquad w_\pi\geq0,\qquad \sum_{\pi\in S_d}w_\pi=1,
+\]</span></p><p>Here <span class="math inline">\(S_d\)</span> is the set of the <span class="math inline">\(d!\)</span> permutations, <span class="math inline">\(P_\pi\)</span> is the matrix associated with permutation <span class="math inline">\(\pi\)</span>, and the weights <span class="math inline">\(w_\pi\)</span> form a convex combination because they are nonnegative and sum to one. This is an exact description, but explicitly assigning a learned component to every permutation scales factorially. At <span class="math inline">\(d=8\)</span>, <span class="math inline">\(8!=40{,}320\)</span>. This count explains the cost of that representation; it does not imply that all alternative representations have the same expressive range.</p><h4 id="orthogonal-and-skew-symmetric-matrices">Orthogonal and skew-symmetric matrices</h4><p>A real square matrix <span class="math inline">\(Q\in\mathbb{R}^{n\times n}\)</span> is <strong>orthogonal</strong> when <span class="math inline">\(Q^\top Q=I_n\)</span>, with <span class="math inline">\(I_n\)</span> the identity. For every real vector <span class="math inline">\(v\in\mathbb{R}^n\)</span>, it preserves Euclidean length because <span class="math inline">\(\lVert Qv\rVert_2^2=v^\top Q^\top Qv=\lVert v\rVert_2^2\)</span>. A real matrix <span class="math inline">\(A\in\mathbb{R}^{n\times n}\)</span> is <strong>skew-symmetric</strong> when <span class="math inline">\(A^\top=-A\)</span>. Its diagonal entries are zero, and entries below the diagonal are determined by those above; there are <span class="math inline">\(n(n-1)/2\)</span> independent coordinates. The audit instead supplies a full matrix with <span class="math inline">\(n^2\)</span> entries before antisymmetrization. Its symmetric part is discarded, so that raw input contains redundant values rather than only independent skew coordinates.</p><p>The Cayley transform maps a real skew-symmetric matrix to</p><p><span class="math display">\[
+Q=(I_n-A)(I_n+A)^{-1}.
+\]</span></p><p>Both <span class="math inline">\(I_n+A\)</span> and <span class="math inline">\(I_n-A\)</span> are nonsingular. For example, if <span class="math inline">\((I_n+A)v=0\)</span>, then taking the inner product with a real vector <span class="math inline">\(v\in\mathbb{R}^n\)</span> gives <span class="math inline">\(\lVert v\rVert_2^2+v^\top Av=0\)</span>. Skew-symmetry gives <span class="math inline">\(v^\top Av=-v^\top Av=0\)</span>, hence <span class="math inline">\(v=0\)</span>. Replacing <span class="math inline">\(A\)</span> by <span class="math inline">\(-A\)</span> proves the other case. Transposition reverses product order, so <span class="math inline">\(Q^\top=(I_n-A)^{-1}(I_n+A)\)</span>.</p>
+<p>The factors commute because <span class="math inline">\((I_n-A)(I_n+A)=(I_n+A)(I_n-A)=I_n-A^2\)</span>; their inverses commute too. Thus</p><p><span class="math display">\[
+Q^\top Q=(I_n-A)^{-1}(I_n+A)(I_n-A)(I_n+A)^{-1}
+=(I_n-A)^{-1}(I_n-A)(I_n+A)(I_n+A)^{-1}=I_n.
+\]</span></p><p>Also, <span class="math inline">\(\det(I_n-A)=\det((I_n+A)^\top)=\det(I_n+A)\)</span>, so <span class="math inline">\(\det Q=1\)</span>. Here <span class="math inline">\(\det\)</span> denotes determinant. The <strong>special orthogonal group</strong> <span class="math inline">\(SO(n)\)</span> consists of orthogonal matrices with determinant <span class="math inline">\(+1\)</span>. It is path connected: any two of its matrices can be joined by a continuous path of orthogonal matrices with determinant <span class="math inline">\(+1\)</span>, without crossing into the determinant <span class="math inline">\(-1\)</span> component containing reflections.</p>
+<p>The Cayley formula gives coordinates for only part of <span class="math inline">\(SO(n)\)</span>, not all of it. Since <span class="math inline">\(I_n+Q=2(I_n+A)^{-1}\)</span> is invertible, its output cannot have eigenvalue <span class="math inline">\(-1\)</span>. This limitation concerns which <span class="math inline">\(Q\)</span> the chart reaches. It does not by itself show that a block-energy mixer is unreachable, because different orthogonal matrices can produce the same matrix of block energies.</p><hr/></section></div></details><section class="topic" data-math-section=""><h3 id="exercises">Exercises</h3><h4 id="exercise-1-verify-double-stochasticity">Exercise 1: Verify double stochasticity</h4><p>Let <span class="math inline">\(Q\in\mathbb{R}^{ds\times ds}\)</span> be orthogonal and partitioned into <span class="math inline">\(s\times s\)</span> blocks <span class="math inline">\(Q_{ij}\)</span>. Prove directly that</p><p><span class="math display">\[
+\Phi_{d,s}(Q)_{ij}:=\frac{1}{s}\lVert Q_{ij}\rVert_F^2
+\]</span></p><p>has row sums equal to one. <strong>Hint.</strong> Use the block-row identity</p><p><span class="math display">\[
 \sum_jQ_{ij}Q_{ij}^{\top}=I_s.
-\]</span></p><h4 id="exercise-2-recover-ordinary-orthostochasticity">Exercise 2:
-Recover ordinary orthostochasticity</h4><p>Show that <span class="math inline">\(s=1\)</span> reduces equation
-(7) to</p><p><span class="math display">\[
+\]</span></p><p>This is only the row-sum half of double stochasticity. For the full conclusion, also use the block-column identity <span class="math inline">\(\sum_iQ_{ij}^{\top}Q_{ij}=I_s\)</span> to obtain column sums, and use squared norms for nonnegativity.</p><h4 id="exercise-2-recover-ordinary-orthostochasticity">Exercise 2: Recover ordinary orthostochasticity</h4><p>Show that <span class="math inline">\(s=1\)</span> reduces equation (7) to</p><p><span class="math display">\[
 \Phi_{d,1}(Q)_{ij}=Q_{ij}^2.
-\]</span></p><p>Why is the resulting matrix doubly stochastic?</p><h4 id="exercise-3-a-three-cycle-obstruction">Exercise 3: A three-cycle
-obstruction</h4><p>Write the permutation matrix for the routing cycle</p><p><span class="math display">\[
+\]</span></p><p>Why is the resulting matrix doubly stochastic? Use both row and column norm identities for an orthogonal matrix, and note that squares are nonnegative.</p><h4 id="exercise-3-a-three-cycle-obstruction">Exercise 3: A three-cycle obstruction</h4><p>Write the permutation matrix for the routing cycle</p><p><span class="math display">\[
 1\to 2\to 3\to 1.
-\]</span></p><p>Find its eigenvalues. Explain why a construction whose spectrum is
-restricted to real values cannot represent this cycle exactly.</p><h4 id="exercise-4-compare-growth-rates">Exercise 4: Compare growth
-rates</h4><p>Compute</p><p><span class="math display">\[
-d^3
-\quad\text{and}\quad
-d!
-\]</span></p><p>for <span class="math inline">\(d=4,6,8,10\)</span>. At what point
-does the practical difference become obvious?</p><hr/></section><section class="topic" data-math-section=""><h3 id="references">References</h3><ul>
-<li>Dandachi, T., &amp; Diggs-Galligan, S. (2026). <em>go-mHC: Direct
-Parameterization of Manifold-Constrained Hyper-Connections via
-Generalized Orthostochastic Matrices</em>. <a href="https://arxiv.org/abs/2604.02309">arXiv:2604.02309</a>.</li>
-<li>Gutkin, E. (2013). Work introducing generalized orthostochastic
-matrices.</li>
-<li>Nechita, I., et al. (2023). Results on generalized <span class="math inline">\(s\)</span>-orthostochastic matrices and their
-limiting coverage.</li>
-<li>Xie, et al. (2026). <em>Manifold-Constrained
-Hyper-Connections</em>.</li>
-<li>Yang, &amp; Gao. (2026). <em>mHC-lite</em>.</li>
-<li>Zhou, et al. (2026). <em>KromHC</em>.</li>
-<li>Zhu, et al. (2025a). <em>Hyper-Connections</em>.</li>
+\]</span></p><p>Find its eigenvalues. Explain why a construction whose spectrum is restricted to real values cannot represent this cycle exactly.</p><h4 id="exercise-4-compare-growth-rates">Exercise 4: Compare growth rates</h4><p>Compute</p><p><span class="math display">\[
+d^3\quad\text{and}\quad d!
+\]</span></p><p>for <span class="math inline">\(d=4,6,8,10\)</span>. At what point does the practical difference become obvious?</p><hr/></section><section class="topic" data-math-section=""><h3 id="references">References</h3><ul>
+<li>Dandachi, T., &amp; Diggs-Galligan, S. (2026). <em>go-mHC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices</em>. <a href="https://arxiv.org/abs/2604.02309">arXiv:2604.02309</a>.</li>
+<li>Gutkin, E. (2013). <em>On a multi-dimensional generalization of the notions of orthostochastic and unistochastic matrices</em>. <em>Journal of Geometry and Physics</em>, 74, 28–35. <a href="https://doi.org/10.1016/j.geomphys.2013.06.009">doi:10.1016/j.geomphys.2013.06.009</a>. This earlier generalization is distinct from the block-norm construction used here; <a href="https://arxiv.org/html/2310.03436v2#S1">Nechita et al.'s introduction</a> explains that Gutkin's version is generally stochastic rather than doubly stochastic.</li>
+<li>Nechita, I., Ouyang, Z., &amp; Szczepanek, A. (2023). <em>Generalized unistochastic matrices</em>. <a href="https://arxiv.org/abs/2310.03436">arXiv:2310.03436</a>. Section 4 treats generalized <span class="math inline">\(s\)</span>-orthostochastic matrices. Its Proposition 4.2, combined with Theorem 2.8, gives limiting coverage: allowing varying block sizes approximates any doubly stochastic matrix arbitrarily closely, not necessarily exactly at a fixed finite size.</li>
+<li>Xie, Z., Wei, Y., Cao, H., Zhao, C., Deng, C., Li, J., Dai, D., Gao, H., Chang, J., Yu, K., Zhao, L., Zhou, S., Xu, Z., Zhang, Z., Zeng, W., Hu, S., Wang, Y., Yuan, J., Wang, L., &amp; Liang, W. (2026). <em>mHC: Manifold-Constrained Hyper-Connections</em>. <a href="https://arxiv.org/abs/2512.24880">arXiv:2512.24880</a>.</li>
+<li>Yang, Y., &amp; Gao, J. (2026). <em>mHC-lite: You Don't Need 20 Sinkhorn-Knopp Iterations</em>. <a href="https://arxiv.org/abs/2601.05732">arXiv:2601.05732</a>.</li>
+<li>Zhou, W., Gu, Y., Iacovides, G., &amp; Mandic, D. (2026). <em>KromHC: Manifold-Constrained Hyper-Connections with Kronecker-Product Residual Matrices</em>. <a href="https://arxiv.org/abs/2601.21579">arXiv:2601.21579</a>.</li>
+<li>Zhu, D., Huang, H., Huang, Z., Zeng, Y., Mao, Y., Wu, B., Min, Q., &amp; Zhou, X. (2025a). <em>Hyper-Connections</em>. <a href="https://arxiv.org/abs/2409.19606">arXiv:2409.19606</a>.</li>
 </ul></section><nav aria-label="Reading navigation" class="chapter-pagination"><a href="#unit-evidence">← 5. Interpret spectra and experimental evidence</a></nav></article></main></div></div><dialog aria-labelledby="diagram-dialog-title" id="diagram-dialog"><div class="dialog-header"><span id="diagram-dialog-title">Diagram at full size</span><button aria-label="Close enlarged diagram" type="button">Close ×</button></div><div class="zoom-content"></div></dialog><script>(() => {
   const navigation = document.querySelector('#book-navigation');
   const wide = window.matchMedia('(min-width:1101px)');

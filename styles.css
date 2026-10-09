@@ -302,6 +302,24 @@ ul {
   margin-top: 0.3rem;
 }
 
+.post-body table {
+  width: 100%;
+  margin: 1.4rem 0;
+  border-collapse: collapse;
+  font-size: 0.92em;
+}
+
+.post-body th,
+.post-body td {
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.post-body th {
+  background: rgba(31, 42, 47, 0.05);
+}
+
 .post-body blockquote {
   margin: 1.4rem 0;
   padding-left: 1rem;

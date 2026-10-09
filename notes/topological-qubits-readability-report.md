@@ -1,5 +1,7 @@
 # Readability & cognitive-load report — *Defect-engineered topological qubits*
 
+**Historical audit:** Sections 1–5 below describe an earlier generated edition. Their word counts, line numbers, defect counts, and suggested priorities are not measurements of the October 2026 rewrite. Section 6 records the later complete editorial pass; the retained chapter reviews distinguish original findings from their final dispositions.
+
 Source: `notes/assets/defects-to-topological-qubits.md`
 Scale: ~281,000 words · 23,697 lines · 866 headings · 36 chapters + 3 assessment units + 8 appendices + glossary + bibliography.
 
@@ -178,3 +180,53 @@ Load = subjective reading difficulty (● low ●● medium ●●● high ●�
 - Q&A micro-headings as a chunking device (ch 5) — good idea, just over-applied.
 - Two-tier glossary (short + contextual) and the Global evidence table — high-value; surface both earlier.
 - The steelman / conjunctive-chain framing in the assessments (15278+) — strong rhetorical scaffolding once the duplication is removed.
+
+---
+
+## 6. 2026-10-10 — Complete chapter-by-chapter editorial pass
+
+### Scope and process
+
+The pass began with the qubit book, then covered every other published note. It did not rewrite the separate research drafts under `articles/`.
+
+| Published source | Editorial coverage |
+|---|---|
+| `pages/defects-to-topological-qubits.html` | All 36 chapters; all three assessments, each divided into four review units; Appendices A–H; front matter; evidence table; glossary; annotated bibliography — 60 units |
+| `pages/exact-residual-stream-mixing.html` | All six units and front matter — 7 units |
+| `pages/delta-nets.html` | All six units and front matter — 7 units |
+| `posts/2026-06-13-concurrent-state-evolution.md` | Complete post |
+| `posts/2026-06-17-adversarial-reasoning.md` | Complete post |
+| `posts/2026-08-03-fibonacci-quasicrystals.md` | Complete post |
+
+For each unit, Haiku 5.5 first marked missing information, undefined referents, compressed idea sequences, unexplained equations, and imprecise claims. Sol at extra-high reasoning reviewed mathematical needs and risks. Opus 5.5 rewrote the prose using those findings. A separate Sol extra-high check compared the finished unit with its original material, repaired defects, and recorded rejected suggestions.
+
+[The retained audit](../.agents/notes-rewrite-audit.md) contains all 154 pre-rewrite marker/final-check reports, plus the independent preservation audit of eleven higher-risk qubit units. It is not another manuscript. Its original quotations and temporary-fragment line numbers are historical evidence, not current defect locations. The final checks and parent integration corrections supersede earlier author logs and incorrect mathematical proposals.
+
+### Changes that matter to a reader
+
+- **Qubit book:** physical actions precede technical labels; prerequisites and distant concepts are locally reintroduced; symbols and assumptions sit beside equations; derivations show intermediate steps; numerical budgets state whether they are measured, derived, or hypothetical. The opening Superposition, Entanglement, and Measurement explanations remain formula-free. Local encoded clusters, digital demonstrations, emergent topological order, logical operations, and passive memory remain separate claims.
+- **Mixer:** a concrete routing problem leads into orthogonal block energies, both stochastic constraints, the Cayley solve, spectral scope, and a runnable numerical audit. The text distinguishes mixer non-amplification from a full-network Jacobian guarantee, finite-size representability from asymptotic density, and convergence iterations from wall-clock speed. Unsupported experiment settings were replaced with the explicitly cited v1 evidence.
+- **Δ-Nets:** binder ownership, occurrence levels, agent ports, signed deltas, subsystem restrictions, interactions, cleanup, scheduling, and read-back are explained in sequence. Nonzero unary replicators are not silently replaced by wires, and nonlinear phase-two work is not omitted. Source-level implementation gaps remain explicit.
+- **Posts:** concurrent state evolution now separates state ownership, serialization, asynchronous completion, and stale-result handling without rewriting the historical code. Adversarial reasoning distinguishes criticism/consensus from calibrated correctness and names stopping/evaluation limits. Fibonacci quasicrystals adds count and coding derivations, fixes phase/index conventions, distinguishes torus orbits from observables, and states fixed-charge fusion dimensions and the hypothetical hardware scope.
+
+### Verification and limits
+
+The parent checked integrated HTML boundaries, identifier uniqueness, local targets, equation wrappers, numbered labels, and illustration inventories. Original post metadata values, historical code, SVGs, and links were preserved; the Fibonacci summary was quoted to repair YAML syntax without changing its value.
+
+Actual Chromium inspection rendered every mixer and Δ-Nets math node without MathJax errors or broken images. The final qubit operator and measurement chapters rendered 360 and 265 math nodes respectively without errors, and the built operator chapter was checked again after publication. Navigation, diagrams, and expand/collapse behavior were exercised. All three generated posts were visually inspected; the Fibonacci tables were checked at desktop and 390px mobile widths with no page-width overflow. Selected reader PDF pages, including qubit pages 723 and 904, were rasterized and visually inspected.
+
+Numerical smoke checks covered the published mixer audit, block-size-two stochastic budgets, its zero first derivative at the identity, spin-one projection versus projecting a squared operator, the Fibonacci vertex-projector truth table, projected dipolar arithmetic, mechanical-word indexing, and fixed-charge fusion counts.
+
+All three final exports passed full math/figure validation and installed matching Markdown, PDF, and manifests. `npm run build` passed; canonical/published reader HTML was byte-identical, all manifest input/output hashes matched, and all six served downloads returned HTTP 200 with the expected hashes. The existing direct qubit Markdown URL now refreshes during the build with illustration paths rebased; all ten served illustration URLs were checked.
+
+| Reader | Rendered math expressions, including inline notation | Figures | PDF pages | Final export seconds |
+|---|---:|---:|---:|---:|
+| Qubit book | 27,015 | 10 | 1,322 | 490.13 |
+| Exact residual-stream mixing | 806 | 4 | 38 | 9.20 |
+| Δ-Nets | 960 | 43 | 98 | 8.56 |
+
+The full-book print path required repair: two one-hour attempts timed out before completing. Clearing finished MathItems alone did not fix that failure. The accepted renderer also keeps completed chapters out of layout while rendering subsequent chapters and measures widths before applying zoom changes. Every chapter is restored before full validation and printing; no math or content is omitted to make the export finish. A throwaway late-batch malformed-expression probe was rejected without creating a PDF.
+
+**Remaining source limitations are not fabricated away.** The go-mHC v1 text and table disagree about effective batch size. The Δ-Nets discussion does not supply a general merge-coordinate transformation, effective parallel scheduling certificate, zero-port decay convention, or complete inverse implementation. The diamond/Fibonacci architecture remains a proposal, not a demonstrated topological device.
+
+Coverage is 100% of the published editorial units, not a measured human-comprehension score or an independent validation of every cited paper. Added length and correctly rendered mathematics are insufficient evidence of reduced cognitive load. The next useful evaluation is reader feedback on complete learning routes; do not reuse this pass's findings as held-out validation data.

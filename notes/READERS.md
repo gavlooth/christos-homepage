@@ -7,6 +7,13 @@ Edit the hand-authored HTML pages:
 
 Both are question-led, six-unit reading editions. The mHC revision moves concrete routing before the abstract construction, adds a complete Cayley example and numerical audit, and distinguishes non-amplification from preservation of every mode. The Δ-Nets revision connects the prose, puts compilation before the interaction-rule catalogue, and separates core rewriting from scheduling, cleanup, and read-back. Original section anchors and technical material are retained; the added reference disclosures do not remove their contents.
 
+The October 2026 pass applied a separate Haiku 5.5 clarity scan, Sol extra-high mathematical review, Opus 5.5 rewrite, and Sol extra-high final check to every unit and each reader's front matter. The [retained review evidence](../.agents/notes-rewrite-audit.md) includes the initial missing-information/clumped-sentence findings and their final dispositions.
+
+The mixer now works through orthogonal block energies, both stochastic budgets, the Cayley solve, and a runnable numerical audit. It separates an individual mixer's norm from the Jacobian of an activation-dependent network, fixed-size expressivity from asymptotic density, and optimization iterations from wall-clock performance. Experimental details follow the explicitly cited go-mHC v1 source. That source's conflicting effective-batch values remain identified rather than silently reconciled.
+
+The Δ-Nets reader explains binder ownership, ports, levels, deltas, subsystem restrictions, local interactions, directed erasure, scheduling, and read-back in sequence. It retains the paper's diagrams and makes source-level specification gaps explicit: the general merge-coordinate rule, effective parallel scheduling certificate, zero-port decay convention, and complete inverse implementation are not supplied by this explanatory reader. Do not substitute an inferred delta formula for an established evaluator rule.
+
+
 ## Regenerate the downloads
 
 ```sh

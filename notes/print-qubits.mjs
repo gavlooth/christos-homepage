@@ -46,19 +46,51 @@ try {
   await send('Page.enable');
   await send('Page.navigate',{url:pathToFileURL(input).href});
   await evaluate(`new Promise((resolve,reject)=>{let ticks=0;const timer=setInterval(()=>{if(window.MathJax?.startup?.promise){clearInterval(timer);window.MathJax.startup.promise.then(resolve,reject);}else if(++ticks>600){clearInterval(timer);reject(new Error('MathJax did not load'));}},100);})`);
-  const count=await evaluate(`document.querySelectorAll('.math').length`);
+  const setup=await evaluate(`(()=>{
+    const count=document.querySelectorAll('.math').length;
+    const roots=Array.from(document.body.children).flatMap(node=>node.matches('main')?Array.from(node.children):[node]);
+    window.printUnits=roots.filter(node=>node.matches('.math')||node.querySelector('.math')).map(node=>{
+      const math=Array.from(node.querySelectorAll('.math'));if(node.matches('.math'))math.unshift(node);
+      const marker=document.createComment('print unit');node.replaceWith(marker);
+      return {node,marker,math};
+    });
+    return {count,units:window.printUnits.map(unit=>unit.math.length)};
+  })()`);
+  const count=setup.count;
   const batchSize=750;
-  for(let start=0;start<count;start+=batchSize){
-    await evaluate(`MathJax.typesetPromise([...document.querySelectorAll('.math')].slice(${start},${start+batchSize}))`);
-    console.log(`Math rendered: ${Math.min(start+batchSize,count)}/${count}`);
+  let rendered=0;
+  for(let unit=0;unit<setup.units.length;unit++){
+    await evaluate(`window.printUnits[${unit}].marker.replaceWith(window.printUnits[${unit}].node)`);
+    for(let start=0;start<setup.units[unit];start+=batchSize){
+      const began=performance.now();
+      const errors=await evaluate(`(async()=>{
+        const batch=window.printUnits[${unit}].math.slice(${start},${start+batchSize});
+        await MathJax.typesetPromise(batch);
+        const errors=batch.flatMap(node=>Array.from(node.querySelectorAll('[data-mml-node="merror"],mjx-merror'),error=>({message:error.textContent,tex:MathJax.startup.document.getMathItemsWithin(node).map(item=>item.math)})));
+        // Static printing keeps the output, not interactive re-render state.
+        MathJax.typesetClear();
+        return errors;
+      })()`);
+      if(errors.length)throw new Error(`Invalid equations: ${JSON.stringify(errors)}`);
+      rendered+=Math.min(batchSize,setup.units[unit]-start);
+      console.log(`Math rendered: ${rendered}/${count} (${((performance.now()-began)/1000).toFixed(2)}s batch)`);
+    }
+    await evaluate(`(async()=>{
+      const unit=window.printUnits[${unit}];await document.fonts.ready;
+      // Measure before changing zoom; alternating reads/writes forces layouts.
+      const scales=Array.from(unit.node.querySelectorAll('mjx-container'),container=>{
+        const available=container.closest('.math.display')?.clientWidth || container.closest('td,li,p')?.clientWidth || 650;
+        return {container,scale:available/container.scrollWidth};
+      });
+      for(const {container,scale} of scales)if(scale<1)container.style.zoom=String(scale);
+      // Keep completed chapters out of layout while rendering the next one.
+      unit.node.replaceWith(unit.marker);
+    })()`);
   }
+  await evaluate(`for(const unit of window.printUnits)unit.marker.replaceWith(unit.node)`);
   const validation=await evaluate(`(async()=>{
     await Promise.all([...document.images].map(image=>image.decode()));await document.fonts.ready;
-    for(const container of document.querySelectorAll('mjx-container')){
-      const available=container.closest('.math.display')?.clientWidth || container.closest('td,li,p')?.clientWidth || 650;
-      const width=container.scrollWidth;if(width>available)container.style.zoom=String(available/width);
-    }
-    return {figures:document.querySelectorAll('figure').length,math:document.querySelectorAll('mjx-container').length,errors:[...document.querySelectorAll('[data-mml-node="merror"],mjx-merror')].map(error=>({message:error.textContent,tex:MathJax.startup.document.getMathItemsWithin(error.closest('.math')).map(item=>item.math)}))};
+    return {figures:document.querySelectorAll('figure').length,math:document.querySelectorAll('mjx-container').length,errors:[...document.querySelectorAll('[data-mml-node="merror"],mjx-merror')].map(error=>({message:error.textContent}))};
   })()`);
   console.log('Print validation:',JSON.stringify(validation));
   if(validation.errors.length || validation.math<count)throw new Error('Incomplete or invalid equation rendering');

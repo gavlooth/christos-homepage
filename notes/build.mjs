@@ -233,6 +233,14 @@ writeFileSync(
 const assetsDir = join(here, "assets");
 if (existsSync(assetsDir)) {
   cpSync(assetsDir, join(notesOutDir, "assets"), { recursive: true });
+  // Rebase illustration links for the existing direct Markdown URL.
+  writeFileSync(
+    join(notesOutDir, "defects-to-topological-qubits.md"),
+    readFileSync(join(assetsDir, "defects-to-topological-qubits.md"), "utf8").replaceAll(
+      "](defects-to-topological-qubits/",
+      "](assets/defects-to-topological-qubits/",
+    ),
+  );
 }
 
 copyFileSync(join(repoRoot, "index.html"), join(webDir, "index.html"));
