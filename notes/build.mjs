@@ -30,7 +30,6 @@ const notesOutDir = join(webDir, "notes");
 // Refuse to publish a changed reader with an older downloadable edition.
 const digest = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 for (const [manifestName, command] of [
-  ["qubits-exports.json", "npm run notes:export:qubits"],
   ["exact-residual-stream-mixing-exports.json", "npm run notes:export:readers"],
   ["delta-nets-exports.json", "npm run notes:export:readers"],
 ]) {
@@ -61,14 +60,6 @@ const standaloneNotes = [
     summary:
       "A diagram-led guide to encoding lambda terms as Δ-Nets, following their interactions, and calculating replicator levels and port deltas.",
     source: join(pagesDir, "delta-nets.html"),
-  },
-  {
-    slug: "defects-to-topological-qubits",
-    title: "Defect-engineered topological qubits",
-    date: "2026-08-25",
-    summary:
-      "A complete reader on crystal defects, quantum control, anyons, topological models, and the limits of a proposed architecture.",
-    source: join(pagesDir, "defects-to-topological-qubits.html"),
   },
   {
     slug: "exact-residual-stream-mixing",
@@ -233,14 +224,6 @@ writeFileSync(
 const assetsDir = join(here, "assets");
 if (existsSync(assetsDir)) {
   cpSync(assetsDir, join(notesOutDir, "assets"), { recursive: true });
-  // Rebase illustration links for the existing direct Markdown URL.
-  writeFileSync(
-    join(notesOutDir, "defects-to-topological-qubits.md"),
-    readFileSync(join(assetsDir, "defects-to-topological-qubits.md"), "utf8").replaceAll(
-      "](defects-to-topological-qubits/",
-      "](assets/defects-to-topological-qubits/",
-    ),
-  );
 }
 
 copyFileSync(join(repoRoot, "index.html"), join(webDir, "index.html"));
